@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ispora — Opportunities</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --brand:#021ff6;--brand-h:#0118c4;--brand-light:#eef0ff;
+  --accent:#00c896;--accent-light:#e0faf4;
+  --warn:#f59e0b;--warn-light:#fef9ee;
+  --danger:#ef4444;--danger-light:#fff1f1;
+  --success:#10b981;--success-light:#ecfdf5;
+  --bg:#f0f2ff;--surface:#fff;--surface2:#f7f8ff;
+  --border:#e2e5f5;--border2:#c8cef0;
+  --text:#07094a;--text2:#3d4275;--text3:#8b90b8;
+  --sidebar-w:224px;--topbar-h:64px;--r:16px;
+  --shadow-sm:0 1px 4px rgba(2,31,246,0.06);
+  --shadow:0 4px 20px rgba(2,31,246,0.09);
+  --shadow-lg:0 12px 48px rgba(2,31,246,0.15);
+}
+html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+button{cursor:pointer;border:none;background:none;font-family:inherit;font-size:inherit}
+input,textarea,select{font-family:inherit;font-size:inherit}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+.app{display:flex;height:100vh;overflow:hidden}
+
+/* SIDEBAR */
+.sidebar{width:var(--sidebar-w);background:var(--surface);border-right:1.5px solid var(--border);display:flex;flex-direction:column;flex-shrink:0}
+.sidebar-logo{padding:16px 18px 14px;display:flex;align-items:center;gap:10px;border-bottom:1.5px solid var(--border)}
+.logo-icon{width:28px;height:28px;background:var(--brand);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo-icon svg{width:14px;height:14px;fill:none;stroke:white;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.logo-name{font-family:'Syne',sans-serif;font-weight:700;font-size:14px;color:var(--brand);letter-spacing:-0.3px;line-height:1}
+.logo-tagline{font-size:9px;color:var(--text3);margin-top:1px}
+.sidebar-profile{margin:12px 14px 6px;padding:11px 13px;background:var(--brand-light);border-radius:12px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:.15s}
+.sidebar-profile:hover{background:#e0e3ff}
+.sp-av{width:36px;height:36px;border-radius:50%;background:var(--brand);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px;flex-shrink:0;position:relative}
+.sp-dot{position:absolute;bottom:1px;right:1px;width:8px;height:8px;background:var(--accent);border-radius:50%;border:2px solid white}
+.sp-name{font-weight:600;font-size:12px;color:var(--text);line-height:1.2}
+.sp-role{font-size:11px;color:var(--brand);font-weight:500;margin-top:2px}
+.nav{flex:1;overflow-y:auto;padding:8px 12px}
+.nav-section{margin-bottom:20px}
+.nav-label{font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.09em;padding:0 8px;margin-bottom:5px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:10px;color:var(--text2);font-size:13px;font-weight:500;transition:all .15s;cursor:pointer}
+.nav-item:hover{background:var(--brand-light);color:var(--brand)}
+.nav-item.active{background:var(--brand);color:white}
+.nav-item svg{width:15px;height:15px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.nav-badge{margin-left:auto;background:var(--danger);color:white;font-size:10px;font-weight:700;padding:1px 6px;border-radius:20px;min-width:18px;text-align:center}
+.nav-item.active .nav-badge{background:rgba(255,255,255,.35)}
+.sidebar-foot{padding:12px;border-top:1.5px solid var(--border)}
+.nav-item.danger{color:var(--danger)}
+.nav-item.danger:hover{background:var(--danger-light)}
+
+/* MAIN */
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0}
+.topbar{height:var(--topbar-h);background:var(--surface);border-bottom:1.5px solid var(--border);padding:0 28px;display:flex;align-items:center;gap:14px;flex-shrink:0}
+.topbar-left{flex:1}
+.topbar-left h2{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--text)}
+.topbar-left p{font-size:12px;color:var(--text3);margin-top:1px}
+.topbar-right{display:flex;align-items:center;gap:8px}
+.role-pill{display:flex;align-items:center;gap:6px;background:var(--bg);border:1.5px solid var(--border);border-radius:20px;padding:5px 12px 5px 8px;font-size:12px;font-weight:600;color:var(--text2);cursor:pointer;transition:.2s}
+.role-pill:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-light)}
+.role-pip{width:8px;height:8px;background:var(--brand);border-radius:50%}
+.role-pill svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2}
+.icon-btn{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--bg);border:1.5px solid var(--border);color:var(--text2);cursor:pointer;transition:.2s;position:relative}
+.icon-btn:hover{background:var(--brand-light);color:var(--brand);border-color:var(--brand)}
+.icon-btn svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.notif-badge{position:absolute;top:6px;right:6px;width:7px;height:7px;background:var(--danger);border-radius:50%;border:1.5px solid var(--surface)}
+
+/* PAGE */
+.page{flex:1;overflow:hidden;display:flex;flex-direction:column;min-height:0}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--brand) 0%,#1a35f8 50%,var(--brand-h) 100%);padding:26px 32px;flex-shrink:0;position:relative;overflow:hidden}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.04) 1px,transparent 1px);background-size:28px 28px;pointer-events:none}
+.hero-orb{position:absolute;top:-60px;right:-40px;width:240px;height:240px;background:rgba(255,255,255,0.05);border-radius:50%;pointer-events:none}
+.hero-orb2{position:absolute;bottom:-80px;left:30%;width:180px;height:180px;background:rgba(255,255,255,0.03);border-radius:50%;pointer-events:none}
+.hero-inner{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.hero-text h1{font-family:'DM Sans',sans-serif;font-size:18px;font-weight:600;color:white;margin-bottom:5px}
+.hero-text p{font-size:12px;color:rgba(255,255,255,0.72);max-width:440px;line-height:1.6;margin-bottom:16px}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap}
+.hero-stats{display:flex;gap:10px;flex-shrink:0}
+.h-stat{background:rgba(255,255,255,0.13);border:1px solid rgba(255,255,255,0.2);border-radius:12px;padding:10px 14px;text-align:center;min-width:70px}
+.h-stat-val{font-size:20px;font-weight:700;color:white;line-height:1}
+.h-stat-label{font-size:10px;color:rgba(255,255,255,0.65);margin-top:2px}
+
+/* FILTERS BAR */
+.filters{background:var(--surface);border-bottom:1.5px solid var(--border);padding:10px 32px;display:flex;align-items:center;gap:10px;flex-shrink:0;overflow-x:auto}
+.filters::-webkit-scrollbar{height:0}
+.f-label{font-size:12px;font-weight:600;color:var(--text3);white-space:nowrap}
+.f-sel{background:var(--bg);border:1.5px solid var(--border);border-radius:8px;padding:6px 28px 6px 10px;font-size:12px;color:var(--text2);outline:none;cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%238b90b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;transition:.15s;white-space:nowrap}
+.f-sel:focus{border-color:var(--brand);background-color:var(--brand-light)}
+.f-search{position:relative;flex:1;max-width:260px}
+.f-search input{width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:8px;padding:7px 12px 7px 30px;font-size:12px;color:var(--text);outline:none;transition:.2s}
+.f-search input:focus{border-color:var(--brand);background:white}
+.f-search input::placeholder{color:var(--text3)}
+.f-search svg{position:absolute;left:9px;top:50%;transform:translateY(-50%);width:13px;height:13px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+.f-right{margin-left:auto;display:flex;align-items:center;gap:10px;flex-shrink:0}
+.f-count{font-size:12px;color:var(--text3);white-space:nowrap}
+.f-count strong{color:var(--text);font-weight:600}
+
+/* TYPE CHIPS */
+.type-chips{background:var(--surface);padding:10px 32px;display:flex;gap:6px;flex-shrink:0;overflow-x:auto;border-bottom:1px solid var(--border)}
+.type-chips::-webkit-scrollbar{height:0}
+.type-chip{display:flex;align-items:center;gap:5px;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;white-space:nowrap;border:1.5px solid var(--border);background:var(--surface);color:var(--text2)}
+.type-chip:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-light)}
+.type-chip.active{border-color:var(--brand);background:var(--brand);color:white}
+.type-chip-dot{width:8px;height:8px;border-radius:50%}
+
+/* BODY */
+.body{flex:1;overflow-y:auto;padding:22px 32px;min-height:0}
+
+/* FEATURED SECTION */
+.featured-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;margin-bottom:24px}
+.sec-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.sec-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:8px}
+.sec-link{font-size:12px;color:var(--brand);font-weight:600;cursor:pointer}
+.sec-link:hover{text-decoration:underline}
+
+/* OPPORTUNITY CARD */
+.opp-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;transition:all .2s;cursor:pointer;display:flex;flex-direction:column}
+.opp-card:hover{border-color:var(--brand);box-shadow:var(--shadow);transform:translateY(-2px)}
+.opp-card.featured{border-color:rgba(2,31,246,0.3);background:linear-gradient(160deg,var(--brand-light) 0%,var(--surface) 50%)}
+.opp-card-top{padding:16px 18px 12px;flex:1}
+.opp-header{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px}
+.opp-logo{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;border:1px solid var(--border);background:white}
+.opp-header-info{flex:1;min-width:0}
+.opp-company{font-size:11px;color:var(--text3);margin-bottom:2px}
+.opp-title{font-weight:700;font-size:13px;color:var(--text);line-height:1.3}
+.opp-save{width:28px;height:28px;border-radius:50%;background:var(--bg);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.15s;flex-shrink:0}
+.opp-save:hover{border-color:var(--brand);background:var(--brand-light)}
+.opp-save svg{width:13px;height:13px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.opp-save.saved svg{stroke:var(--brand);fill:var(--brand)}
+.opp-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+.tag{display:inline-flex;font-size:10px;padding:3px 8px;border-radius:20px;font-weight:500;white-space:nowrap}
+.tag-blue{background:var(--brand-light);color:var(--brand)}
+.tag-green{background:var(--success-light);color:var(--success)}
+.tag-amber{background:var(--warn-light);color:#92400e}
+.tag-teal{background:var(--accent-light);color:#0f766e}
+.tag-pink{background:#fce7f3;color:#be185d}
+.tag-purple{background:#f3e8ff;color:#7c3aed}
+.tag-orange{background:#fff7ed;color:#ea580c}
+.tag-gray{background:#f1f5f9;color:#475569}
+.opp-meta{display:flex;flex-wrap:wrap;gap:10px}
+.opp-meta-item{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--text3)}
+.opp-meta-item svg{width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.opp-meta-item.urgent{color:var(--danger);font-weight:600}
+.opp-card-foot{padding:10px 18px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.opp-deadline{font-size:11px;color:var(--text3);display:flex;align-items:center;gap:4px}
+.opp-deadline svg{width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.opp-deadline.urgent{color:var(--danger);font-weight:600}
+.opp-actions{display:flex;gap:6px}
+
+/* POSTER BADGE */
+.poster-badge{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:600;padding:3px 8px;border-radius:20px}
+.pb-ispora{background:var(--brand-light);color:var(--brand)}
+.pb-diaspora{background:var(--success-light);color:var(--success)}
+.pb-review{background:var(--warn-light);color:#92400e}
+
+/* GRID */
+.opp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+
+/* MY POSTS TAB CONTENT */
+.my-post-card{background:var(--surface);border:1.5px solid var(--border);border-radius:12px;padding:16px 18px;display:flex;align-items:center;gap:14px;margin-bottom:10px;transition:.2s}
+.my-post-card:hover{border-color:var(--brand);box-shadow:var(--shadow-sm)}
+.my-post-info{flex:1;min-width:0}
+.my-post-title{font-weight:700;font-size:13px;color:var(--text);margin-bottom:3px}
+.my-post-sub{font-size:11px;color:var(--text3)}
+.my-post-status{font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px}
+.mps-live{background:var(--success-light);color:var(--success)}
+.mps-review{background:var(--warn-light);color:#92400e}
+.mps-draft{background:var(--bg);color:var(--text3);border:1px solid var(--border)}
+
+/* BTNS */
+.btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:10px;font-size:13px;font-weight:600;transition:all .18s;cursor:pointer;border:none;white-space:nowrap}
+.btn svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.btn-brand{background:var(--brand);color:white}
+.btn-brand:hover{background:var(--brand-h);transform:translateY(-1px);box-shadow:0 4px 14px rgba(2,31,246,0.25)}
+.btn-white{background:white;color:var(--brand)}
+.btn-white:hover{background:#f0f3ff}
+.btn-ghost-white{background:rgba(255,255,255,0.15);color:white;border:1.5px solid rgba(255,255,255,0.3)}
+.btn-ghost-white:hover{background:rgba(255,255,255,0.25)}
+.btn-outline{background:white;color:var(--text);border:1.5px solid var(--border)}
+.btn-outline:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-light)}
+.btn-ghost{background:var(--bg);color:var(--text2);border:1.5px solid var(--border)}
+.btn-ghost:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-light)}
+.btn-success{background:var(--success);color:white}
+.btn-success:hover{background:#059669}
+.btn-sm{padding:6px 12px;font-size:12px;border-radius:8px}
+.btn-xs{padding:4px 9px;font-size:11px;border-radius:7px}
+
+/* TABS (for My Posts) */
+.page-tabs{background:var(--surface);border-bottom:1.5px solid var(--border);padding:0 32px;display:flex;align-items:center;flex-shrink:0}
+.ptab{padding:12px 18px;font-size:13px;font-weight:600;color:var(--text3);border-bottom:2.5px solid transparent;cursor:pointer;transition:.15s;white-space:nowrap;display:flex;align-items:center;gap:6px}
+.ptab:hover{color:var(--brand)}
+.ptab.active{color:var(--brand);border-bottom-color:var(--brand)}
+.ptab-chip{font-size:10px;font-weight:700;background:var(--brand-light);color:var(--brand);padding:1px 6px;border-radius:20px}
+.ptab:not(.active) .ptab-chip{background:var(--bg);color:var(--text3)}
+.ptabs-right{margin-left:auto}
+
+/* EMPTY */
+.empty-state{text-align:center;padding:60px 20px}
+.empty-ico{width:56px;height:56px;background:var(--brand-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+.empty-ico svg{width:24px;height:24px;stroke:var(--brand);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* MODAL */
+.overlay{position:fixed;inset:0;background:rgba(7,9,74,0.5);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;z-index:1000;opacity:0;pointer-events:none;transition:opacity .2s;padding:16px}
+.overlay.show{opacity:1;pointer-events:all}
+.modal{background:var(--surface);border-radius:18px;width:100%;max-width:540px;box-shadow:var(--shadow-lg);transform:translateY(18px) scale(0.97);transition:transform .25s cubic-bezier(.34,1.56,.64,1);max-height:92vh;overflow-y:auto}
+.overlay.show .modal{transform:translateY(0) scale(1)}
+.modal-head{padding:20px 24px 16px;display:flex;align-items:flex-start;justify-content:space-between;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--surface);z-index:1}
+.modal-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:var(--text)}
+.modal-sub{font-size:12px;color:var(--text3);margin-top:3px}
+.modal-close{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--text3);cursor:pointer;transition:.15s}
+.modal-close:hover{background:var(--bg);color:var(--text)}
+.modal-close svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.modal-body{padding:20px 24px}
+.modal-foot{padding:14px 24px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:10px;position:sticky;bottom:0;background:var(--surface);z-index:1}
+.fg{margin-bottom:14px}
+.fl{display:block;font-size:12px;font-weight:600;color:var(--text2);margin-bottom:5px}
+.fi{width:100%;border:1.5px solid var(--border);border-radius:10px;padding:10px 14px;font-size:13px;color:var(--text);background:var(--surface);outline:none;transition:.2s}
+.fi:focus{border-color:var(--brand);box-shadow:0 0 0 3px rgba(2,31,246,0.07)}
+.fi::placeholder{color:var(--text3)}
+textarea.fi{resize:vertical;min-height:90px;line-height:1.5}
+select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%238b90b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px;cursor:pointer}
+.fi-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--text);color:white;padding:12px 18px;border-radius:12px;font-size:13px;font-weight:500;box-shadow:var(--shadow-lg);z-index:3000;display:flex;align-items:center;gap:10px;max-width:340px;opacity:0;transform:translateY(10px);transition:all .3s cubic-bezier(.34,1.56,.64,1);pointer-events:none}
+.toast.show{opacity:1;transform:translateY(0)}
+.toast.success{background:#059669}
+.toast.error{background:var(--danger)}
+.toast svg{width:15px;height:15px;fill:none;stroke:white;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+
+/* NOTIF */
+.notif-panel{position:fixed;top:70px;right:14px;width:310px;background:var(--surface);border:1.5px solid var(--border);border-radius:16px;box-shadow:var(--shadow-lg);z-index:500;overflow:hidden;opacity:0;pointer-events:none;transform:translateY(-10px);transition:all .2s}
+.notif-panel.show{opacity:1;pointer-events:all;transform:translateY(0)}
+.np-head{padding:12px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.np-head h3{font-family:'Syne',sans-serif;font-size:13px;font-weight:700}
+.np-clear{font-size:11px;color:var(--brand);font-weight:600;cursor:pointer}
+.np-item{padding:10px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;cursor:pointer;transition:.15s}
+.np-item:hover{background:var(--bg)}
+.np-item.unread{background:var(--brand-light)}
+.np-item:last-child{border-bottom:none}
+.np-dot{width:7px;height:7px;background:var(--brand);border-radius:50%;flex-shrink:0;margin-top:4px}
+.np-dot.read{background:transparent}
+.np-text{font-size:12px;color:var(--text);line-height:1.4}
+.np-text strong{font-weight:600}
+.np-time{font-size:10px;color:var(--text3);margin-top:2px}
+
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.pulse{animation:pulse 2s ease-in-out infinite}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.opp-card{animation:fadeUp .22s ease both}
+</style>
+</head>
+<body>
+<div class="app">
+
+<!-- SIDEBAR — role set to mentor; easy to swap to student by changing profile + nav -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+    <div><div class="logo-name">Ispora</div><div class="logo-tagline">Impact Platform</div></div>
+  </div>
+  <div class="sidebar-profile" onclick="showToast('Opening profile...')">
+    <div class="sp-av">A<div class="sp-dot pulse"></div></div>
+    <div><div class="sp-name">Dr. Amina Osei</div><div class="sp-role">Diaspora Mentor</div></div>
+  </div>
+  <nav class="nav">
+    <div class="nav-section">
+      <div class="nav-label">Main</div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to Dashboard...')"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>Dashboard</div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to Browse Students...')"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>Browse Students</div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to My Mentorships...')"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>My Mentorships<span class="nav-badge">3</span></div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to Sessions...')"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Sessions<span class="nav-badge">1</span></div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to Messages...')"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Messages<span class="nav-badge">5</span></div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-label">Discover</div>
+      <div class="nav-item active" onclick="navTo(this)"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Opportunities<span class="nav-badge" style="background:var(--success)">New</span></div>
+    </div>
+  </nav>
+  <div class="sidebar-foot">
+    <div class="nav-item" onclick="showToast('Opening profile...')"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>My Profile</div>
+    <div class="nav-item" onclick="showToast('Opening settings...')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41M19.07 19.07l-1.41-1.41M4.93 19.07l1.41-1.41M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>Settings</div>
+    <div class="nav-item danger" onclick="showToast('Signing out...')"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Sign Out</div>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<div class="main">
+  <div class="topbar">
+    <div class="topbar-left"><h2>Opportunities</h2><p>Internships, jobs, scholarships, fellowships, accelerators and more — curated for the African diaspora community</p></div>
+    <div class="topbar-right">
+      <button class="role-pill" onclick="showToast('Role switcher...')"><div class="role-pip"></div>Mentor<svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="icon-btn" onclick="toggleNotif()" id="notifBtn"><svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg><div class="notif-badge"></div></button>
+      <button class="icon-btn" onclick="showToast('Opening profile...')"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
+      <button class="btn btn-brand btn-sm" onclick="openModal('postModal')">
+        <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Post Opportunity
+      </button>
+    </div>
+  </div>
+
+  <div class="page">
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-grid"></div><div class="hero-orb"></div><div class="hero-orb2"></div>
+      <div class="hero-inner">
+        <div class="hero-text">
+          <h1>Real opportunities, shared by people who know &#10022;</h1>
+          <p>Every listing here comes from verified diaspora professionals or the Ispora team — not scraped job boards. These are real insider opportunities for ambitious Africans going global.</p>
+          <div class="hero-btns">
+            <button class="btn btn-white" onclick="switchTab('browse')">
+              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Browse All
+            </button>
+            <button class="btn btn-ghost-white" onclick="openModal('postModal')">
+              <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Post Opportunity
+            </button>
+          </div>
+        </div>
+        <div class="hero-stats">
+          <div class="h-stat"><div class="h-stat-val" id="statTotal">48</div><div class="h-stat-label">Live</div></div>
+          <div class="h-stat"><div class="h-stat-val">24</div><div class="h-stat-label">Diaspora</div></div>
+          <div class="h-stat"><div class="h-stat-val">12</div><div class="h-stat-label">This week</div></div>
+          <div class="h-stat"><div class="h-stat-val">8</div><div class="h-stat-label">Countries</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <div class="page-tabs">
+      <div class="ptab active" id="ptab-browse" onclick="switchTab('browse')">
+        <svg style="width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        Browse <span class="ptab-chip" id="tc-browse">48</span>
+      </div>
+      <div class="ptab" id="ptab-saved" onclick="switchTab('saved')">
+        <svg style="width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
+        Saved <span class="ptab-chip" id="tc-saved">0</span>
+      </div>
+      <div class="ptab" id="ptab-mine" onclick="switchTab('mine')">
+        <svg style="width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        My Posts <span class="ptab-chip" id="tc-mine">2</span>
+      </div>
+      <div class="ptabs-right">
+        <div id="filtersRow" style="display:flex;gap:8px;align-items:center">
+          <div class="f-search">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="searchInput" placeholder="Search opportunities..." oninput="applyFilters()"/>
+          </div>
+          <select class="f-sel" id="filterField" onchange="applyFilters()">
+            <option value="">All Fields</option>
+            <option value="software">Software Engineering</option>
+            <option value="data">Data Science</option>
+            <option value="product">Product Management</option>
+            <option value="design">Design</option>
+            <option value="finance">Finance</option>
+            <option value="business">Business</option>
+            <option value="health">Health</option>
+            <option value="law">Law</option>
+          </select>
+          <select class="f-sel" id="filterCountry" onchange="applyFilters()">
+            <option value="">All Countries</option>
+            <option value="uk">United Kingdom</option>
+            <option value="us">United States</option>
+            <option value="canada">Canada</option>
+            <option value="germany">Germany</option>
+            <option value="netherlands">Netherlands</option>
+            <option value="remote">Remote</option>
+          </select>
+          <div class="f-count"><strong id="resCount">48</strong> results</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TYPE CHIPS -->
+    <div class="type-chips" id="typeChips">
+      <div class="type-chip active" onclick="filterType(this,'all')"><div class="type-chip-dot" style="background:var(--brand)"></div>All</div>
+      <div class="type-chip" onclick="filterType(this,'internship')"><div class="type-chip-dot" style="background:#3b82f6"></div>Internships</div>
+      <div class="type-chip" onclick="filterType(this,'job')"><div class="type-chip-dot" style="background:var(--success)"></div>Graduate Jobs</div>
+      <div class="type-chip" onclick="filterType(this,'scholarship')"><div class="type-chip-dot" style="background:#f59e0b"></div>Scholarships</div>
+      <div class="type-chip" onclick="filterType(this,'fellowship')"><div class="type-chip-dot" style="background:#8b5cf6"></div>Fellowships</div>
+      <div class="type-chip" onclick="filterType(this,'accelerator')"><div class="type-chip-dot" style="background:#ef4444"></div>Accelerators</div>
+      <div class="type-chip" onclick="filterType(this,'hackathon')"><div class="type-chip-dot" style="background:#0d9488"></div>Hackathons</div>
+      <div class="type-chip" onclick="filterType(this,'conference')"><div class="type-chip-dot" style="background:#be185d"></div>Conferences</div>
+      <div class="type-chip" onclick="filterType(this,'grant')"><div class="type-chip-dot" style="background:#ea580c"></div>Grants</div>
+      <div class="type-chip" onclick="filterType(this,'competition')"><div class="type-chip-dot" style="background:#7c3aed"></div>Competitions</div>
+    </div>
+
+    <!-- BODY -->
+    <div class="body" id="pageBody"></div>
+  </div>
+</div>
+</div>
+
+<!-- NOTIF -->
+<div class="notif-panel" id="notifPanel">
+  <div class="np-head"><h3>Notifications</h3><span class="np-clear" onclick="clearNotifs()">Mark all read</span></div>
+  <div class="np-item unread"><div class="np-dot"></div><div><div class="np-text">New opportunity: <strong>Barclays Graduate Scheme 2027</strong></div><div class="np-time">Today</div></div></div>
+  <div class="np-item"><div class="np-dot read"></div><div><div class="np-text">Your post <strong>"Google BOLD Internship"</strong> is live</div><div class="np-time">Yesterday</div></div></div>
+</div>
+
+<!-- POST OPPORTUNITY MODAL -->
+<div class="overlay" id="postModal" onclick="overlayClose(event,'postModal')">
+  <div class="modal">
+    <div class="modal-head">
+      <div><div class="modal-title">Post an Opportunity</div><div class="modal-sub">Share something that could change a student's life</div></div>
+      <button class="modal-close" onclick="closeModal('postModal')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div style="background:var(--success-light);border:1px solid rgba(16,185,129,0.3);border-radius:10px;padding:10px 14px;font-size:12px;color:#065f46;margin-bottom:14px;display:flex;align-items:center;gap:8px">
+        <svg style="width:14px;height:14px;stroke:#059669;fill:none;stroke-width:2;stroke-linecap:round;flex-shrink:0" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        As a <strong>verified mentor</strong>, your post will go live immediately and be marked as diaspora-verified.
+      </div>
+      <div class="fg"><label class="fl">Opportunity type</label>
+        <select class="fi" id="postType">
+          <option value="internship">Internship</option>
+          <option value="job">Graduate Job</option>
+          <option value="scholarship">Scholarship</option>
+          <option value="fellowship">Fellowship</option>
+          <option value="accelerator">Accelerator Programme</option>
+          <option value="hackathon">Hackathon</option>
+          <option value="conference">Conference / Event</option>
+          <option value="grant">Grant</option>
+          <option value="competition">Competition</option>
+        </select>
+      </div>
+      <div class="fg"><label class="fl">Title</label><input class="fi" type="text" id="postTitle" placeholder="e.g. Google BOLD Internship Programme 2026"/></div>
+      <div class="fi-row">
+        <div class="fg"><label class="fl">Organisation / Company</label><input class="fi" type="text" id="postOrg" placeholder="e.g. Google"/></div>
+        <div class="fg"><label class="fl">Location / Country</label><input class="fi" type="text" id="postLocation" placeholder="e.g. London, UK or Remote"/></div>
+      </div>
+      <div class="fi-row">
+        <div class="fg"><label class="fl">Field / Sector</label>
+          <select class="fi" id="postField">
+            <option value="software">Software Engineering</option>
+            <option value="data">Data Science</option>
+            <option value="product">Product Management</option>
+            <option value="design">Design</option>
+            <option value="finance">Finance</option>
+            <option value="business">Business</option>
+            <option value="health">Health</option>
+            <option value="law">Law</option>
+            <option value="general">General / Any</option>
+          </select>
+        </div>
+        <div class="fg"><label class="fl">Application deadline</label><input class="fi" type="date" id="postDeadline" min="2026-03-27"/></div>
+      </div>
+      <div class="fg"><label class="fl">Eligibility</label><input class="fi" type="text" id="postEligibility" placeholder="e.g. Nigerian students, final year, any nationality..."/></div>
+      <div class="fg"><label class="fl">Compensation / Stipend (optional)</label><input class="fi" type="text" id="postSalary" placeholder="e.g. ₦150,000–₦200,000/month or Fully Funded or Unpaid"/></div>
+      <div class="fg"><label class="fl">Description &amp; how to apply</label><textarea class="fi" id="postDesc" style="min-height:100px" placeholder="Describe the opportunity, what students will gain, and how to apply. Be specific — students act on clear information."></textarea></div>
+      <div class="fg"><label class="fl">Application link (URL)</label><input class="fi" type="url" id="postUrl" placeholder="https://..."/></div>
+      <div class="fg"><label class="fl">Insider tip (optional)</label><textarea class="fi" id="postTip" style="min-height:70px" placeholder="Your personal insight — what makes this opportunity great, how to stand out, what the process is really like..."></textarea></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="saveDraft()">Save as Draft</button>
+      <button class="btn btn-brand" onclick="postOpportunity()">
+        <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Post Live
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- OPPORTUNITY DETAIL MODAL -->
+<div class="overlay" id="detailModal" onclick="overlayClose(event,'detailModal')">
+  <div class="modal">
+    <div class="modal-head" id="detailModalHead" style="background:var(--brand);border-bottom:none;padding:20px 24px 22px">
+      <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.04) 1px,transparent 1px);background-size:24px 24px;pointer-events:none;border-radius:18px 18px 0 0"></div>
+      <div style="position:relative;z-index:1;width:100%">
+        <div style="display:flex;justify-content:flex-end;margin-bottom:10px">
+          <button class="modal-close" onclick="closeModal('detailModal')" style="background:rgba(255,255,255,0.15);color:white"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+        </div>
+        <div id="detailHeaderBadges" style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px"></div>
+        <div class="modal-title" id="detailTitle" style="color:white;font-family:Syne,sans-serif;font-size:18px;font-weight:800;margin-bottom:6px">Opportunity</div>
+        <div id="detailOrg" style="color:rgba(255,255,255,0.7);font-size:12px;display:flex;align-items:center;gap:4px">Organisation</div>
+        <div id="detailLogo" style="display:none"></div>
+      </div>
+    </div>
+    <div class="modal-body" id="detailBody"></div>
+    <div class="modal-foot" id="detailFoot" style="gap:8px"></div>
+  </div>
+</div>
+
+<div class="toast" id="toastEl"><svg id="toastIco" viewBox="0 0 24 24"></svg><span id="toastMsg"></span></div>
+
+<script>
+var savedIds = [];
+var currentTab = 'browse';
+var currentType = 'all';
+var nextPostId = 100;
+
+var typeColors = {
+  internship:'tag-blue', job:'tag-green', scholarship:'tag-amber',
+  fellowship:'tag-purple', accelerator:'tag-pink', hackathon:'tag-teal',
+  conference:'tag-pink', grant:'tag-orange', competition:'tag-purple'
+};
+var typeLabels = {
+  internship:'Internship', job:'Graduate Job', scholarship:'Scholarship',
+  fellowship:'Fellowship', accelerator:'Accelerator', hackathon:'Hackathon',
+  conference:'Conference', grant:'Grant', competition:'Competition'
+};
+var typeEmojis = {
+  internship:'&#128188;', job:'&#127970;', scholarship:'&#127891;',
+  fellowship:'&#127881;', accelerator:'&#128640;', hackathon:'&#128187;',
+  conference:'&#127917;', grant:'&#128176;', competition:'&#127942;'
+};
+
+var opportunities = [
+  {id:1,type:'internship',title:'Google BOLD Internship Programme',org:'Google',logo:'&#127758;',location:'London, UK',country:'uk',field:'software',deadline:'Apr 30, 2026',deadlineUrgent:false,tags:['React','Python','Data'],salary:'Paid — competitive stipend',applicants:143,postedAgo:'2 days ago',poster:'diaspora',postedBy:'Dr. Amina Osei',postedByRole:'Senior Engineer, Barclays',featured:true,saved:false,desc:'Google BOLD is a 10-week summer internship programme specifically designed for students from underrepresented communities. You will work on real products alongside Googlers.',tip:'Apply early — the first round closes faster than the official deadline. Tailor your CV to highlight impact, not just tasks.',eligibility:'University students, penultimate or final year',link:'#'},
+  {id:2,type:'scholarship',title:'Chevening Scholarship 2027',org:'UK Government',logo:'&#127468;&#127463;',location:'United Kingdom',country:'uk',field:'general',deadline:'Nov 5, 2026',deadlineUrgent:false,tags:['Fully Funded','Masters','Any Field'],salary:'Fully Funded',applicants:89,postedAgo:'1 week ago',poster:'ispora',postedBy:'Ispora Team',postedByRole:'Curated by Ispora',featured:true,saved:false,desc:'Chevening Scholarships are the UK government\'s global scholarship programme, funded by the FCDO. They offer fully funded one-year Masters degrees at UK universities.',tip:'Leadership experience is the key differentiator. Start documenting your leadership stories now, even if the deadline seems far.',eligibility:'Nigerian nationals, 2+ years work experience',link:'#'},
+  {id:3,type:'fellowship',title:'Accenture African Tech Leadership Fellowship',org:'Accenture',logo:'&#128736;',location:'Remote + Amsterdam',country:'netherlands',field:'business',deadline:'May 15, 2026',deadlineUrgent:false,tags:['Leadership','Tech','Paid'],salary:'Stipend included',applicants:54,postedAgo:'3 days ago',poster:'diaspora',postedBy:'Ifeoma Adeyemi',postedByRole:'Senior PM, Spotify',featured:true,saved:false,desc:'A 6-month fellowship for emerging African tech leaders. Fellows get mentorship from Accenture executives, a stipend, and access to the global tech network.',tip:'They want evidence of community impact, not just corporate achievement. Lead with what you have done for others.',eligibility:'African nationals, 3-8 years experience in tech',link:'#'},
+  {id:4,type:'accelerator',title:'Y Combinator W27 Batch Applications',org:'Y Combinator',logo:'&#129303;',location:'San Francisco / Remote',country:'us',field:'business',deadline:'Sep 30, 2026',deadlineUrgent:false,tags:['Startup','Funding','$500K'],salary:'$500K equity investment',applicants:312,postedAgo:'5 days ago',poster:'ispora',postedBy:'Ispora Team',postedByRole:'Curated by Ispora',featured:false,saved:false,desc:'Y Combinator is the world\'s most prestigious startup accelerator. Apply with a co-founder. They fund pre-seed and early stage startups across all domains.',tip:'',eligibility:'Open to all nationalities. Must have a startup idea or early product.',link:'#'},
+  {id:5,type:'job',title:'Barclays Technology Graduate Scheme 2027',org:'Barclays',logo:'&#127981;',location:'London, UK',country:'uk',field:'software',deadline:'Jun 30, 2026',deadlineUrgent:false,tags:['Grad Scheme','Fintech','Paid'],salary:'£32,000–£40,000/yr',applicants:78,postedAgo:'4 days ago',poster:'diaspora',postedBy:'Dr. Amina Osei',postedByRole:'Senior Engineer, Barclays',featured:false,saved:false,desc:'Barclays 2-year technology graduate scheme. Rotational programme across software engineering, data and cyber security. Open to all nationalities with UK work eligibility.',tip:'The online assessment is heavy on situational judgement. Practice with the SHL guide. Mention interest in fintech in your application — it matters.',eligibility:'Final year students or recent graduates with UK work authorisation',link:'#'},
+  {id:6,type:'hackathon',title:'ETHGlobal London 2026',org:'ETHGlobal',logo:'&#9830;',location:'London, UK',country:'uk',field:'software',deadline:'Apr 10, 2026',deadlineUrgent:true,tags:['Web3','Blockchain','Prizes'],salary:'$500K+ in prizes',applicants:203,postedAgo:'Today',poster:'ispora',postedBy:'Ispora Team',postedByRole:'Curated by Ispora',featured:false,saved:false,desc:'48-hour Ethereum hackathon with $500K+ in prizes. Great for networking with the global blockchain developer community and building production-ready projects.',tip:'',eligibility:'Open to all developers worldwide',link:'#'},
+  {id:7,type:'scholarship',title:'Commonwealth Distance Learning Scholarships',org:'Commonwealth Scholarship Commission',logo:'&#127758;',location:'United Kingdom',country:'uk',field:'general',deadline:'Dec 18, 2026',deadlineUrgent:false,tags:['Masters','Distance Learning','Funded'],salary:'Fully Funded',applicants:41,postedAgo:'1 week ago',poster:'ispora',postedBy:'Ispora Team',postedByRole:'Curated by Ispora',featured:false,saved:false,desc:'Fully funded Masters degrees at UK universities taught by distance learning, allowing you to study from Nigeria. Covers tuition fees and academic support.',tip:'',eligibility:'Nigerian nationals employed in a relevant sector',link:'#'},
+  {id:8,type:'competition',title:'Microsoft Imagine Cup 2026',org:'Microsoft',logo:'&#129520;',location:'Global / Remote',country:'remote',field:'software',deadline:'Mar 31, 2026',deadlineUrgent:true,tags:['AI','Innovation','$100K'],salary:'$100,000 prize',applicants:567,postedAgo:'Today',poster:'ispora',postedBy:'Ispora Team',postedByRole:'Curated by Ispora',featured:false,saved:false,desc:'Microsoft Imagine Cup is a global student technology competition. Teams build AI-powered solutions addressing real-world problems. Winner gets $100,000.',tip:'',eligibility:'University students globally',link:'#'},
+  {id:9,type:'fellowship',title:'MLT Black Equity at Work Certification',org:'Management Leadership for Tomorrow',logo:'&#9878;',location:'United States',country:'us',field:'business',deadline:'May 31, 2026',deadlineUrgent:false,tags:['MBA Prep','Leadership','Networking'],salary:'Fully Sponsored',applicants:97,postedAgo:'2 days ago',poster:'diaspora',postedBy:'Ngozi Williams',postedByRole:'Business Director, Unilever',featured:false,saved:false,desc:'Intensive career accelerator programme for high-achieving Black professionals targeting MBA programmes and corporate leadership roles at top US companies.',tip:'This programme dramatically increases your chances at Harvard, Wharton and Kellogg MBA. Apply in your penultimate year.',eligibility:'Black professionals with 2-5 years experience targeting top MBA programmes',link:'#'},
+  {id:10,type:'internship',title:'Amazon SDE Internship — UK',org:'Amazon',logo:'&#128722;',location:'London, UK',country:'uk',field:'software',deadline:'May 15, 2026',deadlineUrgent:false,tags:['SDE','12 weeks','Paid'],salary:'£2,500–£3,000/month',applicants:184,postedAgo:'3 days ago',poster:'diaspora',postedBy:'Emeka Eze',postedByRole:'Engineering Manager, Meta',featured:false,saved:false,desc:'Amazon UK summer software development internship. 12 weeks, full compensation, real team placements. Strong pipeline to full-time offers.',tip:'LeetCode medium difficulty is the benchmark. Focus on arrays, trees and graphs. Do at least 3 mock interviews before the real one.',eligibility:'Penultimate or final year CS/Engineering students with UK work authorisation',link:'#'},
+  {id:11,type:'grant',title:'Tony Elumelu Foundation Entrepreneurship Programme',org:'Tony Elumelu Foundation',logo:'&#127482;',location:'Africa / Remote',country:'remote',field:'business',deadline:'Jul 1, 2026',deadlineUrgent:false,tags:['$5,000 Seed','African Founders','Mentorship'],salary:'$5,000 seed capital',applicants:228,postedAgo:'6 days ago',poster:'ispora',postedBy:'Ispora Team',postedByRole:'Curated by Ispora',featured:false,saved:false,desc:'The TEF Programme identifies, trains, mentors, and funds 1,000 African entrepreneurs annually, providing $5,000 seed capital, business training, and access to a network of 18,000+ TEFers.',tip:'',eligibility:'African entrepreneurs with an early-stage business idea or existing business under 3 years old',link:'#'},
+  {id:12,type:'conference',title:'AfroTech World 2026',org:'AfroTech',logo:'&#127966;',location:'Houston, USA',country:'us',field:'software',deadline:'Aug 1, 2026',deadlineUrgent:false,tags:['Networking','Careers','Culture'],salary:'Scholarship available',applicants:445,postedAgo:'5 days ago',poster:'diaspora',postedBy:'Dr. Amina Osei',postedByRole:'Senior Engineer, Barclays',featured:false,saved:false,desc:'The largest conference for Black tech professionals and allies in the world. 30,000+ attendees, 300+ companies hiring, incredible speakers and community.',tip:'Apply for the scholarship to attend for free. The career fair alone is worth the trip — come with 50 printed CVs.',eligibility:'Open to all. Scholarship available for students and recent graduates.',link:'#'},
+  {id:13,type:'accelerator',title:'Entrepreneur First London — Cohort 30',org:'Entrepreneur First',logo:'&#128161;',location:'London, UK',country:'uk',field:'general',deadline:'Rolling',deadlineUrgent:false,tags:['Co-founder Matching','Pre-idea','Stipend'],salary:'Living stipend £3,000/mo',applicants:62,postedAgo:'1 week ago',poster:'diaspora',postedBy:'Blessing Mensah',postedByRole:'Investment Banker, Goldman Sachs',featured:false,saved:false,desc:'EF is a pre-team, pre-idea programme that helps exceptional individuals find co-founders and build deep tech companies. You get a stipend to quit your job and build.',tip:'You do not need an idea. You need to be exceptional at something. Apply even if you think you are not ready.',eligibility:'Exceptional individuals considering building a deep tech startup',link:'#'},
+  {id:14,type:'internship',title:'Revolut Product Internship',org:'Revolut',logo:'&#128176;',location:'London, UK',country:'uk',field:'product',deadline:'Apr 20, 2026',deadlineUrgent:true,tags:['Fintech','PM','Paid'],salary:'£2,200/month',applicants:91,postedAgo:'Today',poster:'diaspora',postedBy:'Ifeoma Adeyemi',postedByRole:'Senior PM, Spotify',featured:false,saved:false,desc:'Revolut product internship is 12 weeks working on real fintech products. One of the best CV lines for any aspiring product manager targeting fintech.',tip:'Case study interview format. They want to see structured product thinking, not just creativity. Practice the CIRCLES method.',eligibility:'Students or recent graduates, all nationalities',link:'#'},
+];
+
+var myPosts = [
+  {id:101,type:'internship',title:'Google BOLD Internship Programme',org:'Google',status:'live',views:247,applied:31,date:'Mar 20, 2026'},
+  {id:102,type:'conference',title:'AfroTech World 2026',org:'AfroTech',status:'live',views:189,applied:0,date:'Mar 18, 2026'}
+];
+
+function applyFilters() {
+  renderBrowse();
+}
+
+function filterType(el, type) {
+  document.querySelectorAll('.type-chip').forEach(function(c){c.classList.remove('active');});
+  el.classList.add('active');
+  currentType = type;
+  renderBrowse();
+}
+
+function getFilteredOpps() {
+  var q = document.getElementById('searchInput').value.toLowerCase().trim();
+  var field = document.getElementById('filterField').value;
+  var country = document.getElementById('filterCountry').value;
+  return opportunities.filter(function(o) {
+    if (currentType !== 'all' && o.type !== currentType) return false;
+    if (q && o.title.toLowerCase().indexOf(q) === -1 && o.org.toLowerCase().indexOf(q) === -1 && o.desc.toLowerCase().indexOf(q) === -1) return false;
+    if (field && o.field !== field) return false;
+    if (country && o.country !== country) return false;
+    return true;
+  });
+}
+
+function renderBrowse() {
+  var body = document.getElementById('pageBody');
+  var list = getFilteredOpps();
+  document.getElementById('resCount').textContent = list.length;
+  document.getElementById('tc-browse').textContent = opportunities.length;
+
+  if (list.length === 0) {
+    body.innerHTML = '<div class="empty-state"><div class="empty-ico"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><h3 style="font-family:Syne,sans-serif;font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px">No opportunities found</h3><p style="font-size:13px;color:var(--text3)">Try adjusting your filters or search term</p></div>';
+    return;
+  }
+
+  var featured = list.filter(function(o){return o.featured;});
+  var rest = list.filter(function(o){return !o.featured;});
+  var html = '';
+
+  if (featured.length > 0 && currentType === 'all') {
+    html += '<div class="sec-head"><div class="sec-title">&#11088; Featured &amp; Diaspora-Verified</div></div>';
+    html += '<div class="featured-row">' + featured.map(function(o,i){ return buildCard(o,i,true); }).join('') + '</div>';
+    if (rest.length > 0) {
+      html += '<div class="sec-head"><div class="sec-title">All Opportunities</div><div class="sec-count" style="font-size:12px;color:var(--text3)">' + rest.length + ' listings</div></div>';
+      html += '<div class="opp-grid">' + rest.map(function(o,i){ return buildCard(o,i,false); }).join('') + '</div>';
+    }
+  } else {
+    html += '<div class="opp-grid">' + list.map(function(o,i){ return buildCard(o,i,false); }).join('') + '</div>';
+  }
+
+  body.innerHTML = html;
+}
+
+function buildCard(o, i, isFeatured) {
+  var typeTag = typeColors[o.type] || 'tag-gray';
+  var typeLbl = typeLabels[o.type] || o.type;
+  var isSaved = savedIds.indexOf(o.id) > -1;
+
+  // Poster avatar - coloured circle with initial
+  var posterColor = o.poster === 'ispora' ? 'var(--brand)' : 'var(--success)';
+  var posterInitial = o.postedBy ? o.postedBy.charAt(0).toUpperCase() : 'I';
+  var posterAvatar = '<div style="width:24px;height:24px;border-radius:50%;background:' + posterColor + ';display:flex;align-items:center;justify-content:center;color:white;font-size:10px;font-weight:700;flex-shrink:0">' + posterInitial + '</div>';
+
+  // Short description excerpt
+  var descExcerpt = o.desc ? (o.desc.length > 100 ? o.desc.slice(0,100) + '...' : o.desc) : '';
+
+  // Applicant count display
+  var appCount = o.applicants ? o.applicants + ' applicants' : '';
+
+  // Salary display
+  var salaryHtml = o.salary ? '<div class="opp-meta-item"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>' + o.salary + '</div>' : '';
+
+  return '<div class="opp-card' + (isFeatured ? ' featured' : '') + '" style="animation-delay:' + (i*0.04) + 's" onclick="openDetail(' + o.id + ')">'
+    + '<div class="opp-card-top">'
+
+    // TOP ROW: type badge + save button
+    + '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">'
+    + '<div style="display:flex;gap:6px;flex-wrap:wrap">'
+    + '<span class="tag ' + typeTag + '">' + typeLbl.toUpperCase() + '</span>'
+    + (o.location.toLowerCase().indexOf('remote') > -1 ? '<span class="tag tag-green">Remote</span>' : '')
+    + (isFeatured ? '<span class="tag tag-amber">&#11088; Featured</span>' : '')
+    + '</div>'
+    + '<div class="opp-save ' + (isSaved ? 'saved' : '') + '" onclick="event.stopPropagation();toggleSave(' + o.id + ',this)">'
+    + '<svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>'
+    + '</div>'
+    + '</div>'
+
+    // COMPANY NAME
+    + '<div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">'
+    + '<svg style="width:12px;height:12px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>'
+    + '<div style="font-size:11px;color:var(--text3)">' + o.org + '</div>'
+    + '</div>'
+
+    // TITLE
+    + '<div style="font-family:Syne,sans-serif;font-size:14px;font-weight:700;color:var(--text);margin-bottom:8px;line-height:1.3">' + o.title + '</div>'
+
+    // DESCRIPTION
+    + '<div style="font-size:12px;color:var(--text2);line-height:1.5;margin-bottom:10px">' + descExcerpt + '</div>'
+
+    // META: location, salary, deadline
+    + '<div class="opp-meta" style="margin-bottom:10px">'
+    + '<div class="opp-meta-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 00-8 8c0 5.4 7 12 8 12s8-6.6 8-12a8 8 0 00-8-8z"/></svg>' + o.location + '</div>'
+    + salaryHtml
+    + '<div class="opp-meta-item' + (o.deadlineUrgent ? ' urgent' : '') + '"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>'
+    + (o.deadlineUrgent ? 'Closes soon: ' : 'Deadline: ') + o.deadline
+    + '</div>'
+    + '</div>'
+
+    // SKILL TAGS at bottom
+    + '<div style="display:flex;gap:5px;flex-wrap:wrap">'
+    + o.tags.map(function(t){return '<span class="tag tag-gray">'+t+'</span>';}).join('')
+    + '</div>'
+
+    + '</div>'
+
+    // CARD FOOTER: poster avatar + time + applicant count
+    + '<div class="opp-card-foot" style="padding:10px 18px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between">'
+    + '<div style="display:flex;align-items:center;gap:6px">'
+    + posterAvatar
+    + '<span style="font-size:11px;color:var(--text3)">' + (o.postedAgo || 'Recently') + '</span>'
+    + '</div>'
+    + (appCount ? '<span style="font-size:11px;color:var(--text3);font-weight:500">' + appCount + '</span>' : '')
+    + '</div>'
+    + '</div>';
+}
+
+function toggleSave(id, el) {
+  var idx = savedIds.indexOf(id);
+  if (idx > -1) {
+    savedIds.splice(idx,1);
+    el.classList.remove('saved');
+    showToast('Removed from saved');
+  } else {
+    savedIds.push(id);
+    el.classList.add('saved');
+    showToast('Opportunity saved!','success');
+  }
+  document.getElementById('tc-saved').textContent = savedIds.length;
+}
+
+function openDetail(id) {
+  var o = opportunities.find(function(x){return x.id===id;});
+  if (!o) return;
+  var typeTag = typeColors[o.type] || 'tag-gray';
+  var typeLbl = typeLabels[o.type] || o.type;
+  var isSaved = savedIds.indexOf(o.id) > -1;
+  var posterColor = o.poster === 'ispora' ? 'var(--brand)' : 'var(--success)';
+  var posterInitial = o.postedBy ? o.postedBy.charAt(0).toUpperCase() : 'I';
+
+  // Build the blue header
+  document.getElementById('detailLogo').innerHTML = '';
+  document.getElementById('detailLogo').style.display = 'none';
+  document.getElementById('detailTitle').textContent = o.title;
+  document.getElementById('detailOrg').innerHTML = '<svg style="width:12px;height:12px;stroke:rgba(255,255,255,0.6);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;margin-right:4px" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>' + o.org;
+
+  // Style the modal head as blue
+  var mhead = document.querySelector('#detailModal .modal-head');
+  if (mhead) {
+    mhead.style.background = 'var(--brand)';
+    mhead.style.position = 'relative';
+    mhead.style.overflow = 'hidden';
+    mhead.style.padding = '20px 24px 20px';
+    mhead.style.borderBottom = 'none';
+    // Add grid texture
+    mhead.setAttribute('data-branded','1');
+  }
+  document.getElementById('detailTitle').style.color = 'white';
+  document.getElementById('detailTitle').style.fontFamily = 'Syne,sans-serif';
+  document.getElementById('detailTitle').style.fontSize = '18px';
+  document.getElementById('detailTitle').style.fontWeight = '800';
+  document.getElementById('detailOrg').style.color = 'rgba(255,255,255,0.7)';
+  document.getElementById('detailOrg').style.fontSize = '12px';
+  document.getElementById('detailOrg').style.display = 'flex';
+  document.getElementById('detailOrg').style.alignItems = 'center';
+  document.getElementById('detailOrg').style.marginTop = '4px';
+  var closeBtn = document.querySelector('#detailModal .modal-close');
+  if (closeBtn) { closeBtn.style.color = 'white'; closeBtn.style.background = 'rgba(255,255,255,0.15)'; }
+
+  // Type badges in header
+  var headerBadges = document.getElementById('detailHeaderBadges');
+  if (!headerBadges) {
+    headerBadges = document.createElement('div');
+    headerBadges.id = 'detailHeaderBadges';
+    headerBadges.style.cssText = 'display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px';
+    mhead.insertBefore(headerBadges, mhead.firstChild);
+  }
+  headerBadges.innerHTML = '<span class="tag ' + typeTag + '" style="font-size:10px;font-weight:700;letter-spacing:.04em">' + typeLbl.toUpperCase() + '</span>'
+    + (o.location.toLowerCase().indexOf('remote') > -1 ? '<span class="tag" style="background:rgba(255,255,255,0.2);color:white;font-size:10px;font-weight:700">Remote</span>' : '');
+
+  // Body
+  document.getElementById('detailBody').innerHTML =
+    // 2x2 detail grid
+    '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px">'
+    + '<div style="background:var(--bg);border-radius:12px;padding:12px 14px">'
+    + '<div style="font-size:10px;font-weight:600;color:var(--text3);margin-bottom:4px;display:flex;align-items:center;gap:4px"><svg style="width:11px;height:11px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 00-8 8c0 5.4 7 12 8 12s8-6.6 8-12a8 8 0 00-8-8z"/></svg>Location</div>'
+    + '<div style="font-size:14px;font-weight:700;color:var(--text)">' + o.location + '</div>'
+    + '</div>'
+    + '<div style="background:var(--bg);border-radius:12px;padding:12px 14px">'
+    + '<div style="font-size:10px;font-weight:600;color:var(--text3);margin-bottom:4px;display:flex;align-items:center;gap:4px"><svg style="width:11px;height:11px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>Compensation</div>'
+    + '<div style="font-size:14px;font-weight:700;color:var(--text)">' + (o.salary || 'See listing') + '</div>'
+    + '</div>'
+    + '<div style="background:var(--bg);border-radius:12px;padding:12px 14px">'
+    + '<div style="font-size:10px;font-weight:600;color:var(--text3);margin-bottom:4px;display:flex;align-items:center;gap:4px"><svg style="width:11px;height:11px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Deadline</div>'
+    + '<div style="font-size:14px;font-weight:700;color:' + (o.deadlineUrgent?'var(--danger)':'var(--text)') + '">' + o.deadline + '</div>'
+    + '</div>'
+    + '<div style="background:var(--bg);border-radius:12px;padding:12px 14px">'
+    + '<div style="font-size:10px;font-weight:600;color:var(--text3);margin-bottom:4px;display:flex;align-items:center;gap:4px"><svg style="width:11px;height:11px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Applicants</div>'
+    + '<div style="font-size:14px;font-weight:700;color:var(--text)">' + (o.applicants ? o.applicants + ' people' : 'Be the first') + '</div>'
+    + '</div>'
+    + '</div>'
+
+    // Eligibility
+    + (o.eligibility ? '<div style="margin-bottom:16px"><div style="font-size:11px;font-weight:700;color:var(--text);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Eligibility</div><div style="font-size:13px;color:var(--text2);line-height:1.5">' + o.eligibility + '</div></div>' : '')
+
+    // Description
+    + '<div style="margin-bottom:16px">'
+    + '<div style="font-size:11px;font-weight:700;color:var(--text);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Description</div>'
+    + '<div style="font-size:13px;color:var(--text2);line-height:1.7">' + o.desc + '</div>'
+    + '</div>'
+
+    // Skills & Tags
+    + '<div style="margin-bottom:16px">'
+    + '<div style="font-size:11px;font-weight:700;color:var(--text);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Skills &amp; Tags</div>'
+    + '<div style="display:flex;flex-wrap:wrap;gap:6px">' + o.tags.map(function(t){return '<span class="tag tag-gray">'+t+'</span>';}).join('') + '</div>'
+    + '</div>'
+
+    // Insider tip
+    + (o.tip ? '<div style="background:var(--brand-light);border:1.5px solid var(--brand);border-radius:12px;padding:13px 16px;margin-bottom:16px">'
+      + '<div style="font-size:10px;font-weight:700;color:var(--brand);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px">&#128161; Insider Tip from ' + o.postedBy + '</div>'
+      + '<div style="font-size:12px;color:var(--text2);line-height:1.6">' + o.tip + '</div>'
+      + '</div>' : '')
+
+    // Posted by card
+    + '<div style="background:var(--bg);border-radius:12px;padding:13px 16px">'
+    + '<div style="font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:9px">Posted By</div>'
+    + '<div style="display:flex;align-items:center;gap:10px">'
+    + '<div style="width:38px;height:38px;border-radius:50%;background:' + posterColor + ';display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:15px;flex-shrink:0">' + posterInitial + '</div>'
+    + '<div><div style="font-weight:700;font-size:13px;color:var(--text)">' + o.postedBy + '</div>'
+    + '<div style="font-size:11px;color:var(--text3);margin-top:2px">' + (o.postedAgo || 'Recently') + '</div>'
+    + (o.poster === 'diaspora' ? '<span style="font-size:10px;font-weight:700;background:var(--success-light);color:var(--success);padding:2px 7px;border-radius:20px;display:inline-block;margin-top:4px">&#9679; Diaspora Verified</span>' : '<span style="font-size:10px;font-weight:700;background:var(--brand-light);color:var(--brand);padding:2px 7px;border-radius:20px;display:inline-block;margin-top:4px">&#9733; Ispora Curated</span>')
+    + '</div></div>'
+    + '</div>';
+
+  // Footer: Save + Share + Apply
+    // Build footer buttons without nested quote issues
+  var foot = document.getElementById('detailFoot');
+  foot.innerHTML = '';
+  var saveBtn = document.createElement('button');
+  saveBtn.className = 'btn btn-outline';
+  saveBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>' + (isSaved ? 'Saved' : 'Save');
+  saveBtn.onclick = function(){ toggleSave(o.id, saveBtn); };
+  var shareBtn2 = document.createElement('button');
+  shareBtn2.className = 'btn btn-outline';
+  shareBtn2.innerHTML = '<svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>Share';
+  shareBtn2.onclick = function(){ showToast('Link copied!','success'); };
+  var applyBtn = document.createElement('button');
+  applyBtn.className = 'btn btn-brand';
+  applyBtn.style.flex = '1';
+  applyBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Apply Now';
+  applyBtn.onclick = function(){ closeModal('detailModal'); showToast('Opening application page...','success'); };
+  foot.appendChild(saveBtn);
+  foot.appendChild(shareBtn2);
+  foot.appendChild(applyBtn);
+  if (o.applicants !== undefined) { o.applicants += 1; }
+
+  openModal('detailModal');
+}
+
+function renderSaved() {
+  var body = document.getElementById('pageBody');
+  var list = opportunities.filter(function(o){return savedIds.indexOf(o.id) > -1;});
+  if (list.length === 0) {
+    body.innerHTML = '<div class="empty-state"><div class="empty-ico"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg></div><h3 style="font-family:Syne,sans-serif;font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px">No saved opportunities</h3><p style="font-size:13px;color:var(--text3);margin-bottom:16px">Save opportunities you want to revisit by clicking the bookmark icon on any card.</p><button class="btn btn-brand btn-sm" onclick="switchTab(\'browse\')">Browse Opportunities</button></div>';
+    return;
+  }
+  body.innerHTML = '<div class="opp-grid">' + list.map(function(o,i){return buildCard(o,i,false);}).join('') + '</div>';
+}
+
+function renderMyPosts() {
+  var body = document.getElementById('pageBody');
+  var html = '<div style="max-width:700px">'
+    + '<div style="background:var(--brand-light);border:1.5px solid var(--brand);border-radius:12px;padding:14px 18px;margin-bottom:18px;display:flex;align-items:center;gap:12px">'
+    + '<svg style="width:18px;height:18px;stroke:var(--brand);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>'
+    + '<div style="font-size:12px;color:var(--text2);line-height:1.5"><strong style="color:var(--brand)">You are a verified mentor.</strong> Your opportunities go live immediately and are marked as diaspora-verified — making them more trusted by students.</div>'
+    + '</div>';
+
+  myPosts.forEach(function(p) {
+    var statusClass = p.status === 'live' ? 'mps-live' : p.status === 'review' ? 'mps-review' : 'mps-draft';
+    var statusLabel = p.status === 'live' ? 'Live' : p.status === 'review' ? 'Under Review' : 'Draft';
+    var typeTag = typeColors[p.type] || 'tag-gray';
+    var typeLbl = typeLabels[p.type] || p.type;
+    html += '<div class="my-post-card">'
+      + '<div style="width:40px;height:40px;background:var(--brand-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">' + (typeEmojis[p.type] || '&#128188;') + '</div>'
+      + '<div class="my-post-info">'
+      + '<div class="my-post-title">' + p.title + '</div>'
+      + '<div class="my-post-sub">' + p.org + ' \u00b7 Posted ' + p.date + ' \u00b7 '
+      + '<span class="tag ' + typeTag + '" style="font-size:9px">' + typeLbl + '</span>'
+      + '</div>'
+      + '</div>'
+      + '<div style="display:flex;flex-direction:column;align-items:flex-end;gap:5px;flex-shrink:0">'
+      + '<span class="my-post-status ' + statusClass + '">' + statusLabel + '</span>'
+      + (p.status === 'live' ? '<div style="font-size:11px;color:var(--text3)">' + p.views + ' views \u00b7 ' + p.applied + ' applied</div>' : '')
+      + '</div>'
+      + '<div style="display:flex;gap:6px;flex-shrink:0">'
+      + '<button class="btn btn-outline btn-xs" onclick="showToast(\'Opening edit form...\')">Edit</button>'
+      + '<button class="btn btn-ghost btn-xs" style="color:var(--danger);border-color:var(--danger)" onclick="removeMyPost(' + p.id + ')">Remove</button>'
+      + '</div>'
+      + '</div>';
+  });
+
+  html += '<button class="btn btn-brand" onclick="openModal(\'postModal\')" style="margin-top:14px">'
+    + '<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Post Another Opportunity</button>';
+  html += '</div>';
+  body.innerHTML = html;
+}
+
+function removeMyPost(id) {
+  myPosts = myPosts.filter(function(p){return p.id!==id;});
+  document.getElementById('tc-mine').textContent = myPosts.length;
+  renderMyPosts();
+  showToast('Post removed.');
+}
+
+function switchTab(tab) {
+  currentTab = tab;
+  document.querySelectorAll('.ptab').forEach(function(t){t.classList.remove('active');});
+  var el = document.getElementById('ptab-' + tab);
+  if (el) el.classList.add('active');
+  var filtersRow = document.getElementById('filtersRow');
+  var typeChips = document.getElementById('typeChips');
+  if (tab === 'browse') {
+    if (filtersRow) filtersRow.style.display = 'flex';
+    if (typeChips) typeChips.style.display = 'flex';
+    renderBrowse();
+  } else if (tab === 'saved') {
+    if (filtersRow) filtersRow.style.display = 'none';
+    if (typeChips) typeChips.style.display = 'none';
+    renderSaved();
+  } else if (tab === 'mine') {
+    if (filtersRow) filtersRow.style.display = 'none';
+    if (typeChips) typeChips.style.display = 'none';
+    renderMyPosts();
+  }
+}
+
+function postOpportunity() {
+  var title = document.getElementById('postTitle').value.trim();
+  var org = document.getElementById('postOrg').value.trim();
+  if (!title || !org) { showToast('Please fill in title and organisation','error'); return; }
+  var newOpp = {
+    id: nextPostId++,
+    type: document.getElementById('postType').value,
+    title: title, org: org, logo: '&#128188;',
+    location: document.getElementById('postLocation').value || 'Remote',
+    country: 'remote', field: document.getElementById('postField').value,
+    deadline: document.getElementById('postDeadline').value || 'Rolling',
+    deadlineUrgent: false,
+    tags: [document.getElementById('postField').value],
+    poster: 'diaspora', postedBy: 'Dr. Amina Osei', postedByRole: 'Senior Engineer, Barclays',
+    featured: false, saved: false,
+    desc: document.getElementById('postDesc').value,
+    tip: document.getElementById('postTip').value,
+    eligibility: document.getElementById('postEligibility').value || 'Open to all',
+    link: document.getElementById('postUrl').value || '#'
+  };
+  opportunities.unshift(newOpp);
+  myPosts.unshift({id:newOpp.id, type:newOpp.type, title:newOpp.title, org:newOpp.org, status:'live', views:0, applied:0, date:'Today'});
+  document.getElementById('tc-mine').textContent = myPosts.length;
+  document.getElementById('statTotal').textContent = opportunities.length;
+  closeModal('postModal');
+  switchTab('browse');
+  showToast('Opportunity posted live! Your mentees can see it now.','success');
+}
+
+function saveDraft() {
+  var title = document.getElementById('postTitle').value.trim();
+  if (!title) { showToast('Please add a title first','error'); return; }
+  myPosts.unshift({id:nextPostId++, type:document.getElementById('postType').value, title:title, org:document.getElementById('postOrg').value||'Unknown', status:'draft', views:0, applied:0, date:'Today'});
+  document.getElementById('tc-mine').textContent = myPosts.length;
+  closeModal('postModal');
+  showToast('Saved as draft. You can edit and publish later.','');
+}
+
+function openModal(id){ document.getElementById(id).classList.add('show'); document.body.style.overflow='hidden'; }
+function closeModal(id){ document.getElementById(id).classList.remove('show'); document.body.style.overflow=''; }
+function overlayClose(e,id){ if(e.target===e.currentTarget) closeModal(id); }
+
+var tTimer;
+function showToast(msg,type){
+  type=type||'';
+  var el=document.getElementById('toastEl'),ico=document.getElementById('toastIco'),m=document.getElementById('toastMsg');
+  el.className='toast';
+  if(type==='success'){el.classList.add('success');ico.innerHTML='<polyline points="20 6 9 17 4 12"/>';}
+  else if(type==='error'){el.classList.add('error');ico.innerHTML='<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>';}
+  else{ico.innerHTML='<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>';}
+  m.textContent=msg; clearTimeout(tTimer);
+  setTimeout(function(){el.classList.add('show');},10);
+  tTimer=setTimeout(function(){el.classList.remove('show');},3200);
+}
+function navTo(el){ document.querySelectorAll('.nav-item').forEach(function(i){i.classList.remove('active');}); el.classList.add('active'); }
+function toggleNotif(){ document.getElementById('notifPanel').classList.toggle('show'); }
+function clearNotifs(){ document.querySelectorAll('.np-item.unread').forEach(function(i){i.classList.remove('unread');i.querySelector('.np-dot').classList.add('read');}); showToast('All read','success'); }
+document.addEventListener('click',function(e){ var p=document.getElementById('notifPanel'),b=document.getElementById('notifBtn'); if(!p.contains(e.target)&&!b.contains(e.target)) p.classList.remove('show'); });
+
+if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded',function(){ renderBrowse(); });
+} else {
+  renderBrowse();
+}
+</script>
+</body>
+</html>

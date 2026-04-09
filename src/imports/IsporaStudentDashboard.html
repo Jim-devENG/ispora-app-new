@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ispora — Student Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --brand:#021ff6;--brand-h:#0118c4;--brand-light:#eef0ff;--brand-mid:#4a5df0;
+  --accent:#00c896;--accent-light:#e0faf4;
+  --warn:#f59e0b;--warn-light:#fef9ee;
+  --danger:#ef4444;--danger-light:#fff1f1;
+  --success:#10b981;--success-light:#ecfdf5;
+  --bg:#f0f2ff;--surface:#fff;--surface2:#f7f8ff;
+  --border:#e2e5f5;--border2:#c8cef0;
+  --text:#07094a;--text2:#3d4275;--text3:#8b90b8;
+  --sidebar-w:224px;--topbar-h:64px;--r:16px;
+  --shadow-sm:0 1px 4px rgba(2,31,246,0.06);
+  --shadow:0 4px 20px rgba(2,31,246,0.09);
+  --shadow-lg:0 12px 48px rgba(2,31,246,0.15);
+}
+html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+button{cursor:pointer;border:none;background:none;font-family:inherit;font-size:inherit}
+input,textarea,select{font-family:inherit;font-size:inherit}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+
+.app{display:flex;height:100vh;overflow:hidden}
+
+/* ── SIDEBAR ── */
+.sidebar{width:var(--sidebar-w);background:var(--surface);border-right:1.5px solid var(--border);display:flex;flex-direction:column;flex-shrink:0}
+.sidebar-logo{padding:16px 18px 14px;display:flex;align-items:center;gap:10px;border-bottom:1.5px solid var(--border)}
+.logo-icon{width:28px;height:28px;background:var(--brand);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo-icon svg{width:14px;height:14px;fill:none;stroke:white;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.logo-name{font-family:'Syne',sans-serif;font-weight:700;font-size:14px;color:var(--brand);letter-spacing:-0.3px;line-height:1}
+.logo-tagline{font-size:9px;color:var(--text3);margin-top:1px}
+.sidebar-profile{margin:12px 14px 6px;padding:11px 13px;background:var(--brand-light);border-radius:12px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:.15s}
+.sidebar-profile:hover{background:#e0e3ff}
+.sp-av{width:36px;height:36px;border-radius:50%;background:var(--brand);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px;flex-shrink:0;position:relative}
+.sp-online{position:absolute;bottom:1px;right:1px;width:8px;height:8px;background:var(--accent);border-radius:50%;border:2px solid white}
+.sp-name{font-weight:600;font-size:12px;color:var(--text);line-height:1.2}
+.sp-role{font-size:11px;color:var(--brand);font-weight:500;margin-top:2px}
+.nav{flex:1;overflow-y:auto;padding:8px 12px}
+.nav-section{margin-bottom:20px}
+.nav-label{font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.09em;padding:0 8px;margin-bottom:5px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:10px;color:var(--text2);font-size:13px;font-weight:500;transition:all .15s;cursor:pointer}
+.nav-item:hover{background:var(--brand-light);color:var(--brand)}
+.nav-item.active{background:var(--brand);color:white}
+.nav-item svg{width:15px;height:15px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.nav-badge{margin-left:auto;background:var(--danger);color:white;font-size:10px;font-weight:700;padding:1px 6px;border-radius:20px;min-width:18px;text-align:center}
+.nav-item.active .nav-badge{background:rgba(255,255,255,0.35)}
+.sidebar-foot{padding:12px;border-top:1.5px solid var(--border)}
+.nav-item.danger{color:var(--danger)}
+.nav-item.danger:hover{background:var(--danger-light)}
+
+/* ── MAIN ── */
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0}
+.topbar{height:var(--topbar-h);background:var(--surface);border-bottom:1.5px solid var(--border);padding:0 28px;display:flex;align-items:center;gap:14px;flex-shrink:0}
+.topbar-greet{flex:1}
+.topbar-greet h2{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--text)}
+.topbar-greet p{font-size:12px;color:var(--text3);margin-top:1px}
+.search-box{position:relative;width:240px;flex-shrink:0}
+.search-box input{width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:8px 14px 8px 34px;font-size:13px;color:var(--text);outline:none;transition:.2s}
+.search-box input:focus{border-color:var(--brand);background:white}
+.search-box input::placeholder{color:var(--text3)}
+.search-box svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);width:14px;height:14px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+.topbar-right{display:flex;align-items:center;gap:8px}
+.role-pill{display:flex;align-items:center;gap:6px;background:var(--brand-light);border:1.5px solid var(--brand);border-radius:20px;padding:5px 12px 5px 8px;font-size:12px;font-weight:600;color:var(--brand);cursor:pointer;transition:all .2s}
+.role-pill:hover{background:#e0e3ff}
+.role-pip{width:8px;height:8px;background:var(--brand);border-radius:50%}
+.role-pill svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2}
+.icon-btn{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--bg);border:1.5px solid var(--border);color:var(--text2);cursor:pointer;transition:all .2s;position:relative}
+.icon-btn:hover{background:var(--brand-light);color:var(--brand);border-color:var(--brand)}
+.icon-btn svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.notif-badge{position:absolute;top:6px;right:6px;width:7px;height:7px;background:var(--danger);border-radius:50%;border:1.5px solid var(--surface)}
+
+/* ── CONTENT ── */
+.content{flex:1;overflow-y:auto;padding:24px 28px 32px;display:flex;flex-direction:column;gap:20px}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(135deg,var(--brand) 0%,#1a35f8 50%,#0118c4 100%);border-radius:var(--r);padding:26px 30px;display:flex;align-items:center;justify-content:space-between;position:relative;overflow:hidden;flex-shrink:0;gap:20px}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.05) 1px,transparent 1px);background-size:28px 28px;pointer-events:none}
+.hero-orb{position:absolute;top:-60px;right:-40px;width:220px;height:220px;background:rgba(255,255,255,0.06);border-radius:50%;pointer-events:none}
+.hero-left{position:relative;z-index:1}
+.hero-left h1{font-family:'DM Sans',sans-serif;font-size:18px;font-weight:600;color:white;white-space:nowrap;margin-bottom:6px}
+.hero-left p{font-size:12px;color:rgba(255,255,255,0.72);line-height:1.6;max-width:380px}
+.hero-btns{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+.hero-right{display:flex;gap:10px;position:relative;z-index:1;flex-shrink:0}
+.hstat{background:rgba(255,255,255,0.13);border:1px solid rgba(255,255,255,0.2);border-radius:12px;padding:11px 16px;text-align:center;min-width:74px}
+.hstat-val{font-family:'DM Sans',sans-serif;font-size:20px;font-weight:700;color:white;line-height:1}
+.hstat-label{font-size:10px;color:rgba(255,255,255,0.65);margin-top:3px}
+
+/* ── BTNS ── */
+.btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:10px;font-size:13px;font-weight:600;transition:all .18s;cursor:pointer;border:none;white-space:nowrap}
+.btn svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.btn-white{background:white;color:var(--brand)}
+.btn-white:hover{background:#f0f3ff;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,0.12)}
+.btn-ghost-white{background:rgba(255,255,255,0.15);color:white;border:1.5px solid rgba(255,255,255,0.3)}
+.btn-ghost-white:hover{background:rgba(255,255,255,0.25)}
+.btn-brand{background:var(--brand);color:white}
+.btn-brand:hover{background:var(--brand-h);transform:translateY(-1px);box-shadow:0 4px 14px rgba(2,31,246,0.3)}
+.btn-success{background:var(--brand);color:white}
+.btn-success:hover{background:var(--brand-h);transform:translateY(-1px);box-shadow:0 4px 14px rgba(2,31,246,0.3)}
+.btn-outline{background:white;color:var(--text);border:1.5px solid var(--border)}
+.btn-outline:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-light)}
+.btn-outline-green{background:white;color:var(--brand);border:1.5px solid var(--brand)}
+.btn-outline-green:hover{background:var(--brand-light)}
+.btn-sm{padding:6px 13px;font-size:12px;border-radius:8px}
+.btn-xs{padding:5px 10px;font-size:11px;border-radius:7px}
+
+/* ── METRICS ── */
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.mcard{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r);padding:18px 20px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.mcard:hover{border-color:var(--brand);box-shadow:var(--shadow);transform:translateY(-2px)}
+.mcard-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px}
+.mcard-icon{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center}
+.mcard-icon svg{width:19px;height:19px;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ic-green{background:var(--brand-light)} .ic-green svg{stroke:var(--brand)}
+.ic-blue{background:var(--brand-light)} .ic-blue svg{stroke:var(--brand)}
+.ic-amber{background:var(--warn-light)} .ic-amber svg{stroke:var(--warn)}
+.ic-teal{background:var(--accent-light)} .ic-teal svg{stroke:var(--accent)}
+.mcard-trend{font-size:10px;font-weight:600;padding:3px 7px;border-radius:20px}
+.tr-up{background:var(--brand-light);color:var(--brand)}
+.tr-new{background:var(--brand-light);color:var(--brand)}
+.mcard-val{font-family:'DM Sans',sans-serif;font-size:26px;font-weight:700;color:var(--text);line-height:1;letter-spacing:-0.5px}
+.mcard-label{font-size:12px;color:var(--text3);margin-top:5px}
+.mcard-bar{height:3px;background:var(--border);border-radius:2px;margin-top:12px;overflow:hidden}
+.mcard-bar-fill{height:100%;border-radius:2px}
+
+/* ── GRID ── */
+.grid-2{display:grid;grid-template-columns:1fr 320px;gap:18px}
+.col{display:flex;flex-direction:column;gap:18px}
+
+/* ── CARD ── */
+.card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden}
+.card-head{padding:15px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1.5px solid var(--border)}
+.card-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--text)}
+.card-link{font-size:12px;color:var(--brand);font-weight:600;cursor:pointer}
+.card-link:hover{text-decoration:underline}
+.card-link.green{color:var(--brand)}
+.card-body{padding:16px 20px}
+
+/* ── MENTOR CARDS ── */
+.mentor-card{background:var(--surface2);border:1.5px solid var(--border);border-radius:12px;padding:16px;transition:all .2s;cursor:pointer;margin-bottom:10px}
+.mentor-card:last-child{margin-bottom:0}
+.mentor-card:hover{border-color:var(--brand);box-shadow:var(--shadow-sm);transform:translateY(-1px)}
+.mc-top{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.mc-av{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:15px;flex-shrink:0;position:relative}
+.mc-online{position:absolute;bottom:1px;right:1px;width:9px;height:9px;background:var(--accent);border-radius:50%;border:2px solid white}
+.mc-info{flex:1;min-width:0}
+.mc-name{font-weight:700;font-size:13px;color:var(--text)}
+.mc-role{font-size:11px;color:var(--text3);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mc-right{display:flex;flex-direction:column;align-items:flex-end;gap:5px}
+.mc-stars{font-size:11px}
+.mc-sessions{font-size:10px;color:var(--text3)}
+.mc-tags{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:10px}
+.tag{display:inline-flex;font-size:10px;padding:3px 8px;border-radius:20px;font-weight:500;white-space:nowrap}
+.tag-blue{background:var(--brand-light);color:var(--brand)}
+.tag-green{background:var(--brand-light);color:var(--brand)}
+.tag-amber{background:var(--warn-light);color:#92400e}
+.tag-teal{background:var(--accent-light);color:#0f766e}
+.tag-gray{background:#f1f5f9;color:#475569}
+.mc-foot{display:flex;gap:8px}
+
+/* ── SESSION CARD ── */
+.session-item{padding:13px;background:var(--surface2);border:1.5px solid var(--border);border-radius:10px;margin-bottom:8px;transition:all .2s}
+.session-item:last-child{margin-bottom:0}
+.session-item:hover{border-color:var(--brand);box-shadow:var(--shadow-sm)}
+.si-top{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.si-av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:13px;flex-shrink:0}
+.si-info{flex:1}
+.si-name{font-weight:600;font-size:13px;color:var(--text)}
+.si-topic{font-size:11px;color:var(--text3);margin-top:1px}
+.si-badge{font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px}
+.sb-today{background:#fef9c3;color:#854d0e}
+.sb-upcoming{background:var(--brand-light);color:var(--brand)}
+.si-meta{display:flex;gap:12px;font-size:11px;color:var(--text2);flex-wrap:wrap}
+.si-meta span{display:flex;align-items:center;gap:4px}
+.si-meta svg{width:12px;height:12px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.si-actions{display:flex;gap:8px;margin-top:10px}
+
+/* ── PROGRESS CARD ── */
+.prog-wrap{margin-bottom:10px}
+.prog-label-row{display:flex;justify-content:space-between;font-size:12px;color:var(--text2);margin-bottom:5px}
+.prog-bar{height:7px;background:var(--border);border-radius:4px;overflow:hidden}
+.prog-fill{height:100%;border-radius:4px;background:var(--brand)}
+.goal-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--border)}
+.goal-item:last-child{border-bottom:none}
+.goal-check{width:18px;height:18px;border-radius:5px;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;transition:all .2s;margin-top:1px}
+.goal-check.done{background:var(--brand);border-color:var(--brand)}
+.goal-check svg{width:10px;height:10px;stroke:white;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;display:none}
+.goal-check.done svg{display:block}
+.goal-text{font-size:13px;color:var(--text);line-height:1.4}
+.goal-text.done{color:var(--text3);text-decoration:line-through}
+
+/* ── ACTIVITY ── */
+.act-item{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid var(--border)}
+.act-item:last-child{border-bottom:none}
+.act-ico{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.act-ico svg{width:13px;height:13px;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.aic-green{background:var(--brand-light)} .aic-green svg{stroke:var(--brand)}
+.aic-blue{background:var(--brand-light)} .aic-blue svg{stroke:var(--brand)}
+.aic-amber{background:var(--warn-light)} .aic-amber svg{stroke:var(--warn)}
+.aic-teal{background:var(--accent-light)} .aic-teal svg{stroke:var(--accent)}
+.act-body{flex:1}
+.act-text{font-size:13px;color:var(--text);line-height:1.4}
+.act-text strong{font-weight:600}
+.act-time{font-size:11px;color:var(--text3);margin-top:2px}
+
+/* ── QUICK ACTIONS ── */
+.qa-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.qa-card{display:flex;flex-direction:column;align-items:center;gap:7px;padding:14px 10px;border-radius:11px;border:1.5px solid var(--border);background:var(--surface2);font-size:12px;font-weight:600;color:var(--text2);cursor:pointer;transition:all .2s;text-align:center}
+.qa-card:hover{border-color:var(--brand);background:var(--brand-light);color:var(--brand);transform:translateY(-2px);box-shadow:var(--shadow-sm)}
+.qa-ico{width:36px;height:36px;border-radius:10px;background:var(--brand-light);display:flex;align-items:center;justify-content:center;transition:background .2s}
+.qa-card:hover .qa-ico{background:var(--brand)}
+.qa-ico svg{width:17px;height:17px;fill:none;stroke:var(--brand);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.qa-card:hover .qa-ico svg{stroke:white}
+
+/* ── TIPS CARD ── */
+.tip-item{display:flex;gap:12px;padding:10px;background:var(--brand-light);border-radius:10px;border:1px solid rgba(2,31,246,0.1);margin-bottom:8px;cursor:pointer;transition:all .2s}
+.tip-item:last-child{margin-bottom:0}
+.tip-item:hover{background:#e0e3ff}
+.tip-num{width:24px;height:24px;border-radius:50%;background:var(--brand);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.tip-text{font-size:12px;color:var(--text2);line-height:1.5}
+.tip-text strong{color:var(--text);font-weight:600}
+
+/* ── BADGE ── */
+.status-badge{font-size:10px;font-weight:600;padding:3px 8px;border-radius:20px}
+.sb-active{background:var(--brand-light);color:var(--brand)}
+.sb-pending{background:var(--warn-light);color:#92400e}
+.sb-new{background:var(--brand-light);color:var(--brand)}
+
+/* ── OVERLAY / MODAL ── */
+.overlay{position:fixed;inset:0;background:rgba(7,9,74,0.5);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;z-index:1000;opacity:0;pointer-events:none;transition:opacity .2s;padding:16px}
+.overlay.show{opacity:1;pointer-events:all}
+.modal{background:var(--surface);border-radius:18px;width:100%;max-width:500px;box-shadow:var(--shadow-lg);transform:translateY(18px) scale(0.97);transition:transform .25s cubic-bezier(.34,1.56,.64,1);max-height:92vh;overflow-y:auto}
+.overlay.show .modal{transform:translateY(0) scale(1)}
+.modal-head{padding:20px 24px 16px;display:flex;align-items:flex-start;justify-content:space-between;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--surface);z-index:1}
+.modal-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:var(--text)}
+.modal-sub{font-size:12px;color:var(--text3);margin-top:3px}
+.modal-close{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--text3);cursor:pointer;transition:.15s}
+.modal-close:hover{background:var(--bg);color:var(--text)}
+.modal-close svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.modal-body{padding:20px 24px}
+.modal-foot{padding:14px 24px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:10px;position:sticky;bottom:0;background:var(--surface);z-index:1}
+.fg{margin-bottom:14px}
+.fl{display:block;font-size:12px;font-weight:600;color:var(--text2);margin-bottom:5px}
+.fi{width:100%;border:1.5px solid var(--border);border-radius:10px;padding:10px 14px;font-size:13px;color:var(--text);background:var(--surface);outline:none;transition:.2s}
+.fi:focus{border-color:var(--brand);box-shadow:0 0 0 3px rgba(2,31,246,0.07)}
+.fi::placeholder{color:var(--text3)}
+textarea.fi{resize:vertical;min-height:85px;line-height:1.5}
+.fi-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%238b90b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px;cursor:pointer}
+
+/* ── MENTOR PROFILE MODAL ── */
+.mprof-banner{background:var(--brand);padding:22px 24px;display:flex;align-items:center;gap:14px;position:relative;overflow:hidden}
+.mpb-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.05) 1px,transparent 1px);background-size:22px 22px;pointer-events:none}
+.mpb-av{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:20px;border:2.5px solid rgba(255,255,255,0.3);flex-shrink:0;position:relative;z-index:1}
+.mpb-info{position:relative;z-index:1}
+.mpb-name{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:white}
+.mpb-role{font-size:12px;color:rgba(255,255,255,0.7);margin-top:2px}
+.mpb-tags{display:flex;gap:5px;margin-top:8px;flex-wrap:wrap}
+.mprof-section{padding:14px 24px;border-bottom:1px solid var(--border)}
+.mprof-section:last-child{border-bottom:none}
+.mprof-section h4{font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:9px}
+.mprof-row{display:flex;align-items:center;gap:9px;margin-bottom:7px;font-size:13px;color:var(--text2)}
+.mprof-row:last-child{margin-bottom:0}
+.mprof-row svg{width:13px;height:13px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:4px}
+.stat-box{background:var(--bg);border-radius:9px;padding:10px;text-align:center}
+.stat-val{font-family:'DM Sans',sans-serif;font-size:18px;font-weight:700;color:var(--brand)}
+.stat-label{font-size:10px;color:var(--text3);margin-top:2px}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--text);color:white;padding:12px 18px;border-radius:12px;font-size:13px;font-weight:500;box-shadow:var(--shadow-lg);z-index:3000;display:flex;align-items:center;gap:10px;max-width:340px;opacity:0;transform:translateY(10px);transition:all .3s cubic-bezier(.34,1.56,.64,1);pointer-events:none}
+.toast.show{opacity:1;transform:translateY(0)}
+.toast.success{background:#059669}
+.toast.error{background:var(--danger)}
+.toast svg{width:15px;height:15px;fill:none;stroke:white;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+
+/* ── NOTIF ── */
+.notif-panel{position:fixed;top:70px;right:14px;width:310px;background:var(--surface);border:1.5px solid var(--border);border-radius:16px;box-shadow:var(--shadow-lg);z-index:500;overflow:hidden;opacity:0;pointer-events:none;transform:translateY(-10px);transition:all .2s}
+.notif-panel.show{opacity:1;pointer-events:all;transform:translateY(0)}
+.np-head{padding:12px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.np-head h3{font-family:'Syne',sans-serif;font-size:13px;font-weight:700}
+.np-clear{font-size:11px;color:var(--brand);font-weight:600;cursor:pointer}
+.np-item{padding:10px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;cursor:pointer;transition:.15s}
+.np-item:hover{background:var(--bg)}
+.np-item.unread{background:var(--brand-light)}
+.np-item:last-child{border-bottom:none}
+.np-dot{width:7px;height:7px;background:var(--brand);border-radius:50%;flex-shrink:0;margin-top:4px}
+.np-dot.read{background:transparent}
+.np-text{font-size:12px;color:var(--text);line-height:1.4}
+.np-text strong{font-weight:600}
+.np-time{font-size:10px;color:var(--text3);margin-top:2px}
+
+@keyframes slideUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.content>*{animation:slideUp .32s ease both}
+.content>*:nth-child(1){animation-delay:.04s}
+.content>*:nth-child(2){animation-delay:.08s}
+.content>*:nth-child(3){animation-delay:.13s}
+.content>*:nth-child(4){animation-delay:.18s}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.pulse{animation:pulse 2s ease-in-out infinite}
+</style>
+</head>
+<body>
+<div class="app">
+
+<!-- ── SIDEBAR ── -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+    <div><div class="logo-name">Ispora</div><div class="logo-tagline">Impact Platform</div></div>
+  </div>
+  <div class="sidebar-profile" onclick="showToast('Opening your profile...')">
+    <div class="sp-av">A<div class="sp-online pulse"></div></div>
+    <div><div class="sp-name">Aisha Kamara</div><div class="sp-role">Student · Software Engineering</div></div>
+  </div>
+  <nav class="nav">
+    <div class="nav-section">
+      <div class="nav-label">Main</div>
+      <div class="nav-item active" onclick="navTo(this)">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+        Dashboard
+      </div>
+      <div class="nav-item" onclick="navTo(this);showToast('Opening Find a Mentor...')">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        Find a Mentor
+      </div>
+      <div class="nav-item" onclick="navTo(this);showToast('Opening My Mentorships...')">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+        My Mentorships
+        <span class="nav-badge">1</span>
+      </div>
+      <div class="nav-item" onclick="navTo(this);showToast('Opening Sessions...')">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Sessions
+        <span class="nav-badge">1</span>
+      </div>
+      <div class="nav-item" onclick="navTo(this);showToast('Opening Messages...')">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        Messages
+        <span class="nav-badge">2</span>
+      </div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-label">My Progress</div>
+      <div class="nav-item" onclick="navTo(this);showToast('Opening My Goals...')">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        My Goals
+      </div>
+      <div class="nav-item" onclick="navTo(this);showToast('Opening Resources...')">
+        <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+        Resources
+      </div>
+    </div>
+  </nav>
+  <div class="sidebar-foot">
+    <div class="nav-item" onclick="showToast('Opening your profile...')">
+      <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      My Profile
+    </div>
+    <div class="nav-item" onclick="showToast('Opening settings...')">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41M19.07 19.07l-1.41-1.41M4.93 19.07l1.41-1.41M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>
+      Settings
+    </div>
+    <div class="nav-item danger" onclick="showToast('Signing out...')">
+      <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      Sign Out
+    </div>
+  </div>
+</aside>
+
+<!-- ── MAIN ── -->
+<div class="main">
+  <div class="topbar">
+    <div class="topbar-greet">
+      <h2>Good morning, Aisha! 👋</h2>
+      <p>Thursday, 26 March 2026 · University of Lagos · 3rd Year</p>
+    </div>
+    <div class="search-box">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" placeholder="Search mentors, resources..."/>
+    </div>
+    <div class="topbar-right">
+      <button class="role-pill" onclick="openModal('roleSwitchModal')">
+        <div class="role-pip"></div>Student
+        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <button class="icon-btn" onclick="toggleNotif()" id="notifBtn">
+        <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+        <div class="notif-badge"></div>
+      </button>
+      <button class="icon-btn" onclick="showToast('Opening profile...')">
+        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-grid"></div><div class="hero-orb"></div>
+      <div class="hero-left">
+        <h1>Keep the momentum going ✦</h1>
+        <p>You have a session with Dr. Amina today at 3 PM. You are 75% through your mentorship programme. Stay consistent — you are building something real.</p>
+        <div class="hero-btns">
+          <button class="btn btn-white" onclick="openModal('joinSessionModal')">
+            <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+            Join Today's Session
+          </button>
+          <button class="btn btn-ghost-white" onclick="openModal('findMentorModal')">
+            Find More Mentors
+          </button>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hstat"><div class="hstat-val">1</div><div class="hstat-label">Mentor</div></div>
+        <div class="hstat"><div class="hstat-val">8</div><div class="hstat-label">Sessions</div></div>
+        <div class="hstat"><div class="hstat-val">75%</div><div class="hstat-label">Progress</div></div>
+      </div>
+    </div>
+
+    <!-- METRICS -->
+    <div class="metrics">
+      <div class="mcard" onclick="showToast('Opening mentorship details...')">
+        <div class="mcard-top">
+          <div class="mcard-icon ic-green"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+          <span class="mcard-trend tr-up">Active</span>
+        </div>
+        <div class="mcard-val">1</div>
+        <div class="mcard-label">Active Mentor</div>
+        <div class="mcard-bar"><div class="mcard-bar-fill" style="width:100%;background:var(--brand)"></div></div>
+      </div>
+      <div class="mcard" onclick="showToast('Opening session history...')">
+        <div class="mcard-top">
+          <div class="mcard-icon ic-blue"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+          <span class="mcard-trend tr-up">+2 this month</span>
+        </div>
+        <div class="mcard-val">8</div>
+        <div class="mcard-label">Sessions Done</div>
+        <div class="mcard-bar"><div class="mcard-bar-fill" style="width:53%;background:var(--brand)"></div></div>
+      </div>
+      <div class="mcard" onclick="showToast('Opening goals...')">
+        <div class="mcard-top">
+          <div class="mcard-icon ic-amber"><svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+          <span class="mcard-trend tr-up">2 of 4 done</span>
+        </div>
+        <div class="mcard-val">2</div>
+        <div class="mcard-label">Goals Completed</div>
+        <div class="mcard-bar"><div class="mcard-bar-fill" style="width:50%;background:var(--warn)"></div></div>
+      </div>
+      <div class="mcard" onclick="showToast('Opening resources...')">
+        <div class="mcard-top">
+          <div class="mcard-icon ic-teal"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
+          <span class="mcard-trend tr-new">3 new</span>
+        </div>
+        <div class="mcard-val">7</div>
+        <div class="mcard-label">Resources Shared</div>
+        <div class="mcard-bar"><div class="mcard-bar-fill" style="width:70%;background:var(--accent)"></div></div>
+      </div>
+    </div>
+
+    <!-- MAIN GRID -->
+    <div class="grid-2">
+
+      <!-- LEFT -->
+      <div class="col">
+
+        <!-- MY MENTOR -->
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">My Mentor</div>
+            <span class="card-link" onclick="openModal('findMentorModal')">Find another</span>
+          </div>
+          <div class="card-body">
+            <div class="mentor-card" onclick="openModal('mentorProfileModal')">
+              <div class="mc-top">
+                <div class="mc-av" style="background:#021ff6">AO<div class="mc-online"></div></div>
+                <div class="mc-info">
+                  <div class="mc-name">Dr. Amina Osei</div>
+                  <div class="mc-role">Senior Software Engineer · Barclays UK · London</div>
+                </div>
+                <div class="mc-right">
+                  <div class="mc-stars">⭐ 4.9</div>
+                  <div class="mc-sessions">47 sessions</div>
+                </div>
+              </div>
+              <div class="mc-tags">
+                <span class="tag tag-blue">Software Engineering</span>
+                <span class="tag tag-blue">AI/ML</span>
+                <span class="tag tag-blue">Career Coaching</span>
+                <span class="tag tag-teal">UK tech market</span>
+              </div>
+              <div class="mc-foot">
+                <button class="btn btn-brand btn-sm" onclick="event.stopPropagation();openModal('joinSessionModal')">
+                  <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                  Join Session
+                </button>
+                <button class="btn btn-outline btn-sm" onclick="event.stopPropagation();openModal('messageModal')">
+                  <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                  Message
+                </button>
+                <button class="btn btn-outline btn-sm" onclick="event.stopPropagation();openModal('mentorProfileModal')">View Profile</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- UPCOMING SESSIONS -->
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">Upcoming Sessions</div>
+            <span class="card-link" onclick="showToast('Opening full session calendar...')">View All</span>
+          </div>
+          <div class="card-body">
+            <div class="session-item">
+              <div class="si-top">
+                <div class="si-av" style="background:#021ff6">AO</div>
+                <div class="si-info">
+                  <div class="si-name">Dr. Amina Osei</div>
+                  <div class="si-topic">Career path in Software Engineering</div>
+                </div>
+                <span class="si-badge sb-today">Today</span>
+              </div>
+              <div class="si-meta">
+                <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>3:00 PM – 4:00 PM WAT</span>
+                <span><svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>Google Meet</span>
+              </div>
+              <div class="si-actions">
+                <button class="btn btn-success btn-sm" onclick="openModal('joinSessionModal')">
+                  <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                  Join Now
+                </button>
+                <button class="btn btn-outline btn-sm" onclick="openModal('rescheduleModal')">Reschedule</button>
+                <button class="btn btn-outline btn-sm" onclick="openModal('prepModal')">Prep Notes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MY GOALS -->
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">My Goals</div>
+            <span class="card-link" onclick="openModal('addGoalModal')">+ Add Goal</span>
+          </div>
+          <div class="card-body">
+            <div class="prog-wrap">
+              <div class="prog-label-row"><span>Overall progress</span><span style="font-weight:600;color:var(--brand)">75%</span></div>
+              <div class="prog-bar"><div class="prog-fill" style="width:75%"></div></div>
+            </div>
+            <div id="goalsList">
+              <div class="goal-item">
+                <div class="goal-check done" onclick="toggleGoal(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="goal-text done">Build a full-stack portfolio project</div>
+              </div>
+              <div class="goal-item">
+                <div class="goal-check done" onclick="toggleGoal(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="goal-text done">Complete 2 LeetCode problems per week</div>
+              </div>
+              <div class="goal-item">
+                <div class="goal-check" onclick="toggleGoal(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="goal-text">Apply to 5 international internships</div>
+              </div>
+              <div class="goal-item">
+                <div class="goal-check" onclick="toggleGoal(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="goal-text">Prepare for technical interviews</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="col">
+
+        <!-- PENDING REQUEST BANNER -->
+        <div style="background:var(--warn-light);border:1.5px solid var(--warn);border-radius:var(--r);padding:16px 18px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+            <div style="width:32px;height:32px;background:var(--warn);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px">⏳</div>
+            <div>
+              <div style="font-weight:700;font-size:13px;color:var(--text)">Request pending</div>
+              <div style="font-size:11px;color:var(--text3)">You sent a request to 1 mentor</div>
+            </div>
+            <span class="status-badge sb-pending" style="margin-left:auto">Pending</span>
+          </div>
+          <div style="background:white;border-radius:10px;padding:12px;display:flex;align-items:center;gap:10px">
+            <div style="width:36px;height:36px;border-radius:50%;background:#7c3aed;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:13px;flex-shrink:0">CN</div>
+            <div style="flex:1;min-width:0">
+              <div style="font-weight:600;font-size:13px;color:var(--text)">Dr. Chidi Nwosu</div>
+              <div style="font-size:11px;color:var(--text3)">Data Scientist · Amsterdam · Sent 2 days ago</div>
+            </div>
+            <button class="btn btn-outline btn-xs" style="color:var(--danger);border-color:var(--danger)" onclick="withdrawRequest()">Withdraw</button>
+          </div>
+        </div>
+
+        <!-- QUICK ACTIONS -->
+        <div class="card">
+          <div class="card-head"><div class="card-title">Quick Actions</div></div>
+          <div class="card-body">
+            <div class="qa-grid">
+              <button class="qa-card" onclick="openModal('findMentorModal')">
+                <div class="qa-ico"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+                Find Mentor
+              </button>
+              <button class="qa-card" onclick="openModal('messageModal')">
+                <div class="qa-ico"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+                Message Mentor
+              </button>
+              <button class="qa-card" onclick="openModal('addGoalModal')">
+                <div class="qa-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div>
+                Add Goal
+              </button>
+              <button class="qa-card" onclick="showToast('Opening resources library...')">
+                <div class="qa-ico"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
+                Resources
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- TIPS FOR GETTING THE MOST -->
+        <div class="card">
+          <div class="card-head"><div class="card-title">Tips to maximise your mentorship</div></div>
+          <div class="card-body">
+            <div class="tip-item" onclick="showToast('Opening session prep guide...')">
+              <div class="tip-num">1</div>
+              <div class="tip-text"><strong>Prepare before every session.</strong> Write 3 questions you want answered. Mentors respond better to specific, focused requests.</div>
+            </div>
+            <div class="tip-item" onclick="showToast('Opening goals guide...')">
+              <div class="tip-num">2</div>
+              <div class="tip-text"><strong>Set and track weekly goals.</strong> Small consistent actions compound into big results over your mentorship journey.</div>
+            </div>
+            <div class="tip-item" onclick="showToast('Opening follow-up guide...')">
+              <div class="tip-num">3</div>
+              <div class="tip-text"><strong>Follow up after every session.</strong> Send a short summary of what you learned and what you will do next. Mentors love this.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RECENT ACTIVITY -->
+        <div class="card">
+          <div class="card-head"><div class="card-title">Recent Activity</div></div>
+          <div class="card-body" style="padding:10px 16px">
+            <div class="act-item">
+              <div class="act-ico aic-green"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+              <div class="act-body"><div class="act-text">Session with <strong>Dr. Amina</strong> completed</div><div class="act-time">Yesterday · 4:00 PM</div></div>
+            </div>
+            <div class="act-item">
+              <div class="act-ico aic-blue"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
+              <div class="act-body"><div class="act-text"><strong>Portfolio Checklist</strong> shared by Dr. Amina</div><div class="act-time">Yesterday · 10:00 AM</div></div>
+            </div>
+            <div class="act-item">
+              <div class="act-ico aic-amber"><svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+              <div class="act-body"><div class="act-text">Goal <strong>"Build portfolio project"</strong> marked complete</div><div class="act-time">Mar 24</div></div>
+            </div>
+            <div class="act-item">
+              <div class="act-ico aic-teal"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+              <div class="act-body"><div class="act-text">Next session scheduled for today at 3 PM</div><div class="act-time">Mar 24 · 2:15 PM</div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- NOTIF PANEL -->
+<div class="notif-panel" id="notifPanel">
+  <div class="np-head"><h3>Notifications</h3><span class="np-clear" onclick="clearNotifs()">Mark all read</span></div>
+  <div class="np-item unread"><div class="np-dot"></div><div><div class="np-text">Your session with <strong>Dr. Amina</strong> is in 3 hours</div><div class="np-time">Today · 12:00 PM</div></div></div>
+  <div class="np-item unread"><div class="np-dot"></div><div><div class="np-text"><strong>Dr. Amina</strong> shared a new resource with you</div><div class="np-time">Yesterday</div></div></div>
+  <div class="np-item"><div class="np-dot read"></div><div><div class="np-text">Your mentorship request to <strong>Dr. Chidi</strong> is pending</div><div class="np-time">2 days ago</div></div></div>
+</div>
+
+<!-- MODALS -->
+
+<!-- JOIN SESSION -->
+<div class="overlay" id="joinSessionModal" onclick="overlayClose(event,'joinSessionModal')">
+  <div class="modal">
+    <div class="modal-head">
+      <div><div class="modal-title">Join Today's Session</div><div class="modal-sub">With Dr. Amina Osei</div></div>
+      <button class="modal-close" onclick="closeModal('joinSessionModal')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div style="background:var(--brand-light);border:1.5px solid var(--brand);border-radius:12px;padding:16px;margin-bottom:16px">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div class="si-av" style="background:#021ff6;width:42px;height:42px;font-size:15px">AO</div>
+          <div>
+            <div style="font-weight:700;font-size:14px;color:var(--text)">Dr. Amina Osei</div>
+            <div style="font-size:12px;color:var(--text3)">Career path in Software Engineering</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:16px;font-size:12px;color:var(--text2);margin-top:12px;flex-wrap:wrap">
+          <span>🕒 3:00 PM – 4:00 PM WAT</span>
+          <span>📅 Today, 26 March 2026</span>
+          <span>🎥 Google Meet</span>
+        </div>
+      </div>
+      <div class="fg">
+        <label class="fl">Meeting Link</label>
+        <div style="display:flex;gap:8px">
+          <input class="fi" value="https://meet.google.com/abc-defg-hij" readonly style="flex:1;background:var(--bg)"/>
+          <button class="btn btn-outline btn-sm" onclick="showToast('Link copied!','success')">Copy</button>
+        </div>
+      </div>
+      <div style="background:var(--brand-light);border-radius:10px;padding:11px;font-size:12px;color:var(--text2);line-height:1.5">
+        💡 <strong>Tip:</strong> Have your 3 questions ready before joining. After the session, send Dr. Amina a short summary of your key takeaways.
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal('joinSessionModal')">Cancel</button>
+      <button class="btn btn-success" onclick="closeModal('joinSessionModal');showToast('Opening Google Meet...','success')">
+        <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+        Join Google Meet
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- MENTOR PROFILE -->
+<div class="overlay" id="mentorProfileModal" onclick="overlayClose(event,'mentorProfileModal')">
+  <div class="modal">
+    <div class="mprof-banner">
+      <div class="mpb-grid"></div>
+      <div class="mpb-av" style="background:#021ff6">AO</div>
+      <div class="mpb-info">
+        <div class="mpb-name">Dr. Amina Osei</div>
+        <div class="mpb-role">Senior Software Engineer · Barclays UK · London</div>
+        <div class="mpb-tags">
+          <span class="tag" style="background:rgba(255,255,255,0.2);color:white">Software Engineering</span>
+          <span class="tag" style="background:rgba(255,255,255,0.2);color:white">AI/ML</span>
+          <span class="tag" style="background:rgba(255,255,255,0.2);color:white">Career Coaching</span>
+        </div>
+      </div>
+    </div>
+    <div class="mprof-section">
+      <h4>About</h4>
+      <p style="font-size:13px;color:var(--text2);line-height:1.6">10+ years in tech at a leading UK fintech. Originally from Ghana, passionate about lifting the next generation of African engineers. My sessions are practical and focused on real-world outcomes.</p>
+    </div>
+    <div class="mprof-section">
+      <h4>Impact Stats</h4>
+      <div class="stat-grid">
+        <div class="stat-box"><div class="stat-val">47</div><div class="stat-label">Sessions done</div></div>
+        <div class="stat-box"><div class="stat-val">12</div><div class="stat-label">Mentees</div></div>
+        <div class="stat-box"><div class="stat-val">4.9</div><div class="stat-label">Rating</div></div>
+      </div>
+    </div>
+    <div class="mprof-section">
+      <h4>Details</h4>
+      <div class="mprof-row"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>London, United Kingdom</div>
+      <div class="mprof-row"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>10 years of experience</div>
+      <div class="mprof-row"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Available to mentor · Responds within 24hrs</div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal('mentorProfileModal')">Close</button>
+      <button class="btn btn-outline" onclick="closeModal('mentorProfileModal');openModal('messageModal')">Message</button>
+      <button class="btn btn-success" onclick="closeModal('mentorProfileModal');openModal('joinSessionModal')">
+        <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+        Join Session
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- FIND MENTOR -->
+<div class="overlay" id="findMentorModal" onclick="overlayClose(event,'findMentorModal')">
+  <div class="modal">
+    <div class="modal-head">
+      <div><div class="modal-title">Find a Mentor</div><div class="modal-sub">Browse diaspora professionals available to mentor you</div></div>
+      <button class="modal-close" onclick="closeModal('findMentorModal')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div class="fg"><label class="fl">Filter by field</label>
+        <select class="fi"><option>All Fields</option><option>Software Engineering</option><option>Product Management</option><option>Data Science</option><option>Design</option><option>Finance / Fintech</option></select>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;align-items:center;gap:12px;padding:13px;background:var(--bg);border-radius:11px;border:1.5px solid var(--border);cursor:pointer" onclick="closeModal('findMentorModal');showToast('Opening mentor profile...','')">
+          <div style="width:40px;height:40px;border-radius:50%;background:#021ff6;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px;flex-shrink:0">AO</div>
+          <div style="flex:1"><div style="font-weight:700;font-size:13px;color:var(--text)">Dr. Amina Osei</div><div style="font-size:11px;color:var(--text3)">Software Engineer · London · ⭐ 4.9</div></div>
+          <span class="status-badge sb-active">Your mentor</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:13px;background:var(--bg);border-radius:11px;border:1.5px solid var(--border);cursor:pointer" onclick="closeModal('findMentorModal');showToast('Opening mentor profile...','')">
+          <div style="width:40px;height:40px;border-radius:50%;background:#7c3aed;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px;flex-shrink:0">KO</div>
+          <div style="flex:1"><div style="font-weight:700;font-size:13px;color:var(--text)">Kofi Owusu</div><div style="font-size:11px;color:var(--text3)">Data Scientist · Toronto · ⭐ 4.8</div></div>
+          <button class="btn btn-success btn-xs" onclick="event.stopPropagation();closeModal('findMentorModal');showToast('Request sent to Kofi!','success')">Request</button>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:13px;background:var(--bg);border-radius:11px;border:1.5px solid var(--border);cursor:pointer" onclick="closeModal('findMentorModal');showToast('Opening mentor profile...','')">
+          <div style="width:40px;height:40px;border-radius:50%;background:#0891b2;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px;flex-shrink:0">IA</div>
+          <div style="flex:1"><div style="font-weight:700;font-size:13px;color:var(--text)">Ifeoma Adeyemi</div><div style="font-size:11px;color:var(--text3)">Product Manager · Berlin · ⭐ 4.7</div></div>
+          <button class="btn btn-success btn-xs" onclick="event.stopPropagation();closeModal('findMentorModal');showToast('Request sent to Ifeoma!','success')">Request</button>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:13px;background:var(--bg);border-radius:11px;border:1.5px solid var(--border);cursor:pointer" onclick="closeModal('findMentorModal');showToast('Opening mentor profile...','')">
+          <div style="width:40px;height:40px;border-radius:50%;background:#0d9488;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px;flex-shrink:0">TB</div>
+          <div style="flex:1"><div style="font-weight:700;font-size:13px;color:var(--text)">Taiwo Bello</div><div style="font-size:11px;color:var(--text3)">UX Designer · New York · ⭐ 4.9</div></div>
+          <button class="btn btn-success btn-xs" onclick="event.stopPropagation();closeModal('findMentorModal');showToast('Request sent to Taiwo!','success')">Request</button>
+        </div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal('findMentorModal')">Close</button>
+      <button class="btn btn-brand" onclick="closeModal('findMentorModal');showToast('Opening full mentor directory...')">Browse All Mentors</button>
+    </div>
+  </div>
+</div>
+
+<!-- MESSAGE MODAL -->
+<div class="overlay" id="messageModal" onclick="overlayClose(event,'messageModal')">
+  <div class="modal">
+    <div class="modal-head">
+      <div><div class="modal-title">Message Dr. Amina</div><div class="modal-sub">Your mentor will usually respond within 24 hours</div></div>
+      <button class="modal-close" onclick="closeModal('messageModal')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div class="fg"><label class="fl">Message</label><textarea class="fi" placeholder="Write your message to Dr. Amina..." style="min-height:120px"></textarea></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal('messageModal')">Cancel</button>
+      <button class="btn btn-success" onclick="closeModal('messageModal');showToast('Message sent to Dr. Amina!','success')">
+        <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>Send
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ADD GOAL MODAL -->
+<div class="overlay" id="addGoalModal" onclick="overlayClose(event,'addGoalModal')">
+  <div class="modal" style="max-width:420px">
+    <div class="modal-head">
+      <div><div class="modal-title">Add a Goal</div><div class="modal-sub">Set a clear objective for your mentorship</div></div>
+      <button class="modal-close" onclick="closeModal('addGoalModal')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div class="fg"><label class="fl">Goal</label><input class="fi" type="text" id="newGoalInput" placeholder="e.g. Get a summer internship in the UK"/></div>
+      <div class="fg"><label class="fl">Target date</label><input class="fi" type="date" min="2026-03-26"/></div>
+      <div class="fg"><label class="fl">Category</label>
+        <select class="fi"><option>Career</option><option>Technical Skills</option><option>Applications</option><option>Personal Development</option></select>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal('addGoalModal')">Cancel</button>
+      <button class="btn btn-success" onclick="addGoal()">
+        <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Add Goal
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- RESCHEDULE MODAL -->
+<div class="overlay" id="rescheduleModal" onclick="overlayClose(event,'rescheduleModal')">
+  <div class="modal" style="max-width:420px">
+    <div class="modal-head">
+      <div><div class="modal-title">Request Reschedule</div><div class="modal-sub">Ask Dr. Amina to reschedule this session</div></div>
+      <button class="modal-close" onclick="closeModal('rescheduleModal')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div class="fi-row">
+        <div class="fg"><label class="fl">Preferred new date</label><input class="fi" type="date" min="2026-03-27"/></div>
+        <div class="fg"><label class="fl">Preferred time (WAT)</label><input class="fi" type="time"/></div>
+      </div>
+      <div class="fg"><label class="fl">Reason</label><textarea class="fi" placeholder="Let Dr. Amina know why you need to reschedule..."></textarea></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal('rescheduleModal')">Cancel</button>
+      <button class="btn btn-success" onclick="closeModal('rescheduleModal');showToast('Reschedule request sent to Dr. Amina!','success')">Send Request</button>
+    </div>
+  </div>
+</div>
+
+<!-- PREP NOTES MODAL -->
+<div class="overlay" id="prepModal" onclick="overlayClose(event,'prepModal')">
+  <div class="modal" style="max-width:440px">
+    <div class="modal-head">
+      <div><div class="modal-title">Session Prep Notes</div><div class="modal-sub">Prepare for today's session with Dr. Amina</div></div>
+      <button class="modal-close" onclick="closeModal('prepModal')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div class="fg"><label class="fl">My 3 questions for today</label><textarea class="fi" placeholder="1. How do I structure my GitHub for UK employers?&#10;2. Which internship programmes should I apply to first?&#10;3. Should I get AWS certified this semester?"></textarea></div>
+      <div class="fg"><label class="fl">What I accomplished since last session</label><textarea class="fi" placeholder="e.g. Finished the portfolio project, pushed to GitHub..."></textarea></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal('prepModal')">Cancel</button>
+      <button class="btn btn-success" onclick="closeModal('prepModal');showToast('Prep notes saved!','success')">Save Notes</button>
+    </div>
+  </div>
+</div>
+
+<!-- ROLE SWITCH MODAL -->
+<div class="overlay" id="roleSwitchModal" onclick="overlayClose(event,'roleSwitchModal')">
+  <div class="modal" style="max-width:360px">
+    <div class="modal-head">
+      <div><div class="modal-title">Switch Role</div></div>
+      <button class="modal-close" onclick="closeModal('roleSwitchModal')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body" style="display:flex;flex-direction:column;gap:10px">
+      <div style="padding:14px;border-radius:12px;border:2px solid var(--brand);background:var(--brand-light);cursor:default">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:36px;height:36px;background:var(--brand);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px">🎓</div>
+          <div><div style="font-weight:700;font-size:13px;color:var(--brand)">Student / Youth ✓ Active</div><div style="font-size:11px;color:var(--text3)">Find mentors, access opportunities</div></div>
+        </div>
+      </div>
+      <div style="padding:14px;border-radius:12px;border:1.5px solid var(--border);background:var(--bg);cursor:pointer" onclick="closeModal('roleSwitchModal');showToast('Switched to Mentor view!','success')">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:36px;height:36px;background:var(--brand);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px">🌍</div>
+          <div><div style="font-weight:700;font-size:13px;color:var(--text)">Diaspora Mentor</div><div style="font-size:11px;color:var(--text3)">Mentor students, share opportunities</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toastEl"><svg id="toastIco" viewBox="0 0 24 24"></svg><span id="toastMsg"></span></div>
+
+<script>
+function openModal(id){ document.getElementById(id).classList.add('show'); document.body.style.overflow='hidden'; }
+function closeModal(id){ document.getElementById(id).classList.remove('show'); document.body.style.overflow=''; }
+function overlayClose(e,id){ if(e.target===e.currentTarget) closeModal(id); }
+
+var tTimer;
+function showToast(msg,type){
+  type=type||'';
+  var el=document.getElementById('toastEl'),ico=document.getElementById('toastIco'),m=document.getElementById('toastMsg');
+  el.className='toast';
+  if(type==='success'){el.classList.add('success');ico.innerHTML='<polyline points="20 6 9 17 4 12"/>';}
+  else if(type==='error'){el.classList.add('error');ico.innerHTML='<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>';}
+  else{ico.innerHTML='<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>';}
+  m.textContent=msg;
+  clearTimeout(tTimer);
+  setTimeout(function(){el.classList.add('show');},10);
+  tTimer=setTimeout(function(){el.classList.remove('show');},3200);
+}
+
+function navTo(el){ document.querySelectorAll('.nav-item').forEach(function(i){i.classList.remove('active');}); el.classList.add('active'); }
+function toggleNotif(){ document.getElementById('notifPanel').classList.toggle('show'); }
+function clearNotifs(){
+  document.querySelectorAll('.np-item.unread').forEach(function(i){i.classList.remove('unread');i.querySelector('.np-dot').classList.add('read');});
+  showToast('All read','success');
+}
+document.addEventListener('click',function(e){
+  var p=document.getElementById('notifPanel'),b=document.getElementById('notifBtn');
+  if(!p.contains(e.target)&&!b.contains(e.target)) p.classList.remove('show');
+});
+
+function toggleGoal(el){
+  var done=el.classList.toggle('done');
+  var text=el.nextElementSibling;
+  if(text) text.classList.toggle('done',done);
+  showToast(done?'Goal marked complete!':'Goal unmarked','success');
+}
+
+function addGoal(){
+  var input=document.getElementById('newGoalInput');
+  if(!input||!input.value.trim()){showToast('Please enter a goal','error');return;}
+  var list=document.getElementById('goalsList');
+  var div=document.createElement('div');
+  div.className='goal-item';
+  div.innerHTML='<div class="goal-check" onclick="toggleGoal(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>'
+    +'<div class="goal-text">'+input.value.trim()+'</div>';
+  list.appendChild(div);
+  input.value='';
+  closeModal('addGoalModal');
+  showToast('Goal added!','success');
+}
+
+function withdrawRequest(){
+  var banner=document.querySelector('[style*="warn-light"]');
+  if(banner){banner.style.transition='opacity .3s';banner.style.opacity='0';setTimeout(function(){banner.remove();},300);}
+  showToast('Request withdrawn.','');
+}
+</script>
+</body>
+</html>

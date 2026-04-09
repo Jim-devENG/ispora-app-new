@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ispora — Sessions</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --brand:#021ff6;--brand-h:#0118c4;--brand-light:#eef0ff;--brand-mid:#4a5df0;
+  --accent:#00c896;--accent-light:#e0faf4;
+  --warn:#f59e0b;--warn-light:#fef9ee;
+  --danger:#ef4444;--danger-light:#fff1f1;
+  --success:#10b981;--success-light:#ecfdf5;
+  --bg:#f0f2ff;--surface:#fff;--surface2:#f7f8ff;
+  --border:#e2e5f5;--border2:#c8cef0;
+  --text:#07094a;--text2:#3d4275;--text3:#8b90b8;
+  --sidebar-w:224px;--topbar-h:64px;--r:16px;
+  --shadow-sm:0 1px 4px rgba(2,31,246,0.06);
+  --shadow:0 4px 20px rgba(2,31,246,0.09);
+  --shadow-lg:0 12px 48px rgba(2,31,246,0.15);
+}
+html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+button{cursor:pointer;border:none;background:none;font-family:inherit;font-size:inherit}
+input,textarea,select{font-family:inherit;font-size:inherit}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+
+.app{display:flex;height:100vh;overflow:hidden}
+
+/* ── SIDEBAR ── */
+.sidebar{width:var(--sidebar-w);background:var(--surface);border-right:1.5px solid var(--border);display:flex;flex-direction:column;flex-shrink:0}
+.sidebar-logo{padding:16px 18px 14px;display:flex;align-items:center;gap:10px;border-bottom:1.5px solid var(--border)}
+.logo-icon{width:28px;height:28px;background:var(--brand);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo-icon svg{width:14px;height:14px;fill:none;stroke:white;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.logo-name{font-family:'Syne',sans-serif;font-weight:700;font-size:14px;color:var(--brand);letter-spacing:-0.3px;line-height:1}
+.logo-tagline{font-size:9px;color:var(--text3);margin-top:1px}
+.sidebar-profile{margin:12px 14px 6px;padding:11px 13px;background:var(--brand-light);border-radius:12px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:.15s}
+.sidebar-profile:hover{background:#e0e3ff}
+.sp-av{width:36px;height:36px;border-radius:50%;background:var(--brand);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px;flex-shrink:0;position:relative}
+.sp-online{position:absolute;bottom:1px;right:1px;width:8px;height:8px;background:var(--accent);border-radius:50%;border:2px solid white}
+.sp-name{font-weight:600;font-size:12px;color:var(--text);line-height:1.2}
+.sp-role{font-size:11px;color:var(--brand);font-weight:500;margin-top:2px}
+.nav{flex:1;overflow-y:auto;padding:8px 12px}
+.nav-section{margin-bottom:20px}
+.nav-label{font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.09em;padding:0 8px;margin-bottom:5px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:10px;color:var(--text2);font-size:13px;font-weight:500;transition:all .15s;cursor:pointer}
+.nav-item:hover{background:var(--brand-light);color:var(--brand)}
+.nav-item.active{background:var(--brand);color:white}
+.nav-item svg{width:15px;height:15px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.nav-badge{margin-left:auto;background:var(--danger);color:white;font-size:10px;font-weight:700;padding:1px 6px;border-radius:20px;min-width:18px;text-align:center}
+.nav-item.active .nav-badge{background:rgba(255,255,255,0.35)}
+.sidebar-foot{padding:12px;border-top:1.5px solid var(--border)}
+.nav-item.danger{color:var(--danger)}
+.nav-item.danger:hover{background:var(--danger-light)}
+
+/* ── MAIN ── */
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0}
+.topbar{height:var(--topbar-h);background:var(--surface);border-bottom:1.5px solid var(--border);padding:0 28px;display:flex;align-items:center;gap:14px;flex-shrink:0}
+.topbar-left{flex:1}
+.topbar-left h2{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--text)}
+.topbar-left p{font-size:12px;color:var(--text3);margin-top:1px}
+.topbar-right{display:flex;align-items:center;gap:8px}
+.role-pill{display:flex;align-items:center;gap:6px;background:var(--bg);border:1.5px solid var(--border);border-radius:20px;padding:5px 12px 5px 8px;font-size:12px;font-weight:600;color:var(--text2);cursor:pointer;transition:all .2s}
+.role-pill:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-light)}
+.role-pip{width:8px;height:8px;background:var(--brand);border-radius:50%}
+.role-pill svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2}
+.icon-btn{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--bg);border:1.5px solid var(--border);color:var(--text2);cursor:pointer;transition:all .2s;position:relative}
+.icon-btn:hover{background:var(--brand-light);color:var(--brand);border-color:var(--brand)}
+.icon-btn svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.notif-badge{position:absolute;top:6px;right:6px;width:7px;height:7px;background:var(--danger);border-radius:50%;border:1.5px solid var(--surface)}
+
+/* ── PAGE ── */
+.page{flex:1;overflow:hidden;display:flex;flex-direction:column;min-height:0}
+
+/* ── PAGE HEADER ── */
+.page-header{background:var(--brand);padding:22px 32px;flex-shrink:0;position:relative;overflow:hidden}
+.ph-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.04) 1px,transparent 1px);background-size:28px 28px;pointer-events:none}
+.ph-orb{position:absolute;top:-60px;right:-40px;width:200px;height:200px;background:rgba(255,255,255,0.05);border-radius:50%;pointer-events:none}
+.ph-inner{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.ph-text h1{font-family:'DM Sans',sans-serif;font-size:18px;font-weight:600;color:white;white-space:nowrap}
+.ph-text p{font-size:12px;color:rgba(255,255,255,0.7);margin-top:3px}
+.ph-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.ph-stat{background:rgba(255,255,255,0.13);border:1px solid rgba(255,255,255,0.18);border-radius:12px;padding:10px 16px;text-align:center;min-width:68px}
+.ph-stat-val{font-family:'DM Sans',sans-serif;font-size:20px;font-weight:700;color:white;line-height:1}
+.ph-stat-label{font-size:10px;color:rgba(255,255,255,0.65);margin-top:3px}
+
+/* ── CONTROLS BAR ── */
+.controls{background:var(--surface);border-bottom:1.5px solid var(--border);padding:0 32px;display:flex;align-items:center;gap:12px;flex-shrink:0;height:52px}
+.tab-grp{display:flex;gap:0}
+.tab-btn{padding:0 16px;height:52px;font-size:13px;font-weight:600;color:var(--text3);border-bottom:2.5px solid transparent;cursor:pointer;transition:all .15s;white-space:nowrap;display:flex;align-items:center;gap:6px}
+.tab-btn:hover{color:var(--text2)}
+.tab-btn.active{color:var(--brand);border-bottom-color:var(--brand)}
+.tab-count{font-size:10px;font-weight:700;padding:2px 6px;border-radius:20px;background:var(--bg);color:var(--text3)}
+.tab-btn.active .tab-count{background:var(--brand-light);color:var(--brand)}
+.ctrl-divider{width:1px;height:22px;background:var(--border);margin:0 4px}
+.view-btns{display:flex;gap:4px}
+.vbtn{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;border:1.5px solid var(--border);background:var(--bg);color:var(--text3);cursor:pointer;transition:.15s}
+.vbtn.active{background:var(--brand);border-color:var(--brand);color:white}
+.vbtn svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ctrl-right{margin-left:auto;display:flex;align-items:center;gap:8px}
+.search-sm{position:relative}
+.search-sm input{background:var(--bg);border:1.5px solid var(--border);border-radius:8px;padding:7px 12px 7px 30px;font-size:12px;color:var(--text);outline:none;width:190px;transition:.2s}
+.search-sm input:focus{border-color:var(--brand);background:white}
+.search-sm input::placeholder{color:var(--text3)}
+.search-sm svg{position:absolute;left:9px;top:50%;transform:translateY(-50%);width:13px;height:13px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+
+/* ── BODY SPLIT ── */
+.body{flex:1;overflow:hidden;display:flex;gap:0;min-height:0}
+
+/* ── CALENDAR PANEL ── */
+.cal-panel{width:320px;flex-shrink:0;border-right:1.5px solid var(--border);background:var(--surface);display:flex;flex-direction:column;overflow-y:auto;overflow-x:hidden}
+.cal-head{padding:16px 20px 12px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
+.cal-month{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--text)}
+.cal-nav{display:flex;gap:4px}
+.cal-nav-btn{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:var(--bg);border:1.5px solid var(--border);color:var(--text2);cursor:pointer;transition:.15s}
+.cal-nav-btn:hover{background:var(--brand-light);color:var(--brand);border-color:var(--brand)}
+.cal-nav-btn svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.cal-grid{padding:12px 16px}
+.cal-days-row{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:6px}
+.cal-day-label{text-align:center;font-size:10px;font-weight:600;color:var(--text3);padding:4px 0}
+.cal-cells{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;min-height:180px}
+.cal-cell{width:100%;height:36px;display:flex;align-items:center;justify-content:center;border-radius:8px;font-size:12px;font-weight:500;color:var(--text2);cursor:pointer;transition:all .15s;position:relative}
+.cal-cell:hover{background:var(--brand-light);color:var(--brand)}
+.cal-cell.other-month{color:var(--border2)}
+.cal-cell.today{background:var(--brand);color:white;font-weight:700}
+.cal-cell.today:hover{background:var(--brand-h)}
+.cal-cell.has-session::after{content:'';position:absolute;bottom:3px;left:50%;transform:translateX(-50%);width:5px;height:5px;border-radius:50%;background:var(--accent)}
+.cal-cell.today.has-session::after{background:white}
+.cal-cell.selected{background:var(--brand-light);color:var(--brand);font-weight:700;border:1.5px solid var(--brand)}
+.cal-cell.today.selected{background:var(--brand);color:white}
+
+.cal-legend{padding:12px 16px;border-top:1px solid var(--border)}
+.cal-legend-title{font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px}
+.legend-item{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text2);margin-bottom:5px}
+.legend-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+.cal-upcoming{padding:12px 16px;border-top:1px solid var(--border)}
+.cal-upcoming-title{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.mini-session{padding:10px 12px;border-radius:10px;background:var(--surface2);border:1px solid var(--border);margin-bottom:8px;cursor:pointer;transition:all .15s}
+.mini-session:hover{border-color:var(--brand);background:var(--brand-light)}
+.mini-session:last-child{margin-bottom:0}
+.ms-name{font-size:12px;font-weight:600;color:var(--text)}
+.ms-time{font-size:11px;color:var(--text3);margin-top:2px}
+.ms-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:3px}
+
+/* ── SESSIONS LIST ── */
+.sessions-panel{flex:1;overflow-y:auto;padding:20px 24px;min-width:0}
+.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.section-title{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--text)}
+.section-count{font-size:11px;color:var(--text3)}
+
+/* ── TODAY HIGHLIGHT ── */
+.today-banner{background:linear-gradient(135deg,var(--brand) 0%,#1a35f8 100%);border-radius:var(--r);padding:18px 22px;margin-bottom:20px;position:relative;overflow:hidden}
+.tb-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.05) 1px,transparent 1px);background-size:20px 20px;pointer-events:none}
+.tb-inner{position:relative;z-index:1;display:flex;align-items:center;gap:16px}
+.tb-av{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.2);border:2px solid rgba(255,255,255,0.4);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:16px;flex-shrink:0}
+.tb-info{flex:1}
+.tb-label{font-size:10px;font-weight:600;color:rgba(255,255,255,0.65);text-transform:uppercase;letter-spacing:.07em;margin-bottom:2px}
+.tb-name{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:white}
+.tb-meta{font-size:12px;color:rgba(255,255,255,0.7);margin-top:3px}
+.tb-actions{display:flex;gap:8px;flex-shrink:0}
+
+/* ── SESSION CARD ── */
+.s-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:12px;transition:all .2s}
+.s-card:hover{border-color:var(--border2);box-shadow:var(--shadow-sm)}
+.s-card-inner{padding:16px 20px;display:flex;align-items:flex-start;gap:14px}
+.s-av{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:15px;flex-shrink:0;position:relative}
+.s-online{position:absolute;bottom:1px;right:1px;width:9px;height:9px;background:var(--accent);border-radius:50%;border:2px solid white}
+.s-info{flex:1;min-width:0}
+.s-name{font-weight:700;font-size:13px;color:var(--text)}
+.s-topic{font-size:12px;color:var(--text3);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.s-meta{display:flex;align-items:center;gap:14px;margin-top:8px;flex-wrap:wrap}
+.s-meta-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text2)}
+.s-meta-item svg{width:12px;height:12px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.s-right{display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex-shrink:0}
+.s-badge{font-size:10px;font-weight:700;padding:4px 10px;border-radius:20px}
+.sb-today{background:#fef9c3;color:#854d0e}
+.sb-upcoming{background:var(--brand-light);color:var(--brand)}
+.sb-completed{background:var(--success-light);color:var(--success)}
+.sb-cancelled{background:#f1f5f9;color:#64748b}
+.s-date{font-size:11px;color:var(--text3)}
+.s-actions{padding:0 20px 14px;display:flex;gap:8px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:12px}
+
+/* ── HISTORY CARD ── */
+.h-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r);padding:14px 20px;display:flex;align-items:center;gap:14px;margin-bottom:10px;transition:all .2s;cursor:pointer}
+.h-card:hover{border-color:var(--border2);background:var(--surface2)}
+.h-av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px;flex-shrink:0}
+.h-info{flex:1;min-width:0}
+.h-name{font-weight:600;font-size:13px;color:var(--text)}
+.h-topic{font-size:11px;color:var(--text3);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.h-meta{display:flex;gap:12px;margin-top:4px}
+.h-meta span{font-size:11px;color:var(--text3);display:flex;align-items:center;gap:4px}
+.h-meta svg{width:11px;height:11px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.h-right{text-align:right;flex-shrink:0}
+.h-dur{font-size:12px;font-weight:600;color:var(--text2)}
+.h-date{font-size:11px;color:var(--text3);margin-top:2px}
+.h-rating{display:flex;gap:2px;margin-top:4px;justify-content:flex-end}
+.star{font-size:11px}
+
+/* ── BTNS ── */
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:9px;font-size:12px;font-weight:600;transition:all .18s;cursor:pointer;border:none;white-space:nowrap}
+.btn svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.btn-brand{background:var(--brand);color:white}
+.btn-brand:hover{background:var(--brand-h);transform:translateY(-1px);box-shadow:0 4px 14px rgba(2,31,246,0.3)}
+.btn-white{background:white;color:var(--brand)}
+.btn-white:hover{background:#f0f3ff}
+.btn-outline{background:white;color:var(--text);border:1.5px solid var(--border)}
+.btn-outline:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-light)}
+.btn-ghost{background:var(--bg);color:var(--text2);border:1.5px solid var(--border)}
+.btn-ghost:hover{color:var(--brand);border-color:var(--brand);background:var(--brand-light)}
+.btn-success{background:var(--success);color:white}
+.btn-success:hover{background:#059669}
+.btn-danger{background:var(--danger);color:white}
+.btn-danger:hover{background:#dc2626}
+.btn-sm{padding:6px 12px;font-size:11px;border-radius:8px}
+
+/* ── OVERLAY / MODAL ── */
+.overlay{position:fixed;inset:0;background:rgba(7,9,74,0.5);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;z-index:1000;opacity:0;pointer-events:none;transition:opacity .2s;padding:16px}
+.overlay.show{opacity:1;pointer-events:all}
+.modal{background:var(--surface);border-radius:18px;width:100%;max-width:500px;box-shadow:var(--shadow-lg);transform:translateY(18px) scale(0.97);transition:transform .25s cubic-bezier(.34,1.56,.64,1);max-height:92vh;overflow-y:auto}
+.overlay.show .modal{transform:translateY(0) scale(1)}
+.modal-head{padding:20px 24px 16px;display:flex;align-items:flex-start;justify-content:space-between;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--surface);z-index:1}
+.modal-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:var(--text)}
+.modal-sub{font-size:12px;color:var(--text3);margin-top:3px}
+.modal-close{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--text3);cursor:pointer;transition:.15s}
+.modal-close:hover{background:var(--bg);color:var(--text)}
+.modal-close svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.modal-body{padding:20px 24px}
+.modal-foot{padding:14px 24px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:10px;position:sticky;bottom:0;background:var(--surface);z-index:1}
+
+/* ── FORM ── */
+.fg{margin-bottom:14px}
+.fl{display:block;font-size:12px;font-weight:600;color:var(--text2);margin-bottom:5px}
+.fi{width:100%;border:1.5px solid var(--border);border-radius:10px;padding:10px 14px;font-size:13px;color:var(--text);background:var(--surface);outline:none;transition:.2s}
+.fi:focus{border-color:var(--brand);box-shadow:0 0 0 3px rgba(2,31,246,0.07)}
+.fi::placeholder{color:var(--text3)}
+textarea.fi{resize:vertical;min-height:80px;line-height:1.5}
+.fi-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%238b90b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px;cursor:pointer}
+
+/* ── SESSION DETAIL MODAL ── */
+.sd-banner{background:var(--brand);padding:20px 24px;display:flex;align-items:center;gap:14px;position:relative;overflow:hidden}
+.sd-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.05) 1px,transparent 1px);background-size:22px 22px;pointer-events:none}
+.sd-av{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:18px;border:2px solid rgba(255,255,255,0.35);flex-shrink:0;position:relative;z-index:1}
+.sd-info{position:relative;z-index:1}
+.sd-name{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:white}
+.sd-topic{font-size:12px;color:rgba(255,255,255,0.7);margin-top:2px}
+.sd-section{padding:14px 24px;border-bottom:1px solid var(--border)}
+.sd-section:last-child{border-bottom:none}
+.sd-section h4{font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.sd-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;font-size:13px;color:var(--text2)}
+.sd-row:last-child{margin-bottom:0}
+.sd-row svg{width:14px;height:14px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--text);color:white;padding:12px 18px;border-radius:12px;font-size:13px;font-weight:500;box-shadow:var(--shadow-lg);z-index:3000;display:flex;align-items:center;gap:10px;max-width:340px;opacity:0;transform:translateY(10px);transition:all .3s cubic-bezier(.34,1.56,.64,1);pointer-events:none}
+.toast.show{opacity:1;transform:translateY(0)}
+.toast.success{background:#059669}
+.toast.error{background:var(--danger)}
+.toast svg{width:15px;height:15px;fill:none;stroke:white;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+
+/* ── NOTIF ── */
+.notif-panel{position:fixed;top:70px;right:14px;width:310px;background:var(--surface);border:1.5px solid var(--border);border-radius:16px;box-shadow:var(--shadow-lg);z-index:500;overflow:hidden;opacity:0;pointer-events:none;transform:translateY(-10px);transition:all .2s}
+.notif-panel.show{opacity:1;pointer-events:all;transform:translateY(0)}
+.np-head{padding:12px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.np-head h3{font-family:'Syne',sans-serif;font-size:13px;font-weight:700}
+.np-clear{font-size:11px;color:var(--brand);font-weight:600;cursor:pointer}
+.np-item{padding:10px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;cursor:pointer;transition:.15s}
+.np-item:hover{background:var(--bg)}
+.np-item.unread{background:var(--brand-light)}
+.np-item:last-child{border-bottom:none}
+.np-dot{width:7px;height:7px;background:var(--brand);border-radius:50%;flex-shrink:0;margin-top:4px}
+.np-dot.read{background:transparent}
+.np-text{font-size:12px;color:var(--text);line-height:1.4}
+.np-text strong{font-weight:600}
+.np-time{font-size:10px;color:var(--text3);margin-top:2px}
+
+/* ── ANIM ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.s-card,.h-card{animation:fadeUp .28s ease both}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.pulse{animation:pulse 2s ease-in-out infinite}
+</style>
+</head>
+<body>
+<div class="app">
+
+<!-- ══ SIDEBAR ══ -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+    <div><div class="logo-name">Ispora</div><div class="logo-tagline">Impact Platform</div></div>
+  </div>
+  <div class="sidebar-profile" onclick="openModal('ownProfileModal')">
+    <div class="sp-av">A<div class="sp-online pulse"></div></div>
+    <div><div class="sp-name">Dr. Amina Osei</div><div class="sp-role">Diaspora Mentor</div></div>
+  </div>
+  <nav class="nav">
+    <div class="nav-section">
+      <div class="nav-label">Main</div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to Dashboard...')"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>Dashboard</div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to Browse Students...')"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>Browse Students</div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to My Mentorships...')"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>My Mentorships<span class="nav-badge">3</span></div>
+      <div class="nav-item active" onclick="navTo(this)"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Sessions<span class="nav-badge">1</span></div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to Messages...')"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Messages<span class="nav-badge">5</span></div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-label">Discover</div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to Opportunities...')"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Opportunities</div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to My Network...')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>My Network</div>
+    </div>
+  </nav>
+  <div class="sidebar-foot">
+    <div class="nav-item" onclick="showToast('Opening settings...')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41M19.07 19.07l-1.41-1.41M4.93 19.07l1.41-1.41M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>Settings</div>
+    <div class="nav-item danger" onclick="showToast('Signing out...')"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Sign Out</div>
+  </div>
+</aside>
+
+<!-- ══ MAIN ══ -->
+<div class="main">
+  <div class="topbar">
+    <div class="topbar-left"><h2>Sessions</h2><p>Schedule, manage and review your mentorship sessions</p></div>
+    <div class="topbar-right">
+      <button class="role-pill" onclick="showToast('Role switcher...')"><div class="role-pip"></div>Mentor<svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="icon-btn" onclick="toggleNotif()" id="notifBtn"><svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg><div class="notif-badge"></div></button>
+      <button class="icon-btn" onclick="openModal('ownProfileModal')"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
+    </div>
+  </div>
+
+  <div class="page">
+
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+      <div class="ph-grid"></div><div class="ph-orb"></div>
+      <div class="ph-inner">
+        <div class="ph-text"><h1>Your session calendar ✦</h1><p>Track every session, reschedule easily, build a consistent mentoring habit</p></div>
+        <div class="ph-right">
+          <div class="ph-stat"><div class="ph-stat-val">3</div><div class="ph-stat-label">Upcoming</div></div>
+          <div class="ph-stat"><div class="ph-stat-val">47</div><div class="ph-stat-label">Completed</div></div>
+          <div class="ph-stat"><div class="ph-stat-val">94%</div><div class="ph-stat-label">Attendance</div></div>
+          <button class="btn btn-white btn-sm" onclick="openModal('scheduleModal')">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            New Session
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTROLS -->
+    <div class="controls">
+      <div class="tab-grp">
+        <div class="tab-btn active" onclick="switchTab(this,'upcoming')" id="tab-upcoming">Upcoming <span class="tab-count">3</span></div>
+        <div class="tab-btn" onclick="switchTab(this,'history')" id="tab-history">History <span class="tab-count">47</span></div>
+      </div>
+      <div class="ctrl-divider"></div>
+      <div class="view-btns">
+        <button class="vbtn active" id="vbtn-split" onclick="setView('split')" title="Calendar + List">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="18" rx="1"/><rect x="13" y="3" width="8" height="18" rx="1"/></svg>
+        </button>
+        <button class="vbtn" id="vbtn-list" onclick="setView('list')" title="List only">
+          <svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="ctrl-right">
+        <div class="search-sm">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" placeholder="Search sessions..." id="sessionSearch" oninput="renderSessions()"/>
+        </div>
+      </div>
+    </div>
+
+    <!-- BODY -->
+    <div class="body" id="bodyArea">
+      <!-- Calendar panel -->
+      <div class="cal-panel" id="calPanel">
+        <div class="cal-head">
+          <div class="cal-month" id="calMonth">March 2026</div>
+          <div class="cal-nav">
+            <button class="cal-nav-btn" onclick="changeMonth(-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+            <button class="cal-nav-btn" onclick="changeMonth(1)"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+          </div>
+        </div>
+        <div class="cal-grid">
+          <div class="cal-days-row">
+            <div class="cal-day-label">Su</div><div class="cal-day-label">Mo</div><div class="cal-day-label">Tu</div>
+            <div class="cal-day-label">We</div><div class="cal-day-label">Th</div><div class="cal-day-label">Fr</div><div class="cal-day-label">Sa</div>
+          </div>
+          <div class="cal-cells" id="calCells"></div>
+        </div>
+        <div class="cal-legend">
+          <div class="cal-legend-title">Legend</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--brand)"></div>Today</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--accent)"></div>Has session</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--brand-light);border:1.5px solid var(--brand)"></div>Selected</div>
+        </div>
+        <div class="cal-upcoming">
+          <div class="cal-upcoming-title">This week</div>
+          <div class="mini-session" onclick="openSessionDetail(1)">
+            <div style="display:flex;align-items:center;gap:7px"><div class="ms-dot" style="background:#f59e0b"></div><div class="ms-name">Aisha Kamara</div></div>
+            <div class="ms-time">Today · 3:00 – 4:00 PM WAT</div>
+          </div>
+          <div class="mini-session" onclick="openSessionDetail(2)">
+            <div style="display:flex;align-items:center;gap:7px"><div class="ms-dot" style="background:var(--brand)"></div><div class="ms-name">Emeka Okonkwo</div></div>
+            <div class="ms-time">Tomorrow · 10:00 – 11:00 AM WAT</div>
+          </div>
+          <div class="mini-session" onclick="openSessionDetail(3)">
+            <div style="display:flex;align-items:center;gap:7px"><div class="ms-dot" style="background:var(--brand)"></div><div class="ms-name">Fatima Nwosu</div></div>
+            <div class="ms-time">Mar 29 · 2:00 – 3:00 PM WAT</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sessions list -->
+      <div class="sessions-panel" id="sessionsPanel"></div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ══ NOTIF PANEL ══ -->
+<div class="notif-panel" id="notifPanel">
+  <div class="np-head"><h3>Notifications</h3><span class="np-clear" onclick="clearNotifs()">Mark all read</span></div>
+  <div class="np-item unread"><div class="np-dot"></div><div><div class="np-text">Session with <strong>Aisha Kamara</strong> is in 3 hours</div><div class="np-time">Today · 12:00 PM</div></div></div>
+  <div class="np-item unread"><div class="np-dot"></div><div><div class="np-text"><strong>Emeka</strong> confirmed tomorrow's session</div><div class="np-time">2 hours ago</div></div></div>
+  <div class="np-item"><div class="np-dot read"></div><div><div class="np-text">Session with <strong>Jordan</strong> marked complete</div><div class="np-time">Yesterday</div></div></div>
+</div>
+
+<!-- ══ MODALS ══ -->
+
+<!-- SCHEDULE SESSION -->
+<div class="overlay" id="scheduleModal" onclick="overlayClose(event,'scheduleModal')">
+  <div class="modal">
+    <div class="modal-head">
+      <div><div class="modal-title">Schedule Session</div><div class="modal-sub" id="scheduleSub">Set up a new mentorship session</div></div>
+      <button class="modal-close" onclick="closeModal('scheduleModal')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div class="fg"><label class="fl">Mentee</label><select class="fi" id="schMentee"><option>Aisha Kamara — Software Engineering</option><option>Emeka Okonkwo — Product Management</option><option>Fatima Nwosu — Data Science</option><option>Tunde Ojo — Software Engineering</option></select></div>
+      <div class="fg"><label class="fl">Session Topic</label><input class="fi" type="text" placeholder="e.g. Resume review, career planning, technical prep..."/></div>
+      <div class="fi-row">
+        <div class="fg"><label class="fl">Date</label><input class="fi" type="date" min="2026-03-26"/></div>
+        <div class="fg"><label class="fl">Time (WAT)</label><input class="fi" type="time"/></div>
+      </div>
+      <div class="fi-row">
+        <div class="fg"><label class="fl">Duration</label><select class="fi"><option>30 minutes</option><option selected>1 hour</option><option>1.5 hours</option><option>2 hours</option></select></div>
+        <div class="fg"><label class="fl">Platform</label><select class="fi"><option>Google Meet</option><option>Zoom</option><option>WhatsApp Video</option><option>Microsoft Teams</option></select></div>
+      </div>
+      <div class="fg"><label class="fl">Meeting Link</label><input class="fi" type="url" placeholder="https://meet.google.com/..."/></div>
+      <div class="fg"><label class="fl">Agenda / Notes</label><textarea class="fi" placeholder="Topics to cover, goals for this session..."></textarea></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal('scheduleModal')">Cancel</button>
+      <button class="btn btn-brand" onclick="closeModal('scheduleModal');showToast('Session scheduled! Mentee notified via email.','success')">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Schedule Session
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- SESSION DETAIL -->
+<div class="overlay" id="sessionDetailModal" onclick="overlayClose(event,'sessionDetailModal')">
+  <div class="modal">
+    <div class="sd-banner" id="sdbanner">
+      <div class="sd-grid"></div>
+      <div class="sd-av" id="sdAv">AK</div>
+      <div class="sd-info">
+        <div class="sd-name" id="sdName">Aisha Kamara</div>
+        <div class="sd-topic" id="sdTopic">Career path in Software Engineering</div>
+      </div>
+    </div>
+    <div class="sd-section">
+      <h4>Session Details</h4>
+      <div class="sd-row"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span id="sdTime">3:00 PM – 4:00 PM WAT · 1 hour</span></div>
+      <div class="sd-row"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span id="sdDate">Thursday, 26 March 2026</span></div>
+      <div class="sd-row"><svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg><span id="sdPlatform">Google Meet</span></div>
+    </div>
+    <div class="sd-section">
+      <h4>Meeting Link</h4>
+      <div style="display:flex;gap:8px">
+        <input class="fi" id="sdLink" value="https://meet.google.com/abc-defg-hij" readonly style="background:var(--bg);flex:1"/>
+        <button class="btn btn-outline btn-sm" onclick="showToast('Link copied!','success')">Copy</button>
+      </div>
+    </div>
+    <div class="sd-section" id="sdNotesSection">
+      <h4>Agenda</h4>
+      <p id="sdNotes" style="font-size:13px;color:var(--text2);line-height:1.5;background:var(--bg);padding:12px;border-radius:10px"></p>
+    </div>
+    <div class="modal-foot" id="sdFooter"></div>
+  </div>
+</div>
+
+<!-- RESCHEDULE -->
+<div class="overlay" id="rescheduleModal" onclick="overlayClose(event,'rescheduleModal')">
+  <div class="modal" style="max-width:440px">
+    <div class="modal-head">
+      <div><div class="modal-title">Reschedule Session</div><div class="modal-sub" id="rescheduleSub">Propose a new time</div></div>
+      <button class="modal-close" onclick="closeModal('rescheduleModal')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div class="fi-row">
+        <div class="fg"><label class="fl">New Date</label><input class="fi" type="date" min="2026-03-27"/></div>
+        <div class="fg"><label class="fl">New Time (WAT)</label><input class="fi" type="time"/></div>
+      </div>
+      <div class="fg"><label class="fl">Reason (optional)</label><textarea class="fi" placeholder="Let your mentee know why you're rescheduling..."></textarea></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal('rescheduleModal')">Cancel</button>
+      <button class="btn btn-brand" onclick="closeModal('rescheduleModal');showToast('Reschedule request sent to mentee!','success')">Send Request</button>
+    </div>
+  </div>
+</div>
+
+<!-- COMPLETE SESSION -->
+<div class="overlay" id="completeModal" onclick="overlayClose(event,'completeModal')">
+  <div class="modal" style="max-width:440px">
+    <div class="modal-head">
+      <div><div class="modal-title">Mark Session Complete</div><div class="modal-sub" id="completeSub">Confirm the session happened</div></div>
+      <button class="modal-close" onclick="closeModal('completeModal')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div style="background:var(--success-light);border:1px solid var(--success);border-radius:10px;padding:12px;font-size:12px;color:#065f46;margin-bottom:14px;line-height:1.5">
+        ✅ Confirming this will update your mentee's progress and add to your session count.
+      </div>
+      <div class="fg"><label class="fl">Session summary</label><textarea class="fi" placeholder="What did you cover? Key takeaways for your mentee..."></textarea></div>
+      <div class="fg"><label class="fl">How was this session?</label>
+        <select class="fi"><option>⭐⭐⭐⭐⭐ Excellent — highly productive</option><option>⭐⭐⭐⭐ Good — good progress made</option><option>⭐⭐⭐ Average — could have been better</option></select>
+      </div>
+      <div class="fg"><label class="fl">Next session topic (optional)</label><input class="fi" type="text" placeholder="What should you cover next time?"/></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal('completeModal')">Cancel</button>
+      <button class="btn btn-success" onclick="markComplete()">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        Confirm Complete
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- CANCEL SESSION -->
+<div class="overlay" id="cancelModal" onclick="overlayClose(event,'cancelModal')">
+  <div class="modal" style="max-width:400px">
+    <div class="modal-head">
+      <div><div class="modal-title">Cancel Session</div><div class="modal-sub" id="cancelSub">This will notify your mentee</div></div>
+      <button class="modal-close" onclick="closeModal('cancelModal')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div style="background:var(--danger-light);border:1px solid var(--danger);border-radius:10px;padding:12px;font-size:12px;color:#991b1b;margin-bottom:14px">
+        ⚠️ Your mentee will be notified immediately. Consider rescheduling instead.
+      </div>
+      <div class="fg"><label class="fl">Reason</label><select class="fi"><option>Personal emergency</option><option>Work conflict</option><option>Technical issues</option><option>Mentee requested cancellation</option><option>Other</option></select></div>
+      <div class="fg"><label class="fl">Message to mentee</label><textarea class="fi" placeholder="Apologise and suggest next steps..."></textarea></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal('cancelModal');openModal('rescheduleModal')">Reschedule Instead</button>
+      <button class="btn btn-danger" onclick="confirmCancel()">Cancel Session</button>
+    </div>
+  </div>
+</div>
+
+<!-- OWN PROFILE -->
+<div class="overlay" id="ownProfileModal" onclick="overlayClose(event,'ownProfileModal')">
+  <div class="modal" style="max-width:420px">
+    <div class="sd-banner">
+      <div class="sd-grid"></div>
+      <div class="sd-av">A</div>
+      <div class="sd-info"><div class="sd-name">Dr. Amina Osei</div><div class="sd-topic">Senior Software Engineer · London, UK · Diaspora Mentor</div></div>
+    </div>
+    <div class="sd-section">
+      <h4>Session Stats</h4>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+        <div style="background:var(--bg);border-radius:10px;padding:11px;text-align:center"><div style="font-family:'Syne',sans-serif;font-size:20px;font-weight:700;color:var(--brand)">47</div><div style="font-size:10px;color:var(--text3);margin-top:2px">Sessions done</div></div>
+        <div style="background:var(--bg);border-radius:10px;padding:11px;text-align:center"><div style="font-family:'Syne',sans-serif;font-size:20px;font-weight:700;color:var(--success)">94%</div><div style="font-size:10px;color:var(--text3);margin-top:2px">Attendance</div></div>
+        <div style="background:var(--bg);border-radius:10px;padding:11px;text-align:center"><div style="font-family:'Syne',sans-serif;font-size:20px;font-weight:700;color:var(--warn)">3</div><div style="font-size:10px;color:var(--text3);margin-top:2px">Upcoming</div></div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal('ownProfileModal')">Close</button>
+      <button class="btn btn-brand" onclick="closeModal('ownProfileModal');showToast('Opening profile editor...')">Edit Profile</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toastEl"><svg id="toastIco" viewBox="0 0 24 24"></svg><span id="toastMsg"></span></div>
+
+<script>
+// ── DATA ──
+const upcomingSessions = [
+  {id:1,name:'Aisha Kamara',initials:'AK',color:'#021ff6',topic:'Career path in Software Engineering',date:'Thursday, 26 March 2026',dayLabel:'Today',time:'3:00 PM \u2013 4:00 PM WAT',duration:'1 hour',platform:'Google Meet',link:'https://meet.google.com/abc-defg-hij',notes:'Discuss UK tech market entry strategy, review portfolio projects, outline next steps for international applications.',badge:'today',online:true},
+  {id:2,name:'Emeka Okonkwo',initials:'EO',color:'#7c3aed',topic:'Product Management interview preparation',date:'Friday, 27 March 2026',dayLabel:'Tomorrow',time:'10:00 AM \u2013 11:00 AM WAT',duration:'1 hour',platform:'Zoom',link:'https://zoom.us/j/123456789',notes:"Walk through common PM interview questions, practice case study frameworks, review Emeka's product portfolio.",badge:'upcoming',online:false},
+  {id:3,name:'Fatima Nwosu',initials:'FN',color:'#059669',topic:'Machine Learning fundamentals intro',date:'Sunday, 29 March 2026',dayLabel:'Mar 29',time:'2:00 PM \u2013 3:00 PM WAT',duration:'1 hour',platform:'Google Meet',link:'https://meet.google.com/xyz-abcd-efg',notes:'Introduction to supervised learning, walk through first ML project setup, discuss dataset sourcing.',badge:'upcoming',online:true},
+];
+
+const historySessions = [
+  {id:101,name:'Aisha Kamara',initials:'AK',color:'#021ff6',topic:'Resume review & LinkedIn optimization',date:'Mar 18, 2026',time:'3:00 PM',duration:'1 hr',rating:5},
+  {id:102,name:'Emeka Okonkwo',initials:'EO',color:'#7c3aed',topic:'Product thinking frameworks deep-dive',date:'Mar 22, 2026',time:'10:00 AM',duration:'1 hr',rating:5},
+  {id:103,name:'Fatima Nwosu',initials:'FN',color:'#059669',topic:'SQL for data analytics',date:'Mar 13, 2026',time:'2:00 PM',duration:'1 hr',rating:4},
+  {id:104,name:'Aisha Kamara',initials:'AK',color:'#021ff6',topic:'Career roadmap & goal setting',date:'Mar 25, 2026',time:'3:00 PM',duration:'1 hr',rating:5},
+  {id:105,name:'Emeka Okonkwo',initials:'EO',color:'#7c3aed',topic:'Case study walkthrough',date:'Mar 15, 2026',time:'10:00 AM',duration:'1 hr',rating:4},
+  {id:106,name:'Jordan Bello',initials:'JB',color:'#0d9488',topic:'Mock technical interview',date:'Feb 21, 2026',time:'3:00 PM',duration:'2 hrs',rating:5},
+  {id:107,name:'Jordan Bello',initials:'JB',color:'#0d9488',topic:'Offer negotiation strategy',date:'Feb 28, 2026',time:'3:00 PM',duration:'45 min',rating:5},
+  {id:108,name:'Ngozi Eze',initials:'NE',color:'#6d28d9',topic:'UX portfolio final review',date:'Feb 15, 2026',time:'2:00 PM',duration:'1.5 hrs',rating:5},
+];
+
+const sessionDayMap = {26:1, 27:2, 29:3};
+const sessionDays = new Set(Object.keys(sessionDayMap).map(Number));
+let currentTab = 'upcoming';
+let currentView = 'split';
+let currentSession = null;
+let selectedDay = null;
+let calYear = 2026, calMonth = 2;
+
+// ── CALENDAR ──
+function renderCal() {
+  var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('calMonth').textContent = months[calMonth] + ' ' + calYear;
+  var firstDay = new Date(calYear, calMonth, 1).getDay();
+  var daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+  var daysInPrev = new Date(calYear, calMonth, 0).getDate();
+  var html = '';
+  var day = 1, nextDay = 1;
+  for (var i = 0; i < 42; i++) {
+    if (i < firstDay) {
+      html += '<div class="cal-cell other-month">' + (daysInPrev - firstDay + i + 1) + '</div>';
+    } else if (day <= daysInMonth) {
+      var isToday = calYear === 2026 && calMonth === 2 && day === 26;
+      var hasSess = calMonth === 2 && calYear === 2026 && sessionDays.has(day);
+      var isSel = selectedDay === day && calMonth === 2 && calYear === 2026;
+      var cls = 'cal-cell';
+      if (isToday) cls += ' today';
+      if (hasSess) cls += ' has-session';
+      if (isSel) cls += ' selected';
+      html += '<div class="' + cls + '" onclick="selectDay(' + day + ',this)">' + day + '</div>';
+      day++;
+    } else {
+      html += '<div class="cal-cell other-month">' + (nextDay++) + '</div>';
+    }
+  }
+  document.getElementById('calCells').innerHTML = html;
+}
+
+function changeMonth(dir) {
+  calMonth += dir;
+  if (calMonth < 0) { calMonth = 11; calYear--; }
+  if (calMonth > 11) { calMonth = 0; calYear++; }
+  renderCal();
+}
+
+// ── SELECT DAY ──
+function selectDay(d, el) {
+  if (selectedDay === d && calMonth === 2 && calYear === 2026) {
+    selectedDay = null;
+    renderCal();
+    clearDayBanner();
+    currentTab = 'upcoming';
+    document.querySelectorAll('.tab-btn').forEach(function(t) { t.classList.remove('active'); });
+    document.getElementById('tab-upcoming').classList.add('active');
+    renderSessions();
+    return;
+  }
+  selectedDay = (calMonth === 2 && calYear === 2026) ? d : null;
+  renderCal();
+  if (calMonth !== 2 || calYear !== 2026) {
+    clearDayBanner();
+    showDayBanner(getDayLabel(d), 0);
+    renderNoSessions();
+    return;
+  }
+  var label = getDayLabel(d);
+  currentTab = 'upcoming';
+  document.querySelectorAll('.tab-btn').forEach(function(t) { t.classList.remove('active'); });
+  document.getElementById('tab-upcoming').classList.add('active');
+  if (sessionDays.has(d)) {
+    var sess = upcomingSessions.find(function(s) { return s.id === sessionDayMap[d]; });
+    var list = sess ? [sess] : [];
+    showDayBanner(label, list.length);
+    renderDaySessions(d, list);
+  } else {
+    showDayBanner(label, 0);
+    renderNoSessions();
+  }
+}
+
+function getDayLabel(d) {
+  var dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  var monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var jsDate = new Date(calYear, calMonth, d);
+  return dayNames[jsDate.getDay()] + ', ' + monthNames[calMonth] + ' ' + d;
+}
+
+function showDayBanner(label, count) {
+  clearDayBanner();
+  var panel = document.getElementById('sessionsPanel');
+  var div = document.createElement('div');
+  div.id = 'dayBanner';
+  div.style.cssText = 'display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--brand-light);border:1.5px solid var(--brand);border-radius:10px;margin-bottom:14px;';
+  var countText = count > 0 ? (count + ' session' + (count > 1 ? 's' : '')) : 'No sessions';
+  div.innerHTML = '<div style="display:flex;align-items:center;gap:8px;color:var(--brand);font-weight:600;font-size:13px">'
+    + '<svg style="width:14px;height:14px;stroke:var(--brand);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>'
+    + label + ' \u2014 ' + countText
+    + '</div>'
+    + '<button onclick="clearDayFilter()" style="font-size:11px;font-weight:600;color:var(--brand);cursor:pointer;background:none;border:none;">Clear filter</button>';
+  panel.prepend(div);
+}
+
+function clearDayBanner() {
+  var b = document.getElementById('dayBanner');
+  if (b) b.remove();
+}
+
+function clearDayFilter() {
+  selectedDay = null;
+  renderCal();
+  clearDayBanner();
+  currentTab = 'upcoming';
+  document.querySelectorAll('.tab-btn').forEach(function(t) { t.classList.remove('active'); });
+  document.getElementById('tab-upcoming').classList.add('active');
+  renderSessions();
+}
+
+function renderDaySessions(d, list) {
+  var panel = document.getElementById('sessionsPanel');
+  var html = '<div class="section-head"><div class="section-title">Sessions on this day</div><div class="section-count">' + list.length + ' session' + (list.length !== 1 ? 's' : '') + '</div></div>';
+  list.forEach(function(s, i) {
+    html += s.badge === 'today' ? buildTodayBanner(s) : buildUpcomingCard(s, i);
+  });
+  panel.innerHTML = html;
+  showDayBanner(getDayLabel(d), list.length);
+}
+
+function renderNoSessions() {
+  var panel = document.getElementById('sessionsPanel');
+  panel.innerHTML = '<div style="text-align:center;padding:48px 20px;color:var(--text3)">'
+    + '<div style="width:48px;height:48px;background:var(--brand-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px">'
+    + '<svg style="width:22px;height:22px;stroke:var(--brand);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>'
+    + '</div><div style="font-family:Syne,sans-serif;font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px">No sessions on this day</div>'
+    + '<div style="font-size:13px;margin-bottom:16px">Nothing scheduled here yet</div>'
+    + '<button class="btn btn-brand btn-sm" onclick="openModal(\'scheduleModal\')">Schedule a Session</button></div>';
+  if (selectedDay) showDayBanner(getDayLabel(selectedDay), 0);
+}
+
+// ── VIEW TOGGLE ──
+function setView(v) {
+  currentView = v;
+  document.getElementById('vbtn-split').classList.toggle('active', v === 'split');
+  document.getElementById('vbtn-list').classList.toggle('active', v === 'list');
+  document.getElementById('calPanel').style.display = v === 'split' ? 'flex' : 'none';
+  renderSessions();
+}
+
+// ── TAB SWITCH ──
+function switchTab(el, tab) {
+  document.querySelectorAll('.tab-btn').forEach(function(t) { t.classList.remove('active'); });
+  el.classList.add('active');
+  currentTab = tab;
+  selectedDay = null;
+  renderCal();
+  clearDayBanner();
+  renderSessions();
+}
+
+// ── RENDER ALL SESSIONS ──
+function renderSessions() {
+  var q = document.getElementById('sessionSearch').value.toLowerCase().trim();
+  var panel = document.getElementById('sessionsPanel');
+  clearDayBanner();
+  if (currentTab === 'upcoming') {
+    var list = upcomingSessions.filter(function(s) { return !q || s.name.toLowerCase().includes(q) || s.topic.toLowerCase().includes(q); });
+    var html = '';
+    var todaySess = list.find(function(s) { return s.badge === 'today'; });
+    if (todaySess && !q) html += buildTodayBanner(todaySess);
+    var rest = list.filter(function(s) { return s.badge !== 'today'; });
+    if (rest.length > 0) {
+      html += '<div class="section-head"><div class="section-title">Scheduled Sessions</div><div class="section-count">' + rest.length + ' sessions</div></div>';
+      rest.forEach(function(s, i) { html += buildUpcomingCard(s, i); });
+    }
+    if (list.length === 0) {
+      html = '<div style="text-align:center;padding:48px 20px;color:var(--text3)">'
+        + '<div style="width:48px;height:48px;background:var(--brand-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px">'
+        + '<svg style="width:22px;height:22px;stroke:var(--brand);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>'
+        + '</div><div style="font-family:Syne,sans-serif;font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px">No upcoming sessions</div>'
+        + '<div style="font-size:13px;margin-bottom:16px">Schedule your next session</div>'
+        + '<button class="btn btn-brand btn-sm" onclick="openModal(\'scheduleModal\')">Schedule a Session</button></div>';
+    }
+    panel.innerHTML = html;
+  } else {
+    var list2 = historySessions.filter(function(s) { return !q || s.name.toLowerCase().includes(q) || s.topic.toLowerCase().includes(q); });
+    var html2 = '<div class="section-head"><div class="section-title">Session History</div><div class="section-count">' + list2.length + ' sessions</div></div>';
+    if (list2.length === 0) html2 += '<div style="text-align:center;padding:48px 20px;color:var(--text3);font-size:13px">No sessions match your search.</div>';
+    list2.forEach(function(s, i) { html2 += buildHistoryCard(s, i); });
+    panel.innerHTML = html2;
+  }
+}
+
+// ── CARD BUILDERS ──
+function buildTodayBanner(s) {
+  return '<div class="today-banner" style="margin-bottom:14px">'
+    + '<div class="tb-grid"></div>'
+    + '<div class="tb-inner">'
+    + '<div class="tb-av">' + s.initials + '</div>'
+    + '<div class="tb-info">'
+    + '<div class="tb-label">Today\'s Session</div>'
+    + '<div class="tb-name">' + s.name + '</div>'
+    + '<div class="tb-meta">' + s.time + ' \u00b7 ' + s.platform + '</div>'
+    + '</div>'
+    + '<div class="tb-actions">'
+    + '<button class="btn btn-white btn-sm" onclick="openJoin(' + s.id + ')">'
+    + '<svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>Join Now</button>'
+    + '<button class="btn btn-ghost btn-sm" style="background:rgba(255,255,255,0.15);color:white;border-color:rgba(255,255,255,0.3)" onclick="openCompleteModal(' + s.id + ')">Mark Done</button>'
+    + '</div></div></div>';
+}
+
+function buildUpcomingCard(s, i) {
+  return '<div class="s-card" style="animation-delay:' + (i * 0.07) + 's">'
+    + '<div class="s-card-inner">'
+    + '<div class="s-av" style="background:' + s.color + '">' + s.initials + (s.online ? '<div class="s-online"></div>' : '') + '</div>'
+    + '<div class="s-info">'
+    + '<div class="s-name">' + s.name + '</div>'
+    + '<div class="s-topic">' + s.topic + '</div>'
+    + '<div class="s-meta">'
+    + '<div class="s-meta-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>' + s.time + '</div>'
+    + '<div class="s-meta-item"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>' + s.date + '</div>'
+    + '<div class="s-meta-item"><svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>' + s.platform + '</div>'
+    + '</div></div>'
+    + '<div class="s-right">'
+    + '<span class="s-badge ' + (s.badge === 'today' ? 'sb-today' : 'sb-upcoming') + '">' + s.dayLabel + '</span>'
+    + '<div class="s-date">' + s.duration + '</div>'
+    + '</div></div>'
+    + '<div class="s-actions">'
+    + '<button class="btn btn-brand btn-sm" onclick="openSessionDetail(' + s.id + ')">View Details</button>'
+    + '<button class="btn btn-ghost btn-sm" onclick="openReschedule(' + s.id + ')">'
+    + '<svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>Reschedule</button>'
+    + '<button class="btn btn-ghost btn-sm" onclick="openCompleteModal(' + s.id + ')">'
+    + '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Mark Done</button>'
+    + '<button class="btn btn-ghost btn-sm" onclick="openCancel(' + s.id + ')">'
+    + '<svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Cancel</button>'
+    + '</div></div>';
+}
+
+function buildHistoryCard(s, i) {
+  var stars = '';
+  for (var x = 0; x < 5; x++) stars += x < s.rating ? '\u2b50' : '<span style="opacity:.25">\u2b50</span>';
+  return '<div class="h-card" style="animation-delay:' + (i * 0.04) + 's" onclick="openHistoryDetail(' + s.id + ')">'
+    + '<div class="h-av" style="background:' + s.color + '">' + s.initials + '</div>'
+    + '<div class="h-info">'
+    + '<div class="h-name">' + s.name + '</div>'
+    + '<div class="h-topic">' + s.topic + '</div>'
+    + '<div class="h-meta">'
+    + '<span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>' + s.time + ' WAT</span>'
+    + '<span><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>' + s.date + '</span>'
+    + '</div></div>'
+    + '<div class="h-right">'
+    + '<div class="h-dur">' + s.duration + '</div>'
+    + '<div class="h-date"><span class="s-badge sb-completed">\u2713 Completed</span></div>'
+    + '<div style="font-size:11px;margin-top:4px">' + stars + '</div>'
+    + '</div></div>';
+}
+
+// ── SESSION DETAIL ──
+function openSessionDetail(id) {
+  var s = upcomingSessions.find(function(x) { return x.id === id; });
+  if (!s) return;
+  currentSession = s;
+  document.getElementById('sdAv').textContent = s.initials;
+  document.getElementById('sdAv').style.background = s.color;
+  document.getElementById('sdName').textContent = s.name;
+  document.getElementById('sdTopic').textContent = s.topic;
+  document.getElementById('sdTime').textContent = s.time + ' \u00b7 ' + s.duration;
+  document.getElementById('sdDate').textContent = s.date;
+  document.getElementById('sdPlatform').textContent = s.platform;
+  document.getElementById('sdLink').value = s.link;
+  document.getElementById('sdNotes').textContent = s.notes;
+  document.getElementById('sdFooter').innerHTML =
+    '<button class="btn btn-outline" onclick="closeModal(\'sessionDetailModal\')">Close</button>'
+    + '<button class="btn btn-ghost" onclick="closeModal(\'sessionDetailModal\');openReschedule(' + id + ')">Reschedule</button>'
+    + '<button class="btn btn-brand" onclick="closeModal(\'sessionDetailModal\');openJoin(' + id + ')">'
+    + '<svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>'
+    + 'Join ' + s.platform + '</button>';
+  openModal('sessionDetailModal');
+}
+
+function openHistoryDetail(id) {
+  var s = historySessions.find(function(x) { return x.id === id; });
+  if (!s) return;
+  document.getElementById('sdAv').textContent = s.initials;
+  document.getElementById('sdAv').style.background = s.color;
+  document.getElementById('sdName').textContent = s.name;
+  document.getElementById('sdTopic').textContent = s.topic;
+  document.getElementById('sdTime').textContent = s.time + ' WAT \u00b7 ' + s.duration;
+  document.getElementById('sdDate').textContent = s.date;
+  document.getElementById('sdPlatform').textContent = 'Session completed';
+  document.getElementById('sdLink').value = '\u2014';
+  document.getElementById('sdNotes').textContent = s.notes || 'No notes recorded.';
+  document.getElementById('sdFooter').innerHTML = '<button class="btn btn-outline" onclick="closeModal(\'sessionDetailModal\')">Close</button>';
+  openModal('sessionDetailModal');
+}
+
+function openJoin(id) {
+  var s = upcomingSessions.find(function(x) { return x.id === id; });
+  if (s) showToast('Opening ' + s.platform + '...', 'success');
+}
+
+function openCompleteModal(id) {
+  var s = upcomingSessions.find(function(x) { return x.id === id; });
+  if (s) document.getElementById('completeSub').textContent = 'Mark session with ' + s.name + ' as complete';
+  currentSession = s || null;
+  openModal('completeModal');
+}
+
+function openReschedule(id) {
+  var s = upcomingSessions.find(function(x) { return x.id === id; });
+  if (s) document.getElementById('rescheduleSub').textContent = 'Reschedule session with ' + s.name;
+  openModal('rescheduleModal');
+}
+
+function openCancel(id) {
+  var s = upcomingSessions.find(function(x) { return x.id === id; });
+  if (s) { currentSession = s; document.getElementById('cancelSub').textContent = 'Cancel session with ' + s.name; }
+  openModal('cancelModal');
+}
+
+function markComplete() {
+  closeModal('completeModal');
+  showToast('Session marked complete! Progress updated.', 'success');
+}
+
+function confirmCancel() {
+  if (currentSession) {
+    var idx = upcomingSessions.findIndex(function(x) { return x.id === currentSession.id; });
+    if (idx > -1) upcomingSessions.splice(idx, 1);
+    for (var day in sessionDayMap) {
+      if (sessionDayMap[day] === currentSession.id) {
+        delete sessionDayMap[day];
+        sessionDays.delete(Number(day));
+      }
+    }
+  }
+  closeModal('cancelModal');
+  showToast('Session cancelled. Mentee notified.', '');
+  selectedDay = null;
+  renderCal();
+  clearDayBanner();
+  renderSessions();
+}
+
+// ── MODAL ──
+function openModal(id) { document.getElementById(id).classList.add('show'); document.body.style.overflow = 'hidden'; }
+function closeModal(id) { document.getElementById(id).classList.remove('show'); document.body.style.overflow = ''; }
+function overlayClose(e, id) { if (e.target === e.currentTarget) closeModal(id); }
+
+// ── TOAST ──
+var tTimer;
+function showToast(msg, type) {
+  type = type || '';
+  var el = document.getElementById('toastEl');
+  var ico = document.getElementById('toastIco');
+  var m = document.getElementById('toastMsg');
+  el.className = 'toast';
+  if (type === 'success') { el.classList.add('success'); ico.innerHTML = '<polyline points="20 6 9 17 4 12"/>'; }
+  else if (type === 'error') { el.classList.add('error'); ico.innerHTML = '<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>'; }
+  else { ico.innerHTML = '<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>'; }
+  m.textContent = msg;
+  clearTimeout(tTimer);
+  setTimeout(function() { el.classList.add('show'); }, 10);
+  tTimer = setTimeout(function() { el.classList.remove('show'); }, 3200);
+}
+
+// ── NAV + NOTIF ──
+function navTo(el) { document.querySelectorAll('.nav-item').forEach(function(i) { i.classList.remove('active'); }); el.classList.add('active'); }
+function toggleNotif() { document.getElementById('notifPanel').classList.toggle('show'); }
+function clearNotifs() {
+  document.querySelectorAll('.np-item.unread').forEach(function(i) { i.classList.remove('unread'); i.querySelector('.np-dot').classList.add('read'); });
+  showToast('All read', 'success');
+}
+document.addEventListener('click', function(e) {
+  var p = document.getElementById('notifPanel');
+  var b = document.getElementById('notifBtn');
+  if (!p.contains(e.target) && !b.contains(e.target)) p.classList.remove('show');
+});
+
+// ── INIT ──
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', function() { renderCal(); renderSessions(); });
+} else {
+  renderCal();
+  renderSessions();
+}
+</script>
+</body>
+</html>

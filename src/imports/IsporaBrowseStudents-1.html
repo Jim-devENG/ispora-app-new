@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ispora — Browse Students</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --brand:#021ff6;--brand-h:#0118c4;--brand-light:#eef0ff;--brand-mid:#4a5df0;
+  --accent:#00c896;--accent-light:#e0faf4;
+  --warn:#f59e0b;--warn-light:#fef9ee;
+  --danger:#ef4444;--danger-light:#fff1f1;
+  --success:#10b981;--success-light:#ecfdf5;
+  --bg:#f0f2ff;--surface:#fff;--surface2:#f7f8ff;
+  --border:#e2e5f5;--border2:#c8cef0;
+  --text:#07094a;--text2:#3d4275;--text3:#8b90b8;
+  --sidebar-w:224px;--topbar-h:64px;
+  --r:16px;--r-sm:10px;
+  --shadow-sm:0 1px 4px rgba(2,31,246,0.06);
+  --shadow:0 4px 20px rgba(2,31,246,0.09);
+  --shadow-lg:0 12px 48px rgba(2,31,246,0.15);
+}
+html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+button{cursor:pointer;border:none;background:none;font-family:inherit;font-size:inherit}
+input,textarea,select{font-family:inherit;font-size:inherit}
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+
+/* ── LAYOUT ── */
+.app{display:flex;height:100vh;overflow:hidden}
+
+/* ── SIDEBAR ── */
+.sidebar{width:var(--sidebar-w);background:var(--surface);border-right:1.5px solid var(--border);display:flex;flex-direction:column;flex-shrink:0}
+.sidebar-logo{padding:16px 18px 14px;display:flex;align-items:center;gap:10px;border-bottom:1.5px solid var(--border)}
+.logo-icon{width:28px;height:28px;background:var(--brand);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo-icon svg{width:14px;height:14px;fill:none;stroke:white;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.logo-name{font-family:'Syne',sans-serif;font-weight:700;font-size:14px;color:var(--brand);letter-spacing:-0.3px;line-height:1}
+.logo-tagline{font-size:9px;color:var(--text3);margin-top:1px}
+.sidebar-profile{margin:12px 14px 6px;padding:11px 13px;background:var(--brand-light);border-radius:12px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:background .15s}
+.sidebar-profile:hover{background:#e0e3ff}
+.sp-av{width:36px;height:36px;border-radius:50%;background:var(--brand);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px;flex-shrink:0;position:relative}
+.sp-online{position:absolute;bottom:1px;right:1px;width:8px;height:8px;background:var(--accent);border-radius:50%;border:2px solid var(--surface)}
+.sp-name{font-weight:600;font-size:12px;color:var(--text);line-height:1.2}
+.sp-role{font-size:11px;color:var(--brand);font-weight:500;margin-top:2px}
+.nav{flex:1;overflow-y:auto;padding:8px 12px}
+.nav-section{margin-bottom:20px}
+.nav-label{font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.09em;padding:0 8px;margin-bottom:5px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:10px;color:var(--text2);font-size:13px;font-weight:500;transition:all .15s;cursor:pointer}
+.nav-item:hover{background:var(--brand-light);color:var(--brand)}
+.nav-item.active{background:var(--brand);color:white}
+.nav-item svg{width:15px;height:15px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.nav-badge{margin-left:auto;background:var(--danger);color:white;font-size:10px;font-weight:700;padding:1px 6px;border-radius:20px;min-width:18px;text-align:center}
+.nav-item.active .nav-badge{background:rgba(255,255,255,0.35)}
+.sidebar-foot{padding:12px;border-top:1.5px solid var(--border)}
+.nav-item.danger{color:var(--danger)}
+.nav-item.danger:hover{background:var(--danger-light)}
+
+/* ── MAIN ── */
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0}
+
+/* ── TOPBAR ── */
+.topbar{height:var(--topbar-h);background:var(--surface);border-bottom:1.5px solid var(--border);padding:0 28px;display:flex;align-items:center;gap:14px;flex-shrink:0}
+.topbar-left{flex:1;min-width:0}
+.topbar-left h2{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--text)}
+.topbar-left p{font-size:12px;color:var(--text3);margin-top:1px}
+.topbar-right{display:flex;align-items:center;gap:8px}
+.role-pill{display:flex;align-items:center;gap:6px;background:var(--bg);border:1.5px solid var(--border);border-radius:20px;padding:5px 12px 5px 8px;font-size:12px;font-weight:600;color:var(--text2);cursor:pointer;transition:all .2s}
+.role-pill:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-light)}
+.role-pip{width:8px;height:8px;background:var(--brand);border-radius:50%}
+.role-pill svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2}
+.icon-btn{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--bg);border:1.5px solid var(--border);color:var(--text2);cursor:pointer;transition:all .2s;position:relative}
+.icon-btn:hover{background:var(--brand-light);color:var(--brand);border-color:var(--brand)}
+.icon-btn svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.notif-badge{position:absolute;top:6px;right:6px;width:7px;height:7px;background:var(--danger);border-radius:50%;border:1.5px solid var(--surface)}
+
+/* ── PAGE BODY ── */
+.page{flex:1;overflow-y:auto;overflow-x:hidden;display:flex;flex-direction:column}
+
+/* ── SEARCH HERO ── */
+.search-hero{background:var(--brand);padding:28px 32px;flex-shrink:0;position:relative;overflow:hidden}
+.search-hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.04) 1px,transparent 1px);background-size:28px 28px;pointer-events:none}
+.search-hero-orb{position:absolute;top:-80px;right:-60px;width:280px;height:280px;background:rgba(255,255,255,0.05);border-radius:50%;pointer-events:none}
+.search-hero-content{position:relative;z-index:1}
+.search-hero h1{font-family:'DM Sans',sans-serif;font-size:18px;font-weight:600;color:white;margin-bottom:4px;white-space:nowrap}
+.search-hero p{font-size:12px;color:rgba(255,255,255,0.7);margin-bottom:18px}
+.search-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.search-main{position:relative;flex:1;min-width:260px;max-width:480px}
+.search-main input{width:100%;background:rgba(255,255,255,0.15);border:1.5px solid rgba(255,255,255,0.25);border-radius:12px;padding:11px 16px 11px 40px;font-size:13px;color:white;outline:none;transition:all .2s}
+.search-main input::placeholder{color:rgba(255,255,255,0.55)}
+.search-main input:focus{background:rgba(255,255,255,0.22);border-color:rgba(255,255,255,0.5)}
+.search-main svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);width:15px;height:15px;stroke:rgba(255,255,255,0.6);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+.search-stats{display:flex;gap:16px;margin-top:16px;flex-wrap:wrap}
+.ss-item{font-size:12px;color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:6px}
+.ss-item strong{color:white;font-weight:600}
+.ss-dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+
+/* ── FILTERS BAR ── */
+.filters-bar{background:var(--surface);border-bottom:1.5px solid var(--border);padding:12px 32px;display:flex;align-items:center;gap:10px;flex-shrink:0;overflow-x:auto}
+.filters-bar::-webkit-scrollbar{height:0}
+.filter-label{font-size:12px;font-weight:600;color:var(--text3);white-space:nowrap;margin-right:4px}
+.filter-select{background:var(--bg);border:1.5px solid var(--border);border-radius:8px;padding:6px 28px 6px 10px;font-size:12px;color:var(--text2);outline:none;cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%238b90b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;transition:all .15s;white-space:nowrap}
+.filter-select:focus{border-color:var(--brand);background-color:var(--brand-light)}
+.filter-divider{width:1px;height:20px;background:var(--border);flex-shrink:0}
+.view-btns{display:flex;gap:4px;margin-left:auto;flex-shrink:0}
+.view-btn{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;border:1.5px solid var(--border);background:var(--bg);color:var(--text3);cursor:pointer;transition:all .15s}
+.view-btn.active{background:var(--brand);border-color:var(--brand);color:white}
+.view-btn svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.results-count{font-size:12px;color:var(--text3);white-space:nowrap;flex-shrink:0}
+.results-count strong{color:var(--text);font-weight:600}
+
+/* ── CONTENT AREA ── */
+.content-area{flex:1;overflow-y:auto;padding:24px 32px}
+
+/* ── STUDENT GRID ── */
+.student-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.student-grid.list-view{grid-template-columns:1fr;gap:10px}
+
+/* ── STUDENT CARD (grid) ── */
+.student-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;transition:all .2s;cursor:pointer;display:flex;flex-direction:column}
+.student-card:hover{border-color:var(--brand);box-shadow:var(--shadow);transform:translateY(-3px)}
+.sc-top{padding:20px 20px 14px;display:flex;flex-direction:column;align-items:center;text-align:center;background:linear-gradient(160deg,var(--brand-light) 0%,var(--surface) 60%)}
+.sc-av{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:20px;margin-bottom:10px;border:3px solid white;box-shadow:0 2px 10px rgba(0,0,0,0.1);flex-shrink:0;position:relative}
+.sc-online-dot{position:absolute;bottom:2px;right:2px;width:10px;height:10px;background:var(--accent);border-radius:50%;border:2px solid white}
+.sc-name{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--text);margin-bottom:2px}
+.sc-field{font-size:11px;color:var(--text3);margin-bottom:8px}
+.sc-tags{display:flex;flex-wrap:wrap;gap:4px;justify-content:center}
+.tag{display:inline-flex;align-items:center;font-size:10px;padding:3px 8px;border-radius:20px;font-weight:500;white-space:nowrap}
+.tag-blue{background:var(--brand-light);color:var(--brand)}
+.tag-green{background:var(--success-light);color:var(--success)}
+.tag-amber{background:var(--warn-light);color:#92400e}
+.tag-teal{background:var(--accent-light);color:#0f766e}
+.tag-gray{background:#f1f5f9;color:#475569}
+.tag-purple{background:#f3e8ff;color:#7c3aed}
+.sc-body{padding:14px 20px;flex:1;border-top:1px solid var(--border)}
+.sc-row{display:flex;align-items:center;gap:7px;margin-bottom:6px;font-size:12px;color:var(--text2)}
+.sc-row:last-child{margin-bottom:0}
+.sc-row svg{width:13px;height:13px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.sc-foot{padding:12px 20px;border-top:1px solid var(--border);display:flex;gap:8px}
+
+/* ── STUDENT CARD (list) ── */
+.student-list-card{background:var(--surface);border:1.5px solid var(--border);border-radius:12px;padding:16px 20px;display:flex;align-items:center;gap:16px;cursor:pointer;transition:all .18s}
+.student-list-card:hover{border-color:var(--brand);background:var(--brand-light);transform:translateX(3px)}
+.slc-av{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:16px;flex-shrink:0;position:relative}
+.slc-info{flex:1;min-width:0}
+.slc-name{font-weight:700;font-size:13px;color:var(--text)}
+.slc-sub{font-size:11px;color:var(--text3);margin-top:1px}
+.slc-tags{display:flex;gap:4px;margin-top:5px;flex-wrap:wrap}
+.slc-meta{display:flex;gap:16px;font-size:11px;color:var(--text3);flex-shrink:0}
+.slc-meta span{display:flex;align-items:center;gap:4px}
+.slc-meta svg{width:12px;height:12px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.slc-actions{display:flex;gap:8px;flex-shrink:0}
+
+/* ── BTNS ── */
+.btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:10px;font-size:13px;font-weight:600;transition:all .18s;cursor:pointer;border:none;white-space:nowrap}
+.btn svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.btn-brand{background:var(--brand);color:white}
+.btn-brand:hover{background:var(--brand-h);transform:translateY(-1px);box-shadow:0 4px 14px rgba(2,31,246,0.3)}
+.btn-outline{background:white;color:var(--text);border:1.5px solid var(--border)}
+.btn-outline:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-light)}
+.btn-success{background:var(--success);color:white}
+.btn-success:hover{background:#059669}
+.btn-ghost{background:var(--bg);color:var(--text2);border:1.5px solid var(--border)}
+.btn-ghost:hover{background:var(--brand-light);color:var(--brand);border-color:var(--brand)}
+.btn-sm{padding:6px 13px;font-size:12px}
+.btn-xs{padding:5px 10px;font-size:11px;border-radius:8px}
+.btn-white{background:white;color:var(--brand)}
+.btn-white:hover{background:#f0f3ff}
+
+/* ── EMPTY STATE ── */
+.empty-state{text-align:center;padding:60px 20px;color:var(--text3)}
+.empty-ico{width:56px;height:56px;background:var(--brand-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.empty-ico svg{width:24px;height:24px;stroke:var(--brand);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.empty-state h3{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:var(--text);margin-bottom:6px}
+.empty-state p{font-size:13px;line-height:1.5;max-width:320px;margin:0 auto}
+
+/* ── OVERLAY / MODAL ── */
+.overlay{position:fixed;inset:0;background:rgba(7,9,74,0.5);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;z-index:1000;opacity:0;pointer-events:none;transition:opacity .2s;padding:16px}
+.overlay.show{opacity:1;pointer-events:all}
+.modal{background:var(--surface);border-radius:18px;width:100%;max-width:520px;box-shadow:var(--shadow-lg);transform:translateY(18px) scale(0.97);transition:transform .25s cubic-bezier(.34,1.56,.64,1);max-height:92vh;overflow-y:auto}
+.overlay.show .modal{transform:translateY(0) scale(1)}
+.modal-head{padding:20px 24px 16px;display:flex;align-items:flex-start;justify-content:space-between;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--surface);z-index:1}
+.modal-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:var(--text)}
+.modal-sub{font-size:12px;color:var(--text3);margin-top:3px}
+.modal-close{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--text3);transition:.15s;cursor:pointer;flex-shrink:0}
+.modal-close:hover{background:var(--bg);color:var(--text)}
+.modal-close svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.modal-body{padding:20px 24px}
+.modal-foot{padding:14px 24px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:10px;position:sticky;bottom:0;background:var(--surface);z-index:1}
+
+/* ── PROFILE MODAL ── */
+.prof-banner{background:var(--brand);padding:24px;text-align:center;position:relative;overflow:hidden}
+.prof-banner-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.05) 1px,transparent 1px);background-size:24px 24px;pointer-events:none}
+.prof-av{width:68px;height:68px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:26px;border:3px solid rgba(255,255,255,0.4);margin:0 auto 10px;position:relative;z-index:1}
+.prof-banner h3{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;color:white;position:relative;z-index:1}
+.prof-banner p{font-size:12px;color:rgba(255,255,255,0.7);margin-top:3px;position:relative;z-index:1}
+.prof-tags{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin-top:10px;position:relative;z-index:1}
+.prof-section{padding:16px 24px;border-bottom:1px solid var(--border)}
+.prof-section:last-child{border-bottom:none}
+.prof-section h4{font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.prof-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.prof-row:last-child{margin-bottom:0}
+.prof-row svg{width:14px;height:14px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.prof-row span{font-size:13px;color:var(--text2)}
+.prof-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:4px}
+.prof-stat{background:var(--bg);border-radius:10px;padding:10px;text-align:center}
+.prof-stat-val{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;color:var(--brand)}
+.prof-stat-label{font-size:10px;color:var(--text3);margin-top:2px}
+
+/* ── FORM ── */
+.fg{margin-bottom:14px}
+.fl{display:block;font-size:12px;font-weight:600;color:var(--text2);margin-bottom:5px}
+.fi{width:100%;border:1.5px solid var(--border);border-radius:10px;padding:10px 14px;font-size:13px;color:var(--text);background:var(--surface);outline:none;transition:.2s}
+.fi:focus{border-color:var(--brand);box-shadow:0 0 0 3px rgba(2,31,246,0.07)}
+.fi::placeholder{color:var(--text3)}
+textarea.fi{resize:vertical;min-height:90px;line-height:1.5}
+.fi-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%238b90b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px;cursor:pointer}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--text);color:white;padding:12px 18px;border-radius:12px;font-size:13px;font-weight:500;box-shadow:var(--shadow-lg);z-index:3000;display:flex;align-items:center;gap:10px;max-width:340px;opacity:0;transform:translateY(10px);transition:all .3s cubic-bezier(.34,1.56,.64,1);pointer-events:none}
+.toast.show{opacity:1;transform:translateY(0)}
+.toast.success{background:#059669}
+.toast.error{background:var(--danger)}
+.toast svg{width:15px;height:15px;fill:none;stroke:white;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+
+/* ── SAVED BADGE ── */
+.saved-badge{position:absolute;top:12px;right:12px;width:28px;height:28px;border-radius:50%;background:white;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;z-index:2}
+.saved-badge:hover{border-color:var(--brand);background:var(--brand-light)}
+.saved-badge svg{width:13px;height:13px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:.15s}
+.saved-badge.saved svg{stroke:var(--brand);fill:var(--brand)}
+
+/* ── NOTIF PANEL ── */
+.notif-panel{position:fixed;top:70px;right:14px;width:320px;background:var(--surface);border:1.5px solid var(--border);border-radius:16px;box-shadow:var(--shadow-lg);z-index:500;overflow:hidden;opacity:0;pointer-events:none;transform:translateY(-10px);transition:all .2s}
+.notif-panel.show{opacity:1;pointer-events:all;transform:translateY(0)}
+.np-head{padding:13px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.np-head h3{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--text)}
+.np-clear{font-size:11px;color:var(--brand);font-weight:600;cursor:pointer}
+.np-item{padding:11px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;cursor:pointer;transition:.15s}
+.np-item:hover{background:var(--bg)}
+.np-item.unread{background:var(--brand-light)}
+.np-item:last-child{border-bottom:none}
+.np-dot{width:7px;height:7px;background:var(--brand);border-radius:50%;flex-shrink:0;margin-top:4px}
+.np-dot.read{background:transparent}
+.np-text{font-size:12px;color:var(--text);line-height:1.4}
+.np-text strong{font-weight:600}
+.np-time{font-size:10px;color:var(--text3);margin-top:2px}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.student-card,.student-list-card{animation:fadeUp .3s ease both}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.pulse{animation:pulse 2s ease-in-out infinite}
+</style>
+</head>
+<body>
+<div class="app">
+
+<!-- ═══ SIDEBAR ═══ -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+    <div><div class="logo-name">Ispora</div><div class="logo-tagline">Impact Platform</div></div>
+  </div>
+  <div class="sidebar-profile" onclick="openModal('profileModal')">
+    <div class="sp-av">A<div class="sp-online pulse"></div></div>
+    <div><div class="sp-name">Dr. Amina Osei</div><div class="sp-role">Diaspora Mentor</div></div>
+  </div>
+  <nav class="nav">
+    <div class="nav-section">
+      <div class="nav-label">Main</div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to Dashboard...')">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>Dashboard
+      </div>
+      <div class="nav-item active" onclick="navTo(this)">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>Browse Students
+      </div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to My Mentorships...')">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07"/><path d="M1 1l22 22"/></svg>My Mentorships
+        <span class="nav-badge">3</span>
+      </div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to Sessions...')">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Sessions
+        <span class="nav-badge">1</span>
+      </div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to Messages...')">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Messages
+        <span class="nav-badge">5</span>
+      </div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-label">Discover</div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to Opportunities...')">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Opportunities
+      </div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to My Network...')">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>My Network
+      </div>
+    </div>
+  </nav>
+  <div class="sidebar-foot">
+    <div class="nav-item" onclick="openModal('settingsModal')">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41M19.07 19.07l-1.41-1.41M4.93 19.07l1.41-1.41M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>Settings
+    </div>
+    <div class="nav-item danger" onclick="showToast('Signing out...')">
+      <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Sign Out
+    </div>
+  </div>
+</aside>
+
+<!-- ═══ MAIN ═══ -->
+<div class="main">
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <h2>Browse Students</h2>
+      <p>Find talented students across Nigeria to mentor</p>
+    </div>
+    <div class="topbar-right">
+      <button class="role-pill" onclick="openModal('roleSwitchModal')">
+        <div class="role-pip"></div>Mentor
+        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <button class="icon-btn" onclick="toggleNotif()" id="notifBtn">
+        <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+        <div class="notif-badge"></div>
+      </button>
+      <button class="icon-btn" onclick="openModal('profileModal')">
+        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- PAGE -->
+  <div class="page">
+
+    <!-- SEARCH HERO -->
+    <div class="search-hero">
+      <div class="search-hero-grid"></div>
+      <div class="search-hero-orb"></div>
+      <div class="search-hero-content">
+        <h1>Find your next mentee ✦</h1>
+        <p>Discover talented students across Nigerian universities looking for guidance</p>
+        <div class="search-row">
+          <div class="search-main">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="searchInput" placeholder="Search by name, field, university..." oninput="handleSearch()"/>
+          </div>
+          <button class="btn btn-white btn-sm" onclick="handleSearch()">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            Search
+          </button>
+        </div>
+        <div class="search-stats">
+          <div class="ss-item"><div class="ss-dot"></div><strong id="totalCount">248</strong> students registered</div>
+          <div class="ss-item"><div class="ss-dot" style="background:#f59e0b"></div><strong>34</strong> seeking mentors now</div>
+          <div class="ss-item"><div class="ss-dot" style="background:white;opacity:.5"></div><strong>12</strong> universities</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FILTERS BAR -->
+    <div class="filters-bar">
+      <span class="filter-label">Filter:</span>
+      <select class="filter-select" id="filterField" onchange="applyFilters()">
+        <option value="">All Fields</option>
+        <option value="software">Software Engineering</option>
+        <option value="product">Product Management</option>
+        <option value="data">Data Science</option>
+        <option value="design">UI/UX Design</option>
+        <option value="finance">Finance & Fintech</option>
+        <option value="medicine">Medicine & Health</option>
+        <option value="law">Law</option>
+        <option value="business">Business Admin</option>
+      </select>
+      <select class="filter-select" id="filterUni" onchange="applyFilters()">
+        <option value="">All Universities</option>
+        <option value="unilag">University of Lagos</option>
+        <option value="covenant">Covenant University</option>
+        <option value="oau">Obafemi Awolowo University</option>
+        <option value="ui">University of Ibadan</option>
+        <option value="unn">University of Nigeria, Nsukka</option>
+        <option value="abuja">University of Abuja</option>
+      </select>
+      <select class="filter-select" id="filterYear" onchange="applyFilters()">
+        <option value="">All Years</option>
+        <option value="1st">1st Year</option>
+        <option value="2nd">2nd Year</option>
+        <option value="3rd">3rd Year</option>
+        <option value="final">Final Year</option>
+        <option value="graduate">Graduate</option>
+      </select>
+      <select class="filter-select" id="filterStatus" onchange="applyFilters()">
+        <option value="">All Students</option>
+        <option value="seeking">Seeking Mentor</option>
+        <option value="open">Open to Connect</option>
+      </select>
+      <div class="filter-divider"></div>
+      <span class="results-count"><strong id="resultCount">12</strong> results</span>
+      <div class="view-btns">
+        <button class="view-btn active" id="gridViewBtn" onclick="setView('grid')" title="Grid view">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+        </button>
+        <button class="view-btn" id="listViewBtn" onclick="setView('list')" title="List view">
+          <svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- STUDENT GRID -->
+    <div class="content-area">
+      <div class="student-grid" id="studentGrid"></div>
+    </div>
+
+  </div><!-- end page -->
+</div><!-- end main -->
+</div><!-- end app -->
+
+<!-- ═══════════ NOTIFICATION PANEL ═══════════ -->
+<div class="notif-panel" id="notifPanel">
+  <div class="np-head"><h3>Notifications</h3><span class="np-clear" onclick="clearNotifs()">Mark all read</span></div>
+  <div class="np-item unread"><div class="np-dot"></div><div><div class="np-text"><strong>Tunde Ojo</strong> sent a mentorship request</div><div class="np-time">2 hours ago</div></div></div>
+  <div class="np-item unread"><div class="np-dot"></div><div><div class="np-text"><strong>Sola Adeyemi</strong> sent a mentorship request</div><div class="np-time">5 hours ago</div></div></div>
+  <div class="np-item"><div class="np-dot read"></div><div><div class="np-text">Session with <strong>Aisha Kamara</strong> confirmed</div><div class="np-time">Yesterday</div></div></div>
+</div>
+
+<!-- ═══════════ MODALS ═══════════ -->
+
+<!-- STUDENT PROFILE MODAL -->
+<div class="overlay" id="studentProfileModal" onclick="overlayClose(event,'studentProfileModal')">
+  <div class="modal">
+    <div class="prof-banner" id="profBanner">
+      <div class="prof-banner-grid"></div>
+      <div class="prof-av" id="profAv">AK</div>
+      <h3 id="profName">Aisha Kamara</h3>
+      <p id="profSub">Software Engineering · University of Lagos · 3rd Year</p>
+      <div class="prof-tags" id="profTags"></div>
+    </div>
+    <div class="prof-section">
+      <h4>About</h4>
+      <p id="profAbout" style="font-size:13px;color:var(--text2);line-height:1.6"></p>
+    </div>
+    <div class="prof-section">
+      <h4>Details</h4>
+      <div class="prof-row"><svg viewBox="0 0 24 24"><path d="M22 17H2a3 3 0 000 6h20a3 3 0 000-6zm-10-8a4 4 0 100-8 4 4 0 000 8zm0 2a8 8 0 00-8 8h16a8 8 0 00-8-8z"/></svg><span id="profUni">University of Lagos</span></div>
+      <div class="prof-row"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span id="profYear">3rd Year</span></div>
+      <div class="prof-row"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg><span id="profLocation">Lagos, Nigeria</span></div>
+    </div>
+    <div class="prof-section">
+      <h4>What they're looking for</h4>
+      <p id="profGoal" style="font-size:13px;color:var(--text2);line-height:1.6;background:var(--bg);padding:12px;border-radius:10px;border:1px solid var(--border)"></p>
+    </div>
+    <div class="prof-section">
+      <h4>Stats</h4>
+      <div class="prof-stats">
+        <div class="prof-stat"><div class="prof-stat-val" id="profSessions">0</div><div class="prof-stat-label">Sessions done</div></div>
+        <div class="prof-stat"><div class="prof-stat-val" id="profConn">0</div><div class="prof-stat-label">Connections</div></div>
+        <div class="prof-stat"><div class="prof-stat-val" id="profJoined">2025</div><div class="prof-stat-label">Joined</div></div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal('studentProfileModal')">Close</button>
+      <button class="btn btn-ghost btn-sm" onclick="saveFromProfile()">
+        <svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>Save
+      </button>
+      <button class="btn btn-brand" id="inviteFromProfile" onclick="openInviteFromProfile()">
+        <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        Invite to Connect
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- INVITE MODAL -->
+<div class="overlay" id="inviteModal" onclick="overlayClose(event,'inviteModal')">
+  <div class="modal">
+    <div class="modal-head">
+      <div><div class="modal-title">Invite to Connect</div><div class="modal-sub" id="inviteSub">Send a mentorship invitation</div></div>
+      <button class="modal-close" onclick="closeModal('inviteModal')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div style="display:flex;align-items:center;gap:12px;padding:14px;background:var(--bg);border-radius:12px;margin-bottom:16px">
+        <div id="inviteAv" style="width:42px;height:42px;border-radius:50%;background:var(--brand);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:15px;flex-shrink:0">AK</div>
+        <div><div id="inviteName" style="font-weight:700;font-size:13px;color:var(--text)">Aisha Kamara</div><div id="inviteField" style="font-size:11px;color:var(--text3)">Software Engineering · University of Lagos</div></div>
+      </div>
+      <div class="fg">
+        <label class="fl">Mentorship focus area</label>
+        <select class="fi">
+          <option>Career guidance & planning</option>
+          <option>Technical skills development</option>
+          <option>Interview & job preparation</option>
+          <option>Industry insights & networking</option>
+          <option>Academic research support</option>
+          <option>Entrepreneurship & startups</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label class="fl">Your invitation message</label>
+        <textarea class="fi" id="inviteMsg" placeholder="Introduce yourself and explain why you'd like to mentor this student. Be specific about what you can offer..."></textarea>
+      </div>
+      <div class="fg">
+        <label class="fl">Preferred session frequency</label>
+        <select class="fi">
+          <option>Once a week</option>
+          <option>Bi-weekly</option>
+          <option>Once a month</option>
+          <option>As needed</option>
+        </select>
+      </div>
+      <div style="background:var(--brand-light);border-radius:10px;padding:12px;font-size:12px;color:var(--text2);line-height:1.5;border:1px solid var(--border)">
+        💡 <strong>Tip:</strong> Students are more likely to accept invitations that are personal and specific. Mention what you noticed in their profile.
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal('inviteModal')">Cancel</button>
+      <button class="btn btn-brand" onclick="sendInvite()">
+        <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        Send Invitation
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- PROFILE MODAL (mentor own profile) -->
+<div class="overlay" id="profileModal" onclick="overlayClose(event,'profileModal')">
+  <div class="modal">
+    <div class="prof-banner">
+      <div class="prof-banner-grid"></div>
+      <div class="prof-av">A</div>
+      <h3>Dr. Amina Osei</h3>
+      <p>Senior Software Engineer · London, UK</p>
+      <div class="prof-tags">
+        <span class="tag tag-blue" style="background:rgba(255,255,255,0.2);color:white">Software Engineering</span>
+        <span class="tag tag-blue" style="background:rgba(255,255,255,0.2);color:white">AI/ML</span>
+        <span class="tag tag-blue" style="background:rgba(255,255,255,0.2);color:white">Career Coaching</span>
+      </div>
+    </div>
+    <div class="prof-section">
+      <h4>About</h4>
+      <p style="font-size:13px;color:var(--text2);line-height:1.6">10+ years in tech at a leading UK fintech. Originally from Ghana, passionate about lifting the next generation of African engineers.</p>
+    </div>
+    <div class="prof-section">
+      <h4>Details</h4>
+      <div class="prof-row"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg><span>London, United Kingdom</span></div>
+      <div class="prof-row"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg><span>10 years of experience</span></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal('profileModal')">Close</button>
+      <button class="btn btn-brand" onclick="closeModal('profileModal');showToast('Opening profile editor...')">Edit Profile</button>
+    </div>
+  </div>
+</div>
+
+<!-- SETTINGS MODAL -->
+<div class="overlay" id="settingsModal" onclick="overlayClose(event,'settingsModal')">
+  <div class="modal" style="max-width:400px">
+    <div class="modal-head">
+      <div><div class="modal-title">Settings</div><div class="modal-sub">Manage your preferences</div></div>
+      <button class="modal-close" onclick="closeModal('settingsModal')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div class="fg"><label class="fl">Email notifications</label>
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:13px;color:var(--text2)">New student matches</span>
+          <div class="tog on" onclick="flipTog(this)"><div class="tog-t"></div></div>
+        </div>
+      </div>
+      <div class="fg"><label class="fl">Discovery preferences</label>
+        <select class="fi"><option>Show all students</option><option>Only seeking mentors</option><option>Only my field</option></select>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal('settingsModal')">Cancel</button>
+      <button class="btn btn-brand" onclick="closeModal('settingsModal');showToast('Settings saved!','success')">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- ROLE SWITCH MODAL -->
+<div class="overlay" id="roleSwitchModal" onclick="overlayClose(event,'roleSwitchModal')">
+  <div class="modal" style="max-width:360px">
+    <div class="modal-head">
+      <div><div class="modal-title">Switch Role</div></div>
+      <button class="modal-close" onclick="closeModal('roleSwitchModal')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body" style="display:flex;flex-direction:column;gap:10px">
+      <div style="padding:14px;border-radius:12px;border:2px solid var(--brand);background:var(--brand-light);cursor:default">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:36px;height:36px;background:var(--brand);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px">🌍</div>
+          <div><div style="font-weight:700;font-size:13px;color:var(--brand)">Diaspora Mentor ✓ Active</div><div style="font-size:11px;color:var(--text3)">Mentor students, share opportunities</div></div>
+        </div>
+      </div>
+      <div style="padding:14px;border-radius:12px;border:1.5px solid var(--border);background:var(--bg);cursor:pointer" onclick="closeModal('roleSwitchModal');showToast('Switched to Student view!','success')">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:36px;height:36px;background:var(--success);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px">🎓</div>
+          <div><div style="font-weight:700;font-size:13px;color:var(--text)">Student / Youth</div><div style="font-size:11px;color:var(--text3)">Find mentors, access opportunities</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toastEl"><svg id="toastIco" viewBox="0 0 24 24"></svg><span id="toastMsg"></span></div>
+
+<!-- TOGGLE CSS -->
+<style>
+.tog{width:38px;height:21px;border-radius:11px;background:var(--brand);position:relative;cursor:pointer;transition:background .2s;flex-shrink:0}
+.tog.off{background:var(--border)}
+.tog-t{position:absolute;top:2.5px;right:2.5px;width:16px;height:16px;background:white;border-radius:50%;transition:all .2s}
+.tog.off .tog-t{right:auto;left:2.5px}
+</style>
+
+<script>
+// ─── DATA ───
+const students = [
+  {id:1,name:'Aisha Kamara',initials:'AK',color:'#021ff6',field:'Software Engineering',uni:'University of Lagos',year:'3rd Year',location:'Lagos, Nigeria',tags:['React','Python','AI/ML'],status:'seeking',about:'Passionate about building scalable web applications and exploring AI. I\'ve completed 3 personal projects and am looking for industry guidance.',goal:'I want mentorship on breaking into the UK tech market and building the right portfolio for international companies.',sessions:0,connections:2,joined:'Jan 2026',online:true},
+  {id:2,name:'Emeka Okonkwo',initials:'EO',color:'#7c3aed',field:'Product Management',uni:'Covenant University',year:'Final Year',location:'Ogun, Nigeria',tags:['Strategy','UX','Agile'],status:'seeking',about:'Final year student passionate about building products that solve African problems. Interned at a Nigerian fintech startup.',goal:'Looking for guidance on transitioning into product management at a global company after graduation.',sessions:2,connections:1,joined:'Mar 2026',online:false},
+  {id:3,name:'Fatima Nwosu',initials:'FN',color:'#059669',field:'Data Science',uni:'Obafemi Awolowo University',year:'2nd Year',location:'Ile-Ife, Nigeria',tags:['Python','SQL','Statistics'],status:'open',about:'Mathematics student who fell in love with data. Currently learning machine learning through online courses alongside my degree.',goal:'Need mentorship on structuring a data science learning path and building an industry-ready portfolio.',sessions:1,connections:3,joined:'Feb 2026',online:true},
+  {id:4,name:'Tunde Ojo',initials:'TO',color:'#d97706',field:'Software Engineering',uni:'University of Ibadan',year:'3rd Year',location:'Ibadan, Nigeria',tags:['Java','Node.js','Cloud'],status:'seeking',about:'Computer science student with a focus on backend engineering. Participated in 2 hackathons and won a regional coding competition.',goal:'Seeking mentorship on cloud engineering and how to position myself for roles at top global tech companies.',sessions:0,connections:1,joined:'Mar 2026',online:false},
+  {id:5,name:'Sola Adeyemi',initials:'SA',color:'#7c3aed',field:'Finance & Fintech',uni:'Lagos State University',year:'Graduate',location:'Lagos, Nigeria',tags:['Finance','Excel','Python'],status:'seeking',about:'Finance graduate transitioning into fintech. Self-studying Python and product management for 6 months.',goal:'Need a mentor who understands both the finance world and tech to guide my transition into fintech product roles.',sessions:0,connections:0,joined:'Mar 2026',online:true},
+  {id:6,name:'Ngozi Eze',initials:'NE',color:'#6d28d9',field:'UI/UX Design',uni:'University of Nigeria, Nsukka',year:'Final Year',location:'Enugu, Nigeria',tags:['Figma','Research','Prototyping'],status:'open',about:'Design student who has created UX case studies for 4 real Nigerian businesses. Loves solving complex user problems.',goal:'Looking for a mentor in product design who can help me refine my portfolio and prepare for design interviews.',sessions:3,connections:4,joined:'Nov 2025',online:false},
+  {id:7,name:'Chidi Okafor',initials:'CO',color:'#0891b2',field:'Medicine & Health',uni:'University of Lagos',year:'3rd Year',location:'Lagos, Nigeria',tags:['Health Tech','Research','Clinical'],status:'seeking',about:'Medical student interested in the intersection of technology and healthcare. Want to explore health-tech entrepreneurship.',goal:'Looking for mentorship from healthcare professionals in the diaspora who have built or worked in health-tech.',sessions:0,connections:2,joined:'Jan 2026',online:true},
+  {id:8,name:'Amaka Obi',initials:'AO',color:'#be185d',field:'Business Admin',uni:'Covenant University',year:'2nd Year',location:'Ota, Nigeria',tags:['Strategy','Marketing','Leadership'],status:'open',about:'Business student passionate about African entrepreneurship. Founded a small campus business generating revenue.',goal:'Seeking mentorship on scaling a business and eventually raising funding from global investors.',sessions:1,connections:2,joined:'Dec 2025',online:false},
+  {id:9,name:'Yusuf Ibrahim',initials:'YI',color:'#0f766e',field:'Data Science',uni:'Ahmadu Bello University',year:'Final Year',location:'Zaria, Nigeria',tags:['Machine Learning','R','Statistics'],status:'seeking',about:'Stats final-year student specialising in machine learning. Working on a thesis about crop yield prediction with ML.',goal:'Looking for mentorship on transitioning my academic ML work into industry roles in data science or AI research.',sessions:2,connections:1,joined:'Feb 2026',online:true},
+  {id:10,name:'Chisom Nwachukwu',initials:'CN',color:'#b45309',field:'Law',uni:'University of Nigeria, Nsukka',year:'3rd Year',location:'Enugu, Nigeria',tags:['Tech Law','IP','Contracts'],status:'open',about:'Law student with a growing interest in technology law, intellectual property and digital rights in Africa.',goal:'Seeking guidance from legal professionals in the diaspora working in tech law or international IP.',sessions:0,connections:1,joined:'Jan 2026',online:false},
+  {id:11,name:'Deji Afolabi',initials:'DA',color:'#1d4ed8',field:'Software Engineering',uni:'University of Abuja',year:'1st Year',location:'Abuja, Nigeria',tags:['JavaScript','HTML/CSS','Beginner'],status:'seeking',about:'First year CS student excited about web development. Just started coding 6 months ago and building my first projects.',goal:'Looking for a patient mentor to guide me through the basics and help me set a roadmap for my first 2 years.',sessions:0,connections:0,joined:'Mar 2026',online:true},
+  {id:12,name:'Blessing Adesanya',initials:'BA',color:'#047857',field:'Finance & Fintech',uni:'Obafemi Awolowo University',year:'Final Year',location:'Ile-Ife, Nigeria',tags:['Investment','Banking','Excel'],status:'open',about:'Finance student with internship experience at a Nigerian commercial bank. Interested in investment banking and fintech.',goal:'Want mentorship on breaking into investment banking or transitioning to fintech from a traditional finance background.',sessions:1,connections:3,joined:'Oct 2025',online:false},
+];
+
+let currentView = 'grid';
+let savedIds = new Set();
+let currentStudent = null;
+
+// ─── RENDER ───
+function renderStudents(list){
+  const grid = document.getElementById('studentGrid');
+  document.getElementById('resultCount').textContent = list.length;
+  if(list.length === 0){
+    grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1">
+      <div class="empty-ico"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+      <h3>No students found</h3>
+      <p>Try adjusting your filters or search term to find more students.</p>
+    </div>`;
+    return;
+  }
+  if(currentView === 'grid'){
+    grid.classList.remove('list-view');
+    grid.innerHTML = list.map((s,i) => `
+      <div class="student-card" style="animation-delay:${i*0.04}s" onclick="openStudentProfile(${s.id})">
+        <div class="sc-top" style="position:relative">
+          <div class="saved-badge ${savedIds.has(s.id)?'saved':''}" onclick="event.stopPropagation();toggleSave(${s.id},this)" title="Save student">
+            <svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
+          </div>
+          <div class="sc-av" style="background:${s.color}">
+            ${s.initials}
+            ${s.online?'<div class="sc-online-dot"></div>':''}
+          </div>
+          <div class="sc-name">${s.name}</div>
+          <div class="sc-field">${s.field}</div>
+          <div class="sc-tags">
+            ${s.tags.map(t=>`<span class="tag tag-blue">${t}</span>`).join('')}
+            <span class="tag ${s.status==='seeking'?'tag-amber':'tag-green'}">${s.status==='seeking'?'Seeking Mentor':'Open to Connect'}</span>
+          </div>
+        </div>
+        <div class="sc-body">
+          <div class="sc-row"><svg viewBox="0 0 24 24"><path d="M22 17H2a3 3 0 000 6h20a3 3 0 000-6zm-10-8a4 4 0 100-8 4 4 0 000 8zm0 2a8 8 0 00-8 8h16a8 8 0 00-8-8z"/></svg>${s.uni}</div>
+          <div class="sc-row"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>${s.year}</div>
+          <div class="sc-row"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>${s.location}</div>
+        </div>
+        <div class="sc-foot">
+          <button class="btn btn-outline btn-sm" style="flex:1" onclick="event.stopPropagation();openStudentProfile(${s.id})">View Profile</button>
+          <button class="btn btn-brand btn-sm" style="flex:1" onclick="event.stopPropagation();openInvite(${s.id})">
+            <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            Invite
+          </button>
+        </div>
+      </div>`).join('');
+  } else {
+    grid.classList.add('list-view');
+    grid.innerHTML = list.map((s,i) => `
+      <div class="student-list-card" style="animation-delay:${i*0.03}s" onclick="openStudentProfile(${s.id})">
+        <div class="slc-av" style="background:${s.color}">${s.initials}${s.online?'<div style="position:absolute;bottom:1px;right:1px;width:9px;height:9px;background:var(--accent);border-radius:50%;border:2px solid white"></div>':''}</div>
+        <div class="slc-info">
+          <div class="slc-name">${s.name}</div>
+          <div class="slc-sub">${s.field} · ${s.uni} · ${s.year}</div>
+          <div class="slc-tags">
+            ${s.tags.slice(0,3).map(t=>`<span class="tag tag-blue">${t}</span>`).join('')}
+            <span class="tag ${s.status==='seeking'?'tag-amber':'tag-green'}">${s.status==='seeking'?'Seeking Mentor':'Open'}</span>
+          </div>
+        </div>
+        <div class="slc-meta">
+          <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>${s.location}</span>
+        </div>
+        <div class="slc-actions">
+          <button class="btn btn-outline btn-sm" onclick="event.stopPropagation();openStudentProfile(${s.id})">Profile</button>
+          <button class="btn btn-brand btn-sm" onclick="event.stopPropagation();openInvite(${s.id})">
+            <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            Invite
+          </button>
+        </div>
+      </div>`).join('');
+  }
+}
+
+// ─── FILTERS & SEARCH ───
+function getFilteredStudents(){
+  const q = document.getElementById('searchInput').value.toLowerCase().trim();
+  const field = document.getElementById('filterField').value;
+  const uni = document.getElementById('filterUni').value;
+  const year = document.getElementById('filterYear').value;
+  const status = document.getElementById('filterStatus').value;
+
+  return students.filter(s => {
+    if(q && !s.name.toLowerCase().includes(q) && !s.field.toLowerCase().includes(q) && !s.uni.toLowerCase().includes(q) && !s.tags.join(' ').toLowerCase().includes(q)) return false;
+    if(field){
+      const map = {software:'Software',product:'Product',data:'Data',design:'UI/UX',finance:'Finance',medicine:'Medicine',law:'Law',business:'Business'};
+      if(!s.field.toLowerCase().includes((map[field]||field).toLowerCase())) return false;
+    }
+    if(uni){
+      const map = {unilag:'Lagos',covenant:'Covenant',oau:'Awolowo',ui:'Ibadan',unn:'Nigeria, Nsukka',abuja:'Abuja'};
+      if(!s.uni.toLowerCase().includes((map[uni]||uni).toLowerCase())) return false;
+    }
+    if(year && !s.year.toLowerCase().includes(year.toLowerCase())) return false;
+    if(status && s.status !== status) return false;
+    return true;
+  });
+}
+
+function handleSearch(){ renderStudents(getFilteredStudents()) }
+function applyFilters(){ renderStudents(getFilteredStudents()) }
+
+// ─── VIEW TOGGLE ───
+function setView(v){
+  currentView = v;
+  document.getElementById('gridViewBtn').classList.toggle('active', v==='grid');
+  document.getElementById('listViewBtn').classList.toggle('active', v==='list');
+  renderStudents(getFilteredStudents());
+}
+
+// ─── SAVE ───
+function toggleSave(id, el){
+  if(savedIds.has(id)){
+    savedIds.delete(id);
+    el.classList.remove('saved');
+    showToast('Removed from saved');
+  } else {
+    savedIds.add(id);
+    el.classList.add('saved');
+    showToast('Student saved!','success');
+  }
+}
+
+// ─── STUDENT PROFILE ───
+function openStudentProfile(id){
+  const s = students.find(x=>x.id===id);
+  if(!s) return;
+  currentStudent = s;
+  document.getElementById('profAv').textContent = s.initials;
+  document.getElementById('profAv').style.background = s.color;
+  document.getElementById('profName').textContent = s.name;
+  document.getElementById('profSub').textContent = s.field+' · '+s.uni+' · '+s.year;
+  document.getElementById('profAbout').textContent = s.about;
+  document.getElementById('profGoal').textContent = s.goal;
+  document.getElementById('profUni').textContent = s.uni;
+  document.getElementById('profYear').textContent = s.year;
+  document.getElementById('profLocation').textContent = s.location;
+  document.getElementById('profSessions').textContent = s.sessions;
+  document.getElementById('profConn').textContent = s.connections;
+  document.getElementById('profJoined').textContent = s.joined;
+  const tagsEl = document.getElementById('profTags');
+  tagsEl.innerHTML = s.tags.map(t=>`<span class="tag" style="background:rgba(255,255,255,0.2);color:white">${t}</span>`).join('')
+    + `<span class="tag" style="background:rgba(255,255,255,0.2);color:white">${s.status==='seeking'?'Seeking Mentor':'Open to Connect'}</span>`;
+  openModal('studentProfileModal');
+}
+
+function openInviteFromProfile(){
+  closeModal('studentProfileModal');
+  if(currentStudent) openInvite(currentStudent.id);
+}
+
+function saveFromProfile(){
+  if(!currentStudent) return;
+  if(savedIds.has(currentStudent.id)){
+    savedIds.delete(currentStudent.id);
+    showToast('Removed from saved');
+  } else {
+    savedIds.add(currentStudent.id);
+    showToast('Student saved!','success');
+  }
+}
+
+// ─── INVITE ───
+function openInvite(id){
+  const s = students.find(x=>x.id===id);
+  if(!s) return;
+  currentStudent = s;
+  document.getElementById('inviteAv').textContent = s.initials;
+  document.getElementById('inviteAv').style.background = s.color;
+  document.getElementById('inviteName').textContent = s.name;
+  document.getElementById('inviteField').textContent = s.field+' · '+s.uni;
+  document.getElementById('inviteSub').textContent = 'Invite '+s.name+' to connect';
+  document.getElementById('inviteMsg').value = '';
+  openModal('inviteModal');
+}
+
+function sendInvite(){
+  const msg = document.getElementById('inviteMsg').value.trim();
+  if(!msg){ showToast('Please write a message first','error'); return; }
+  closeModal('inviteModal');
+  showToast('Invitation sent to '+(currentStudent?currentStudent.name:'student')+'!','success');
+}
+
+// ─── MODAL ───
+function openModal(id){ document.getElementById(id).classList.add('show'); document.body.style.overflow='hidden' }
+function closeModal(id){ document.getElementById(id).classList.remove('show'); document.body.style.overflow='' }
+function overlayClose(e,id){ if(e.target===e.currentTarget) closeModal(id) }
+
+// ─── TOAST ───
+let tTimer;
+function showToast(msg,type=''){
+  const el=document.getElementById('toastEl');
+  const ico=document.getElementById('toastIco');
+  const m=document.getElementById('toastMsg');
+  el.className='toast';
+  if(type==='success'){el.classList.add('success');ico.innerHTML='<polyline points="20 6 9 17 4 12"/>';}
+  else if(type==='error'){el.classList.add('error');ico.innerHTML='<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>';}
+  else{ico.innerHTML='<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>';}
+  m.textContent=msg;
+  clearTimeout(tTimer);
+  setTimeout(()=>el.classList.add('show'),10);
+  tTimer=setTimeout(()=>el.classList.remove('show'),3200);
+}
+
+// ─── NAV ───
+function navTo(el){ document.querySelectorAll('.nav-item').forEach(i=>i.classList.remove('active')); el.classList.add('active') }
+
+// ─── NOTIF ───
+function toggleNotif(){ document.getElementById('notifPanel').classList.toggle('show') }
+function clearNotifs(){
+  document.querySelectorAll('.np-item.unread').forEach(i=>{ i.classList.remove('unread'); i.querySelector('.np-dot').classList.add('read') });
+  showToast('All read','success');
+}
+document.addEventListener('click',e=>{
+  const p=document.getElementById('notifPanel');
+  const b=document.getElementById('notifBtn');
+  if(!p.contains(e.target)&&!b.contains(e.target)) p.classList.remove('show');
+});
+
+// ─── TOGGLE ───
+function flipTog(el){ el.classList.toggle('off'); showToast(el.classList.contains('off')?'Setting off':'Setting on','success') }
+
+// ─── INIT ───
+renderStudents(students);
+</script>
+</body>
+</html>

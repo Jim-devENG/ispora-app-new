@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ispora — My Progress</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --brand:#021ff6;--brand-h:#0118c4;--brand-light:#eef0ff;
+  --accent:#00c896;--accent-light:#e0faf4;
+  --warn:#f59e0b;--warn-light:#fef9ee;
+  --danger:#ef4444;--danger-light:#fff1f1;
+  --success:#10b981;--success-light:#ecfdf5;
+  --bg:#f0f2ff;--surface:#fff;--surface2:#f7f8ff;
+  --border:#e2e5f5;--border2:#c8cef0;
+  --text:#07094a;--text2:#3d4275;--text3:#8b90b8;
+  --sidebar-w:224px;--topbar-h:64px;--r:16px;
+  --shadow-sm:0 1px 4px rgba(2,31,246,0.06);
+  --shadow:0 4px 20px rgba(2,31,246,0.09);
+  --shadow-lg:0 12px 48px rgba(2,31,246,0.15);
+}
+html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+button{cursor:pointer;border:none;background:none;font-family:inherit;font-size:inherit}
+input,textarea,select{font-family:inherit;font-size:inherit}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+.app{display:flex;height:100vh;overflow:hidden}
+/* SIDEBAR */
+.sidebar{width:var(--sidebar-w);background:var(--surface);border-right:1.5px solid var(--border);display:flex;flex-direction:column;flex-shrink:0}
+.sidebar-logo{padding:16px 18px 14px;display:flex;align-items:center;gap:10px;border-bottom:1.5px solid var(--border)}
+.logo-icon{width:28px;height:28px;background:var(--brand);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo-icon svg{width:14px;height:14px;fill:none;stroke:white;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.logo-name{font-family:'Syne',sans-serif;font-weight:700;font-size:14px;color:var(--brand);letter-spacing:-0.3px;line-height:1}
+.logo-tagline{font-size:9px;color:var(--text3);margin-top:1px}
+.sidebar-profile{margin:12px 14px 6px;padding:11px 13px;background:var(--brand-light);border-radius:12px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:.15s}
+.sidebar-profile:hover{background:#e0e3ff}
+.sp-av{width:36px;height:36px;border-radius:50%;background:var(--brand);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px;flex-shrink:0;position:relative}
+.sp-dot{position:absolute;bottom:1px;right:1px;width:8px;height:8px;background:var(--accent);border-radius:50%;border:2px solid white}
+.sp-name{font-weight:600;font-size:12px;color:var(--text);line-height:1.2}
+.sp-role{font-size:11px;color:var(--brand);font-weight:500;margin-top:2px}
+.nav{flex:1;overflow-y:auto;padding:8px 12px}
+.nav-section{margin-bottom:20px}
+.nav-label{font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.09em;padding:0 8px;margin-bottom:5px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:10px;color:var(--text2);font-size:13px;font-weight:500;transition:all .15s;cursor:pointer}
+.nav-item:hover{background:var(--brand-light);color:var(--brand)}
+.nav-item.active{background:var(--brand);color:white}
+.nav-item svg{width:15px;height:15px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.nav-badge{margin-left:auto;background:var(--danger);color:white;font-size:10px;font-weight:700;padding:1px 6px;border-radius:20px;min-width:18px;text-align:center}
+.nav-item.active .nav-badge{background:rgba(255,255,255,.35)}
+.sidebar-foot{padding:12px;border-top:1.5px solid var(--border)}
+.nav-item.danger{color:var(--danger)}
+.nav-item.danger:hover{background:var(--danger-light)}
+/* MAIN */
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0}
+.topbar{height:var(--topbar-h);background:var(--surface);border-bottom:1.5px solid var(--border);padding:0 28px;display:flex;align-items:center;gap:14px;flex-shrink:0}
+.topbar-left{flex:1}
+.topbar-left h2{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--text)}
+.topbar-left p{font-size:12px;color:var(--text3);margin-top:1px}
+.topbar-right{display:flex;align-items:center;gap:8px}
+.role-pill{display:flex;align-items:center;gap:6px;background:var(--brand-light);border:1.5px solid var(--brand);border-radius:20px;padding:5px 12px 5px 8px;font-size:12px;font-weight:600;color:var(--brand);cursor:pointer;transition:.2s}
+.role-pill:hover{background:#e0e3ff}
+.role-pip{width:8px;height:8px;background:var(--brand);border-radius:50%}
+.role-pill svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2}
+.icon-btn{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--bg);border:1.5px solid var(--border);color:var(--text2);cursor:pointer;transition:.2s;position:relative}
+.icon-btn:hover{background:var(--brand-light);color:var(--brand);border-color:var(--brand)}
+.icon-btn svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.notif-badge{position:absolute;top:6px;right:6px;width:7px;height:7px;background:var(--danger);border-radius:50%;border:1.5px solid var(--surface)}
+/* PAGE */
+.page{flex:1;display:flex;flex-direction:column;overflow:hidden;min-height:0}
+/* HERO */
+.page-hero{background:var(--brand);padding:22px 32px;flex-shrink:0;position:relative;overflow:hidden}
+.ph-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.04) 1px,transparent 1px);background-size:28px 28px;pointer-events:none}
+.ph-orb{position:absolute;top:-60px;right:-40px;width:200px;height:200px;background:rgba(255,255,255,0.05);border-radius:50%;pointer-events:none}
+.ph-inner{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.ph-title{font-family:'DM Sans',sans-serif;font-size:18px;font-weight:600;color:white;margin-bottom:3px}
+.ph-sub{font-size:12px;color:rgba(255,255,255,0.7)}
+.ph-stats{display:flex;gap:10px}
+.ph-stat{background:rgba(255,255,255,0.13);border:1px solid rgba(255,255,255,0.2);border-radius:10px;padding:9px 14px;text-align:center;min-width:62px}
+.ph-stat-val{font-size:18px;font-weight:700;color:white;line-height:1}
+.ph-stat-label{font-size:10px;color:rgba(255,255,255,0.65);margin-top:2px}
+/* MAIN TABS */
+.main-tabs{background:var(--surface);border-bottom:1.5px solid var(--border);padding:0 32px;display:flex;align-items:center;flex-shrink:0}
+.main-tab{padding:14px 20px;font-size:13px;font-weight:600;color:var(--text3);border-bottom:2.5px solid transparent;cursor:pointer;transition:.15s;white-space:nowrap;display:flex;align-items:center;gap:7px}
+.main-tab:hover{color:var(--brand)}
+.main-tab.active{color:var(--brand);border-bottom-color:var(--brand)}
+.main-tab svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tab-chip{font-size:10px;font-weight:700;background:var(--brand-light);color:var(--brand);padding:1px 6px;border-radius:20px}
+.main-tab:not(.active) .tab-chip{background:var(--bg);color:var(--text3)}
+/* PANELS */
+.panel{flex:1;overflow:hidden;min-height:0;display:none}
+.panel.active{display:flex}
+/* GOALS PANEL */
+.goals-layout{display:flex;flex:1;overflow:hidden;gap:18px;padding:24px 32px;overflow-y:auto}
+.goals-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:0}
+.goals-side{width:290px;flex-shrink:0;display:flex;flex-direction:column;gap:16px}
+/* CAT TABS */
+.cat-tabs{display:flex;gap:0;border-bottom:1.5px solid var(--border);overflow-x:auto;margin-bottom:14px;background:var(--surface);border-radius:12px 12px 0 0;padding:0 4px}
+.cat-tabs::-webkit-scrollbar{height:0}
+.cat-tab{padding:10px 14px;font-size:12px;font-weight:600;color:var(--text3);border-bottom:2.5px solid transparent;cursor:pointer;transition:.15s;white-space:nowrap}
+.cat-tab:hover{color:var(--brand)}
+.cat-tab.active{color:var(--brand);border-bottom-color:var(--brand)}
+.cat-count{font-size:10px;font-weight:700;background:var(--brand-light);color:var(--brand);padding:1px 5px;border-radius:20px;margin-left:4px}
+.cat-tab:not(.active) .cat-count{background:var(--bg);color:var(--text3)}
+/* GOAL ITEM */
+.goal-item{display:flex;align-items:flex-start;gap:12px;padding:13px;background:var(--surface);border:1.5px solid var(--border);border-radius:12px;margin-bottom:9px;transition:all .2s;cursor:pointer}
+.goal-item:hover{border-color:var(--brand);box-shadow:var(--shadow-sm)}
+.goal-check{width:20px;height:20px;border-radius:5px;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;transition:all .18s;margin-top:2px}
+.goal-check.done{background:var(--brand);border-color:var(--brand)}
+.goal-check svg{width:10px;height:10px;stroke:white;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;display:none}
+.goal-check.done svg{display:block}
+.goal-body{flex:1;min-width:0}
+.goal-title{font-weight:600;font-size:13px;color:var(--text);line-height:1.4}
+.goal-title.done{color:var(--text3);text-decoration:line-through}
+.goal-meta{display:flex;gap:10px;margin-top:5px;flex-wrap:wrap}
+.goal-meta-item{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--text3)}
+.goal-meta-item svg{width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.goal-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0}
+.tag{display:inline-flex;font-size:10px;padding:3px 8px;border-radius:20px;font-weight:500;white-space:nowrap}
+.tag-blue{background:var(--brand-light);color:var(--brand)}
+.tag-green{background:var(--success-light);color:var(--success)}
+.tag-amber{background:var(--warn-light);color:#92400e}
+.tag-teal{background:var(--accent-light);color:#0f766e}
+.tag-gray{background:#f1f5f9;color:#475569}
+/* CARD */
+.card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden}
+.card-head{padding:14px 18px;display:flex;align-items:center;justify-content:space-between;border-bottom:1.5px solid var(--border)}
+.card-title{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--text)}
+.card-body{padding:14px 18px}
+/* MILESTONE */
+.mile-wrap{margin-bottom:9px}
+.mile-row{display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px}
+.mile-row span:first-child{color:var(--text2)}
+.mile-row span:last-child{font-weight:600;color:var(--brand)}
+.mile-bar{height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.mile-fill{height:100%;border-radius:3px;background:var(--brand);transition:width .5s}
+/* STREAK */
+.streak-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:8px}
+.s-cell{height:22px;border-radius:4px;background:var(--border)}
+.s-cell.on{background:var(--brand)}
+.s-cell.part{background:var(--brand-light)}
+.streak-labels{display:flex;justify-content:space-between;font-size:9px;color:var(--text3);margin-bottom:5px}
+/* ACH */
+.ach-item{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border)}
+.ach-item:last-child{border-bottom:none}
+.ach-ico{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+/* RESOURCES PANEL */
+.resources-layout{flex:1;overflow-y:auto;padding:24px 32px;min-height:0;display:flex;flex-direction:column}
+.res-search-row{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap;align-items:center}
+.res-search{position:relative;flex:1;max-width:280px}
+.res-search input{width:100%;background:var(--surface);border:1.5px solid var(--border);border-radius:9px;padding:8px 12px 8px 32px;font-size:12px;color:var(--text);outline:none;transition:.2s}
+.res-search input:focus{border-color:var(--brand)}
+.res-search input::placeholder{color:var(--text3)}
+.res-search svg{position:absolute;left:9px;top:50%;transform:translateY(-50%);width:13px;height:13px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+.res-sel{background:var(--surface);border:1.5px solid var(--border);border-radius:8px;padding:7px 28px 7px 10px;font-size:12px;color:var(--text2);outline:none;cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%238b90b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center}
+.res-sel:focus{border-color:var(--brand)}
+.res-section-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--text);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.new-badge{font-size:9px;font-weight:700;background:var(--success);color:white;padding:2px 6px;border-radius:20px}
+.res-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-bottom:24px}
+.rcard{background:var(--surface);border:1.5px solid var(--border);border-radius:12px;overflow:hidden;transition:all .2s;cursor:pointer}
+.rcard:hover{border-color:var(--brand);box-shadow:var(--shadow);transform:translateY(-2px)}
+.rcard-top{padding:14px 16px;display:flex;align-items:flex-start;gap:11px}
+.r-ico{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.r-ico svg{width:16px;height:16px;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ri-pdf{background:#fee2e2}.ri-pdf svg{stroke:var(--danger)}
+.ri-link{background:var(--brand-light)}.ri-link svg{stroke:var(--brand)}
+.ri-video{background:#fce7f3}.ri-video svg{stroke:#be185d}
+.ri-doc{background:var(--success-light)}.ri-doc svg{stroke:var(--success)}
+.ri-sheet{background:var(--accent-light)}.ri-sheet svg{stroke:var(--accent)}
+.r-title{font-weight:600;font-size:13px;color:var(--text);margin-bottom:2px;line-height:1.3}
+.r-from{font-size:11px;color:var(--text3);margin-bottom:3px}
+.r-desc{font-size:11px;color:var(--text2);line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.rcard-foot{padding:10px 16px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+/* BTNS */
+.btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:10px;font-size:13px;font-weight:600;transition:all .18s;cursor:pointer;border:none;white-space:nowrap}
+.btn svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.btn-brand{background:var(--brand);color:white}
+.btn-brand:hover{background:var(--brand-h);transform:translateY(-1px);box-shadow:0 4px 14px rgba(2,31,246,0.25)}
+.btn-outline{background:white;color:var(--text);border:1.5px solid var(--border)}
+.btn-outline:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-light)}
+.btn-ghost{background:var(--bg);color:var(--text2);border:1.5px solid var(--border)}
+.btn-ghost:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-light)}
+.btn-danger{background:var(--danger);color:white}
+.btn-sm{padding:6px 12px;font-size:12px;border-radius:8px}
+.btn-xs{padding:4px 9px;font-size:11px;border-radius:7px}
+/* MODAL */
+.overlay{position:fixed;inset:0;background:rgba(7,9,74,0.5);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;z-index:1000;opacity:0;pointer-events:none;transition:opacity .2s;padding:16px}
+.overlay.show{opacity:1;pointer-events:all}
+.modal{background:var(--surface);border-radius:18px;width:100%;max-width:480px;box-shadow:var(--shadow-lg);transform:translateY(18px) scale(0.97);transition:transform .25s cubic-bezier(.34,1.56,.64,1);max-height:92vh;overflow-y:auto}
+.overlay.show .modal{transform:translateY(0) scale(1)}
+.modal-head{padding:20px 24px 16px;display:flex;align-items:flex-start;justify-content:space-between;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--surface);z-index:1}
+.modal-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:var(--text)}
+.modal-sub{font-size:12px;color:var(--text3);margin-top:3px}
+.modal-close{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--text3);cursor:pointer;transition:.15s}
+.modal-close:hover{background:var(--bg);color:var(--text)}
+.modal-close svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.modal-body{padding:20px 24px}
+.modal-foot{padding:14px 24px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:10px;position:sticky;bottom:0;background:var(--surface)}
+.fg{margin-bottom:14px}
+.fl{display:block;font-size:12px;font-weight:600;color:var(--text2);margin-bottom:5px}
+.fi{width:100%;border:1.5px solid var(--border);border-radius:10px;padding:10px 14px;font-size:13px;color:var(--text);background:var(--surface);outline:none;transition:.2s}
+.fi:focus{border-color:var(--brand);box-shadow:0 0 0 3px rgba(2,31,246,0.07)}
+.fi::placeholder{color:var(--text3)}
+textarea.fi{resize:vertical;min-height:80px;line-height:1.5}
+select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%238b90b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px;cursor:pointer}
+/* TOAST */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--text);color:white;padding:12px 18px;border-radius:12px;font-size:13px;font-weight:500;box-shadow:var(--shadow-lg);z-index:3000;display:flex;align-items:center;gap:10px;max-width:340px;opacity:0;transform:translateY(10px);transition:all .3s cubic-bezier(.34,1.56,.64,1);pointer-events:none}
+.toast.show{opacity:1;transform:translateY(0)}
+.toast.success{background:#059669}
+.toast.error{background:var(--danger)}
+.toast svg{width:15px;height:15px;fill:none;stroke:white;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.notif-panel{position:fixed;top:70px;right:14px;width:310px;background:var(--surface);border:1.5px solid var(--border);border-radius:16px;box-shadow:var(--shadow-lg);z-index:500;overflow:hidden;opacity:0;pointer-events:none;transform:translateY(-10px);transition:all .2s}
+.notif-panel.show{opacity:1;pointer-events:all;transform:translateY(0)}
+.np-head{padding:12px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.np-head h3{font-family:'Syne',sans-serif;font-size:13px;font-weight:700}
+.np-clear{font-size:11px;color:var(--brand);font-weight:600;cursor:pointer}
+.np-item{padding:10px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;cursor:pointer;transition:.15s}
+.np-item:hover{background:var(--bg)}
+.np-item.unread{background:var(--brand-light)}
+.np-item:last-child{border-bottom:none}
+.np-dot{width:7px;height:7px;background:var(--brand);border-radius:50%;flex-shrink:0;margin-top:4px}
+.np-dot.read{background:transparent}
+.np-text{font-size:12px;color:var(--text);line-height:1.4}
+.np-text strong{font-weight:600}
+.np-time{font-size:10px;color:var(--text3);margin-top:2px}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.pulse{animation:pulse 2s ease-in-out infinite}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.goal-item{animation:fadeUp .2s ease both}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+    <div><div class="logo-name">Ispora</div><div class="logo-tagline">Impact Platform</div></div>
+  </div>
+  <div class="sidebar-profile" onclick="showToast('Opening profile...')">
+    <div class="sp-av">A<div class="sp-dot pulse"></div></div>
+    <div><div class="sp-name">Aisha Kamara</div><div class="sp-role">Student &bull; Software Engineering</div></div>
+  </div>
+  <nav class="nav">
+    <div class="nav-section">
+      <div class="nav-label">Main</div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to Dashboard...')"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>Dashboard</div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to Find a Mentor...')"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>Find a Mentor</div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to My Mentorships...')"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>My Mentorships<span class="nav-badge">1</span></div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to Sessions...')"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Sessions<span class="nav-badge">1</span></div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to Messages...')"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Messages<span class="nav-badge">2</span></div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-label">My Progress</div>
+      <div class="nav-item active" onclick="navTo(this)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>My Progress</div>
+    </div>
+  </nav>
+  <div class="sidebar-foot">
+    <div class="nav-item" onclick="showToast('Opening profile...')"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>My Profile</div>
+    <div class="nav-item" onclick="showToast('Opening settings...')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41M19.07 19.07l-1.41-1.41M4.93 19.07l1.41-1.41M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>Settings</div>
+    <div class="nav-item danger" onclick="showToast('Signing out...')"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Sign Out</div>
+  </div>
+</aside>
+<div class="main">
+  <div class="topbar">
+    <div class="topbar-left"><h2>My Progress</h2><p>Track your goals, resources and growth in one place</p></div>
+    <div class="topbar-right">
+      <button class="role-pill" onclick="showToast('Role switcher...')"><div class="role-pip"></div>Student<svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="icon-btn" onclick="toggleNotif()" id="notifBtn"><svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg><div class="notif-badge"></div></button>
+      <button class="icon-btn" onclick="showToast('Opening profile...')"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
+
+    </div>
+  </div>
+
+  <div class="page">
+    <!-- HERO -->
+    <div class="page-hero">
+      <div class="ph-grid"></div><div class="ph-orb"></div>
+      <div class="ph-inner">
+        <div>
+          <div class="ph-title">Your goals, your journey &#10022;</div>
+          <div class="ph-sub">Goals, resources and achievements — all in one place</div>
+        </div>
+        <div class="ph-stats">
+          <div class="ph-stat"><div class="ph-stat-val" id="statTotal">6</div><div class="ph-stat-label">Total Goals</div></div>
+          <div class="ph-stat"><div class="ph-stat-val" id="statDone">2</div><div class="ph-stat-label">Completed</div></div>
+          <div class="ph-stat"><div class="ph-stat-val" id="statPct">33%</div><div class="ph-stat-label">Progress</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN TABS -->
+    <div class="main-tabs">
+      <div class="main-tab active" id="mtab-goals" onclick="switchMainTab('goals')">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        My Goals <span class="tab-chip" id="tc-goals">6</span>
+      </div>
+      <div class="main-tab" id="mtab-resources" onclick="switchMainTab('resources')">
+        <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+        Resources <span class="tab-chip">12</span>
+      </div>
+      <div style="margin-left:auto;padding:0 0 0 16px;display:flex;align-items:center">
+        <button class="btn btn-brand btn-sm" id="addGoalBtn" onclick="openModal('addGoalModal')">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add Goal
+        </button>
+      </div>
+    </div>
+
+    <!-- GOALS PANEL -->
+    <div class="panel active" id="panel-goals">
+      <div class="goals-layout">
+        <div class="goals-main">
+          <div class="cat-tabs" id="catTabs">
+            <div class="cat-tab active" onclick="filterCat(this,'all')">All Goals <span class="cat-count" id="countAll">6</span></div>
+            <div class="cat-tab" onclick="filterCat(this,'active')">In Progress <span class="cat-count" id="countActive">4</span></div>
+            <div class="cat-tab" onclick="filterCat(this,'done')">Completed <span class="cat-count" id="countDone">2</span></div>
+            <div class="cat-tab" onclick="filterCat(this,'career')">Career <span class="cat-count" id="countCareer">3</span></div>
+            <div class="cat-tab" onclick="filterCat(this,'technical')">Technical <span class="cat-count" id="countTech">2</span></div>
+            <div class="cat-tab" onclick="filterCat(this,'applications')">Applications <span class="cat-count" id="countApps">1</span></div>
+          </div>
+          <div id="goalsList"></div>
+        </div>
+        <div class="goals-side">
+          <!-- PROGRESS RING -->
+          <div class="card">
+            <div class="card-head"><div class="card-title">Overall Progress</div></div>
+            <div class="card-body">
+              <div style="text-align:center;margin-bottom:14px">
+                <svg width="80" height="80" viewBox="0 0 80 80">
+                  <circle cx="40" cy="40" r="32" fill="none" stroke="var(--border)" stroke-width="8"/>
+                  <circle cx="40" cy="40" r="32" fill="none" stroke="var(--brand)" stroke-width="8" stroke-linecap="round" stroke-dasharray="201.06" id="progressRing" stroke-dashoffset="134.71" transform="rotate(-90 40 40)"/>
+                  <text x="40" y="45" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="16" font-weight="700" fill="var(--brand)" id="progressText">33%</text>
+                </svg>
+              </div>
+              <div class="mile-wrap"><div class="mile-row"><span>Career</span><span id="careerPct">33%</span></div><div class="mile-bar"><div class="mile-fill" id="careerBar" style="width:33%"></div></div></div>
+              <div class="mile-wrap"><div class="mile-row"><span>Technical</span><span id="techPct">50%</span></div><div class="mile-bar"><div class="mile-fill" id="techBar" style="width:50%"></div></div></div>
+              <div class="mile-wrap"><div class="mile-row"><span>Applications</span><span id="appsPct">0%</span></div><div class="mile-bar"><div class="mile-fill" id="appsBar" style="width:0%"></div></div></div>
+            </div>
+          </div>
+          <!-- STREAK -->
+          <div class="card">
+            <div class="card-head"><div class="card-title">This Month</div></div>
+            <div class="card-body">
+              <div style="font-size:20px;font-weight:700;color:var(--brand);margin-bottom:2px">&#128293; 5 day streak</div>
+              <div style="font-size:12px;color:var(--text3);margin-bottom:12px">Check in daily to maintain your streak</div>
+              <div class="streak-labels"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span></div>
+              <div class="streak-grid">
+                <div class="s-cell on"></div><div class="s-cell on"></div><div class="s-cell on"></div><div class="s-cell on"></div>
+                <div class="s-cell on"></div><div class="s-cell"></div><div class="s-cell"></div>
+                <div class="s-cell on"></div><div class="s-cell on"></div><div class="s-cell on"></div><div class="s-cell on"></div>
+                <div class="s-cell on"></div><div class="s-cell part"></div><div class="s-cell"></div>
+                <div class="s-cell on"></div><div class="s-cell on"></div><div class="s-cell on"></div><div class="s-cell on"></div>
+                <div class="s-cell on"></div><div class="s-cell"></div><div class="s-cell"></div>
+              </div>
+            </div>
+          </div>
+          <!-- ACHIEVEMENTS -->
+          <div class="card">
+            <div class="card-head"><div class="card-title">Achievements</div></div>
+            <div class="card-body" style="padding:10px 16px">
+              <div class="ach-item"><div class="ach-ico" style="background:#fef9c3">&#127942;</div><div><div style="font-weight:600;font-size:12px;color:var(--text)">First Goal Completed</div><div style="font-size:10px;color:var(--text3);margin-top:1px">Portfolio project shipped &bull; Mar 24</div></div></div>
+              <div class="ach-item"><div class="ach-ico" style="background:var(--brand-light)">&#9889;</div><div><div style="font-weight:600;font-size:12px;color:var(--text)">5-Day Streak</div><div style="font-size:10px;color:var(--text3);margin-top:1px">Checking in consistently</div></div></div>
+              <div class="ach-item" style="opacity:.5"><div class="ach-ico" style="background:var(--bg)">&#127919;</div><div><div style="font-weight:600;font-size:12px;color:var(--text)">All Goals Complete</div><div style="font-size:10px;color:var(--text3);margin-top:1px">Complete all 6 goals to unlock</div></div></div>
+            </div>
+          </div>
+          <!-- TIP -->
+          <div style="background:var(--brand-light);border:1.5px solid var(--brand);border-radius:var(--r);padding:14px">
+            <div style="font-weight:700;font-size:12px;color:var(--brand);margin-bottom:5px">&#128161; Tip from Dr. Amina</div>
+            <div style="font-size:12px;color:var(--text2);line-height:1.6">"Break each goal into one small action you can do today. Consistency over time is what gets you there."</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESOURCES PANEL -->
+    <div class="panel" id="panel-resources">
+      <div class="resources-layout">
+        <div class="res-search-row">
+          <div class="res-search">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="resSearch" placeholder="Search resources..." oninput="filterRes()"/>
+          </div>
+          <select class="res-sel" id="resTypeFilter" onchange="filterRes()">
+            <option value="">All Types</option>
+            <option value="pdf">PDF</option>
+            <option value="link">Link</option>
+            <option value="video">Video</option>
+            <option value="doc">Document</option>
+            <option value="sheet">Spreadsheet</option>
+          </select>
+          <select class="res-sel" id="resCatFilter" onchange="filterRes()">
+            <option value="">All Categories</option>
+            <option value="career">Career</option>
+            <option value="technical">Technical</option>
+            <option value="applications">Applications</option>
+            <option value="interview">Interviews</option>
+          </select>
+          <div style="margin-left:auto;font-size:12px;color:var(--text3)"><strong id="resCount">12</strong> resources</div>
+        </div>
+        <div id="resContent"></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- NOTIF -->
+<div class="notif-panel" id="notifPanel">
+  <div class="np-head"><h3>Notifications</h3><span class="np-clear" onclick="clearNotifs()">Mark all read</span></div>
+  <div class="np-item unread"><div class="np-dot"></div><div><div class="np-text">Session with <strong>Dr. Amina</strong> is today at 3 PM</div><div class="np-time">Today</div></div></div>
+  <div class="np-item"><div class="np-dot read"></div><div><div class="np-text">New resource shared by <strong>Dr. Amina</strong></div><div class="np-time">Yesterday</div></div></div>
+</div>
+
+<!-- ADD GOAL MODAL -->
+<div class="overlay" id="addGoalModal" onclick="overlayClose(event,'addGoalModal')">
+  <div class="modal">
+    <div class="modal-head">
+      <div><div class="modal-title">Add a New Goal</div><div class="modal-sub">Set a clear target for your mentorship journey</div></div>
+      <button class="modal-close" onclick="closeModal('addGoalModal')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div class="fg"><label class="fl">Goal title</label><input class="fi" type="text" id="newGoalTitle" placeholder="e.g. Get a summer internship in the UK"/></div>
+      <div class="fg"><label class="fl">Category</label><select class="fi" id="newGoalCat"><option value="career">Career</option><option value="technical">Technical Skills</option><option value="applications">Applications</option><option value="personal">Personal Development</option></select></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="fg"><label class="fl">Target date</label><input class="fi" type="date" id="newGoalDate" min="2026-03-26"/></div>
+        <div class="fg"><label class="fl">Priority</label><select class="fi" id="newGoalPriority"><option value="high">High</option><option value="medium" selected>Medium</option><option value="low">Low</option></select></div>
+      </div>
+      <div class="fg"><label class="fl">Notes (optional)</label><textarea class="fi" id="newGoalNotes" placeholder="Why is this goal important?"></textarea></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal('addGoalModal')">Cancel</button>
+      <button class="btn btn-brand" onclick="addGoal()"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add Goal</button>
+    </div>
+  </div>
+</div>
+
+<!-- EDIT GOAL MODAL -->
+<div class="overlay" id="editGoalModal" onclick="overlayClose(event,'editGoalModal')">
+  <div class="modal">
+    <div class="modal-head">
+      <div><div class="modal-title">Edit Goal</div><div class="modal-sub" id="editGoalSub">Update your goal</div></div>
+      <button class="modal-close" onclick="closeModal('editGoalModal')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div class="fg"><label class="fl">Goal title</label><input class="fi" type="text" id="editGoalTitle"/></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="fg"><label class="fl">Target date</label><input class="fi" type="date" id="editGoalDate"/></div>
+        <div class="fg"><label class="fl">Priority</label><select class="fi" id="editGoalPriority"><option value="high">High</option><option value="medium">Medium</option><option value="low">Low</option></select></div>
+      </div>
+      <div class="fg"><label class="fl">Notes</label><textarea class="fi" id="editGoalNotes"></textarea></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-danger btn-sm" onclick="deleteGoal()" style="margin-right:auto">Delete</button>
+      <button class="btn btn-outline" onclick="closeModal('editGoalModal')">Cancel</button>
+      <button class="btn btn-brand" onclick="saveEditGoal()">Save Changes</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toastEl"><svg id="toastIco" viewBox="0 0 24 24"></svg><span id="toastMsg"></span></div>
+
+<script>
+// ── GOALS DATA ──
+var goals = [
+  {id:1, title:'Build a full-stack portfolio project', cat:'technical', done:true, priority:'high', date:'Mar 24, 2026', notes:'Task manager app using React and Node.js. Pushed to GitHub.'},
+  {id:2, title:'Complete 2 LeetCode problems per week', cat:'technical', done:true, priority:'medium', date:'Ongoing', notes:'Focusing on arrays, strings and dynamic programming.'},
+  {id:3, title:'Apply to 5 international internships', cat:'applications', done:false, priority:'high', date:'Apr 30, 2026', notes:'Target UK and Germany. Companies: Barclays, Amazon, Revolut, N26, Wise.'},
+  {id:4, title:'Prepare for technical interviews', cat:'career', done:false, priority:'high', date:'May 15, 2026', notes:'System design + DSA. Do at least 3 mock interviews with Dr. Amina.'},
+  {id:5, title:'Update LinkedIn and portfolio website', cat:'career', done:false, priority:'medium', date:'Apr 10, 2026', notes:'Add the new project and get a professional headshot.'},
+  {id:6, title:'Research postgraduate programmes in the UK', cat:'career', done:false, priority:'low', date:'Jun 30, 2026', notes:'MSc Computer Science at Imperial, UCL and Edinburgh.'},
+];
+var nextId = 7;
+var currentFilter = 'all';
+var editingId = null;
+
+var catColors = {career:'tag-amber', technical:'tag-blue', applications:'tag-green', personal:'tag-gray'};
+var catLabels = {career:'Career', technical:'Technical', applications:'Applications', personal:'Personal'};
+var priColors = {high:'color:var(--danger)', medium:'color:var(--warn)', low:'color:var(--text3)'};
+
+function getFiltered() {
+  return goals.filter(function(g) {
+    if (currentFilter === 'all') return true;
+    if (currentFilter === 'active') return !g.done;
+    if (currentFilter === 'done') return g.done;
+    return g.cat === currentFilter;
+  });
+}
+
+function renderGoals() {
+  var list = getFiltered();
+  var html = '';
+  if (list.length === 0) {
+    html = '<div style="text-align:center;padding:40px 20px;color:var(--text3)">'
+      + '<div style="width:44px;height:44px;background:var(--brand-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px">'
+      + '<svg style="width:20px;height:20px;stroke:var(--brand);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>'
+      + '</div><div style="font-family:Syne,sans-serif;font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px">No goals here</div>'
+      + '<button class="btn btn-brand btn-sm" onclick="openModal(\'addGoalModal\')">Add a Goal</button></div>';
+  } else {
+    list.forEach(function(g, i) {
+      var cls = catColors[g.cat] || 'tag-gray';
+      var lbl = catLabels[g.cat] || g.cat;
+      html += '<div class="goal-item" style="animation-delay:' + (i * 0.04) + 's">'
+        + '<div class="goal-check ' + (g.done ? 'done' : '') + '" onclick="event.stopPropagation();toggleGoal(' + g.id + ')">'
+        + '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>'
+        + '</div>'
+        + '<div class="goal-body">'
+        + '<div class="goal-title ' + (g.done ? 'done' : '') + '">' + g.title + '</div>'
+        + '<div class="goal-meta">'
+        + '<div class="goal-meta-item"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>' + g.date + '</div>'
+        + '<div class="goal-meta-item" style="' + (priColors[g.priority] || '') + '"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>' + g.priority.charAt(0).toUpperCase() + g.priority.slice(1) + ' priority</div>'
+        + '</div>'
+        + (g.notes ? '<div style="font-size:11px;color:var(--text3);margin-top:5px;line-height:1.4">' + g.notes + '</div>' : '')
+        + '</div>'
+        + '<div class="goal-right">'
+        + '<span class="tag ' + cls + '">' + lbl + '</span>'
+        + '<button class="btn btn-ghost btn-xs" onclick="event.stopPropagation();openEdit(' + g.id + ')">'
+        + '<svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>Edit</button>'
+        + '</div>'
+        + '</div>';
+    });
+  }
+  document.getElementById('goalsList').innerHTML = html;
+  updateStats();
+}
+
+function updateStats() {
+  var total = goals.length;
+  var done = goals.filter(function(g){return g.done;}).length;
+  var pct = total ? Math.round((done / total) * 100) : 0;
+  document.getElementById('statTotal').textContent = total;
+  document.getElementById('statDone').textContent = done;
+  document.getElementById('statPct').textContent = pct + '%';
+  document.getElementById('progressText').textContent = pct + '%';
+  var offset = 201.06 - (201.06 * pct / 100);
+  document.getElementById('progressRing').setAttribute('stroke-dashoffset', offset.toFixed(2));
+  document.getElementById('tc-goals').textContent = total;
+  document.getElementById('countAll').textContent = total;
+  document.getElementById('countActive').textContent = goals.filter(function(g){return !g.done;}).length;
+  document.getElementById('countDone').textContent = goals.filter(function(g){return g.done;}).length;
+  document.getElementById('countCareer').textContent = goals.filter(function(g){return g.cat==='career';}).length;
+  document.getElementById('countTech').textContent = goals.filter(function(g){return g.cat==='technical';}).length;
+  document.getElementById('countApps').textContent = goals.filter(function(g){return g.cat==='applications';}).length;
+  var career = goals.filter(function(g){return g.cat==='career';});
+  var careerPct = career.length ? Math.round((career.filter(function(g){return g.done;}).length / career.length) * 100) : 0;
+  document.getElementById('careerPct').textContent = careerPct + '%';
+  document.getElementById('careerBar').style.width = careerPct + '%';
+  var tech = goals.filter(function(g){return g.cat==='technical';});
+  var techPct = tech.length ? Math.round((tech.filter(function(g){return g.done;}).length / tech.length) * 100) : 0;
+  document.getElementById('techPct').textContent = techPct + '%';
+  document.getElementById('techBar').style.width = techPct + '%';
+  var apps = goals.filter(function(g){return g.cat==='applications';});
+  var appsPct = apps.length ? Math.round((apps.filter(function(g){return g.done;}).length / apps.length) * 100) : 0;
+  document.getElementById('appsPct').textContent = appsPct + '%';
+  document.getElementById('appsBar').style.width = appsPct + '%';
+}
+
+function toggleGoal(id) {
+  var g = goals.find(function(x){return x.id===id;});
+  if (!g) return;
+  g.done = !g.done;
+  showToast(g.done ? 'Goal marked complete!' : 'Goal unmarked', g.done ? 'success' : '');
+  renderGoals();
+}
+
+function filterCat(el, cat) {
+  document.querySelectorAll('.cat-tab').forEach(function(t){t.classList.remove('active');});
+  el.classList.add('active');
+  currentFilter = cat;
+  renderGoals();
+}
+
+function addGoal() {
+  var title = document.getElementById('newGoalTitle').value.trim();
+  if (!title) { showToast('Please enter a goal title', 'error'); return; }
+  goals.push({id:nextId++, title:title, cat:document.getElementById('newGoalCat').value, done:false, priority:document.getElementById('newGoalPriority').value, date:document.getElementById('newGoalDate').value || 'No deadline', notes:document.getElementById('newGoalNotes').value.trim()});
+  document.getElementById('newGoalTitle').value = '';
+  document.getElementById('newGoalNotes').value = '';
+  closeModal('addGoalModal');
+  currentFilter = 'all';
+  document.querySelectorAll('.cat-tab').forEach(function(t){t.classList.remove('active');});
+  document.querySelectorAll('.cat-tab')[0].classList.add('active');
+  renderGoals();
+  showToast('Goal added!', 'success');
+}
+
+function openEdit(id) {
+  var g = goals.find(function(x){return x.id===id;});
+  if (!g) return;
+  editingId = id;
+  document.getElementById('editGoalSub').textContent = g.title;
+  document.getElementById('editGoalTitle').value = g.title;
+  document.getElementById('editGoalPriority').value = g.priority;
+  document.getElementById('editGoalNotes').value = g.notes || '';
+  openModal('editGoalModal');
+}
+
+function saveEditGoal() {
+  var g = goals.find(function(x){return x.id===editingId;});
+  if (!g) return;
+  g.title = document.getElementById('editGoalTitle').value.trim() || g.title;
+  g.priority = document.getElementById('editGoalPriority').value;
+  g.notes = document.getElementById('editGoalNotes').value.trim();
+  closeModal('editGoalModal');
+  renderGoals();
+  showToast('Goal updated!', 'success');
+}
+
+function deleteGoal() {
+  goals = goals.filter(function(x){return x.id !== editingId;});
+  closeModal('editGoalModal');
+  renderGoals();
+  showToast('Goal deleted.');
+}
+
+// ── RESOURCES DATA ──
+var allResources = [
+  {id:1, title:'Resume & LinkedIn Optimization Template', type:'pdf', cat:'career', source:'mentor', from:'Dr. Amina Osei', date:'Mar 20, 2026', isNew:true, desc:'Battle-tested template that helped 10+ students get callbacks from UK tech companies. Includes ATS tips.'},
+  {id:2, title:'UK Tech Companies Hiring Nigerians 2026', type:'sheet', cat:'applications', source:'mentor', from:'Dr. Amina Osei', date:'Mar 15, 2026', isNew:true, desc:'Curated spreadsheet with contacts, salary ranges and deadlines for UK tech companies.'},
+  {id:3, title:'Portfolio Checklist — What Senior Engineers Look For', type:'pdf', cat:'career', source:'mentor', from:'Dr. Amina Osei', date:'Mar 10, 2026', isNew:false, desc:'Personal checklist for reviewing portfolios. Covers GitHub hygiene, README quality and demo.'},
+  {id:4, title:'Cracking the Coding Interview — Key Chapters', type:'link', cat:'technical', source:'mentor', from:'Dr. Amina Osei', date:'Mar 8, 2026', isNew:false, desc:'Focus on chapters 1-5 and 8. Curated list of the most important problems for UK interviews.'},
+  {id:5, title:'System Design Primer', type:'link', cat:'technical', source:'mentor', from:'Dr. Amina Osei', date:'Mar 1, 2026', isNew:false, desc:'Open-source guide to system design interviews. Start here before any mock interviews.'},
+  {id:6, title:'How to Write a Cover Letter That Works', type:'doc', cat:'applications', source:'mentor', from:'Dr. Amina Osei', date:'Feb 22, 2026', isNew:false, desc:'Two real examples included — one bad, one great. Very practical.'},
+  {id:7, title:'Barclays Graduate Programme — Inside Info', type:'pdf', cat:'applications', source:'mentor', from:'Dr. Amina Osei', date:'Feb 14, 2026', isNew:false, desc:'Insider notes on the Barclays graduate hiring process and how to prepare.'},
+  {id:8, title:'How to Network as an African Student in the UK', type:'video', cat:'career', source:'ispora', from:'Ispora Platform', date:'Mar 22, 2026', isNew:true, desc:'25-minute guide on building a professional network from scratch in the UK.'},
+  {id:9, title:'Technical Interview Prep Roadmap — 12 Weeks', type:'doc', cat:'interview', source:'ispora', from:'Ispora Platform', date:'Mar 18, 2026', isNew:false, desc:'Structured 12-week study plan covering DSA, system design and behavioural questions.'},
+  {id:10, title:'AWS Cloud Practitioner — Free Study Guide', type:'link', cat:'technical', source:'ispora', from:'Ispora Platform', date:'Mar 12, 2026', isNew:false, desc:'Complete free resources for the AWS Cloud Practitioner certification.'},
+  {id:11, title:'Salary Negotiation Script for First-Time Offers', type:'doc', cat:'career', source:'ispora', from:'Ispora Platform', date:'Mar 5, 2026', isNew:false, desc:'Word-for-word script with email templates and advice on pushing back on offers.'},
+  {id:12, title:'Student Visa to Work Visa — UK Tech Route Guide', type:'pdf', cat:'applications', source:'ispora', from:'Ispora Platform', date:'Feb 28, 2026', isNew:false, desc:'Guide to UK Skilled Worker and Graduate visa routes for Nigerian tech students.'},
+];
+
+var typeIconsHTML = {
+  pdf: '<div class="r-ico ri-pdf"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>',
+  link: '<div class="r-ico ri-link"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div>',
+  video: '<div class="r-ico ri-video"><svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg></div>',
+  doc: '<div class="r-ico ri-doc"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg></div>',
+  sheet: '<div class="r-ico ri-sheet"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/></svg></div>',
+};
+var resCatTags = {career:'tag-amber', technical:'tag-blue', applications:'tag-green', interview:'tag-teal', other:'tag-gray'};
+
+function filterRes() {
+  var q = document.getElementById('resSearch').value.toLowerCase().trim();
+  var type = document.getElementById('resTypeFilter').value;
+  var cat = document.getElementById('resCatFilter').value;
+  var list = allResources.filter(function(r) {
+    if (q && !r.title.toLowerCase().includes(q) && !r.desc.toLowerCase().includes(q)) return false;
+    if (type && r.type !== type) return false;
+    if (cat && r.cat !== cat) return false;
+    return true;
+  });
+  document.getElementById('resCount').textContent = list.length;
+  var mentor = list.filter(function(r){return r.source === 'mentor';});
+  var ispora = list.filter(function(r){return r.source === 'ispora';});
+  var html = '';
+  if (mentor.length > 0) {
+    var newCount = mentor.filter(function(r){return r.isNew;}).length;
+    html += '<div class="res-section-title">Shared by Dr. Amina' + (newCount > 0 ? ' <span class="new-badge">' + newCount + ' new</span>' : '') + '</div>';
+    html += '<div class="res-grid">' + mentor.map(buildResCard).join('') + '</div>';
+  }
+  if (ispora.length > 0) {
+    html += '<div class="res-section-title" style="margin-top:8px">Ispora Curated Guides</div>';
+    html += '<div class="res-grid">' + ispora.map(buildResCard).join('') + '</div>';
+  }
+  if (!html) html = '<div style="text-align:center;padding:60px 20px;color:var(--text3);font-size:13px">No resources match your search</div>';
+  document.getElementById('resContent').innerHTML = html;
+}
+
+function buildResCard(r) {
+  var icon = typeIconsHTML[r.type] || typeIconsHTML.doc;
+  var catClass = resCatTags[r.cat] || 'tag-gray';
+  var newBadge = r.isNew ? '<span class="new-badge">New</span>' : '';
+  return '<div class="rcard">'
+    + '<div class="rcard-top">'
+    + icon
+    + '<div style="flex:1;min-width:0">'
+    + '<div class="r-title">' + r.title + ' ' + newBadge + '</div>'
+    + '<div class="r-from">' + r.from + ' \u00b7 ' + r.date + '</div>'
+    + '<div class="r-desc">' + r.desc + '</div>'
+    + '</div></div>'
+    + '<div class="rcard-foot">'
+    + '<span class="tag ' + catClass + '">' + r.cat + '</span>'
+    + '<div style="display:flex;gap:5px">'
+    + '<button class="btn btn-ghost btn-xs" onclick="event.stopPropagation();showToast(\'Saved!\',\'success\')">'
+    + '<svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg></button>'
+    + '<button class="btn btn-brand btn-xs" onclick="event.stopPropagation();showToast(\'Opening resource...\',\'success\')">Open</button>'
+    + '</div></div></div>';
+}
+
+// ── TAB SWITCHING ──
+function switchMainTab(tab) {
+  document.getElementById('mtab-goals').classList.toggle('active', tab === 'goals');
+  document.getElementById('mtab-resources').classList.toggle('active', tab === 'resources');
+  document.getElementById('panel-goals').classList.toggle('active', tab === 'goals');
+  document.getElementById('panel-resources').classList.toggle('active', tab === 'resources');
+  var ab = document.getElementById('addGoalBtn'); if(ab) ab.style.display = tab === 'goals' ? 'inline-flex' : 'none';
+  if (tab === 'resources') filterRes();
+}
+
+// ── MODAL ──
+function openModal(id){ document.getElementById(id).classList.add('show'); document.body.style.overflow='hidden'; }
+function closeModal(id){ document.getElementById(id).classList.remove('show'); document.body.style.overflow=''; }
+function overlayClose(e,id){ if(e.target===e.currentTarget) closeModal(id); }
+
+// ── TOAST ──
+var tTimer;
+function showToast(msg, type) {
+  type = type || '';
+  var el = document.getElementById('toastEl'), ico = document.getElementById('toastIco'), m = document.getElementById('toastMsg');
+  el.className = 'toast';
+  if (type === 'success') { el.classList.add('success'); ico.innerHTML = '<polyline points="20 6 9 17 4 12"/>'; }
+  else if (type === 'error') { el.classList.add('error'); ico.innerHTML = '<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>'; }
+  else { ico.innerHTML = '<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>'; }
+  m.textContent = msg;
+  clearTimeout(tTimer);
+  setTimeout(function(){ el.classList.add('show'); }, 10);
+  tTimer = setTimeout(function(){ el.classList.remove('show'); }, 3200);
+}
+
+// ── NAV ──
+function navTo(el){ document.querySelectorAll('.nav-item').forEach(function(i){i.classList.remove('active');}); el.classList.add('active'); }
+function toggleNotif(){ document.getElementById('notifPanel').classList.toggle('show'); }
+function clearNotifs(){ document.querySelectorAll('.np-item.unread').forEach(function(i){i.classList.remove('unread');i.querySelector('.np-dot').classList.add('read');}); showToast('All read','success'); }
+document.addEventListener('click', function(e){ var p=document.getElementById('notifPanel'),b=document.getElementById('notifBtn'); if(!p.contains(e.target)&&!b.contains(e.target)) p.classList.remove('show'); });
+
+// ── INIT ──
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', renderGoals);
+} else {
+  renderGoals();
+}
+</script>
+</body>
+</html>

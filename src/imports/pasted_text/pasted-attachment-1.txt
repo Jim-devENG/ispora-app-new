@@ -1,0 +1,75 @@
+[Hydrated] sites-runtime.04f66058feafef354e13705358698cf2ae30f1cd1c6baaa2efc88d31da9a91ed.js:127:4207
+SupportWidget Debug: 
+Object { hasUser: false, hasToken: false, userEmail: undefined, pathname: "/auth", isLandingOrAuth: true, showWidget: false }
+80e24accb71daf580cdb770940e54fa5d878e714.js:57906:18
+❌ Widget NOT showing because: 
+Object { hasUser: false, hasToken: false, isLandingOrAuth: true, pathname: "/auth" }
+80e24accb71daf580cdb770940e54fa5d878e714.js:57913:122
+=== Loading Session on Mount === 80e24accb71daf580cdb770940e54fa5d878e714.js:17142:17
+Found old token in localStorage, will verify with Supabase 80e24accb71daf580cdb770940e54fa5d878e714.js:17142:113
+✓ Supabase session found, fetching user profile... 80e24accb71daf580cdb770940e54fa5d878e714.js:17154:19
+=== Auth State Change === 80e24accb71daf580cdb770940e54fa5d878e714.js:17210:19
+Event: INITIAL_SESSION 80e24accb71daf580cdb770940e54fa5d878e714.js:17210:61
+Session exists: true 80e24accb71daf580cdb770940e54fa5d878e714.js:17210:87
+✓ Session restored successfully 80e24accb71daf580cdb770940e54fa5d878e714.js:17192:52
+=== Session Loading Complete === 80e24accb71daf580cdb770940e54fa5d878e714.js:17203:30
+SupportWidget Debug: 
+Object { hasUser: true, hasToken: false, userEmail: "seyimba1234@gmail.com", pathname: "/auth", isLandingOrAuth: true, showWidget: false }
+80e24accb71daf580cdb770940e54fa5d878e714.js:57906:18
+❌ Widget NOT showing because: 
+Object { hasUser: true, hasToken: false, isLandingOrAuth: true, pathname: "/auth" }
+80e24accb71daf580cdb770940e54fa5d878e714.js:57913:122
+=== Auth State Change === 80e24accb71daf580cdb770940e54fa5d878e714.js:17210:19
+Event: INITIAL_SESSION 80e24accb71daf580cdb770940e54fa5d878e714.js:17210:61
+Session exists: true 80e24accb71daf580cdb770940e54fa5d878e714.js:17210:87
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/stats/mentor 80e24accb71daf580cdb770940e54fa5d878e714.js:22565:13
+Getting valid token... 80e24accb71daf580cdb770940e54fa5d878e714.js:22541:107
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/mentorships 80e24accb71daf580cdb770940e54fa5d878e714.js:22565:13
+Token refresh already in progress, waiting... 80e24accb71daf580cdb770940e54fa5d878e714.js:22539:22
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/requests?type=received 80e24accb71daf580cdb770940e54fa5d878e714.js:22565:13
+Token refresh already in progress, waiting... 80e24accb71daf580cdb770940e54fa5d878e714.js:22539:22
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/notifications 80e24accb71daf580cdb770940e54fa5d878e714.js:22565:13
+Token refresh already in progress, waiting... 80e24accb71daf580cdb770940e54fa5d878e714.js:22539:22
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/sessions 80e24accb71daf580cdb770940e54fa5d878e714.js:22565:13
+Token refresh already in progress, waiting... 80e24accb71daf580cdb770940e54fa5d878e714.js:22539:22
+✓ Token refreshed and obtained 80e24accb71daf580cdb770940e54fa5d878e714.js:22544:104
+Authorization header being sent: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY... 5 80e24accb71daf580cdb770940e54fa5d878e714.js:22567:13
+SupportWidget Debug: 
+Object { hasUser: true, hasToken: false, userEmail: "seyimba1234@gmail.com", pathname: "/auth", isLandingOrAuth: true, showWidget: false }
+80e24accb71daf580cdb770940e54fa5d878e714.js:57906:18
+❌ Widget NOT showing because: 
+Object { hasUser: true, hasToken: false, isLandingOrAuth: true, pathname: "/auth" }
+80e24accb71daf580cdb770940e54fa5d878e714.js:57913:122
+=== Auth State Change === 80e24accb71daf580cdb770940e54fa5d878e714.js:17210:19
+Event: INITIAL_SESSION 80e24accb71daf580cdb770940e54fa5d878e714.js:17210:61
+Session exists: true 80e24accb71daf580cdb770940e54fa5d878e714.js:17210:87
+API Response (/notifications): 
+Object { success: true, notifications: (19) […] }
+80e24accb71daf580cdb770940e54fa5d878e714.js:22577:35
+API Response (/stats/mentor): 
+Object { success: true, stats: {…} }
+80e24accb71daf580cdb770940e54fa5d878e714.js:22577:35
+The resource at “https://ispora.app/_runtimes/sites-runtime.04f66058feafef354e13705358698cf2ae30f1cd1c6baaa2efc88d31da9a91ed.js” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. auth
+The resource at “https://ispora.app/_components/v2/80e24accb71daf580cdb770940e54fa5d878e714.js” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. auth
+The resource at “https://ispora.app/_json/08273fed-a692-49d0-8df8-e694a80dee7f/_index.json” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. auth
+API Response (/requests?type=received): 
+Object { success: true, requests: (3) […] }
+80e24accb71daf580cdb770940e54fa5d878e714.js:22577:35
+API Response (/mentorships): 
+Object { success: true, mentorships: (2) […] }
+80e24accb71daf580cdb770940e54fa5d878e714.js:22577:35
+API Response (/sessions): 
+Object { success: true, sessions: (79) […] }
+80e24accb71daf580cdb770940e54fa5d878e714.js:22577:35
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/resources?mentorshipId=mentorship_1774650271842_7nbm5j0sp 80e24accb71daf580cdb770940e54fa5d878e714.js:22565:13
+Getting valid token... 80e24accb71daf580cdb770940e54fa5d878e714.js:22541:107
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/resources?mentorshipId=mentorship_1774866069199_wmi8vwyqj 80e24accb71daf580cdb770940e54fa5d878e714.js:22565:13
+Token refresh already in progress, waiting... 80e24accb71daf580cdb770940e54fa5d878e714.js:22539:22
+✓ Token refreshed and obtained 80e24accb71daf580cdb770940e54fa5d878e714.js:22544:104
+Authorization header being sent: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY... 2 80e24accb71daf580cdb770940e54fa5d878e714.js:22567:13
+API Response (/resources?mentorshipId=mentorship_1774866069199_wmi8vwyqj): 
+Object { success: true, resources: [] }
+80e24accb71daf580cdb770940e54fa5d878e714.js:22577:35
+API Response (/resources?mentorshipId=mentorship_1774650271842_7nbm5j0sp): 
+Object { success: true, resources: (1) […] }
+80e24accb71daf580cdb770940e54fa5d878e714.js:22577:35

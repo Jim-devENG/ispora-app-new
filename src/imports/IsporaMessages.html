@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ispora — Messages</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --brand:#021ff6;--brand-h:#0118c4;--brand-light:#eef0ff;
+  --accent:#00c896;--accent-light:#e0faf4;
+  --warn:#f59e0b;--warn-light:#fef9ee;
+  --danger:#ef4444;--danger-light:#fff1f1;
+  --success:#10b981;--success-light:#ecfdf5;
+  --bg:#f0f2ff;--surface:#fff;--surface2:#f7f8ff;
+  --border:#e2e5f5;--border2:#c8cef0;
+  --text:#07094a;--text2:#3d4275;--text3:#8b90b8;
+  --sidebar-w:224px;--topbar-h:64px;--r:16px;
+  --shadow-sm:0 1px 4px rgba(2,31,246,0.06);
+  --shadow:0 4px 20px rgba(2,31,246,0.09);
+  --shadow-lg:0 12px 48px rgba(2,31,246,0.15);
+}
+html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+button{cursor:pointer;border:none;background:none;font-family:inherit;font-size:inherit}
+input,textarea{font-family:inherit;font-size:inherit}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+
+.app{display:flex;height:100vh;overflow:hidden}
+
+/* ── SIDEBAR ── */
+.sidebar{width:var(--sidebar-w);background:var(--surface);border-right:1.5px solid var(--border);display:flex;flex-direction:column;flex-shrink:0}
+.sidebar-logo{padding:16px 18px 14px;display:flex;align-items:center;gap:10px;border-bottom:1.5px solid var(--border)}
+.logo-icon{width:28px;height:28px;background:var(--brand);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo-icon svg{width:14px;height:14px;fill:none;stroke:white;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.logo-name{font-family:'Syne',sans-serif;font-weight:700;font-size:14px;color:var(--brand);letter-spacing:-0.3px;line-height:1}
+.logo-tagline{font-size:9px;color:var(--text3);margin-top:1px}
+.sidebar-profile{margin:12px 14px 6px;padding:11px 13px;background:var(--brand-light);border-radius:12px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:.15s}
+.sidebar-profile:hover{background:#e0e3ff}
+.sp-av{width:36px;height:36px;border-radius:50%;background:var(--brand);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px;flex-shrink:0;position:relative}
+.sp-online{position:absolute;bottom:1px;right:1px;width:8px;height:8px;background:var(--accent);border-radius:50%;border:2px solid white}
+.sp-name{font-weight:600;font-size:12px;color:var(--text);line-height:1.2}
+.sp-role{font-size:11px;color:var(--brand);font-weight:500;margin-top:2px}
+.nav{flex:1;overflow-y:auto;padding:8px 12px}
+.nav-section{margin-bottom:20px}
+.nav-label{font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.09em;padding:0 8px;margin-bottom:5px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:10px;color:var(--text2);font-size:13px;font-weight:500;transition:all .15s;cursor:pointer}
+.nav-item:hover{background:var(--brand-light);color:var(--brand)}
+.nav-item.active{background:var(--brand);color:white}
+.nav-item svg{width:15px;height:15px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.nav-badge{margin-left:auto;background:var(--danger);color:white;font-size:10px;font-weight:700;padding:1px 6px;border-radius:20px;min-width:18px;text-align:center}
+.nav-item.active .nav-badge{background:rgba(255,255,255,0.35)}
+.sidebar-foot{padding:12px;border-top:1.5px solid var(--border)}
+.nav-item.danger{color:var(--danger)}
+.nav-item.danger:hover{background:var(--danger-light)}
+
+/* ── MAIN ── */
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0}
+.topbar{height:var(--topbar-h);background:var(--surface);border-bottom:1.5px solid var(--border);padding:0 28px;display:flex;align-items:center;gap:14px;flex-shrink:0}
+.topbar-left{flex:1}
+.topbar-left h2{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--text)}
+.topbar-left p{font-size:12px;color:var(--text3);margin-top:1px}
+.topbar-right{display:flex;align-items:center;gap:8px}
+.role-pill{display:flex;align-items:center;gap:6px;background:var(--bg);border:1.5px solid var(--border);border-radius:20px;padding:5px 12px 5px 8px;font-size:12px;font-weight:600;color:var(--text2);cursor:pointer;transition:all .2s}
+.role-pill:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-light)}
+.role-pip{width:8px;height:8px;background:var(--brand);border-radius:50%}
+.role-pill svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2}
+.icon-btn{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--bg);border:1.5px solid var(--border);color:var(--text2);cursor:pointer;transition:all .2s;position:relative}
+.icon-btn:hover{background:var(--brand-light);color:var(--brand);border-color:var(--brand)}
+.icon-btn svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.notif-badge{position:absolute;top:6px;right:6px;width:7px;height:7px;background:var(--danger);border-radius:50%;border:1.5px solid var(--surface)}
+
+/* ── MESSAGING LAYOUT ── */
+.msg-wrap{flex:1;display:flex;overflow:hidden;min-height:0}
+
+/* ── CONVERSATION LIST ── */
+.conv-list{width:300px;flex-shrink:0;border-right:1.5px solid var(--border);background:var(--surface);display:flex;flex-direction:column;overflow:hidden}
+.cl-head{padding:14px 16px;border-bottom:1.5px solid var(--border);flex-shrink:0}
+.cl-head-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.cl-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--text)}
+.cl-new-btn{display:flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:var(--brand);cursor:pointer;padding:5px 10px;border-radius:8px;background:var(--brand-light);border:none;transition:.15s}
+.cl-new-btn:hover{background:#e0e3ff}
+.cl-new-btn svg{width:12px;height:12px;stroke:var(--brand);fill:none;stroke-width:2.5;stroke-linecap:round}
+.cl-search{position:relative}
+.cl-search input{width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:9px;padding:7px 12px 7px 30px;font-size:12px;color:var(--text);outline:none;transition:.2s}
+.cl-search input:focus{border-color:var(--brand);background:white}
+.cl-search input::placeholder{color:var(--text3)}
+.cl-search svg{position:absolute;left:9px;top:50%;transform:translateY(-50%);width:13px;height:13px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+.cl-tabs{display:flex;padding:8px 12px 0;gap:4px;flex-shrink:0}
+.cl-tab{flex:1;padding:6px;border-radius:8px;font-size:11px;font-weight:600;color:var(--text3);text-align:center;cursor:pointer;transition:.15s}
+.cl-tab.active{background:var(--brand-light);color:var(--brand)}
+.cl-tab:not(.active):hover{color:var(--text2)}
+.cl-items{flex:1;overflow-y:auto;padding:6px 8px}
+.conv-item{display:flex;align-items:center;gap:10px;padding:10px;border-radius:10px;cursor:pointer;transition:.15s;margin-bottom:2px;position:relative}
+.conv-item:hover{background:var(--bg)}
+.conv-item.active{background:var(--brand-light)}
+.conv-item.active .ci-name{color:var(--brand)}
+.ci-av{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px;flex-shrink:0;position:relative}
+.ci-dot{position:absolute;bottom:1px;right:1px;width:9px;height:9px;border-radius:50%;border:2px solid white}
+.ci-dot.online{background:var(--accent)}
+.ci-dot.offline{background:var(--border2)}
+.ci-body{flex:1;min-width:0}
+.ci-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:2px}
+.ci-name{font-weight:600;font-size:13px;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ci-time{font-size:10px;color:var(--text3);flex-shrink:0;margin-left:6px}
+.ci-preview{font-size:11px;color:var(--text3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ci-preview.unread{color:var(--text2);font-weight:500}
+.ci-unread{width:17px;height:17px;background:var(--brand);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:white;flex-shrink:0;margin-left:6px}
+
+/* ── CHAT AREA ── */
+.chat-area{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0;background:var(--surface2)}
+
+/* Chat header */
+.chat-head{background:var(--surface);border-bottom:1.5px solid var(--border);padding:12px 20px;display:flex;align-items:center;gap:12px;flex-shrink:0}
+.ch-av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px;flex-shrink:0;position:relative}
+.ch-online{position:absolute;bottom:1px;right:1px;width:9px;height:9px;background:var(--accent);border-radius:50%;border:2px solid white}
+.ch-info{flex:1}
+.ch-name{font-weight:700;font-size:14px;color:var(--text)}
+.ch-status{font-size:11px;color:var(--text3);margin-top:1px}
+.ch-actions{display:flex;gap:6px}
+.ch-btn{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;background:var(--bg);border:1.5px solid var(--border);color:var(--text2);cursor:pointer;transition:.15s}
+.ch-btn:hover{background:var(--brand-light);color:var(--brand);border-color:var(--brand)}
+.ch-btn svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* Messages */
+.chat-msgs{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:4px;min-height:0}
+.msg-day{text-align:center;margin:12px 0 8px}
+.msg-day span{font-size:11px;color:var(--text3);background:var(--border);padding:3px 10px;border-radius:20px}
+.msg-row{display:flex;align-items:flex-end;gap:8px;margin-bottom:2px}
+.msg-row.mine{flex-direction:row-reverse}
+.msg-av{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:11px;flex-shrink:0;margin-bottom:2px}
+.msg-av.placeholder{background:transparent;width:28px}
+.msg-bubble{max-width:72%;padding:10px 14px;border-radius:16px;font-size:13px;line-height:1.5;position:relative}
+.msg-row:not(.mine) .msg-bubble{background:var(--surface);border:1.5px solid var(--border);border-bottom-left-radius:4px;color:var(--text)}
+.msg-row.mine .msg-bubble{background:var(--brand);color:white;border-bottom-right-radius:4px}
+.msg-time{font-size:10px;margin-top:4px;display:block}
+.msg-row:not(.mine) .msg-time{color:var(--text3)}
+.msg-row.mine .msg-time{color:rgba(255,255,255,0.6);text-align:right}
+.msg-status{font-size:10px;color:rgba(255,255,255,0.6);margin-left:4px}
+
+/* File/resource attachment bubble */
+.msg-attachment{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.15);border-radius:10px;padding:8px 12px;margin-top:6px;cursor:pointer}
+.msg-attachment svg{width:18px;height:18px;stroke:white;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.msg-attachment-info{flex:1;min-width:0}
+.msg-attachment-name{font-size:12px;font-weight:600;color:white;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.msg-attachment-size{font-size:10px;color:rgba(255,255,255,0.65);margin-top:1px}
+
+/* Typing indicator */
+.typing-row{display:flex;align-items:flex-end;gap:8px;margin-bottom:4px}
+.typing-bubble{background:var(--surface);border:1.5px solid var(--border);border-radius:16px;border-bottom-left-radius:4px;padding:10px 14px;display:flex;gap:4px;align-items:center}
+.typing-dot{width:6px;height:6px;border-radius:50%;background:var(--text3)}
+.typing-dot:nth-child(1){animation:tdot .9s ease infinite}
+.typing-dot:nth-child(2){animation:tdot .9s ease .2s infinite}
+.typing-dot:nth-child(3){animation:tdot .9s ease .4s infinite}
+@keyframes tdot{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-5px);opacity:1}}
+
+/* Input area */
+.chat-input-wrap{background:var(--surface);border-top:1.5px solid var(--border);padding:12px 20px;flex-shrink:0}
+.chat-input-box{display:flex;align-items:flex-end;gap:10px;background:var(--bg);border:1.5px solid var(--border);border-radius:14px;padding:8px 10px 8px 14px;transition:.2s}
+.chat-input-box:focus-within{border-color:var(--brand);background:white;box-shadow:0 0 0 3px rgba(2,31,246,0.07)}
+.chat-input-box textarea{flex:1;border:none;background:transparent;resize:none;font-size:13px;color:var(--text);outline:none;max-height:120px;min-height:22px;line-height:1.5;padding:2px 0}
+.chat-input-box textarea::placeholder{color:var(--text3)}
+.chat-input-actions{display:flex;gap:6px;align-items:center;flex-shrink:0}
+.ci-action-btn{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--text3);transition:.15s;cursor:pointer}
+.ci-action-btn:hover{background:var(--brand-light);color:var(--brand)}
+.ci-action-btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.send-btn{width:36px;height:36px;border-radius:10px;background:var(--brand);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .15s;flex-shrink:0;border:none}
+.send-btn:hover{background:var(--brand-h);transform:scale(1.05)}
+.send-btn svg{width:16px;height:16px;fill:none;stroke:white;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.send-btn:disabled{background:var(--border);cursor:default;transform:none}
+
+/* Quick reply chips */
+.quick-replies{display:flex;gap:6px;padding:8px 20px 0;flex-wrap:wrap;flex-shrink:0}
+.qr-chip{font-size:11px;font-weight:500;padding:5px 12px;border-radius:20px;background:var(--surface);border:1.5px solid var(--border);color:var(--text2);cursor:pointer;transition:.15s;white-space:nowrap}
+.qr-chip:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-light)}
+
+/* Empty state */
+.chat-empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--text3);padding:40px}
+.ce-ico{width:64px;height:64px;background:var(--brand-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.ce-ico svg{width:28px;height:28px;stroke:var(--brand);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ce-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:var(--text);margin-bottom:6px}
+.ce-sub{font-size:13px;color:var(--text3);text-align:center;max-width:260px;line-height:1.5}
+
+/* Right info panel */
+.info-panel{width:260px;flex-shrink:0;border-left:1.5px solid var(--border);background:var(--surface);display:flex;flex-direction:column;overflow-y:auto}
+.ip-head{padding:16px 16px 12px;border-bottom:1px solid var(--border)}
+.ip-av{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:20px;margin:0 auto 10px;border:2.5px solid var(--border)}
+.ip-name{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--text);text-align:center}
+.ip-role{font-size:11px;color:var(--text3);text-align:center;margin-top:3px}
+.ip-section{padding:12px 16px;border-bottom:1px solid var(--border)}
+.ip-section:last-child{border-bottom:none}
+.ip-section h4{font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px}
+.ip-stat{display:flex;justify-content:space-between;margin-bottom:6px;font-size:12px}
+.ip-stat-label{color:var(--text3)}
+.ip-stat-val{font-weight:600;color:var(--text)}
+.ip-action{display:flex;flex-direction:column;gap:6px}
+.ip-btn{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:9px;font-size:12px;font-weight:600;cursor:pointer;transition:.15s;border:none;width:100%}
+.ip-btn svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.ip-btn-brand{background:var(--brand);color:white}
+.ip-btn-brand:hover{background:var(--brand-h)}
+.ip-btn-outline{background:var(--surface);color:var(--text2);border:1.5px solid var(--border)}
+.ip-btn-outline:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-light)}
+.shared-file{display:flex;align-items:center;gap:8px;padding:7px 8px;border-radius:8px;cursor:pointer;transition:.15s;margin-bottom:4px}
+.shared-file:hover{background:var(--bg)}
+.sf-icon{width:30px;height:30px;border-radius:7px;background:var(--brand-light);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sf-icon svg{width:14px;height:14px;stroke:var(--brand);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.sf-name{font-size:11px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sf-meta{font-size:10px;color:var(--text3)}
+
+/* Tags */
+.tag{display:inline-flex;font-size:10px;padding:3px 8px;border-radius:20px;font-weight:500}
+.tag-blue{background:var(--brand-light);color:var(--brand)}
+.tag-green{background:var(--success-light);color:var(--success)}
+.tag-teal{background:var(--accent-light);color:#0f766e}
+
+/* OVERLAY / MODAL */
+.overlay{position:fixed;inset:0;background:rgba(7,9,74,0.5);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;z-index:1000;opacity:0;pointer-events:none;transition:opacity .2s;padding:16px}
+.overlay.show{opacity:1;pointer-events:all}
+.modal{background:var(--surface);border-radius:18px;width:100%;max-width:480px;box-shadow:var(--shadow-lg);transform:translateY(18px) scale(0.97);transition:transform .25s cubic-bezier(.34,1.56,.64,1);max-height:90vh;overflow-y:auto}
+.overlay.show .modal{transform:translateY(0) scale(1)}
+.modal-head{padding:20px 24px 16px;display:flex;align-items:flex-start;justify-content:space-between;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--surface);z-index:1}
+.modal-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:var(--text)}
+.modal-sub{font-size:12px;color:var(--text3);margin-top:3px}
+.modal-close{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--text3);cursor:pointer;transition:.15s}
+.modal-close:hover{background:var(--bg);color:var(--text)}
+.modal-close svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.modal-body{padding:20px 24px}
+.modal-foot{padding:14px 24px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:10px}
+.fg{margin-bottom:14px}
+.fl{display:block;font-size:12px;font-weight:600;color:var(--text2);margin-bottom:5px}
+.fi{width:100%;border:1.5px solid var(--border);border-radius:10px;padding:10px 14px;font-size:13px;color:var(--text);background:var(--surface);outline:none;transition:.2s}
+.fi:focus{border-color:var(--brand);box-shadow:0 0 0 3px rgba(2,31,246,0.07)}
+.fi::placeholder{color:var(--text3)}
+textarea.fi{resize:vertical;min-height:90px;line-height:1.5}
+select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%238b90b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px;cursor:pointer}
+
+/* BTN */
+.btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:10px;font-size:13px;font-weight:600;transition:all .18s;cursor:pointer;border:none;white-space:nowrap}
+.btn svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.btn-brand{background:var(--brand);color:white}
+.btn-brand:hover{background:var(--brand-h)}
+.btn-outline{background:white;color:var(--text);border:1.5px solid var(--border)}
+.btn-outline:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-light)}
+.btn-sm{padding:6px 13px;font-size:12px;border-radius:8px}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--text);color:white;padding:12px 18px;border-radius:12px;font-size:13px;font-weight:500;box-shadow:var(--shadow-lg);z-index:3000;display:flex;align-items:center;gap:10px;max-width:320px;opacity:0;transform:translateY(10px);transition:all .3s cubic-bezier(.34,1.56,.64,1);pointer-events:none}
+.toast.show{opacity:1;transform:translateY(0)}
+.toast.success{background:#059669}
+.toast svg{width:15px;height:15px;fill:none;stroke:white;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+
+/* NOTIF PANEL */
+.notif-panel{position:fixed;top:70px;right:14px;width:310px;background:var(--surface);border:1.5px solid var(--border);border-radius:16px;box-shadow:var(--shadow-lg);z-index:500;overflow:hidden;opacity:0;pointer-events:none;transform:translateY(-10px);transition:all .2s}
+.notif-panel.show{opacity:1;pointer-events:all;transform:translateY(0)}
+.np-head{padding:12px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.np-head h3{font-family:'Syne',sans-serif;font-size:13px;font-weight:700}
+.np-clear{font-size:11px;color:var(--brand);font-weight:600;cursor:pointer}
+.np-item{padding:10px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;cursor:pointer;transition:.15s}
+.np-item:hover{background:var(--bg)}
+.np-item.unread{background:var(--brand-light)}
+.np-item:last-child{border-bottom:none}
+.np-dot{width:7px;height:7px;background:var(--brand);border-radius:50%;flex-shrink:0;margin-top:4px}
+.np-dot.read{background:transparent}
+.np-text{font-size:12px;color:var(--text);line-height:1.4}
+.np-text strong{font-weight:600}
+.np-time{font-size:10px;color:var(--text3);margin-top:2px}
+
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.pulse{animation:pulse 2s ease-in-out infinite}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.msg-row{animation:fadeIn .2s ease both}
+</style>
+</head>
+<body>
+<div class="app">
+
+<!-- ── SIDEBAR ── -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+    <div><div class="logo-name">Ispora</div><div class="logo-tagline">Impact Platform</div></div>
+  </div>
+  <div class="sidebar-profile" onclick="showToast('Opening profile...')">
+    <div class="sp-av">A<div class="sp-online pulse"></div></div>
+    <div><div class="sp-name">Dr. Amina Osei</div><div class="sp-role">Diaspora Mentor</div></div>
+  </div>
+  <nav class="nav">
+    <div class="nav-section">
+      <div class="nav-label">Main</div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to Dashboard...')"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>Dashboard</div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to Browse Students...')"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>Browse Students</div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to My Mentorships...')"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>My Mentorships<span class="nav-badge">3</span></div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to Sessions...')"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Sessions<span class="nav-badge">1</span></div>
+      <div class="nav-item active" onclick="navTo(this)"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Messages<span class="nav-badge">5</span></div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-label">Discover</div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to Opportunities...')"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Opportunities</div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to My Network...')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>My Network</div>
+    </div>
+  </nav>
+  <div class="sidebar-foot">
+    <div class="nav-item" onclick="showToast('Opening settings...')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41M19.07 19.07l-1.41-1.41M4.93 19.07l1.41-1.41M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>Settings</div>
+    <div class="nav-item danger" onclick="showToast('Signing out...')"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Sign Out</div>
+  </div>
+</aside>
+
+<!-- ── MAIN ── -->
+<div class="main">
+  <div class="topbar">
+    <div class="topbar-left"><h2>Messages</h2><p>Chat with your mentees and connections</p></div>
+    <div class="topbar-right">
+      <button class="role-pill" onclick="showToast('Role switcher...')"><div class="role-pip"></div>Mentor<svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="icon-btn" onclick="toggleNotif()" id="notifBtn"><svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg><div class="notif-badge"></div></button>
+      <button class="icon-btn" onclick="showToast('Opening profile...')"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
+    </div>
+  </div>
+
+  <div class="msg-wrap">
+
+    <!-- ── CONVERSATION LIST ── -->
+    <div class="conv-list">
+      <div class="cl-head">
+        <div class="cl-head-row">
+          <div class="cl-title">Conversations</div>
+          <button class="cl-new-btn" onclick="openModal('newMsgModal')">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            New
+          </button>
+        </div>
+        <div class="cl-search">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" placeholder="Search conversations..." id="convSearch" oninput="filterConvs()"/>
+        </div>
+      </div>
+      <div class="cl-tabs">
+        <div class="cl-tab active" onclick="filterTab(this,'all')">All</div>
+        <div class="cl-tab" onclick="filterTab(this,'unread')">Unread (3)</div>
+        <div class="cl-tab" onclick="filterTab(this,'mentees')">Mentees</div>
+      </div>
+      <div class="cl-items" id="convList"></div>
+    </div>
+
+    <!-- ── CHAT AREA ── -->
+    <div id="chatArea" class="chat-area" style="display:flex;flex-direction:column"></div>
+
+    <!-- ── INFO PANEL ── -->
+    <div class="info-panel" id="infoPanel" style="display:none"></div>
+
+  </div>
+</div>
+</div>
+
+<!-- ── NOTIF PANEL ── -->
+<div class="notif-panel" id="notifPanel">
+  <div class="np-head"><h3>Notifications</h3><span class="np-clear" onclick="clearNotifs()">Mark all read</span></div>
+  <div class="np-item unread"><div class="np-dot"></div><div><div class="np-text"><strong>Emeka</strong> sent you a message</div><div class="np-time">8:30 AM</div></div></div>
+  <div class="np-item unread"><div class="np-dot"></div><div><div class="np-text"><strong>Tunde</strong> replied to your message</div><div class="np-time">Yesterday</div></div></div>
+  <div class="np-item"><div class="np-dot read"></div><div><div class="np-text">Session with <strong>Aisha</strong> confirmed</div><div class="np-time">Yesterday</div></div></div>
+</div>
+
+<!-- ── NEW MESSAGE MODAL ── -->
+<div class="overlay" id="newMsgModal" onclick="overlayClose(event,'newMsgModal')">
+  <div class="modal">
+    <div class="modal-head">
+      <div><div class="modal-title">New Message</div><div class="modal-sub">Start a conversation</div></div>
+      <button class="modal-close" onclick="closeModal('newMsgModal')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div class="fg"><label class="fl">To</label><select class="fi"><option>Aisha Kamara</option><option>Emeka Okonkwo</option><option>Fatima Nwosu</option><option>Tunde Ojo</option><option>Jordan Bello</option></select></div>
+      <div class="fg"><label class="fl">Message</label><textarea class="fi" placeholder="Write your message..." style="min-height:110px"></textarea></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal('newMsgModal')">Cancel</button>
+      <button class="btn btn-brand" onclick="closeModal('newMsgModal');showToast('Message sent!','success')">
+        <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>Send
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ── SHARE RESOURCE MODAL ── -->
+<div class="overlay" id="shareModal" onclick="overlayClose(event,'shareModal')">
+  <div class="modal">
+    <div class="modal-head">
+      <div><div class="modal-title">Share Resource</div><div class="modal-sub" id="shareSubtitle">Share a file or link</div></div>
+      <button class="modal-close" onclick="closeModal('shareModal')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div class="fg"><label class="fl">Resource type</label><select class="fi" id="resourceType" onchange="toggleResourceType()"><option value="link">Link / URL</option><option value="file">File upload</option></select></div>
+      <div class="fg" id="linkField"><label class="fl">URL</label><input class="fi" type="url" placeholder="https://..."/></div>
+      <div class="fg" id="fileField" style="display:none"><label class="fl">File</label><input class="fi" type="file"/></div>
+      <div class="fg"><label class="fl">Title / description</label><input class="fi" type="text" placeholder="e.g. Cracking the Coding Interview — Chapter 5"/></div>
+      <div class="fg"><label class="fl">Note (optional)</label><textarea class="fi" placeholder="Why are you sharing this?"></textarea></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal('shareModal')">Cancel</button>
+      <button class="btn btn-brand" onclick="closeModal('shareModal');showToast('Resource shared!','success')">Share Resource</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── SCHEDULE FROM CHAT MODAL ── -->
+<div class="overlay" id="scheduleModal" onclick="overlayClose(event,'scheduleModal')">
+  <div class="modal">
+    <div class="modal-head">
+      <div><div class="modal-title">Schedule Session</div><div class="modal-sub" id="schedSub">Set up a session</div></div>
+      <button class="modal-close" onclick="closeModal('scheduleModal')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div class="fg"><label class="fl">Session topic</label><input class="fi" type="text" placeholder="e.g. Resume review, career planning..."/></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="fg"><label class="fl">Date</label><input class="fi" type="date" min="2026-03-26"/></div>
+        <div class="fg"><label class="fl">Time (WAT)</label><input class="fi" type="time"/></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="fg"><label class="fl">Duration</label><select class="fi"><option>30 min</option><option selected>1 hour</option><option>1.5 hours</option></select></div>
+        <div class="fg"><label class="fl">Platform</label><select class="fi"><option>Google Meet</option><option>Zoom</option><option>WhatsApp Video</option></select></div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal('scheduleModal')">Cancel</button>
+      <button class="btn btn-brand" onclick="closeModal('scheduleModal');showToast('Session scheduled! Mentee notified.','success')">Schedule Session</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toastEl"><svg id="toastIco" viewBox="0 0 24 24"></svg><span id="toastMsg"></span></div>
+
+<script>
+// ── DATA ──
+var conversations = [
+  {
+    id: 1, name: 'Aisha Kamara', initials: 'AK', color: '#021ff6',
+    field: 'Software Engineering', uni: 'University of Lagos',
+    online: true, unread: 2, lastTime: '3:14 PM',
+    lastMsg: 'Thank you so much! I will get started on the portfolio today.',
+    tags: ['Software Eng', 'Active mentee'],
+    stats: {sessions: 8, progress: 75, since: 'Jan 2026'},
+    sharedFiles: [
+      {name: 'Resume_Template_2026.pdf', size: '245 KB', date: 'Mar 20'},
+      {name: 'UK_Tech_Companies_List.xlsx', size: '88 KB', date: 'Mar 15'},
+    ],
+    msgs: [
+      {from: 'them', text: 'Hi Dr. Amina! I wanted to follow up on our last session. I have been working on the portfolio you suggested.', time: 'Mar 25, 9:00 AM'},
+      {from: 'me', text: 'That is great to hear, Aisha! How is it coming along? Remember to focus on the three projects we discussed.', time: 'Mar 25, 9:15 AM'},
+      {from: 'them', text: 'I have completed the first one already. It is a full-stack task manager app using React and Node.js. Should I share the GitHub link?', time: 'Mar 25, 9:20 AM'},
+      {from: 'me', text: 'Absolutely, please do! That is exactly the kind of project UK companies look for.', time: 'Mar 25, 9:22 AM', resource: {name: 'Portfolio_Checklist.pdf', size: '120 KB'}},
+      {from: 'them', text: 'Here it is: github.com/aisha-dev/task-manager \n\nI also started applying to some of the companies on your list!', time: 'Mar 25, 9:45 AM'},
+      {from: 'me', text: 'Excellent! I had a look and the code structure is solid. A few suggestions: add unit tests and write a proper README. Those are the two things that immediately impress senior engineers.', time: 'Mar 25, 10:00 AM'},
+      {from: 'them', text: 'Noted! Will do both this week. Our session is at 3 PM today right?', time: 'Today, 2:50 PM'},
+      {from: 'me', text: 'Yes! Google Meet as usual. See you in a bit.', time: 'Today, 2:55 PM'},
+      {from: 'them', text: 'Thank you so much! I will get started on the portfolio today.', time: 'Today, 3:14 PM'},
+    ]
+  },
+  {
+    id: 2, name: 'Emeka Okonkwo', initials: 'EO', color: '#7c3aed',
+    field: 'Product Management', uni: 'Covenant University',
+    online: false, unread: 1, lastTime: '8:30 AM',
+    lastMsg: 'Could you review my case study before tomorrow?',
+    tags: ['Product Mgmt', 'Active mentee'],
+    stats: {sessions: 6, progress: 60, since: 'Feb 2026'},
+    sharedFiles: [
+      {name: 'PM_Case_Study_Draft.pdf', size: '310 KB', date: 'Mar 22'},
+    ],
+    msgs: [
+      {from: 'them', text: 'Good morning Dr. Amina. I have finished the PM case study we worked on last week.', time: 'Today, 8:00 AM'},
+      {from: 'them', text: 'Could you review my case study before tomorrow?', time: 'Today, 8:30 AM'},
+    ]
+  },
+  {
+    id: 3, name: 'Fatima Nwosu', initials: 'FN', color: '#059669',
+    field: 'Data Science', uni: 'OAU',
+    online: true, unread: 0, lastTime: 'Yesterday',
+    lastMsg: 'Perfect, see you on Sunday!',
+    tags: ['Data Science', 'Active mentee'],
+    stats: {sessions: 5, progress: 45, since: 'Feb 2026'},
+    sharedFiles: [],
+    msgs: [
+      {from: 'me', text: 'Hi Fatima! Just confirming our session for Sunday March 29 at 2 PM WAT. We will be covering ML fundamentals.', time: 'Yesterday, 3:00 PM'},
+      {from: 'them', text: 'Hi! Yes, confirmed. I have been reading through the scikit-learn docs you sent. Very helpful!', time: 'Yesterday, 4:10 PM'},
+      {from: 'me', text: 'Great prep! Come with questions. We will build your first model together in that session.', time: 'Yesterday, 4:20 PM'},
+      {from: 'them', text: 'Perfect, see you on Sunday!', time: 'Yesterday, 4:22 PM'},
+    ]
+  },
+  {
+    id: 4, name: 'Tunde Ojo', initials: 'TO', color: '#d97706',
+    field: 'Software Engineering', uni: 'University of Ibadan',
+    online: false, unread: 2, lastTime: 'Mar 24',
+    lastMsg: 'I have been reading about AWS services like you suggested.',
+    tags: ['Software Eng', 'Paused'],
+    stats: {sessions: 3, progress: 30, since: 'Mar 2026'},
+    sharedFiles: [],
+    msgs: [
+      {from: 'me', text: 'Hi Tunde. I wanted to check in since we paused our sessions. How are you getting on?', time: 'Mar 24, 11:00 AM'},
+      {from: 'them', text: 'I have been reading about AWS services like you suggested.', time: 'Mar 24, 2:00 PM'},
+    ]
+  },
+  {
+    id: 5, name: 'Jordan Bello', initials: 'JB', color: '#0d9488',
+    field: 'Computer Science', uni: 'University of Ibadan',
+    online: false, unread: 0, lastTime: 'Mar 12',
+    lastMsg: 'Thank you for everything. The offer is brilliant!',
+    tags: ['Full Stack', 'Completed'],
+    stats: {sessions: 12, progress: 100, since: 'Aug 2025'},
+    sharedFiles: [],
+    msgs: [
+      {from: 'them', text: 'Dr. Amina! I got the offer from the London company!!! Thank you SO much for your guidance. I could not have done this without you.', time: 'Mar 10, 9:00 AM'},
+      {from: 'me', text: 'Jordan! I am so incredibly proud of you. All your hard work paid off. This is just the beginning.', time: 'Mar 10, 9:30 AM'},
+      {from: 'them', text: 'Thank you for everything. The offer is brilliant!', time: 'Mar 12, 2:00 PM'},
+    ]
+  }
+];
+
+var activeConvId = 1;
+var currentFilter = 'all';
+var typingTimers = {};
+
+// ── RENDER CONV LIST ──
+function renderConvList() {
+  var q = document.getElementById('convSearch').value.toLowerCase().trim();
+  var list = conversations.filter(function(c) {
+    if (q && !c.name.toLowerCase().includes(q) && !c.field.toLowerCase().includes(q)) return false;
+    if (currentFilter === 'unread') return c.unread > 0;
+    if (currentFilter === 'mentees') return c.tags.some(function(t) { return t.includes('mentee'); });
+    return true;
+  });
+  var html = '';
+  list.forEach(function(c) {
+    var isActive = c.id === activeConvId;
+    html += '<div class="conv-item' + (isActive ? ' active' : '') + '" onclick="openConv(' + c.id + ')">'
+      + '<div class="ci-av" style="background:' + c.color + '">' + c.initials
+      + '<div class="ci-dot ' + (c.online ? 'online' : 'offline') + '"></div>'
+      + '</div>'
+      + '<div class="ci-body">'
+      + '<div class="ci-row">'
+      + '<div class="ci-name">' + c.name + '</div>'
+      + '<div class="ci-time">' + c.lastTime + '</div>'
+      + '</div>'
+      + '<div class="ci-preview' + (c.unread > 0 ? ' unread' : '') + '">' + c.lastMsg + '</div>'
+      + '</div>'
+      + (c.unread > 0 ? '<div class="ci-unread">' + c.unread + '</div>' : '')
+      + '</div>';
+  });
+  if (list.length === 0) {
+    html = '<div style="text-align:center;padding:32px 16px;color:var(--text3);font-size:12px">No conversations found</div>';
+  }
+  document.getElementById('convList').innerHTML = html;
+}
+
+// ── OPEN CONVERSATION ──
+function openConv(id) {
+  activeConvId = id;
+  var c = conversations.find(function(x) { return x.id === id; });
+  if (!c) return;
+  c.unread = 0;
+  renderConvList();
+  renderChat(c);
+  renderInfoPanel(c);
+  document.getElementById('infoPanel').style.display = 'flex';
+  document.getElementById('infoPanel').style.flexDirection = 'column';
+}
+
+// ── RENDER CHAT ──
+function renderChat(c) {
+  var chatArea = document.getElementById('chatArea');
+  var qrChips = [
+    'Sure, let me check that for you.',
+    'Great work! Keep it up.',
+    'Let\'s schedule a session to discuss this.',
+    'I\'ll share some resources on that.',
+  ];
+
+  chatArea.innerHTML = ''
+    + '<div class="chat-head">'
+    + '<div class="ch-av" style="background:' + c.color + '">' + c.initials
+    + (c.online ? '<div class="ch-online"></div>' : '')
+    + '</div>'
+    + '<div class="ch-info">'
+    + '<div class="ch-name">' + c.name + '</div>'
+    + '<div class="ch-status">' + c.field + ' \u00b7 ' + (c.online ? '<span style="color:var(--accent)">Online now</span>' : 'Last seen recently') + '</div>'
+    + '</div>'
+    + '<div class="ch-actions">'
+    + '<button class="ch-btn" onclick="openModal(\'scheduleModal\');document.getElementById(\'schedSub\').textContent=\'Schedule a session with ' + c.name + '\'" title="Schedule session"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></button>'
+    + '<button class="ch-btn" onclick="openModal(\'shareModal\');document.getElementById(\'shareSubtitle\').textContent=\'Share a resource with ' + c.name + '\'" title="Share resource"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button>'
+    + '<button class="ch-btn" onclick="showToast(\'Opening call...\',\'\')" title="Voice call"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></button>'
+    + '</div>'
+    + '</div>'
+    + '<div class="chat-msgs" id="chatMsgs"></div>'
+    + '<div id="quickRepliesArea" class="quick-replies"></div>'
+    + '<div class="chat-input-wrap">'
+    + '<div class="chat-input-box">'
+    + '<textarea id="msgInput" placeholder="Message ' + c.name + '..." rows="1" oninput="autoResize(this)" onkeydown="handleKeyDown(event)"></textarea>'
+    + '<div class="chat-input-actions">'
+    + '<button class="ci-action-btn" onclick="openModal(\'shareModal\')" title="Share resource"><svg viewBox="0 0 24 24"><path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"/></svg></button>'
+    + '<button class="ci-action-btn" onclick="openModal(\'scheduleModal\')" title="Schedule session"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></button>'
+    + '<button class="send-btn" id="sendBtn" onclick="sendMessage()" title="Send"><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>'
+    + '</div></div></div>';
+
+  renderMessages(c);
+  renderQuickReplies(qrChips);
+}
+
+// ── RENDER MESSAGES ──
+function renderMessages(c) {
+  var container = document.getElementById('chatMsgs');
+  if (!container) return;
+  var html = '';
+  var lastDate = '';
+  c.msgs.forEach(function(m) {
+    var datePart = m.time.split(',')[0];
+    if (datePart !== lastDate) {
+      html += '<div class="msg-day"><span>' + datePart + '</span></div>';
+      lastDate = datePart;
+    }
+    var isMine = m.from === 'me';
+    var timePart = m.time.indexOf(',') > -1 ? m.time.split(', ')[1] : m.time;
+    html += '<div class="msg-row' + (isMine ? ' mine' : '') + '">';
+    if (!isMine) {
+      html += '<div class="msg-av" style="background:' + c.color + '">' + c.initials + '</div>';
+    } else {
+      html += '<div class="msg-av" style="background:var(--brand)">A</div>';
+    }
+    html += '<div class="msg-bubble">' + m.text.replace(/\n/g, '<br>');
+    if (m.resource) {
+      html += '<div class="msg-attachment" onclick="showToast(\'Opening ' + m.resource.name + '...\',\'\')">'
+        + '<svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>'
+        + '<div class="msg-attachment-info"><div class="msg-attachment-name">' + m.resource.name + '</div><div class="msg-attachment-size">' + m.resource.size + '</div></div>'
+        + '</div>';
+    }
+    html += '<span class="msg-time">' + timePart;
+    if (isMine) html += ' <span class="msg-status">\u2713\u2713</span>';
+    html += '</span></div></div>';
+  });
+  container.innerHTML = html;
+  container.scrollTop = container.scrollHeight;
+}
+
+// ── QUICK REPLIES ──
+function renderQuickReplies(chips) {
+  var area = document.getElementById('quickRepliesArea');
+  if (!area) return;
+  area.innerHTML = chips.map(function(chip) {
+    return '<div class="qr-chip" onclick="useQuickReply(\'' + chip.replace(/'/g, '\\\'') + '\')">' + chip + '</div>';
+  }).join('');
+}
+
+function useQuickReply(text) {
+  var input = document.getElementById('msgInput');
+  if (!input) return;
+  input.value = text;
+  autoResize(input);
+  input.focus();
+}
+
+// ── SEND MESSAGE ──
+function sendMessage() {
+  var input = document.getElementById('msgInput');
+  if (!input) return;
+  var text = input.value.trim();
+  if (!text) return;
+  var c = conversations.find(function(x) { return x.id === activeConvId; });
+  if (!c) return;
+  c.msgs.push({from: 'me', text: text, time: 'Today, ' + getCurrentTime()});
+  c.lastMsg = text;
+  c.lastTime = 'now';
+  input.value = '';
+  input.style.height = 'auto';
+  renderMessages(c);
+  renderConvList();
+  showTypingIndicator(c);
+}
+
+function handleKeyDown(e) {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    sendMessage();
+  }
+}
+
+function autoResize(el) {
+  el.style.height = 'auto';
+  el.style.height = Math.min(el.scrollHeight, 120) + 'px';
+}
+
+function getCurrentTime() {
+  var now = new Date();
+  var h = now.getHours();
+  var m = now.getMinutes().toString().padStart(2, '0');
+  var ampm = h >= 12 ? 'PM' : 'AM';
+  h = h % 12 || 12;
+  return h + ':' + m + ' ' + ampm;
+}
+
+function showTypingIndicator(c) {
+  var container = document.getElementById('chatMsgs');
+  if (!container) return;
+  var tid = 'typing_' + c.id;
+  clearTimeout(typingTimers[tid]);
+  var typingDiv = document.createElement('div');
+  typingDiv.className = 'typing-row';
+  typingDiv.id = 'typingIndicator';
+  typingDiv.innerHTML = '<div class="msg-av" style="background:' + c.color + '">' + c.initials + '</div>'
+    + '<div class="typing-bubble"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>';
+  container.appendChild(typingDiv);
+  container.scrollTop = container.scrollHeight;
+  typingTimers[tid] = setTimeout(function() {
+    var typing = document.getElementById('typingIndicator');
+    if (typing) typing.remove();
+    var replies = [
+      'Got it! I will work on that right away.',
+      'Thanks for the feedback. Really helpful!',
+      'That makes sense. I will send you an update tomorrow.',
+      'Great, I will implement that today.',
+      'Thank you Dr. Amina! You always know the right thing to say.',
+    ];
+    var reply = replies[Math.floor(Math.random() * replies.length)];
+    c.msgs.push({from: 'them', text: reply, time: 'Today, ' + getCurrentTime()});
+    c.lastMsg = reply;
+    c.lastTime = 'now';
+    renderMessages(c);
+    renderConvList();
+  }, 2000 + Math.random() * 1500);
+}
+
+// ── INFO PANEL ──
+function renderInfoPanel(c) {
+  var panel = document.getElementById('infoPanel');
+  var filesHtml = '';
+  if (c.sharedFiles.length > 0) {
+    filesHtml = c.sharedFiles.map(function(f) {
+      return '<div class="shared-file" onclick="showToast(\'Opening ' + f.name + '...\')">'
+        + '<div class="sf-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>'
+        + '<div><div class="sf-name">' + f.name + '</div><div class="sf-meta">' + f.size + ' \u00b7 ' + f.date + '</div></div>'
+        + '</div>';
+    }).join('');
+  } else {
+    filesHtml = '<div style="font-size:12px;color:var(--text3)">No files shared yet</div>';
+  }
+
+  panel.innerHTML = '<div class="ip-head">'
+    + '<div class="ip-av" style="background:' + c.color + '">' + c.initials + '</div>'
+    + '<div class="ip-name">' + c.name + '</div>'
+    + '<div class="ip-role">' + c.field + ' \u00b7 ' + c.uni + '</div>'
+    + '</div>'
+    + '<div class="ip-section">'
+    + '<h4>Mentorship stats</h4>'
+    + '<div class="ip-stat"><span class="ip-stat-label">Sessions done</span><span class="ip-stat-val">' + c.stats.sessions + '</span></div>'
+    + '<div class="ip-stat"><span class="ip-stat-label">Progress</span><span class="ip-stat-val">' + c.stats.progress + '%</span></div>'
+    + '<div class="ip-stat"><span class="ip-stat-label">Since</span><span class="ip-stat-val">' + c.stats.since + '</span></div>'
+    + '</div>'
+    + '<div class="ip-section">'
+    + '<h4>Quick actions</h4>'
+    + '<div class="ip-action">'
+    + '<button class="ip-btn ip-btn-brand" onclick="openModal(\'scheduleModal\');document.getElementById(\'schedSub\').textContent=\'Schedule a session with ' + c.name + '\'">'
+    + '<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Schedule Session</button>'
+    + '<button class="ip-btn ip-btn-outline" onclick="openModal(\'shareModal\')">'
+    + '<svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>Share Resource</button>'
+    + '</div>'
+    + '</div>'
+    + '<div class="ip-section">'
+    + '<h4>Shared files (' + c.sharedFiles.length + ')</h4>'
+    + filesHtml
+    + '</div>';
+}
+
+// ── FILTERS ──
+function filterConvs() { renderConvList(); }
+function filterTab(el, filter) {
+  document.querySelectorAll('.cl-tab').forEach(function(t) { t.classList.remove('active'); });
+  el.classList.add('active');
+  currentFilter = filter;
+  renderConvList();
+}
+
+// ── MODAL ──
+function openModal(id) { document.getElementById(id).classList.add('show'); document.body.style.overflow = 'hidden'; }
+function closeModal(id) { document.getElementById(id).classList.remove('show'); document.body.style.overflow = ''; }
+function overlayClose(e, id) { if (e.target === e.currentTarget) closeModal(id); }
+
+function toggleResourceType() {
+  var type = document.getElementById('resourceType').value;
+  document.getElementById('linkField').style.display = type === 'link' ? 'block' : 'none';
+  document.getElementById('fileField').style.display = type === 'file' ? 'block' : 'none';
+}
+
+// ── TOAST ──
+var tTimer;
+function showToast(msg, type) {
+  type = type || '';
+  var el = document.getElementById('toastEl');
+  var ico = document.getElementById('toastIco');
+  var m = document.getElementById('toastMsg');
+  el.className = 'toast';
+  if (type === 'success') { el.classList.add('success'); ico.innerHTML = '<polyline points="20 6 9 17 4 12"/>'; }
+  else { ico.innerHTML = '<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>'; }
+  m.textContent = msg;
+  clearTimeout(tTimer);
+  setTimeout(function() { el.classList.add('show'); }, 10);
+  tTimer = setTimeout(function() { el.classList.remove('show'); }, 3000);
+}
+
+// ── NAV + NOTIF ──
+function navTo(el) { document.querySelectorAll('.nav-item').forEach(function(i) { i.classList.remove('active'); }); el.classList.add('active'); }
+function toggleNotif() { document.getElementById('notifPanel').classList.toggle('show'); }
+function clearNotifs() {
+  document.querySelectorAll('.np-item.unread').forEach(function(i) { i.classList.remove('unread'); i.querySelector('.np-dot').classList.add('read'); });
+  showToast('All read', 'success');
+}
+document.addEventListener('click', function(e) {
+  var p = document.getElementById('notifPanel');
+  var b = document.getElementById('notifBtn');
+  if (!p.contains(e.target) && !b.contains(e.target)) p.classList.remove('show');
+});
+
+// ── INIT ──
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', function() { renderConvList(); openConv(1); });
+} else {
+  renderConvList();
+  openConv(1);
+}
+</script>
+</body>
+</html>

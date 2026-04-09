@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ispora — Settings</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --brand:#021ff6;--brand-h:#0118c4;--brand-light:#eef0ff;
+  --accent:#00c896;--accent-light:#e0faf4;
+  --warn:#f59e0b;--warn-light:#fef9ee;
+  --danger:#ef4444;--danger-light:#fff1f1;
+  --success:#10b981;--success-light:#ecfdf5;
+  --bg:#f0f2ff;--surface:#fff;--surface2:#f7f8ff;
+  --border:#e2e5f5;--border2:#c8cef0;
+  --text:#07094a;--text2:#3d4275;--text3:#8b90b8;
+  --sidebar-w:224px;--topbar-h:64px;--r:16px;
+  --shadow-sm:0 1px 4px rgba(2,31,246,0.06);
+  --shadow:0 4px 20px rgba(2,31,246,0.09);
+  --shadow-lg:0 12px 48px rgba(2,31,246,0.15);
+}
+html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+button{cursor:pointer;border:none;background:none;font-family:inherit;font-size:inherit}
+input,textarea,select{font-family:inherit;font-size:inherit}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+.app{display:flex;height:100vh;overflow:hidden}
+/* SIDEBAR */
+.sidebar{width:var(--sidebar-w);background:var(--surface);border-right:1.5px solid var(--border);display:flex;flex-direction:column;flex-shrink:0}
+.sidebar-logo{padding:16px 18px 14px;display:flex;align-items:center;gap:10px;border-bottom:1.5px solid var(--border)}
+.logo-icon{width:28px;height:28px;background:var(--brand);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo-icon svg{width:14px;height:14px;fill:none;stroke:white;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.logo-name{font-family:'Syne',sans-serif;font-weight:700;font-size:14px;color:var(--brand);letter-spacing:-0.3px;line-height:1}
+.logo-tagline{font-size:9px;color:var(--text3);margin-top:1px}
+.sidebar-profile{margin:12px 14px 6px;padding:11px 13px;background:var(--brand-light);border-radius:12px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:.15s}
+.sidebar-profile:hover{background:#e0e3ff}
+.sp-av{width:36px;height:36px;border-radius:50%;background:var(--brand);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px;flex-shrink:0;position:relative}
+.sp-dot{position:absolute;bottom:1px;right:1px;width:8px;height:8px;background:var(--accent);border-radius:50%;border:2px solid white}
+.sp-name{font-weight:600;font-size:12px;color:var(--text);line-height:1.2}
+.sp-role{font-size:11px;color:var(--brand);font-weight:500;margin-top:2px}
+.nav{flex:1;overflow-y:auto;padding:8px 12px}
+.nav-section{margin-bottom:20px}
+.nav-label{font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.09em;padding:0 8px;margin-bottom:5px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:10px;color:var(--text2);font-size:13px;font-weight:500;transition:all .15s;cursor:pointer}
+.nav-item:hover{background:var(--brand-light);color:var(--brand)}
+.nav-item.active{background:var(--brand);color:white}
+.nav-item svg{width:15px;height:15px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.nav-badge{margin-left:auto;background:var(--danger);color:white;font-size:10px;font-weight:700;padding:1px 6px;border-radius:20px}
+.sidebar-foot{padding:12px;border-top:1.5px solid var(--border)}
+.nav-item.danger{color:var(--danger)}
+.nav-item.danger:hover{background:var(--danger-light)}
+/* MAIN */
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0}
+.topbar{height:var(--topbar-h);background:var(--surface);border-bottom:1.5px solid var(--border);padding:0 28px;display:flex;align-items:center;gap:14px;flex-shrink:0}
+.topbar-left{flex:1}
+.topbar-left h2{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--text)}
+.topbar-left p{font-size:12px;color:var(--text3);margin-top:1px}
+.topbar-right{display:flex;align-items:center;gap:8px}
+.role-pill{display:flex;align-items:center;gap:6px;background:var(--bg);border:1.5px solid var(--border);border-radius:20px;padding:5px 12px 5px 8px;font-size:12px;font-weight:600;color:var(--text2);cursor:pointer;transition:.2s}
+.role-pill:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-light)}
+.role-pip{width:8px;height:8px;background:var(--brand);border-radius:50%}
+.role-pill svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2}
+.icon-btn{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--bg);border:1.5px solid var(--border);color:var(--text2);cursor:pointer;transition:.2s;position:relative}
+.icon-btn:hover{background:var(--brand-light);color:var(--brand);border-color:var(--brand)}
+.icon-btn svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+/* LAYOUT */
+.page{flex:1;overflow:hidden;display:flex;min-height:0}
+.settings-nav{width:220px;flex-shrink:0;border-right:1.5px solid var(--border);background:var(--surface);overflow-y:auto;padding:20px 0}
+.s-nav-section{margin-bottom:6px}
+.s-nav-label{font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;padding:0 20px;margin-bottom:4px;margin-top:14px}
+.s-nav-item{display:flex;align-items:center;gap:10px;padding:9px 20px;font-size:13px;font-weight:500;color:var(--text2);cursor:pointer;transition:.15s;border-left:3px solid transparent}
+.s-nav-item:hover{background:var(--bg);color:var(--brand)}
+.s-nav-item.active{background:var(--brand-light);color:var(--brand);border-left-color:var(--brand);font-weight:600}
+.s-nav-item svg{width:15px;height:15px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.s-nav-item .s-badge{margin-left:auto;font-size:9px;font-weight:700;background:var(--danger);color:white;padding:1px 6px;border-radius:20px}
+/* CONTENT */
+.settings-body{flex:1;overflow-y:auto;padding:28px 36px;min-width:0}
+/* SECTION */
+.s-section{max-width:680px;margin-bottom:32px}
+.s-section-head{margin-bottom:18px}
+.s-section-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:var(--text);margin-bottom:4px}
+.s-section-sub{font-size:12px;color:var(--text3)}
+/* CARD */
+.s-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:14px}
+.s-card-row{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--border);gap:16px}
+.s-card-row:last-child{border-bottom:none}
+.s-card-row-info{flex:1;min-width:0}
+.s-card-row-label{font-weight:600;font-size:13px;color:var(--text);margin-bottom:2px}
+.s-card-row-sub{font-size:12px;color:var(--text3);line-height:1.4}
+/* TOGGLE */
+.toggle{position:relative;width:42px;height:24px;flex-shrink:0;cursor:pointer}
+.toggle input{opacity:0;width:0;height:0;position:absolute}
+.toggle-track{position:absolute;inset:0;background:var(--border2);border-radius:24px;transition:.25s}
+.toggle input:checked + .toggle-track{background:var(--brand)}
+.toggle-thumb{position:absolute;top:3px;left:3px;width:18px;height:18px;background:white;border-radius:50%;transition:.25s;box-shadow:0 1px 3px rgba(0,0,0,0.15)}
+.toggle input:checked ~ .toggle-thumb{left:21px}
+/* SELECT ROW */
+.s-select{background:var(--bg);border:1.5px solid var(--border);border-radius:9px;padding:7px 28px 7px 10px;font-size:12px;color:var(--text);outline:none;cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%238b90b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;transition:.15s}
+.s-select:focus{border-color:var(--brand)}
+/* AVATAR SECTION */
+.avatar-row{display:flex;align-items:center;gap:20px;padding:20px;border-bottom:1px solid var(--border)}
+.avatar-big{width:72px;height:72px;border-radius:50%;background:var(--brand);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:26px;flex-shrink:0;position:relative;cursor:pointer}
+.avatar-big:hover .avatar-overlay{opacity:1}
+.avatar-overlay{position:absolute;inset:0;background:rgba(2,31,246,0.6);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0;transition:.2s}
+.avatar-overlay svg{width:20px;height:20px;stroke:white;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+/* FORM FIELDS */
+.fg{margin-bottom:14px}
+.fl{display:block;font-size:12px;font-weight:600;color:var(--text2);margin-bottom:5px}
+.fi{width:100%;border:1.5px solid var(--border);border-radius:10px;padding:10px 14px;font-size:13px;color:var(--text);background:var(--surface);outline:none;transition:.2s}
+.fi:focus{border-color:var(--brand);box-shadow:0 0 0 3px rgba(2,31,246,0.07)}
+.fi::placeholder{color:var(--text3)}
+textarea.fi{resize:vertical;min-height:80px;line-height:1.5}
+select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%238b90b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px;cursor:pointer}
+.fi-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+/* PLAN CARDS */
+.plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px}
+.plan-card{border:2px solid var(--border);border-radius:14px;padding:16px;cursor:pointer;transition:all .2s;position:relative}
+.plan-card:hover{border-color:var(--brand-h);box-shadow:var(--shadow-sm)}
+.plan-card.current{border-color:var(--brand);background:var(--brand-light)}
+.plan-badge{position:absolute;top:-10px;left:50%;transform:translateX(-50%);font-size:9px;font-weight:700;background:var(--brand);color:white;padding:2px 10px;border-radius:20px;white-space:nowrap}
+.plan-name{font-family:'Syne',sans-serif;font-weight:700;font-size:14px;color:var(--text);margin-bottom:2px}
+.plan-price{font-size:20px;font-weight:700;color:var(--brand);margin-bottom:6px}
+.plan-price span{font-size:12px;font-weight:500;color:var(--text3)}
+.plan-features{list-style:none;font-size:11px;color:var(--text2);display:flex;flex-direction:column;gap:4px}
+.plan-features li{display:flex;align-items:center;gap:5px}
+.plan-features li svg{width:11px;height:11px;stroke:var(--success);fill:none;stroke-width:2.5;stroke-linecap:round;flex-shrink:0}
+/* CONNECTED ACCOUNTS */
+.conn-item{display:flex;align-items:center;gap:12px;padding:14px 20px;border-bottom:1px solid var(--border)}
+.conn-item:last-child{border-bottom:none}
+.conn-logo{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;border:1px solid var(--border)}
+.conn-info{flex:1}
+.conn-name{font-weight:600;font-size:13px;color:var(--text)}
+.conn-status{font-size:11px;color:var(--text3);margin-top:1px}
+.conn-status.connected{color:var(--success)}
+/* DANGER ZONE */
+.danger-zone{background:var(--danger-light);border:1.5px solid rgba(239,68,68,0.25);border-radius:var(--r);padding:20px;margin-bottom:14px}
+.danger-zone-title{font-weight:700;font-size:13px;color:var(--danger);margin-bottom:4px}
+.danger-zone-sub{font-size:12px;color:var(--text2);margin-bottom:14px;line-height:1.5}
+/* BTNS */
+.btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:10px;font-size:13px;font-weight:600;transition:all .18s;cursor:pointer;border:none;white-space:nowrap}
+.btn svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.btn-brand{background:var(--brand);color:white}
+.btn-brand:hover{background:var(--brand-h);transform:translateY(-1px);box-shadow:0 4px 14px rgba(2,31,246,0.25)}
+.btn-outline{background:white;color:var(--text);border:1.5px solid var(--border)}
+.btn-outline:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-light)}
+.btn-ghost{background:var(--bg);color:var(--text2);border:1.5px solid var(--border)}
+.btn-ghost:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-light)}
+.btn-danger{background:var(--danger);color:white}
+.btn-danger:hover{background:#dc2626}
+.btn-danger-outline{background:white;color:var(--danger);border:1.5px solid var(--danger)}
+.btn-danger-outline:hover{background:var(--danger-light)}
+.btn-success{background:var(--success);color:white}
+.btn-sm{padding:6px 12px;font-size:12px;border-radius:8px}
+.btn-xs{padding:4px 9px;font-size:11px;border-radius:7px}
+/* TOAST */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--text);color:white;padding:12px 18px;border-radius:12px;font-size:13px;font-weight:500;box-shadow:var(--shadow-lg);z-index:3000;display:flex;align-items:center;gap:10px;max-width:340px;opacity:0;transform:translateY(10px);transition:all .3s cubic-bezier(.34,1.56,.64,1);pointer-events:none}
+.toast.show{opacity:1;transform:translateY(0)}
+.toast.success{background:#059669}
+.toast.error{background:var(--danger)}
+.toast svg{width:15px;height:15px;fill:none;stroke:white;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+/* OVERLAY */
+.overlay{position:fixed;inset:0;background:rgba(7,9,74,0.5);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;z-index:1000;opacity:0;pointer-events:none;transition:opacity .2s;padding:16px}
+.overlay.show{opacity:1;pointer-events:all}
+.modal{background:var(--surface);border-radius:18px;width:100%;max-width:440px;box-shadow:var(--shadow-lg);transform:translateY(18px) scale(0.97);transition:transform .25s cubic-bezier(.34,1.56,.64,1);max-height:92vh;overflow-y:auto}
+.overlay.show .modal{transform:translateY(0) scale(1)}
+.modal-head{padding:20px 24px 16px;display:flex;align-items:flex-start;justify-content:space-between;border-bottom:1px solid var(--border)}
+.modal-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:var(--text)}
+.modal-sub{font-size:12px;color:var(--text3);margin-top:3px}
+.modal-close{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--text3);cursor:pointer;transition:.15s}
+.modal-close:hover{background:var(--bg);color:var(--text)}
+.modal-close svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.modal-body{padding:20px 24px}
+.modal-foot{padding:14px 24px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:10px}
+/* MISC */
+.divider{height:1px;background:var(--border);margin:24px 0}
+.save-bar{position:sticky;bottom:0;background:var(--surface);border-top:1.5px solid var(--border);padding:14px 36px;display:none;align-items:center;justify-content:space-between;z-index:10}
+.save-bar.show{display:flex}
+.save-bar-msg{font-size:13px;color:var(--text2)}
+.save-bar-msg strong{color:var(--text);font-weight:600}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.pulse{animation:pulse 2s ease-in-out infinite}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+    <div><div class="logo-name">Ispora</div><div class="logo-tagline">Impact Platform</div></div>
+  </div>
+  <div class="sidebar-profile" onclick="showToast('Opening profile...')">
+    <div class="sp-av">A<div class="sp-dot pulse"></div></div>
+    <div><div class="sp-name">Dr. Amina Osei</div><div class="sp-role">Diaspora Mentor</div></div>
+  </div>
+  <nav class="nav">
+    <div class="nav-section">
+      <div class="nav-label">Main</div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to Dashboard...')"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>Dashboard</div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to Browse Students...')"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>Browse Students</div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to My Mentorships...')"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>My Mentorships<span class="nav-badge">3</span></div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to Sessions...')"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Sessions</div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to Messages...')"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Messages<span class="nav-badge">5</span></div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-label">Discover</div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to Opportunities...')"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Opportunities</div>
+    </div>
+  </nav>
+  <div class="sidebar-foot">
+    <div class="nav-item" onclick="showToast('Opening profile...')"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>My Profile</div>
+    <div class="nav-item active" onclick="navTo(this)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41M19.07 19.07l-1.41-1.41M4.93 19.07l1.41-1.41M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>Settings</div>
+    <div class="nav-item danger" onclick="showToast('Signing out...')"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Sign Out</div>
+  </div>
+</aside>
+
+<div class="main">
+  <div class="topbar">
+    <div class="topbar-left"><h2>Settings</h2><p>Manage your account, preferences and privacy</p></div>
+    <div class="topbar-right">
+      <button class="role-pill" onclick="showToast('Role switcher...')"><div class="role-pip"></div>Mentor<svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="icon-btn" onclick="showToast('Notifications...')"><svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg></button>
+      <button class="icon-btn" onclick="showToast('Opening profile...')"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
+    </div>
+  </div>
+
+  <div class="page">
+    <!-- SETTINGS NAV -->
+    <div class="settings-nav">
+      <div class="s-nav-label">Account</div>
+      <div class="s-nav-item active" id="snav-profile" onclick="switchSection('profile')"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Profile</div>
+      <div class="s-nav-item" id="snav-account" onclick="switchSection('account')"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>Account &amp; Security</div>
+      <div class="s-nav-item" id="snav-billing" onclick="switchSection('billing')"><svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Plan &amp; Billing</div>
+      <div class="s-nav-label">Preferences</div>
+      <div class="s-nav-item" id="snav-notifications" onclick="switchSection('notifications')"><svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>Notifications<span class="s-badge">3</span></div>
+      <div class="s-nav-item" id="snav-privacy" onclick="switchSection('privacy')"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Privacy</div>
+      <div class="s-nav-item" id="snav-appearance" onclick="switchSection('appearance')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>Appearance</div>
+      <div class="s-nav-label">Integrations</div>
+      <div class="s-nav-item" id="snav-connected" onclick="switchSection('connected')"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>Connected Accounts</div>
+      <div class="s-nav-label">Support</div>
+      <div class="s-nav-item" id="snav-help" onclick="switchSection('help')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Help &amp; Support</div>
+    </div>
+
+    <!-- SETTINGS CONTENT -->
+    <div style="flex:1;display:flex;flex-direction:column;overflow:hidden;min-height:0">
+      <div class="settings-body" id="settingsBody"></div>
+      <div class="save-bar" id="saveBar">
+        <div class="save-bar-msg"><strong>Unsaved changes</strong> — save before leaving this section</div>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-outline btn-sm" onclick="discardChanges()">Discard</button>
+          <button class="btn btn-brand btn-sm" onclick="saveChanges()">
+            <svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>Save Changes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- CHANGE PASSWORD MODAL -->
+<div class="overlay" id="pwModal" onclick="overlayClose(event,'pwModal')">
+  <div class="modal">
+    <div class="modal-head">
+      <div><div class="modal-title">Change Password</div><div class="modal-sub">Use a strong password you do not use elsewhere</div></div>
+      <button class="modal-close" onclick="closeModal('pwModal')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div class="fg"><label class="fl">Current password</label><input class="fi" type="password" placeholder="Enter current password"/></div>
+      <div class="fg"><label class="fl">New password</label><input class="fi" type="password" placeholder="At least 8 characters"/></div>
+      <div class="fg"><label class="fl">Confirm new password</label><input class="fi" type="password" placeholder="Repeat new password"/></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal('pwModal')">Cancel</button>
+      <button class="btn btn-brand" onclick="closeModal('pwModal');showToast('Password updated!','success')">Update Password</button>
+    </div>
+  </div>
+</div>
+
+<!-- DELETE ACCOUNT MODAL -->
+<div class="overlay" id="deleteModal" onclick="overlayClose(event,'deleteModal')">
+  <div class="modal">
+    <div class="modal-head">
+      <div><div class="modal-title" style="color:var(--danger)">Delete Account</div><div class="modal-sub">This action is permanent and cannot be undone</div></div>
+      <button class="modal-close" onclick="closeModal('deleteModal')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div style="background:var(--danger-light);border-radius:10px;padding:12px 14px;font-size:13px;color:#7f1d1d;margin-bottom:16px;line-height:1.6">
+        Deleting your account will permanently remove all your mentorships, sessions, messages, and resources. Your mentees will be notified.
+      </div>
+      <div class="fg"><label class="fl">Type DELETE to confirm</label><input class="fi" type="text" id="deleteConfirmInput" placeholder="DELETE"/></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal('deleteModal')">Cancel</button>
+      <button class="btn btn-danger" onclick="confirmDelete()">Permanently Delete</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toastEl"><svg id="toastIco" viewBox="0 0 24 24"></svg><span id="toastMsg"></span></div>
+
+<script>
+var currentSection = 'profile';
+var hasChanges = false;
+
+var sections = {
+  profile: renderProfile,
+  account: renderAccount,
+  billing: renderBilling,
+  notifications: renderNotifications,
+  privacy: renderPrivacy,
+  appearance: renderAppearance,
+  connected: renderConnected,
+  help: renderHelp
+};
+
+function switchSection(section) {
+  currentSection = section;
+  document.querySelectorAll('.s-nav-item').forEach(function(i){i.classList.remove('active');});
+  var el = document.getElementById('snav-' + section);
+  if (el) el.classList.add('active');
+  hasChanges = false;
+  document.getElementById('saveBar').classList.remove('show');
+  if (sections[section]) sections[section]();
+  document.getElementById('settingsBody').scrollTop = 0;
+}
+
+function markChanged() {
+  hasChanges = true;
+  document.getElementById('saveBar').classList.add('show');
+}
+
+function saveChanges() {
+  hasChanges = false;
+  document.getElementById('saveBar').classList.remove('show');
+  showToast('Changes saved!', 'success');
+}
+
+function discardChanges() {
+  hasChanges = false;
+  document.getElementById('saveBar').classList.remove('show');
+  if (sections[currentSection]) sections[currentSection]();
+  showToast('Changes discarded.');
+}
+
+// ── PROFILE ──
+function renderProfile() {
+  document.getElementById('settingsBody').innerHTML =
+    '<div class="s-section">'
+    + '<div class="s-section-head"><div class="s-section-title">Profile Information</div><div class="s-section-sub">How you appear to students and across the platform</div></div>'
+    + '<div class="s-card">'
+    + '<div class="avatar-row">'
+    + '<div class="avatar-big" onclick="showToast(\'Opening photo picker...\')">'
+    + 'A'
+    + '<div class="avatar-overlay"><svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg></div>'
+    + '</div>'
+    + '<div><div style="font-weight:700;font-size:14px;color:var(--text);margin-bottom:4px">Dr. Amina Osei</div>'
+    + '<div style="font-size:12px;color:var(--text3);margin-bottom:10px">PNG, JPG up to 5MB. Square image recommended.</div>'
+    + '<div style="display:flex;gap:8px">'
+    + '<button class="btn btn-outline btn-sm" onclick="showToast(\'Opening photo picker...\')">Upload Photo</button>'
+    + '<button class="btn btn-ghost btn-sm" onclick="showToast(\'Photo removed.\')">Remove</button>'
+    + '</div></div>'
+    + '</div>'
+    + '<div style="padding:20px">'
+    + '<div class="fi-grid-2"><div class="fg"><label class="fl">First name</label><input class="fi" type="text" value="Amina" oninput="markChanged()"/></div>'
+    + '<div class="fg"><label class="fl">Last name</label><input class="fi" type="text" value="Osei" oninput="markChanged()"/></div></div>'
+    + '<div class="fg"><label class="fl">Display name / Title</label><input class="fi" type="text" value="Dr. Amina Osei" oninput="markChanged()"/></div>'
+    + '<div class="fg"><label class="fl">Professional headline</label><input class="fi" type="text" value="Senior Software Engineer at Barclays | Diaspora Mentor" oninput="markChanged()"/></div>'
+    + '<div class="fg"><label class="fl">About / Bio</label><textarea class="fi" oninput="markChanged()">I am a software engineer at Barclays with 8 years of experience across fintech and banking. I grew up in Accra and came to London on the Chevening Scholarship. I mentor ambitious African students who want to break into the UK tech industry.</textarea></div>'
+    + '<div class="fi-grid-2"><div class="fg"><label class="fl">Current city</label><input class="fi" type="text" value="London, UK" oninput="markChanged()"/></div>'
+    + '<div class="fg"><label class="fl">Country of origin</label><input class="fi" type="text" value="Ghana" oninput="markChanged()"/></div></div>'
+    + '<div class="fg"><label class="fl">LinkedIn URL</label><input class="fi" type="url" value="https://linkedin.com/in/aminaosei" oninput="markChanged()"/></div>'
+    + '<div class="fg"><label class="fl">Personal website (optional)</label><input class="fi" type="url" placeholder="https://..." oninput="markChanged()"/></div>'
+    + '</div></div>'
+
+    + '<div class="s-section-head" style="margin-top:28px"><div class="s-section-title">Mentorship Settings</div><div class="s-section-sub">Control how and when students can reach you</div></div>'
+    + '<div class="s-card">'
+    + '<div class="s-card-row"><div class="s-card-row-info"><div class="s-card-row-label">Accepting new mentees</div><div class="s-card-row-sub">Allow students to send you mentorship requests</div></div><label class="toggle"><input type="checkbox" checked onchange="markChanged()"/><div class="toggle-track"></div><div class="toggle-thumb"></div></label></div>'
+    + '<div class="s-card-row"><div class="s-card-row-info"><div class="s-card-row-label">Maximum active mentees</div><div class="s-card-row-sub">Limit how many active mentorships you take on at once</div></div><select class="s-select" onchange="markChanged()"><option>3</option><option selected>5</option><option>8</option><option>10</option><option>Unlimited</option></select></div>'
+    + '<div class="s-card-row"><div class="s-card-row-info"><div class="s-card-row-label">Session availability</div><div class="s-card-row-sub">Default session length for new bookings</div></div><select class="s-select" onchange="markChanged()"><option>30 minutes</option><option selected>45 minutes</option><option>60 minutes</option><option>90 minutes</option></select></div>'
+    + '<div class="s-card-row"><div class="s-card-row-info"><div class="s-card-row-label">Mentorship focus areas</div><div class="s-card-row-sub">Software Engineering, Career Development, UK Job Market</div></div><button class="btn btn-outline btn-sm" onclick="showToast(\'Opening focus area editor...\')">Edit</button></div>'
+    + '</div></div>';
+}
+
+// ── ACCOUNT & SECURITY ──
+function renderAccount() {
+  document.getElementById('settingsBody').innerHTML =
+    '<div class="s-section">'
+    + '<div class="s-section-head"><div class="s-section-title">Account &amp; Security</div><div class="s-section-sub">Manage your login credentials and security settings</div></div>'
+
+    + '<div class="s-card">'
+    + '<div class="s-card-row"><div class="s-card-row-info"><div class="s-card-row-label">Email address</div><div class="s-card-row-sub">amina.osei@barclays.com</div></div><button class="btn btn-outline btn-sm" onclick="showToast(\'Change email flow opening...\')">Change</button></div>'
+    + '<div class="s-card-row"><div class="s-card-row-info"><div class="s-card-row-label">Password</div><div class="s-card-row-sub">Last changed 3 months ago</div></div><button class="btn btn-outline btn-sm" onclick="openModal(\'pwModal\')">Change Password</button></div>'
+    + '<div class="s-card-row"><div class="s-card-row-info"><div class="s-card-row-label">Two-factor authentication</div><div class="s-card-row-sub">Add an extra layer of security to your account</div></div><button class="btn btn-success btn-sm" onclick="showToast(\'2FA setup...\', \'success\')">Enable 2FA</button></div>'
+    + '</div>'
+
+    + '<div class="s-section-head" style="margin-top:28px"><div class="s-section-title">Active Sessions</div><div class="s-section-sub">Devices currently logged into your account</div></div>'
+    + '<div class="s-card">'
+    + '<div class="s-card-row"><div style="width:36px;height:36px;background:var(--brand-light);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg style="width:16px;height:16px;stroke:var(--brand);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div class="s-card-row-info" style="margin-left:12px"><div class="s-card-row-label">MacBook Pro &mdash; Chrome</div><div class="s-card-row-sub">London, UK &bull; Active now &bull; <strong style="color:var(--success)">This device</strong></div></div></div>'
+    + '<div class="s-card-row"><div style="width:36px;height:36px;background:var(--bg);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg style="width:16px;height:16px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div><div class="s-card-row-info" style="margin-left:12px"><div class="s-card-row-label">iPhone 15 &mdash; Safari</div><div class="s-card-row-sub">London, UK &bull; 2 hours ago</div></div><button class="btn btn-ghost btn-xs" onclick="showToast(\'Session revoked.\')">Revoke</button></div>'
+    + '</div>'
+    + '<button class="btn btn-danger-outline btn-sm" style="margin-top:10px" onclick="showToast(\'All other sessions signed out.\')">Sign out all other devices</button>'
+
+    + '<div style="margin-top:28px"><div class="s-section-head"><div class="s-section-title">Danger Zone</div><div class="s-section-sub">Permanent actions that cannot be reversed</div></div>'
+    + '<div class="danger-zone"><div class="danger-zone-title">Delete Account</div><div class="danger-zone-sub">Once you delete your account, all your mentorships, sessions, messages, and resources will be permanently removed. Your active mentees will be notified.</div><button class="btn btn-danger btn-sm" onclick="openModal(\'deleteModal\')"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>Delete My Account</button></div>'
+    + '</div></div>';
+}
+
+// ── BILLING ──
+function renderBilling() {
+  document.getElementById('settingsBody').innerHTML =
+    '<div class="s-section">'
+    + '<div class="s-section-head"><div class="s-section-title">Plan &amp; Billing</div><div class="s-section-sub">Manage your subscription and payment details</div></div>'
+    + '<div class="plan-grid">'
+    + '<div class="plan-card"><div class="plan-name">Free</div><div class="plan-price">$0<span>/mo</span></div><ul class="plan-features"><li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Up to 2 mentees</li><li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Basic messaging</li><li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Session scheduling</li></ul></div>'
+    + '<div class="plan-card current"><div class="plan-badge">Current Plan</div><div class="plan-name">Mentor Pro</div><div class="plan-price">$12<span>/mo</span></div><ul class="plan-features"><li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Unlimited mentees</li><li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Resource library</li><li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Post opportunities</li><li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Analytics dashboard</li><li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Verified badge</li></ul></div>'
+    + '<div class="plan-card"><div class="plan-name">Enterprise</div><div class="plan-price">Custom</div><ul class="plan-features"><li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Team mentorship</li><li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Organisation dashboard</li><li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Dedicated support</li><li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>White-label options</li></ul></div>'
+    + '</div>'
+    + '<div style="display:flex;gap:8px;margin-bottom:24px">'
+    + '<button class="btn btn-outline btn-sm" onclick="showToast(\'Upgrade flow opening...\')">Upgrade to Enterprise</button>'
+    + '<button class="btn btn-ghost btn-sm" onclick="showToast(\'Cancel subscription...\')">Cancel Subscription</button>'
+    + '</div>'
+
+    + '<div class="s-section-head"><div class="s-section-title">Payment Method</div></div>'
+    + '<div class="s-card">'
+    + '<div class="s-card-row"><div style="display:flex;align-items:center;gap:12px"><div style="width:40px;height:28px;background:#1a1f71;border-radius:6px;display:flex;align-items:center;justify-content:center"><svg style="width:20px;height:12px;fill:white" viewBox="0 0 38 24"><rect width="38" height="24" rx="3" fill="#1a1f71"/><path d="M15 7l-2.5 10h-2L13 7h2zm5.5 6.5l1.3-3.5.7 3.5h-2zm2.3 3.5h1.9L22.5 7h-1.8c-.4 0-.7.2-.9.6L17 17h2l.4-1h2.4l.2 1zm-6-7.5c0 1.9-2.6 2-2.6 2.7 0 .2.3.5.8.5.7 0 1.4-.1 2-.4l-.4 1.7c-.6.2-1.3.3-1.9.3-2 0-3.4-1-3.4-2.4 0-1.9 2.6-2 2.6-2.7 0-.3-.2-.5-.7-.5-.7 0-1.3.2-1.9.4l.4-1.7c.5-.2 1.2-.3 1.9-.3 2 0 3.2 1 3.2 2.4z" fill="white"/></svg></div><div class="s-card-row-info"><div class="s-card-row-label">Visa ending in 4242</div><div class="s-card-row-sub">Expires 08/2027 &bull; Billing to UK address</div></div></div><button class="btn btn-outline btn-sm" onclick="showToast(\'Payment method update...\')">Update</button></div>'
+    + '</div>'
+
+    + '<div class="s-section-head" style="margin-top:24px"><div class="s-section-title">Billing History</div></div>'
+    + '<div class="s-card">'
+    + '<div class="s-card-row"><div class="s-card-row-info"><div class="s-card-row-label">Mentor Pro &mdash; March 2026</div><div class="s-card-row-sub">Mar 1, 2026</div></div><div style="display:flex;align-items:center;gap:10px"><span style="font-weight:700;color:var(--text)">$12.00</span><button class="btn btn-ghost btn-xs" onclick="showToast(\'Downloading invoice...\')">Invoice</button></div></div>'
+    + '<div class="s-card-row"><div class="s-card-row-info"><div class="s-card-row-label">Mentor Pro &mdash; February 2026</div><div class="s-card-row-sub">Feb 1, 2026</div></div><div style="display:flex;align-items:center;gap:10px"><span style="font-weight:700;color:var(--text)">$12.00</span><button class="btn btn-ghost btn-xs" onclick="showToast(\'Downloading invoice...\')">Invoice</button></div></div>'
+    + '<div class="s-card-row"><div class="s-card-row-info"><div class="s-card-row-label">Mentor Pro &mdash; January 2026</div><div class="s-card-row-sub">Jan 1, 2026</div></div><div style="display:flex;align-items:center;gap:10px"><span style="font-weight:700;color:var(--text)">$12.00</span><button class="btn btn-ghost btn-xs" onclick="showToast(\'Downloading invoice...\')">Invoice</button></div></div>'
+    + '</div></div>';
+}
+
+// ── NOTIFICATIONS ──
+function renderNotifications() {
+  document.getElementById('settingsBody').innerHTML =
+    '<div class="s-section">'
+    + '<div class="s-section-head"><div class="s-section-title">Notification Preferences</div><div class="s-section-sub">Choose what you get notified about and how</div></div>'
+
+    + '<div class="s-section-head" style="margin-bottom:8px"><div style="font-size:13px;font-weight:700;color:var(--text)">Mentorships</div></div>'
+    + '<div class="s-card">'
+    + buildNotifRow('New mentorship request', 'When a student sends you a request', true, true, false)
+    + buildNotifRow('Mentee submits a goal', 'When a mentee adds or completes a goal', true, false, false)
+    + buildNotifRow('Session reminder', '24 hours before a scheduled session', true, true, true)
+    + buildNotifRow('Session rescheduled or cancelled', 'When a mentee changes a booking', true, true, false)
+    + '</div>'
+
+    + '<div class="s-section-head" style="margin-top:20px;margin-bottom:8px"><div style="font-size:13px;font-weight:700;color:var(--text)">Messages</div></div>'
+    + '<div class="s-card">'
+    + buildNotifRow('New message', 'When a mentee sends you a message', true, true, false)
+    + buildNotifRow('Message digest', 'Daily summary of unread messages', false, false, false)
+    + '</div>'
+
+    + '<div class="s-section-head" style="margin-top:20px;margin-bottom:8px"><div style="font-size:13px;font-weight:700;color:var(--text)">Opportunities</div></div>'
+    + '<div class="s-card">'
+    + buildNotifRow('New opportunities matching your field', 'Weekly digest of relevant opportunities', true, false, false)
+    + buildNotifRow('Your post goes live', 'When an opportunity you posted is approved', true, false, false)
+    + buildNotifRow('Student applies via your post', 'When someone applies to an opportunity you shared', true, false, false)
+    + '</div>'
+
+    + '<div class="s-section-head" style="margin-top:20px;margin-bottom:8px"><div style="font-size:13px;font-weight:700;color:var(--text)">Platform</div></div>'
+    + '<div class="s-card">'
+    + buildNotifRow('Product updates from Ispora', 'New features and announcements', true, false, false)
+    + buildNotifRow('Weekly impact summary', 'Your mentorship impact stats every Monday', true, false, false)
+    + '</div>'
+
+    + '<div style="display:flex;gap:8px;margin-top:16px">'
+    + '<button class="btn btn-brand btn-sm" onclick="saveChanges()">Save Preferences</button>'
+    + '<button class="btn btn-ghost btn-sm" onclick="showToast(\'All notifications turned off.\')">Turn off all</button>'
+    + '</div></div>';
+}
+
+function buildNotifRow(label, sub, email, push, sms) {
+  return '<div class="s-card-row">'
+    + '<div class="s-card-row-info"><div class="s-card-row-label">' + label + '</div><div class="s-card-row-sub">' + sub + '</div></div>'
+    + '<div style="display:flex;gap:16px;align-items:center">'
+    + '<div style="text-align:center"><div style="font-size:9px;color:var(--text3);margin-bottom:4px;font-weight:600">EMAIL</div><label class="toggle"><input type="checkbox" ' + (email?'checked':'') + ' onchange="markChanged()"/><div class="toggle-track"></div><div class="toggle-thumb"></div></label></div>'
+    + '<div style="text-align:center"><div style="font-size:9px;color:var(--text3);margin-bottom:4px;font-weight:600">PUSH</div><label class="toggle"><input type="checkbox" ' + (push?'checked':'') + ' onchange="markChanged()"/><div class="toggle-track"></div><div class="toggle-thumb"></div></label></div>'
+    + '<div style="text-align:center"><div style="font-size:9px;color:var(--text3);margin-bottom:4px;font-weight:600">SMS</div><label class="toggle"><input type="checkbox" ' + (sms?'checked':'') + ' onchange="markChanged()"/><div class="toggle-track"></div><div class="toggle-thumb"></div></label></div>'
+    + '</div></div>';
+}
+
+// ── PRIVACY ──
+function renderPrivacy() {
+  document.getElementById('settingsBody').innerHTML =
+    '<div class="s-section">'
+    + '<div class="s-section-head"><div class="s-section-title">Privacy Settings</div><div class="s-section-sub">Control who can see your profile and how your data is used</div></div>'
+    + '<div class="s-card">'
+    + '<div class="s-card-row"><div class="s-card-row-info"><div class="s-card-row-label">Profile visibility</div><div class="s-card-row-sub">Who can view your full mentor profile</div></div><select class="s-select" onchange="markChanged()"><option>Everyone on Ispora</option><option selected>Verified students only</option><option>My mentees only</option></select></div>'
+    + '<div class="s-card-row"><div class="s-card-row-info"><div class="s-card-row-label">Show in mentor directory</div><div class="s-card-row-sub">Appear in search results when students look for mentors</div></div><label class="toggle"><input type="checkbox" checked onchange="markChanged()"/><div class="toggle-track"></div><div class="toggle-thumb"></div></label></div>'
+    + '<div class="s-card-row"><div class="s-card-row-info"><div class="s-card-row-label">Show current employer</div><div class="s-card-row-sub">Display your company name on your public profile</div></div><label class="toggle"><input type="checkbox" checked onchange="markChanged()"/><div class="toggle-track"></div><div class="toggle-thumb"></div></label></div>'
+    + '<div class="s-card-row"><div class="s-card-row-info"><div class="s-card-row-label">Allow direct messages from non-mentees</div><div class="s-card-row-sub">Students you are not mentoring can send you a message</div></div><label class="toggle"><input type="checkbox" onchange="markChanged()"/><div class="toggle-track"></div><div class="toggle-thumb"></div></label></div>'
+    + '<div class="s-card-row"><div class="s-card-row-info"><div class="s-card-row-label">Activity status</div><div class="s-card-row-sub">Show when you are active or recently online</div></div><label class="toggle"><input type="checkbox" checked onchange="markChanged()"/><div class="toggle-track"></div><div class="toggle-thumb"></div></label></div>'
+    + '</div>'
+
+    + '<div class="s-section-head" style="margin-top:28px"><div class="s-section-title">Data &amp; Privacy</div><div class="s-section-sub">Control how Ispora uses your data</div></div>'
+    + '<div class="s-card">'
+    + '<div class="s-card-row"><div class="s-card-row-info"><div class="s-card-row-label">Analytics &amp; personalisation</div><div class="s-card-row-sub">Help us improve Ispora by sharing usage data</div></div><label class="toggle"><input type="checkbox" checked onchange="markChanged()"/><div class="toggle-track"></div><div class="toggle-thumb"></div></label></div>'
+    + '<div class="s-card-row"><div class="s-card-row-info"><div class="s-card-row-label">Marketing communications</div><div class="s-card-row-sub">Receive emails about new features and Ispora events</div></div><label class="toggle"><input type="checkbox" onchange="markChanged()"/><div class="toggle-track"></div><div class="toggle-thumb"></div></label></div>'
+    + '</div>'
+    + '<div style="display:flex;gap:8px;margin-top:14px">'
+    + '<button class="btn btn-outline btn-sm" onclick="showToast(\'Preparing data export...\')"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Download My Data</button>'
+    + '</div></div>';
+}
+
+// ── APPEARANCE ──
+function renderAppearance() {
+  document.getElementById('settingsBody').innerHTML =
+    '<div class="s-section">'
+    + '<div class="s-section-head"><div class="s-section-title">Appearance</div><div class="s-section-sub">Customise how Ispora looks for you</div></div>'
+
+    + '<div class="s-section-head" style="margin-bottom:10px"><div style="font-size:13px;font-weight:700;color:var(--text)">Theme</div></div>'
+    + '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px">'
+    + buildThemeCard('Light', 'light', '#f0f2ff', '#fff', true)
+    + buildThemeCard('Dark', 'dark', '#07094a', '#0f1139', false)
+    + buildThemeCard('System', 'system', 'linear-gradient(135deg,#f0f2ff 50%,#07094a 50%)', '#fff', false)
+    + '</div>'
+
+    + '<div class="s-card">'
+    + '<div class="s-card-row"><div class="s-card-row-info"><div class="s-card-row-label">Compact mode</div><div class="s-card-row-sub">Reduce spacing and card sizes for more content on screen</div></div><label class="toggle"><input type="checkbox" onchange="markChanged()"/><div class="toggle-track"></div><div class="toggle-thumb"></div></label></div>'
+    + '<div class="s-card-row"><div class="s-card-row-info"><div class="s-card-row-label">Reduce animations</div><div class="s-card-row-sub">Turn off motion effects and transitions</div></div><label class="toggle"><input type="checkbox" onchange="markChanged()"/><div class="toggle-track"></div><div class="toggle-thumb"></div></label></div>'
+    + '<div class="s-card-row"><div class="s-card-row-info"><div class="s-card-row-label">Language</div><div class="s-card-row-sub">Interface language</div></div><select class="s-select" onchange="markChanged()"><option selected>English (UK)</option><option>English (US)</option><option>French</option><option>Pidgin</option></select></div>'
+    + '<div class="s-card-row"><div class="s-card-row-info"><div class="s-card-row-label">Timezone</div><div class="s-card-row-sub">Used for session scheduling and notifications</div></div><select class="s-select" onchange="markChanged()"><option selected>GMT+0 London</option><option>GMT+1 Lagos (WAT)</option><option>GMT-5 New York</option><option>GMT-8 Los Angeles</option></select></div>'
+    + '</div></div>';
+}
+
+function buildThemeCard(name, val, bg, surface, active) {
+  return '<div onclick="selectTheme(this)" style="border:2px solid ' + (active?'var(--brand)':'var(--border)') + ';border-radius:12px;padding:12px;cursor:pointer;transition:.2s;background:' + (active?'var(--brand-light)':'var(--surface)') + '" data-theme="' + val + '">'
+    + '<div style="height:48px;background:' + bg + ';border-radius:8px;margin-bottom:8px;border:1px solid var(--border);overflow:hidden"><div style="height:14px;background:' + surface + ';margin:6px;border-radius:4px;opacity:.8"></div><div style="height:8px;background:' + surface + ';margin:4px 6px;border-radius:3px;width:60%;opacity:.5"></div></div>'
+    + '<div style="font-size:12px;font-weight:600;color:var(--text);text-align:center">' + name + '</div>'
+    + '</div>';
+}
+
+function selectTheme(el) {
+  document.querySelectorAll('[data-theme]').forEach(function(t){
+    t.style.borderColor='var(--border)';
+    t.style.background='var(--surface)';
+  });
+  el.style.borderColor='var(--brand)';
+  el.style.background='var(--brand-light)';
+  var theme = el.getAttribute('data-theme');
+  showToast(theme.charAt(0).toUpperCase() + theme.slice(1) + ' theme selected (preview coming soon)');
+  markChanged();
+}
+
+// ── CONNECTED ACCOUNTS ──
+function renderConnected() {
+  document.getElementById('settingsBody').innerHTML =
+    '<div class="s-section">'
+    + '<div class="s-section-head"><div class="s-section-title">Connected Accounts</div><div class="s-section-sub">Link external accounts for easier sign in and data import</div></div>'
+    + '<div class="s-card">'
+    + buildConnRow('&#127950;', 'Google', 'amina.osei@gmail.com', true)
+    + buildConnRow('&#128279;', 'LinkedIn', 'linkedin.com/in/aminaosei', true)
+    + buildConnRow('&#128027;', 'GitHub', 'Not connected', false)
+    + buildConnRow('&#128248;', 'Zoom', 'Not connected', false)
+    + buildConnRow('&#128172;', 'Slack', 'Not connected', false)
+    + buildConnRow('&#128197;', 'Google Calendar', 'Synced &bull; 3 upcoming sessions', true)
+    + '</div>'
+
+    + '<div class="s-section-head" style="margin-top:28px"><div class="s-section-title">Calendar Sync</div><div class="s-section-sub">Keep your sessions in sync with your external calendar</div></div>'
+    + '<div class="s-card">'
+    + '<div class="s-card-row"><div class="s-card-row-info"><div class="s-card-row-label">Auto-sync new sessions</div><div class="s-card-row-sub">Automatically add Ispora sessions to Google Calendar</div></div><label class="toggle"><input type="checkbox" checked onchange="markChanged()"/><div class="toggle-track"></div><div class="toggle-thumb"></div></label></div>'
+    + '<div class="s-card-row"><div class="s-card-row-info"><div class="s-card-row-label">Add video call link</div><div class="s-card-row-sub">Include Google Meet or Zoom link in calendar events</div></div><label class="toggle"><input type="checkbox" checked onchange="markChanged()"/><div class="toggle-track"></div><div class="toggle-thumb"></div></label></div>'
+    + '<div class="s-card-row"><div class="s-card-row-info"><div class="s-card-row-label">Calendar reminders</div><div class="s-card-row-sub">Add 15-minute reminder to all session events</div></div><label class="toggle"><input type="checkbox" checked onchange="markChanged()"/><div class="toggle-track"></div><div class="toggle-thumb"></div></label></div>'
+    + '</div></div>';
+}
+
+function buildConnRow(logo, name, status, connected) {
+  return '<div class="conn-item">'
+    + '<div class="conn-logo">' + logo + '</div>'
+    + '<div class="conn-info"><div class="conn-name">' + name + '</div>'
+    + '<div class="conn-status ' + (connected?'connected':'') + '">' + status + '</div></div>'
+    + (connected
+      ? '<button class="btn btn-ghost btn-xs" onclick="showToast(\'' + name + ' disconnected.\')">Disconnect</button>'
+      : '<button class="btn btn-outline btn-xs" onclick="showToast(\'Connecting to ' + name + '...\',\'success\')">Connect</button>')
+    + '</div>';
+}
+
+// ── HELP ──
+function renderHelp() {
+  document.getElementById('settingsBody').innerHTML =
+    '<div class="s-section">'
+    + '<div class="s-section-head"><div class="s-section-title">Help &amp; Support</div><div class="s-section-sub">Get help, report issues or share feedback with the Ispora team</div></div>'
+
+    + '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px">'
+    + buildHelpCard('&#128218;', 'Documentation', 'Guides on how to use every feature on Ispora', 'Read Docs')
+    + buildHelpCard('&#128172;', 'Live Chat', 'Talk to the Ispora team directly &mdash; usually responds in minutes', 'Start Chat')
+    + buildHelpCard('&#128139;', 'Report a Bug', 'Found something broken? Let us know and we will fix it fast', 'Report')
+    + buildHelpCard('&#128161;', 'Feature Request', 'Have an idea to make Ispora better? We want to hear it', 'Submit Idea')
+    + '</div>'
+
+    + '<div class="s-section-head"><div class="s-section-title">Frequently Asked</div></div>'
+    + '<div class="s-card">'
+    + buildFaqRow('How does mentee matching work?', 'Students find you through the mentor directory. They can request a mentorship which you accept or decline.')
+    + buildFaqRow('Can I pause my mentorship without ending it?', 'Yes. On the My Mentorships page, click Pause on any active mentee. They are notified and the relationship is preserved.')
+    + buildFaqRow('How do I get the Diaspora Verified badge?', 'Verified badges are granted to mentors who complete identity verification and have an active professional profile. Contact support to start.')
+    + buildFaqRow('Is my data shared with third parties?', 'No. Ispora does not sell or share personal data. See our Privacy Policy for full details.')
+    + '</div>'
+
+    + '<div class="s-section-head" style="margin-top:28px"><div class="s-section-title">About Ispora</div></div>'
+    + '<div class="s-card">'
+    + '<div class="s-card-row"><div class="s-card-row-info"><div class="s-card-row-label">Version</div><div class="s-card-row-sub">Ispora MVP v1.0 &bull; March 2026</div></div></div>'
+    + '<div class="s-card-row"><div class="s-card-row-info"><div class="s-card-row-label">Terms of Service</div></div><button class="btn btn-ghost btn-xs" onclick="showToast(\'Opening Terms...\')">View</button></div>'
+    + '<div class="s-card-row"><div class="s-card-row-info"><div class="s-card-row-label">Privacy Policy</div></div><button class="btn btn-ghost btn-xs" onclick="showToast(\'Opening Privacy Policy...\')">View</button></div>'
+    + '</div></div>';
+}
+
+function buildHelpCard(ico, title, sub, cta) {
+  return '<div style="background:var(--surface);border:1.5px solid var(--border);border-radius:14px;padding:18px;cursor:pointer;transition:.2s" onclick="showToast(\'' + cta + '...\',\'success\')" onmouseover="this.style.borderColor=\'var(--brand)\'" onmouseout="this.style.borderColor=\'var(--border)\'">'
+    + '<div style="font-size:24px;margin-bottom:10px">' + ico + '</div>'
+    + '<div style="font-family:Syne,sans-serif;font-weight:700;font-size:13px;color:var(--text);margin-bottom:4px">' + title + '</div>'
+    + '<div style="font-size:12px;color:var(--text3);line-height:1.4;margin-bottom:12px">' + sub + '</div>'
+    + '<button class="btn btn-outline btn-xs">' + cta + '</button>'
+    + '</div>';
+}
+
+function buildFaqRow(q, a) {
+  return '<div class="s-card-row" style="flex-direction:column;align-items:flex-start;gap:6px;cursor:pointer" onclick="this.querySelector(\'.faq-ans\').style.display=this.querySelector(\'.faq-ans\').style.display===\'none\'?\'block\':\'none\'">'
+    + '<div style="font-weight:600;font-size:13px;color:var(--text);display:flex;align-items:center;justify-content:space-between;width:100%">'
+    + q
+    + '<svg style="width:14px;height:14px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round;flex-shrink:0" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>'
+    + '</div>'
+    + '<div class="faq-ans" style="display:none;font-size:12px;color:var(--text2);line-height:1.6">' + a + '</div>'
+    + '</div>';
+}
+
+function confirmDelete() {
+  var val = document.getElementById('deleteConfirmInput').value;
+  if (val === 'DELETE') {
+    closeModal('deleteModal');
+    showToast('Account scheduled for deletion. You will receive a confirmation email.', '');
+  } else {
+    showToast('Please type DELETE to confirm', 'error');
+  }
+}
+
+function openModal(id){ document.getElementById(id).classList.add('show'); document.body.style.overflow='hidden'; }
+function closeModal(id){ document.getElementById(id).classList.remove('show'); document.body.style.overflow=''; }
+function overlayClose(e,id){ if(e.target===e.currentTarget) closeModal(id); }
+
+var tTimer;
+function showToast(msg, type) {
+  type = type || '';
+  var el = document.getElementById('toastEl'), ico = document.getElementById('toastIco'), m = document.getElementById('toastMsg');
+  el.className = 'toast';
+  if (type === 'success') { el.classList.add('success'); ico.innerHTML = '<polyline points="20 6 9 17 4 12"/>'; }
+  else if (type === 'error') { el.classList.add('error'); ico.innerHTML = '<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>'; }
+  else { ico.innerHTML = '<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>'; }
+  m.textContent = msg;
+  clearTimeout(tTimer);
+  setTimeout(function(){ el.classList.add('show'); }, 10);
+  tTimer = setTimeout(function(){ el.classList.remove('show'); }, 3200);
+}
+
+function navTo(el){ document.querySelectorAll('.nav-item').forEach(function(i){i.classList.remove('active');}); el.classList.add('active'); }
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', renderProfile);
+} else {
+  renderProfile();
+}
+</script>
+</body>
+</html>

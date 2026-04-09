@@ -1,0 +1,341 @@
+Cookie “__cf_bm” has been rejected for invalid domain. dashboard
+Cookie “__cf_bm” has been rejected for invalid domain. caf4d18189b0c5fcd7d460e20a21f583abbb0127.css
+Cookie “__cf_bm” has been rejected for invalid domain. _index.json
+Cookie “__cf_bm” has been rejected for invalid domain. caf4d18189b0c5fcd7d460e20a21f583abbb0127.js
+Cookie “__cf_bm” has been rejected for invalid domain. dashboard.json
+Cookie “__cf_bm” has been rejected for invalid domain. dashboard.json
+[Hydrated] sites-runtime.04f66058feafef354e13705358698cf2ae30f1cd1c6baaa2efc88d31da9a91ed.js:127:4207
+SupportWidget Debug: 
+Object { hasUser: false, hasToken: false, userEmail: undefined, pathname: "/dashboard", isLandingOrAuth: false, showWidget: false }
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:60033:18
+❌ Widget NOT showing because: 
+Object { hasUser: false, hasToken: false, isLandingOrAuth: false, pathname: "/dashboard" }
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:60040:109
+=== Loading Session on Mount === caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:17142:17
+Found old token in localStorage, will verify with Supabase caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:17142:113
+✓ Supabase session found, fetching user profile... caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:17154:19
+=== Auth State Change === caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:17210:19
+Event: INITIAL_SESSION caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:17210:61
+Session exists: true caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:17210:87
+Cookie “__cf_bm” has been rejected for invalid domain. community_published_banner_details
+✓ Session restored successfully caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:17192:52
+=== Session Loading Complete === caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:17203:30
+SupportWidget Debug: 
+Object { hasUser: true, hasToken: true, userEmail: "oluseyi88@gmail.com", pathname: "/dashboard", isLandingOrAuth: false, showWidget: true }
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:60033:18
+✅ Widget SHOULD BE showing caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:60040:20
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/mentorships caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:23052:13
+Getting valid token... caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:23028:107
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/sessions caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:23052:13
+Token refresh already in progress, waiting... caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:23026:22
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/sessions/public caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:23052:13
+Token refresh already in progress, waiting... caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:23026:22
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/users/88cd18ff-e250-4eb9-a562-e6ea9ca134a1 caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:23052:13
+Token refresh already in progress, waiting... caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:23026:22
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/mentorships caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:23052:13
+Token refresh already in progress, waiting... caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:23026:22
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/notifications caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:23052:13
+Token refresh already in progress, waiting... caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:23026:22
+✓ Token refreshed and obtained caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:23031:104
+Authorization header being sent: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY... 6 caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:23054:13
+=== Auth State Change === caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:17210:19
+Event: INITIAL_SESSION caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:17210:61
+Session exists: true caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:17210:87
+The resource at “https://chef-speak-68011167.figma.site/_runtimes/sites-runtime.04f66058feafef354e13705358698cf2ae30f1cd1c6baaa2efc88d31da9a91ed.js” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. dashboard
+The resource at “https://chef-speak-68011167.figma.site/_components/v2/caf4d18189b0c5fcd7d460e20a21f583abbb0127.js” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. dashboard
+The resource at “https://chef-speak-68011167.figma.site/_json/71919ab3-4dc5-41d3-8cf8-503d4a66fb6b/_index.json” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. dashboard
+SupportWidget Debug: 
+Object { hasUser: true, hasToken: true, userEmail: "oluseyi88@gmail.com", pathname: "/dashboard", isLandingOrAuth: false, showWidget: true }
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:60033:18
+✅ Widget SHOULD BE showing caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:60040:20
+=== Auth State Change === caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:17210:19
+Event: INITIAL_SESSION caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:17210:61
+Session exists: true caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:17210:87
+API Response (/users/88cd18ff-e250-4eb9-a562-e6ea9ca134a1): 
+Object { success: true, user: {…} }
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:23073:35
+API Response (/notifications): 
+Object { success: true, notifications: (91) […] }
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:23073:35
+API Response (/mentorships): 
+Object { success: true, mentorships: (2) […] }
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:23073:35
+API Response (/sessions/public): 
+Object { success: true, sessions: (66) […] }
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:23073:35
+API Response (/sessions): 
+Object { success: true, sessions: (79) […] }
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:23073:35
+🔍 DEBUG: Sessions from backend (/sessions endpoint): 79 caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37271:17
+🔍 DEBUG: Sample session: 
+Object { id: "session_1774691386429_8fpv8suzl", notes: "Platform: Google Meet", topic: "science", status: "scheduled", duration: 60, mentorId: "644a4726-9669-4b28-8db9-356aeb1fcdf3", createdAt: "2026-03-28T09:49:46.429Z", createdBy: "644a4726-9669-4b28-8db9-356aeb1fcdf3", studentId: "88cd18ff-e250-4eb9-a562-e6ea9ca134a1", scheduledAt: "2026-03-30T05:00:00.000Z", … }
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37271:97
+🔍 DEBUG: Public sessions in "My Sessions": 72 caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37280:17
+  - Session: Genomics | Registered students: 
+Array [ "88cd18ff-e250-4eb9-a562-e6ea9ca134a1", "644a4726-9669-4b28-8db9-356aeb1fcdf3" ]
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: money making seminar | Registered students: 
+Array [ "88cd18ff-e250-4eb9-a562-e6ea9ca134a1", "5d5ec8d6-bc00-440d-b546-3a10d56362a4" ]
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: finance | Registered students: 
+Array [ "88cd18ff-e250-4eb9-a562-e6ea9ca134a1" ]
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: gee | Registered students: 
+Array [ "88cd18ff-e250-4eb9-a562-e6ea9ca134a1" ]
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: money making seminar | Registered students: 
+Array [ "88cd18ff-e250-4eb9-a562-e6ea9ca134a1" ]
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: finance | Registered students: 
+Array []
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: money making seminar | Registered students: 
+Array [ "88cd18ff-e250-4eb9-a562-e6ea9ca134a1", "644a4726-9669-4b28-8db9-356aeb1fcdf3" ]
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: finance | Registered students: 
+Array []
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: money making seminar | Registered students: 
+Array [ "88cd18ff-e250-4eb9-a562-e6ea9ca134a1" ]
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: finance | Registered students: 
+Array [ "88cd18ff-e250-4eb9-a562-e6ea9ca134a1" ]
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: money making seminar | Registered students: 
+Array [ "88cd18ff-e250-4eb9-a562-e6ea9ca134a1" ]
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: finance | Registered students: 
+Array [ "88cd18ff-e250-4eb9-a562-e6ea9ca134a1" ]
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: money making seminar | Registered students: 
+Array [ "88cd18ff-e250-4eb9-a562-e6ea9ca134a1" ]
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: finance | Registered students: 
+Array [ "88cd18ff-e250-4eb9-a562-e6ea9ca134a1" ]
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: genomics | Registered students: 
+Array [ "88cd18ff-e250-4eb9-a562-e6ea9ca134a1" ]
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: money making seminar | Registered students: 
+Array [ "88cd18ff-e250-4eb9-a562-e6ea9ca134a1" ]
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: finance | Registered students: 
+Array [ "88cd18ff-e250-4eb9-a562-e6ea9ca134a1" ]
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: genomics | Registered students: 
+Array []
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: money making seminar | Registered students: 
+Array [ "88cd18ff-e250-4eb9-a562-e6ea9ca134a1" ]
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: finance | Registered students: 
+Array []
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: money making seminar | Registered students: 
+Array [ "88cd18ff-e250-4eb9-a562-e6ea9ca134a1" ]
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: finance | Registered students: 
+Array []
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: money making seminar | Registered students: 
+Array [ "88cd18ff-e250-4eb9-a562-e6ea9ca134a1" ]
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: finance | Registered students: 
+Array []
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: money making seminar | Registered students: 
+Array [ "88cd18ff-e250-4eb9-a562-e6ea9ca134a1" ]
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: finance | Registered students: 
+Array []
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: money making seminar | Registered students: 
+Array [ "88cd18ff-e250-4eb9-a562-e6ea9ca134a1" ]
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: finance | Registered students: 
+Array []
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: money making seminar | Registered students: 
+Array [ "88cd18ff-e250-4eb9-a562-e6ea9ca134a1" ]
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: finance | Registered students: 
+Array []
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: genomics | Registered students: 
+Array []
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: money making seminar | Registered students: 
+Array [ "88cd18ff-e250-4eb9-a562-e6ea9ca134a1" ]
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: finance | Registered students: 
+Array []
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: genomics | Registered students: 
+Array []
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: money making seminar | Registered students: 
+Array [ "88cd18ff-e250-4eb9-a562-e6ea9ca134a1" ]
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: finance | Registered students: 
+Array []
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: money making seminar | Registered students: 
+Array [ "88cd18ff-e250-4eb9-a562-e6ea9ca134a1" ]
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: finance | Registered students: 
+Array []
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: money making seminar | Registered students: 
+Array [ "88cd18ff-e250-4eb9-a562-e6ea9ca134a1" ]
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: finance | Registered students: 
+Array []
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: money making seminar | Registered students: 
+Array [ "88cd18ff-e250-4eb9-a562-e6ea9ca134a1" ]
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: finance | Registered students: 
+Array []
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: money making seminar | Registered students: 
+Array [ "88cd18ff-e250-4eb9-a562-e6ea9ca134a1" ]
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: finance | Registered students: 
+Array []
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: money making seminar | Registered students: 
+Array [ "88cd18ff-e250-4eb9-a562-e6ea9ca134a1" ]
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: finance | Registered students: 
+Array []
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: genomics | Registered students: 
+Array []
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: money making seminar | Registered students: 
+Array [ "88cd18ff-e250-4eb9-a562-e6ea9ca134a1" ]
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: finance | Registered students: 
+Array []
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: genomics | Registered students: 
+Array []
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: money making seminar | Registered students: 
+Array [ "88cd18ff-e250-4eb9-a562-e6ea9ca134a1" ]
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: finance | Registered students: 
+Array []
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: money making seminar | Registered students: 
+Array [ "88cd18ff-e250-4eb9-a562-e6ea9ca134a1" ]
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: finance | Registered students: 
+Array []
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: money making seminar | Registered students: 
+Array [ "88cd18ff-e250-4eb9-a562-e6ea9ca134a1" ]
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: finance | Registered students: 
+Array []
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: money making seminar | Registered students: 
+Array [ "88cd18ff-e250-4eb9-a562-e6ea9ca134a1" ]
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: finance | Registered students: 
+Array []
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: money making seminar | Registered students: 
+Array [ "88cd18ff-e250-4eb9-a562-e6ea9ca134a1" ]
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: finance | Registered students: 
+Array []
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: money making seminar | Registered students: 
+Array [ "88cd18ff-e250-4eb9-a562-e6ea9ca134a1" ]
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: finance | Registered students: 
+Array []
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: genomics | Registered students: 
+Array []
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: money making seminar | Registered students: 
+Array [ "88cd18ff-e250-4eb9-a562-e6ea9ca134a1" ]
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: finance | Registered students: 
+Array []
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: genomics | Registered students: 
+Array []
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: money making seminar | Registered students: 
+Array [ "88cd18ff-e250-4eb9-a562-e6ea9ca134a1" ]
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: finance | Registered students: 
+Array []
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: money making seminar | Registered students: 
+Array [ "88cd18ff-e250-4eb9-a562-e6ea9ca134a1" ]
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: finance | Registered students: 
+Array []
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: genomics | Registered students: 
+Array []
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+  - Session: genomics | Registered students: 
+Array []
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37283:21
+📊 Public sessions loaded (available): 66 caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37286:49
+📊 Sample public session data: 
+Object { id: "session_1774698627766_k30lhp1m5", notes: '{"sessionType":"public","capacity":50,"registeredStudents":["88cd18ff-e250-4eb9-a562-e6ea9ca134a1","644a4726-9669-4b28-8db9-356aeb1fcdf3"],"platform":"Google Meet","description":"We do genomics mentorship, and take it up high to workshop and hands-on sessions","registeredCount":2}', topic: "Genomics", status: "scheduled", duration: 90, mentorId: "644a4726-9669-4b28-8db9-356aeb1fcdf3", createdAt: "2026-03-28T11:50:27.766Z", createdBy: "644a4726-9669-4b28-8db9-356aeb1fcdf3", studentId: "88cd18ff-e250-4eb9-a562-e6ea9ca134a1", updatedAt: "2026-04-02T14:20:39.883Z", … }
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:37286:125
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/users/88cd18ff-e250-4eb9-a562-e6ea9ca134a1 caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:23052:13
+Getting valid token... caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:23028:107
+✓ Token refreshed and obtained caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:23031:104
+Authorization header being sent: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY... caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:23054:13
+API Response (/mentorships): 
+Object { success: true, mentorships: (2) […] }
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:23073:35
+Student Dashboard - Notifications Response: 
+Object { success: true, notifications: (91) […] }
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:36851:17
+API Response (/users/88cd18ff-e250-4eb9-a562-e6ea9ca134a1): 
+Object { success: true, user: {…} }
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:23073:35
+🎓 Student Profile Data: 
+Object { careerInterests: (1) […], lookingFor: (2) […], industries: (1) […], major: "Biology" }
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:36410:15
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/users/browse/mentors caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:23052:13
+✓ Using cached token (within cache window) caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:23028:41
+Authorization header being sent: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY... caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:23054:13
+API Response (/users/browse/mentors): 
+Object { success: true, mentors: (11) […] }
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:23073:35
+👨‍🏫 Total mentors found: 11 caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:36417:19
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/mentorships caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:23052:13
+Getting valid token... caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:23028:107
+✓ Token refreshed and obtained caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:23031:104
+Authorization header being sent: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY... caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:23054:13
+API Response (/mentorships): 
+Object { success: true, mentorships: (2) […] }
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:23073:35
+Mentor Oluwaseyi Olawale: Score 10, Available: true, Spots: 5/5 caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:36423:24
+Mentor Dee John: Score 10, Available: true, Spots: 5/5 caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:36423:24
+Mentor cfd dcdcdce: Score 10, Available: true, Spots: 5/5 caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:36423:24
+Mentor dddd sdsdd: Score 10, Available: true, Spots: 5/5 caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:36423:24
+Mentor ffff dddd: Score 10, Available: true, Spots: 5/5 caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:36423:24
+Mentor cscsc cscs: Score 10, Available: true, Spots: 5/5 caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:36423:24
+Mentor dcsdc cfd: Score 10, Available: true, Spots: 5/5 caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:36423:24
+Mentor hammed hammed: Score 10, Available: true, Spots: 5/5 caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:36423:24
+Mentor Oluwaseyi  Olawale: Score 67, Available: true, Spots: 3/5 caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:36423:24
+Mentor olu was: Score 10, Available: true, Spots: 5/5 caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:36423:24
+Mentor ge en: Score 10, Available: true, Spots: 5/5 caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:36423:24
+✅ Recommended mentors (available only): 4 caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:36432:15
+📊 Top mentor scores: 
+Array(4) [ {…}, {…}, {…}, {…} ]
+caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:36432:81
+=== Auth State Change === caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:17210:19
+Event: SIGNED_IN caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:17210:61
+Session exists: true caf4d18189b0c5fcd7d460e20a21f583abbb0127.js:17210:87

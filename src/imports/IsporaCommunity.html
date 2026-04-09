@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ispora — Community</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --brand:#021ff6;--brand-h:#0118c4;--brand-light:#eef0ff;--brand-mid:#e0e5ff;
+  --accent:#00c896;--accent-light:#e0faf4;
+  --warn:#f59e0b;--warn-light:#fef9ee;
+  --danger:#ef4444;--danger-light:#fff1f1;
+  --success:#10b981;--success-light:#ecfdf5;
+  --bg:#f0f2ff;--surface:#fff;--surface2:#f7f8ff;
+  --border:#e2e5f5;--border2:#c8cef0;
+  --text:#07094a;--text2:#3d4275;--text3:#8b90b8;
+  --sidebar-w:224px;--topbar-h:64px;--r:16px;
+  --shadow-sm:0 1px 4px rgba(2,31,246,0.06);
+  --shadow:0 4px 20px rgba(2,31,246,0.09);
+  --shadow-lg:0 12px 48px rgba(2,31,246,0.15);
+}
+html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+button{cursor:pointer;border:none;background:none;font-family:inherit;font-size:inherit}
+input,textarea,select{font-family:inherit;font-size:inherit}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+.app{display:flex;height:100vh;overflow:hidden}
+
+/* SIDEBAR */
+.sidebar{width:var(--sidebar-w);background:var(--surface);border-right:1.5px solid var(--border);display:flex;flex-direction:column;flex-shrink:0}
+.sidebar-logo{padding:16px 18px 14px;display:flex;align-items:center;gap:10px;border-bottom:1.5px solid var(--border)}
+.logo-icon{width:28px;height:28px;background:var(--brand);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo-icon svg{width:14px;height:14px;fill:none;stroke:white;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.logo-name{font-family:'Syne',sans-serif;font-weight:700;font-size:14px;color:var(--brand);letter-spacing:-0.3px;line-height:1}
+.logo-tagline{font-size:9px;color:var(--text3);margin-top:1px}
+.sidebar-profile{margin:12px 14px 6px;padding:11px 13px;background:var(--brand-light);border-radius:12px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:.15s}
+.sidebar-profile:hover{background:#e0e3ff}
+.sp-av{width:36px;height:36px;border-radius:50%;background:var(--brand);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px;flex-shrink:0;position:relative}
+.sp-dot{position:absolute;bottom:1px;right:1px;width:8px;height:8px;background:var(--accent);border-radius:50%;border:2px solid white}
+.sp-name{font-weight:600;font-size:12px;color:var(--text);line-height:1.2}
+.sp-role{font-size:11px;color:var(--brand);font-weight:500;margin-top:2px}
+.nav{flex:1;overflow-y:auto;padding:8px 12px}
+.nav-section{margin-bottom:20px}
+.nav-label{font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.09em;padding:0 8px;margin-bottom:5px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:10px;color:var(--text2);font-size:13px;font-weight:500;transition:all .15s;cursor:pointer}
+.nav-item:hover{background:var(--brand-light);color:var(--brand)}
+.nav-item.active{background:var(--brand);color:white}
+.nav-item svg{width:15px;height:15px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.nav-badge{margin-left:auto;background:var(--danger);color:white;font-size:10px;font-weight:700;padding:1px 6px;border-radius:20px;min-width:18px;text-align:center}
+.nav-item.active .nav-badge{background:rgba(255,255,255,.35)}
+.sidebar-foot{padding:12px;border-top:1.5px solid var(--border)}
+.nav-item.danger{color:var(--danger)}
+.nav-item.danger:hover{background:var(--danger-light)}
+
+/* MAIN */
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0}
+.topbar{height:var(--topbar-h);background:var(--surface);border-bottom:1.5px solid var(--border);padding:0 28px;display:flex;align-items:center;gap:14px;flex-shrink:0}
+.topbar-left{flex:1}
+.topbar-left h2{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--text)}
+.topbar-left p{font-size:12px;color:var(--text3);margin-top:1px}
+.topbar-right{display:flex;align-items:center;gap:8px}
+.role-pill{display:flex;align-items:center;gap:6px;background:var(--bg);border:1.5px solid var(--border);border-radius:20px;padding:5px 12px 5px 8px;font-size:12px;font-weight:600;color:var(--text2);cursor:pointer;transition:.2s}
+.role-pill:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-light)}
+.role-pip{width:8px;height:8px;background:var(--brand);border-radius:50%}
+.role-pill svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2}
+.icon-btn{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--bg);border:1.5px solid var(--border);color:var(--text2);cursor:pointer;transition:.2s;position:relative}
+.icon-btn:hover{background:var(--brand-light);color:var(--brand);border-color:var(--brand)}
+.icon-btn svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.notif-badge{position:absolute;top:6px;right:6px;width:7px;height:7px;background:var(--danger);border-radius:50%;border:1.5px solid var(--surface)}
+
+/* PAGE */
+.page{flex:1;overflow:hidden;display:flex;flex-direction:column;min-height:0}
+
+/* TABS BAR */
+.tabs-bar{background:var(--surface);border-bottom:1.5px solid var(--border);padding:0 32px;display:flex;align-items:center;flex-shrink:0}
+.tab-btn{padding:14px 18px;font-size:13px;font-weight:600;color:var(--text3);border-bottom:2.5px solid transparent;cursor:pointer;transition:.15s;white-space:nowrap;display:flex;align-items:center;gap:6px}
+.tab-btn:hover{color:var(--brand)}
+.tab-btn.active{color:var(--brand);border-bottom-color:var(--brand)}
+.tab-btn svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tab-chip{font-size:10px;font-weight:700;background:var(--brand-light);color:var(--brand);padding:1px 6px;border-radius:20px}
+.tab-btn:not(.active) .tab-chip{background:var(--bg);color:var(--text3)}
+
+/* BODY LAYOUT */
+.body{flex:1;overflow-y:auto;padding:24px 32px;min-height:0;display:flex;gap:20px}
+.feed-col{flex:1;min-width:0;display:flex;flex-direction:column;gap:14px}
+.side-col{width:280px;flex-shrink:0;display:flex;flex-direction:column;gap:14px}
+
+/* COMPOSE BOX */
+.compose{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r);padding:16px 18px}
+.compose-top{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px}
+.compose-av{width:36px;height:36px;border-radius:50%;background:var(--brand);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:13px;flex-shrink:0}
+.compose-input{flex:1;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:10px 14px;font-size:13px;color:var(--text);outline:none;resize:none;min-height:72px;transition:.2s;line-height:1.5}
+.compose-input:focus{border-color:var(--brand);background:var(--surface);box-shadow:0 0 0 3px rgba(2,31,246,0.06)}
+.compose-input::placeholder{color:var(--text3)}
+.compose-foot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.post-types{display:flex;gap:6px;flex-wrap:wrap}
+.post-type-btn{display:flex;align-items:center;gap:5px;padding:5px 11px;border-radius:20px;font-size:11px;font-weight:600;cursor:pointer;border:1.5px solid var(--border);background:var(--surface);color:var(--text2);transition:.15s}
+.post-type-btn:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-light)}
+.post-type-btn.selected{border-color:var(--brand);background:var(--brand);color:white}
+.post-type-btn svg{width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* POST CARD */
+.post{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;transition:.2s;animation:fadeUp .25s ease both}
+.post:hover{box-shadow:var(--shadow-sm)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.post-head{padding:14px 18px 0;display:flex;align-items:flex-start;gap:11px}
+.post-av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:13px;flex-shrink:0}
+.post-meta{flex:1;min-width:0}
+.post-name{font-weight:700;font-size:13px;color:var(--text);display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.post-role{font-size:11px;color:var(--text3);margin-top:1px}
+.post-time{font-size:11px;color:var(--text3)}
+.post-pin{margin-left:auto;flex-shrink:0}
+
+/* POST TYPE BADGE */
+.ptag{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;white-space:nowrap}
+.ptag-win{background:var(--success-light);color:var(--success)}
+.ptag-question{background:var(--warn-light);color:#92400e}
+.ptag-resource{background:var(--brand-light);color:var(--brand)}
+.ptag-tip{background:var(--accent-light);color:#0f766e}
+.ptag-announcement{background:var(--brand);color:white}
+.ptag-opportunity{background:#f3e8ff;color:#7c3aed}
+.ptag-event{background:#fff7ed;color:#ea580c}
+
+/* POST BODY */
+.post-body{padding:10px 18px 12px 65px}
+.post-text{font-size:13px;color:var(--text2);line-height:1.65;margin-bottom:10px}
+.post-text strong{color:var(--text);font-weight:600}
+.post-img{width:100%;border-radius:10px;overflow:hidden;margin-bottom:10px;background:var(--bg);border:1px solid var(--border)}
+.post-link-preview{display:flex;align-items:center;gap:12px;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:10px;cursor:pointer;transition:.15s}
+.post-link-preview:hover{border-color:var(--brand);background:var(--brand-light)}
+.plp-ico{width:38px;height:38px;background:var(--brand-light);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
+.plp-title{font-weight:600;font-size:12px;color:var(--text)}
+.plp-url{font-size:11px;color:var(--text3);margin-top:2px}
+.post-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.post-tag{font-size:11px;font-weight:500;color:var(--brand);background:var(--brand-light);padding:2px 9px;border-radius:20px}
+
+/* POST ACTIONS */
+.post-actions{padding:10px 18px 12px 65px;border-top:1px solid var(--border);display:flex;align-items:center;gap:4px}
+.post-action{display:flex;align-items:center;gap:5px;padding:6px 10px;border-radius:8px;font-size:12px;font-weight:500;color:var(--text3);cursor:pointer;transition:.15s;border:none;background:none}
+.post-action:hover{background:var(--bg);color:var(--brand)}
+.post-action.liked{color:var(--danger)}
+.post-action.liked:hover{color:var(--danger)}
+.post-action svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.post-action.liked svg{fill:var(--danger);stroke:var(--danger)}
+
+/* COMMENTS */
+.comments-section{padding:0 18px 14px 65px}
+.comment{display:flex;gap:8px;margin-bottom:10px;animation:fadeUp .2s ease both}
+.comment-av{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:10px;flex-shrink:0;margin-top:1px}
+.comment-bubble{flex:1;background:var(--bg);border-radius:10px;padding:9px 12px}
+.comment-name{font-weight:700;font-size:11px;color:var(--text);margin-bottom:3px;display:flex;align-items:center;gap:6px}
+.comment-text{font-size:12px;color:var(--text2);line-height:1.5}
+.comment-time{font-size:10px;color:var(--text3);margin-top:4px}
+.comment-input-row{display:flex;gap:8px;align-items:center}
+.comment-input{flex:1;background:var(--bg);border:1.5px solid var(--border);border-radius:100px;padding:8px 14px;font-size:12px;color:var(--text);outline:none;transition:.2s}
+.comment-input:focus{border-color:var(--brand);background:var(--surface)}
+.comment-input::placeholder{color:var(--text3)}
+.comment-send{width:30px;height:30px;background:var(--brand);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;transition:.15s}
+.comment-send:hover{background:var(--brand-h)}
+.comment-send svg{width:13px;height:13px;fill:none;stroke:white;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* PINNED POST */
+.post.pinned{border-color:rgba(2,31,246,0.25);background:linear-gradient(160deg,var(--brand-light) 0%,var(--surface) 40%)}
+
+/* SIDE CARDS */
+.side-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden}
+.side-card-head{padding:13px 16px;border-bottom:1.5px solid var(--border);font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--text)}
+.side-card-body{padding:12px 16px}
+
+/* TOPIC PILLS */
+.topic-pill{display:inline-flex;align-items:center;gap:5px;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:500;cursor:pointer;border:1.5px solid var(--border);color:var(--text2);margin:0 4px 6px 0;transition:.15s}
+.topic-pill:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-light)}
+.topic-pill.active{background:var(--brand);color:white;border-color:var(--brand)}
+.topic-count{font-size:10px;opacity:.7}
+
+/* ACTIVE MEMBERS */
+.member-row{display:flex;align-items:center;gap:9px;padding:7px 0;border-bottom:1px solid var(--border)}
+.member-row:last-child{border-bottom:none}
+.member-av{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:11px;flex-shrink:0;position:relative}
+.member-online{position:absolute;bottom:0;right:0;width:8px;height:8px;background:var(--accent);border-radius:50%;border:1.5px solid white}
+.member-name{font-weight:600;font-size:12px;color:var(--text);flex:1}
+.member-role{font-size:10px;color:var(--text3)}
+
+/* EVENTS */
+.event-item{padding:10px 0;border-bottom:1px solid var(--border);display:flex;gap:10px}
+.event-item:last-child{border-bottom:none}
+.event-date-box{width:38px;height:38px;background:var(--brand-light);border-radius:9px;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0}
+.event-day{font-family:'Syne',sans-serif;font-size:14px;font-weight:800;color:var(--brand);line-height:1}
+.event-mon{font-size:9px;font-weight:600;color:var(--brand);text-transform:uppercase}
+.event-title{font-weight:600;font-size:12px;color:var(--text);line-height:1.3}
+.event-meta{font-size:11px;color:var(--text3);margin-top:2px}
+
+/* DISCUSSIONS */
+.disc-item{padding:12px 0;border-bottom:1px solid var(--border);cursor:pointer;transition:.15s}
+.disc-item:hover .disc-title{color:var(--brand)}
+.disc-item:last-child{border-bottom:none}
+.disc-title{font-weight:600;font-size:13px;color:var(--text);margin-bottom:4px;transition:.15s;line-height:1.3}
+.disc-meta{display:flex;align-items:center;gap:10px;font-size:11px;color:var(--text3)}
+.disc-tag{font-size:10px;font-weight:600;padding:2px 8px;border-radius:20px;background:var(--bg)}
+
+/* BTNS */
+.btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:10px;font-size:13px;font-weight:600;transition:all .18s;cursor:pointer;border:none;white-space:nowrap}
+.btn svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.btn-brand{background:var(--brand);color:white}
+.btn-brand:hover{background:var(--brand-h);transform:translateY(-1px);box-shadow:0 4px 14px rgba(2,31,246,0.25)}
+.btn-outline{background:white;color:var(--text);border:1.5px solid var(--border)}
+.btn-outline:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-light)}
+.btn-ghost{background:var(--bg);color:var(--text2);border:1.5px solid var(--border)}
+.btn-ghost:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-light)}
+.btn-sm{padding:6px 12px;font-size:12px;border-radius:8px}
+.btn-xs{padding:4px 9px;font-size:11px;border-radius:7px}
+
+/* MODAL */
+.overlay{position:fixed;inset:0;background:rgba(7,9,74,0.5);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;z-index:1000;opacity:0;pointer-events:none;transition:opacity .2s;padding:16px}
+.overlay.show{opacity:1;pointer-events:all}
+.modal{background:var(--surface);border-radius:18px;width:100%;max-width:520px;box-shadow:var(--shadow-lg);transform:translateY(18px) scale(0.97);transition:transform .25s cubic-bezier(.34,1.56,.64,1);max-height:92vh;overflow-y:auto}
+.overlay.show .modal{transform:translateY(0) scale(1)}
+.modal-head{padding:20px 24px 16px;display:flex;align-items:flex-start;justify-content:space-between;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--surface);z-index:1}
+.modal-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:var(--text)}
+.modal-sub{font-size:12px;color:var(--text3);margin-top:3px}
+.modal-close{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--text3);cursor:pointer;transition:.15s}
+.modal-close:hover{background:var(--bg)}
+.modal-close svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.modal-body{padding:20px 24px}
+.modal-foot{padding:14px 24px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:10px;position:sticky;bottom:0;background:var(--surface)}
+.fg{margin-bottom:14px}
+.fl{display:block;font-size:12px;font-weight:600;color:var(--text2);margin-bottom:5px}
+.fi{width:100%;border:1.5px solid var(--border);border-radius:10px;padding:10px 14px;font-size:13px;color:var(--text);background:var(--surface);outline:none;transition:.2s}
+.fi:focus{border-color:var(--brand);box-shadow:0 0 0 3px rgba(2,31,246,0.07)}
+.fi::placeholder{color:var(--text3)}
+textarea.fi{resize:vertical;min-height:100px;line-height:1.5}
+select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%238b90b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px;cursor:pointer}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--text);color:white;padding:12px 18px;border-radius:12px;font-size:13px;font-weight:500;box-shadow:var(--shadow-lg);z-index:3000;display:flex;align-items:center;gap:10px;max-width:340px;opacity:0;transform:translateY(10px);transition:all .3s cubic-bezier(.34,1.56,.64,1);pointer-events:none}
+.toast.show{opacity:1;transform:translateY(0)}
+.toast.success{background:#059669}
+.toast.error{background:var(--danger)}
+.toast svg{width:15px;height:15px;fill:none;stroke:white;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.pulse{animation:pulse 2s ease-in-out infinite}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+    <div><div class="logo-name">Ispora</div><div class="logo-tagline">Impact Platform</div></div>
+  </div>
+  <div class="sidebar-profile" onclick="showToast('Opening profile...')">
+    <div class="sp-av">A<div class="sp-dot pulse"></div></div>
+    <div><div class="sp-name">Dr. Amina Osei</div><div class="sp-role">Diaspora Mentor</div></div>
+  </div>
+  <nav class="nav">
+    <div class="nav-section">
+      <div class="nav-label">Main</div>
+      <div class="nav-item" onclick="navTo(this);showToast('Dashboard...')"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>Dashboard</div>
+      <div class="nav-item" onclick="navTo(this);showToast('Browse Students...')"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>Browse Students</div>
+      <div class="nav-item" onclick="navTo(this);showToast('My Mentorships...')"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>My Mentorships<span class="nav-badge">3</span></div>
+      <div class="nav-item" onclick="navTo(this);showToast('Sessions...')"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Sessions</div>
+      <div class="nav-item" onclick="navTo(this);showToast('Messages...')"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Messages<span class="nav-badge">5</span></div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-label">Discover</div>
+      <div class="nav-item active" onclick="navTo(this)"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>Community<span class="nav-badge" style="background:var(--accent)">New</span></div>
+      <div class="nav-item" onclick="navTo(this);showToast('Opportunities...')"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Opportunities</div>
+    </div>
+  </nav>
+  <div class="sidebar-foot">
+    <div class="nav-item" onclick="showToast('My Profile...')"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>My Profile</div>
+    <div class="nav-item" onclick="showToast('Settings...')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41M19.07 19.07l-1.41-1.41M4.93 19.07l1.41-1.41M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>Settings</div>
+    <div class="nav-item danger" onclick="showToast('Signing out...')"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Sign Out</div>
+  </div>
+</aside>
+
+<div class="main">
+  <div class="topbar">
+    <div class="topbar-left"><h2>Community</h2><p>Connect, share wins, ask questions and grow together</p></div>
+    <div class="topbar-right">
+      <button class="role-pill" onclick="showToast('Role switcher...')"><div class="role-pip"></div>Mentor<svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="icon-btn" onclick="showToast('Notifications...')"><svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg><div class="notif-badge"></div></button>
+      <button class="icon-btn" onclick="showToast('Profile...')"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
+    </div>
+  </div>
+
+  <div class="page">
+    <!-- TABS -->
+    <div class="tabs-bar">
+      <div class="tab-btn active" id="tab-feed" onclick="switchTab('feed')">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Feed <span class="tab-chip" id="tc-feed">24</span>
+      </div>
+      <div class="tab-btn" id="tab-discussions" onclick="switchTab('discussions')">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        Discussions <span class="tab-chip">12</span>
+      </div>
+      <div class="tab-btn" id="tab-events" onclick="switchTab('events')">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Events <span class="tab-chip">3</span>
+      </div>
+      <div style="margin-left:auto;padding:0 0 0 16px;display:flex;align-items:center">
+        <button class="btn btn-brand btn-sm" onclick="openModal('postModal')">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Post
+        </button>
+      </div>
+    </div>
+
+    <!-- BODY -->
+    <div class="body" id="pageBody">
+      <!-- Feed tab — rendered by JS -->
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- POST MODAL -->
+<div class="overlay" id="postModal" onclick="overlayClose(event,'postModal')">
+  <div class="modal">
+    <div class="modal-head">
+      <div><div class="modal-title">Share with the community</div><div class="modal-sub">Your post will be visible to all Ispora members</div></div>
+      <button class="modal-close" onclick="closeModal('postModal')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div class="fg">
+        <label class="fl">Post type</label>
+        <div style="display:flex;flex-wrap:wrap;gap:6px" id="modalTypeSelector">
+          <div class="post-type-btn selected" onclick="selectModalType(this,'win')"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>Win</div>
+          <div class="post-type-btn" onclick="selectModalType(this,'question')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Question</div>
+          <div class="post-type-btn" onclick="selectModalType(this,'resource')"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>Resource</div>
+          <div class="post-type-btn" onclick="selectModalType(this,'tip')"><svg viewBox="0 0 24 24"><line x1="12" y1="2" x2="12" y2="6"/><path d="M12 18a6 6 0 100-12 6 6 0 000 12z"/><line x1="12" y1="22" x2="12" y2="18"/><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/></svg>Tip</div>
+          <div class="post-type-btn" onclick="selectModalType(this,'announcement')"><svg viewBox="0 0 24 24"><path d="M22 17H2a3 3 0 000 6h20a3 3 0 000-6z"/><path d="M12 17V3"/><path d="M5 17l7-14 7 14"/></svg>Announcement</div>
+          <div class="post-type-btn" onclick="selectModalType(this,'opportunity')"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Opportunity</div>
+          <div class="post-type-btn" onclick="selectModalType(this,'event')"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Event</div>
+        </div>
+      </div>
+      <div class="fg"><label class="fl">What's on your mind?</label><textarea class="fi" id="postContent" placeholder="Share a win, ask a question, post a resource or drop a tip for the community..."></textarea></div>
+      <div class="fg"><label class="fl">Add a link (optional)</label><input class="fi" type="url" id="postLink" placeholder="https://..."/></div>
+      <div class="fg">
+        <label class="fl">Topic tags</label>
+        <div style="display:flex;flex-wrap:wrap;gap:6px" id="modalTagSelector">
+          <div class="post-type-btn" onclick="toggleTag(this,'Career')">Career</div>
+          <div class="post-type-btn" onclick="toggleTag(this,'UK Applications')">UK Applications</div>
+          <div class="post-type-btn" onclick="toggleTag(this,'Scholarships')">Scholarships</div>
+          <div class="post-type-btn" onclick="toggleTag(this,'Tech')">Tech</div>
+          <div class="post-type-btn" onclick="toggleTag(this,'Breaking Into Diaspora')">Breaking Into Diaspora</div>
+          <div class="post-type-btn" onclick="toggleTag(this,'Study Tips')">Study Tips</div>
+          <div class="post-type-btn" onclick="toggleTag(this,'Business')">Business</div>
+          <div class="post-type-btn" onclick="toggleTag(this,'Mental Health')">Mental Health</div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal('postModal')">Cancel</button>
+      <button class="btn btn-brand" onclick="submitPost()">
+        <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>Post to Community
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toastEl"><svg id="toastIco" viewBox="0 0 24 24"></svg><span id="toastMsg"></span></div>
+
+<script>
+var currentTab = 'feed';
+var selectedPostType = 'win';
+var selectedTags = [];
+var nextPostId = 100;
+
+var posts = [
+  {
+    id:1, type:'announcement', pinned:true,
+    author:'Dr. Amina Osei', role:'Diaspora Mentor &bull; Barclays, London', av:'A', color:'#021ff6', isMentor:true,
+    time:'2 hours ago',
+    text:'Welcome to the Ispora Community! This is your space to share wins, ask questions, find accountability and connect with peers and mentors across the platform. We are building something special together. Introduce yourself below \ud83d\udc4f',
+    tags:['Announcement'],
+    likes:47, liked:false, comments:[
+      {av:'E', color:'#059669', name:'Emeka Eze', role:'Student', text:'So excited to be here! Third year CS at Covenant University, targeting UK tech roles.', time:'1hr ago'},
+      {av:'F', color:'#be185d', name:'Fatima Nwosu', role:'Student', text:'This is exactly what the community needed. Thank you Dr. Amina!', time:'45min ago'},
+    ], showComments:true
+  },
+  {
+    id:2, type:'win', pinned:false,
+    author:'Aisha Kamara', role:'Student &bull; Software Engineering, Uni of Lagos', av:'A', color:'#7c3aed', isMentor:false,
+    time:'3 hours ago',
+    text:'I just got my offer letter from Barclays Technology Graduate Scheme!! \ud83c\udf89\n\nHonestly could not have done this without Dr. Amina. She told me exactly what the interviewers look for, reviewed my CV three times, and did two mock interviews with me.\n\nIf you are preparing for UK tech interviews \u2014 get a mentor on here. It genuinely changed everything.',
+    tags:['Career', 'UK Applications', 'Tech'],
+    likes:89, liked:false, comments:[
+      {av:'A', color:'#021ff6', name:'Dr. Amina Osei', role:'Diaspora Mentor', text:'So proud of you Aisha \ud83d\ude4c You worked incredibly hard for this. Barclays is lucky to have you!', time:'2hr ago'},
+      {av:'O', color:'#059669', name:'Olumide Fadipe', role:'Student', text:'Congratulations!! This is huge motivation. Can I ask what resources you used to prep?', time:'1hr ago'},
+    ], showComments:true
+  },
+  {
+    id:3, type:'tip', pinned:false,
+    author:'Dr. Ngozi Williams', role:'Diaspora Mentor &bull; Business Director, Unilever UK', av:'N', color:'#059669', isMentor:true,
+    time:'5 hours ago',
+    text:'3 things Nigerian students applying to UK corporates always get wrong on their CVs:\n\n1. Listing responsibilities instead of achievements. Nobody cares what your job was \u2014 they care what you changed or improved. Quantify everything.\n\n2. Using a Nigerian CV format (objective statement at the top). UK CVs start with a 3-line personal profile, not an objective.\n\n3. Not tailoring to the role. One CV for every application is a red flag. Take 20 minutes per application to mirror the job description language.\n\nShare this with someone who needs it.',
+    tags:['Career', 'UK Applications'],
+    likes:134, liked:false, comments:[
+      {av:'C', color:'#d97706', name:'Chiamaka Obi', role:'Student', text:'This is gold. Number 1 is exactly what I was doing wrong. Thank you!', time:'4hr ago'},
+    ], showComments:false
+  },
+  {
+    id:4, type:'question', pinned:false,
+    author:'Tunde Ojo', role:'Student &bull; Software Engineering, Uni of Ibadan', av:'T', color:'#d97706', isMentor:false,
+    time:'6 hours ago',
+    text:'Has anyone here applied to the AWS re/Start programme in Nigeria? I am trying to figure out if it is worth doing before applying for cloud roles abroad, or if I should just go straight for AWS certifications.\n\nWould really appreciate advice from anyone who has done either path.',
+    tags:['Tech', 'Career'],
+    likes:12, liked:false, comments:[
+      {av:'A', color:'#021ff6', name:'Dr. Amina Osei', role:'Diaspora Mentor', text:'Great question Tunde. My advice: go for the AWS Cloud Practitioner cert first (it takes 4-6 weeks and costs about $100). It is more internationally recognised than re/Start and you can do it from anywhere. I shared a free study guide in the Resources section.', time:'5hr ago'},
+    ], showComments:false
+  },
+  {
+    id:5, type:'resource', pinned:false,
+    author:'Blessing Mensah', role:'Diaspora Mentor &bull; Investment Banker, Goldman Sachs', av:'B', color:'#0891b2', isMentor:true,
+    time:'Yesterday',
+    text:'I put together a Notion template for tracking your UK/US job applications. It includes columns for: company, role, deadline, stage, contacts, follow-up dates, and notes. I have been using this system for 3 years.\n\nFree to copy and use. Link below.',
+    link:{title:'Job Application Tracker Template', url:'notion.so', ico:'&#128203;'},
+    tags:['Career', 'UK Applications'],
+    likes:76, liked:false, comments:[], showComments:false
+  },
+  {
+    id:6, type:'win', pinned:false,
+    author:'Olumide Fadipe', role:'Student &bull; Economics, Uni of Ibadan', av:'O', color:'#059669', isMentor:false,
+    time:'Yesterday',
+    text:'CHEVENING SCHOLAR 2026 \ud83e\udd29\ud83c\udf89\n\nThird attempt. My mentor on Ispora read my application, told me exactly what was failing, and worked through my leadership essay with me line by line.\n\nFor everyone still trying \u2014 do not stop. The difference between rejection and acceptance is often just having the right person in your corner.',
+    tags:['Scholarships', 'Breaking Into Diaspora'],
+    likes:203, liked:false, comments:[
+      {av:'A', color:'#021ff6', name:'Dr. Amina Osei', role:'Diaspora Mentor', text:'This made my day \ud83d\ude4c UCL is getting an incredible student. So well deserved Olumide!', time:'Yesterday'},
+    ], showComments:false
+  },
+];
+
+var discussions = [
+  {id:1, title:'What resources are most useful for breaking into UK tech from Nigeria?', tag:'Tech', replies:18, views:204, lastActive:'2 hours ago', hot:true},
+  {id:2, title:'Chevening vs Commonwealth vs Gates Cambridge — which should I focus on?', tag:'Scholarships', replies:31, views:380, lastActive:'4 hours ago', hot:true},
+  {id:3, title:'How do I explain a gap year on my CV for UK applications?', tag:'Career', replies:9, views:112, lastActive:'Yesterday', hot:false},
+  {id:4, title:'Best way to network at a company you want to join before applying?', tag:'Career', replies:14, views:167, lastActive:'Yesterday', hot:false},
+  {id:5, title:'Is a Masters degree from Nigeria recognised for UK job applications?', tag:'UK Applications', replies:22, views:298, lastActive:'2 days ago', hot:false},
+  {id:6, title:'Mental health and the pressure of chasing international opportunities', tag:'Mental Health', replies:27, views:341, lastActive:'3 days ago', hot:false},
+  {id:7, title:'Product Management vs Software Engineering — which has better diaspora opportunities?', tag:'Tech', replies:16, views:189, lastActive:'3 days ago', hot:false},
+  {id:8, title:'Starting a business in Nigeria vs getting a corporate job abroad — what would you choose?', tag:'Business', replies:34, views:412, lastActive:'4 days ago', hot:true},
+];
+
+var events = [
+  {day:'12', mon:'Apr', title:'Ispora Webinar \u2014 Breaking Into UK Tech', meta:'Online &bull; Free &bull; 3:00 PM WAT', attendees:127},
+  {day:'19', mon:'Apr', title:'CV & LinkedIn Review Workshop', meta:'Online &bull; Free &bull; Dr. Amina hosting &bull; 4:00 PM WAT', attendees:84},
+  {day:'03', mon:'May', title:'Ispora Community Hangout \u2014 April Wins', meta:'Online &bull; Students & Mentors &bull; 5:00 PM WAT', attendees:61},
+];
+
+var activeMembers = [
+  {av:'A', color:'#021ff6', name:'Dr. Amina Osei', role:'Mentor &bull; London', online:true},
+  {av:'N', color:'#059669', name:'Dr. Ngozi Williams', role:'Mentor &bull; Manchester', online:true},
+  {av:'B', color:'#0891b2', name:'Blessing Mensah', role:'Mentor &bull; London', online:true},
+  {av:'A', color:'#7c3aed', name:'Aisha Kamara', role:'Student &bull; Lagos', online:true},
+  {av:'O', color:'#d97706', name:'Olumide Fadipe', role:'Student &bull; Ibadan', online:false},
+  {av:'T', color:'#be185d', name:'Tunde Ojo', role:'Student &bull; Ibadan', online:false},
+];
+
+var topicFilters = ['All','Career','UK Applications','Scholarships','Tech','Business','Breaking Into Diaspora','Mental Health'];
+var activeTopicFilter = 'All';
+
+function switchTab(tab) {
+  currentTab = tab;
+  document.querySelectorAll('.tab-btn').forEach(function(t){t.classList.remove('active');});
+  var el = document.getElementById('tab-' + tab);
+  if (el) el.classList.add('active');
+  renderPage();
+}
+
+function renderPage() {
+  if (currentTab === 'feed') renderFeed();
+  else if (currentTab === 'discussions') renderDiscussions();
+  else if (currentTab === 'events') renderEvents();
+}
+
+function renderFeed() {
+  var filtered = posts.filter(function(p) {
+    if (activeTopicFilter === 'All') return true;
+    return p.tags && p.tags.indexOf(activeTopicFilter) > -1;
+  });
+
+  var feedHtml = '<div class="feed-col">';
+
+  // COMPOSE BOX
+  feedHtml += '<div class="compose">'
+    + '<div class="compose-top">'
+    + '<div class="compose-av">A</div>'
+    + '<textarea class="compose-input" id="quickCompose" placeholder="Share a win, ask a question, or drop a tip for the community..." onkeydown="quickPost(event)"></textarea>'
+    + '</div>'
+    + '<div class="compose-foot">'
+    + '<div class="post-types">'
+    + '<div class="post-type-btn selected" id="qt-win" onclick="setQuickType(this,\'win\')"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>Win</div>'
+    + '<div class="post-type-btn" id="qt-question" onclick="setQuickType(this,\'question\')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Question</div>'
+    + '<div class="post-type-btn" id="qt-resource" onclick="setQuickType(this,\'resource\')"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>Resource</div>'
+    + '<div class="post-type-btn" id="qt-tip" onclick="setQuickType(this,\'tip\')"><svg viewBox="0 0 24 24"><line x1="12" y1="2" x2="12" y2="6"/><path d="M12 18a6 6 0 100-12 6 6 0 000 12z"/></svg>Tip</div>'
+    + '</div>'
+    + '<button class="btn btn-brand btn-sm" onclick="openModal(\'postModal\')">'
+    + '<svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>Post</button>'
+    + '</div></div>';
+
+  // TOPIC FILTER
+  feedHtml += '<div style="display:flex;gap:6px;flex-wrap:wrap;padding:4px 0">';
+  topicFilters.forEach(function(t) {
+    feedHtml += '<div class="topic-pill' + (activeTopicFilter===t?' active':'') + '" onclick="setTopicFilter(\'' + t + '\')">' + t + '</div>';
+  });
+  feedHtml += '</div>';
+
+  // POSTS
+  if (filtered.length === 0) {
+    feedHtml += '<div style="text-align:center;padding:40px 20px;color:var(--text3)">'
+      + '<div style="font-family:Syne,sans-serif;font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px">No posts for this topic yet</div>'
+      + '<div style="font-size:13px;margin-bottom:14px">Be the first to post something!</div>'
+      + '<button class="btn btn-brand btn-sm" onclick="openModal(\'postModal\')">Post Now</button></div>';
+  } else {
+    filtered.forEach(function(p, i) {
+      feedHtml += buildPost(p, i);
+    });
+  }
+
+  feedHtml += '</div>';
+
+  // SIDE COLUMN
+  feedHtml += buildSideCol();
+
+  document.getElementById('pageBody').innerHTML = feedHtml;
+  document.getElementById('pageBody').style.display = 'flex';
+}
+
+function buildPost(p, i) {
+  var typeTagMap = {win:'ptag-win',question:'ptag-question',resource:'ptag-resource',tip:'ptag-tip',announcement:'ptag-announcement',opportunity:'ptag-opportunity',event:'ptag-event'};
+  var typeLabels = {win:'&#127942; Win',question:'&#10067; Question',resource:'&#128218; Resource',tip:'&#128161; Tip',announcement:'&#128226; Announcement',opportunity:'&#128269; Opportunity',event:'&#128197; Event'};
+  var tagClass = typeTagMap[p.type] || 'ptag-resource';
+  var tagLabel = typeLabels[p.type] || p.type;
+
+  var html = '<div class="post' + (p.pinned?' pinned':'') + '" id="post-' + p.id + '" style="animation-delay:' + (i*0.05) + 's">';
+
+  // HEAD
+  html += '<div class="post-head">'
+    + '<div class="post-av" style="background:' + p.color + '">' + p.av + '</div>'
+    + '<div class="post-meta">'
+    + '<div class="post-name">' + p.author
+    + (p.isMentor ? '<span style="font-size:9px;font-weight:700;background:var(--success-light);color:var(--success);padding:2px 7px;border-radius:20px">Mentor</span>' : '')
+    + '<span class="ptag ' + tagClass + '">' + tagLabel + '</span>'
+    + (p.pinned ? '<span style="font-size:9px;font-weight:700;background:var(--brand-light);color:var(--brand);padding:2px 7px;border-radius:20px">&#128204; Pinned</span>' : '')
+    + '</div>'
+    + '<div class="post-role">' + p.role + ' &bull; <span class="post-time">' + p.time + '</span></div>'
+    + '</div>'
+    + '</div>';
+
+  // BODY
+  html += '<div class="post-body">'
+    + '<div class="post-text">' + p.text.replace(/\n/g,'<br/>') + '</div>';
+
+  if (p.link) {
+    html += '<div class="post-link-preview" onclick="showToast(\'Opening link...\')">'
+      + '<div class="plp-ico">' + p.link.ico + '</div>'
+      + '<div><div class="plp-title">' + p.link.title + '</div><div class="plp-url">' + p.link.url + '</div></div>'
+      + '</div>';
+  }
+
+  if (p.tags && p.tags.length > 0) {
+    html += '<div class="post-tags">';
+    p.tags.forEach(function(t){ html += '<div class="post-tag">#' + t + '</div>'; });
+    html += '</div>';
+  }
+  html += '</div>';
+
+  // ACTIONS
+  html += '<div class="post-actions">'
+    + '<button class="post-action' + (p.liked?' liked':'') + '" onclick="toggleLike(' + p.id + ',this)">'
+    + '<svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>'
+    + '<span id="likes-' + p.id + '">' + p.likes + '</span></button>'
+    + '<button class="post-action" onclick="toggleComments(' + p.id + ')">'
+    + '<svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>'
+    + p.comments.length + ' comments</button>'
+    + '<button class="post-action" onclick="showToast(\'Link copied!\',\'success\')">'
+    + '<svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>'
+    + 'Share</button>'
+    + '</div>';
+
+  // COMMENTS
+  if (p.showComments) {
+    html += '<div class="comments-section" id="comments-' + p.id + '">';
+    p.comments.forEach(function(cm) {
+      html += '<div class="comment">'
+        + '<div class="comment-av" style="background:' + cm.color + '">' + cm.av + '</div>'
+        + '<div class="comment-bubble">'
+        + '<div class="comment-name">' + cm.name + '<span style="font-size:10px;color:var(--text3);font-weight:400">' + cm.role + '</span></div>'
+        + '<div class="comment-text">' + cm.text + '</div>'
+        + '<div class="comment-time">' + cm.time + '</div>'
+        + '</div></div>';
+    });
+    html += '<div class="comment-input-row">'
+      + '<div class="comment-av" style="background:var(--brand);width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:10px;font-weight:700;color:white;flex-shrink:0">A</div>'
+      + '<input class="comment-input" type="text" placeholder="Write a comment..." onkeydown="addComment(event,' + p.id + ',this)"/>'
+      + '<div class="comment-send" onclick="addCommentBtn(' + p.id + ',this)"><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></div>'
+      + '</div></div>';
+  } else {
+    html += '<div id="comments-' + p.id + '" style="display:none"></div>';
+  }
+
+  html += '</div>';
+  return html;
+}
+
+function buildSideCol() {
+  var html = '<div class="side-col">';
+
+  // ACTIVE MEMBERS
+  html += '<div class="side-card"><div class="side-card-head">Active now</div><div class="side-card-body">';
+  activeMembers.forEach(function(m) {
+    html += '<div class="member-row">'
+      + '<div class="member-av" style="background:' + m.color + '">' + m.av
+      + (m.online ? '<div class="member-online"></div>' : '') + '</div>'
+      + '<div><div class="member-name">' + m.name + '</div><div class="member-role">' + m.role + '</div></div>'
+      + '</div>';
+  });
+  html += '</div></div>';
+
+  // UPCOMING EVENTS
+  html += '<div class="side-card"><div class="side-card-head">Upcoming events</div><div class="side-card-body">';
+  events.forEach(function(e) {
+    html += '<div class="event-item">'
+      + '<div class="event-date-box"><div class="event-day">' + e.day + '</div><div class="event-mon">' + e.mon + '</div></div>'
+      + '<div><div class="event-title">' + e.title + '</div><div class="event-meta">' + e.meta + '</div></div>'
+      + '</div>';
+  });
+  html += '</div></div>';
+
+  // TOPICS
+  html += '<div class="side-card"><div class="side-card-head">Browse topics</div><div class="side-card-body">';
+  var topics = ['Career','UK Applications','Scholarships','Tech','Business','Breaking Into Diaspora','Study Tips','Mental Health'];
+  topics.forEach(function(t) {
+    html += '<div class="topic-pill" onclick="setTopicFilter(\'' + t + '\')" style="margin-bottom:5px">' + t + '</div>';
+  });
+  html += '</div></div>';
+
+  html += '</div>';
+  return html;
+}
+
+function renderDiscussions() {
+  var html = '<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:10px">';
+
+  html += '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">'
+    + '<div style="font-size:13px;color:var(--text3)">' + discussions.length + ' active discussions</div>'
+    + '<button class="btn btn-brand btn-sm" onclick="openNewDiscussion()"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Start Discussion</button>'
+    + '</div>';
+
+  html += '<div style="background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden">';
+  discussions.forEach(function(d, i) {
+    html += '<div class="disc-item" style="padding:14px 18px;' + (i===0?'border-top:none':'') + '" onclick="openDiscussion(' + d.id + ')">'
+      + '<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">'
+      + '<div style="flex:1;min-width:0">'
+      + '<div class="disc-title">'
+      + (d.hot ? '<span style="font-size:10px;margin-right:6px">&#128293;</span>' : '')
+      + d.title + '</div>'
+      + '<div class="disc-meta">'
+      + '<span class="disc-tag" style="background:var(--brand-light);color:var(--brand)">' + d.tag + '</span>'
+      + '<span>' + d.replies + ' replies</span>'
+      + '<span>' + d.views + ' views</span>'
+      + '<span>' + d.lastActive + '</span>'
+      + '</div>'
+      + '</div>'
+      + '<button class="btn btn-outline btn-xs" onclick="event.stopPropagation();openDiscussion(' + d.id + ')">Join</button>'
+      + '</div></div>';
+  });
+  html += '</div></div>';
+
+  html += buildSideCol();
+  document.getElementById('pageBody').innerHTML = html;
+  document.getElementById('pageBody').style.display = 'flex';
+}
+
+function renderEvents() {
+  var html = '<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:14px">';
+
+  html += '<div style="display:flex;align-items:center;justify-content:space-between">'
+    + '<div style="font-size:13px;color:var(--text3)">Upcoming community events</div>'
+    + '<button class="btn btn-brand btn-sm" onclick="showToast(\'Event creation coming soon...\')"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Create Event</button>'
+    + '</div>';
+
+  events.forEach(function(e) {
+    html += '<div style="background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r);padding:20px 24px;display:flex;align-items:center;gap:18px;transition:.2s;cursor:pointer" onmouseover="this.style.borderColor=\'var(--brand)\';this.style.boxShadow=\'var(--shadow)\'" onmouseout="this.style.borderColor=\'var(--border)\';this.style.boxShadow=\'none\'">'
+      + '<div style="width:56px;height:56px;background:var(--brand);border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0">'
+      + '<div style="font-family:Syne,sans-serif;font-size:20px;font-weight:800;color:white;line-height:1">' + e.day + '</div>'
+      + '<div style="font-size:10px;font-weight:700;color:rgba(255,255,255,0.7);text-transform:uppercase">' + e.mon + '</div>'
+      + '</div>'
+      + '<div style="flex:1">'
+      + '<div style="font-family:Syne,sans-serif;font-size:15px;font-weight:700;color:var(--text);margin-bottom:4px">' + e.title + '</div>'
+      + '<div style="font-size:12px;color:var(--text3)">' + e.meta + '</div>'
+      + '<div style="font-size:11px;color:var(--brand);margin-top:6px;font-weight:600">' + e.attendees + ' people attending</div>'
+      + '</div>'
+      + '<div style="display:flex;gap:8px;flex-shrink:0">'
+      + '<button class="btn btn-brand btn-sm" onclick="showToast(\'Registered for event!\',\'success\')">Register</button>'
+      + '<button class="btn btn-ghost btn-sm" onclick="showToast(\'Link copied!\',\'success\')">Share</button>'
+      + '</div>'
+      + '</div>';
+  });
+
+  html += '</div>';
+  html += buildSideCol();
+  document.getElementById('pageBody').innerHTML = html;
+  document.getElementById('pageBody').style.display = 'flex';
+}
+
+function toggleLike(id, btn) {
+  var p = posts.find(function(x){return x.id===id;});
+  if (!p) return;
+  p.liked = !p.liked;
+  p.likes = p.liked ? p.likes + 1 : p.likes - 1;
+  btn.classList.toggle('liked', p.liked);
+  var span = document.getElementById('likes-' + id);
+  if (span) span.textContent = p.likes;
+}
+
+function toggleComments(id) {
+  var p = posts.find(function(x){return x.id===id;});
+  if (!p) return;
+  p.showComments = !p.showComments;
+  var section = document.getElementById('comments-' + id);
+  if (!section) return;
+  if (p.showComments) {
+    var html = '';
+    p.comments.forEach(function(cm) {
+      html += '<div class="comment"><div class="comment-av" style="background:' + cm.color + '">' + cm.av + '</div>'
+        + '<div class="comment-bubble"><div class="comment-name">' + cm.name + '<span style="font-size:10px;color:var(--text3);font-weight:400">' + cm.role + '</span></div>'
+        + '<div class="comment-text">' + cm.text + '</div><div class="comment-time">' + cm.time + '</div></div></div>';
+    });
+    html += '<div class="comment-input-row"><div class="comment-av" style="background:var(--brand);width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:10px;font-weight:700;color:white;flex-shrink:0">A</div>'
+      + '<input class="comment-input" type="text" placeholder="Write a comment..." onkeydown="addComment(event,' + id + ',this)"/>'
+      + '<div class="comment-send" onclick="addCommentBtn(' + id + ',this)"><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></div></div>';
+    section.innerHTML = html;
+    section.className = 'comments-section';
+    section.style.display = '';
+  } else {
+    section.style.display = 'none';
+  }
+}
+
+function addComment(event, postId, input) {
+  if (event.key === 'Enter' && !event.shiftKey) {
+    event.preventDefault();
+    doAddComment(postId, input);
+  }
+}
+
+function addCommentBtn(postId, btn) {
+  var input = btn.previousElementSibling;
+  if (input) doAddComment(postId, input);
+}
+
+function doAddComment(postId, input) {
+  var text = input.value.trim();
+  if (!text) return;
+  var p = posts.find(function(x){return x.id===postId;});
+  if (!p) return;
+  p.comments.push({av:'A', color:'#021ff6', name:'Dr. Amina Osei', role:'Diaspora Mentor', text:text, time:'Just now'});
+  input.value = '';
+  var section = document.getElementById('comments-' + postId);
+  if (section) {
+    var newComment = document.createElement('div');
+    newComment.className = 'comment';
+    newComment.innerHTML = '<div class="comment-av" style="background:#021ff6">A</div>'
+      + '<div class="comment-bubble"><div class="comment-name">Dr. Amina Osei <span style="font-size:10px;color:var(--text3);font-weight:400">Diaspora Mentor</span></div>'
+      + '<div class="comment-text">' + text + '</div><div class="comment-time">Just now</div></div>';
+    section.insertBefore(newComment, section.lastElementChild.previousElementSibling || section.lastElementChild);
+  }
+  showToast('Comment posted!', 'success');
+}
+
+function setTopicFilter(topic) {
+  activeTopicFilter = topic;
+  renderFeed();
+}
+
+var quickPostType = 'win';
+function setQuickType(el, type) {
+  quickPostType = type;
+  document.querySelectorAll('[id^="qt-"]').forEach(function(b){b.classList.remove('selected');});
+  el.classList.add('selected');
+}
+
+function quickPost(event) {
+  if (event.key === 'Enter' && event.ctrlKey) doQuickPost();
+}
+
+function doQuickPost() {
+  var text = document.getElementById('quickCompose').value.trim();
+  if (!text) return;
+  addNewPost(text, quickPostType, []);
+  document.getElementById('quickCompose').value = '';
+}
+
+var selectedModalType = 'win';
+var selectedModalTags = [];
+
+function selectModalType(el, type) {
+  selectedModalType = type;
+  document.querySelectorAll('#modalTypeSelector .post-type-btn').forEach(function(b){b.classList.remove('selected');});
+  el.classList.add('selected');
+}
+
+function toggleTag(el, tag) {
+  el.classList.toggle('selected');
+  var idx = selectedModalTags.indexOf(tag);
+  if (idx > -1) selectedModalTags.splice(idx,1);
+  else selectedModalTags.push(tag);
+}
+
+function submitPost() {
+  var text = document.getElementById('postContent').value.trim();
+  if (!text) { showToast('Please write something first','error'); return; }
+  addNewPost(text, selectedModalType, selectedModalTags);
+  closeModal('postModal');
+  document.getElementById('postContent').value = '';
+  selectedModalTags = [];
+  document.querySelectorAll('#modalTypeSelector .post-type-btn').forEach(function(b){b.classList.remove('selected');});
+  document.querySelectorAll('#modalTagSelector .post-type-btn').forEach(function(b){b.classList.remove('selected');});
+  document.querySelectorAll('#modalTypeSelector .post-type-btn')[0].classList.add('selected');
+  selectedModalType = 'win';
+}
+
+function addNewPost(text, type, tags) {
+  var newPost = {
+    id: nextPostId++, type:type, pinned:false,
+    author:'Dr. Amina Osei', role:'Diaspora Mentor &bull; Barclays, London',
+    av:'A', color:'#021ff6', isMentor:true,
+    time:'Just now', text:text, tags:tags,
+    likes:0, liked:false, comments:[], showComments:false
+  };
+  posts.unshift(newPost);
+  document.getElementById('tc-feed').textContent = posts.length;
+  currentTab = 'feed';
+  document.querySelectorAll('.tab-btn').forEach(function(t){t.classList.remove('active');});
+  document.getElementById('tab-feed').classList.add('active');
+  activeTopicFilter = 'All';
+  renderFeed();
+  showToast('Posted to the community!', 'success');
+}
+
+function openDiscussion(id) {
+  var d = discussions.find(function(x){return x.id===id;});
+  showToast('Opening: ' + (d ? d.title.slice(0,40) + '...' : 'Discussion'));
+}
+
+function openNewDiscussion() {
+  openModal('postModal');
+  document.getElementById('postContent').placeholder = 'Start a discussion — ask a question, share a dilemma, or open a debate...';
+}
+
+function openModal(id){ document.getElementById(id).classList.add('show'); document.body.style.overflow='hidden'; }
+function closeModal(id){ document.getElementById(id).classList.remove('show'); document.body.style.overflow=''; }
+function overlayClose(e,id){ if(e.target===e.currentTarget) closeModal(id); }
+
+var tTimer;
+function showToast(msg, type) {
+  type = type || '';
+  var el=document.getElementById('toastEl'),ico=document.getElementById('toastIco'),m=document.getElementById('toastMsg');
+  el.className='toast';
+  if(type==='success'){el.classList.add('success');ico.innerHTML='<polyline points="20 6 9 17 4 12"/>';}
+  else if(type==='error'){el.classList.add('error');ico.innerHTML='<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>';}
+  else{ico.innerHTML='<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>';}
+  m.textContent=msg; clearTimeout(tTimer);
+  setTimeout(function(){el.classList.add('show');},10);
+  tTimer=setTimeout(function(){el.classList.remove('show');},3200);
+}
+
+function navTo(el){ document.querySelectorAll('.nav-item').forEach(function(i){i.classList.remove('active');}); el.classList.add('active'); }
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', renderFeed);
+} else {
+  renderFeed();
+}
+</script>
+</body>
+</html>

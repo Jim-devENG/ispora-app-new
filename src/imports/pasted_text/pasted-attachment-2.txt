@@ -1,0 +1,186 @@
+Cookie “__cf_bm” has been rejected for invalid domain. dashboard
+Cookie “__cf_bm” has been rejected for invalid domain. _index.json
+Cookie “__cf_bm” has been rejected for invalid domain. 763be0b26a4297da4066debd9953da7d7dc1cdbe.css
+Cookie “__cf_bm” has been rejected for invalid domain. 763be0b26a4297da4066debd9953da7d7dc1cdbe.js
+Cookie “__cf_bm” has been rejected for invalid domain. dashboard.json
+Cookie “__cf_bm” has been rejected for invalid domain. dashboard.json
+[Hydrated] sites-runtime.04f66058feafef354e13705358698cf2ae30f1cd1c6baaa2efc88d31da9a91ed.js:127:4207
+SupportWidget Debug: 
+Object { hasUser: false, hasToken: false, userEmail: undefined, pathname: "/dashboard", isLandingOrAuth: false, showWidget: false }
+763be0b26a4297da4066debd9953da7d7dc1cdbe.js:59974:18
+❌ Widget NOT showing because: 
+Object { hasUser: false, hasToken: false, isLandingOrAuth: false, pathname: "/dashboard" }
+763be0b26a4297da4066debd9953da7d7dc1cdbe.js:59981:109
+=== Loading Session on Mount === 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:17142:17
+Found old token in localStorage, will verify with Supabase 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:17142:113
+Cookie “__cf_bm” has been rejected for invalid domain. community_published_banner_details
+=== Auth State Change === 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:17210:19
+Event: SIGNED_OUT 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:17210:61
+Session exists: false 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:17210:87
+AuthApiError: Invalid Refresh Token: Refresh Token Not Found
+    ao https://chef-speak-68011167.figma.site/_components/v2/763be0b26a4297da4066debd9953da7d7dc1cdbe.js:10515
+    $C https://chef-speak-68011167.figma.site/_components/v2/763be0b26a4297da4066debd9953da7d7dc1cdbe.js:10523
+    Hg https://chef-speak-68011167.figma.site/_components/v2/763be0b26a4297da4066debd9953da7d7dc1cdbe.js:10962
+763be0b26a4297da4066debd9953da7d7dc1cdbe.js:59943:588
+=== Auth State Change === 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:17210:19
+Event: SIGNED_OUT 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:17210:61
+Session exists: false 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:17210:87
+No active session found 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:17198:19
+=== Session Loading Complete === 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:17203:30
+=== Auth State Change === 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:17210:19
+Event: INITIAL_SESSION 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:17210:61
+Session exists: false 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:17210:87
+SupportWidget Debug: 
+Object { hasUser: false, hasToken: false, userEmail: undefined, pathname: "/dashboard", isLandingOrAuth: false, showWidget: false }
+763be0b26a4297da4066debd9953da7d7dc1cdbe.js:59974:18
+❌ Widget NOT showing because: 
+Object { hasUser: false, hasToken: false, isLandingOrAuth: false, pathname: "/dashboard" }
+763be0b26a4297da4066debd9953da7d7dc1cdbe.js:59981:109
+SupportWidget Debug: 
+Object { hasUser: false, hasToken: false, userEmail: undefined, pathname: "/auth", isLandingOrAuth: true, showWidget: false }
+763be0b26a4297da4066debd9953da7d7dc1cdbe.js:59974:18
+❌ Widget NOT showing because: 
+Object { hasUser: false, hasToken: false, isLandingOrAuth: true, pathname: "/auth" }
+763be0b26a4297da4066debd9953da7d7dc1cdbe.js:59981:109
+The resource at “https://chef-speak-68011167.figma.site/_runtimes/sites-runtime.04f66058feafef354e13705358698cf2ae30f1cd1c6baaa2efc88d31da9a91ed.js” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. auth
+The resource at “https://chef-speak-68011167.figma.site/_components/v2/763be0b26a4297da4066debd9953da7d7dc1cdbe.js” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. auth
+The resource at “https://chef-speak-68011167.figma.site/_json/95af2ddc-c30c-41df-a392-645c3112707f/_index.json” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. auth
+=== Sign In Flow Start === 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:17252:15
+Attempting Supabase authentication... 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:17252:58
+=== Auth State Change === 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:17210:19
+Event: SIGNED_IN 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:17210:61
+Session exists: true 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:17210:87
+✓ Supabase authentication successful 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:17260:15
+Fetching user profile from backend... 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:17260:68
+SupportWidget Debug: 
+Object { hasUser: true, hasToken: true, userEmail: "oluseyi88@gmail.com", pathname: "/auth", isLandingOrAuth: true, showWidget: false }
+763be0b26a4297da4066debd9953da7d7dc1cdbe.js:59974:18
+❌ Widget NOT showing because: 
+Object { hasUser: true, hasToken: true, isLandingOrAuth: true, pathname: "/auth" }
+763be0b26a4297da4066debd9953da7d7dc1cdbe.js:59981:109
+=== Auth State Change === 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:17210:19
+Event: INITIAL_SESSION 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:17210:61
+Session exists: true 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:17210:87
+SupportWidget Debug: 
+Object { hasUser: true, hasToken: true, userEmail: "oluseyi88@gmail.com", pathname: "/dashboard", isLandingOrAuth: false, showWidget: true }
+763be0b26a4297da4066debd9953da7d7dc1cdbe.js:59974:18
+✅ Widget SHOULD BE showing 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:59981:20
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/mentorships 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23052:13
+Getting valid token... 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23028:107
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/sessions 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23052:13
+Token refresh already in progress, waiting... 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23026:22
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/sessions/public 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23052:13
+Token refresh already in progress, waiting... 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23026:22
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/mentorships 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23052:13
+Token refresh already in progress, waiting... 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23026:22
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/notifications 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23052:13
+Token refresh already in progress, waiting... 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23026:22
+✓ Token refreshed and obtained 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23031:104
+Authorization header being sent: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY... 5 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23054:13
+✓ User profile fetched successfully 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:17268:175
+=== Sign In Flow Complete === 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:17268:390
+SupportWidget Debug: 
+Object { hasUser: true, hasToken: true, userEmail: "oluseyi88@gmail.com", pathname: "/dashboard", isLandingOrAuth: false, showWidget: true }
+763be0b26a4297da4066debd9953da7d7dc1cdbe.js:59974:18
+✅ Widget SHOULD BE showing 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:59981:20
+=== Auth State Change === 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:17210:19
+Event: INITIAL_SESSION 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:17210:61
+Session exists: true 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:17210:87
+API Response (/notifications): 
+Object { success: true, notifications: (91) […] }
+763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23073:35
+=== Auth State Change === 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:17210:19
+Event: SIGNED_IN 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:17210:61
+Session exists: true 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:17210:87
+API Response (/mentorships): 
+Object { success: true, mentorships: (2) […] }
+763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23073:35
+API Response (/sessions/public): 
+Object { success: true, sessions: (72) […] }
+763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23073:35
+API Response (/sessions): 
+Object { success: true, sessions: (79) […] }
+763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23073:35
+📊 Public sessions loaded: 72 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:37242:46
+📊 Sample public session data: 
+Object { id: "session_1774698627766_k30lhp1m5", notes: '{"sessionType":"public","capacity":50,"registeredStudents":["88cd18ff-e250-4eb9-a562-e6ea9ca134a1","644a4726-9669-4b28-8db9-356aeb1fcdf3"],"platform":"Google Meet","description":"We do genomics mentorship, and take it up high to workshop and hands-on sessions","registeredCount":2}', topic: "Genomics", status: "scheduled", duration: 90, mentorId: "644a4726-9669-4b28-8db9-356aeb1fcdf3", createdAt: "2026-03-28T11:50:27.766Z", createdBy: "644a4726-9669-4b28-8db9-356aeb1fcdf3", studentId: "88cd18ff-e250-4eb9-a562-e6ea9ca134a1", updatedAt: "2026-04-02T14:20:39.883Z", … }
+763be0b26a4297da4066debd9953da7d7dc1cdbe.js:37242:110
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/users/88cd18ff-e250-4eb9-a562-e6ea9ca134a1 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23052:13
+Getting valid token... 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23028:107
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/users/88cd18ff-e250-4eb9-a562-e6ea9ca134a1 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23052:13
+Token refresh already in progress, waiting... 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23026:22
+✓ Token refreshed and obtained 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23031:104
+Authorization header being sent: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY... 2 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23054:13
+API Response (/users/88cd18ff-e250-4eb9-a562-e6ea9ca134a1): 
+Object { success: true, user: {…} }
+763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23073:35
+API Response (/mentorships): 
+Object { success: true, mentorships: (2) […] }
+763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23073:35
+Student Dashboard - Notifications Response: 
+Object { success: true, notifications: (91) […] }
+763be0b26a4297da4066debd9953da7d7dc1cdbe.js:36820:17
+API Response (/users/88cd18ff-e250-4eb9-a562-e6ea9ca134a1): 
+Object { success: true, user: {…} }
+763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23073:35
+🎓 Student Profile Data: 
+Object { careerInterests: (1) […], lookingFor: (2) […], industries: (1) […], major: "Biology" }
+763be0b26a4297da4066debd9953da7d7dc1cdbe.js:36412:15
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/users/browse/mentors 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23052:13
+Getting valid token... 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23028:107
+✓ Token refreshed and obtained 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23031:104
+Authorization header being sent: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY... 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23054:13
+API Response (/users/browse/mentors): 
+Object { success: true, mentors: (11) […] }
+763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23073:35
+👨‍🏫 Total mentors found: 11 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:36419:19
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/mentorships 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23052:13
+Getting valid token... 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23028:107
+✓ Token refreshed and obtained 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23031:104
+Authorization header being sent: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY... 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23054:13
+API Response (/mentorships): 
+Object { success: true, mentorships: (2) […] }
+763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23073:35
+Mentor Oluwaseyi Olawale: Score 10, Available: true, Spots: 5/5 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:36425:24
+Mentor Dee John: Score 10, Available: true, Spots: 5/5 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:36425:24
+Mentor cfd dcdcdce: Score 10, Available: true, Spots: 5/5 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:36425:24
+Mentor dddd sdsdd: Score 10, Available: true, Spots: 5/5 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:36425:24
+Mentor ffff dddd: Score 10, Available: true, Spots: 5/5 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:36425:24
+Mentor cscsc cscs: Score 10, Available: true, Spots: 5/5 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:36425:24
+Mentor dcsdc cfd: Score 10, Available: true, Spots: 5/5 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:36425:24
+Mentor hammed hammed: Score 10, Available: true, Spots: 5/5 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:36425:24
+Mentor Oluwaseyi  Olawale: Score 67, Available: true, Spots: 3/5 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:36425:24
+Mentor olu was: Score 10, Available: true, Spots: 5/5 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:36425:24
+Mentor ge en: Score 10, Available: true, Spots: 5/5 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:36425:24
+✅ Recommended mentors (available only): 4 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:36434:15
+📊 Top mentor scores: 
+Array(4) [ {…}, {…}, {…}, {…} ]
+763be0b26a4297da4066debd9953da7d7dc1cdbe.js:36434:81
+=== Auth State Change === 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:17210:19
+Event: SIGNED_IN 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:17210:61
+Session exists: true 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:17210:87
+=== Auth State Change === 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:17210:19
+Event: SIGNED_IN 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:17210:61
+Session exists: true 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:17210:87
+API Call: POST https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/sessions/session_1774965749231_eicj9jgci/register 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23052:13
+Getting valid token... 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23028:107
+✓ Token refreshed and obtained 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23031:104
+Authorization header being sent: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY... 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23054:13
+API Response (/sessions/session_1774965749231_eicj9jgci/register): 
+Object { success: true, session: {…} }
+763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23073:35
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/sessions 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23052:13
+Getting valid token... 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23028:107
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/sessions/public 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23052:13
+Token refresh already in progress, waiting... 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23026:22
+✓ Token refreshed and obtained 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23031:104
+Authorization header being sent: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY... 2 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23054:13
+API Response (/sessions/public): 
+Object { success: true, sessions: (72) […] }
+763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23073:35
+API Response (/sessions): 
+Object { success: true, sessions: (79) […] }
+763be0b26a4297da4066debd9953da7d7dc1cdbe.js:23073:35
+=== Auth State Change === 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:17210:19
+Event: SIGNED_IN 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:17210:61
+Session exists: true 763be0b26a4297da4066debd9953da7d7dc1cdbe.js:17210:87

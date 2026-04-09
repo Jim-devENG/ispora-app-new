@@ -1,0 +1,365 @@
+Running frontend commit d4fc1aaf66b18fab78d8b390009b74b4efed12cf Build-Frontend-Authentication:513:9
+Loaded 41 scripts (6304214b), 39 from cache (1763116b) vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[Livegraph] Connected 2026-04-01T22:51:41.019Z. vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[import] git: a9e12acf8af18f928573994bae8595881434283b, stamp: 6D22265721CDE483 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Autosave Changes not available or already claimed by another tab undefined vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[Local fonts] using agent vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[Fullscreen] Booting... (emscripten version 4.0.21) vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[GPU] graphicsAPI:"WebGL 2", vendor:"Google Inc. (Intel)", renderer:"ANGLE (Intel, Intel(R) HD Graphics 400 Direct3D11 vs_5_0 ps_5_0), or similar" version:"OpenGL ES 3.0 (WebGL 2.0)" vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[Fullscreen] Ready in 15992.0ms vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[FullscreenApp] calling setEditorTheme and setting preference dark vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=usiSByHGaSuq232P&version=151&recentReload=0&file-load-streaming-compression&user-id=1155220099117335391&client_release=d4fc1aaf66b18fab78d8b390009b74b4efed12cf vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] Joining file version 106 (initial load) vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[FullscreenApp] calling setEditorTheme and setting preference dark vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[devtools] Initialized LS 2 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[Fullscreen] loadtime=59.46s maxmem=36047616 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Too many elapsed hits of react since last report vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cookie “ajs_anonymous_id” has been rejected for invalid domain. 9b5ca2df-b45f-4619-86fe-bc70a2a13d86-v2-figmaiframepreview.figma.site
+Partitioned cookie or storage access was provided to “https://9b5ca2df-b45f-4619-86fe-bc70a2a13d86-v2-figmaiframepreview.figma.site/” because it is loaded in the third-party context and dynamic state partitioning is enabled. code_components_preview_iframe-c80ab23917594aa8.min.js.br:984:13415
+Failed to fetch snapshot files: Error: XHR for "/api/rev/rA5wVerfHRa5lKpVnXU5O6/code_snapshot/626db089515b92f382514d1b3045c6c336252240d7cbcafd5b8636f0cd620834" failed with status 404
+    E https://www.figma.com/webpack-artifacts/assets/4897-1ce656ca32034c33.min.js.br:1403
+    w https://www.figma.com/webpack-artifacts/assets/4897-1ce656ca32034c33.min.js.br:1403
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[Livegraph] Connection closed. Code: 1006, reason: vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=usiSByHGaSuq232P&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=d4fc1aaf66b18fab78d8b390009b74b4efed12cf&reconnect-key=117151700f37912fd301c5a3ac856d19ec4f6bd3&reconnect-sequence-number=3437&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[Livegraph] Connected 2026-04-01T23:05:44.415Z. vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] Joining file version 106 (skip_reload reconnect) vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Sentry event id: 79b0dd605934493ca532ba4939471b61 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Sentry event id: 0aa4c300ca024ae99f89bf405e414dc8 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Failed to fetch snapshot files: Error: XHR for "/api/rev/rA5wVerfHRa5lKpVnXU5O6/code_snapshot/41e8c4c5d52bc8432f8102f876aaa74b5d1c8611fff668a2c98da01c33ebac08" failed with status 404
+    E https://www.figma.com/webpack-artifacts/assets/4897-1ce656ca32034c33.min.js.br:1403
+    w https://www.figma.com/webpack-artifacts/assets/4897-1ce656ca32034c33.min.js.br:1403
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[Livegraph] Connection closed. Code: 4010, reason: server_idle vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=usiSByHGaSuq232P&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=d4fc1aaf66b18fab78d8b390009b74b4efed12cf&reconnect-key=117151700f37912fd301c5a3ac856d19ec4f6bd3&reconnect-sequence-number=3447&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[Livegraph] Connected 2026-04-01T23:46:04.031Z. vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] Joining file version 106 (skip_reload reconnect) vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS request did not succeed). Status code: (null).
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:3242
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:89576
+Cookie “__cf_bm” has been rejected for invalid domain. 9b5ca2df-b45f-4619-86fe-bc70a2a13d86-v2-figmaiframepreview.figma.site
+Source map error: Error: NetworkError when attempting to fetch resource.
+Resource URL: https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-c80ab23917594aa8.min.js.br
+Source Map URL: https://admin.figma.com/admin/webpack-artifacts/4d8756b1c1e353e7ce8c84a6fd9c1110bc34f4d4/code_components_preview_iframe-c80ab23917594aa8.min.js.map 2
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=usiSByHGaSuq232P&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=d4fc1aaf66b18fab78d8b390009b74b4efed12cf&reconnect-key=117151700f37912fd301c5a3ac856d19ec4f6bd3&reconnect-sequence-number=3450&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] Joining file version 106 (skip_reload reconnect) vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS header ‘Access-Control-Allow-Origin’ missing). Status code: 302.
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS request did not succeed). Status code: (null).
+Failed to fetch snapshot files: Error: XHR for "/api/rev/rA5wVerfHRa5lKpVnXU5O6/code_snapshot/8a3474eedbee1178c92265a918d2a1aefb7818a50d981728ce14f945698047f5" failed with status 404
+    E https://www.figma.com/webpack-artifacts/assets/4897-1ce656ca32034c33.min.js.br:1403
+    w https://www.figma.com/webpack-artifacts/assets/4897-1ce656ca32034c33.min.js.br:1403
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cookie “__cf_bm” has been rejected for invalid domain. 9b5ca2df-b45f-4619-86fe-bc70a2a13d86-v2-figmaiframepreview.figma.site
+This site appears to use a scroll-linked positioning effect. This may not work well with asynchronous panning; see https://firefox-source-docs.mozilla.org/performance/scroll-linked_effects.html for further details and to join the discussion on related tools and features! Build-Frontend-Authentication
+[Livegraph] Connection closed. Code: 4010, reason: server_idle vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=usiSByHGaSuq232P&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=d4fc1aaf66b18fab78d8b390009b74b4efed12cf&reconnect-key=117151700f37912fd301c5a3ac856d19ec4f6bd3&reconnect-sequence-number=3457&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[Livegraph] Connected 2026-04-02T00:25:01.227Z. vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] Joining file version 106 (skip_reload reconnect) vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:3242
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:89576
+[esbuild-wasm] Initializing from URL: /webpack-artifacts/assets/2b68f2d3d5e8b3d6.wasm devtools_worker-026db7d6fb7b9a02.min.js.br:1190:34829
+[esbuild-wasm] Initialized devtools_worker-026db7d6fb7b9a02.min.js.br:1190:35167
+[esbuild virtual-fs] Unresolvable CSS import: "/src/styles/index.css" from "file:///src/app/App.tsx". Mapping to figma:noop. devtools_worker-026db7d6fb7b9a02.min.js.br:1997:2485
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS header ‘Access-Control-Allow-Origin’ missing). Status code: 302.
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS request did not succeed). Status code: (null).
+Cookie “__cf_bm” has been rejected for invalid domain. 9b5ca2df-b45f-4619-86fe-bc70a2a13d86-v2-figmaiframepreview.figma.site
+[esbuild] Build error: Error: Build failed with 8 errors:
+virtual-fs:file:///src/app/components/MentorDashboard.tsx:6:26: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/SessionLandingPage.tsx:19:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/Settings.tsx:3:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/contexts/AuthContext.tsx:3:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/contexts/ThemeContext.tsx:2:26: ERROR: Could not resolve "/utils/supabase/info"
+...
+    Z https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:8
+    G https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    y https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    G https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    x/c["on-end"]/< https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    "on-end" https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    f https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    p https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:3
+    p https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:3
+    f https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    x https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    readFromStdout https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    onmessage https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+devtools_worker-026db7d6fb7b9a02.min.js.br:2018:3766
+Error: Build failed with 8 errors:
+virtual-fs:file:///src/app/components/MentorDashboard.tsx:6:26: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/SessionLandingPage.tsx:19:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/Settings.tsx:3:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/contexts/AuthContext.tsx:3:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/contexts/ThemeContext.tsx:2:26: ERROR: Could not resolve "/utils/supabase/info"
+...
+    Z https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:8
+    G https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    y https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    G https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    x/c["on-end"]/< https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    "on-end" https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    f https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    p https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:3
+    p https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:3
+    f https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    x https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    readFromStdout https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    onmessage https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+devtools_worker-026db7d6fb7b9a02.min.js.br:3254:1877
+[esbuild virtual-fs] Unresolvable CSS import: "/src/styles/index.css" from "file:///src/app/App.tsx". Mapping to figma:noop. devtools_worker-026db7d6fb7b9a02.min.js.br:1997:2485
+[esbuild] Build error: Error: Build failed with 8 errors:
+virtual-fs:file:///src/app/components/MentorDashboard.tsx:6:26: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/SessionLandingPage.tsx:19:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/Settings.tsx:3:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/contexts/AuthContext.tsx:3:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/contexts/ThemeContext.tsx:2:26: ERROR: Could not resolve "/utils/supabase/info"
+...
+    Z https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:8
+    G https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    y https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    G https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    x/c["on-end"]/< https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    "on-end" https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    f https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    p https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:3
+    p https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:3
+    f https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    x https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    readFromStdout https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    onmessage https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+devtools_worker-026db7d6fb7b9a02.min.js.br:2018:3766
+Error: Build failed with 8 errors:
+virtual-fs:file:///src/app/components/MentorDashboard.tsx:6:26: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/SessionLandingPage.tsx:19:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/Settings.tsx:3:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/contexts/AuthContext.tsx:3:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/contexts/ThemeContext.tsx:2:26: ERROR: Could not resolve "/utils/supabase/info"
+...
+    Z https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:8
+    G https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    y https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    G https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    x/c["on-end"]/< https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    "on-end" https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    f https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    p https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:3
+    p https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:3
+    f https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    x https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    readFromStdout https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    onmessage https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+devtools_worker-026db7d6fb7b9a02.min.js.br:3254:1877
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:3242
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:89576
+Cookie “__cf_bm” has been rejected for invalid domain. 9b5ca2df-b45f-4619-86fe-bc70a2a13d86-v2-figmaiframepreview.figma.site
+[Livegraph] Connection closed. Code: 1006, reason: vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=usiSByHGaSuq232P&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=d4fc1aaf66b18fab78d8b390009b74b4efed12cf&reconnect-key=117151700f37912fd301c5a3ac856d19ec4f6bd3&reconnect-sequence-number=3462&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[Livegraph] Connected 2026-04-02T00:36:21.252Z. vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] Joining file version 106 (skip_reload reconnect) vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS header ‘Access-Control-Allow-Origin’ missing). Status code: 302.
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS request did not succeed). Status code: (null).
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:3242
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:89576
+Cookie “__cf_bm” has been rejected for invalid domain. 9b5ca2df-b45f-4619-86fe-bc70a2a13d86-v2-figmaiframepreview.figma.site
+Storage access automatically granted for origin “https://supabase.com” on “https://www.figma.com”.
+Cookie “__cf_bm” has been rejected for invalid domain. 2 9b5ca2df-b45f-4619-86fe-bc70a2a13d86-v2-figmaiframepreview.figma.site
+Source map error: Error: NetworkError when attempting to fetch resource.
+Resource URL: https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-c80ab23917594aa8.min.js.br
+Source Map URL: https://admin.figma.com/admin/webpack-artifacts/4d8756b1c1e353e7ce8c84a6fd9c1110bc34f4d4/code_components_preview_iframe-c80ab23917594aa8.min.js.map
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=usiSByHGaSuq232P&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=d4fc1aaf66b18fab78d8b390009b74b4efed12cf&reconnect-key=117151700f37912fd301c5a3ac856d19ec4f6bd3&reconnect-sequence-number=3466&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] Joining file version 106 (skip_reload reconnect) vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS header ‘Access-Control-Allow-Origin’ missing). Status code: 302.
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS request did not succeed). Status code: (null).
+Cookie “__cf_bm” has been rejected for invalid domain. 9b5ca2df-b45f-4619-86fe-bc70a2a13d86-v2-figmaiframepreview.figma.site
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=usiSByHGaSuq232P&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=d4fc1aaf66b18fab78d8b390009b74b4efed12cf&reconnect-key=117151700f37912fd301c5a3ac856d19ec4f6bd3&reconnect-sequence-number=3468&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=usiSByHGaSuq232P&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=d4fc1aaf66b18fab78d8b390009b74b4efed12cf&reconnect-key=117151700f37912fd301c5a3ac856d19ec4f6bd3&reconnect-sequence-number=3468&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0. 9039-ce2949cefac6c281.min.js.br:3:174409
+The connection to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=usiSByHGaSuq232P&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=d4fc1aaf66b18fab78d8b390009b74b4efed12cf&reconnect-key=117151700f37912fd301c5a3ac856d19ec4f6bd3&reconnect-sequence-number=3468&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 was interrupted while the page was loading. 9039-ce2949cefac6c281.min.js.br:3:174409
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=usiSByHGaSuq232P&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=d4fc1aaf66b18fab78d8b390009b74b4efed12cf&reconnect-key=117151700f37912fd301c5a3ac856d19ec4f6bd3&reconnect-sequence-number=3468&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=usiSByHGaSuq232P&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=d4fc1aaf66b18fab78d8b390009b74b4efed12cf&reconnect-key=117151700f37912fd301c5a3ac856d19ec4f6bd3&reconnect-sequence-number=3468&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0. 9039-ce2949cefac6c281.min.js.br:3:174409
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=usiSByHGaSuq232P&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=d4fc1aaf66b18fab78d8b390009b74b4efed12cf&reconnect-key=117151700f37912fd301c5a3ac856d19ec4f6bd3&reconnect-sequence-number=3468&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+The connection to wss://www.figma.com/api/livegraph?pv=1&pr=171507d3b21d5d69&pt=1775083877&ph=02HvQYui7xVnoFxEqqwhvFJYI1ioTQsMJGc0KW7ycnI&userId=1155220099117335391&anonUserId=336a226c-4822-49fc-9e87-63a0f7698951&clientType=web&commitHash=d4fc1aaf66b18fab78d8b390009b74b4efed12cf&clientUrl=https%3A%2F%2Fwww.figma.com%2Fmake%2FrA5wVerfHRa5lKpVnXU5O6%2FBuild-Frontend-Authentication%3Fp%3Df%26t%3DRZN5gGOUsidV9ThV-0%26preview-route%3D%252Fadmin&connectionType=reconnect&reconnect=1 was interrupted while the page was loading. 8586-fbf890a906faeaf9.min.js.br:64:89696
+[Livegraph] Connection closed. Code: 1006, reason: vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=usiSByHGaSuq232P&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=d4fc1aaf66b18fab78d8b390009b74b4efed12cf&reconnect-key=117151700f37912fd301c5a3ac856d19ec4f6bd3&reconnect-sequence-number=3468&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0. 9039-ce2949cefac6c281.min.js.br:3:174409
+Uncaught (in promise) Error: XHR for "https://www.figma.com/api/web_logger/metrics/web.cortex.error" failed with status 0
+    E https://www.figma.com/webpack-artifacts/assets/4897-1ce656ca32034c33.min.js.br:1403
+    w https://www.figma.com/webpack-artifacts/assets/4897-1ce656ca32034c33.min.js.br:1403
+4897-1ce656ca32034c33.min.js.br:1403:9370
+Error: XHR for "https://www.figma.com/api/web_logger/metrics_batched" failed with status 0
+    E https://www.figma.com/webpack-artifacts/assets/4897-1ce656ca32034c33.min.js.br:1403
+    w https://www.figma.com/webpack-artifacts/assets/4897-1ce656ca32034c33.min.js.br:1403
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Uncaught (in promise) Error: XHR for "https://www.figma.com/api/web_logger/metrics/unsaved_changes_bell" failed with status 0
+    E https://www.figma.com/webpack-artifacts/assets/4897-1ce656ca32034c33.min.js.br:1403
+    w https://www.figma.com/webpack-artifacts/assets/4897-1ce656ca32034c33.min.js.br:1403
+4897-1ce656ca32034c33.min.js.br:1403:9370
+Uncaught (in promise) Error: XHR for "https://www.figma.com/api/web_logger/metrics/active_session" failed with status 0
+    E https://www.figma.com/webpack-artifacts/assets/4897-1ce656ca32034c33.min.js.br:1403
+    w https://www.figma.com/webpack-artifacts/assets/4897-1ce656ca32034c33.min.js.br:1403
+4897-1ce656ca32034c33.min.js.br:1403:9370
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://s3-figma-force-client-reloads-production.figma.com/periodic_refresh.json. (Reason: CORS request did not succeed). Status code: (null).
+Uncaught (in promise) Error: XHR for "https://www.figma.com/api/web_logger/metrics/active_session" failed with status 0
+    E https://www.figma.com/webpack-artifacts/assets/4897-1ce656ca32034c33.min.js.br:1403
+    w https://www.figma.com/webpack-artifacts/assets/4897-1ce656ca32034c33.min.js.br:1403
+4897-1ce656ca32034c33.min.js.br:1403:9370
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=usiSByHGaSuq232P&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=d4fc1aaf66b18fab78d8b390009b74b4efed12cf&reconnect-key=117151700f37912fd301c5a3ac856d19ec4f6bd3&reconnect-sequence-number=3468&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/livegraph?pv=1&pr=171507d3b21d5d69&pt=1775083877&ph=02HvQYui7xVnoFxEqqwhvFJYI1ioTQsMJGc0KW7ycnI&userId=1155220099117335391&anonUserId=336a226c-4822-49fc-9e87-63a0f7698951&clientType=web&commitHash=d4fc1aaf66b18fab78d8b390009b74b4efed12cf&clientUrl=https%3A%2F%2Fwww.figma.com%2Fmake%2FrA5wVerfHRa5lKpVnXU5O6%2FBuild-Frontend-Authentication%3Fp%3Df%26t%3DRZN5gGOUsidV9ThV-0%26preview-route%3D%252Fadmin&connectionType=reconnect&reconnect=1. 8586-fbf890a906faeaf9.min.js.br:64:89696
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=usiSByHGaSuq232P&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=d4fc1aaf66b18fab78d8b390009b74b4efed12cf&reconnect-key=117151700f37912fd301c5a3ac856d19ec4f6bd3&reconnect-sequence-number=3468&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0. 9039-ce2949cefac6c281.min.js.br:3:174409
+[Livegraph] Connection closed. Code: 1006, reason: vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Uncaught (in promise) Error: XHR for "https://www.figma.com/api/web_logger/metrics/web.cortex.error" failed with status 0
+    E https://www.figma.com/webpack-artifacts/assets/4897-1ce656ca32034c33.min.js.br:1403
+    w https://www.figma.com/webpack-artifacts/assets/4897-1ce656ca32034c33.min.js.br:1403
+4897-1ce656ca32034c33.min.js.br:1403:9370
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=usiSByHGaSuq232P&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=d4fc1aaf66b18fab78d8b390009b74b4efed12cf&reconnect-key=117151700f37912fd301c5a3ac856d19ec4f6bd3&reconnect-sequence-number=3468&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=usiSByHGaSuq232P&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=d4fc1aaf66b18fab78d8b390009b74b4efed12cf&reconnect-key=117151700f37912fd301c5a3ac856d19ec4f6bd3&reconnect-sequence-number=3468&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0. 9039-ce2949cefac6c281.min.js.br:3:174409
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/livegraph?pv=1&pr=171507d3b21d5d69&pt=1775083877&ph=02HvQYui7xVnoFxEqqwhvFJYI1ioTQsMJGc0KW7ycnI&userId=1155220099117335391&anonUserId=336a226c-4822-49fc-9e87-63a0f7698951&clientType=web&commitHash=d4fc1aaf66b18fab78d8b390009b74b4efed12cf&clientUrl=https%3A%2F%2Fwww.figma.com%2Fmake%2FrA5wVerfHRa5lKpVnXU5O6%2FBuild-Frontend-Authentication%3Fp%3Df%26t%3DRZN5gGOUsidV9ThV-0%26preview-route%3D%252Fadmin&connectionType=reconnect&reconnect=2. 8586-fbf890a906faeaf9.min.js.br:64:89696
+[Livegraph] Connection closed. Code: 1006, reason: vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/livegraph?pv=1&pr=171507d3b21d5d69&pt=1775083877&ph=02HvQYui7xVnoFxEqqwhvFJYI1ioTQsMJGc0KW7ycnI&userId=1155220099117335391&anonUserId=336a226c-4822-49fc-9e87-63a0f7698951&clientType=web&commitHash=d4fc1aaf66b18fab78d8b390009b74b4efed12cf&clientUrl=https%3A%2F%2Fwww.figma.com%2Fmake%2FrA5wVerfHRa5lKpVnXU5O6%2FBuild-Frontend-Authentication%3Fp%3Df%26t%3DRZN5gGOUsidV9ThV-0%26preview-route%3D%252Fadmin&connectionType=reconnect&reconnect=3. 8586-fbf890a906faeaf9.min.js.br:64:89696
+[Livegraph] Connection closed. Code: 1006, reason: vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/livegraph?pv=1&pr=171507d3b21d5d69&pt=1775083877&ph=02HvQYui7xVnoFxEqqwhvFJYI1ioTQsMJGc0KW7ycnI&userId=1155220099117335391&anonUserId=336a226c-4822-49fc-9e87-63a0f7698951&clientType=web&commitHash=d4fc1aaf66b18fab78d8b390009b74b4efed12cf&clientUrl=https%3A%2F%2Fwww.figma.com%2Fmake%2FrA5wVerfHRa5lKpVnXU5O6%2FBuild-Frontend-Authentication%3Fp%3Df%26t%3DRZN5gGOUsidV9ThV-0%26preview-route%3D%252Fadmin&connectionType=reconnect&reconnect=4. 8586-fbf890a906faeaf9.min.js.br:64:89696
+[Livegraph] Connection closed. Code: 1006, reason: vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/livegraph?pv=1&pr=171507d3b21d5d69&pt=1775083877&ph=02HvQYui7xVnoFxEqqwhvFJYI1ioTQsMJGc0KW7ycnI&userId=1155220099117335391&anonUserId=336a226c-4822-49fc-9e87-63a0f7698951&clientType=web&commitHash=d4fc1aaf66b18fab78d8b390009b74b4efed12cf&clientUrl=https%3A%2F%2Fwww.figma.com%2Fmake%2FrA5wVerfHRa5lKpVnXU5O6%2FBuild-Frontend-Authentication%3Fp%3Df%26t%3DRZN5gGOUsidV9ThV-0%26preview-route%3D%252Fadmin&connectionType=reconnect&reconnect=5. 8586-fbf890a906faeaf9.min.js.br:64:89696
+[Livegraph] Connection closed. Code: 1006, reason: vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Error: XHR for "https://www.figma.com/api/web_logger/histogram_batched" failed with status 0
+    E https://www.figma.com/webpack-artifacts/assets/4897-1ce656ca32034c33.min.js.br:1403
+    w https://www.figma.com/webpack-artifacts/assets/4897-1ce656ca32034c33.min.js.br:1403
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/livegraph?pv=1&pr=171507d3b21d5d69&pt=1775083877&ph=02HvQYui7xVnoFxEqqwhvFJYI1ioTQsMJGc0KW7ycnI&userId=1155220099117335391&anonUserId=336a226c-4822-49fc-9e87-63a0f7698951&clientType=web&commitHash=d4fc1aaf66b18fab78d8b390009b74b4efed12cf&clientUrl=https%3A%2F%2Fwww.figma.com%2Fmake%2FrA5wVerfHRa5lKpVnXU5O6%2FBuild-Frontend-Authentication%3Fp%3Df%26t%3DRZN5gGOUsidV9ThV-0%26preview-route%3D%252Fadmin&connectionType=reconnect&reconnect=6. 8586-fbf890a906faeaf9.min.js.br:64:89696
+[Livegraph] Connection closed. Code: 1006, reason: vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=usiSByHGaSuq232P&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=d4fc1aaf66b18fab78d8b390009b74b4efed12cf&reconnect-key=117151700f37912fd301c5a3ac856d19ec4f6bd3&reconnect-sequence-number=3468&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=usiSByHGaSuq232P&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=d4fc1aaf66b18fab78d8b390009b74b4efed12cf&reconnect-key=117151700f37912fd301c5a3ac856d19ec4f6bd3&reconnect-sequence-number=3468&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0. 9039-ce2949cefac6c281.min.js.br:3:174409
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/livegraph?pv=1&pr=171507d3b21d5d69&pt=1775083877&ph=02HvQYui7xVnoFxEqqwhvFJYI1ioTQsMJGc0KW7ycnI&userId=1155220099117335391&anonUserId=336a226c-4822-49fc-9e87-63a0f7698951&clientType=web&commitHash=d4fc1aaf66b18fab78d8b390009b74b4efed12cf&clientUrl=https%3A%2F%2Fwww.figma.com%2Fmake%2FrA5wVerfHRa5lKpVnXU5O6%2FBuild-Frontend-Authentication%3Fp%3Df%26t%3DRZN5gGOUsidV9ThV-0%26preview-route%3D%252Fadmin&connectionType=reconnect&reconnect=7. 8586-fbf890a906faeaf9.min.js.br:64:89696
+[Livegraph] Connection closed. Code: 1006, reason: vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=usiSByHGaSuq232P&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=d4fc1aaf66b18fab78d8b390009b74b4efed12cf&reconnect-key=117151700f37912fd301c5a3ac856d19ec4f6bd3&reconnect-sequence-number=3468&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/livegraph?pv=1&pr=171507d3b21d5d69&pt=1775083877&ph=02HvQYui7xVnoFxEqqwhvFJYI1ioTQsMJGc0KW7ycnI&userId=1155220099117335391&anonUserId=336a226c-4822-49fc-9e87-63a0f7698951&clientType=web&commitHash=d4fc1aaf66b18fab78d8b390009b74b4efed12cf&clientUrl=https%3A%2F%2Fwww.figma.com%2Fmake%2FrA5wVerfHRa5lKpVnXU5O6%2FBuild-Frontend-Authentication%3Fp%3Df%26t%3DRZN5gGOUsidV9ThV-0%26preview-route%3D%252Fadmin&connectionType=reconnect&reconnect=8. 8586-fbf890a906faeaf9.min.js.br:64:89696
+[Livegraph] Connection closed. Code: 1006, reason: vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=usiSByHGaSuq232P&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=d4fc1aaf66b18fab78d8b390009b74b4efed12cf&reconnect-key=117151700f37912fd301c5a3ac856d19ec4f6bd3&reconnect-sequence-number=3468&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0. 9039-ce2949cefac6c281.min.js.br:3:174409
+Uncaught (in promise) Error: XHR for "https://www.figma.com/api/web_logger/metrics/web.cortex.error" failed with status 0
+    E https://www.figma.com/webpack-artifacts/assets/4897-1ce656ca32034c33.min.js.br:1403
+    w https://www.figma.com/webpack-artifacts/assets/4897-1ce656ca32034c33.min.js.br:1403
+4897-1ce656ca32034c33.min.js.br:1403:9370
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=usiSByHGaSuq232P&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=d4fc1aaf66b18fab78d8b390009b74b4efed12cf&reconnect-key=117151700f37912fd301c5a3ac856d19ec4f6bd3&reconnect-sequence-number=3468&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=usiSByHGaSuq232P&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=d4fc1aaf66b18fab78d8b390009b74b4efed12cf&reconnect-key=117151700f37912fd301c5a3ac856d19ec4f6bd3&reconnect-sequence-number=3468&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0. 9039-ce2949cefac6c281.min.js.br:3:174409
+Uncaught (in promise) Error: XHR for "https://www.figma.com/api/web_logger/metrics/active_session" failed with status 0
+    E https://www.figma.com/webpack-artifacts/assets/4897-1ce656ca32034c33.min.js.br:1403
+    w https://www.figma.com/webpack-artifacts/assets/4897-1ce656ca32034c33.min.js.br:1403
+4897-1ce656ca32034c33.min.js.br:1403:9370
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=usiSByHGaSuq232P&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=d4fc1aaf66b18fab78d8b390009b74b4efed12cf&reconnect-key=117151700f37912fd301c5a3ac856d19ec4f6bd3&reconnect-sequence-number=3468&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[Livegraph] Connected 2026-04-02T01:08:38.138Z. vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] Joining file version 106 (skip_reload reconnect) vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS header ‘Access-Control-Allow-Origin’ missing). Status code: 302.
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS request did not succeed). Status code: (null).
+Cookie “ajs_anonymous_id” has been rejected for invalid domain. 9b5ca2df-b45f-4619-86fe-bc70a2a13d86-v2-figmaiframepreview.figma.site
+Partitioned cookie or storage access was provided to “https://9b5ca2df-b45f-4619-86fe-bc70a2a13d86-v2-figmaiframepreview.figma.site/” because it is loaded in the third-party context and dynamic state partitioning is enabled. code_components_preview_iframe-c80ab23917594aa8.min.js.br:984:13415
+Cookie “__cf_bm” has been rejected for invalid domain. 9b5ca2df-b45f-4619-86fe-bc70a2a13d86-v2-figmaiframepreview.figma.site
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:3242
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:89576
+Cookie “ajs_anonymous_id” has been rejected for invalid domain. 9b5ca2df-b45f-4619-86fe-bc70a2a13d86-v2-figmaiframepreview.figma.site
+Partitioned cookie or storage access was provided to “https://9b5ca2df-b45f-4619-86fe-bc70a2a13d86-v2-figmaiframepreview.figma.site/” because it is loaded in the third-party context and dynamic state partitioning is enabled. code_components_preview_iframe-c80ab23917594aa8.min.js.br:984:13415
+Cookie “__cf_bm” has been rejected for invalid domain. 9b5ca2df-b45f-4619-86fe-bc70a2a13d86-v2-figmaiframepreview.figma.site
+[vite] connecting... code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31249
+Cookie “__cf_bm” has been rejected for invalid domain. app-rduzk3xduyd4qgjpruxwsi7gszboxadiapansz6q43rsrvngcghq.makeproxy-c.figma.site
+[vite] connected. code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31249
+=== Loading Session on Mount === code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+No active session found code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+=== Session Loading Complete === code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+=== Auth State Change === code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+Event: INITIAL_SESSION code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+Session exists: false code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+AuthFlow - loading: false code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+AuthFlow - isAuthenticated: false code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+AuthFlow - user: null code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+AuthFlow - onboardingComplete: undefined code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+AuthFlow - currentScreen: landing code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+AuthFlow - loading: false code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+AuthFlow - isAuthenticated: false code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+AuthFlow - user: null code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+AuthFlow - onboardingComplete: undefined code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+AuthFlow - currentScreen: signin code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+=== Sign In Flow Start === code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+Attempting Supabase authentication... code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+=== Auth State Change === code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+Event: SIGNED_IN code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+Session exists: true code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+✓ Supabase authentication successful code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+Fetching user profile from backend... code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+AuthFlow - loading: false code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+AuthFlow - isAuthenticated: true code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+AuthFlow - user: 
+Object { id: "88cd18ff-e250-4eb9-a562-e6ea9ca134a1", email: "oluseyi88@gmail.com", role: "student", course: "Biology", lastName: "Ola", createdAt: "2026-03-27T21:49:34.218Z", firstName: "Seyi", interests: (3) […], updatedAt: "2026-03-27T21:50:08.613Z", university: "Lautech", … }
+code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+AuthFlow - onboardingComplete: true code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+AuthFlow - currentScreen: signin code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+✓ User authenticated and onboarded - navigating to dashboard code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+=== Auth State Change === code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+Event: INITIAL_SESSION code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+Session exists: true code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/mentorships code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+Getting valid token... code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/sessions code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+Token refresh already in progress, waiting... code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/sessions/public code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+Token refresh already in progress, waiting... code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/mentorships code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+Token refresh already in progress, waiting... code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/notifications code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+Token refresh already in progress, waiting... code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+AuthFlow - loading: false code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+AuthFlow - isAuthenticated: true code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+AuthFlow - user: 
+Object { id: "88cd18ff-e250-4eb9-a562-e6ea9ca134a1", email: "oluseyi88@gmail.com", role: "student", course: "Biology", lastName: "Ola", createdAt: "2026-03-27T21:49:34.218Z", firstName: "Seyi", interests: (3) […], updatedAt: "2026-03-27T21:50:08.613Z", university: "Lautech", … }
+code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+AuthFlow - onboardingComplete: true code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+AuthFlow - currentScreen: dashboard code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+✓ User authenticated and onboarded - navigating to dashboard code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+✓ Token refreshed and obtained code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+Authorization header being sent: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY... 5 code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+✓ User profile fetched successfully code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+=== Sign In Flow Complete === code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+AuthFlow - loading: false code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+AuthFlow - isAuthenticated: true code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+AuthFlow - user: 
+Object { id: "88cd18ff-e250-4eb9-a562-e6ea9ca134a1", email: "oluseyi88@gmail.com", role: "student", course: "Biology", lastName: "Ola", createdAt: "2026-03-27T21:49:34.218Z", firstName: "Seyi", interests: (3) […], updatedAt: "2026-03-27T21:50:08.613Z", university: "Lautech", … }
+code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+AuthFlow - onboardingComplete: true code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+AuthFlow - currentScreen: dashboard code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+✓ User authenticated and onboarded - navigating to dashboard code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+=== Auth State Change === code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+Event: INITIAL_SESSION code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+Session exists: true code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+API Response (/notifications): 
+Object { success: true, notifications: (90) […] }
+code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+API Response (/mentorships): 
+Object { success: true, mentorships: (2) […] }
+code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+API Response (/sessions/public): 
+Object { success: true, sessions: (72) […] }
+code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+API Response (/sessions): 
+Object { success: true, sessions: (79) […] }
+code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+📊 Public sessions loaded: 72 code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+📊 Sample public session data: 
+Object { id: "session_1774698627766_k30lhp1m5", notes: '{"sessionType":"public","capacity":50,"registeredStudents":["88cd18ff-e250-4eb9-a562-e6ea9ca134a1"],"platform":"Google Meet","description":"We do genomics mentorship, and take it up high to workshop and hands-on sessions","registeredCount":1}', topic: "Genomics", status: "scheduled", duration: 90, mentorId: "644a4726-9669-4b28-8db9-356aeb1fcdf3", createdAt: "2026-03-28T11:50:27.766Z", createdBy: "644a4726-9669-4b28-8db9-356aeb1fcdf3", studentId: "88cd18ff-e250-4eb9-a562-e6ea9ca134a1", updatedAt: "2026-03-28T12:13:07.281Z", … }
+code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+API Response (/mentorships): 
+Object { success: true, mentorships: (2) […] }
+code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+Student Dashboard - Notifications Response: 
+Object { success: true, notifications: (90) […] }
+code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/community/posts?sort=recent code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+Getting valid token... code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+✓ Token refreshed and obtained code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+Authorization header being sent: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY... code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+⚠️  Community backend not yet deployed for /community/posts?sort=recent code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+API Call: POST https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/community/posts code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+Getting valid token... code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+✓ Token refreshed and obtained code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+Authorization header being sent: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY... code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+⚠️  Community backend not yet deployed for /community/posts code_components_preview_iframe-c80ab23917594aa8.min.js.br:90:31294
+Source map error: Error: NetworkError when attempting to fetch resource.
+Resource URL: https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-c80ab23917594aa8.min.js.br
+Source Map URL: https://admin.figma.com/admin/webpack-artifacts/4d8756b1c1e353e7ce8c84a6fd9c1110bc34f4d4/code_components_preview_iframe-c80ab23917594aa8.min.js.map
+Source map error: Error: NetworkError when attempting to fetch resource.
+Resource URL: https://www.figma.com/make/rA5wVerfHRa5lKpVnXU5O6/Build-Frontend-Authentication?p=f&t=RZN5gGOUsidV9ThV-0&preview-route=%2Fadmin
+Source Map URL: https://admin.figma.com/admin/webpack-artifacts/639ff953c6b09a96fc52edd28f4f8aa459e67aaa/early-f16978cae99634c9.min.js.map

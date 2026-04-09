@@ -1,0 +1,80 @@
+Cookie “__cf_bm” has been rejected for invalid domain. chef-speak-68011167.figma.site
+Cookie “__cf_bm” has been rejected for invalid domain. _index.json
+[Hydrated] sites-runtime.bda763cc4a3836c8a7216aa7eb4a70754ddaf01cd68b7f409e80787c6836614e.js:127:4207
+=== Loading Session on Mount === 2c1551a30845730a52f57dac9235012c5a07bfc6.js:17134:17
+No active session found 2c1551a30845730a52f57dac9235012c5a07bfc6.js:17160:19
+=== Session Loading Complete === 2c1551a30845730a52f57dac9235012c5a07bfc6.js:17165:30
+=== Auth State Change === 2c1551a30845730a52f57dac9235012c5a07bfc6.js:17172:19
+Event: INITIAL_SESSION 2c1551a30845730a52f57dac9235012c5a07bfc6.js:17172:61
+Session exists: false 2c1551a30845730a52f57dac9235012c5a07bfc6.js:17172:87
+Cookie “__cf_bm” has been rejected for invalid domain. community_published_banner_details
+AuthFlow - loading: false 2c1551a30845730a52f57dac9235012c5a07bfc6.js:32627:17
+AuthFlow - isAuthenticated: false 2c1551a30845730a52f57dac9235012c5a07bfc6.js:32627:56
+AuthFlow - user: null 2c1551a30845730a52f57dac9235012c5a07bfc6.js:32627:103
+AuthFlow - onboardingComplete: undefined 2c1551a30845730a52f57dac9235012c5a07bfc6.js:32627:139
+AuthFlow - currentScreen: landing 2c1551a30845730a52f57dac9235012c5a07bfc6.js:32627:209
+AuthFlow - loading: false 2c1551a30845730a52f57dac9235012c5a07bfc6.js:32627:17
+AuthFlow - isAuthenticated: false 2c1551a30845730a52f57dac9235012c5a07bfc6.js:32627:56
+AuthFlow - user: null 2c1551a30845730a52f57dac9235012c5a07bfc6.js:32627:103
+AuthFlow - onboardingComplete: undefined 2c1551a30845730a52f57dac9235012c5a07bfc6.js:32627:139
+AuthFlow - currentScreen: signin 2c1551a30845730a52f57dac9235012c5a07bfc6.js:32627:209
+=== Sign In Flow Start === 2c1551a30845730a52f57dac9235012c5a07bfc6.js:17219:17
+Attempting Supabase authentication... 2c1551a30845730a52f57dac9235012c5a07bfc6.js:17219:60
+The resource at “https://chef-speak-68011167.figma.site/_runtimes/sites-runtime.bda763cc4a3836c8a7216aa7eb4a70754ddaf01cd68b7f409e80787c6836614e.js” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. auth
+The resource at “https://chef-speak-68011167.figma.site/_components/v2/2c1551a30845730a52f57dac9235012c5a07bfc6.js” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. auth
+=== Auth State Change === 2c1551a30845730a52f57dac9235012c5a07bfc6.js:17172:19
+Event: SIGNED_IN 2c1551a30845730a52f57dac9235012c5a07bfc6.js:17172:61
+Session exists: true 2c1551a30845730a52f57dac9235012c5a07bfc6.js:17172:87
+✓ Supabase authentication successful 2c1551a30845730a52f57dac9235012c5a07bfc6.js:17227:17
+Fetching user profile from backend... 2c1551a30845730a52f57dac9235012c5a07bfc6.js:17227:70
+AuthFlow - loading: false 2c1551a30845730a52f57dac9235012c5a07bfc6.js:32627:17
+AuthFlow - isAuthenticated: true 2c1551a30845730a52f57dac9235012c5a07bfc6.js:32627:56
+AuthFlow - user: 
+Object { id: "17d291bc-5f16-4183-9fa2-176dcb428816", email: "isporaproject@gmail.com", role: "admin", lastName: "Admin", createdAt: "2026-03-29T17:26:30.247Z", firstName: "Isproa", onboardingComplete: true }
+2c1551a30845730a52f57dac9235012c5a07bfc6.js:32627:103
+AuthFlow - onboardingComplete: true 2c1551a30845730a52f57dac9235012c5a07bfc6.js:32627:139
+AuthFlow - currentScreen: signin 2c1551a30845730a52f57dac9235012c5a07bfc6.js:32627:209
+✅ Admin user detected - redirecting to /admin 2c1551a30845730a52f57dac9235012c5a07bfc6.js:32629:17
+=== Auth State Change === 2c1551a30845730a52f57dac9235012c5a07bfc6.js:17172:19
+Event: INITIAL_SESSION 2c1551a30845730a52f57dac9235012c5a07bfc6.js:17172:61
+Session exists: true 2c1551a30845730a52f57dac9235012c5a07bfc6.js:17172:87
+=== Admin Dashboard Auth Check === 2c1551a30845730a52f57dac9235012c5a07bfc6.js:51858:15
+User: 
+Object { id: "17d291bc-5f16-4183-9fa2-176dcb428816", email: "isporaproject@gmail.com", role: "admin", lastName: "Admin", createdAt: "2026-03-29T17:26:30.247Z", firstName: "Isproa", onboardingComplete: true }
+2c1551a30845730a52f57dac9235012c5a07bfc6.js:51858:66
+User role: admin 2c1551a30845730a52f57dac9235012c5a07bfc6.js:51858:91
+Refreshing session proactively... 2c1551a30845730a52f57dac9235012c5a07bfc6.js:51858:127
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/admin/stats 2c1551a30845730a52f57dac9235012c5a07bfc6.js:21076:13
+Getting valid token... 2c1551a30845730a52f57dac9235012c5a07bfc6.js:21055:13
+@supabase/gotrue-js: Lock "lock:sb-auth-token" was not released within 5000ms. This may indicate an orphaned lock from a component unmount (e.g., React Strict Mode). Forcefully acquiring the lock to recover. 2c1551a30845730a52f57dac9235012c5a07bfc6.js:12033:136
+Uncaught (in promise) Error: Lock "lock:sb-auth-token" was released because another request stole it
+    C2 https://chef-speak-68011167.figma.site/_components/v2/2c1551a30845730a52f57dac9235012c5a07bfc6.js:11990
+    Xb https://chef-speak-68011167.figma.site/_components/v2/2c1551a30845730a52f57dac9235012c5a07bfc6.js:11993
+    GA https://chef-speak-68011167.figma.site/_components/v2/2c1551a30845730a52f57dac9235012c5a07bfc6.js:12047
+2c1551a30845730a52f57dac9235012c5a07bfc6.js:11990:5
+✓ User profile fetched successfully 2c1551a30845730a52f57dac9235012c5a07bfc6.js:17235:177
+=== Sign In Flow Complete === 2c1551a30845730a52f57dac9235012c5a07bfc6.js:17235:392
+=== Admin Dashboard Auth Check === 2c1551a30845730a52f57dac9235012c5a07bfc6.js:51858:15
+User: 
+Object { id: "17d291bc-5f16-4183-9fa2-176dcb428816", email: "isporaproject@gmail.com", role: "admin", lastName: "Admin", createdAt: "2026-03-29T17:26:30.247Z", firstName: "Isproa", onboardingComplete: true }
+2c1551a30845730a52f57dac9235012c5a07bfc6.js:51858:66
+User role: admin 2c1551a30845730a52f57dac9235012c5a07bfc6.js:51858:91
+Refreshing session proactively... 2c1551a30845730a52f57dac9235012c5a07bfc6.js:51858:127
+=== Auth State Change === 2c1551a30845730a52f57dac9235012c5a07bfc6.js:17172:19
+Event: TOKEN_REFRESHED 2c1551a30845730a52f57dac9235012c5a07bfc6.js:17172:61
+Session exists: true 2c1551a30845730a52f57dac9235012c5a07bfc6.js:17172:87
+✓ Token refreshed, updating stored token 2c1551a30845730a52f57dac9235012c5a07bfc6.js:17175:17
+=== Auth State Change === 2c1551a30845730a52f57dac9235012c5a07bfc6.js:17172:19
+Event: TOKEN_REFRESHED 2c1551a30845730a52f57dac9235012c5a07bfc6.js:17172:61
+Session exists: true 2c1551a30845730a52f57dac9235012c5a07bfc6.js:17172:87
+✓ Token refreshed, updating stored token 2c1551a30845730a52f57dac9235012c5a07bfc6.js:17175:17
+✓ Session refreshed successfully 2c1551a30845730a52f57dac9235012c5a07bfc6.js:51868:15
+Access token (first 50 chars): eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY4NTItND... 2c1551a30845730a52f57dac9235012c5a07bfc6.js:51868:64
+=== Auth State Change === 2c1551a30845730a52f57dac9235012c5a07bfc6.js:17172:19
+Event: INITIAL_SESSION 2c1551a30845730a52f57dac9235012c5a07bfc6.js:17172:61
+Session exists: true 2c1551a30845730a52f57dac9235012c5a07bfc6.js:17172:87
+✓ Token refreshed and obtained 2c1551a30845730a52f57dac9235012c5a07bfc6.js:21058:22
+Authorization header being sent: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY... 2c1551a30845730a52f57dac9235012c5a07bfc6.js:21078:13
+API Response (/admin/stats): 
+Object { success: true, stats: {…} }
+2c1551a30845730a52f57dac9235012c5a07bfc6.js:21088:35

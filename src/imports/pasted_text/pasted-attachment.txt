@@ -1,0 +1,166 @@
+Cookie “__cf_bm” has been rejected for invalid domain. auth
+Cookie “__cf_bm” has been rejected for invalid domain. _index.json
+Cookie “__cf_bm” has been rejected for invalid domain. d14e4ea852b36dd12c6f9589723006f9965e9f04.js
+Cookie “__cf_bm” has been rejected for invalid domain. d14e4ea852b36dd12c6f9589723006f9965e9f04.css
+Cookie “__cf_bm” has been rejected for invalid domain. auth.json
+Cookie “__cf_bm” has been rejected for invalid domain. auth.json
+[Hydrated] sites-runtime.bda763cc4a3836c8a7216aa7eb4a70754ddaf01cd68b7f409e80787c6836614e.js:127:4207
+AuthFlow - loading: true d14e4ea852b36dd12c6f9589723006f9965e9f04.js:32574:17
+AuthFlow - isAuthenticated: false d14e4ea852b36dd12c6f9589723006f9965e9f04.js:32574:56
+AuthFlow - user: null d14e4ea852b36dd12c6f9589723006f9965e9f04.js:32574:103
+AuthFlow - onboardingComplete: undefined d14e4ea852b36dd12c6f9589723006f9965e9f04.js:32574:139
+AuthFlow - currentScreen: landing d14e4ea852b36dd12c6f9589723006f9965e9f04.js:32574:209
+=== Loading Session on Mount === d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17124:17
+No active session found d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17146:19
+=== Session Loading Complete === d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17150:24
+=== Auth State Change === d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:19
+Event: INITIAL_SESSION d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:61
+Session exists: false d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:87
+AuthFlow - loading: false d14e4ea852b36dd12c6f9589723006f9965e9f04.js:32574:17
+AuthFlow - isAuthenticated: false d14e4ea852b36dd12c6f9589723006f9965e9f04.js:32574:56
+AuthFlow - user: null d14e4ea852b36dd12c6f9589723006f9965e9f04.js:32574:103
+AuthFlow - onboardingComplete: undefined d14e4ea852b36dd12c6f9589723006f9965e9f04.js:32574:139
+AuthFlow - currentScreen: landing d14e4ea852b36dd12c6f9589723006f9965e9f04.js:32574:209
+Cookie “__cf_bm” has been rejected for invalid domain. community_published_banner_details
+AuthFlow - loading: false d14e4ea852b36dd12c6f9589723006f9965e9f04.js:32574:17
+AuthFlow - isAuthenticated: false d14e4ea852b36dd12c6f9589723006f9965e9f04.js:32574:56
+AuthFlow - user: null d14e4ea852b36dd12c6f9589723006f9965e9f04.js:32574:103
+AuthFlow - onboardingComplete: undefined d14e4ea852b36dd12c6f9589723006f9965e9f04.js:32574:139
+AuthFlow - currentScreen: signin d14e4ea852b36dd12c6f9589723006f9965e9f04.js:32574:209
+The resource at “https://chef-speak-68011167.figma.site/_runtimes/sites-runtime.bda763cc4a3836c8a7216aa7eb4a70754ddaf01cd68b7f409e80787c6836614e.js” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. auth
+The resource at “https://chef-speak-68011167.figma.site/_components/v2/d14e4ea852b36dd12c6f9589723006f9965e9f04.js” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. auth
+The resource at “https://chef-speak-68011167.figma.site/_json/0034ff23-76a4-4fab-b766-3569195cf276/_index.json” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. auth
+=== Sign In Flow Start === d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17202:17
+Attempting Supabase authentication... d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17202:60
+=== Auth State Change === d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:19
+Event: SIGNED_IN d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:61
+Session exists: true d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:87
+✓ Supabase authentication successful d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17210:17
+Fetching user profile from backend... d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17210:70
+AuthFlow - loading: false d14e4ea852b36dd12c6f9589723006f9965e9f04.js:32574:17
+AuthFlow - isAuthenticated: true d14e4ea852b36dd12c6f9589723006f9965e9f04.js:32574:56
+AuthFlow - user: 
+Object { id: "17d291bc-5f16-4183-9fa2-176dcb428816", email: "isporaproject@gmail.com", role: "admin", lastName: "Admin", createdAt: "2026-03-29T17:26:30.247Z", firstName: "Isproa", onboardingComplete: true }
+d14e4ea852b36dd12c6f9589723006f9965e9f04.js:32574:103
+AuthFlow - onboardingComplete: true d14e4ea852b36dd12c6f9589723006f9965e9f04.js:32574:139
+AuthFlow - currentScreen: signin d14e4ea852b36dd12c6f9589723006f9965e9f04.js:32574:209
+✅ Admin user detected - redirecting to /admin d14e4ea852b36dd12c6f9589723006f9965e9f04.js:32576:17
+=== Auth State Change === d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:19
+Event: INITIAL_SESSION d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:61
+Session exists: true d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:87
+=== Admin Dashboard Auth Check === d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33034:15
+User: 
+Object { id: "17d291bc-5f16-4183-9fa2-176dcb428816", email: "isporaproject@gmail.com", role: "admin", lastName: "Admin", createdAt: "2026-03-29T17:26:30.247Z", firstName: "Isproa", onboardingComplete: true }
+d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33034:66
+User role: admin d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33034:91
+Refreshing session proactively... d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33034:127
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/admin/stats d14e4ea852b36dd12c6f9589723006f9965e9f04.js:21023:13
+Getting valid token... d14e4ea852b36dd12c6f9589723006f9965e9f04.js:21002:13
+=== Auth State Change === d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:19
+Event: TOKEN_REFRESHED d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:61
+Session exists: true d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:87
+✓ Token refreshed, updating stored token d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17158:17
+✓ Session refreshed successfully d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33044:15
+Access token (first 50 chars): eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY4NTItND... d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33044:64
+=== Auth State Change === d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:19
+Event: TOKEN_REFRESHED d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:61
+Session exists: true d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:87
+✓ Token refreshed, updating stored token d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17158:17
+✓ Token refreshed and obtained d14e4ea852b36dd12c6f9589723006f9965e9f04.js:21005:22
+Authorization header being sent: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY... d14e4ea852b36dd12c6f9589723006f9965e9f04.js:21025:13
+✓ User profile fetched successfully d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17218:177
+=== Sign In Flow Complete === d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17218:392
+=== Admin Dashboard Auth Check === d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33034:15
+User: 
+Object { id: "17d291bc-5f16-4183-9fa2-176dcb428816", email: "isporaproject@gmail.com", role: "admin", lastName: "Admin", createdAt: "2026-03-29T17:26:30.247Z", firstName: "Isproa", onboardingComplete: true }
+d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33034:66
+User role: admin d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33034:91
+Refreshing session proactively... d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33034:127
+=== Auth State Change === d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:19
+Event: TOKEN_REFRESHED d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:61
+Session exists: true d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:87
+✓ Token refreshed, updating stored token d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17158:17
+✓ Session refreshed successfully d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33044:15
+Access token (first 50 chars): eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY4NTItND... d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33044:64
+=== Auth State Change === d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:19
+Event: INITIAL_SESSION d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:61
+Session exists: true d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:87
+API Response (/admin/stats): 
+Object { success: true, stats: {…} }
+d14e4ea852b36dd12c6f9589723006f9965e9f04.js:21035:35
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/admin/users d14e4ea852b36dd12c6f9589723006f9965e9f04.js:21023:13
+Getting valid token... d14e4ea852b36dd12c6f9589723006f9965e9f04.js:21002:13
+=== Auth State Change === d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:19
+Event: TOKEN_REFRESHED d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:61
+Session exists: true d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:87
+✓ Token refreshed, updating stored token d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17158:17
+✓ Token refreshed and obtained d14e4ea852b36dd12c6f9589723006f9965e9f04.js:21005:22
+Authorization header being sent: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY... d14e4ea852b36dd12c6f9589723006f9965e9f04.js:21025:13
+API Response (/admin/users): 
+Object { success: true, users: (4) […] }
+d14e4ea852b36dd12c6f9589723006f9965e9f04.js:21035:35
+=== User Details for Modal === d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33459:27
+Full user object: 
+Object { id: "ff34d264-27fa-4733-b4fc-b643d617f753", role: "diaspora", email: "genomachub@gmail.com", lastName: "Olawale", createdAt: "2026-03-27T15:46:57.533Z", firstName: "Oluwaseyi", onboardingComplete: false }
+d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33459:74
+User keys: 
+Array(7) [ "id", "role", "email", "lastName", "createdAt", "firstName", "onboardingComplete" ]
+d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33459:111
+School: undefined d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33459:154
+Company: undefined d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33459:188
+Bio: undefined d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33459:224
+Skills: undefined d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33459:252
+LinkedIn: undefined d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33459:286
+Website: undefined d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33459:324
+=== RENDERING MODAL === d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33777:25
+Selected user in modal: 
+Object { id: "ff34d264-27fa-4733-b4fc-b643d617f753", role: "diaspora", email: "genomachub@gmail.com", lastName: "Olawale", createdAt: "2026-03-27T15:46:57.533Z", firstName: "Oluwaseyi", onboardingComplete: false }
+d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33777:65
+Has school? false d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33777:108
+Has company? false d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33777:148
+Has bio? false d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33777:190
+Has skills? false d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33777:224
+=== User Details for Modal === d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33459:27
+Full user object: 
+Object { id: "88cd18ff-e250-4eb9-a562-e6ea9ca134a1", role: "student", email: "oluseyi88@gmail.com", course: "Biology", lastName: "Ola", createdAt: "2026-03-27T21:49:34.218Z", firstName: "Seyi", interests: (3) […], updatedAt: "2026-03-27T21:50:08.613Z", university: "Lautech", … }
+d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33459:74
+User keys: 
+Array(12) [ "id", "role", "email", "course", "lastName", "createdAt", "firstName", "interests", "updatedAt", "university", … ]
+d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33459:111
+School: undefined d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33459:154
+Company: undefined d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33459:188
+Bio: undefined d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33459:224
+Skills: undefined d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33459:252
+LinkedIn: undefined d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33459:286
+Website: undefined d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33459:324
+=== RENDERING MODAL === d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33777:25
+Selected user in modal: 
+Object { id: "88cd18ff-e250-4eb9-a562-e6ea9ca134a1", role: "student", email: "oluseyi88@gmail.com", course: "Biology", lastName: "Ola", createdAt: "2026-03-27T21:49:34.218Z", firstName: "Seyi", interests: (3) […], updatedAt: "2026-03-27T21:50:08.613Z", university: "Lautech", … }
+d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33777:65
+Has school? false d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33777:108
+Has company? false d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33777:148
+Has bio? false d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33777:190
+Has skills? false d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33777:224
+=== User Details for Modal === d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33459:27
+Full user object: 
+Object { id: "644a4726-9669-4b28-8db9-356aeb1fcdf3", bio: "i do amazing things", role: "diaspora", email: "seyimba1234@gmail.com", field: "scientist", skills: (1) […], company: "", country: "US", website: "", headline: "the scientist", … }
+d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33459:74
+User keys: 
+Array(25) [ "id", "bio", "role", "email", "field", "skills", "company", "country", "website", "headline", … ]
+d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33459:111
+School: undefined d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33459:154
+Company: <empty string> d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33459:188
+Bio: i do amazing things d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33459:224
+Skills: 
+Array [ "genomics" ]
+d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33459:252
+LinkedIn: undefined d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33459:286
+Website: <empty string> d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33459:324
+=== RENDERING MODAL === d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33777:25
+Selected user in modal: 
+Object { id: "644a4726-9669-4b28-8db9-356aeb1fcdf3", bio: "i do amazing things", role: "diaspora", email: "seyimba1234@gmail.com", field: "scientist", skills: (1) […], company: "", country: "US", website: "", headline: "the scientist", … }
+d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33777:65
+Has school? false d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33777:108
+Has company? false d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33777:148
+Has bio? true d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33777:190
+Has skills? true d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33777:224

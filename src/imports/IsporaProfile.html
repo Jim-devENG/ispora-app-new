@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ispora — User Profile</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --brand:#021ff6;--brand-h:#0118c4;--brand-light:#eef0ff;
+  --accent:#00c896;--accent-light:#e0faf4;
+  --warn:#f59e0b;--warn-light:#fef9ee;
+  --danger:#ef4444;--danger-light:#fff1f1;
+  --success:#10b981;--success-light:#ecfdf5;
+  --bg:#f0f2ff;--surface:#fff;--surface2:#f7f8ff;
+  --border:#e2e5f5;--border2:#c8cef0;
+  --text:#07094a;--text2:#3d4275;--text3:#8b90b8;
+  --sidebar-w:224px;--topbar-h:64px;--r:16px;
+  --shadow-sm:0 1px 4px rgba(2,31,246,0.06);
+  --shadow:0 4px 20px rgba(2,31,246,0.09);
+  --shadow-lg:0 12px 48px rgba(2,31,246,0.15);
+}
+html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+button{cursor:pointer;border:none;background:none;font-family:inherit;font-size:inherit}
+input,textarea,select{font-family:inherit;font-size:inherit}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+
+.app{display:flex;height:100vh;overflow:hidden}
+
+/* ── SIDEBAR ── */
+.sidebar{width:var(--sidebar-w);background:var(--surface);border-right:1.5px solid var(--border);display:flex;flex-direction:column;flex-shrink:0}
+.sidebar-logo{padding:16px 18px 14px;display:flex;align-items:center;gap:10px;border-bottom:1.5px solid var(--border)}
+.logo-icon{width:28px;height:28px;background:var(--brand);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo-icon svg{width:14px;height:14px;fill:none;stroke:white;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.logo-name{font-family:'Syne',sans-serif;font-weight:700;font-size:14px;color:var(--brand);letter-spacing:-0.3px;line-height:1}
+.logo-tagline{font-size:9px;color:var(--text3);margin-top:1px}
+.sidebar-profile{margin:12px 14px 6px;padding:11px 13px;background:var(--brand-light);border-radius:12px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:.15s;border:2px solid var(--brand)}
+.sp-av{width:36px;height:36px;border-radius:50%;background:var(--brand);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px;flex-shrink:0;position:relative}
+.sp-online{position:absolute;bottom:1px;right:1px;width:8px;height:8px;background:var(--accent);border-radius:50%;border:2px solid white}
+.sp-name{font-weight:600;font-size:12px;color:var(--brand);line-height:1.2}
+.sp-role{font-size:11px;color:var(--brand);font-weight:500;margin-top:2px;opacity:.8}
+.nav{flex:1;overflow-y:auto;padding:8px 12px}
+.nav-section{margin-bottom:20px}
+.nav-label{font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.09em;padding:0 8px;margin-bottom:5px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:10px;color:var(--text2);font-size:13px;font-weight:500;transition:all .15s;cursor:pointer}
+.nav-item:hover{background:var(--brand-light);color:var(--brand)}
+.nav-item.active{background:var(--brand);color:white}
+.nav-item svg{width:15px;height:15px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.nav-badge{margin-left:auto;background:var(--danger);color:white;font-size:10px;font-weight:700;padding:1px 6px;border-radius:20px;min-width:18px;text-align:center}
+.nav-item.active .nav-badge{background:rgba(255,255,255,0.35)}
+.sidebar-foot{padding:12px;border-top:1.5px solid var(--border)}
+.nav-item.active-profile{background:var(--brand-light);color:var(--brand)}
+.nav-item.danger{color:var(--danger)}
+.nav-item.danger:hover{background:var(--danger-light)}
+
+/* ── MAIN ── */
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0}
+.topbar{height:var(--topbar-h);background:var(--surface);border-bottom:1.5px solid var(--border);padding:0 28px;display:flex;align-items:center;gap:14px;flex-shrink:0}
+.topbar-left{flex:1}
+.topbar-left h2{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--text)}
+.topbar-left p{font-size:12px;color:var(--text3);margin-top:1px}
+.topbar-right{display:flex;align-items:center;gap:8px}
+.role-pill{display:flex;align-items:center;gap:6px;background:var(--bg);border:1.5px solid var(--border);border-radius:20px;padding:5px 12px 5px 8px;font-size:12px;font-weight:600;color:var(--text2);cursor:pointer;transition:all .2s}
+.role-pill:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-light)}
+.role-pip{width:8px;height:8px;background:var(--brand);border-radius:50%}
+.role-pill svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2}
+.icon-btn{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--bg);border:1.5px solid var(--border);color:var(--text2);cursor:pointer;transition:all .2s;position:relative}
+.icon-btn:hover{background:var(--brand-light);color:var(--brand);border-color:var(--brand)}
+.icon-btn svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.notif-badge{position:absolute;top:6px;right:6px;width:7px;height:7px;background:var(--danger);border-radius:50%;border:1.5px solid var(--surface)}
+
+/* ── PAGE ── */
+.page{flex:1;overflow-y:auto;padding:28px 32px}
+
+/* ── PROFILE HERO ── */
+.prof-hero{background:var(--brand);border-radius:var(--r);overflow:hidden;position:relative;margin-bottom:20px}
+.ph-cover{height:120px;position:relative;overflow:hidden}
+.ph-cover-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.05) 1px,transparent 1px);background-size:28px 28px}
+.ph-cover-orb1{position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:rgba(255,255,255,0.06);border-radius:50%}
+.ph-cover-orb2{position:absolute;bottom:-60px;left:60px;width:160px;height:160px;background:rgba(255,255,255,0.04);border-radius:50%}
+.ph-cover-edit{position:absolute;top:12px;right:12px}
+.ph-body{background:var(--surface);padding:0 28px 24px;position:relative}
+.ph-av-wrap{position:relative;display:inline-block;margin-top:-42px;margin-bottom:12px}
+.ph-av{width:84px;height:84px;border-radius:50%;background:var(--brand);border:4px solid white;display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:32px;box-shadow:0 4px 16px rgba(2,31,246,0.2)}
+.ph-av-edit{position:absolute;bottom:4px;right:4px;width:26px;height:26px;border-radius:50%;background:var(--brand);border:2px solid white;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.15s}
+.ph-av-edit:hover{background:var(--brand-h);transform:scale(1.1)}
+.ph-av-edit svg{width:12px;height:12px;stroke:white;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.ph-info{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.ph-info-left h1{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--text);margin-bottom:4px}
+.ph-info-left p{font-size:13px;color:var(--text2);margin-bottom:8px}
+.ph-info-left .ph-meta{display:flex;gap:14px;flex-wrap:wrap}
+.ph-meta-item{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--text3)}
+.ph-meta-item svg{width:13px;height:13px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.ph-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.ph-info-right{display:flex;gap:8px;flex-wrap:wrap;align-items:flex-start;padding-top:4px}
+
+/* ── IMPACT STATS ── */
+.impact-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
+.is-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r);padding:18px 20px;text-align:center;transition:all .2s;cursor:default}
+.is-card:hover{border-color:var(--brand);box-shadow:var(--shadow-sm);transform:translateY(-2px)}
+.is-val{font-family:'DM Sans',sans-serif;font-size:28px;font-weight:700;color:var(--brand);line-height:1;letter-spacing:-0.5px}
+.is-label{font-size:12px;color:var(--text3);margin-top:5px}
+.is-sub{font-size:11px;color:var(--success);font-weight:500;margin-top:3px}
+
+/* ── TWO COL ── */
+.two-col{display:grid;grid-template-columns:1fr 340px;gap:18px}
+.col{display:flex;flex-direction:column;gap:18px}
+
+/* ── CARD ── */
+.card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden}
+.card-head{padding:16px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1.5px solid var(--border)}
+.card-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--text)}
+.card-edit{display:flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--brand);cursor:pointer;padding:5px 10px;border-radius:8px;background:var(--brand-light);border:none;transition:.15s}
+.card-edit:hover{background:#e0e3ff}
+.card-edit svg{width:12px;height:12px;stroke:var(--brand);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.card-body{padding:18px 20px}
+
+/* ── FORM FIELDS ── */
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.form-row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:14px}
+.fg{margin-bottom:14px}
+.fg:last-child{margin-bottom:0}
+.fl{display:block;font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+.fv{font-size:13px;color:var(--text);line-height:1.5}
+.fv-sub{font-size:11px;color:var(--text3);margin-top:2px}
+.fi{width:100%;border:1.5px solid var(--border);border-radius:10px;padding:10px 14px;font-size:13px;color:var(--text);background:var(--surface);outline:none;transition:.2s}
+.fi:focus{border-color:var(--brand);box-shadow:0 0 0 3px rgba(2,31,246,0.07)}
+.fi::placeholder{color:var(--text3)}
+textarea.fi{resize:vertical;min-height:90px;line-height:1.5}
+select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%238b90b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px;cursor:pointer}
+.char-count{font-size:10px;color:var(--text3);text-align:right;margin-top:4px}
+
+/* ── TAGS EDITOR ── */
+.tags-wrap{display:flex;flex-wrap:wrap;gap:6px;padding:10px;border:1.5px solid var(--border);border-radius:10px;min-height:44px;cursor:text;transition:.2s}
+.tags-wrap:focus-within{border-color:var(--brand);box-shadow:0 0 0 3px rgba(2,31,246,0.07)}
+.tag-pill{display:inline-flex;align-items:center;gap:5px;background:var(--brand-light);color:var(--brand);font-size:12px;font-weight:500;padding:4px 10px;border-radius:20px}
+.tag-pill button{width:14px;height:14px;border-radius:50%;background:var(--brand);color:white;font-size:10px;display:flex;align-items:center;justify-content:center;line-height:1;border:none;cursor:pointer;flex-shrink:0;padding:0}
+.tag-pill button:hover{background:var(--brand-h)}
+.tags-input{border:none;outline:none;font-size:12px;color:var(--text);background:transparent;min-width:120px;flex:1}
+.tags-input::placeholder{color:var(--text3)}
+
+/* ── AVAILABILITY ── */
+.avail-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.avail-day{text-align:center;cursor:pointer}
+.avail-day-label{font-size:10px;font-weight:600;color:var(--text3);margin-bottom:5px}
+.avail-slot{height:32px;border-radius:8px;border:1.5px solid var(--border);background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--text3);transition:.15s;cursor:pointer}
+.avail-slot.on{background:var(--brand-light);border-color:var(--brand);color:var(--brand);font-weight:600}
+.avail-slot:hover{border-color:var(--brand-mid)}
+
+/* ── PROGRESS BAR ── */
+.prog-bar{height:6px;background:var(--border);border-radius:3px;overflow:hidden;margin-top:8px}
+.prog-fill{height:100%;border-radius:3px;background:var(--brand);transition:width .5s}
+
+/* ── ACHIEVEMENT CARD ── */
+.achievement{display:flex;align-items:center;gap:12px;padding:10px;border-radius:10px;background:var(--surface2);border:1px solid var(--border);margin-bottom:8px}
+.achievement:last-child{margin-bottom:0}
+.ach-ico{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px}
+.ach-info{flex:1}
+.ach-name{font-weight:600;font-size:13px;color:var(--text)}
+.ach-date{font-size:11px;color:var(--text3);margin-top:2px}
+
+/* ── ACTIVITY ITEM ── */
+.act-item{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+.act-item:last-child{border-bottom:none}
+.act-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:4px}
+.act-body{flex:1}
+.act-text{font-size:13px;color:var(--text);line-height:1.4}
+.act-text strong{font-weight:600}
+.act-time{font-size:11px;color:var(--text3);margin-top:2px}
+
+/* ── COMPLETION RING ── */
+.completion-ring{display:flex;align-items:center;gap:16px;padding:14px;background:var(--brand-light);border-radius:12px;border:1.5px solid var(--brand);margin-bottom:14px}
+.ring-svg{flex-shrink:0}
+.ring-text h3{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--brand)}
+.ring-text p{font-size:12px;color:var(--text2);margin-top:3px;line-height:1.4}
+.ring-items{margin-top:8px;display:flex;flex-direction:column;gap:4px}
+.ring-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text2)}
+.ring-item svg{width:12px;height:12px;flex-shrink:0}
+.ring-item.done svg{stroke:var(--success)}
+.ring-item.todo svg{stroke:var(--text3)}
+
+/* ── TAGS ── */
+.tag{display:inline-flex;align-items:center;font-size:11px;padding:3px 9px;border-radius:20px;font-weight:500;white-space:nowrap}
+.tag-blue{background:var(--brand-light);color:var(--brand)}
+.tag-green{background:var(--success-light);color:var(--success)}
+.tag-gray{background:#f1f5f9;color:#475569}
+.tag-teal{background:var(--accent-light);color:#0f766e}
+
+/* ── BTNS ── */
+.btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:10px;font-size:13px;font-weight:600;transition:all .18s;cursor:pointer;border:none;white-space:nowrap}
+.btn svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.btn-brand{background:var(--brand);color:white}
+.btn-brand:hover{background:var(--brand-h);transform:translateY(-1px);box-shadow:0 4px 14px rgba(2,31,246,0.3)}
+.btn-outline{background:white;color:var(--text);border:1.5px solid var(--border)}
+.btn-outline:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-light)}
+.btn-danger{background:var(--danger);color:white}
+.btn-danger:hover{background:#dc2626}
+.btn-sm{padding:6px 12px;font-size:12px;border-radius:8px}
+
+/* ── OVERLAY / MODAL ── */
+.overlay{position:fixed;inset:0;background:rgba(7,9,74,0.5);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;z-index:1000;opacity:0;pointer-events:none;transition:opacity .2s;padding:16px}
+.overlay.show{opacity:1;pointer-events:all}
+.modal{background:var(--surface);border-radius:18px;width:100%;max-width:520px;box-shadow:var(--shadow-lg);transform:translateY(18px) scale(0.97);transition:transform .25s cubic-bezier(.34,1.56,.64,1);max-height:92vh;overflow-y:auto}
+.overlay.show .modal{transform:translateY(0) scale(1)}
+.modal-head{padding:20px 24px 16px;display:flex;align-items:flex-start;justify-content:space-between;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--surface);z-index:1}
+.modal-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:var(--text)}
+.modal-sub{font-size:12px;color:var(--text3);margin-top:3px}
+.modal-close{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--text3);cursor:pointer;transition:.15s}
+.modal-close:hover{background:var(--bg);color:var(--text)}
+.modal-close svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.modal-body{padding:20px 24px}
+.modal-foot{padding:14px 24px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:10px;position:sticky;bottom:0;background:var(--surface);z-index:1}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--text);color:white;padding:12px 18px;border-radius:12px;font-size:13px;font-weight:500;box-shadow:var(--shadow-lg);z-index:3000;display:flex;align-items:center;gap:10px;max-width:320px;opacity:0;transform:translateY(10px);transition:all .3s cubic-bezier(.34,1.56,.64,1);pointer-events:none}
+.toast.show{opacity:1;transform:translateY(0)}
+.toast.success{background:#059669}
+.toast.error{background:var(--danger)}
+.toast svg{width:15px;height:15px;fill:none;stroke:white;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+
+/* ── NOTIF ── */
+.notif-panel{position:fixed;top:70px;right:14px;width:310px;background:var(--surface);border:1.5px solid var(--border);border-radius:16px;box-shadow:var(--shadow-lg);z-index:500;overflow:hidden;opacity:0;pointer-events:none;transform:translateY(-10px);transition:all .2s}
+.notif-panel.show{opacity:1;pointer-events:all;transform:translateY(0)}
+.np-head{padding:12px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.np-head h3{font-family:'Syne',sans-serif;font-size:13px;font-weight:700}
+.np-clear{font-size:11px;color:var(--brand);font-weight:600;cursor:pointer}
+.np-item{padding:10px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;cursor:pointer;transition:.15s}
+.np-item:hover{background:var(--bg)}
+.np-item.unread{background:var(--brand-light)}
+.np-item:last-child{border-bottom:none}
+.np-dot{width:7px;height:7px;background:var(--brand);border-radius:50%;flex-shrink:0;margin-top:4px}
+.np-dot.read{background:transparent}
+.np-text{font-size:12px;color:var(--text);line-height:1.4}
+.np-text strong{font-weight:600}
+.np-time{font-size:10px;color:var(--text3);margin-top:2px}
+
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.pulse{animation:pulse 2s ease-in-out infinite}
+@keyframes slideUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.page > *{animation:slideUp .3s ease both}
+</style>
+</head>
+<body>
+<div class="app">
+
+<!-- ── SIDEBAR ── -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+    <div><div class="logo-name">Ispora</div><div class="logo-tagline">Impact Platform</div></div>
+  </div>
+  <div class="sidebar-profile">
+    <div class="sp-av">A<div class="sp-online pulse"></div></div>
+    <div><div class="sp-name">Dr. Amina Osei</div><div class="sp-role">Editing profile</div></div>
+  </div>
+  <nav class="nav">
+    <div class="nav-section">
+      <div class="nav-label">Main</div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to Dashboard...')"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>Dashboard</div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to Browse Students...')"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>Browse Students</div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to My Mentorships...')"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>My Mentorships<span class="nav-badge">3</span></div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to Sessions...')"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Sessions<span class="nav-badge">1</span></div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to Messages...')"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Messages<span class="nav-badge">5</span></div>
+    </div>
+  </nav>
+  <div class="sidebar-foot">
+    <div class="nav-item active-profile"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>My Profile</div>
+    <div class="nav-item" onclick="openModal('settingsModal')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41M19.07 19.07l-1.41-1.41M4.93 19.07l1.41-1.41M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>Settings</div>
+    <div class="nav-item danger" onclick="showToast('Signing out...')"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Sign Out</div>
+  </div>
+</aside>
+
+<!-- ── MAIN ── -->
+<div class="main">
+  <div class="topbar">
+    <div class="topbar-left"><h2>My Profile</h2><p>Manage how students and the community see you</p></div>
+    <div class="topbar-right">
+      <button class="role-pill" onclick="showToast('Role switcher...')"><div class="role-pip"></div>Mentor<svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="icon-btn" onclick="toggleNotif()" id="notifBtn"><svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg><div class="notif-badge"></div></button>
+      <button class="btn btn-brand btn-sm" onclick="saveProfile()">
+        <svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+        Save Changes
+      </button>
+    </div>
+  </div>
+
+  <div class="page">
+
+    <!-- PROFILE HERO -->
+    <div class="prof-hero">
+      <div class="ph-cover">
+        <div class="ph-cover-grid"></div>
+        <div class="ph-cover-orb1"></div>
+        <div class="ph-cover-orb2"></div>
+        <div class="ph-cover-edit">
+          <button class="btn btn-sm" style="background:rgba(255,255,255,0.18);color:white;border:1.5px solid rgba(255,255,255,0.3)" onclick="showToast('Opening cover photo editor...')">
+            <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            Edit Cover
+          </button>
+        </div>
+      </div>
+      <div class="ph-body">
+        <div class="ph-av-wrap">
+          <div class="ph-av" id="profileAvatar">A</div>
+          <div class="ph-av-edit" onclick="showToast('Opening photo uploader...')">
+            <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </div>
+        </div>
+        <div class="ph-info">
+          <div class="ph-info-left">
+            <h1 id="displayName">Dr. Amina Osei</h1>
+            <p id="displayTitle">Senior Software Engineer at Barclays UK &bull; Diaspora Mentor</p>
+            <div class="ph-meta">
+              <div class="ph-meta-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>London, United Kingdom</div>
+              <div class="ph-meta-item"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>10 years experience</div>
+              <div class="ph-meta-item"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>12 mentees · 47 sessions</div>
+              <div class="ph-meta-item" id="availStatus"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span style="color:var(--success);font-weight:600">Available to mentor</span></div>
+            </div>
+            <div class="ph-tags" id="profileTags">
+              <span class="tag tag-blue">Software Engineering</span>
+              <span class="tag tag-blue">AI / ML</span>
+              <span class="tag tag-blue">Career Coaching</span>
+              <span class="tag tag-blue">Fintech</span>
+              <span class="tag tag-teal">Diaspora Mentor</span>
+            </div>
+          </div>
+          <div class="ph-info-right">
+            <button class="btn btn-outline btn-sm" onclick="copyProfileLink()">
+              <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+              Copy Link
+            </button>
+            <button class="btn btn-outline btn-sm" onclick="showToast('Opening public preview...')">
+              <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              Preview
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IMPACT STATS -->
+    <div class="impact-stats">
+      <div class="is-card">
+        <div class="is-val">12</div>
+        <div class="is-label">Active Mentees</div>
+        <div class="is-sub">+3 this month</div>
+      </div>
+      <div class="is-card">
+        <div class="is-val">47</div>
+        <div class="is-label">Sessions Completed</div>
+        <div class="is-sub">+8 this month</div>
+      </div>
+      <div class="is-card">
+        <div class="is-val">94%</div>
+        <div class="is-label">Satisfaction Score</div>
+        <div class="is-sub">Top 5% of mentors</div>
+      </div>
+      <div class="is-card">
+        <div class="is-val">2</div>
+        <div class="is-label">Mentees Placed</div>
+        <div class="is-sub">Jordan & Ngozi</div>
+      </div>
+    </div>
+
+    <!-- TWO COL -->
+    <div class="two-col">
+
+      <!-- LEFT -->
+      <div class="col">
+
+        <!-- ABOUT -->
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">About Me</div>
+            <button class="card-edit" onclick="openModal('editAboutModal')">
+              <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              Edit
+            </button>
+          </div>
+          <div class="card-body">
+            <p id="bioText" style="font-size:13px;color:var(--text2);line-height:1.7">10+ years in tech, currently Senior Software Engineer at Barclays UK, specialising in distributed systems and fintech infrastructure. Originally from Ghana, I am deeply passionate about lifting the next generation of African engineers and technologists.
+
+I mentor students interested in software engineering, AI/ML, career transitions into tech, and breaking into international companies. My sessions are practical, honest, and focused on real-world outcomes — not just theory.</p>
+            <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border)">
+              <div class="fl" style="margin-bottom:8px">What I offer mentees</div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap" id="offerTags">
+                <span class="tag tag-green">CV & portfolio review</span>
+                <span class="tag tag-green">Interview prep</span>
+                <span class="tag tag-green">Career roadmapping</span>
+                <span class="tag tag-green">UK tech market entry</span>
+                <span class="tag tag-green">Technical mentorship</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROFESSIONAL INFO -->
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">Professional Details</div>
+            <button class="card-edit" onclick="openModal('editProfModal')">
+              <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              Edit
+            </button>
+          </div>
+          <div class="card-body">
+            <div class="form-row">
+              <div class="fg"><div class="fl">Current Role</div><div class="fv">Senior Software Engineer</div><div class="fv-sub">Barclays UK</div></div>
+              <div class="fg"><div class="fl">Industry</div><div class="fv">Fintech / Banking Technology</div></div>
+            </div>
+            <div class="form-row">
+              <div class="fg"><div class="fl">Location</div><div class="fv">London, United Kingdom</div></div>
+              <div class="fg"><div class="fl">Years of Experience</div><div class="fv">10 years</div></div>
+            </div>
+            <div class="form-row">
+              <div class="fg"><div class="fl">Education</div><div class="fv">BSc Computer Science</div><div class="fv-sub">University of Ghana, 2014</div></div>
+              <div class="fg"><div class="fl">Country of Origin</div><div class="fv">Ghana</div></div>
+            </div>
+            <div class="fg">
+              <div class="fl">Skills & Expertise</div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px">
+                <span class="tag tag-blue">Python</span><span class="tag tag-blue">Java</span><span class="tag tag-blue">React</span><span class="tag tag-blue">AWS</span><span class="tag tag-blue">Microservices</span><span class="tag tag-blue">System Design</span><span class="tag tag-blue">Machine Learning</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- AVAILABILITY -->
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">Availability</div>
+            <button class="card-edit" onclick="openModal('editAvailModal')">
+              <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              Edit
+            </button>
+          </div>
+          <div class="card-body">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+              <div>
+                <div style="font-size:13px;font-weight:600;color:var(--text)">Currently accepting mentees</div>
+                <div style="font-size:11px;color:var(--text3);margin-top:2px">Students can send you mentorship requests</div>
+              </div>
+              <div class="tog on" id="availToggle" onclick="toggleAvail()"><div class="tog-t"></div></div>
+            </div>
+            <div class="avail-grid" id="availGrid"></div>
+            <div style="margin-top:12px;font-size:12px;color:var(--text3)">
+              <svg style="width:12px;height:12px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;display:inline;vertical-align:middle;margin-right:4px" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              All times are in West Africa Time (WAT). Students see this when booking sessions.
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT -->
+      <div class="col">
+
+        <!-- PROFILE COMPLETION -->
+        <div class="card">
+          <div class="card-head"><div class="card-title">Profile Completion</div></div>
+          <div class="card-body">
+            <div class="completion-ring">
+              <svg class="ring-svg" width="60" height="60" viewBox="0 0 60 60">
+                <circle cx="30" cy="30" r="24" fill="none" stroke="var(--border)" stroke-width="6"/>
+                <circle cx="30" cy="30" r="24" fill="none" stroke="var(--brand)" stroke-width="6" stroke-linecap="round"
+                  stroke-dasharray="150.796" stroke-dashoffset="22.62" transform="rotate(-90 30 30)"/>
+                <text x="30" y="35" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="13" font-weight="700" fill="var(--brand)">85%</text>
+              </svg>
+              <div class="ring-text">
+                <h3>Almost there!</h3>
+                <p>Complete your profile to attract more mentees</p>
+                <div class="ring-items">
+                  <div class="ring-item done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Profile photo</div>
+                  <div class="ring-item done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Bio written</div>
+                  <div class="ring-item done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Skills added</div>
+                  <div class="ring-item todo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/></svg>LinkedIn URL (missing)</div>
+                  <div class="ring-item todo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/></svg>Cover photo (missing)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONTACT & LINKS -->
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">Contact & Links</div>
+            <button class="card-edit" onclick="openModal('editContactModal')">
+              <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>Edit
+            </button>
+          </div>
+          <div class="card-body">
+            <div class="fg"><div class="fl">Email</div><div class="fv">amina.osei@aspora.io</div></div>
+            <div class="fg"><div class="fl">LinkedIn</div><div class="fv" style="color:var(--text3);font-style:italic">Not added yet <button class="btn btn-outline btn-sm" style="margin-left:8px" onclick="openModal('editContactModal')">Add</button></div></div>
+            <div class="fg"><div class="fl">Twitter / X</div><div class="fv" style="color:var(--text3);font-style:italic">Not added yet</div></div>
+            <div class="fg" style="margin-bottom:0"><div class="fl">Website</div><div class="fv" style="color:var(--text3);font-style:italic">Not added yet</div></div>
+          </div>
+        </div>
+
+        <!-- ACHIEVEMENTS -->
+        <div class="card">
+          <div class="card-head"><div class="card-title">Achievements</div></div>
+          <div class="card-body">
+            <div class="achievement">
+              <div class="ach-ico" style="background:#fef9c3">🏆</div>
+              <div class="ach-info"><div class="ach-name">Top Mentor</div><div class="ach-date">Awarded March 2026 &bull; Top 5% satisfaction</div></div>
+            </div>
+            <div class="achievement">
+              <div class="ach-ico" style="background:var(--success-light)">🎓</div>
+              <div class="ach-info"><div class="ach-name">First Placement</div><div class="ach-date">Jordan Bello placed in London &bull; Mar 2026</div></div>
+            </div>
+            <div class="achievement">
+              <div class="ach-ico" style="background:var(--brand-light)">⚡</div>
+              <div class="ach-info"><div class="ach-name">50 Sessions Milestone</div><div class="ach-date">3 sessions away &bull; Keep going!</div></div>
+            </div>
+            <div class="achievement">
+              <div class="ach-ico" style="background:#fce7f3">🌍</div>
+              <div class="ach-info"><div class="ach-name">Diaspora Pioneer</div><div class="ach-date">Early adopter &bull; Joined Jan 2026</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RECENT ACTIVITY -->
+        <div class="card">
+          <div class="card-head"><div class="card-title">Recent Activity</div></div>
+          <div class="card-body" style="padding:12px 16px">
+            <div class="act-item"><div class="act-dot" style="background:var(--success)"></div><div class="act-body"><div class="act-text">Session with <strong>Aisha Kamara</strong> completed</div><div class="act-time">Yesterday</div></div></div>
+            <div class="act-item"><div class="act-dot" style="background:var(--brand)"></div><div class="act-body"><div class="act-text">New request from <strong>Tunde Ojo</strong></div><div class="act-time">Today, 9:14 AM</div></div></div>
+            <div class="act-item"><div class="act-dot" style="background:var(--accent)"></div><div class="act-body"><div class="act-text"><strong>Jordan Bello</strong> placed at London company</div><div class="act-time">Mar 10</div></div></div>
+            <div class="act-item"><div class="act-dot" style="background:var(--warn)"></div><div class="act-body"><div class="act-text">Profile viewed <strong>14 times</strong> this week</div><div class="act-time">This week</div></div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DANGER ZONE -->
+    <div class="card" style="margin-top:0;border-color:var(--danger)">
+      <div class="card-head" style="border-color:var(--danger)"><div class="card-title" style="color:var(--danger)">Danger Zone</div></div>
+      <div class="card-body" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+        <div>
+          <div style="font-size:13px;font-weight:600;color:var(--text)">Pause your mentor profile</div>
+          <div style="font-size:12px;color:var(--text3);margin-top:2px">Temporarily hide your profile from students. Your current mentees are unaffected.</div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-outline btn-sm" onclick="showToast('Profile paused. Students cannot find you until you reactivate.','')">Pause Profile</button>
+          <button class="btn btn-danger btn-sm" onclick="openModal('deleteModal')">Delete Account</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ── NOTIF PANEL ── -->
+<div class="notif-panel" id="notifPanel">
+  <div class="np-head"><h3>Notifications</h3><span class="np-clear" onclick="clearNotifs()">Mark all read</span></div>
+  <div class="np-item unread"><div class="np-dot"></div><div><div class="np-text">New request from <strong>Tunde Ojo</strong></div><div class="np-time">Today</div></div></div>
+  <div class="np-item"><div class="np-dot read"></div><div><div class="np-text">Session with <strong>Aisha</strong> marked complete</div><div class="np-time">Yesterday</div></div></div>
+</div>
+
+<!-- ── MODALS ── -->
+
+<!-- EDIT ABOUT -->
+<div class="overlay" id="editAboutModal" onclick="overlayClose(event,'editAboutModal')">
+  <div class="modal">
+    <div class="modal-head">
+      <div><div class="modal-title">Edit About</div><div class="modal-sub">Tell students who you are and what you offer</div></div>
+      <button class="modal-close" onclick="closeModal('editAboutModal')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div class="fg">
+        <label class="fl">Bio</label>
+        <textarea class="fi" id="bioInput" style="min-height:130px" oninput="countChars(this,'bioCount',400)">10+ years in tech, currently Senior Software Engineer at Barclays UK, specialising in distributed systems and fintech infrastructure. Originally from Ghana, I am deeply passionate about lifting the next generation of African engineers and technologists.
+
+I mentor students interested in software engineering, AI/ML, career transitions into tech, and breaking into international companies. My sessions are practical, honest, and focused on real-world outcomes — not just theory.</textarea>
+        <div class="char-count"><span id="bioCount">0</span>/400 characters</div>
+      </div>
+      <div class="fg">
+        <label class="fl">What I offer mentees (comma separated)</label>
+        <input class="fi" type="text" id="offerInput" value="CV & portfolio review, Interview prep, Career roadmapping, UK tech market entry, Technical mentorship"/>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal('editAboutModal')">Cancel</button>
+      <button class="btn btn-brand" onclick="saveAbout()">Save About</button>
+    </div>
+  </div>
+</div>
+
+<!-- EDIT PROFESSIONAL -->
+<div class="overlay" id="editProfModal" onclick="overlayClose(event,'editProfModal')">
+  <div class="modal">
+    <div class="modal-head">
+      <div><div class="modal-title">Edit Professional Details</div><div class="modal-sub">Your professional background</div></div>
+      <button class="modal-close" onclick="closeModal('editProfModal')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="fg"><label class="fl">Full Name</label><input class="fi" type="text" value="Dr. Amina Osei" id="nameInput"/></div>
+        <div class="fg"><label class="fl">Current Role / Title</label><input class="fi" type="text" value="Senior Software Engineer"/></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="fg"><label class="fl">Company / Employer</label><input class="fi" type="text" value="Barclays UK"/></div>
+        <div class="fg"><label class="fl">Industry</label><input class="fi" type="text" value="Fintech / Banking Technology"/></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="fg"><label class="fl">City, Country</label><input class="fi" type="text" value="London, United Kingdom"/></div>
+        <div class="fg"><label class="fl">Years of Experience</label><select class="fi"><option>5-7 years</option><option selected>8-12 years</option><option>13-20 years</option><option>20+ years</option></select></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="fg"><label class="fl">Highest Education</label><input class="fi" type="text" value="BSc Computer Science, University of Ghana"/></div>
+        <div class="fg"><label class="fl">Country of Origin</label><input class="fi" type="text" value="Ghana"/></div>
+      </div>
+      <div class="fg">
+        <label class="fl">Skills (comma separated)</label>
+        <input class="fi" type="text" value="Python, Java, React, AWS, Microservices, System Design, Machine Learning"/>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal('editProfModal')">Cancel</button>
+      <button class="btn btn-brand" onclick="saveProfDetails()">Save Details</button>
+    </div>
+  </div>
+</div>
+
+<!-- EDIT AVAILABILITY -->
+<div class="overlay" id="editAvailModal" onclick="overlayClose(event,'editAvailModal')">
+  <div class="modal">
+    <div class="modal-head">
+      <div><div class="modal-title">Edit Availability</div><div class="modal-sub">Set when you are available for sessions (WAT)</div></div>
+      <button class="modal-close" onclick="closeModal('editAvailModal')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div class="fg"><label class="fl">Preferred session duration</label><select class="fi"><option>30 minutes</option><option selected>1 hour</option><option>1.5 hours</option><option>2 hours</option></select></div>
+      <div class="fg"><label class="fl">Max mentees at once</label><select class="fi"><option>2</option><option>5</option><option selected>10</option><option>15</option><option>No limit</option></select></div>
+      <div class="fg"><label class="fl">Preferred platform</label><select class="fi"><option>Google Meet</option><option>Zoom</option><option>Either</option></select></div>
+      <div class="fg"><label class="fl">Advance notice required</label><select class="fi"><option>24 hours</option><option selected>48 hours</option><option>1 week</option></select></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal('editAvailModal')">Cancel</button>
+      <button class="btn btn-brand" onclick="closeModal('editAvailModal');showToast('Availability saved!','success')">Save Availability</button>
+    </div>
+  </div>
+</div>
+
+<!-- EDIT CONTACT -->
+<div class="overlay" id="editContactModal" onclick="overlayClose(event,'editContactModal')">
+  <div class="modal">
+    <div class="modal-head">
+      <div><div class="modal-title">Contact & Links</div><div class="modal-sub">Add your social profiles and contact info</div></div>
+      <button class="modal-close" onclick="closeModal('editContactModal')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div class="fg"><label class="fl">Email (public)</label><input class="fi" type="email" value="amina.osei@aspora.io"/></div>
+      <div class="fg"><label class="fl">LinkedIn URL</label><input class="fi" type="url" placeholder="https://linkedin.com/in/..."/></div>
+      <div class="fg"><label class="fl">Twitter / X handle</label><input class="fi" type="text" placeholder="@yourhandle"/></div>
+      <div class="fg"><label class="fl">Personal website</label><input class="fi" type="url" placeholder="https://..."/></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal('editContactModal')">Cancel</button>
+      <button class="btn btn-brand" onclick="closeModal('editContactModal');showToast('Contact info saved!','success')">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- SETTINGS MODAL -->
+<div class="overlay" id="settingsModal" onclick="overlayClose(event,'settingsModal')">
+  <div class="modal" style="max-width:400px">
+    <div class="modal-head">
+      <div><div class="modal-title">Settings</div></div>
+      <button class="modal-close" onclick="closeModal('settingsModal')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div class="fg"><label class="fl">Email notifications</label>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><span style="font-size:13px;color:var(--text2)">New mentorship requests</span><div class="tog on" onclick="flipTog(this)"><div class="tog-t"></div></div></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><span style="font-size:13px;color:var(--text2)">Session reminders</span><div class="tog on" onclick="flipTog(this)"><div class="tog-t"></div></div></div>
+        <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:13px;color:var(--text2)">Platform announcements</span><div class="tog" onclick="flipTog(this)"><div class="tog-t"></div></div></div>
+      </div>
+      <div class="fg"><label class="fl">Change Password</label><input class="fi" type="password" placeholder="New password"/></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal('settingsModal')">Cancel</button>
+      <button class="btn btn-brand" onclick="closeModal('settingsModal');showToast('Settings saved!','success')">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- DELETE ACCOUNT MODAL -->
+<div class="overlay" id="deleteModal" onclick="overlayClose(event,'deleteModal')">
+  <div class="modal" style="max-width:400px">
+    <div class="modal-head">
+      <div><div class="modal-title" style="color:var(--danger)">Delete Account</div><div class="modal-sub">This action is permanent and cannot be undone</div></div>
+      <button class="modal-close" onclick="closeModal('deleteModal')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div style="background:var(--danger-light);border:1px solid var(--danger);border-radius:10px;padding:12px;font-size:12px;color:#991b1b;margin-bottom:14px;line-height:1.5">
+        Deleting your account will permanently remove your profile, all your mentorship history, sessions and messages. Your current mentees will be notified.
+      </div>
+      <div class="fg"><label class="fl">Type DELETE to confirm</label><input class="fi" type="text" placeholder="DELETE" id="deleteConfirm"/></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal('deleteModal')">Cancel</button>
+      <button class="btn btn-danger" onclick="confirmDelete()">Delete My Account</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toastEl"><svg id="toastIco" viewBox="0 0 24 24"></svg><span id="toastMsg"></span></div>
+
+<!-- TOGGLE CSS -->
+<style>
+.tog{width:38px;height:21px;border-radius:11px;background:var(--brand);position:relative;cursor:pointer;transition:background .2s;flex-shrink:0}
+.tog.off,.tog:not(.on){background:var(--border)}
+.tog-t{position:absolute;top:2.5px;right:2.5px;width:16px;height:16px;background:white;border-radius:50%;transition:all .2s}
+.tog.off .tog-t,.tog:not(.on) .tog-t{right:auto;left:2.5px}
+</style>
+
+<script>
+// ── AVAILABILITY GRID ──
+var days = ['Su','Mo','Tu','We','Th','Fr','Sa'];
+var availSlots = {Mo:true, Tu:false, We:true, Th:true, Fr:true, Sa:false, Su:false};
+
+function renderAvailGrid() {
+  var grid = document.getElementById('availGrid');
+  if (!grid) return;
+  var html = '';
+  days.forEach(function(d) {
+    var on = availSlots[d] === true;
+    html += '<div class="avail-day">'
+      + '<div class="avail-day-label">' + d + '</div>'
+      + '<div class="avail-slot' + (on ? ' on' : '') + '" onclick="toggleAvailDay(\'' + d + '\',this)">' + (on ? 'On' : 'Off') + '</div>'
+      + '</div>';
+  });
+  grid.innerHTML = html;
+}
+
+function toggleAvailDay(day, el) {
+  availSlots[day] = !availSlots[day];
+  el.classList.toggle('on', availSlots[day]);
+  el.textContent = availSlots[day] ? 'On' : 'Off';
+  showToast(day + (availSlots[day] ? ' availability turned on' : ' availability turned off'), 'success');
+}
+
+// ── AVAILABILITY TOGGLE ──
+var isAvailable = true;
+function toggleAvail() {
+  var tog = document.getElementById('availToggle');
+  isAvailable = !isAvailable;
+  tog.classList.toggle('on', isAvailable);
+  tog.classList.toggle('off', !isAvailable);
+  var status = document.getElementById('availStatus');
+  if (status) {
+    var span = status.querySelector('span');
+    if (span) {
+      span.textContent = isAvailable ? 'Available to mentor' : 'Not accepting mentees';
+      span.style.color = isAvailable ? 'var(--success)' : 'var(--text3)';
+    }
+  }
+  showToast(isAvailable ? 'You are now accepting mentees' : 'Profile set to not accepting mentees', isAvailable ? 'success' : '');
+}
+
+// ── BIO CHAR COUNT ──
+function countChars(el, countId, max) {
+  var count = el.value.length;
+  var counter = document.getElementById(countId);
+  if (counter) {
+    counter.textContent = count;
+    counter.style.color = count > max ? 'var(--danger)' : 'var(--text3)';
+  }
+}
+
+// ── SAVE ACTIONS ──
+function saveProfile() {
+  showToast('Profile saved successfully!', 'success');
+}
+
+function saveAbout() {
+  var bio = document.getElementById('bioInput');
+  var bioText = document.getElementById('bioText');
+  if (bio && bioText) bioText.innerHTML = bio.value.replace(/\n/g, '<br>');
+  var offerInput = document.getElementById('offerInput');
+  var offerTags = document.getElementById('offerTags');
+  if (offerInput && offerTags) {
+    offerTags.innerHTML = offerInput.value.split(',').map(function(t) {
+      return '<span class="tag tag-green">' + t.trim() + '</span>';
+    }).join('');
+  }
+  closeModal('editAboutModal');
+  showToast('About section updated!', 'success');
+}
+
+function saveProfDetails() {
+  var nameInput = document.getElementById('nameInput');
+  var displayName = document.getElementById('displayName');
+  var avatar = document.getElementById('profileAvatar');
+  if (nameInput && displayName) {
+    displayName.textContent = nameInput.value;
+    if (avatar) avatar.textContent = nameInput.value.charAt(0).toUpperCase();
+  }
+  closeModal('editProfModal');
+  showToast('Professional details saved!', 'success');
+}
+
+function copyProfileLink() {
+  showToast('Profile link copied to clipboard!', 'success');
+}
+
+function confirmDelete() {
+  var input = document.getElementById('deleteConfirm');
+  if (!input || input.value !== 'DELETE') {
+    showToast('Please type DELETE to confirm', 'error');
+    return;
+  }
+  closeModal('deleteModal');
+  showToast('Account deletion request submitted. Check your email.', '');
+}
+
+// ── MODAL ──
+function openModal(id) { document.getElementById(id).classList.add('show'); document.body.style.overflow = 'hidden'; }
+function closeModal(id) { document.getElementById(id).classList.remove('show'); document.body.style.overflow = ''; }
+function overlayClose(e, id) { if (e.target === e.currentTarget) closeModal(id); }
+
+// ── TOAST ──
+var tTimer;
+function showToast(msg, type) {
+  type = type || '';
+  var el = document.getElementById('toastEl');
+  var ico = document.getElementById('toastIco');
+  var m = document.getElementById('toastMsg');
+  el.className = 'toast';
+  if (type === 'success') { el.classList.add('success'); ico.innerHTML = '<polyline points="20 6 9 17 4 12"/>'; }
+  else if (type === 'error') { el.classList.add('error'); ico.innerHTML = '<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>'; }
+  else { ico.innerHTML = '<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>'; }
+  m.textContent = msg;
+  clearTimeout(tTimer);
+  setTimeout(function() { el.classList.add('show'); }, 10);
+  tTimer = setTimeout(function() { el.classList.remove('show'); }, 3200);
+}
+
+// ── NAV + NOTIF + TOGGLE ──
+function navTo(el) { document.querySelectorAll('.nav-item').forEach(function(i) { i.classList.remove('active'); }); el.classList.add('active'); }
+function toggleNotif() { document.getElementById('notifPanel').classList.toggle('show'); }
+function clearNotifs() {
+  document.querySelectorAll('.np-item.unread').forEach(function(i) { i.classList.remove('unread'); i.querySelector('.np-dot').classList.add('read'); });
+  showToast('All read', 'success');
+}
+document.addEventListener('click', function(e) {
+  var p = document.getElementById('notifPanel');
+  var b = document.getElementById('notifBtn');
+  if (!p.contains(e.target) && !b.contains(e.target)) p.classList.remove('show');
+});
+function flipTog(el) {
+  el.classList.toggle('on');
+  el.classList.toggle('off');
+  showToast(el.classList.contains('on') ? 'Setting enabled' : 'Setting disabled', 'success');
+}
+
+// ── INIT ──
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', function() { renderAvailGrid(); countChars(document.getElementById('bioInput'), 'bioCount', 400); });
+} else {
+  renderAvailGrid();
+  if (document.getElementById('bioInput')) countChars(document.getElementById('bioInput'), 'bioCount', 400);
+}
+</script>
+</body>
+</html>

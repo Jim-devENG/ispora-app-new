@@ -1,0 +1,109 @@
+Cookie “__cf_bm” has been rejected for invalid domain. chef-speak-68011167.figma.site
+Cookie “__cf_bm” has been rejected for invalid domain. _index.json
+Cookie “__cf_bm” has been rejected for invalid domain. 27d8f13f9c74d668dd37eed89d525f6006c4907b.js
+Cookie “__cf_bm” has been rejected for invalid domain. 27d8f13f9c74d668dd37eed89d525f6006c4907b.css
+[Hydrated] sites-runtime.31bd3ead8af301f84a131746d437a8decba8097632b940cde2c942df9e57de15.js:127:4207
+AuthFlow - loading: true 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:26145:17
+AuthFlow - isAuthenticated: false 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:26145:56
+AuthFlow - user: null 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:26145:103
+AuthFlow - onboardingComplete: undefined 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:26145:139
+AuthFlow - currentScreen: landing 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:26145:209
+=== Loading Session on Mount === 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:17124:17
+=== Auth State Change === 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:17155:19
+Event: SIGNED_IN 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:17155:61
+Session exists: true 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:17155:87
+Cookie “__cf_bm” has been rejected for invalid domain. community_published_banner_details
+AuthFlow - loading: true 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:26145:17
+AuthFlow - isAuthenticated: true 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:26145:56
+AuthFlow - user: 
+Object { id: "644a4726-9669-4b28-8db9-356aeb1fcdf3", email: "seyimba1234@gmail.com", role: "diaspora", field: "scientist", country: "US", lastName: "Olawale", createdAt: "2026-03-27T15:37:46.372Z", firstName: "Oluwaseyi ", offerings: (2) […], updatedAt: "2026-03-27T16:38:28.233Z", … }
+27d8f13f9c74d668dd37eed89d525f6006c4907b.js:26145:103
+AuthFlow - onboardingComplete: true 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:26145:139
+AuthFlow - currentScreen: landing 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:26145:209
+✓ Supabase session found, fetching user profile... 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:17131:19
+=== Auth State Change === 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:17155:19
+Event: INITIAL_SESSION 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:17155:61
+Session exists: true 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:17155:87
+✓ Session restored successfully 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:17141:52
+=== Session Loading Complete === 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:17150:24
+AuthFlow - loading: false 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:26145:17
+AuthFlow - isAuthenticated: true 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:26145:56
+AuthFlow - user: 
+Object { id: "644a4726-9669-4b28-8db9-356aeb1fcdf3", email: "seyimba1234@gmail.com", role: "diaspora", field: "scientist", country: "US", lastName: "Olawale", createdAt: "2026-03-27T15:37:46.372Z", firstName: "Oluwaseyi ", offerings: (2) […], updatedAt: "2026-03-27T16:38:28.233Z", … }
+27d8f13f9c74d668dd37eed89d525f6006c4907b.js:26145:103
+AuthFlow - onboardingComplete: true 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:26145:139
+AuthFlow - currentScreen: landing 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:26145:209
+✓ User authenticated and onboarded - navigating to dashboard 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:26147:17
+=== MentorDashboard Auth Check === 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:22066:13
+isAuthenticated: true 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:22066:64
+user: 
+Object { id: "644a4726-9669-4b28-8db9-356aeb1fcdf3", email: "seyimba1234@gmail.com", role: "diaspora", field: "scientist", country: "US", lastName: "Olawale", createdAt: "2026-03-27T15:37:46.372Z", firstName: "Oluwaseyi ", offerings: (2) […], updatedAt: "2026-03-27T16:38:28.233Z", … }
+27d8f13f9c74d668dd37eed89d525f6006c4907b.js:22066:100
+accessToken exists: true 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:22066:125
+localStorage token: eyJhbGciOiJFUzI1NiIs 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:22066:166
+=== Loading Dashboard Data === 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:22070:31
+Access token: eyJhbGciOiJFUzI1NiIs... 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:22070:78
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/stats/mentor 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:19256:13
+Getting valid token... 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:19239:13
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/mentorships 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:19256:13
+Getting valid token... 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:19239:13
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/requests?type=received 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:19256:13
+Getting valid token... 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:19239:13
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/notifications 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:19256:13
+Getting valid token... 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:19239:13
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/sessions 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:19256:13
+Getting valid token... 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:19239:13
+AuthFlow - loading: false 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:26145:17
+AuthFlow - isAuthenticated: true 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:26145:56
+AuthFlow - user: 
+Object { id: "644a4726-9669-4b28-8db9-356aeb1fcdf3", email: "seyimba1234@gmail.com", role: "diaspora", field: "scientist", country: "US", lastName: "Olawale", createdAt: "2026-03-27T15:37:46.372Z", firstName: "Oluwaseyi ", offerings: (2) […], updatedAt: "2026-03-27T16:38:28.233Z", … }
+27d8f13f9c74d668dd37eed89d525f6006c4907b.js:26145:103
+AuthFlow - onboardingComplete: true 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:26145:139
+AuthFlow - currentScreen: dashboard 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:26145:209
+✓ User authenticated and onboarded - navigating to dashboard 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:26147:17
+=== Auth State Change === 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:17155:19
+Event: INITIAL_SESSION 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:17155:61
+Session exists: true 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:17155:87
+✓ Valid token obtained 5 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:19241:100
+API Response (/notifications): 
+Object { success: true, notifications: (1) […] }
+27d8f13f9c74d668dd37eed89d525f6006c4907b.js:19264:17
+API Response (/sessions): 
+Object { success: true, sessions: [] }
+27d8f13f9c74d668dd37eed89d525f6006c4907b.js:19264:17
+API Response (/mentorships): 
+Object { success: true, mentorships: (1) […] }
+27d8f13f9c74d668dd37eed89d525f6006c4907b.js:19264:17
+API Response (/requests?type=received): 
+Object { success: true, requests: (1) […] }
+27d8f13f9c74d668dd37eed89d525f6006c4907b.js:19264:17
+API Response (/stats/mentor): 
+Object { success: true, stats: {…} }
+27d8f13f9c74d668dd37eed89d525f6006c4907b.js:19264:17
+✓ Dashboard data loaded successfully 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:22078:15
+Profile: Fetching profile for user ID: 644a4726-9669-4b28-8db9-356aeb1fcdf3 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:20862:24
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/users/644a4726-9669-4b28-8db9-356aeb1fcdf3 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:19256:13
+Getting valid token... 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:19239:13
+✓ Valid token obtained 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:19241:100
+API Response (/users/644a4726-9669-4b28-8db9-356aeb1fcdf3): 
+Object { success: true, user: {…} }
+27d8f13f9c74d668dd37eed89d525f6006c4907b.js:19264:17
+Profile: API response: 
+Object { success: true, user: {…} }
+27d8f13f9c74d668dd37eed89d525f6006c4907b.js:20864:21
+Profile: Fetching mentor stats... 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:20887:23
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/users/stats 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:19256:13
+Getting valid token... 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:19239:13
+✓ Valid token obtained 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:19241:100
+API Response (/users/stats): 
+Object { error: "User not found" }
+27d8f13f9c74d668dd37eed89d525f6006c4907b.js:19264:17
+API Error (/users/stats): User not found 27d8f13f9c74d668dd37eed89d525f6006c4907b.js:19273:21
+API Error (/users/stats): Error: User not found
+    z https://chef-speak-68011167.figma.site/_components/v2/27d8f13f9c74d668dd37eed89d525f6006c4907b.js:19273
+27d8f13f9c74d668dd37eed89d525f6006c4907b.js:19277:19
+Error fetching stats or activity: Error: User not found
+    z https://chef-speak-68011167.figma.site/_components/v2/27d8f13f9c74d668dd37eed89d525f6006c4907b.js:19273
+27d8f13f9c74d668dd37eed89d525f6006c4907b.js:20898:23
+The resource at “https://chef-speak-68011167.figma.site/_runtimes/sites-runtime.31bd3ead8af301f84a131746d437a8decba8097632b940cde2c942df9e57de15.js” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. chef-speak-68011167.figma.site
+The resource at “https://chef-speak-68011167.figma.site/_components/v2/27d8f13f9c74d668dd37eed89d525f6006c4907b.js” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. chef-speak-68011167.figma.site

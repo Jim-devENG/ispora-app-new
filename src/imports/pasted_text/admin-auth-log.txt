@@ -1,0 +1,78 @@
+Cookie “__cf_bm” has been rejected for invalid domain. admin
+Cookie “__cf_bm” has been rejected for invalid domain. _index.json
+[Hydrated] sites-runtime.bda763cc4a3836c8a7216aa7eb4a70754ddaf01cd68b7f409e80787c6836614e.js:127:4207
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/admin/stats d14e4ea852b36dd12c6f9589723006f9965e9f04.js:21023:13
+Getting valid token... d14e4ea852b36dd12c6f9589723006f9965e9f04.js:21002:13
+=== Loading Session on Mount === d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17124:17
+Cookie “__cf_bm” has been rejected for invalid domain. admin.json
+Cookie “__cf_bm” has been rejected for invalid domain. admin.json
+=== Auth State Change === d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:19
+Event: TOKEN_REFRESHED d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:61
+Session exists: true d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:87
+✓ Token refreshed, updating stored token d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17158:17
+✓ Token refreshed and obtained d14e4ea852b36dd12c6f9589723006f9965e9f04.js:21005:22
+Authorization header being sent: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY... d14e4ea852b36dd12c6f9589723006f9965e9f04.js:21025:13
+✓ Supabase session found, fetching user profile... d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17131:19
+=== Auth State Change === d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:19
+Event: INITIAL_SESSION d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:61
+Session exists: true d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:87
+✓ Session restored successfully d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17141:52
+=== Session Loading Complete === d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17150:24
+=== Admin Dashboard Auth Check === d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33034:15
+User: 
+Object { id: "17d291bc-5f16-4183-9fa2-176dcb428816", email: "isporaproject@gmail.com", role: "admin", lastName: "Admin", createdAt: "2026-03-29T17:26:30.247Z", firstName: "Isproa", onboardingComplete: true }
+d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33034:66
+User role: admin d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33034:91
+Refreshing session proactively... d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33034:127
+=== Auth State Change === d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:19
+Event: TOKEN_REFRESHED d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:61
+Session exists: true d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:87
+✓ Token refreshed, updating stored token d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17158:17
+✓ Session refreshed successfully d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33044:15
+Access token (first 50 chars): eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY4NTItND... d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33044:64
+=== Auth State Change === d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:19
+Event: INITIAL_SESSION d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:61
+Session exists: true d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:87
+=== Admin Dashboard Auth Check === d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33034:15
+User: 
+Object { id: "17d291bc-5f16-4183-9fa2-176dcb428816", email: "isporaproject@gmail.com", role: "admin", lastName: "Admin", createdAt: "2026-03-29T17:26:30.247Z", firstName: "Isproa", onboardingComplete: true }
+d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33034:66
+User role: admin d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33034:91
+Refreshing session proactively... d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33034:127
+API Response (/admin/stats): 
+Object { success: true, stats: {…} }
+d14e4ea852b36dd12c6f9589723006f9965e9f04.js:21035:35
+=== Auth State Change === d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:19
+Event: TOKEN_REFRESHED d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:61
+Session exists: true d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:87
+✓ Token refreshed, updating stored token d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17158:17
+✓ Session refreshed successfully d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33044:15
+Access token (first 50 chars): eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY4NTItND... d14e4ea852b36dd12c6f9589723006f9965e9f04.js:33044:64
+=== Auth State Change === d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:19
+Event: INITIAL_SESSION d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:61
+Session exists: true d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:87
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/admin/users d14e4ea852b36dd12c6f9589723006f9965e9f04.js:21023:13
+Getting valid token... d14e4ea852b36dd12c6f9589723006f9965e9f04.js:21002:13
+The resource at “https://chef-speak-68011167.figma.site/_runtimes/sites-runtime.bda763cc4a3836c8a7216aa7eb4a70754ddaf01cd68b7f409e80787c6836614e.js” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. admin
+The resource at “https://chef-speak-68011167.figma.site/_components/v2/d14e4ea852b36dd12c6f9589723006f9965e9f04.js” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. admin
+The resource at “https://chef-speak-68011167.figma.site/_json/0034ff23-76a4-4fab-b766-3569195cf276/_index.json” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. admin
+=== Auth State Change === d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:19
+Event: TOKEN_REFRESHED d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:61
+Session exists: true d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:87
+✓ Token refreshed, updating stored token d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17158:17
+✓ Token refreshed and obtained d14e4ea852b36dd12c6f9589723006f9965e9f04.js:21005:22
+Authorization header being sent: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY... d14e4ea852b36dd12c6f9589723006f9965e9f04.js:21025:13
+API Response (/admin/users): 
+Object { success: true, users: (4) […] }
+d14e4ea852b36dd12c6f9589723006f9965e9f04.js:21035:35
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/admin/mentorships d14e4ea852b36dd12c6f9589723006f9965e9f04.js:21023:13
+Getting valid token... d14e4ea852b36dd12c6f9589723006f9965e9f04.js:21002:13
+=== Auth State Change === d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:19
+Event: TOKEN_REFRESHED d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:61
+Session exists: true d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17155:87
+✓ Token refreshed, updating stored token d14e4ea852b36dd12c6f9589723006f9965e9f04.js:17158:17
+✓ Token refreshed and obtained d14e4ea852b36dd12c6f9589723006f9965e9f04.js:21005:22
+Authorization header being sent: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY... d14e4ea852b36dd12c6f9589723006f9965e9f04.js:21025:13
+API Response (/admin/mentorships): 
+Object { success: true, mentorships: (1) […] }
+d14e4ea852b36dd12c6f9589723006f9965e9f04.js:21035:35

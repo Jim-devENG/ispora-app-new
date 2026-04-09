@@ -1,0 +1,128 @@
+[Hydrated] sites-runtime.36140bc2e4b930435f15bbc9b90945bbd8b2d4ef513a59a6986ed2728dbcbb1c.js:127:4207
+=== Loading Session on Mount === 480a61f115628d68b5e72103666381fc321bd8d6.js:17142:17
+✓ Supabase session found, fetching user profile... 480a61f115628d68b5e72103666381fc321bd8d6.js:17154:19
+=== Auth State Change === 480a61f115628d68b5e72103666381fc321bd8d6.js:17184:19
+Event: INITIAL_SESSION 480a61f115628d68b5e72103666381fc321bd8d6.js:17184:61
+Session exists: true 480a61f115628d68b5e72103666381fc321bd8d6.js:17184:87
+AuthFlow - loading: true 480a61f115628d68b5e72103666381fc321bd8d6.js:34304:17
+AuthFlow - isAuthenticated: false 480a61f115628d68b5e72103666381fc321bd8d6.js:34304:56
+AuthFlow - user: null 480a61f115628d68b5e72103666381fc321bd8d6.js:34304:103
+AuthFlow - onboardingComplete: undefined 480a61f115628d68b5e72103666381fc321bd8d6.js:34304:139
+AuthFlow - currentScreen: landing 480a61f115628d68b5e72103666381fc321bd8d6.js:34304:209
+✓ Session restored successfully 480a61f115628d68b5e72103666381fc321bd8d6.js:17166:52
+=== Session Loading Complete === 480a61f115628d68b5e72103666381fc321bd8d6.js:17177:30
+AuthFlow - loading: false 480a61f115628d68b5e72103666381fc321bd8d6.js:34304:17
+AuthFlow - isAuthenticated: true 480a61f115628d68b5e72103666381fc321bd8d6.js:34304:56
+AuthFlow - user: 
+Object { id: "644a4726-9669-4b28-8db9-356aeb1fcdf3", email: "seyimba1234@gmail.com", bio: "i do amazing things", role: "diaspora", field: "scientist", skills: (1) […], company: "", country: "US", website: "", headline: "the scientist", … }
+480a61f115628d68b5e72103666381fc321bd8d6.js:34304:103
+AuthFlow - onboardingComplete: true 480a61f115628d68b5e72103666381fc321bd8d6.js:34304:139
+AuthFlow - currentScreen: landing 480a61f115628d68b5e72103666381fc321bd8d6.js:34304:209
+✓ User authenticated and onboarded - navigating to dashboard 480a61f115628d68b5e72103666381fc321bd8d6.js:34310:17
+=== MentorDashboard Auth Check === 480a61f115628d68b5e72103666381fc321bd8d6.js:27021:13
+isAuthenticated: true 480a61f115628d68b5e72103666381fc321bd8d6.js:27021:64
+user: 
+Object { id: "644a4726-9669-4b28-8db9-356aeb1fcdf3", email: "seyimba1234@gmail.com", bio: "i do amazing things", role: "diaspora", field: "scientist", skills: (1) […], company: "", country: "US", website: "", headline: "the scientist", … }
+480a61f115628d68b5e72103666381fc321bd8d6.js:27021:100
+accessToken exists: true 480a61f115628d68b5e72103666381fc321bd8d6.js:27021:125
+localStorage token: eyJhbGciOiJFUzI1NiIs 480a61f115628d68b5e72103666381fc321bd8d6.js:27021:166
+=== Loading Dashboard Data === 480a61f115628d68b5e72103666381fc321bd8d6.js:27113:31
+Access token: eyJhbGciOiJFUzI1NiIs... 480a61f115628d68b5e72103666381fc321bd8d6.js:27113:78
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/stats/mentor 480a61f115628d68b5e72103666381fc321bd8d6.js:21192:13
+Getting valid token... 480a61f115628d68b5e72103666381fc321bd8d6.js:21168:107
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/mentorships 480a61f115628d68b5e72103666381fc321bd8d6.js:21192:13
+Token refresh already in progress, waiting... 480a61f115628d68b5e72103666381fc321bd8d6.js:21166:22
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/requests?type=received 480a61f115628d68b5e72103666381fc321bd8d6.js:21192:13
+Token refresh already in progress, waiting... 480a61f115628d68b5e72103666381fc321bd8d6.js:21166:22
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/notifications 480a61f115628d68b5e72103666381fc321bd8d6.js:21192:13
+Token refresh already in progress, waiting... 480a61f115628d68b5e72103666381fc321bd8d6.js:21166:22
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/sessions 480a61f115628d68b5e72103666381fc321bd8d6.js:21192:13
+Token refresh already in progress, waiting... 480a61f115628d68b5e72103666381fc321bd8d6.js:21166:22
+AuthFlow - loading: false 480a61f115628d68b5e72103666381fc321bd8d6.js:34304:17
+AuthFlow - isAuthenticated: true 480a61f115628d68b5e72103666381fc321bd8d6.js:34304:56
+AuthFlow - user: 
+Object { id: "644a4726-9669-4b28-8db9-356aeb1fcdf3", email: "seyimba1234@gmail.com", bio: "i do amazing things", role: "diaspora", field: "scientist", skills: (1) […], company: "", country: "US", website: "", headline: "the scientist", … }
+480a61f115628d68b5e72103666381fc321bd8d6.js:34304:103
+AuthFlow - onboardingComplete: true 480a61f115628d68b5e72103666381fc321bd8d6.js:34304:139
+AuthFlow - currentScreen: dashboard 480a61f115628d68b5e72103666381fc321bd8d6.js:34304:209
+✓ User authenticated and onboarded - navigating to dashboard 480a61f115628d68b5e72103666381fc321bd8d6.js:34310:17
+=== Auth State Change === 480a61f115628d68b5e72103666381fc321bd8d6.js:17184:19
+Event: INITIAL_SESSION 480a61f115628d68b5e72103666381fc321bd8d6.js:17184:61
+Session exists: true 480a61f115628d68b5e72103666381fc321bd8d6.js:17184:87
+✓ Token refreshed and obtained 480a61f115628d68b5e72103666381fc321bd8d6.js:21171:104
+Authorization header being sent: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY... 5 480a61f115628d68b5e72103666381fc321bd8d6.js:21194:13
+=== MentorDashboard Auth Check === 480a61f115628d68b5e72103666381fc321bd8d6.js:27021:13
+isAuthenticated: true 480a61f115628d68b5e72103666381fc321bd8d6.js:27021:64
+user: 
+Object { id: "644a4726-9669-4b28-8db9-356aeb1fcdf3", email: "seyimba1234@gmail.com", bio: "i do amazing things", role: "diaspora", field: "scientist", skills: (1) […], company: "", country: "US", website: "", headline: "the scientist", … }
+480a61f115628d68b5e72103666381fc321bd8d6.js:27021:100
+accessToken exists: true 480a61f115628d68b5e72103666381fc321bd8d6.js:27021:125
+localStorage token: eyJhbGciOiJFUzI1NiIs 480a61f115628d68b5e72103666381fc321bd8d6.js:27021:166
+AuthFlow - loading: false 480a61f115628d68b5e72103666381fc321bd8d6.js:34304:17
+AuthFlow - isAuthenticated: true 480a61f115628d68b5e72103666381fc321bd8d6.js:34304:56
+AuthFlow - user: 
+Object { id: "644a4726-9669-4b28-8db9-356aeb1fcdf3", email: "seyimba1234@gmail.com", bio: "i do amazing things", role: "diaspora", field: "scientist", skills: (1) […], company: "", country: "US", website: "", headline: "the scientist", … }
+480a61f115628d68b5e72103666381fc321bd8d6.js:34304:103
+AuthFlow - onboardingComplete: true 480a61f115628d68b5e72103666381fc321bd8d6.js:34304:139
+AuthFlow - currentScreen: dashboard 480a61f115628d68b5e72103666381fc321bd8d6.js:34304:209
+✓ User authenticated and onboarded - navigating to dashboard 480a61f115628d68b5e72103666381fc321bd8d6.js:34310:17
+=== Auth State Change === 480a61f115628d68b5e72103666381fc321bd8d6.js:17184:19
+Event: INITIAL_SESSION 480a61f115628d68b5e72103666381fc321bd8d6.js:17184:61
+Session exists: true 480a61f115628d68b5e72103666381fc321bd8d6.js:17184:87
+API Response (/notifications): 
+Object { success: true, notifications: (16) […] }
+480a61f115628d68b5e72103666381fc321bd8d6.js:21204:35
+API Response (/stats/mentor): 
+Object { success: true, stats: {…} }
+480a61f115628d68b5e72103666381fc321bd8d6.js:21204:35
+API Response (/requests?type=received): 
+Object { success: true, requests: (3) […] }
+480a61f115628d68b5e72103666381fc321bd8d6.js:21204:35
+API Response (/mentorships): 
+Object { success: true, mentorships: (2) […] }
+480a61f115628d68b5e72103666381fc321bd8d6.js:21204:35
+API Response (/sessions): 
+Object { success: true, sessions: (77) […] }
+480a61f115628d68b5e72103666381fc321bd8d6.js:21204:35
+✓ Dashboard data loaded successfully 480a61f115628d68b5e72103666381fc321bd8d6.js:27121:15
+Mentor Dashboard - Notifications Response: 
+Object { success: true, notifications: (16) […] }
+480a61f115628d68b5e72103666381fc321bd8d6.js:27121:68
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/resources?mentorshipId=mentorship_1774650271842_7nbm5j0sp 480a61f115628d68b5e72103666381fc321bd8d6.js:21192:13
+Getting valid token... 480a61f115628d68b5e72103666381fc321bd8d6.js:21168:107
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/resources?mentorshipId=mentorship_1774866069199_wmi8vwyqj 480a61f115628d68b5e72103666381fc321bd8d6.js:21192:13
+Token refresh already in progress, waiting... 480a61f115628d68b5e72103666381fc321bd8d6.js:21166:22
+✓ Token refreshed and obtained 480a61f115628d68b5e72103666381fc321bd8d6.js:21171:104
+Authorization header being sent: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY... 2 480a61f115628d68b5e72103666381fc321bd8d6.js:21194:13
+API Response (/resources?mentorshipId=mentorship_1774866069199_wmi8vwyqj): 
+Object { success: true, resources: [] }
+480a61f115628d68b5e72103666381fc321bd8d6.js:21204:35
+API Response (/resources?mentorshipId=mentorship_1774650271842_7nbm5j0sp): 
+Object { success: true, resources: (1) […] }
+480a61f115628d68b5e72103666381fc321bd8d6.js:21204:35
+Found special session: session_1774973449137_zwapzkibs Type: group Details: 
+Object { sessionType: "group", registeredCount: 0, registeredStudents: [], capacity: 10, platform: "Google Meet", description: "jake", meetingLink: "https://meet.google.com/aqp-rtdq-krg", totalParticipants: 1 }
+480a61f115628d68b5e72103666381fc321bd8d6.js:27982:48
+Found special session: session_1774973535901_99csmjl2y Type: public Details: 
+Object { sessionType: "public", registeredCount: 1, registeredStudents: (1) […], capacity: 10, platform: "Google Meet", description: "gee", meetingLink: "https://meet.google.com/aqp-rtdq-krg" }
+480a61f115628d68b5e72103666381fc321bd8d6.js:27982:48
+The resource at “https://ispora.app/_runtimes/sites-runtime.36140bc2e4b930435f15bbc9b90945bbd8b2d4ef513a59a6986ed2728dbcbb1c.js” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. auth
+The resource at “https://ispora.app/_components/v2/480a61f115628d68b5e72103666381fc321bd8d6.js” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. auth
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/opportunities 480a61f115628d68b5e72103666381fc321bd8d6.js:21192:13
+Getting valid token... 480a61f115628d68b5e72103666381fc321bd8d6.js:21168:107
+✓ Token refreshed and obtained 480a61f115628d68b5e72103666381fc321bd8d6.js:21171:104
+Authorization header being sent: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY... 480a61f115628d68b5e72103666381fc321bd8d6.js:21194:13
+API Response (/opportunities): 
+Object { success: true, opportunities: (1) […] }
+480a61f115628d68b5e72103666381fc321bd8d6.js:21204:35
+[Opportunity Load Debug] 
+Object { id: "opp_1774997847795_l7ruid4ki", title: "Bioinformatics", applicationUrl: undefined, link: undefined, finalLink: "#" }
+480a61f115628d68b5e72103666381fc321bd8d6.js:22160:26
+[Opportunity Link Debug] 
+Object { opportunityId: "opp_1774997847795_l7ruid4ki", link: "#", linkType: "string", isValid: false }
+480a61f115628d68b5e72103666381fc321bd8d6.js:23086:31
+[Opportunity Link] Invalid or missing link: # 480a61f115628d68b5e72103666381fc321bd8d6.js:55612:474
+[Opportunity Link Debug] 
+Object { opportunityId: "opp_1774997847795_l7ruid4ki", link: "#", linkType: "string", isValid: false }
+480a61f115628d68b5e72103666381fc321bd8d6.js:23086:31
+[Opportunity Link] Invalid or missing link: # 480a61f115628d68b5e72103666381fc321bd8d6.js:55612:474

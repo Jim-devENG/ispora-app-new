@@ -1,0 +1,1 @@
+I'll use fast_apply to add the availability badges

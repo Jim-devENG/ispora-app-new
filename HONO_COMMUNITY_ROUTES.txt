@@ -1,0 +1,648 @@
+// ═══════════════════════════════════════════════════════════════════════════════
+// COMMUNITY ROUTES FOR HONO - PASTE BEFORE "Deno.serve(app.fetch)"
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// ──────────────────────────────────────────────────────────────────────────────
+// COMMUNITY POSTS ENDPOINTS
+// ──────────────────────────────────────────────────────────────────────────────
+
+app.post('/community/posts', async (c) => {
+  try {
+    const user = await authenticateUser(c.req.raw, supabaseClient);
+    if (!user) {
+      return c.json({ error: 'Unauthorized' }, 401);
+    }
+
+    const { content, category, linkUrl, linkTitle } = await c.req.json();
+
+    if (!content || content.trim().length === 0) {
+      return c.json({ error: 'Content is required' }, 400);
+    }
+
+    const { data: post, error } = await supabaseClient
+      .from('community_posts')
+      .insert({
+        user_id: user.id,
+        content: content.trim(),
+        category: category || null,
+        link_url: linkUrl || null,
+        link_title: linkTitle || null,
+      })
+      .select('*')
+      .single();
+
+    if (error) {
+      console.error('Error creating post:', error);
+      return c.json({ error: 'Failed to create post' }, 500);
+    }
+
+    const { data: userProfile } = await supabaseClient
+      .from('user_profiles')
+      .select('first_name, last_name, role')
+      .eq('id', user.id)
+      .single();
+
+    return c.json({
+      success: true,
+      post: {
+        ...post,
+        author: userProfile ? {
+          id: user.id,
+          firstName: userProfile.first_name,
+          lastName: userProfile.last_name,
+          role: userProfile.role,
+        } : null,
+        liked: false,
+        likesCount: 0,
+        commentsCount: 0,
+        comments: [],
+      },
+    }, 201);
+  } catch (error: any) {
+    console.error('Create post error:', error);
+    return c.json({ error: error.message || 'Failed to create post' }, 500);
+  }
+});
+
+app.get('/community/posts', async (c) => {
+  try {
+    const user = await authenticateUser(c.req.raw, supabaseClient);
+    if (!user) {
+      return c.json({ error: 'Unauthorized' }, 401);
+    }
+
+    const category = c.req.query('category');
+    const sort = c.req.query('sort') || 'recent';
+    const limit = parseInt(c.req.query('limit') || '50');
+    const offset = parseInt(c.req.query('offset') || '0');
+
+    let query = supabaseClient
+      .from('community_posts')
+      .select('*');
+
+    if (category) {
+      query = query.eq('category', category);
+    }
+
+    if (sort === 'popular') {
+      query = query.order('likes_count', { ascending: false });
+    } else {
+      query = query.order('created_at', { ascending: false });
+    }
+
+    query = query.range(offset, offset + limit - 1);
+
+    const { data: posts, error } = await query;
+
+    if (error) {
+      console.error('Error fetching posts:', error);
+      return c.json({ error: 'Failed to fetch posts' }, 500);
+    }
+
+    const enrichedPosts = await Promise.all(posts.map(async (post) => {
+      const { data: userProfile } = await supabaseClient
+        .from('user_profiles')
+        .select('first_name, last_name, role')
+        .eq('id', post.user_id)
+        .single();
+
+      const { data: likeData } = await supabaseClient
+        .from('community_post_likes')
+        .select('id')
+        .eq('post_id', post.id)
+        .eq('user_id', user.id)
+        .maybeSingle();
+
+      const { data: comments } = await supabaseClient
+        .from('community_post_comments')
+        .select('id, content, created_at, user_id')
+        .eq('post_id', post.id)
+        .order('created_at', { ascending: false })
+        .limit(3);
+
+      const enrichedComments = await Promise.all((comments || []).map(async (c) => {
+        const { data: commentUser } = await supabaseClient
+          .from('user_profiles')
+          .select('first_name, last_name, role')
+          .eq('id', c.user_id)
+          .single();
+
+        return {
+          id: c.id,
+          content: c.content,
+          createdAt: c.created_at,
+          author: commentUser ? {
+            id: c.user_id,
+            firstName: commentUser.first_name,
+            lastName: commentUser.last_name,
+            role: commentUser.role,
+          } : null,
+        };
+      }));
+
+      return {
+        id: post.id,
+        content: post.content,
+        category: post.category,
+        linkUrl: post.link_url,
+        linkTitle: post.link_title,
+        likesCount: post.likes_count,
+        commentsCount: post.comments_count,
+        createdAt: post.created_at,
+        updatedAt: post.updated_at,
+        author: userProfile ? {
+          id: post.user_id,
+          firstName: userProfile.first_name,
+          lastName: userProfile.last_name,
+          role: userProfile.role,
+        } : null,
+        liked: !!likeData,
+        comments: enrichedComments,
+      };
+    }));
+
+    return c.json({
+      success: true,
+      posts: enrichedPosts,
+    });
+  } catch (error: any) {
+    console.error('Fetch posts error:', error);
+    return c.json({ error: error.message || 'Failed to fetch posts' }, 500);
+  }
+});
+
+app.delete('/community/posts/:postId', async (c) => {
+  try {
+    const user = await authenticateUser(c.req.raw, supabaseClient);
+    if (!user) {
+      return c.json({ error: 'Unauthorized' }, 401);
+    }
+
+    const postId = c.req.param('postId');
+
+    const { data: post } = await supabaseClient
+      .from('community_posts')
+      .select('user_id')
+      .eq('id', postId)
+      .single();
+
+    if (!post) {
+      return c.json({ error: 'Post not found' }, 404);
+    }
+
+    if (post.user_id !== user.id) {
+      return c.json({ error: 'Forbidden' }, 403);
+    }
+
+    const { error } = await supabaseClient
+      .from('community_posts')
+      .delete()
+      .eq('id', postId);
+
+    if (error) {
+      console.error('Error deleting post:', error);
+      return c.json({ error: 'Failed to delete post' }, 500);
+    }
+
+    return c.json({
+      success: true,
+      message: 'Post deleted successfully',
+    });
+  } catch (error: any) {
+    console.error('Delete post error:', error);
+    return c.json({ error: error.message || 'Failed to delete post' }, 500);
+  }
+});
+
+app.post('/community/posts/:postId/like', async (c) => {
+  try {
+    const user = await authenticateUser(c.req.raw, supabaseClient);
+    if (!user) {
+      return c.json({ error: 'Unauthorized' }, 401);
+    }
+
+    const postId = c.req.param('postId');
+
+    const { data: existingLike } = await supabaseClient
+      .from('community_post_likes')
+      .select('id')
+      .eq('post_id', postId)
+      .eq('user_id', user.id)
+      .maybeSingle();
+
+    if (existingLike) {
+      const { error } = await supabaseClient
+        .from('community_post_likes')
+        .delete()
+        .eq('id', existingLike.id);
+
+      if (error) {
+        console.error('Error unliking post:', error);
+        return c.json({ error: 'Failed to unlike post' }, 500);
+      }
+
+      return c.json({
+        success: true,
+        liked: false,
+      });
+    } else {
+      const { error } = await supabaseClient
+        .from('community_post_likes')
+        .insert({
+          post_id: postId,
+          user_id: user.id,
+        });
+
+      if (error) {
+        console.error('Error liking post:', error);
+        return c.json({ error: 'Failed to like post' }, 500);
+      }
+
+      return c.json({
+        success: true,
+        liked: true,
+      });
+    }
+  } catch (error: any) {
+    console.error('Like/unlike post error:', error);
+    return c.json({ error: error.message || 'Failed to toggle like' }, 500);
+  }
+});
+
+app.post('/community/posts/:postId/comments', async (c) => {
+  try {
+    const user = await authenticateUser(c.req.raw, supabaseClient);
+    if (!user) {
+      return c.json({ error: 'Unauthorized' }, 401);
+    }
+
+    const postId = c.req.param('postId');
+    const { content } = await c.req.json();
+
+    if (!content || content.trim().length === 0) {
+      return c.json({ error: 'Comment content is required' }, 400);
+    }
+
+    const { data: comment, error } = await supabaseClient
+      .from('community_post_comments')
+      .insert({
+        post_id: postId,
+        user_id: user.id,
+        content: content.trim(),
+      })
+      .select('*')
+      .single();
+
+    if (error) {
+      console.error('Error creating comment:', error);
+      return c.json({ error: 'Failed to create comment' }, 500);
+    }
+
+    const { data: userProfile } = await supabaseClient
+      .from('user_profiles')
+      .select('first_name, last_name, role')
+      .eq('id', user.id)
+      .single();
+
+    return c.json({
+      success: true,
+      comment: {
+        id: comment.id,
+        content: comment.content,
+        createdAt: comment.created_at,
+        author: userProfile ? {
+          id: user.id,
+          firstName: userProfile.first_name,
+          lastName: userProfile.last_name,
+          role: userProfile.role,
+        } : null,
+      },
+    }, 201);
+  } catch (error: any) {
+    console.error('Create comment error:', error);
+    return c.json({ error: error.message || 'Failed to create comment' }, 500);
+  }
+});
+
+// ──────────────────────────────────────────────────────────────────────────────
+// COMMUNITY DISCUSSIONS ENDPOINTS
+// ──────────────────────────────────────────────────────────────────────────────
+
+app.post('/community/discussions', async (c) => {
+  try {
+    const user = await authenticateUser(c.req.raw, supabaseClient);
+    if (!user) {
+      return c.json({ error: 'Unauthorized' }, 401);
+    }
+
+    const { title, content, category, tags } = await c.req.json();
+
+    if (!title || title.trim().length === 0) {
+      return c.json({ error: 'Title is required' }, 400);
+    }
+
+    if (!content || content.trim().length === 0) {
+      return c.json({ error: 'Content is required' }, 400);
+    }
+
+    if (!category) {
+      return c.json({ error: 'Category is required' }, 400);
+    }
+
+    const { data: discussion, error } = await supabaseClient
+      .from('community_discussions')
+      .insert({
+        user_id: user.id,
+        title: title.trim(),
+        content: content.trim(),
+        category,
+        tags: tags || [],
+      })
+      .select('*')
+      .single();
+
+    if (error) {
+      console.error('Error creating discussion:', error);
+      return c.json({ error: 'Failed to create discussion' }, 500);
+    }
+
+    const { data: userProfile } = await supabaseClient
+      .from('user_profiles')
+      .select('first_name, last_name, role')
+      .eq('id', user.id)
+      .single();
+
+    return c.json({
+      success: true,
+      discussion: {
+        ...discussion,
+        author: userProfile ? {
+          id: user.id,
+          firstName: userProfile.first_name,
+          lastName: userProfile.last_name,
+          role: userProfile.role,
+        } : null,
+        repliesCount: 0,
+        viewsCount: 0,
+        replies: [],
+      },
+    }, 201);
+  } catch (error: any) {
+    console.error('Create discussion error:', error);
+    return c.json({ error: error.message || 'Failed to create discussion' }, 500);
+  }
+});
+
+app.get('/community/discussions', async (c) => {
+  try {
+    const user = await authenticateUser(c.req.raw, supabaseClient);
+    if (!user) {
+      return c.json({ error: 'Unauthorized' }, 401);
+    }
+
+    const category = c.req.query('category');
+    const sort = c.req.query('sort') || 'recent';
+    const limit = parseInt(c.req.query('limit') || '50');
+    const offset = parseInt(c.req.query('offset') || '0');
+
+    let query = supabaseClient
+      .from('community_discussions')
+      .select('*');
+
+    if (category) {
+      query = query.eq('category', category);
+    }
+
+    if (sort === 'popular') {
+      query = query.order('replies_count', { ascending: false });
+    } else {
+      query = query.order('created_at', { ascending: false });
+    }
+
+    query = query.range(offset, offset + limit - 1);
+
+    const { data: discussions, error } = await query;
+
+    if (error) {
+      console.error('Error fetching discussions:', error);
+      return c.json({ error: 'Failed to fetch discussions' }, 500);
+    }
+
+    const enrichedDiscussions = await Promise.all(discussions.map(async (discussion) => {
+      const { data: userProfile } = await supabaseClient
+        .from('user_profiles')
+        .select('first_name, last_name, role')
+        .eq('id', discussion.user_id)
+        .single();
+
+      const { data: replies } = await supabaseClient
+        .from('community_discussion_replies')
+        .select('id, content, created_at, is_best_answer, user_id')
+        .eq('discussion_id', discussion.id)
+        .order('created_at', { ascending: false })
+        .limit(3);
+
+      const enrichedReplies = await Promise.all((replies || []).map(async (r) => {
+        const { data: replyUser } = await supabaseClient
+          .from('user_profiles')
+          .select('first_name, last_name, role')
+          .eq('id', r.user_id)
+          .single();
+
+        return {
+          id: r.id,
+          content: r.content,
+          createdAt: r.created_at,
+          isBestAnswer: r.is_best_answer,
+          author: replyUser ? {
+            id: r.user_id,
+            firstName: replyUser.first_name,
+            lastName: replyUser.last_name,
+            role: replyUser.role,
+          } : null,
+        };
+      }));
+
+      return {
+        id: discussion.id,
+        title: discussion.title,
+        content: discussion.content,
+        category: discussion.category,
+        tags: discussion.tags,
+        repliesCount: discussion.replies_count,
+        viewsCount: discussion.views_count,
+        isAnswered: discussion.is_answered,
+        createdAt: discussion.created_at,
+        author: userProfile ? {
+          id: discussion.user_id,
+          firstName: userProfile.first_name,
+          lastName: userProfile.last_name,
+          role: userProfile.role,
+        } : null,
+        replies: enrichedReplies,
+      };
+    }));
+
+    return c.json({
+      success: true,
+      discussions: enrichedDiscussions,
+    });
+  } catch (error: any) {
+    console.error('Fetch discussions error:', error);
+    return c.json({ error: error.message || 'Failed to fetch discussions' }, 500);
+  }
+});
+
+app.delete('/community/discussions/:discussionId', async (c) => {
+  try {
+    const user = await authenticateUser(c.req.raw, supabaseClient);
+    if (!user) {
+      return c.json({ error: 'Unauthorized' }, 401);
+    }
+
+    const discussionId = c.req.param('discussionId');
+
+    const { data: discussion } = await supabaseClient
+      .from('community_discussions')
+      .select('user_id')
+      .eq('id', discussionId)
+      .single();
+
+    if (!discussion) {
+      return c.json({ error: 'Discussion not found' }, 404);
+    }
+
+    if (discussion.user_id !== user.id) {
+      return c.json({ error: 'Forbidden' }, 403);
+    }
+
+    const { error } = await supabaseClient
+      .from('community_discussions')
+      .delete()
+      .eq('id', discussionId);
+
+    if (error) {
+      console.error('Error deleting discussion:', error);
+      return c.json({ error: 'Failed to delete discussion' }, 500);
+    }
+
+    return c.json({
+      success: true,
+      message: 'Discussion deleted successfully',
+    });
+  } catch (error: any) {
+    console.error('Delete discussion error:', error);
+    return c.json({ error: error.message || 'Failed to delete discussion' }, 500);
+  }
+});
+
+app.post('/community/discussions/:discussionId/replies', async (c) => {
+  try {
+    const user = await authenticateUser(c.req.raw, supabaseClient);
+    if (!user) {
+      return c.json({ error: 'Unauthorized' }, 401);
+    }
+
+    const discussionId = c.req.param('discussionId');
+    const { content } = await c.req.json();
+
+    if (!content || content.trim().length === 0) {
+      return c.json({ error: 'Reply content is required' }, 400);
+    }
+
+    const { data: reply, error } = await supabaseClient
+      .from('community_discussion_replies')
+      .insert({
+        discussion_id: discussionId,
+        user_id: user.id,
+        content: content.trim(),
+      })
+      .select('*')
+      .single();
+
+    if (error) {
+      console.error('Error creating reply:', error);
+      return c.json({ error: 'Failed to create reply' }, 500);
+    }
+
+    const { data: userProfile } = await supabaseClient
+      .from('user_profiles')
+      .select('first_name, last_name, role')
+      .eq('id', user.id)
+      .single();
+
+    return c.json({
+      success: true,
+      reply: {
+        id: reply.id,
+        content: reply.content,
+        createdAt: reply.created_at,
+        isBestAnswer: false,
+        author: userProfile ? {
+          id: user.id,
+          firstName: userProfile.first_name,
+          lastName: userProfile.last_name,
+          role: userProfile.role,
+        } : null,
+      },
+    }, 201);
+  } catch (error: any) {
+    console.error('Create reply error:', error);
+    return c.json({ error: error.message || 'Failed to create reply' }, 500);
+  }
+});
+
+app.post('/community/discussions/:discussionId/best-answer', async (c) => {
+  try {
+    const user = await authenticateUser(c.req.raw, supabaseClient);
+    if (!user) {
+      return c.json({ error: 'Unauthorized' }, 401);
+    }
+
+    const discussionId = c.req.param('discussionId');
+    const { replyId } = await c.req.json();
+
+    if (!replyId) {
+      return c.json({ error: 'Reply ID is required' }, 400);
+    }
+
+    const { data: discussion } = await supabaseClient
+      .from('community_discussions')
+      .select('user_id')
+      .eq('id', discussionId)
+      .single();
+
+    if (!discussion) {
+      return c.json({ error: 'Discussion not found' }, 404);
+    }
+
+    if (discussion.user_id !== user.id) {
+      return c.json({ error: 'Only the discussion author can mark best answer' }, 403);
+    }
+
+    const { error } = await supabaseClient
+      .from('community_discussions')
+      .update({
+        best_answer_id: replyId,
+        updated_at: new Date().toISOString(),
+      })
+      .eq('id', discussionId);
+
+    if (error) {
+      console.error('Error marking best answer:', error);
+      return c.json({ error: 'Failed to mark best answer' }, 500);
+    }
+
+    return c.json({
+      success: true,
+      message: 'Best answer marked successfully',
+    });
+  } catch (error: any) {
+    console.error('Mark best answer error:', error);
+    return c.json({ error: error.message || 'Failed to mark best answer' }, 500);
+  }
+});
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// END OF COMMUNITY ROUTES - Paste everything above BEFORE "Deno.serve(app.fetch)"
+// ═══════════════════════════════════════════════════════════════════════════════

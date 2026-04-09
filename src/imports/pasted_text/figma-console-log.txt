@@ -1,0 +1,328 @@
+Content-Security-Policy warnings 2
+Running frontend commit 212afd3611bdd7cbe6e0cc856b8085d6f3da369b Build-Frontend-Authentication:510:9
+Loaded 38 scripts (6265007b), 38 from cache (6265007b) vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Statsig is not ready to log exposures, will retry in 1 seconds vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[Livegraph] Connected 2026-03-30T08:09:39.903Z. vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Ignoring unsupported entryTypes: longtask. vendor-64356ad6c6bbf515.min.js.br:6:30822
+WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER. 4789-f0d672b33f10d9c9.min.js.br:7:125531
+[import] git: a8bb3215a2b41f72687730cc13c623d48760cc75, stamp: 18A9177C56CF0BDA vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Local Network Access detected: top-level site “https://www.figma.com/make/rA5wVerfHRa5lKpVnXU5O6/Build-Frontend-Authentication?p=f&t=ra4sUb2c80E98vzz-0&preview-route=%2Fauth”, initiator “https://www.figma.com/make/rA5wVerfHRa5lKpVnXU5O6/Build-Frontend-Authentication?p=f&t=ra4sUb2c80E98vzz-0&preview-route=%2Fauth”, accessing target “http://127.0.0.1:44950/figma/version” (127.0.0.1:44950) via xhr. Secure context: True, prompt action: (null) Build-Frontend-Authentication
+Autosave Changes not available or already claimed by another tab undefined vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[Fullscreen] Booting... (emscripten version 4.0.21) vendor-core-83c17265f2588e9e.min.js.br:54:12591
+WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER. 3117-c1e2355d0c9ab775.min.js.br:1669:176048
+WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER. 3117-c1e2355d0c9ab775.min.js.br:335:23315
+[GPU] graphicsAPI:"WebGL 2", vendor:"Google Inc. (Intel)", renderer:"ANGLE (Intel, Intel(R) HD Graphics 400 Direct3D11 vs_5_0 ps_5_0), or similar" version:"OpenGL ES 3.0 (WebGL 2.0)" vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[Fullscreen] Ready in 501.0ms vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[FullscreenApp] calling setEditorTheme and setting preference dark vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=n68kkta4PMrybSjs&version=151&recentReload=0&file-load-streaming-compression&user-id=1155220099117335391&client_release=212afd3611bdd7cbe6e0cc856b8085d6f3da369b vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] Joining file version 106 (initial load) vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[FullscreenApp] calling setEditorTheme and setting preference dark vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Local Network Access detected: top-level site “https://www.figma.com/make/rA5wVerfHRa5lKpVnXU5O6/Build-Frontend-Authentication?p=f&t=ra4sUb2c80E98vzz-0&preview-route=%2Fauth”, initiator “https://www.figma.com/make/rA5wVerfHRa5lKpVnXU5O6/Build-Frontend-Authentication?p=f&t=ra4sUb2c80E98vzz-0&preview-route=%2Fauth”, accessing target “http://127.0.0.1:44950/figma/desktop/set-open-in-desktop-app-pref” (127.0.0.1:44950) via xhr. Secure context: True, prompt action: (null) Build-Frontend-Authentication
+Local Network Access detected: top-level site “https://www.figma.com/make/rA5wVerfHRa5lKpVnXU5O6/Build-Frontend-Authentication?p=f&t=ra4sUb2c80E98vzz-0&preview-route=%2Fauth”, initiator “https://www.figma.com/make/rA5wVerfHRa5lKpVnXU5O6/Build-Frontend-Authentication?p=f&t=ra4sUb2c80E98vzz-0&preview-route=%2Fauth”, accessing target “http://127.0.0.1:44950/figma/desktop/can-open-url?userID=1155220099117335391&url=https://www.figma.com” (127.0.0.1:44950) via xhr. Secure context: True, prompt action: (null) Build-Frontend-Authentication
+Local Network Access detected: top-level site “https://www.figma.com/make/rA5wVerfHRa5lKpVnXU5O6/Build-Frontend-Authentication?p=f&t=ra4sUb2c80E98vzz-0&preview-route=%2Fauth”, initiator “https://www.figma.com/make/rA5wVerfHRa5lKpVnXU5O6/Build-Frontend-Authentication?p=f&t=ra4sUb2c80E98vzz-0&preview-route=%2Fauth”, accessing target “http://127.0.0.1:44950/figma/spelling/get-languages” (127.0.0.1:44950) via xhr. Secure context: True, prompt action: (null) Build-Frontend-Authentication
+Local Network Access detected: top-level site “https://www.figma.com/make/rA5wVerfHRa5lKpVnXU5O6/Build-Frontend-Authentication?p=f&t=ra4sUb2c80E98vzz-0&preview-route=%2Fauth”, initiator “https://www.figma.com/make/rA5wVerfHRa5lKpVnXU5O6/Build-Frontend-Authentication?p=f&t=ra4sUb2c80E98vzz-0&preview-route=%2Fauth”, accessing target “http://127.0.0.1:44950/figma/font-files?freetype_minimum_api_version=20&isolate=true&” (127.0.0.1:44950) via xhr. Secure context: True, prompt action: (null) Build-Frontend-Authentication
+[Local fonts] using agent vendor-core-83c17265f2588e9e.min.js.br:54:12591
+The resource at “https://static.figma.com/uploads/43d730c59dee2754d29e0d946ba8cb8339656979” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. Build-Frontend-Authentication
+The resource at “https://static.figma.com/webfont/1/DSEG7Classic-Italic-Custom2.woff2” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. Build-Frontend-Authentication
+Local Network Access detected: top-level site “https://www.figma.com/make/rA5wVerfHRa5lKpVnXU5O6/Build-Frontend-Authentication?p=f&t=ra4sUb2c80E98vzz-0&preview-route=%2Fauth”, initiator “https://www.figma.com/make/rA5wVerfHRa5lKpVnXU5O6/Build-Frontend-Authentication?p=f&t=ra4sUb2c80E98vzz-0&preview-route=%2Fauth”, accessing target “http://127.0.0.1:44950/figma/spelling/get-languages” (127.0.0.1:44950) via xhr. Secure context: True, prompt action: (null) Build-Frontend-Authentication
+Ignoring unsupported entryTypes: longtask. figma_app-353b870bcffa935a.min.js.br:237:318615
+[FullscreenApp] calling setEditorTheme and setting preference dark vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Feature Policy: Skipping unsupported feature name “local-network-access”. vendor-core-83c17265f2588e9e.min.js.br:11:3242
+Feature Policy: Skipping unsupported feature name “local-network-access”. vendor-core-83c17265f2588e9e.min.js.br:11:3468
+Feature Policy: Skipping unsupported feature name “local-network-access”. vendor-core-83c17265f2588e9e.min.js.br:11:3242
+Feature Policy: Skipping unsupported feature name “local-network-access”. vendor-core-83c17265f2588e9e.min.js.br:11:3468
+Feature Policy: Skipping unsupported feature name “local-network-access”. vendor-core-83c17265f2588e9e.min.js.br:11:89935
+Feature Policy: Skipping unsupported feature name “local-network-access”. vendor-core-83c17265f2588e9e.min.js.br:11:89556
+Ignoring unsupported entryTypes: longtask. figma_app-353b870bcffa935a.min.js.br:237:318615
+Local Network Access detected: top-level site “https://www.figma.com/make/rA5wVerfHRa5lKpVnXU5O6/Build-Frontend-Authentication?p=f&t=ra4sUb2c80E98vzz-0&preview-route=%2Fauth”, initiator “https://www.figma.com/make/rA5wVerfHRa5lKpVnXU5O6/Build-Frontend-Authentication?p=f&t=ra4sUb2c80E98vzz-0&preview-route=%2Fauth”, accessing target “http://127.0.0.1:44950/figma/version” (127.0.0.1:44950) via xhr. Secure context: True, prompt action: (null) Build-Frontend-Authentication
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS header ‘Access-Control-Allow-Origin’ missing). Status code: 302.
+WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER. 4789-f0d672b33f10d9c9.min.js.br:7:169864
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS request did not succeed). Status code: (null).
+Ignoring unsupported entryTypes: long-animation-frame. figma_app-353b870bcffa935a.min.js.br:47:655932
+[devtools] Initialized LS 2 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:3242
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:89576
+Cookie “__cf_bm” has been rejected for invalid domain. 81be381d-cb0b-443a-92fb-8e29f002056e-v2-figmaiframepreview.figma.site
+[Fullscreen] loadtime=20.52s maxmem=27287988 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:3242
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:89576
+Cookie “__cf_bm” has been rejected for invalid domain. 81be381d-cb0b-443a-92fb-8e29f002056e-v2-figmaiframepreview.figma.site
+MouseEvent.mozInputSource is deprecated. Use PointerEvent.pointerType instead. vendor-a3172ba722ec4e21.min.js.br:9:8704
+Too many elapsed hits of react since last report vendor-core-83c17265f2588e9e.min.js.br:54:12591
+This site appears to use a scroll-linked positioning effect. This may not work well with asynchronous panning; see https://firefox-source-docs.mozilla.org/performance/scroll-linked_effects.html for further details and to join the discussion on related tools and features! Build-Frontend-Authentication
+downloadable font: glyf: empty gid 3 used as component in glyph 483 (font-family: "Roboto Mono" style:normal weight:400 stretch:100 src index:0) source: https://static.figma.com/webfont/1/RobotoMono-Regular.woff2
+Cookie “__cf_bm” has been rejected for invalid domain. 3 81be381d-cb0b-443a-92fb-8e29f002056e-v2-figmaiframepreview.figma.site
+Failed to fetch snapshot files: Error: XHR for "/api/rev/rA5wVerfHRa5lKpVnXU5O6/code_snapshot/de466876cfa0f87967b2bc1dee51cfe3e674027466f004e0d79301312b4af81d" failed with status 404
+    E https://www.figma.com/webpack-artifacts/assets/3117-c1e2355d0c9ab775.min.js.br:1402
+    w https://www.figma.com/webpack-artifacts/assets/3117-c1e2355d0c9ab775.min.js.br:1402
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cookie “__cf_bm” has been rejected for invalid domain. 81be381d-cb0b-443a-92fb-8e29f002056e-v2-figmaiframepreview.figma.site
+Failed to fetch snapshot files: Error: XHR for "/api/rev/rA5wVerfHRa5lKpVnXU5O6/code_snapshot/9e8224b2853a119a7ea0a4e116d5d86aa563f39da4b665f021936db8cb0c5b4d" failed with status 404
+    E https://www.figma.com/webpack-artifacts/assets/3117-c1e2355d0c9ab775.min.js.br:1402
+    w https://www.figma.com/webpack-artifacts/assets/3117-c1e2355d0c9ab775.min.js.br:1402
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cookie “__cf_bm” has been rejected for invalid domain. 81be381d-cb0b-443a-92fb-8e29f002056e-v2-figmaiframepreview.figma.site
+Cookie “__cf_bm” has been rejected for invalid domain. auth
+Cookie “__cf_bm” has been rejected for invalid domain. 81be381d-cb0b-443a-92fb-8e29f002056e-v2-figmaiframepreview.figma.site
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=n68kkta4PMrybSjs&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=212afd3611bdd7cbe6e0cc856b8085d6f3da369b&reconnect-key=a07eee257d869575c36c387916c2fcce9326caec&reconnect-sequence-number=2102&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] Joining file version 106 (skip_reload reconnect) vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS header ‘Access-Control-Allow-Origin’ missing). Status code: 302.
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS request did not succeed). Status code: (null).
+Failed to fetch snapshot files: Error: XHR for "/api/rev/rA5wVerfHRa5lKpVnXU5O6/code_snapshot/462584e8398bd00f07d1e08f6e0f3849b72d50be828454c507480b62aa305cd9" failed with status 404
+    E https://www.figma.com/webpack-artifacts/assets/3117-c1e2355d0c9ab775.min.js.br:1402
+    w https://www.figma.com/webpack-artifacts/assets/3117-c1e2355d0c9ab775.min.js.br:1402
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cookie “__cf_bm” has been rejected for invalid domain. 81be381d-cb0b-443a-92fb-8e29f002056e-v2-figmaiframepreview.figma.site
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=n68kkta4PMrybSjs&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=212afd3611bdd7cbe6e0cc856b8085d6f3da369b&reconnect-key=a07eee257d869575c36c387916c2fcce9326caec&reconnect-sequence-number=2105&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] Joining file version 106 (skip_reload reconnect) vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS header ‘Access-Control-Allow-Origin’ missing). Status code: 302.
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS request did not succeed). Status code: (null).
+Cookie “__cf_bm” has been rejected for invalid domain. 81be381d-cb0b-443a-92fb-8e29f002056e-v2-figmaiframepreview.figma.site
+Cookie “ajs_anonymous_id” has been rejected for invalid domain. 81be381d-cb0b-443a-92fb-8e29f002056e-v2-figmaiframepreview.figma.site
+Partitioned cookie or storage access was provided to “https://81be381d-cb0b-443a-92fb-8e29f002056e-v2-figmaiframepreview.figma.site/” because it is loaded in the third-party context and dynamic state partitioning is enabled. code_components_preview_iframe-c57f661b337ed852.min.js.br:984:13416
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=n68kkta4PMrybSjs&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=212afd3611bdd7cbe6e0cc856b8085d6f3da369b&reconnect-key=a07eee257d869575c36c387916c2fcce9326caec&reconnect-sequence-number=2109&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] Joining file version 106 (skip_reload reconnect) vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://app-4iwzg7akp4om3lrdigzdueopx6mr2yac2fp6g3ww6xxphkanqjmq.makeproxy-c.figma.site/@react-refresh. (Reason: CORS request did not succeed). Status code: (null).
+Module source URI is not allowed in this document: “https://app-4iwzg7akp4om3lrdigzdueopx6mr2yac2fp6g3ww6xxphkanqjmq.makeproxy-c.figma.site/@react-refresh”. code_components_preview_iframe-c57f661b337ed852.min.js.br
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS header ‘Access-Control-Allow-Origin’ missing). Status code: 302.
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS request did not succeed). Status code: (null).
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:3242
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:89576
+Cookie “__cf_bm” has been rejected for invalid domain. 81be381d-cb0b-443a-92fb-8e29f002056e-v2-figmaiframepreview.figma.site
+Failed to fetch snapshot files: Error: XHR for "/api/rev/rA5wVerfHRa5lKpVnXU5O6/code_snapshot/4d4c0bb83f26097010d134bb2b6623e0aeab0cb889ec0f4e798f7193bfcbfe96" failed with status 404
+    E https://www.figma.com/webpack-artifacts/assets/3117-c1e2355d0c9ab775.min.js.br:1402
+    w https://www.figma.com/webpack-artifacts/assets/3117-c1e2355d0c9ab775.min.js.br:1402
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cookie “__cf_bm” has been rejected for invalid domain. 81be381d-cb0b-443a-92fb-8e29f002056e-v2-figmaiframepreview.figma.site
+Failed to fetch snapshot files: Error: XHR for "/api/rev/rA5wVerfHRa5lKpVnXU5O6/code_snapshot/0b191fca1e5ff3f538c61d5d6ef5ddf3294a8251b812147ed0635c0a554912e5" failed with status 404
+    E https://www.figma.com/webpack-artifacts/assets/3117-c1e2355d0c9ab775.min.js.br:1402
+    w https://www.figma.com/webpack-artifacts/assets/3117-c1e2355d0c9ab775.min.js.br:1402
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cookie “__cf_bm” has been rejected for invalid domain. 81be381d-cb0b-443a-92fb-8e29f002056e-v2-figmaiframepreview.figma.site
+The connection to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=n68kkta4PMrybSjs&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=212afd3611bdd7cbe6e0cc856b8085d6f3da369b&reconnect-key=a07eee257d869575c36c387916c2fcce9326caec&reconnect-sequence-number=2109&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 was interrupted while the page was loading. 4789-f0d672b33f10d9c9.min.js.br:3:174184
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=n68kkta4PMrybSjs&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=212afd3611bdd7cbe6e0cc856b8085d6f3da369b&reconnect-key=a07eee257d869575c36c387916c2fcce9326caec&reconnect-sequence-number=2129&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] Joining file version 106 (skip_reload reconnect) vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS header ‘Access-Control-Allow-Origin’ missing). Status code: 302.
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS request did not succeed). Status code: (null).
+Cookie “__cf_bm” has been rejected for invalid domain. 3 81be381d-cb0b-443a-92fb-8e29f002056e-v2-figmaiframepreview.figma.site
+Failed to fetch snapshot files: Error: XHR for "/api/rev/rA5wVerfHRa5lKpVnXU5O6/code_snapshot/ef1d1e1412b00febc617d4c029d4f06b42cef53c25c2da77f5b7b728aa804b57" failed with status 404
+    E https://www.figma.com/webpack-artifacts/assets/3117-c1e2355d0c9ab775.min.js.br:1402
+    w https://www.figma.com/webpack-artifacts/assets/3117-c1e2355d0c9ab775.min.js.br:1402
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cookie “__cf_bm” has been rejected for invalid domain. 81be381d-cb0b-443a-92fb-8e29f002056e-v2-figmaiframepreview.figma.site
+Failed to fetch snapshot files: Error: XHR for "/api/rev/rA5wVerfHRa5lKpVnXU5O6/code_snapshot/787440f7da9159f21a466320e076039238229318b4c36b4a5f85d2fa2ccb405e" failed with status 404
+    E https://www.figma.com/webpack-artifacts/assets/3117-c1e2355d0c9ab775.min.js.br:1402
+    w https://www.figma.com/webpack-artifacts/assets/3117-c1e2355d0c9ab775.min.js.br:1402
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cookie “__cf_bm” has been rejected for invalid domain. 81be381d-cb0b-443a-92fb-8e29f002056e-v2-figmaiframepreview.figma.site
+[devtools] Initialized LS vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Failed to fetch snapshot files: Error: XHR for "/api/rev/rA5wVerfHRa5lKpVnXU5O6/code_snapshot/ec9eb2caefadbba042b0cc4fa2743a2f4b9a1f48942100abbab0e5c1b3910caa" failed with status 404
+    E https://www.figma.com/webpack-artifacts/assets/3117-c1e2355d0c9ab775.min.js.br:1402
+    w https://www.figma.com/webpack-artifacts/assets/3117-c1e2355d0c9ab775.min.js.br:1402
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cookie “__cf_bm” has been rejected for invalid domain. 81be381d-cb0b-443a-92fb-8e29f002056e-v2-figmaiframepreview.figma.site
+Failed to fetch snapshot files: Error: XHR for "/api/rev/rA5wVerfHRa5lKpVnXU5O6/code_snapshot/8846c6db0d9fb9ec313e3c39ccfdfca3d1707c906e23b79a4897dca30d577c0a" failed with status 404
+    E https://www.figma.com/webpack-artifacts/assets/3117-c1e2355d0c9ab775.min.js.br:1402
+    w https://www.figma.com/webpack-artifacts/assets/3117-c1e2355d0c9ab775.min.js.br:1402
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cookie “__cf_bm” has been rejected for invalid domain. 81be381d-cb0b-443a-92fb-8e29f002056e-v2-figmaiframepreview.figma.site
+Failed to fetch snapshot files: Error: XHR for "/api/rev/rA5wVerfHRa5lKpVnXU5O6/code_snapshot/1627e1f478b4fe5ba92211df4c0d16d0f372e3e312b0e5246fd817692bce7d6b" failed with status 404
+    E https://www.figma.com/webpack-artifacts/assets/3117-c1e2355d0c9ab775.min.js.br:1402
+    w https://www.figma.com/webpack-artifacts/assets/3117-c1e2355d0c9ab775.min.js.br:1402
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cookie “__cf_bm” has been rejected for invalid domain. 81be381d-cb0b-443a-92fb-8e29f002056e-v2-figmaiframepreview.figma.site
+Failed to fetch snapshot files: Error: XHR for "/api/rev/rA5wVerfHRa5lKpVnXU5O6/code_snapshot/a6e97fdb89c18f1a9c37987025b45d0ea8bd05731a32d008b305406bb554b7f9" failed with status 404
+    E https://www.figma.com/webpack-artifacts/assets/3117-c1e2355d0c9ab775.min.js.br:1402
+    w https://www.figma.com/webpack-artifacts/assets/3117-c1e2355d0c9ab775.min.js.br:1402
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[Livegraph] Connection closed. Code: 4001, reason: connection_lifetime vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[Livegraph] Connected 2026-03-30T09:12:30.721Z. vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cookie “__cf_bm” has been rejected for invalid domain. 81be381d-cb0b-443a-92fb-8e29f002056e-v2-figmaiframepreview.figma.site
+[Livegraph] Connection closed. Code: 4010, reason: server_idle vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=n68kkta4PMrybSjs&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=212afd3611bdd7cbe6e0cc856b8085d6f3da369b&reconnect-key=a07eee257d869575c36c387916c2fcce9326caec&reconnect-sequence-number=2172&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[Livegraph] Connected 2026-03-30T09:49:27.628Z. vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] Joining file version 106 (skip_reload reconnect) vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS header ‘Access-Control-Allow-Origin’ missing). Status code: 302.
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS request did not succeed). Status code: (null).
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:3242
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:89576
+Cookie “__cf_bm” has been rejected for invalid domain. 81be381d-cb0b-443a-92fb-8e29f002056e-v2-figmaiframepreview.figma.site
+The connection to wss://www.figma.com/api/livegraph?pv=1&pr=c958f21afb395a1b&pt=1774858174&ph=86n2WtH4qVQIiAtJEi0rpB2DcS85Gyp7RchniudF24o&userId=1155220099117335391&anonUserId=8c96d4b3-0053-4e5f-bae6-a78563eea347&clientType=web&commitHash=212afd3611bdd7cbe6e0cc856b8085d6f3da369b&clientUrl=https%3A%2F%2Fwww.figma.com%2Fmake%2FrA5wVerfHRa5lKpVnXU5O6%2FBuild-Frontend-Authentication%3Fp%3Df%26t%3Dra4sUb2c80E98vzz-0%26preview-route%3D%252Fauth&connectionType=reconnect&reconnect=1 was interrupted while the page was loading. 6790-4e35c0350082cb67.min.js.br:64:89762
+[Livegraph] Connection closed. Code: 1006, reason: vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=n68kkta4PMrybSjs&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=212afd3611bdd7cbe6e0cc856b8085d6f3da369b&reconnect-key=a07eee257d869575c36c387916c2fcce9326caec&reconnect-sequence-number=2172&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[Livegraph] Connected 2026-03-30T10:12:19.458Z. vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] Joining file version 106 (skip_reload reconnect) vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS header ‘Access-Control-Allow-Origin’ missing). Status code: 302.
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS request did not succeed). Status code: (null).
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:3242
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:89576
+Cookie “__cf_bm” has been rejected for invalid domain. 81be381d-cb0b-443a-92fb-8e29f002056e-v2-figmaiframepreview.figma.site
+The connection to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=n68kkta4PMrybSjs&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=212afd3611bdd7cbe6e0cc856b8085d6f3da369b&reconnect-key=a07eee257d869575c36c387916c2fcce9326caec&reconnect-sequence-number=2172&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 was interrupted while the page was loading. 4789-f0d672b33f10d9c9.min.js.br:3:174184
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=n68kkta4PMrybSjs&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=212afd3611bdd7cbe6e0cc856b8085d6f3da369b&reconnect-key=a07eee257d869575c36c387916c2fcce9326caec&reconnect-sequence-number=2172&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] Joining file version 106 (skip_reload reconnect) vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS header ‘Access-Control-Allow-Origin’ missing). Status code: 302.
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS request did not succeed). Status code: (null).
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:3242
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:89576
+Cookie “__cf_bm” has been rejected for invalid domain. 81be381d-cb0b-443a-92fb-8e29f002056e-v2-figmaiframepreview.figma.site
+The connection to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=n68kkta4PMrybSjs&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=212afd3611bdd7cbe6e0cc856b8085d6f3da369b&reconnect-key=a07eee257d869575c36c387916c2fcce9326caec&reconnect-sequence-number=2172&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 was interrupted while the page was loading. 4789-f0d672b33f10d9c9.min.js.br:3:174184
+[Livegraph] Connection closed. Code: 4010, reason: server_idle vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=n68kkta4PMrybSjs&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=212afd3611bdd7cbe6e0cc856b8085d6f3da369b&reconnect-key=a07eee257d869575c36c387916c2fcce9326caec&reconnect-sequence-number=2172&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[Livegraph] Connected 2026-03-30T10:40:20.288Z. vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] Joining file version 106 (skip_reload reconnect) vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS header ‘Access-Control-Allow-Origin’ missing). Status code: 302.
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS request did not succeed). Status code: (null).
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:3242
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:89576
+Cookie “__cf_bm” has been rejected for invalid domain. 81be381d-cb0b-443a-92fb-8e29f002056e-v2-figmaiframepreview.figma.site
+Cookie “__cf_bm” has been rejected for invalid domain. auth
+Cookie “__cf_bm” has been rejected for invalid domain. 81be381d-cb0b-443a-92fb-8e29f002056e-v2-figmaiframepreview.figma.site
+Failed to fetch snapshot files: Error: XHR for "/api/rev/rA5wVerfHRa5lKpVnXU5O6/code_snapshot/c745a45d818800b9ceaa97701a842e47f8a5ebec0a2b83ec6c1f04bf1437abc9" failed with status 404
+    E https://www.figma.com/webpack-artifacts/assets/3117-c1e2355d0c9ab775.min.js.br:1402
+    w https://www.figma.com/webpack-artifacts/assets/3117-c1e2355d0c9ab775.min.js.br:1402
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cookie “__cf_bm” has been rejected for invalid domain. auth
+Cookie “ajs_anonymous_id” has been rejected for invalid domain. auth
+Partitioned cookie or storage access was provided to “https://81be381d-cb0b-443a-92fb-8e29f002056e-v2-figmaiframepreview.figma.site/auth” because it is loaded in the third-party context and dynamic state partitioning is enabled. code_components_preview_iframe-c57f661b337ed852.min.js.br:984:13416
+Cookie “__cf_bm” has been rejected for invalid domain. 81be381d-cb0b-443a-92fb-8e29f002056e-v2-figmaiframepreview.figma.site
+[vite] connecting... code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31249
+Cookie “__cf_bm” has been rejected for invalid domain. app-vyh22ifev4lp42bwfytesegqikmwdp6adl3i4itlbpwel2kndfxq.makeproxy-c.figma.site
+[vite] connected. code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31249
+AuthFlow - loading: true code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - isAuthenticated: false code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - user: null code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - onboardingComplete: undefined code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - currentScreen: landing code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+=== Loading Session on Mount === code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+No active session found code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+=== Session Loading Complete === code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+=== Auth State Change === code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+Event: INITIAL_SESSION code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+Session exists: false code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - loading: false code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - isAuthenticated: false code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - user: null code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - onboardingComplete: undefined code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - currentScreen: landing code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+Cookie “ajs_anonymous_id” has been rejected for invalid domain. 81be381d-cb0b-443a-92fb-8e29f002056e-v2-figmaiframepreview.figma.site
+Cookie “__cf_bm” has been rejected for invalid domain. 81be381d-cb0b-443a-92fb-8e29f002056e-v2-figmaiframepreview.figma.site
+Partitioned cookie or storage access was provided to “https://81be381d-cb0b-443a-92fb-8e29f002056e-v2-figmaiframepreview.figma.site/” because it is loaded in the third-party context and dynamic state partitioning is enabled. code_components_preview_iframe-c57f661b337ed852.min.js.br:984:13416
+AuthFlow - loading: false code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - isAuthenticated: false code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - user: null code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - onboardingComplete: undefined code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - currentScreen: mentortype code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - loading: false code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - isAuthenticated: false code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - user: null code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - onboardingComplete: undefined code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - currentScreen: landing code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - loading: false code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - isAuthenticated: false code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - user: null code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - onboardingComplete: undefined code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - currentScreen: mentortype code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - loading: false code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - isAuthenticated: false code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - user: null code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - onboardingComplete: undefined code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - currentScreen: signup code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - loading: false code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - isAuthenticated: false code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - user: null code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - onboardingComplete: undefined code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - currentScreen: verify code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+=== Auto Sign-In After Verification === code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+Email: dee@gmail.com code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+=== Sign In Flow Start === code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+Attempting Supabase authentication... code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+=== Auth State Change === code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+Event: SIGNED_IN code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+Session exists: true code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+✓ Supabase authentication successful code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+Fetching user profile from backend... code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+Fetch user profile error: 
+Object { code: 401, message: "Invalid JWT" }
+code_components_preview_iframe-c57f661b337ed852.min.js.br:17:102314
+Sign-in result: 
+Object { success: false, error: "Invalid JWT" }
+code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+Auto sign-in failed: Invalid JWT code_components_preview_iframe-c57f661b337ed852.min.js.br:17:102314
+AuthFlow - loading: false code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - isAuthenticated: false code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - user: null code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - onboardingComplete: undefined code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - currentScreen: signin code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+=== Auth State Change === code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+Event: SIGNED_IN code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+Session exists: true code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - loading: false code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - isAuthenticated: true code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - user: 
+Object { id: "641e3d53-45f8-427a-9b87-dc38c127b281", email: "dee@gmail.com", role: "diaspora", lastName: "John", createdAt: "2026-03-30T10:48:35.877Z", firstName: "Dee", mentorType: "home", onboardingComplete: false }
+code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - onboardingComplete: false code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - currentScreen: signin code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+✓ User authenticated but not onboarded - navigating to onboarding code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - loading: false code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - isAuthenticated: true code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - user: 
+Object { id: "641e3d53-45f8-427a-9b87-dc38c127b281", email: "dee@gmail.com", role: "diaspora", lastName: "John", createdAt: "2026-03-30T10:48:35.877Z", firstName: "Dee", mentorType: "home", onboardingComplete: false }
+code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - onboardingComplete: false code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+AuthFlow - currentScreen: onboard code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+=== Auth State Change === code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+Event: INITIAL_SESSION code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+Session exists: true code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+[devtools] Initialized LS vendor-core-83c17265f2588e9e.min.js.br:54:12591
+updateProfile called with data: 
+Object { country: "nigeria", field: "genomics", currentRole: "ceo", offerings: (2) […], phoneNumber: "+2348077191794" }
+code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+updateProfile called with data: 
+Object { country: "nigeria", field: "genomics", currentRole: "ceo", offerings: (2) […], phoneNumber: "+2348077191794" }
+code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+=== Auth State Change === code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+Event: SIGNED_IN code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+Session exists: true code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+updateProfile called with data: 
+Object { country: "nigeria", field: "genomics", currentRole: "ceo", offerings: (2) […], phoneNumber: "+2348077191794" }
+code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+[devtools] Initialized LS vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Source map error: Error: NetworkError when attempting to fetch resource.
+Resource URL: https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-c57f661b337ed852.min.js.br
+Source Map URL: https://admin.figma.com/admin/webpack-artifacts/212afd3611bdd7cbe6e0cc856b8085d6f3da369b/code_components_preview_iframe-c57f661b337ed852.min.js.map
+Source map error: Error: NetworkError when attempting to fetch resource.
+Resource URL: https://www.figma.com/webpack-artifacts/assets/vendor-core-83c17265f2588e9e.min.js.br
+Source Map URL: https://admin.figma.com/admin/webpack-artifacts/c36bb72fc8b8a1aef780db081fbfd6e42883c14e/vendor-core-83c17265f2588e9e.min.js.map
+updateProfile called with data: 
+Object { country: "nigeria", field: "genomics", currentRole: "ceo", offerings: (2) […], phoneNumber: "+2348077191794" }
+code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+updateProfile called with data: 
+Object { country: "nigeria", field: "genomics", currentRole: "ceo", offerings: (2) […], phoneNumber: "+2348077191794" }
+code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+Source map error: Error: NetworkError when attempting to fetch resource.
+Resource URL: https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-c57f661b337ed852.min.js.br
+Source Map URL: https://admin.figma.com/admin/webpack-artifacts/212afd3611bdd7cbe6e0cc856b8085d6f3da369b/code_components_preview_iframe-c57f661b337ed852.min.js.map
+Source map error: Error: NetworkError when attempting to fetch resource.
+Resource URL: https://www.figma.com/webpack-artifacts/assets/vendor-core-83c17265f2588e9e.min.js.br
+Source Map URL: https://admin.figma.com/admin/webpack-artifacts/c36bb72fc8b8a1aef780db081fbfd6e42883c14e/vendor-core-83c17265f2588e9e.min.js.map
+updateProfile called with data: 
+Object { country: "nigeria", field: "genomics", currentRole: "ceo", offerings: (2) […], phoneNumber: "+2348077191794" }
+code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+XHRPUT
+https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/users/profile
+[HTTP/2 403  1486ms]
+
+	
+PUT
+	https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/users/profile
+Status
+403
+VersionHTTP/2
+Transferred988 B (24 B size)
+Referrer Policystrict-origin-when-cross-origin
+DNS ResolutionSystem
+
+=== Auth State Change === code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+Event: SIGNED_IN code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294
+Session exists: true code_components_preview_iframe-c57f661b337ed852.min.js.br:90:31294

@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ispora — My Mentorships</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --brand:#021ff6;--brand-h:#0118c4;--brand-light:#eef0ff;--brand-mid:#4a5df0;
+  --accent:#00c896;--accent-light:#e0faf4;
+  --warn:#f59e0b;--warn-light:#fef9ee;
+  --danger:#ef4444;--danger-light:#fff1f1;
+  --success:#10b981;--success-light:#ecfdf5;
+  --paused:#8b5cf6;--paused-light:#f3e8ff;
+  --bg:#f0f2ff;--surface:#fff;--surface2:#f7f8ff;
+  --border:#e2e5f5;--border2:#c8cef0;
+  --text:#07094a;--text2:#3d4275;--text3:#8b90b8;
+  --sidebar-w:224px;--topbar-h:64px;
+  --r:16px;
+  --shadow-sm:0 1px 4px rgba(2,31,246,0.06);
+  --shadow:0 4px 20px rgba(2,31,246,0.09);
+  --shadow-lg:0 12px 48px rgba(2,31,246,0.15);
+}
+html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+button{cursor:pointer;border:none;background:none;font-family:inherit;font-size:inherit}
+input,textarea,select{font-family:inherit;font-size:inherit}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+
+.app{display:flex;height:100vh;overflow:hidden}
+
+/* ── SIDEBAR ── */
+.sidebar{width:var(--sidebar-w);background:var(--surface);border-right:1.5px solid var(--border);display:flex;flex-direction:column;flex-shrink:0}
+.sidebar-logo{padding:16px 18px 14px;display:flex;align-items:center;gap:10px;border-bottom:1.5px solid var(--border)}
+.logo-icon{width:28px;height:28px;background:var(--brand);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo-icon svg{width:14px;height:14px;fill:none;stroke:white;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.logo-name{font-family:'Syne',sans-serif;font-weight:700;font-size:14px;color:var(--brand);letter-spacing:-0.3px;line-height:1}
+.logo-tagline{font-size:9px;color:var(--text3);margin-top:1px}
+.sidebar-profile{margin:12px 14px 6px;padding:11px 13px;background:var(--brand-light);border-radius:12px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:background .15s}
+.sidebar-profile:hover{background:#e0e3ff}
+.sp-av{width:36px;height:36px;border-radius:50%;background:var(--brand);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px;flex-shrink:0;position:relative}
+.sp-online{position:absolute;bottom:1px;right:1px;width:8px;height:8px;background:var(--accent);border-radius:50%;border:2px solid var(--surface)}
+.sp-name{font-weight:600;font-size:12px;color:var(--text);line-height:1.2}
+.sp-role{font-size:11px;color:var(--brand);font-weight:500;margin-top:2px}
+.nav{flex:1;overflow-y:auto;padding:8px 12px}
+.nav-section{margin-bottom:20px}
+.nav-label{font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.09em;padding:0 8px;margin-bottom:5px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:10px;color:var(--text2);font-size:13px;font-weight:500;transition:all .15s;cursor:pointer}
+.nav-item:hover{background:var(--brand-light);color:var(--brand)}
+.nav-item.active{background:var(--brand);color:white}
+.nav-item svg{width:15px;height:15px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.nav-badge{margin-left:auto;background:var(--danger);color:white;font-size:10px;font-weight:700;padding:1px 6px;border-radius:20px;min-width:18px;text-align:center}
+.nav-item.active .nav-badge{background:rgba(255,255,255,0.35)}
+.sidebar-foot{padding:12px;border-top:1.5px solid var(--border)}
+.nav-item.danger{color:var(--danger)}
+.nav-item.danger:hover{background:var(--danger-light)}
+
+/* ── MAIN ── */
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0}
+.topbar{height:var(--topbar-h);background:var(--surface);border-bottom:1.5px solid var(--border);padding:0 28px;display:flex;align-items:center;gap:14px;flex-shrink:0}
+.topbar-left{flex:1}
+.topbar-left h2{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--text)}
+.topbar-left p{font-size:12px;color:var(--text3);margin-top:1px}
+.topbar-right{display:flex;align-items:center;gap:8px}
+.role-pill{display:flex;align-items:center;gap:6px;background:var(--bg);border:1.5px solid var(--border);border-radius:20px;padding:5px 12px 5px 8px;font-size:12px;font-weight:600;color:var(--text2);cursor:pointer;transition:all .2s}
+.role-pill:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-light)}
+.role-pip{width:8px;height:8px;background:var(--brand);border-radius:50%}
+.role-pill svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2}
+.icon-btn{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--bg);border:1.5px solid var(--border);color:var(--text2);cursor:pointer;transition:all .2s;position:relative}
+.icon-btn:hover{background:var(--brand-light);color:var(--brand);border-color:var(--brand)}
+.icon-btn svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.notif-badge{position:absolute;top:6px;right:6px;width:7px;height:7px;background:var(--danger);border-radius:50%;border:1.5px solid var(--surface)}
+
+/* ── PAGE ── */
+.page{flex:1;overflow-y:auto;overflow-x:hidden}
+
+/* ── PAGE HEADER ── */
+.page-header{background:var(--brand);padding:24px 32px;position:relative;overflow:hidden;flex-shrink:0}
+.ph-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.04) 1px,transparent 1px);background-size:28px 28px;pointer-events:none}
+.ph-orb{position:absolute;top:-60px;right:-40px;width:220px;height:220px;background:rgba(255,255,255,0.05);border-radius:50%;pointer-events:none}
+.ph-content{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.ph-text h1{font-family:'DM Sans',sans-serif;font-size:18px;font-weight:600;color:white;white-space:nowrap}
+.ph-text p{font-size:12px;color:rgba(255,255,255,0.7);margin-top:3px}
+.ph-stats{display:flex;gap:10px;flex-shrink:0}
+.ph-stat{background:rgba(255,255,255,0.13);border:1px solid rgba(255,255,255,0.18);border-radius:12px;padding:10px 16px;text-align:center;min-width:72px}
+.ph-stat-val{font-family:'DM Sans',sans-serif;font-size:20px;font-weight:700;color:white;line-height:1}
+.ph-stat-label{font-size:10px;color:rgba(255,255,255,0.65);margin-top:3px}
+
+/* ── TABS BAR ── */
+.tabs-bar{background:var(--surface);border-bottom:1.5px solid var(--border);padding:0 32px;display:flex;align-items:center;gap:0;flex-shrink:0}
+.tab-btn{padding:14px 18px;font-size:13px;font-weight:600;color:var(--text3);border-bottom:2.5px solid transparent;cursor:pointer;transition:all .15s;white-space:nowrap;display:flex;align-items:center;gap:7px}
+.tab-btn:hover{color:var(--text2)}
+.tab-btn.active{color:var(--brand);border-bottom-color:var(--brand)}
+.tab-count{font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px;background:var(--bg)}
+.tab-btn.active .tab-count{background:var(--brand-light);color:var(--brand)}
+.tabs-right{margin-left:auto;display:flex;align-items:center;gap:10px;padding:10px 0}
+.search-sm{position:relative}
+.search-sm input{background:var(--bg);border:1.5px solid var(--border);border-radius:8px;padding:7px 12px 7px 32px;font-size:12px;color:var(--text);outline:none;width:200px;transition:.2s}
+.search-sm input:focus{border-color:var(--brand);background:white}
+.search-sm input::placeholder{color:var(--text3)}
+.search-sm svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);width:13px;height:13px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+
+/* ── CONTENT ── */
+.content{padding:24px 32px;display:flex;flex-direction:column;gap:14px}
+
+/* ── MENTORSHIP CARD ── */
+.m-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;transition:all .2s}
+.m-card:hover{box-shadow:var(--shadow);border-color:var(--border2)}
+.m-card-head{padding:18px 22px;display:flex;align-items:center;gap:14px;cursor:pointer}
+.m-card-head:hover .mc-name{color:var(--brand)}
+.mc-av{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:17px;flex-shrink:0;position:relative}
+.mc-online{position:absolute;bottom:1px;right:1px;width:10px;height:10px;background:var(--accent);border-radius:50%;border:2px solid white}
+.mc-info{flex:1;min-width:0}
+.mc-name{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--text);transition:color .15s}
+.mc-sub{font-size:12px;color:var(--text3);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mc-tags{display:flex;gap:5px;margin-top:6px;flex-wrap:wrap}
+.tag{display:inline-flex;align-items:center;font-size:10px;padding:3px 8px;border-radius:20px;font-weight:500;white-space:nowrap}
+.tag-blue{background:var(--brand-light);color:var(--brand)}
+.tag-green{background:var(--success-light);color:var(--success)}
+.tag-amber{background:var(--warn-light);color:#92400e}
+.tag-purple{background:var(--paused-light);color:var(--paused)}
+.tag-gray{background:#f1f5f9;color:#475569}
+.tag-teal{background:var(--accent-light);color:#0f766e}
+.mc-right{display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex-shrink:0}
+.status-pill{font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px}
+.sp-active{background:var(--success-light);color:var(--success)}
+.sp-paused{background:var(--paused-light);color:var(--paused)}
+.sp-completed{background:#f1f5f9;color:#475569}
+.mc-since{font-size:10px;color:var(--text3)}
+
+/* ── PROGRESS ROW ── */
+.m-card-prog{padding:0 22px 14px;display:flex;align-items:center;gap:14px;border-bottom:1px solid var(--border)}
+.prog-wrap{flex:1}
+.prog-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--text3);margin-bottom:5px}
+.prog-bar{height:5px;background:var(--border);border-radius:3px;overflow:hidden}
+.prog-fill{height:100%;border-radius:3px;background:var(--brand);transition:width .5s}
+.prog-meta{display:flex;gap:16px;font-size:11px;color:var(--text2);flex-shrink:0}
+.prog-meta span{display:flex;align-items:center;gap:5px}
+.prog-meta svg{width:12px;height:12px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* ── CARD ACTIONS ── */
+.m-card-foot{padding:12px 22px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.m-card-foot .spacer{flex:1}
+
+/* ── NEXT SESSION CHIP ── */
+.next-session{display:flex;align-items:center;gap:7px;background:var(--brand-light);border-radius:8px;padding:7px 12px;font-size:11px;color:var(--brand);font-weight:500;flex-shrink:0}
+.next-session svg{width:13px;height:13px;stroke:var(--brand);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.next-session.today{background:#fef9c3;color:#854d0e}
+.next-session.today svg{stroke:#854d0e}
+.next-session.none{background:var(--bg);color:var(--text3)}
+.next-session.none svg{stroke:var(--text3)}
+
+/* ── BTNS ── */
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:9px;font-size:12px;font-weight:600;transition:all .18s;cursor:pointer;border:none;white-space:nowrap}
+.btn svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.btn-brand{background:var(--brand);color:white}
+.btn-brand:hover{background:var(--brand-h);transform:translateY(-1px);box-shadow:0 4px 14px rgba(2,31,246,0.3)}
+.btn-outline{background:white;color:var(--text);border:1.5px solid var(--border)}
+.btn-outline:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-light)}
+.btn-ghost{background:var(--bg);color:var(--text2);border:1.5px solid var(--border)}
+.btn-ghost:hover{color:var(--brand);border-color:var(--brand);background:var(--brand-light)}
+.btn-success{background:var(--success);color:white}
+.btn-success:hover{background:#059669}
+.btn-danger{background:var(--danger);color:white}
+.btn-danger:hover{background:#dc2626}
+.btn-warn{background:var(--warn);color:white}
+.btn-warn:hover{background:#d97706}
+.btn-purple{background:var(--paused);color:white}
+.btn-purple:hover{background:#7c3aed}
+.btn-sm{padding:6px 12px;font-size:11px}
+
+/* ── EMPTY STATE ── */
+.empty{text-align:center;padding:60px 20px}
+.empty-ico{width:56px;height:56px;background:var(--brand-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+.empty-ico svg{width:24px;height:24px;stroke:var(--brand);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.empty h3{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px}
+.empty p{font-size:13px;color:var(--text3);max-width:300px;margin:0 auto 16px;line-height:1.5}
+
+/* ── OVERLAY / MODAL ── */
+.overlay{position:fixed;inset:0;background:rgba(7,9,74,0.5);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;z-index:1000;opacity:0;pointer-events:none;transition:opacity .2s;padding:16px}
+.overlay.show{opacity:1;pointer-events:all}
+.modal{background:var(--surface);border-radius:18px;width:100%;max-width:520px;box-shadow:var(--shadow-lg);transform:translateY(18px) scale(0.97);transition:transform .25s cubic-bezier(.34,1.56,.64,1);max-height:92vh;overflow-y:auto}
+.overlay.show .modal{transform:translateY(0) scale(1)}
+.modal-head{padding:20px 24px 16px;display:flex;align-items:flex-start;justify-content:space-between;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--surface);z-index:1}
+.modal-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:var(--text)}
+.modal-sub{font-size:12px;color:var(--text3);margin-top:3px}
+.modal-close{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--text3);transition:.15s;cursor:pointer;flex-shrink:0}
+.modal-close:hover{background:var(--bg);color:var(--text)}
+.modal-close svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.modal-body{padding:20px 24px}
+.modal-foot{padding:14px 24px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:10px;position:sticky;bottom:0;background:var(--surface);z-index:1}
+
+/* ── MENTEE DETAIL MODAL ── */
+.mdetail-banner{background:var(--brand);padding:22px 24px;display:flex;align-items:center;gap:16px;position:relative;overflow:hidden}
+.mdb-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.05) 1px,transparent 1px);background-size:24px 24px;pointer-events:none}
+.mdb-av{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:20px;border:2.5px solid rgba(255,255,255,0.35);flex-shrink:0;position:relative;z-index:1}
+.mdb-info{position:relative;z-index:1}
+.mdb-name{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:white}
+.mdb-sub{font-size:12px;color:rgba(255,255,255,0.7);margin-top:2px}
+.mdb-tags{display:flex;gap:5px;margin-top:8px;flex-wrap:wrap}
+.detail-section{padding:14px 24px;border-bottom:1px solid var(--border)}
+.detail-section:last-child{border-bottom:none}
+.detail-section h4{font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.detail-stat{background:var(--bg);border-radius:10px;padding:11px;text-align:center}
+.detail-stat-val{font-family:'Syne',sans-serif;font-size:20px;font-weight:700;color:var(--brand)}
+.detail-stat-label{font-size:10px;color:var(--text3);margin-top:2px}
+.timeline-item{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--border)}
+.timeline-item:last-child{border-bottom:none}
+.tl-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:4px}
+.tl-dot.done{background:var(--success)}
+.tl-dot.up{background:var(--brand)}
+.tl-dot.skip{background:var(--border2)}
+.tl-body{flex:1}
+.tl-title{font-size:12px;font-weight:600;color:var(--text)}
+.tl-meta{font-size:11px;color:var(--text3);margin-top:1px}
+.goal-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--border)}
+.goal-item:last-child{border-bottom:none}
+.goal-check{width:18px;height:18px;border-radius:5px;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;transition:all .2s;margin-top:1px}
+.goal-check.done{background:var(--success);border-color:var(--success)}
+.goal-check svg{width:10px;height:10px;stroke:white;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;display:none}
+.goal-check.done svg{display:block}
+.goal-text{font-size:13px;color:var(--text);line-height:1.4}
+.goal-text.done{color:var(--text3);text-decoration:line-through}
+
+/* ── FORM ── */
+.fg{margin-bottom:14px}
+.fl{display:block;font-size:12px;font-weight:600;color:var(--text2);margin-bottom:5px}
+.fi{width:100%;border:1.5px solid var(--border);border-radius:10px;padding:10px 14px;font-size:13px;color:var(--text);background:var(--surface);outline:none;transition:.2s}
+.fi:focus{border-color:var(--brand);box-shadow:0 0 0 3px rgba(2,31,246,0.07)}
+.fi::placeholder{color:var(--text3)}
+textarea.fi{resize:vertical;min-height:85px;line-height:1.5}
+.fi-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%238b90b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px;cursor:pointer}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--text);color:white;padding:12px 18px;border-radius:12px;font-size:13px;font-weight:500;box-shadow:var(--shadow-lg);z-index:3000;display:flex;align-items:center;gap:10px;max-width:340px;opacity:0;transform:translateY(10px);transition:all .3s cubic-bezier(.34,1.56,.64,1);pointer-events:none}
+.toast.show{opacity:1;transform:translateY(0)}
+.toast.success{background:#059669}
+.toast.error{background:var(--danger)}
+.toast svg{width:15px;height:15px;fill:none;stroke:white;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+
+/* ── NOTIF PANEL ── */
+.notif-panel{position:fixed;top:70px;right:14px;width:320px;background:var(--surface);border:1.5px solid var(--border);border-radius:16px;box-shadow:var(--shadow-lg);z-index:500;overflow:hidden;opacity:0;pointer-events:none;transform:translateY(-10px);transition:all .2s}
+.notif-panel.show{opacity:1;pointer-events:all;transform:translateY(0)}
+.np-head{padding:13px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.np-head h3{font-family:'Syne',sans-serif;font-size:13px;font-weight:700}
+.np-clear{font-size:11px;color:var(--brand);font-weight:600;cursor:pointer}
+.np-item{padding:11px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;cursor:pointer;transition:.15s}
+.np-item:hover{background:var(--bg)}
+.np-item.unread{background:var(--brand-light)}
+.np-item:last-child{border-bottom:none}
+.np-dot{width:7px;height:7px;background:var(--brand);border-radius:50%;flex-shrink:0;margin-top:4px}
+.np-dot.read{background:transparent}
+.np-text{font-size:12px;color:var(--text);line-height:1.4}
+.np-text strong{font-weight:600}
+.np-time{font-size:10px;color:var(--text3);margin-top:2px}
+
+/* ── ANIM ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.m-card{animation:fadeUp .3s ease both}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.pulse{animation:pulse 2s ease-in-out infinite}
+
+/* ── RESOURCES IN MENTORSHIPS ── */
+.res-grid-m{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.rcard-m{background:var(--surface);border:1.5px solid var(--border);border-radius:12px;overflow:hidden;transition:all .2s;cursor:pointer}
+.rcard-m:hover{border-color:var(--brand);box-shadow:var(--shadow-sm);transform:translateY(-2px)}
+.rcard-m-top{padding:14px 16px;display:flex;align-items:flex-start;gap:12px}
+.rm-ico{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.rm-ico svg{width:16px;height:16px;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.rmi-pdf{background:#fee2e2}.rmi-pdf svg{stroke:var(--danger)}
+.rmi-link{background:var(--brand-light)}.rmi-link svg{stroke:var(--brand)}
+.rmi-video{background:#fce7f3}.rmi-video svg{stroke:#be185d}
+.rmi-doc{background:var(--success-light)}.rmi-doc svg{stroke:var(--success)}
+.rmi-sheet{background:var(--accent-light)}.rmi-sheet svg{stroke:var(--accent)}
+.rcard-m-foot{padding:10px 16px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.share-bar{display:flex;align-items:center;gap:10px;padding:14px 18px;background:var(--brand-light);border:1.5px dashed var(--brand);border-radius:12px;cursor:pointer;transition:.15s;margin-bottom:18px}
+.share-bar:hover{background:#e0e3ff}
+.share-bar svg{width:18px;height:18px;stroke:var(--brand);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.share-bar-text{font-weight:600;font-size:13px;color:var(--brand)}
+.share-bar-sub{font-size:11px;color:var(--text3);margin-top:1px}
+.res-filter-row{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;align-items:center}
+.rf-sel{background:var(--surface);border:1.5px solid var(--border);border-radius:8px;padding:6px 26px 6px 10px;font-size:12px;color:var(--text2);outline:none;cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%238b90b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center}
+.rf-sel:focus{border-color:var(--brand)}
+.new-bdg{font-size:9px;font-weight:700;background:var(--success);color:white;padding:2px 5px;border-radius:20px;margin-left:4px}
+
+</style>
+</head>
+<body>
+<div class="app">
+
+<!-- ══ SIDEBAR ══ -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+    <div><div class="logo-name">Ispora</div><div class="logo-tagline">Impact Platform</div></div>
+  </div>
+  <div class="sidebar-profile" onclick="openModal('ownProfileModal')">
+    <div class="sp-av">A<div class="sp-online pulse"></div></div>
+    <div><div class="sp-name">Dr. Amina Osei</div><div class="sp-role">Diaspora Mentor</div></div>
+  </div>
+  <nav class="nav">
+    <div class="nav-section">
+      <div class="nav-label">Main</div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to Dashboard...')"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>Dashboard</div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to Browse Students...')"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>Browse Students</div>
+      <div class="nav-item active" onclick="navTo(this)"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>My Mentorships<span class="nav-badge">3</span></div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to Sessions...')"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Sessions<span class="nav-badge">1</span></div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to Messages...')"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Messages<span class="nav-badge">5</span></div>
+    </div>
+
+  </nav>
+  <div class="sidebar-foot">
+    <div class="nav-item" onclick="showToast('Opening settings...')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41M19.07 19.07l-1.41-1.41M4.93 19.07l1.41-1.41M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>Settings</div>
+    <div class="nav-item danger" onclick="showToast('Signing out...')"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Sign Out</div>
+  </div>
+</aside>
+
+<!-- ══ MAIN ══ -->
+<div class="main">
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <h2>My Mentorships</h2>
+      <p>Manage and track all your mentoring relationships</p>
+    </div>
+    <div class="topbar-right">
+      <button class="role-pill" onclick="showToast('Role switcher opening...')">
+        <div class="role-pip"></div>Mentor
+        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <button class="icon-btn" onclick="toggleNotif()" id="notifBtn">
+        <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+        <div class="notif-badge"></div>
+      </button>
+      <button class="icon-btn" onclick="openModal('ownProfileModal')">
+        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="page">
+
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+      <div class="ph-grid"></div>
+      <div class="ph-orb"></div>
+      <div class="ph-content">
+        <div class="ph-text">
+          <h1>Your mentorship roster ✦</h1>
+          <p>Track progress, schedule sessions and support every mentee's journey</p>
+        </div>
+        <div class="ph-stats">
+          <div class="ph-stat"><div class="ph-stat-val" id="statActive">3</div><div class="ph-stat-label">Active</div></div>
+          <div class="ph-stat"><div class="ph-stat-val" id="statPaused">1</div><div class="ph-stat-label">Paused</div></div>
+          <div class="ph-stat"><div class="ph-stat-val" id="statCompleted">2</div><div class="ph-stat-label">Completed</div></div>
+          <div class="ph-stat"><div class="ph-stat-val">47</div><div class="ph-stat-label">Sessions</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TABS BAR -->
+    <div class="tabs-bar">
+      <div class="tab-btn active" onclick="switchTab(this,'active')" id="tab-active">Active <span class="tab-count" id="tc-active">3</span></div>
+      <div class="tab-btn" onclick="switchTab(this,'paused')" id="tab-paused">Paused <span class="tab-count" id="tc-paused">1</span></div>
+      <div class="tab-btn" onclick="switchTab(this,'completed')" id="tab-completed">Completed <span class="tab-count" id="tc-completed">2</span></div>
+      <div class="tab-btn" id="tab-resources" onclick="switchTab(this,'resources')">Resources <span class="tab-count">7</span></div>
+      <div class="tab-btn" onclick="switchTab(this,'all')" id="tab-all">All <span class="tab-count" id="tc-all">6</span></div>
+      <div class="tabs-right">
+        <div class="search-sm" id="menteeSearchWrap">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" placeholder="Search mentees..." id="menteeSearch" oninput="renderCards()"/>
+        </div>
+        <button class="btn btn-brand btn-sm" id="shareResBtn" style="display:none" onclick="openModal('shareResModal')">
+          <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          Share Resource
+        </button>
+      </div>
+    </div>
+
+    <!-- CARDS -->
+    <div class="content" id="cardsContainer"></div>
+
+  </div>
+</div>
+</div>
+
+<!-- ══ NOTIFICATION PANEL ══ -->
+<div class="notif-panel" id="notifPanel">
+  <div class="np-head"><h3>Notifications</h3><span class="np-clear" onclick="clearNotifs()">Mark all read</span></div>
+  <div class="np-item unread"><div class="np-dot"></div><div><div class="np-text"><strong>Tunde Ojo</strong> sent a mentorship request</div><div class="np-time">2 hours ago</div></div></div>
+  <div class="np-item unread"><div class="np-dot"></div><div><div class="np-text"><strong>Emeka</strong> confirmed tomorrow's session</div><div class="np-time">3 hours ago</div></div></div>
+  <div class="np-item"><div class="np-dot read"></div><div><div class="np-text">Session with <strong>Aisha</strong> marked complete</div><div class="np-time">Yesterday</div></div></div>
+</div>
+
+<!-- ══ MODALS ══ -->
+
+<!-- MENTEE DETAIL MODAL -->
+<div class="overlay" id="menteeDetailModal" onclick="overlayClose(event,'menteeDetailModal')">
+  <div class="modal">
+    <div class="mdetail-banner" id="mdb">
+      <div class="mdb-grid"></div>
+      <div class="mdb-av" id="mdbAv">AK</div>
+      <div class="mdb-info">
+        <div class="mdb-name" id="mdbName">Aisha Kamara</div>
+        <div class="mdb-sub" id="mdbSub">Software Engineering · University of Lagos</div>
+        <div class="mdb-tags" id="mdbTags"></div>
+      </div>
+    </div>
+    <div class="detail-section">
+      <h4>Progress Overview</h4>
+      <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text2);margin-bottom:6px">
+        <span>Overall progress</span><span id="mdbPct" style="font-weight:600;color:var(--brand)">75%</span>
+      </div>
+      <div class="prog-bar" style="height:7px;margin-bottom:14px"><div class="prog-fill" id="mdbBar" style="width:75%"></div></div>
+      <div class="detail-grid">
+        <div class="detail-stat"><div class="detail-stat-val" id="mdbSessions">8</div><div class="detail-stat-label">Sessions done</div></div>
+        <div class="detail-stat"><div class="detail-stat-val" id="mdbTasks">5</div><div class="detail-stat-label">Tasks done</div></div>
+        <div class="detail-stat"><div class="detail-stat-val" id="mdbDuration">3mo</div><div class="detail-stat-label">Duration</div></div>
+      </div>
+    </div>
+    <div class="detail-section">
+      <h4>Goals</h4>
+      <div id="mdbGoals"></div>
+    </div>
+    <div class="detail-section">
+      <h4>Recent Sessions</h4>
+      <div id="mdbTimeline"></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal('menteeDetailModal')">Close</button>
+      <button class="btn btn-ghost" onclick="openScheduleFromDetail()">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Schedule
+      </button>
+      <button class="btn btn-brand" onclick="openMessageFromDetail()">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        Message
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- SCHEDULE MODAL -->
+<div class="overlay" id="scheduleModal" onclick="overlayClose(event,'scheduleModal')">
+  <div class="modal">
+    <div class="modal-head">
+      <div><div class="modal-title">Schedule Session</div><div class="modal-sub" id="scheduleSub">Set up a new session</div></div>
+      <button class="modal-close" onclick="closeModal('scheduleModal')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div class="fg">
+        <label class="fl">Mentee</label>
+        <select class="fi" id="scheduleMentee">
+          <option>Aisha Kamara — Software Engineering</option>
+          <option>Emeka Okonkwo — Product Management</option>
+          <option>Fatima Nwosu — Data Science</option>
+          <option>Tunde Ojo — Software Engineering</option>
+        </select>
+      </div>
+      <div class="fg"><label class="fl">Session Topic</label><input class="fi" type="text" placeholder="e.g. Resume review, career planning..."/></div>
+      <div class="fi-row">
+        <div class="fg"><label class="fl">Date</label><input class="fi" type="date" min="2026-03-26"/></div>
+        <div class="fg"><label class="fl">Time (WAT)</label><input class="fi" type="time"/></div>
+      </div>
+      <div class="fi-row">
+        <div class="fg"><label class="fl">Duration</label><select class="fi"><option>30 minutes</option><option selected>1 hour</option><option>1.5 hours</option><option>2 hours</option></select></div>
+        <div class="fg"><label class="fl">Platform</label><select class="fi"><option>Google Meet</option><option>Zoom</option><option>WhatsApp Video</option><option>Microsoft Teams</option></select></div>
+      </div>
+      <div class="fg"><label class="fl">Meeting Link</label><input class="fi" type="url" placeholder="https://meet.google.com/..."/></div>
+      <div class="fg"><label class="fl">Agenda / Notes</label><textarea class="fi" placeholder="What will you cover?"></textarea></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal('scheduleModal')">Cancel</button>
+      <button class="btn btn-brand" onclick="closeModal('scheduleModal');showToast('Session scheduled! Mentee notified.','success')">Schedule Session</button>
+    </div>
+  </div>
+</div>
+
+<!-- MESSAGE MODAL -->
+<div class="overlay" id="messageModal" onclick="overlayClose(event,'messageModal')">
+  <div class="modal">
+    <div class="modal-head">
+      <div><div class="modal-title">Send Message</div><div class="modal-sub" id="messageSub">Direct message</div></div>
+      <button class="modal-close" onclick="closeModal('messageModal')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div class="fg"><label class="fl">To</label><select class="fi" id="messageTo"><option>Aisha Kamara</option><option>Emeka Okonkwo</option><option>Fatima Nwosu</option><option>Tunde Ojo</option></select></div>
+      <div class="fg"><label class="fl">Message</label><textarea class="fi" placeholder="Write your message..." style="min-height:110px"></textarea></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal('messageModal')">Cancel</button>
+      <button class="btn btn-brand" onclick="closeModal('messageModal');showToast('Message sent!','success')">
+        <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>Send
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- NOTES MODAL -->
+<div class="overlay" id="notesModal" onclick="overlayClose(event,'notesModal')">
+  <div class="modal">
+    <div class="modal-head">
+      <div><div class="modal-title">Session Notes</div><div class="modal-sub" id="notesSub">Private notes for your reference</div></div>
+      <button class="modal-close" onclick="closeModal('notesModal')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div class="fg"><label class="fl">Goals for next session</label><textarea class="fi" placeholder="What do you want your mentee to achieve?"></textarea></div>
+      <div class="fg"><label class="fl">Resources to share</label><textarea class="fi" placeholder="Links, books, articles..."></textarea></div>
+      <div class="fg"><label class="fl">Action items for mentee</label><textarea class="fi" placeholder="Tasks to complete before the next session..."></textarea></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal('notesModal')">Cancel</button>
+      <button class="btn btn-brand" onclick="closeModal('notesModal');showToast('Notes saved!','success')">Save Notes</button>
+    </div>
+  </div>
+</div>
+
+<!-- PAUSE MODAL -->
+<div class="overlay" id="pauseModal" onclick="overlayClose(event,'pauseModal')">
+  <div class="modal" style="max-width:420px">
+    <div class="modal-head">
+      <div><div class="modal-title" id="pauseTitle">Pause Mentorship</div><div class="modal-sub" id="pauseSub">Temporarily pause this mentorship</div></div>
+      <button class="modal-close" onclick="closeModal('pauseModal')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div style="background:var(--warn-light);border:1px solid var(--warn);border-radius:10px;padding:12px;font-size:12px;color:#92400e;margin-bottom:14px;line-height:1.5">
+        ⚠️ The mentee will be notified that the mentorship is paused. You can resume it anytime.
+      </div>
+      <div class="fg"><label class="fl">Reason for pausing</label><select class="fi"><option>Personal commitments</option><option>Work schedule change</option><option>Waiting for mentee response</option><option>Taking a short break</option><option>Other</option></select></div>
+      <div class="fg"><label class="fl">Message to mentee (optional)</label><textarea class="fi" placeholder="Let your mentee know what's happening..."></textarea></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal('pauseModal')">Cancel</button>
+      <button class="btn btn-warn" id="pauseConfirmBtn" onclick="confirmPauseResume()">Pause Mentorship</button>
+    </div>
+  </div>
+</div>
+
+<!-- COMPLETE MODAL -->
+<div class="overlay" id="completeModal" onclick="overlayClose(event,'completeModal')">
+  <div class="modal" style="max-width:420px">
+    <div class="modal-head">
+      <div><div class="modal-title">Mark as Completed</div><div class="modal-sub" id="completeSub">End this mentorship journey</div></div>
+      <button class="modal-close" onclick="closeModal('completeModal')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div style="background:var(--success-light);border:1px solid var(--success);border-radius:10px;padding:12px;font-size:12px;color:#065f46;margin-bottom:14px;line-height:1.5">
+        🎉 Completing this mentorship will generate a certificate for your mentee and add this to your impact record.
+      </div>
+      <div class="fg"><label class="fl">Final feedback for mentee</label><textarea class="fi" placeholder="Share what they've achieved and your encouragement for their next steps..."></textarea></div>
+      <div class="fg"><label class="fl">Your rating of this mentorship</label>
+        <select class="fi"><option>⭐⭐⭐⭐⭐ Excellent</option><option>⭐⭐⭐⭐ Good</option><option>⭐⭐⭐ Average</option></select>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal('completeModal')">Cancel</button>
+      <button class="btn btn-success" onclick="confirmComplete()">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Complete Mentorship
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- END MODAL -->
+<div class="overlay" id="endModal" onclick="overlayClose(event,'endModal')">
+  <div class="modal" style="max-width:400px">
+    <div class="modal-head">
+      <div><div class="modal-title">End Mentorship</div><div class="modal-sub" id="endSub">This cannot be undone</div></div>
+      <button class="modal-close" onclick="closeModal('endModal')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div style="background:var(--danger-light);border:1px solid var(--danger);border-radius:10px;padding:12px;font-size:12px;color:#991b1b;margin-bottom:14px;line-height:1.5">
+        ⚠️ Ending the mentorship will notify the mentee and remove them from your active roster. This action cannot be undone.
+      </div>
+      <div class="fg"><label class="fl">Reason for ending</label><select class="fi"><option>Mentee graduated / goal achieved</option><option>Incompatible schedules</option><option>Mentee became unresponsive</option><option>Personal reasons</option></select></div>
+      <div class="fg"><label class="fl">Message to mentee</label><textarea class="fi" placeholder="Say something kind..."></textarea></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal('endModal')">Cancel</button>
+      <button class="btn btn-danger" onclick="confirmEnd()">End Mentorship</button>
+    </div>
+  </div>
+</div>
+
+<!-- OWN PROFILE MODAL -->
+<div class="overlay" id="ownProfileModal" onclick="overlayClose(event,'ownProfileModal')">
+  <div class="modal" style="max-width:440px">
+    <div class="mdetail-banner">
+      <div class="mdb-grid"></div>
+      <div class="mdb-av">A</div>
+      <div class="mdb-info">
+        <div class="mdb-name">Dr. Amina Osei</div>
+        <div class="mdb-sub">Senior Software Engineer · London, UK</div>
+        <div class="mdb-tags">
+          <span class="tag" style="background:rgba(255,255,255,0.2);color:white">Software Engineering</span>
+          <span class="tag" style="background:rgba(255,255,255,0.2);color:white">AI/ML</span>
+        </div>
+      </div>
+    </div>
+    <div class="detail-section">
+      <h4>Impact Stats</h4>
+      <div class="detail-grid">
+        <div class="detail-stat"><div class="detail-stat-val">6</div><div class="detail-stat-label">Total mentees</div></div>
+        <div class="detail-stat"><div class="detail-stat-val">47</div><div class="detail-stat-label">Sessions done</div></div>
+        <div class="detail-stat"><div class="detail-stat-val">94%</div><div class="detail-stat-label">Satisfaction</div></div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal('ownProfileModal')">Close</button>
+      <button class="btn btn-brand" onclick="closeModal('ownProfileModal');showToast('Opening profile editor...')">Edit Profile</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- SHARE RESOURCE MODAL (from mentorships) -->
+<div class="overlay" id="shareResModal" onclick="overlayClose(event,'shareResModal')">
+  <div class="modal">
+    <div class="modal-head">
+      <div><div class="modal-title">Share a Resource</div><div class="modal-sub">Share a link, file or video with one or more mentees</div></div>
+      <button class="modal-close" onclick="closeModal('shareResModal')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div class="fg">
+        <label class="fl">Resource type</label>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-brand btn-sm" id="srtype-link" onclick="setSRtype('link')"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>Link</button>
+          <button class="btn btn-outline btn-sm" id="srtype-file" onclick="setSRtype('file')"><svg viewBox="0 0 24 24"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0018 9h-1.26A8 8 0 103 16.3"/></svg>File</button>
+          <button class="btn btn-outline btn-sm" id="srtype-video" onclick="setSRtype('video')"><svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>Video</button>
+        </div>
+      </div>
+      <div id="sr-linkfield"><div class="fg"><label class="fl">URL</label><input class="fi" type="url" id="srUrl" placeholder="https://..."/></div></div>
+      <div id="sr-filefield" style="display:none"><div style="border:2px dashed var(--border2);border-radius:12px;padding:20px;text-align:center;cursor:pointer;margin-bottom:14px" onclick="showToast('File picker...')"><svg style="width:24px;height:24px;stroke:var(--text3);fill:none;stroke-width:1.8;stroke-linecap:round;margin:0 auto 8px;display:block" viewBox="0 0 24 24"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0018 9h-1.26A8 8 0 103 16.3"/></svg><p style="font-size:12px;color:var(--text3)">Click to upload a file</p></div></div>
+      <div class="fg"><label class="fl">Title</label><input class="fi" type="text" id="srTitle" placeholder="e.g. Resume template for UK applications"/></div>
+      <div class="fg"><label class="fl">Category</label>
+        <select class="fi" id="srCat"><option value="career">Career</option><option value="technical">Technical Skills</option><option value="applications">Applications</option><option value="interview">Interview Prep</option></select>
+      </div>
+      <div class="fg"><label class="fl">Note to mentee (optional)</label><textarea class="fi" id="srNote" placeholder="Why are you sharing this? What should they focus on?"></textarea></div>
+      <div class="fg">
+        <label class="fl">Share with</label>
+        <div style="display:flex;flex-wrap:wrap;gap:8px" id="srMenteeSelector">
+          <div style="padding:6px 12px;border-radius:20px;border:1.5px solid var(--brand);background:var(--brand);color:white;font-size:12px;font-weight:500;cursor:pointer" onclick="toggleSRMentee(this,'all')">All Mentees</div>
+          <div style="padding:6px 12px;border-radius:20px;border:1.5px solid var(--border);font-size:12px;font-weight:500;color:var(--text2);cursor:pointer" onclick="toggleSRMentee(this,'Aisha Kamara')">Aisha Kamara</div>
+          <div style="padding:6px 12px;border-radius:20px;border:1.5px solid var(--border);font-size:12px;font-weight:500;color:var(--text2);cursor:pointer" onclick="toggleSRMentee(this,'Emeka Okonkwo')">Emeka Okonkwo</div>
+          <div style="padding:6px 12px;border-radius:20px;border:1.5px solid var(--border);font-size:12px;font-weight:500;color:var(--text2);cursor:pointer" onclick="toggleSRMentee(this,'Fatima Nwosu')">Fatima Nwosu</div>
+          <div style="padding:6px 12px;border-radius:20px;border:1.5px solid var(--border);font-size:12px;font-weight:500;color:var(--text2);cursor:pointer" onclick="toggleSRMentee(this,'Tunde Ojo')">Tunde Ojo</div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal('shareResModal')">Cancel</button>
+      <button class="btn btn-brand" onclick="doShareResource()">
+        <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>Share Now
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toastEl"><svg id="toastIco" viewBox="0 0 24 24"></svg><span id="toastMsg"></span></div>
+
+<script>
+// ── DATA ──
+var mentorships = [
+  {
+    id:1, name:'Aisha Kamara', initials:'AK', color:'#021ff6',
+    field:'Software Engineering', uni:'University of Lagos', year:'3rd Year',
+    status:'active', progress:75, sessions:8, tasks:5, duration:'3mo',
+    nextSession:'Today · 3:00 PM', nextType:'today',
+    tags:['React','Python','AI/ML'], since:'Jan 2026',
+    goals:[
+      {text:'Build a full-stack portfolio project',done:true},
+      {text:'Complete 2 LeetCode problems per week',done:true},
+      {text:'Apply to 5 international internships',done:false},
+      {text:'Prepare for technical interviews',done:false}
+    ],
+    timeline:[
+      {title:'Resume review & LinkedIn',date:'Mar 18 · 3:00 PM',type:'done'},
+      {title:'Career roadmap session',date:'Mar 25 · 3:00 PM',type:'done'},
+      {title:'Today — Software Engineering paths',date:'Mar 26 · 3:00 PM',type:'up'}
+    ],
+    online:true
+  },
+  {
+    id:2, name:'Emeka Okonkwo', initials:'EO', color:'#7c3aed',
+    field:'Product Management', uni:'Covenant University', year:'Final Year',
+    status:'active', progress:60, sessions:6, tasks:4, duration:'2mo',
+    nextSession:'Tomorrow · 10:00 AM', nextType:'upcoming',
+    tags:['Strategy','UX','Agile'], since:'Feb 2026',
+    goals:[
+      {text:'Complete a PM case study project',done:true},
+      {text:'Get certified in Agile/Scrum',done:false},
+      {text:'Build a product portfolio',done:false},
+      {text:'Apply to PM graduate programmes',done:false}
+    ],
+    timeline:[
+      {title:'Product thinking frameworks',date:'Mar 22 · 10:00 AM',type:'done'},
+      {title:'Case study walkthrough',date:'Mar 15 · 10:00 AM',type:'done'},
+      {title:'Tomorrow — Interview prep',date:'Mar 27 · 10:00 AM',type:'up'}
+    ],
+    online:false
+  },
+  {
+    id:3, name:'Fatima Nwosu', initials:'FN', color:'#059669',
+    field:'Data Science', uni:'Obafemi Awolowo University', year:'2nd Year',
+    status:'active', progress:45, sessions:5, tasks:3, duration:'2mo',
+    nextSession:'Mar 29 · 2:00 PM', nextType:'upcoming',
+    tags:['Python','SQL','Statistics'], since:'Feb 2026',
+    goals:[
+      {text:'Complete Python for Data Science course',done:true},
+      {text:'Build first ML model project',done:false},
+      {text:'Contribute to an open source dataset',done:false}
+    ],
+    timeline:[
+      {title:'SQL for analytics deep-dive',date:'Mar 13 · 2:00 PM',type:'done'},
+      {title:'Data wrangling with Pandas',date:'Mar 20 · 2:00 PM',type:'done'},
+      {title:'Mar 29 — ML fundamentals intro',date:'Mar 29 · 2:00 PM',type:'up'}
+    ],
+    online:true
+  },
+  {
+    id:4, name:'Tunde Ojo', initials:'TO', color:'#d97706',
+    field:'Software Engineering', uni:'University of Ibadan', year:'3rd Year',
+    status:'paused', progress:30, sessions:3, tasks:2, duration:'1mo',
+    nextSession:'Not scheduled', nextType:'none',
+    tags:['Java','Node.js','Cloud'], since:'Mar 2026',
+    goals:[
+      {text:'Set up AWS free tier account',done:true},
+      {text:'Build a REST API with Node.js',done:false},
+      {text:'Deploy first cloud project',done:false}
+    ],
+    timeline:[
+      {title:'Introduction & goal setting',date:'Mar 5 · 4:00 PM',type:'done'},
+      {title:'Backend engineering overview',date:'Mar 12 · 4:00 PM',type:'done'},
+      {title:'Next session — TBD',date:'TBD',type:'skip'}
+    ],
+    online:false
+  },
+  {
+    id:5, name:'Jordan Bello', initials:'JB', color:'#0d9488',
+    field:'Computer Science', uni:'University of Ibadan', year:'Graduate',
+    status:'completed', progress:100, sessions:12, tasks:8, duration:'7mo',
+    nextSession:'Completed', nextType:'none',
+    tags:['Full Stack','System Design'], since:'Aug 2025',
+    goals:[
+      {text:'Land a job in the UK tech sector',done:true},
+      {text:'Complete 50 LeetCode problems',done:true},
+      {text:'Pass system design interviews',done:true},
+      {text:'Negotiate salary successfully',done:true}
+    ],
+    timeline:[
+      {title:'Final mock interview',date:'Mar 5 · 3:00 PM',type:'done'},
+      {title:'Offer negotiation coaching',date:'Mar 10 · 3:00 PM',type:'done'},
+      {title:'Placed at London company — Completed',date:'Mar 12',type:'done'}
+    ],
+    online:false
+  },
+  {
+    id:6, name:'Ngozi Eze', initials:'NE', color:'#6d28d9',
+    field:'UX Design', uni:'University of Lagos', year:'Graduate',
+    status:'completed', progress:100, sessions:9, tasks:6, duration:'5mo',
+    nextSession:'Completed', nextType:'none',
+    tags:['Figma','Research','Prototyping'], since:'Sep 2025',
+    goals:[
+      {text:'Build a 4-case-study UX portfolio',done:true},
+      {text:'Land a junior UX role',done:true},
+      {text:'Complete Google UX Design certificate',done:true}
+    ],
+    timeline:[
+      {title:'UX portfolio final review',date:'Feb 15 · 2:00 PM',type:'done'},
+      {title:'Interview coaching session',date:'Feb 22 · 2:00 PM',type:'done'},
+      {title:'Placed at Lagos design studio — Completed',date:'Mar 1',type:'done'}
+    ],
+    online:false
+  }
+];
+
+var mentorResources = [
+  {id:1,title:'Resume & LinkedIn Optimization Template',type:'pdf',cat:'career',mentees:'All Mentees',date:'Mar 20, 2026',views:12,isNew:true},
+  {id:2,title:'UK Tech Companies Hiring Nigerians 2026',type:'sheet',cat:'applications',mentees:'Aisha, Emeka',date:'Mar 15, 2026',views:8,isNew:true},
+  {id:3,title:'Portfolio Checklist',type:'pdf',cat:'career',mentees:'Aisha Kamara',date:'Mar 10, 2026',views:5,isNew:false},
+  {id:4,title:'Cracking the Coding Interview — Key Chapters',type:'link',cat:'technical',mentees:'Aisha, Tunde',date:'Mar 8, 2026',views:3,isNew:false},
+  {id:5,title:'System Design Primer',type:'link',cat:'technical',mentees:'All Mentees',date:'Mar 1, 2026',views:2,isNew:false},
+  {id:6,title:'How to Write a Cover Letter That Works',type:'doc',cat:'applications',mentees:'Emeka, Fatima',date:'Feb 22, 2026',views:1,isNew:false},
+  {id:7,title:'Barclays Graduate Programme — Inside Info',type:'pdf',cat:'applications',mentees:'Aisha Kamara',date:'Feb 14, 2026',views:0,isNew:false}
+];
+var nextResId = 8;
+var srSelectedMentees = new Set ? new Set(['all']) : {vals:['all'],has:function(v){return this.vals.indexOf(v)>-1;},add:function(v){if(!this.has(v))this.vals.push(v);},delete:function(v){this.vals=this.vals.filter(function(x){return x!==v;});},size:1};
+var currentSRtype = 'link';
+
+var currentTab = 'active';
+var currentMentee = null;
+
+// ── FILTER ──
+function getFiltered() {
+  var q = document.getElementById('menteeSearch').value.toLowerCase().trim();
+  return mentorships.filter(function(m) {
+    var tabMatch = currentTab === 'all' || m.status === currentTab;
+    var searchMatch = !q || m.name.toLowerCase().indexOf(q) > -1 || m.field.toLowerCase().indexOf(q) > -1;
+    return tabMatch && searchMatch;
+  });
+}
+
+// ── RENDER CARDS ──
+function renderAll() {
+  var list = getFiltered();
+  var container = document.getElementById('cardsContainer');
+  if (!container) return;
+  if (list.length === 0) {
+    container.innerHTML = '<div class="empty"><div class="empty-ico"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><h3>No mentees here</h3><p>This category is empty.</p></div>';
+    return;
+  }
+  container.innerHTML = list.map(function(m,i) { return buildCard(m,i); }).join('');
+}
+
+function buildCard(m, i) {
+  var statusPill = m.status === 'active'
+    ? '<span class="status-pill sp-active">Active</span>'
+    : m.status === 'paused'
+    ? '<span class="status-pill sp-paused">Paused</span>'
+    : '<span class="status-pill sp-completed">Completed</span>';
+
+  var progColor = m.progress === 100 ? 'var(--success)' : m.progress >= 60 ? 'var(--brand)' : 'var(--warn)';
+  var nextClass = m.nextType === 'today' ? 'ns-today' : m.nextType === 'none' ? 'ns-none' : 'ns-upcoming';
+
+  var goalsDone = m.goals.filter(function(g){return g.done;}).length;
+
+  var actionBtns = '';
+  if (m.status === 'active') {
+    actionBtns = '<button class="btn btn-brand btn-sm" onclick="event.stopPropagation();openModal('schedModal');document.getElementById('schedMenteeName').textContent='' + m.name + ''">'
+      + '<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Schedule</button>'
+      + '<button class="btn btn-outline btn-sm" onclick="event.stopPropagation();openModal('msgModal');document.getElementById('msgMenteeName').textContent='' + m.name + ''"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Message</button>'
+      + '<button class="btn btn-ghost btn-sm" onclick="event.stopPropagation();openDetail(' + m.id + ')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Details</button>'
+      + '<button class="btn btn-ghost btn-sm" onclick="event.stopPropagation();pauseMentee(' + m.id + ')" style="margin-left:auto"><svg viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>Pause</button>';
+  } else if (m.status === 'paused') {
+    actionBtns = '<button class="btn btn-brand btn-sm" onclick="event.stopPropagation();resumeMentee(' + m.id + ')"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>Resume</button>'
+      + '<button class="btn btn-outline btn-sm" onclick="event.stopPropagation();openModal('msgModal');document.getElementById('msgMenteeName').textContent='' + m.name + ''"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Message</button>'
+      + '<button class="btn btn-ghost btn-sm" onclick="event.stopPropagation();openDetail(' + m.id + ')">Details</button>';
+  } else {
+    actionBtns = '<button class="btn btn-outline btn-sm" onclick="event.stopPropagation();openDetail(' + m.id + ')">View Summary</button>'
+      + '<button class="btn btn-ghost btn-sm" onclick="event.stopPropagation();showToast('Opening certificate...','success')">&#127942; Certificate</button>';
+  }
+
+  return '<div class="m-card" style="animation-delay:' + (i*0.06) + 's" onclick="openDetail(' + m.id + ')">'
+    + '<div class="mc-head">'
+    + '<div class="mc-av" style="background:' + m.color + '">' + m.initials + (m.online ? '<div class="mc-online"></div>' : '') + '</div>'
+    + '<div class="mc-info">'
+    + '<div class="mc-name">' + m.name + '</div>'
+    + '<div class="mc-sub">' + m.field + ' · ' + m.uni + ' · ' + m.year + '</div>'
+    + '<div class="mc-tags">' + m.tags.map(function(t){return '<span class="tag tag-blue">'+t+'</span>';}).join('') + '</div>'
+    + '</div>'
+    + '<div class="mc-right">'
+    + statusPill
+    + '<div class="mc-since">Since ' + m.since + '</div>'
+    + '</div>'
+    + '</div>'
+    + '<div class="mc-progress">'
+    + '<div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:5px"><span style="color:var(--text2);font-weight:500">Progress</span><span style="font-weight:700;color:' + progColor + '">' + m.progress + '%</span></div>'
+    + '<div class="prog-bar"><div class="prog-fill" style="width:' + m.progress + '%;background:' + progColor + '"></div></div>'
+    + '<div class="prog-chips">'
+    + '<div class="prog-chip"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>' + m.sessions + ' sessions</div>'
+    + '<div class="prog-chip"><svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>' + goalsDone + '/' + m.goals.length + ' goals</div>'
+    + '<div class="prog-chip ' + nextClass + '"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>' + m.nextSession + '</div>'
+    + '</div>'
+    + '</div>'
+    + '<div class="mc-actions">' + actionBtns + '</div>'
+    + '</div>';
+}
+
+// ── DETAIL MODAL ──
+function openDetail(id) {
+  var m = mentorships.find(function(x){return x.id===id;});
+  if (!m) return;
+  currentMentee = m;
+  document.getElementById('mdbAv').textContent = m.initials;
+  document.getElementById('mdbAv').style.background = m.color;
+  document.getElementById('mdbName').textContent = m.name;
+  document.getElementById('mdbSub').textContent = m.field + ' · ' + m.uni;
+  document.getElementById('mdbTags').innerHTML = m.tags.map(function(t){return '<span class="tag" style="background:rgba(255,255,255,0.2);color:white">'+t+'</span>';}).join('');
+  document.getElementById('mdbProgress').textContent = m.progress + '%';
+  document.getElementById('mdbSessions').textContent = m.sessions;
+  document.getElementById('mdbSince').textContent = m.since;
+
+  var goalsHtml = m.goals.map(function(g,i){
+    return '<div class="goal-row">'
+      + '<div class="goal-check-sm ' + (g.done?'done':'') + '" onclick="toggleGoal(' + m.id + ',' + i + ',this)">'
+      + '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>'
+      + '</div>'
+      + '<div class="goal-text-sm ' + (g.done?'done':'') + '">' + g.text + '</div>'
+      + '</div>';
+  }).join('');
+  document.getElementById('mdbGoals').innerHTML = goalsHtml;
+
+  var tlHtml = m.timeline.map(function(t){
+    var dotClass = t.type==='done' ? 'tl-done' : t.type==='up' ? 'tl-up' : 'tl-skip';
+    return '<div class="tl-row">'
+      + '<div class="tl-dot ' + dotClass + '"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>'
+      + '<div><div style="font-size:12px;font-weight:600;color:var(--text)">' + t.title + '</div>'
+      + '<div style="font-size:11px;color:var(--text3);margin-top:2px">' + t.date + '</div></div>'
+      + '</div>';
+  }).join('');
+  document.getElementById('mdbTimeline').innerHTML = tlHtml;
+
+  var footBtns = '';
+  if (m.status === 'active') {
+    footBtns = '<button class="btn btn-outline" onclick="closeModal('detailModal')">Close</button>'
+      + '<button class="btn btn-ghost" onclick="closeModal('detailModal');pauseMentee(' + m.id + ')">Pause</button>'
+      + '<button class="btn btn-brand" onclick="closeModal('detailModal');openModal('schedModal');document.getElementById('schedMenteeName').textContent='' + m.name + ''">'
+      + '<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Schedule Session</button>';
+  } else if (m.status === 'paused') {
+    footBtns = '<button class="btn btn-outline" onclick="closeModal('detailModal')">Close</button>'
+      + '<button class="btn btn-brand" onclick="closeModal('detailModal');resumeMentee(' + m.id + ')"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>Resume</button>';
+  } else {
+    footBtns = '<button class="btn btn-outline" onclick="closeModal('detailModal')">Close</button>'
+      + '<button class="btn btn-brand" onclick="closeModal('detailModal');showToast('Certificate generated!','success')">&#127942; View Certificate</button>';
+  }
+  document.getElementById('mdbFoot').innerHTML = footBtns;
+  openModal('detailModal');
+}
+
+function toggleGoal(menteeId, goalIdx, el) {
+  var m = mentorships.find(function(x){return x.id===menteeId;});
+  if (!m) return;
+  m.goals[goalIdx].done = !m.goals[goalIdx].done;
+  el.classList.toggle('done', m.goals[goalIdx].done);
+  var txt = el.nextElementSibling;
+  if (txt) txt.classList.toggle('done', m.goals[goalIdx].done);
+  showToast(m.goals[goalIdx].done ? 'Goal marked complete!' : 'Goal unmarked', 'success');
+}
+
+// ── PAUSE / RESUME ──
+function pauseMentee(id) {
+  var m = mentorships.find(function(x){return x.id===id;});
+  if (m) { m.status='paused'; renderAll(); updateTabCounts(); showToast(m.name + ' mentorship paused.',''); }
+}
+function resumeMentee(id) {
+  var m = mentorships.find(function(x){return x.id===id;});
+  if (m) { m.status='active'; renderAll(); updateTabCounts(); showToast(m.name + ' mentorship resumed!','success'); }
+}
+
+// ── TAB COUNTS ──
+function updateTabCounts() {
+  document.getElementById('tc-active').textContent = mentorships.filter(function(m){return m.status==='active';}).length;
+  document.getElementById('tc-paused').textContent = mentorships.filter(function(m){return m.status==='paused';}).length;
+  document.getElementById('tc-completed').textContent = mentorships.filter(function(m){return m.status==='completed';}).length;
+  document.getElementById('tc-all').textContent = mentorships.length;
+}
+
+// ── SWITCH TAB ──
+function switchTab(el, tab) {
+  document.querySelectorAll('.tab-btn').forEach(function(t){t.classList.remove('active');});
+  el.classList.add('active');
+  currentTab = tab;
+  var searchWrap = document.getElementById('menteeSearchWrap');
+  var shareBtn = document.getElementById('shareResBtn');
+  if (tab === 'resources') {
+    if (searchWrap) searchWrap.style.display = 'none';
+    if (shareBtn) shareBtn.style.display = 'inline-flex';
+    renderResourcesTab();
+  } else {
+    if (searchWrap) searchWrap.style.display = 'block';
+    if (shareBtn) shareBtn.style.display = 'none';
+    renderAll();
+  }
+}
+
+// ── RESOURCES TAB ──
+function renderResourcesTab() {
+  var container = document.getElementById('cardsContainer');
+  if (!container) return;
+  var totalViews = mentorResources.reduce(function(a,r){return a+r.views;},0);
+  var newCount = mentorResources.filter(function(r){return r.isNew;}).length;
+
+  var rmIcons = {
+    pdf: '<div class="rm-ico rmi-pdf"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>',
+    link: '<div class="rm-ico rmi-link"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div>',
+    video: '<div class="rm-ico rmi-video"><svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg></div>',
+    doc: '<div class="rm-ico rmi-doc"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg></div>',
+    sheet: '<div class="rm-ico rmi-sheet"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/></svg></div>'
+  };
+  var catTags = {career:'tag-amber',technical:'tag-blue',applications:'tag-green',interview:'tag-teal',other:'tag-gray'};
+
+  var statsHtml = '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px">'
+    + '<div style="background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:12px 16px;text-align:center"><div style="font-size:20px;font-weight:700;color:var(--brand)">' + mentorResources.length + '</div><div style="font-size:11px;color:var(--text3)">Resources shared</div></div>'
+    + '<div style="background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:12px 16px;text-align:center"><div style="font-size:20px;font-weight:700;color:var(--brand)">' + totalViews + '</div><div style="font-size:11px;color:var(--text3)">Total views</div></div>'
+    + '<div style="background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:12px 16px;text-align:center"><div style="font-size:20px;font-weight:700;color:var(--brand)">' + newCount + '</div><div style="font-size:11px;color:var(--text3)">New this week</div></div>'
+    + '</div>';
+
+  var cardsHtml = '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px">';
+  mentorResources.forEach(function(r) {
+    var icon = rmIcons[r.type] || rmIcons.doc;
+    var catTag = catTags[r.cat] || 'tag-gray';
+    var newBadge = r.isNew ? '<span style="font-size:9px;font-weight:700;background:var(--success);color:white;padding:2px 6px;border-radius:20px;margin-left:4px">New</span>' : '';
+    cardsHtml += '<div class="rcard-m">'
+      + '<div class="rcard-m-top">' + icon
+      + '<div style="flex:1;min-width:0">'
+      + '<div style="font-weight:600;font-size:13px;color:var(--text);line-height:1.3">' + r.title + newBadge + '</div>'
+      + '<div style="font-size:11px;color:var(--text3);margin-top:2px">' + r.mentees + ' · ' + r.date + '</div>'
+      + '<div style="font-size:11px;color:var(--text3);margin-top:1px">' + r.views + ' views</div>'
+      + '</div></div>'
+      + '<div class="rcard-m-foot">'
+      + '<span class="tag ' + catTag + '">' + r.cat + '</span>'
+      + '<div style="display:flex;gap:5px">'
+      + '<button class="btn btn-outline btn-xs" onclick="reshareRes(' + r.id + ')">Reshare</button>'
+      + '<button class="btn btn-ghost btn-xs" style="color:var(--danger);border-color:var(--danger)" onclick="deleteRes(' + r.id + ')">Remove</button>'
+      + '</div></div></div>';
+  });
+  cardsHtml += '</div>';
+
+  container.innerHTML = '<div style="padding:20px 0">' + statsHtml + cardsHtml + '</div>';
+}
+
+function reshareRes(id) {
+  var r = mentorResources.find(function(x){return x.id===id;});
+  if (r) document.getElementById('srTitle').value = r.title;
+  openModal('shareResModal');
+}
+
+function deleteRes(id) {
+  mentorResources = mentorResources.filter(function(x){return x.id!==id;});
+  showToast('Resource removed from mentee libraries.','');
+  renderResourcesTab();
+}
+
+function setSRtype(type) {
+  currentSRtype = type;
+  ['link','file','video'].forEach(function(t){
+    var btn = document.getElementById('srtype-'+t);
+    if (btn) btn.className = 'btn btn-sm ' + (t===type ? 'btn-brand' : 'btn-outline');
+  });
+  document.getElementById('sr-linkfield').style.display = (type==='link'||type==='video') ? 'block' : 'none';
+  document.getElementById('sr-filefield').style.display = type==='file' ? 'block' : 'none';
+}
+
+function toggleSRMentee(el, mentee) {
+  var allBtn = document.querySelector('#srMenteeSelector div:first-child');
+  if (mentee === 'all') {
+    document.querySelectorAll('#srMenteeSelector div').forEach(function(d){
+      d.style.background=''; d.style.color='var(--text2)'; d.style.borderColor='var(--border)';
+    });
+    el.style.background='var(--brand)'; el.style.color='white'; el.style.borderColor='var(--brand)';
+  } else {
+    if (allBtn) { allBtn.style.background=''; allBtn.style.color='var(--text2)'; allBtn.style.borderColor='var(--border)'; }
+    var isOn = el.style.background === 'var(--brand)' || el.style.backgroundColor === 'rgb(2, 31, 246)';
+    if (isOn) { el.style.background=''; el.style.color='var(--text2)'; el.style.borderColor='var(--border)'; }
+    else { el.style.background='var(--brand)'; el.style.color='white'; el.style.borderColor='var(--brand)'; }
+  }
+}
+
+function doShareResource() {
+  var title = document.getElementById('srTitle').value.trim();
+  if (!title) { showToast('Please add a title','error'); return; }
+  var cat = document.getElementById('srCat').value;
+  mentorResources.unshift({id:nextResId++, title:title, type:currentSRtype, cat:cat, mentees:'All Mentees', date:'Today', views:0, isNew:true});
+  closeModal('shareResModal');
+  document.getElementById('srTitle').value = '';
+  showToast('Resource shared with mentees!','success');
+  renderResourcesTab();
+}
+
+// ── MODAL HELPERS ──
+function openModal(id){ document.getElementById(id).classList.add('show'); document.body.style.overflow='hidden'; }
+function closeModal(id){ document.getElementById(id).classList.remove('show'); document.body.style.overflow=''; }
+function overlayClose(e,id){ if(e.target===e.currentTarget) closeModal(id); }
+
+// ── TOAST ──
+var tTimer;
+function showToast(msg,type){
+  type=type||'';
+  var el=document.getElementById('toastEl'),ico=document.getElementById('toastIco'),m=document.getElementById('toastMsg');
+  el.className='toast';
+  if(type==='success'){el.classList.add('success');ico.innerHTML='<polyline points="20 6 9 17 4 12"/>';}
+  else if(type==='error'){el.classList.add('error');ico.innerHTML='<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>';}
+  else{ico.innerHTML='<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>';}
+  m.textContent=msg; clearTimeout(tTimer);
+  setTimeout(function(){el.classList.add('show');},10);
+  tTimer=setTimeout(function(){el.classList.remove('show');},3200);
+}
+
+// ── NAV + NOTIF ──
+function navTo(el){ document.querySelectorAll('.nav-item').forEach(function(i){i.classList.remove('active');}); el.classList.add('active'); }
+function toggleNotif(){ document.getElementById('notifPanel').classList.toggle('show'); }
+function clearNotifs(){ document.querySelectorAll('.np-item.unread').forEach(function(i){i.classList.remove('unread');i.querySelector('.np-dot').classList.add('read');}); showToast('All read','success'); }
+document.addEventListener('click',function(e){ var p=document.getElementById('notifPanel'),b=document.getElementById('notifBtn'); if(!p.contains(e.target)&&!b.contains(e.target)) p.classList.remove('show'); });
+
+// ── INIT ──
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', function(){ renderAll(); updateTabCounts(); });
+} else {
+  renderAll();
+  updateTabCounts();
+}
+</script>
+</body>
+</html>

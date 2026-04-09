@@ -1,0 +1,162 @@
+Cookie “__cf_bm” has been rejected for invalid domain. chef-speak-68011167.figma.site
+Cookie “__cf_bm” has been rejected for invalid domain. _index.json
+Cookie “__cf_bm” has been rejected for invalid domain. b49b7046ed3f11c2482991326e1a1cec7028a2ff.js
+Cookie “__cf_bm” has been rejected for invalid domain. b49b7046ed3f11c2482991326e1a1cec7028a2ff.css
+[Hydrated] sites-runtime.31bd3ead8af301f84a131746d437a8decba8097632b940cde2c942df9e57de15.js:127:4207
+AuthFlow - loading: true b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:28764:17
+AuthFlow - isAuthenticated: false b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:28764:56
+AuthFlow - user: null b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:28764:103
+AuthFlow - onboardingComplete: undefined b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:28764:139
+AuthFlow - currentScreen: landing b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:28764:209
+=== Loading Session on Mount === b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:17124:17
+=== Auth State Change === b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:17155:19
+Event: SIGNED_IN b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:17155:61
+Session exists: true b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:17155:87
+Cookie “__cf_bm” has been rejected for invalid domain. community_published_banner_details
+AuthFlow - loading: true b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:28764:17
+AuthFlow - isAuthenticated: true b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:28764:56
+AuthFlow - user: 
+Object { id: "644a4726-9669-4b28-8db9-356aeb1fcdf3", email: "seyimba1234@gmail.com", role: "diaspora", field: "scientist", country: "US", lastName: "Olawale", createdAt: "2026-03-27T15:37:46.372Z", firstName: "Oluwaseyi ", offerings: (2) […], updatedAt: "2026-03-27T16:38:28.233Z", … }
+b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:28764:103
+AuthFlow - onboardingComplete: true b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:28764:139
+AuthFlow - currentScreen: landing b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:28764:209
+✓ Supabase session found, fetching user profile... b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:17131:19
+=== Auth State Change === b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:17155:19
+Event: INITIAL_SESSION b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:17155:61
+Session exists: true b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:17155:87
+✓ Session restored successfully b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:17141:52
+=== Session Loading Complete === b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:17150:24
+AuthFlow - loading: false b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:28764:17
+AuthFlow - isAuthenticated: true b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:28764:56
+AuthFlow - user: 
+Object { id: "644a4726-9669-4b28-8db9-356aeb1fcdf3", email: "seyimba1234@gmail.com", role: "diaspora", field: "scientist", country: "US", lastName: "Olawale", createdAt: "2026-03-27T15:37:46.372Z", firstName: "Oluwaseyi ", offerings: (2) […], updatedAt: "2026-03-27T16:38:28.233Z", … }
+b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:28764:103
+AuthFlow - onboardingComplete: true b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:28764:139
+AuthFlow - currentScreen: landing b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:28764:209
+✓ User authenticated and onboarded - navigating to dashboard b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:28766:17
+=== MentorDashboard Auth Check === b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:23598:13
+isAuthenticated: true b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:23598:64
+user: 
+Object { id: "644a4726-9669-4b28-8db9-356aeb1fcdf3", email: "seyimba1234@gmail.com", role: "diaspora", field: "scientist", country: "US", lastName: "Olawale", createdAt: "2026-03-27T15:37:46.372Z", firstName: "Oluwaseyi ", offerings: (2) […], updatedAt: "2026-03-27T16:38:28.233Z", … }
+b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:23598:100
+accessToken exists: true b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:23598:125
+localStorage token: eyJhbGciOiJFUzI1NiIs b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:23598:166
+=== Loading Dashboard Data === b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:23643:31
+Access token: eyJhbGciOiJFUzI1NiIs... b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:23643:78
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/stats/mentor b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:19278:13
+Getting valid token... b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:19261:13
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/mentorships b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:19278:13
+Getting valid token... b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:19261:13
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/requests?type=received b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:19278:13
+Getting valid token... b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:19261:13
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/notifications b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:19278:13
+Getting valid token... b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:19261:13
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/sessions b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:19278:13
+Getting valid token... b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:19261:13
+AuthFlow - loading: false b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:28764:17
+AuthFlow - isAuthenticated: true b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:28764:56
+AuthFlow - user: 
+Object { id: "644a4726-9669-4b28-8db9-356aeb1fcdf3", email: "seyimba1234@gmail.com", role: "diaspora", field: "scientist", country: "US", lastName: "Olawale", createdAt: "2026-03-27T15:37:46.372Z", firstName: "Oluwaseyi ", offerings: (2) […], updatedAt: "2026-03-27T16:38:28.233Z", … }
+b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:28764:103
+AuthFlow - onboardingComplete: true b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:28764:139
+AuthFlow - currentScreen: dashboard b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:28764:209
+✓ User authenticated and onboarded - navigating to dashboard b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:28766:17
+=== Auth State Change === b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:17155:19
+Event: INITIAL_SESSION b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:17155:61
+Session exists: true b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:17155:87
+✓ Valid token obtained 5 b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:19263:100
+API Response (/stats/mentor): 
+Object { success: true, stats: {…} }
+b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:19286:17
+API Response (/sessions): 
+Object { success: true, sessions: (2) […] }
+b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:19286:17
+API Response (/notifications): 
+Object { success: true, notifications: (3) […] }
+b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:19286:17
+API Response (/mentorships): 
+Object { success: true, mentorships: (1) […] }
+b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:19286:17
+API Response (/requests?type=received): 
+Object { success: true, requests: (1) […] }
+b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:19286:17
+✓ Dashboard data loaded successfully b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:23651:15
+Failed to parse session notes for session: session_1774691386429_8fpv8suzl notes: Platform: Google Meet b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:24238:27
+Found special session: session_1774698627766_k30lhp1m5 Type: public Details: 
+Object { sessionType: "public", registeredCount: 1, registeredStudents: (1) […], capacity: 50, platform: "Google Meet", description: "We do genomics mentorship, and take it up high to workshop and hands-on sessions" }
+b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:24241:45
+The resource at “https://chef-speak-68011167.figma.site/_runtimes/sites-runtime.31bd3ead8af301f84a131746d437a8decba8097632b940cde2c942df9e57de15.js” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. chef-speak-68011167.figma.site
+The resource at “https://chef-speak-68011167.figma.site/_components/v2/b49b7046ed3f11c2482991326e1a1cec7028a2ff.js” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. chef-speak-68011167.figma.site
+Failed to parse session notes for session: session_1774691386429_8fpv8suzl notes: Platform: Google Meet b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:24238:27
+Found special session: session_1774698627766_k30lhp1m5 Type: public Details: 
+Object { sessionType: "public", registeredCount: 1, registeredStudents: (1) […], capacity: 50, platform: "Google Meet", description: "We do genomics mentorship, and take it up high to workshop and hands-on sessions" }
+b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:24241:45
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/mentorships b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:19278:13
+Getting valid token... b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:19261:13
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/mentorships b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:19278:13
+Getting valid token... b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:19261:13
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/sessions b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:19278:13
+Getting valid token... b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:19261:13
+✓ Valid token obtained 3 b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:19263:100
+API Response (/mentorships): 
+Object { success: true, mentorships: (1) […] }
+b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:19286:17
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/resources?mentorshipId=mentorship_1774650271842_7nbm5j0sp b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:19278:13
+Getting valid token... b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:19261:13
+✓ Valid token obtained b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:19263:100
+API Response (/sessions): 
+Object { success: true, sessions: (2) […] }
+b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:19286:17
+=== DEBUG: All sessions from API === b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:23192:15
+Total sessions: 2 b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:23192:68
+Session 1: 
+Object { id: "session_1774691386429_8fpv8suzl", topic: "science", status: "scheduled", scheduledAt: "2026-03-30T05:00:00.000Z", notes: "Platform: Google Meet", notesType: "string" }
+b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:23193:17
+Session 2: 
+Object { id: "session_1774698627766_k30lhp1m5", topic: "Genomics", status: "scheduled", scheduledAt: "2026-03-31T05:00:00.000Z", notes: '{"sessionType":"public","capacity":50,"registeredStudents":["88cd18ff-e250-4eb9-a562-e6ea9ca134a1"],"platform":"Google Meet","description":"We do genomics mentorship, and take it up high to workshop and hands-on sessions","registeredCount":1}', notesType: "string" }
+b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:23193:17
+Current time: 2026-03-28T16:52:23.210Z b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:23203:15
+Session "science": 
+Object { scheduledAt: "2026-03-30T05:00:00.000Z", isFuture: true, status: "scheduled", isScheduled: true, passes: true }
+b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:23206:24
+Session "Genomics": 
+Object { scheduledAt: "2026-03-31T05:00:00.000Z", isFuture: true, status: "scheduled", isScheduled: true, passes: true }
+b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:23206:24
+Parsing notes for "science": Platform: Google Meet b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:23220:21
+Skipping parse - notes don't look like JSON b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:23228:19
+Mapped session "science": 
+Object { id: "session_1774691386429_8fpv8suzl", topic: "science", scheduledAt: "2026-03-30T05:00:00.000Z", registeredCount: 0, registeredStudents: [], isPublic: false, capacity: 10 }
+b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:23238:24
+Parsing notes for "Genomics": {"sessionType":"public","capacity":50,"registeredStudents":["88cd18ff-e250-4eb9-a562-e6ea9ca134a1"],"platform":"Google Meet","description":"We do genomics mentorship, and take it up high to workshop and hands-on sessions","registeredCount":1} b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:23220:21
+Parsed successfully: 
+Object { sessionType: "public", capacity: 50, registeredStudents: (1) […], platform: "Google Meet", description: "We do genomics mentorship, and take it up high to workshop and hands-on sessions", registeredCount: 1 }
+b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:23223:21
+Mapped session "Genomics": 
+Object { id: "session_1774698627766_k30lhp1m5", topic: "Genomics", scheduledAt: "2026-03-31T05:00:00.000Z", registeredCount: 1, registeredStudents: (1) […], isPublic: true, capacity: 50 }
+b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:23238:24
+Final filter for "science": 
+Object { isPublic: false, passes: false }
+b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:23239:33
+Final filter for "Genomics": 
+Object { isPublic: true, passes: true }
+b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:23239:33
+=== Final public sessions ===: 
+Array [ {…} ]
+b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:23243:15
+API Response (/mentorships): 
+Object { success: true, mentorships: (1) […] }
+b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:19286:17
+API Response (/resources?mentorshipId=mentorship_1774650271842_7nbm5j0sp): 
+Object { success: true, resources: [] }
+b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:19286:17
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/mentorships b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:19278:13
+Getting valid token... b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:19261:13
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/sessions b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:19278:13
+Getting valid token... b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:19261:13
+✓ Valid token obtained 2 b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:19263:100
+API Response (/sessions): 
+Object { success: true, sessions: (2) […] }
+b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:19286:17
+API Response (/mentorships): 
+Object { success: true, mentorships: (1) […] }
+b49b7046ed3f11c2482991326e1a1cec7028a2ff.js:19286:17

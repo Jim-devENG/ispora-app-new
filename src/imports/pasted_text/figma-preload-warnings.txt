@@ -1,0 +1,1615 @@
+Running frontend commit 736e42afce44f9fae25012411ff072d3daa792a8 iSpora:513:9
+The resource at “https://www.figma.com/webpack-artifacts/assets/cssbuilder-b411695bb8784b77.min.js.br” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. iSpora
+The resource at “https://www.figma.com/webpack-artifacts/assets/svg-7492c7f3309adaa9.min.js.br” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. iSpora
+The resource at “https://www.figma.com/webpack-artifacts/assets/svg-f8783d25aff607ec.min.js.br” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. iSpora
+The resource at “https://www.figma.com/webpack-artifacts/assets/svg-0746701e6e1f90d6.min.js.br” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. iSpora
+The resource at “https://www.figma.com/webpack-artifacts/assets/svg-512b08f53c5fb7bf.min.js.br” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. iSpora
+The resource at “https://www.figma.com/webpack-artifacts/assets/vendor-16e166cdd80eed93.min.js.br” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. iSpora
+The resource at “https://www.figma.com/webpack-artifacts/assets/vendor-78a0a7650a996381.min.js.br” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. iSpora
+The resource at “https://www.figma.com/webpack-artifacts/assets/vendor-4bbd5293f6ea84a8.min.js.br” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. iSpora
+The resource at “https://www.figma.com/webpack-artifacts/assets/vendor-cd29252a8e6adadf.min.js.br” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. iSpora
+The resource at “https://www.figma.com/webpack-artifacts/assets/vendor-b029513bb5425697.min.js.br” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. iSpora
+The resource at “https://www.figma.com/webpack-artifacts/assets/vendor-d773c33e8b881311.min.js.br” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. iSpora
+The resource at “https://www.figma.com/webpack-artifacts/assets/5535-33db8e3c4b51928a.min.js.br” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. iSpora
+The resource at “https://www.figma.com/webpack-artifacts/assets/3928-dfaa4320dd9b9083.min.js.br” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. iSpora
+The resource at “https://www.figma.com/webpack-artifacts/assets/6532-54b22d838f179e6e.min.js.br” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. iSpora
+The resource at “https://www.figma.com/webpack-artifacts/assets/2798-4f58a7962908aaeb.min.js.br” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. iSpora
+The resource at “https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. iSpora
+The resource at “https://www.figma.com/webpack-artifacts/assets/6650-c78f057ca7cc7a77.min.js.br” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. iSpora
+The resource at “https://www.figma.com/webpack-artifacts/assets/2807-2dc5f790518ff8e6.min.js.br” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. iSpora
+The resource at “https://www.figma.com/webpack-artifacts/assets/9978-6f6584150bb330bb.min.js.br” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. iSpora
+The resource at “https://www.figma.com/webpack-artifacts/assets/1082-de8895a7a0a24017.min.js.br” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. iSpora
+The resource at “https://www.figma.com/webpack-artifacts/assets/5215-f30227ace1173c65.min.js.br” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. iSpora
+The resource at “https://www.figma.com/webpack-artifacts/assets/3632-7590236e65359e16.min.js.br” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. iSpora
+The resource at “https://www.figma.com/webpack-artifacts/assets/3996-dcefb0ca44d1d7dd.min.js.br” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. iSpora
+The resource at “https://www.figma.com/webpack-artifacts/assets/8505-8b005becbd05b15a.min.js.br” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. iSpora
+The resource at “https://www.figma.com/webpack-artifacts/assets/96-312a50b53b0c52fc.min.js.br” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. iSpora
+The resource at “https://www.figma.com/webpack-artifacts/assets/1121-01962bc4aa67b096.min.js.br” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. iSpora
+The resource at “https://www.figma.com/webpack-artifacts/assets/408-8261f3b6783d878d.min.js.br” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. iSpora
+The resource at “https://www.figma.com/webpack-artifacts/assets/9039-8d27442be232c1e2.min.js.br” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. iSpora
+The resource at “https://www.figma.com/webpack-artifacts/assets/9560-5073b4f189836d7f.min.js.br” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. iSpora
+The resource at “https://www.figma.com/webpack-artifacts/assets/8237-de74ce0b4c7588f2.min.js.br” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. iSpora
+The resource at “https://www.figma.com/webpack-artifacts/assets/618-054c8bf06662d9cf.min.js.br” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. iSpora
+The resource at “https://www.figma.com/webpack-artifacts/assets/9638-34bf844d82152443.min.js.br” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. iSpora
+The resource at “https://www.figma.com/webpack-artifacts/assets/4739-43d86b878b0d5ffe.min.js.br” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. iSpora
+The resource at “https://www.figma.com/webpack-artifacts/assets/figma_app-11fded8b37a62f5c.min.js.br” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. iSpora
+The resource at “https://static.figma.com/uploads/2cca21a49f7dad1daa612d73d50357644671964a” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. iSpora
+The resource at “https://static.figma.com/uploads/43d730c59dee2754d29e0d946ba8cb8339656979” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. iSpora
+The resource at “https://static.figma.com/webfont/1/DSEG7Classic-Italic-Custom2.woff2” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. iSpora
+The resource at “https://www.figma.com/webpack-artifacts/assets/figma_app-a72dbae372dd2bf8.min.en.json.br” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. iSpora
+Loaded 41 scripts (6372090b), 22 from cache (1077109b) vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Statsig is not ready to log exposures, will retry in 1 seconds vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[Livegraph] Connected 2026-04-04T20:44:45.343Z. vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Ignoring unsupported entryTypes: longtask. vendor-16e166cdd80eed93.min.js.br:6:30822
+WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER. 408-8261f3b6783d878d.min.js.br:3:7665
+Autosave Changes not available or already claimed by another tab undefined vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Ignoring unsupported entryTypes: longtask. figma_app-11fded8b37a62f5c.min.js.br:248:318197
+Feature Policy: Skipping unsupported feature name “local-network-access”. vendor-core-83c17265f2588e9e.min.js.br:11:3242
+Feature Policy: Skipping unsupported feature name “local-network-access”. vendor-core-83c17265f2588e9e.min.js.br:11:3468
+Feature Policy: Skipping unsupported feature name “local-network-access”. vendor-core-83c17265f2588e9e.min.js.br:11:89556
+Feature Policy: Skipping unsupported feature name “local-network-access”. vendor-core-83c17265f2588e9e.min.js.br:11:3242
+Feature Policy: Skipping unsupported feature name “local-network-access”. vendor-core-83c17265f2588e9e.min.js.br:11:3468
+Feature Policy: Skipping unsupported feature name “local-network-access”. vendor-core-83c17265f2588e9e.min.js.br:11:89935
+Local Network Access detected: top-level site “https://www.figma.com/make/rA5wVerfHRa5lKpVnXU5O6/iSpora?p=f&t=Qek2au0uqxCJc2kY-0”, initiator “https://www.figma.com/make/rA5wVerfHRa5lKpVnXU5O6/iSpora?p=f&t=Qek2au0uqxCJc2kY-0”, accessing target “http://127.0.0.1:44950/figma/version” (127.0.0.1:44950) via xhr. Secure context: True, prompt action: (null) iSpora
+Local Network Access detected: top-level site “https://www.figma.com/make/rA5wVerfHRa5lKpVnXU5O6/iSpora?p=f&t=Qek2au0uqxCJc2kY-0”, initiator “https://www.figma.com/make/rA5wVerfHRa5lKpVnXU5O6/iSpora?p=f&t=Qek2au0uqxCJc2kY-0”, accessing target “http://127.0.0.1:44950/figma/desktop/set-open-in-desktop-app-pref” (127.0.0.1:44950) via xhr. Secure context: True, prompt action: (null) iSpora
+[Local fonts] using agent vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Local Network Access detected: top-level site “https://www.figma.com/make/rA5wVerfHRa5lKpVnXU5O6/iSpora?p=f&t=Qek2au0uqxCJc2kY-0”, initiator “https://www.figma.com/make/rA5wVerfHRa5lKpVnXU5O6/iSpora?p=f&t=Qek2au0uqxCJc2kY-0”, accessing target “http://127.0.0.1:44950/figma/font-files?freetype_minimum_api_version=20&isolate=true&” (127.0.0.1:44950) via xhr. Secure context: True, prompt action: (null) iSpora
+[import] git: 487f6ea70fe73a577b9612a53f4c2f00271badc2, stamp: 29AF7E4F0AE2F13A vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Local Network Access detected: top-level site “https://www.figma.com/make/rA5wVerfHRa5lKpVnXU5O6/iSpora?p=f&t=Qek2au0uqxCJc2kY-0”, initiator “https://www.figma.com/make/rA5wVerfHRa5lKpVnXU5O6/iSpora?p=f&t=Qek2au0uqxCJc2kY-0”, accessing target “http://127.0.0.1:44950/figma/desktop/can-open-url?userID=1155220099117335391&url=https://www.figma.com” (127.0.0.1:44950) via xhr. Secure context: True, prompt action: (null) iSpora
+Local Network Access detected: top-level site “https://www.figma.com/make/rA5wVerfHRa5lKpVnXU5O6/iSpora?p=f&t=Qek2au0uqxCJc2kY-0”, initiator “https://www.figma.com/make/rA5wVerfHRa5lKpVnXU5O6/iSpora?p=f&t=Qek2au0uqxCJc2kY-0”, accessing target “http://127.0.0.1:44950/figma/spelling/get-languages” (127.0.0.1:44950) via xhr. Secure context: True, prompt action: (null) 2 iSpora
+Content-Security-Policy warnings 2
+[Fullscreen] Booting... (emscripten version 4.0.21) vendor-core-83c17265f2588e9e.min.js.br:54:12591
+WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER. 6908-70612eeaa357fad0.min.js.br:1670:177859
+WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER. 6908-70612eeaa357fad0.min.js.br:335:22621
+[GPU] graphicsAPI:"WebGL 2", vendor:"Google Inc. (Intel)", renderer:"ANGLE (Intel, Intel(R) HD Graphics 400 Direct3D11 vs_5_0 ps_5_0), or similar" version:"OpenGL ES 3.0 (WebGL 2.0)" vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[Fullscreen] Ready in 46350.0ms vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[FullscreenApp] calling setEditorTheme and setting preference dark vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[FullscreenApp] calling setEditorTheme and setting preference dark vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Local Network Access detected: top-level site “https://www.figma.com/make/rA5wVerfHRa5lKpVnXU5O6/iSpora?p=f&t=Qek2au0uqxCJc2kY-0”, initiator “https://www.figma.com/make/rA5wVerfHRa5lKpVnXU5O6/iSpora?p=f&t=Qek2au0uqxCJc2kY-0”, accessing target “http://127.0.0.1:44950/figma/version” (127.0.0.1:44950) via xhr. Secure context: True, prompt action: (null) iSpora
+WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER. 9039-8d27442be232c1e2.min.js.br:7:160635
+Ignoring unsupported entryTypes: long-animation-frame. figma_app-11fded8b37a62f5c.min.js.br:47:660680
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://events.statsigapi.net/v1/rgstr. (Reason: CORS request did not succeed). Status code: (null).
+[MultiplayerSession] Joining file version 106 (initial load) vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Migration succeeded: context: fullscreen_migrate_SceneGraphManager, version: 106, duration: 1ms. vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[esbuild-wasm] Initializing from URL: /webpack-artifacts/assets/2b68f2d3d5e8b3d6.wasm devtools_worker-026db7d6fb7b9a02.min.js.br:1190:34829
+[esbuild-wasm] Initialized devtools_worker-026db7d6fb7b9a02.min.js.br:1190:35167
+[devtools] Initialized LS vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[esbuild virtual-fs] Unresolvable CSS import: "/src/styles/index.css" from "file:///src/app/App.tsx". Mapping to figma:noop. devtools_worker-026db7d6fb7b9a02.min.js.br:1997:2485
+[devtools] Initialized LS vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS header ‘Access-Control-Allow-Origin’ missing). Status code: 302.
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS request did not succeed). Status code: (null).
+[esbuild] Build error: Error: Build failed with 10 errors:
+virtual-fs:file:///src/app/components/MentorDashboard.tsx:6:26: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/SessionLandingPage.tsx:19:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/Settings.tsx:3:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/SupportRequestsAdmin.tsx:3:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/SupportWidget.tsx:3:41: ERROR: Could not resolve "/utils/supabase/info"
+...
+    Z https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:8
+    G https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    y https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    G https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    x/c["on-end"]/< https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    "on-end" https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    f https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    p https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:3
+    p https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:3
+    f https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    x https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    readFromStdout https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    onmessage https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+devtools_worker-026db7d6fb7b9a02.min.js.br:2018:3766
+Error: Build failed with 10 errors:
+virtual-fs:file:///src/app/components/MentorDashboard.tsx:6:26: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/SessionLandingPage.tsx:19:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/Settings.tsx:3:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/SupportRequestsAdmin.tsx:3:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/SupportWidget.tsx:3:41: ERROR: Could not resolve "/utils/supabase/info"
+...
+    Z https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:8
+    G https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    y https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    G https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    x/c["on-end"]/< https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    "on-end" https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    f https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    p https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:3
+    p https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:3
+    f https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    x https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    readFromStdout https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    onmessage https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+devtools_worker-026db7d6fb7b9a02.min.js.br:3254:1877
+Ignoring unsupported entryTypes: longtask. figma_app-11fded8b37a62f5c.min.js.br:248:318197
+[Fullscreen] loadtime=122.91s maxmem=41055608 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:3242
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:89576
+Cookie “__cf_bm” has been rejected for invalid domain. 49deec17-e26b-4e31-9117-942b0aba82c6-v2-figmaiframepreview.figma.site
+[Livegraph] Connection closed. Code: 4001, reason: draining_start vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cookie “__cf_bm” has been rejected for invalid domain. 49deec17-e26b-4e31-9117-942b0aba82c6-v2-figmaiframepreview.figma.site
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4255&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[Livegraph] Connected 2026-04-04T20:55:42.983Z. vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] Joining file version 106 (skip_reload reconnect) vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS header ‘Access-Control-Allow-Origin’ missing). Status code: 302.
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS request did not succeed). Status code: (null).
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://events.statsigapi.net/v1/rgstr. (Reason: CORS request did not succeed). Status code: (null). 7
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://statsigapi.net/v1/sdk_exception. (Reason: CORS request did not succeed). Status code: (null). 2
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:3242
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:89576
+Cookie “__cf_bm” has been rejected for invalid domain. 2 49deec17-e26b-4e31-9117-942b0aba82c6-v2-figmaiframepreview.figma.site
+[Livegraph] Connection closed. Code: 4010, reason: server_idle vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Uncaught (in promise) Error: XHR for "https://www.figma.com/api/web_logger/metrics/active_session" failed with status 0
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+2 6908-70612eeaa357fad0.min.js.br:1403:8881
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4255&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://s3-figma-force-client-reloads-production.figma.com/periodic_refresh.json. (Reason: CORS request did not succeed). Status code: (null).
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/livegraph?pv=1&pr=44a010a41d3ac869&pt=1775335449&ph=hov6raiMrhfbw6uKqeGFXfE-IGPiSULpQu7j4OKGGZc&userId=1155220099117335391&anonUserId=dcbc1763-4751-42d1-898b-faa4af7f240d&clientType=web&commitHash=736e42afce44f9fae25012411ff072d3daa792a8&requestedProtocolVersion=1&clientUrl=https%3A%2F%2Fwww.figma.com%2Fmake%2FrA5wVerfHRa5lKpVnXU5O6%2FiSpora%3Fp%3Df%26t%3DQek2au0uqxCJc2kY-0&connectionType=reconnect&reconnect=1. 9978-6f6584150bb330bb.min.js.br:64:95146
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4255&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0. 9039-8d27442be232c1e2.min.js.br:3:174361
+[Livegraph] Connection closed. Code: 1006, reason: vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Uncaught (in promise) Error: XHR for "https://www.figma.com/api/web_logger/metrics/web.cortex.error" failed with status 0
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+6908-70612eeaa357fad0.min.js.br:1403:8881
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/livegraph?pv=1&pr=44a010a41d3ac869&pt=1775335449&ph=hov6raiMrhfbw6uKqeGFXfE-IGPiSULpQu7j4OKGGZc&userId=1155220099117335391&anonUserId=dcbc1763-4751-42d1-898b-faa4af7f240d&clientType=web&commitHash=736e42afce44f9fae25012411ff072d3daa792a8&requestedProtocolVersion=1&clientUrl=https%3A%2F%2Fwww.figma.com%2Fmake%2FrA5wVerfHRa5lKpVnXU5O6%2FiSpora%3Fp%3Df%26t%3DQek2au0uqxCJc2kY-0&connectionType=reconnect&reconnect=2. 9978-6f6584150bb330bb.min.js.br:64:95146
+[Livegraph] Connection closed. Code: 1006, reason: vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/livegraph?pv=1&pr=44a010a41d3ac869&pt=1775335449&ph=hov6raiMrhfbw6uKqeGFXfE-IGPiSULpQu7j4OKGGZc&userId=1155220099117335391&anonUserId=dcbc1763-4751-42d1-898b-faa4af7f240d&clientType=web&commitHash=736e42afce44f9fae25012411ff072d3daa792a8&requestedProtocolVersion=1&clientUrl=https%3A%2F%2Fwww.figma.com%2Fmake%2FrA5wVerfHRa5lKpVnXU5O6%2FiSpora%3Fp%3Df%26t%3DQek2au0uqxCJc2kY-0&connectionType=reconnect&reconnect=3. 9978-6f6584150bb330bb.min.js.br:64:95146
+[Livegraph] Connection closed. Code: 1006, reason: vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4255&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4255&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0. 9039-8d27442be232c1e2.min.js.br:3:174361
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/livegraph?pv=1&pr=44a010a41d3ac869&pt=1775335449&ph=hov6raiMrhfbw6uKqeGFXfE-IGPiSULpQu7j4OKGGZc&userId=1155220099117335391&anonUserId=dcbc1763-4751-42d1-898b-faa4af7f240d&clientType=web&commitHash=736e42afce44f9fae25012411ff072d3daa792a8&requestedProtocolVersion=1&clientUrl=https%3A%2F%2Fwww.figma.com%2Fmake%2FrA5wVerfHRa5lKpVnXU5O6%2FiSpora%3Fp%3Df%26t%3DQek2au0uqxCJc2kY-0&connectionType=reconnect&reconnect=4. 9978-6f6584150bb330bb.min.js.br:64:95146
+[Livegraph] Connection closed. Code: 1006, reason: vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Error: XHR for "https://www.figma.com/api/web_logger/metrics_batched" failed with status 0
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/livegraph?pv=1&pr=44a010a41d3ac869&pt=1775335449&ph=hov6raiMrhfbw6uKqeGFXfE-IGPiSULpQu7j4OKGGZc&userId=1155220099117335391&anonUserId=dcbc1763-4751-42d1-898b-faa4af7f240d&clientType=web&commitHash=736e42afce44f9fae25012411ff072d3daa792a8&requestedProtocolVersion=1&clientUrl=https%3A%2F%2Fwww.figma.com%2Fmake%2FrA5wVerfHRa5lKpVnXU5O6%2FiSpora%3Fp%3Df%26t%3DQek2au0uqxCJc2kY-0&connectionType=reconnect&reconnect=5. 9978-6f6584150bb330bb.min.js.br:64:95146
+[Livegraph] Connection closed. Code: 1006, reason: vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4255&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4255&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0. 9039-8d27442be232c1e2.min.js.br:3:174361
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/livegraph?pv=1&pr=44a010a41d3ac869&pt=1775335449&ph=hov6raiMrhfbw6uKqeGFXfE-IGPiSULpQu7j4OKGGZc&userId=1155220099117335391&anonUserId=dcbc1763-4751-42d1-898b-faa4af7f240d&clientType=web&commitHash=736e42afce44f9fae25012411ff072d3daa792a8&requestedProtocolVersion=1&clientUrl=https%3A%2F%2Fwww.figma.com%2Fmake%2FrA5wVerfHRa5lKpVnXU5O6%2FiSpora%3Fp%3Df%26t%3DQek2au0uqxCJc2kY-0&connectionType=reconnect&reconnect=6. 9978-6f6584150bb330bb.min.js.br:64:95146
+[Livegraph] Connection closed. Code: 1006, reason: vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Error: XHR for "https://www.figma.com/api/web_logger/histogram_batched" failed with status 0
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4255&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4255&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0. 9039-8d27442be232c1e2.min.js.br:3:174361
+Error: XHR for "https://www.figma.com/api/web_logger/metrics_batched" failed with status 0
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/livegraph?pv=1&pr=44a010a41d3ac869&pt=1775335449&ph=hov6raiMrhfbw6uKqeGFXfE-IGPiSULpQu7j4OKGGZc&userId=1155220099117335391&anonUserId=dcbc1763-4751-42d1-898b-faa4af7f240d&clientType=web&commitHash=736e42afce44f9fae25012411ff072d3daa792a8&requestedProtocolVersion=1&clientUrl=https%3A%2F%2Fwww.figma.com%2Fmake%2FrA5wVerfHRa5lKpVnXU5O6%2FiSpora%3Fp%3Df%26t%3DQek2au0uqxCJc2kY-0&connectionType=reconnect&reconnect=7. 9978-6f6584150bb330bb.min.js.br:64:95146
+[Livegraph] Connection closed. Code: 1006, reason: vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Uncaught (in promise) Error: XHR for "https://www.figma.com/api/web_logger/metrics/web.cortex.error" failed with status 0
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+6908-70612eeaa357fad0.min.js.br:1403:8881
+Error: XHR for "https://www.figma.com/api/web_logger/histogram_batched" failed with status 0
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4255&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4255&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0. 9039-8d27442be232c1e2.min.js.br:3:174361
+Error: XHR for "https://www.figma.com/api/web_logger/metrics_batched" failed with status 0
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/livegraph?pv=1&pr=44a010a41d3ac869&pt=1775335449&ph=hov6raiMrhfbw6uKqeGFXfE-IGPiSULpQu7j4OKGGZc&userId=1155220099117335391&anonUserId=dcbc1763-4751-42d1-898b-faa4af7f240d&clientType=web&commitHash=736e42afce44f9fae25012411ff072d3daa792a8&requestedProtocolVersion=1&clientUrl=https%3A%2F%2Fwww.figma.com%2Fmake%2FrA5wVerfHRa5lKpVnXU5O6%2FiSpora%3Fp%3Df%26t%3DQek2au0uqxCJc2kY-0&connectionType=reconnect&reconnect=8. 9978-6f6584150bb330bb.min.js.br:64:95146
+[Livegraph] Connection closed. Code: 1006, reason: vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Uncaught (in promise) Error: XHR for "https://www.figma.com/api/web_logger/metrics/web.cortex.error" failed with status 0
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+6908-70612eeaa357fad0.min.js.br:1403:8881
+Error: XHR for "https://www.figma.com/api/web_logger/metrics_batched" failed with status 0
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Error: XHR for "https://www.figma.com/api/web_logger/histogram_batched" failed with status 0
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4255&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4255&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0. 9039-8d27442be232c1e2.min.js.br:3:174361
+Error: XHR for "https://www.figma.com/api/web_logger/metrics_batched" failed with status 0
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Error: XHR for "https://www.figma.com/api/web_logger/histogram_batched" failed with status 0
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Uncaught (in promise) Error: XHR for "https://www.figma.com/api/web_logger/metrics/web.cortex.error" failed with status 0
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+6908-70612eeaa357fad0.min.js.br:1403:8881
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4255&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4255&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0. 9039-8d27442be232c1e2.min.js.br:3:174361
+Error: XHR for "https://www.figma.com/api/web_logger/metrics_batched" failed with status 0
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/livegraph?pv=1&pr=44a010a41d3ac869&pt=1775335449&ph=hov6raiMrhfbw6uKqeGFXfE-IGPiSULpQu7j4OKGGZc&userId=1155220099117335391&anonUserId=dcbc1763-4751-42d1-898b-faa4af7f240d&clientType=web&commitHash=736e42afce44f9fae25012411ff072d3daa792a8&requestedProtocolVersion=1&clientUrl=https%3A%2F%2Fwww.figma.com%2Fmake%2FrA5wVerfHRa5lKpVnXU5O6%2FiSpora%3Fp%3Df%26t%3DQek2au0uqxCJc2kY-0&connectionType=reconnect&reconnect=9. 9978-6f6584150bb330bb.min.js.br:64:95146
+[Livegraph] Connection closed. Code: 1006, reason: vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Error: XHR for "https://www.figma.com/api/web_logger/histogram_batched" failed with status 0
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Error: XHR for "https://www.figma.com/api/web_logger/histogram_batched" failed with status 0
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4255&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/livegraph?pv=1&pr=44a010a41d3ac869&pt=1775335449&ph=hov6raiMrhfbw6uKqeGFXfE-IGPiSULpQu7j4OKGGZc&userId=1155220099117335391&anonUserId=dcbc1763-4751-42d1-898b-faa4af7f240d&clientType=web&commitHash=736e42afce44f9fae25012411ff072d3daa792a8&requestedProtocolVersion=1&clientUrl=https%3A%2F%2Fwww.figma.com%2Fmake%2FrA5wVerfHRa5lKpVnXU5O6%2FiSpora%3Fp%3Df%26t%3DQek2au0uqxCJc2kY-0&connectionType=reconnect&reconnect=10. 9978-6f6584150bb330bb.min.js.br:64:95146
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4255&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0. 9039-8d27442be232c1e2.min.js.br:3:174361
+[Livegraph] Connection closed. Code: 1006, reason: vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Uncaught (in promise) Error: XHR for "https://www.figma.com/api/web_logger/metrics/web.cortex.error" failed with status 0
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+6908-70612eeaa357fad0.min.js.br:1403:8881
+Error: XHR for "https://www.figma.com/api/web_logger/metrics_batched" failed with status 0
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Error: XHR for "https://www.figma.com/api/web_logger/metrics_batched" failed with status 0
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Uncaught (in promise) Error: XHR for "https://www.figma.com/api/web_logger/metrics/web.cortex.error" failed with status 0
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+6908-70612eeaa357fad0.min.js.br:1403:8881
+Error: XHR for "https://www.figma.com/api/web_logger/metrics_batched" failed with status 0
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Error: XHR for "https://www.figma.com/api/web_logger/histogram_batched" failed with status 0
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Error: XHR for "https://www.figma.com/api/web_logger/metrics_batched" failed with status 0
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Uncaught (in promise) Error: XHR for "https://www.figma.com/api/web_logger/metrics/web.cortex.error" failed with status 0
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+6908-70612eeaa357fad0.min.js.br:1403:8881
+Error: XHR for "https://www.figma.com/api/web_logger/histogram_batched" failed with status 0
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4255&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] Joining file version 106 (skip_reload reconnect) vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS header ‘Access-Control-Allow-Origin’ missing). Status code: 302.
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS request did not succeed). Status code: (null).
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:3242
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:89576
+Cookie “__cf_bm” has been rejected for invalid domain. 2 49deec17-e26b-4e31-9117-942b0aba82c6-v2-figmaiframepreview.figma.site
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4255&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[Livegraph] Connected 2026-04-04T21:37:34.752Z. vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] Joining file version 106 (skip_reload reconnect) vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS header ‘Access-Control-Allow-Origin’ missing). Status code: 302.
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS request did not succeed). Status code: (null).
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:3242
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:89576
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://static.figma.com/figjam_dots/FFCD29.png. (Reason: CORS request did not succeed). Status code: (null).
+Cookie “__cf_bm” has been rejected for invalid domain. 49deec17-e26b-4e31-9117-942b0aba82c6-v2-figmaiframepreview.figma.site
+MouseEvent.mozInputSource is deprecated. Use PointerEvent.pointerType instead. vendor-a3172ba722ec4e21.min.js.br:9:8704
+Cookie “__cf_bm” has been rejected for invalid domain. 2 49deec17-e26b-4e31-9117-942b0aba82c6-v2-figmaiframepreview.figma.site
+Too many elapsed hits of react since last report vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cookie “__cf_bm” has been rejected for invalid domain. 49deec17-e26b-4e31-9117-942b0aba82c6-v2-figmaiframepreview.figma.site
+[Livegraph] Connection closed. Code: 4010, reason: server_idle vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4257&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[Livegraph] Connected 2026-04-04T22:04:10.940Z. vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:3242
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:89576
+[esbuild virtual-fs] Unresolvable CSS import: "/src/styles/index.css" from "file:///src/app/App.tsx". Mapping to figma:noop. devtools_worker-026db7d6fb7b9a02.min.js.br:1997:2485
+[esbuild] Build error: Error: Build failed with 10 errors:
+virtual-fs:file:///src/app/components/MentorDashboard.tsx:6:26: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/SessionLandingPage.tsx:19:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/Settings.tsx:3:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/SupportRequestsAdmin.tsx:3:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/SupportWidget.tsx:3:41: ERROR: Could not resolve "/utils/supabase/info"
+...
+    Z https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:8
+    G https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    y https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    G https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    x/c["on-end"]/< https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    "on-end" https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    f https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    p https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:3
+    p https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:3
+    f https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    x https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    readFromStdout https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    onmessage https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+devtools_worker-026db7d6fb7b9a02.min.js.br:2018:3766
+Error: Build failed with 10 errors:
+virtual-fs:file:///src/app/components/MentorDashboard.tsx:6:26: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/SessionLandingPage.tsx:19:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/Settings.tsx:3:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/SupportRequestsAdmin.tsx:3:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/SupportWidget.tsx:3:41: ERROR: Could not resolve "/utils/supabase/info"
+...
+    Z https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:8
+    G https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    y https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    G https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    x/c["on-end"]/< https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    "on-end" https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    f https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    p https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:3
+    p https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:3
+    f https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    x https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    readFromStdout https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    onmessage https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+devtools_worker-026db7d6fb7b9a02.min.js.br:3254:1877
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4257&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0. 9039-8d27442be232c1e2.min.js.br:3:174361
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:3242
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:89576
+Cookie “__cf_bm” has been rejected for invalid domain. 49deec17-e26b-4e31-9117-942b0aba82c6-v2-figmaiframepreview.figma.site
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4257&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] Joining file version 106 (skip_reload reconnect) vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS header ‘Access-Control-Allow-Origin’ missing). Status code: 302.
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS request did not succeed). Status code: (null).
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:3242
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:89576
+Cookie “__cf_bm” has been rejected for invalid domain. 49deec17-e26b-4e31-9117-942b0aba82c6-v2-figmaiframepreview.figma.site
+[Livegraph] Connection closed. Code: 4010, reason: server_idle vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4257&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[Livegraph] Connected 2026-04-04T22:53:15.123Z. vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:3242
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:89576
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:3242
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:89576
+[MultiplayerSession] Joining file version 106 (skip_reload reconnect) vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cookie “__cf_bm” has been rejected for invalid domain. 2 49deec17-e26b-4e31-9117-942b0aba82c6-v2-figmaiframepreview.figma.site
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS header ‘Access-Control-Allow-Origin’ missing). Status code: 302.
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS request did not succeed). Status code: (null).
+[esbuild virtual-fs] Unresolvable CSS import: "/src/styles/index.css" from "file:///src/app/App.tsx". Mapping to figma:noop. devtools_worker-026db7d6fb7b9a02.min.js.br:1997:2485
+[esbuild] Build error: Error: Build failed with 10 errors:
+virtual-fs:file:///src/app/components/MentorDashboard.tsx:6:26: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/SessionLandingPage.tsx:19:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/Settings.tsx:3:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/SupportRequestsAdmin.tsx:3:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/SupportWidget.tsx:3:41: ERROR: Could not resolve "/utils/supabase/info"
+...
+    Z https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:8
+    G https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    y https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    G https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    x/c["on-end"]/< https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    "on-end" https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    f https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    p https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:3
+    p https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:3
+    f https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    x https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    readFromStdout https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    onmessage https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+devtools_worker-026db7d6fb7b9a02.min.js.br:2018:3766
+Error: Build failed with 10 errors:
+virtual-fs:file:///src/app/components/MentorDashboard.tsx:6:26: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/SessionLandingPage.tsx:19:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/Settings.tsx:3:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/SupportRequestsAdmin.tsx:3:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/SupportWidget.tsx:3:41: ERROR: Could not resolve "/utils/supabase/info"
+...
+    Z https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:8
+    G https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    y https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    G https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    x/c["on-end"]/< https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    "on-end" https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    f https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    p https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:3
+    p https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:3
+    f https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    x https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    readFromStdout https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    onmessage https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+devtools_worker-026db7d6fb7b9a02.min.js.br:3254:1877
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:3242
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:89576
+Cookie “__cf_bm” has been rejected for invalid domain. 49deec17-e26b-4e31-9117-942b0aba82c6-v2-figmaiframepreview.figma.site
+[Livegraph] Connection closed. Code: 4010, reason: server_idle vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4259&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[Livegraph] Connected 2026-04-04T23:42:36.906Z. vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] Joining file version 106 (skip_reload reconnect) vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS header ‘Access-Control-Allow-Origin’ missing). Status code: 302.
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS request did not succeed). Status code: (null).
+The connection to wss://www.figma.com/api/livegraph?pv=1&pr=44a010a41d3ac869&pt=1775335449&ph=hov6raiMrhfbw6uKqeGFXfE-IGPiSULpQu7j4OKGGZc&userId=1155220099117335391&anonUserId=dcbc1763-4751-42d1-898b-faa4af7f240d&clientType=web&commitHash=736e42afce44f9fae25012411ff072d3daa792a8&requestedProtocolVersion=1&clientUrl=https%3A%2F%2Fwww.figma.com%2Fmake%2FrA5wVerfHRa5lKpVnXU5O6%2FiSpora%3Fp%3Df%26t%3DQek2au0uqxCJc2kY-0&connectionType=reconnect&reconnect=1 was interrupted while the page was loading. 9978-6f6584150bb330bb.min.js.br:64:95146
+The connection to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4259&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 was interrupted while the page was loading. 9039-8d27442be232c1e2.min.js.br:3:174361
+[Livegraph] Connection closed. Code: 1006, reason: vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Uncaught (in promise) Error: XHR for "https://www.figma.com/api/web_logger/metrics/web.cortex.error" failed with status 0
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+2 6908-70612eeaa357fad0.min.js.br:1403:8881
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:3242
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:89576
+Cookie “__cf_bm” has been rejected for invalid domain. 49deec17-e26b-4e31-9117-942b0aba82c6-v2-figmaiframepreview.figma.site
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4259&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[Livegraph] Connected 2026-04-05T07:14:58.593Z. vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] Joining file version 106 (skip_reload reconnect) vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS header ‘Access-Control-Allow-Origin’ missing). Status code: 302.
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS request did not succeed). Status code: (null).
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:3242
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:89576
+Cookie “__cf_bm” has been rejected for invalid domain. 49deec17-e26b-4e31-9117-942b0aba82c6-v2-figmaiframepreview.figma.site
+[Livegraph] Connection closed. Code: 1001, reason: vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4259&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[Livegraph] Connected 2026-04-05T07:16:38.200Z. vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] Joining file version 106 (skip_reload reconnect) vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS header ‘Access-Control-Allow-Origin’ missing). Status code: 302.
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS request did not succeed). Status code: (null).
+Error: XHR for "https://www.figma.com/api/web_logger/metrics_batched" failed with status 0
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Uncaught (in promise) Error: XHR for "https://www.figma.com/api/web_logger/metrics/web.cortex.error" failed with status 0
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+3 6908-70612eeaa357fad0.min.js.br:1403:8881
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://s3-figma-force-client-reloads-production.figma.com/periodic_refresh.json. (Reason: CORS request did not succeed). Status code: (null).
+Uncaught (in promise) Error: XHR for "https://www.figma.com/api/web_logger/metrics/active_session" failed with status 0
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+6908-70612eeaa357fad0.min.js.br:1403:8881
+[Livegraph] Connection closed. Code: 4010, reason: server_idle vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4259&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[Livegraph] Connected 2026-04-05T07:57:52.913Z. vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] Joining file version 106 (skip_reload reconnect) vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS header ‘Access-Control-Allow-Origin’ missing). Status code: 302.
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS request did not succeed). Status code: (null).
+Uncaught (in promise) Error: XHR for "https://www.figma.com/api/web_logger/metrics/active_session" failed with status 0
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+6908-70612eeaa357fad0.min.js.br:1403:8881
+[esbuild virtual-fs] Unresolvable CSS import: "/src/styles/index.css" from "file:///src/app/App.tsx". Mapping to figma:noop. devtools_worker-026db7d6fb7b9a02.min.js.br:1997:2485
+[esbuild] Build error: Error: Build failed with 10 errors:
+virtual-fs:file:///src/app/components/MentorDashboard.tsx:6:26: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/SessionLandingPage.tsx:19:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/Settings.tsx:3:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/SupportRequestsAdmin.tsx:3:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/SupportWidget.tsx:3:41: ERROR: Could not resolve "/utils/supabase/info"
+...
+    Z https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:8
+    G https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    y https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    G https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    x/c["on-end"]/< https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    "on-end" https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    f https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    p https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:3
+    p https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:3
+    f https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    x https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    readFromStdout https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    onmessage https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+devtools_worker-026db7d6fb7b9a02.min.js.br:2018:3766
+Error: Build failed with 10 errors:
+virtual-fs:file:///src/app/components/MentorDashboard.tsx:6:26: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/SessionLandingPage.tsx:19:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/Settings.tsx:3:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/SupportRequestsAdmin.tsx:3:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/SupportWidget.tsx:3:41: ERROR: Could not resolve "/utils/supabase/info"
+...
+    Z https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:8
+    G https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    y https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    G https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    x/c["on-end"]/< https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    "on-end" https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    f https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    p https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:3
+    p https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:3
+    f https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    x https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    readFromStdout https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    onmessage https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+devtools_worker-026db7d6fb7b9a02.min.js.br:3254:1877
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:3242
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:89576
+Cookie “__cf_bm” has been rejected for invalid domain. 49deec17-e26b-4e31-9117-942b0aba82c6-v2-figmaiframepreview.figma.site
+downloadable font: glyf: empty gid 3 used as component in glyph 483 (font-family: "Roboto Mono" style:normal weight:400 stretch:100 src index:0) source: https://static.figma.com/webfont/1/RobotoMono-Regular.woff2
+Failed to fetch snapshot files: Error: XHR for "/api/rev/rA5wVerfHRa5lKpVnXU5O6/code_snapshot/2d442e492b0bd19875d4faec0b4d241881272986181f7d239879c7d282008bc0" failed with status 404
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cookie “__cf_bm” has been rejected for invalid domain. 49deec17-e26b-4e31-9117-942b0aba82c6-v2-figmaiframepreview.figma.site
+Sentry event id: 32516ed15dfd4d349d707b5b7c0b1686 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Sentry event id: 1b03298eccb2416c99e2f0328da4692d vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Sentry event id: 0880ef6036d741c48fa36c9506fa530f vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Sentry event id: 9575ab26871c435493adc00c4ea87588 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Sentry event id: 873d91af94b94512bcac164d057fdc61 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cookie “__cf_bm” has been rejected for invalid domain. 2 49deec17-e26b-4e31-9117-942b0aba82c6-v2-figmaiframepreview.figma.site
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4349&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] Joining file version 106 (full reconnect) vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS header ‘Access-Control-Allow-Origin’ missing). Status code: 302.
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS request did not succeed). Status code: (null).
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:3242
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:89576
+[esbuild virtual-fs] Unresolvable CSS import: "/src/styles/index.css" from "file:///src/app/App.tsx". Mapping to figma:noop. devtools_worker-026db7d6fb7b9a02.min.js.br:1997:2485
+Cookie “__cf_bm” has been rejected for invalid domain. 49deec17-e26b-4e31-9117-942b0aba82c6-v2-figmaiframepreview.figma.site
+[esbuild] Build error: Error: Build failed with 10 errors:
+virtual-fs:file:///src/app/components/MentorDashboard.tsx:6:26: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/SessionLandingPage.tsx:19:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/Settings.tsx:3:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/SupportRequestsAdmin.tsx:3:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/SupportWidget.tsx:3:41: ERROR: Could not resolve "/utils/supabase/info"
+...
+    Z https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:8
+    G https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    y https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    G https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    x/c["on-end"]/< https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    "on-end" https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    f https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    p https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:3
+    p https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:3
+    f https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    x https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    readFromStdout https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    onmessage https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+devtools_worker-026db7d6fb7b9a02.min.js.br:2018:3766
+Error: Build failed with 10 errors:
+virtual-fs:file:///src/app/components/MentorDashboard.tsx:6:26: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/SessionLandingPage.tsx:19:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/Settings.tsx:3:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/SupportRequestsAdmin.tsx:3:41: ERROR: Could not resolve "/utils/supabase/info"
+virtual-fs:file:///src/app/components/SupportWidget.tsx:3:41: ERROR: Could not resolve "/utils/supabase/info"
+...
+    Z https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:8
+    G https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    y https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    G https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    x/c["on-end"]/< https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    "on-end" https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    f https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    p https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:3
+    p https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:3
+    f https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    x https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    readFromStdout https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+    onmessage https://www.figma.com/webpack-artifacts/assets/devtools_worker-026db7d6fb7b9a02.min.js.br:676
+devtools_worker-026db7d6fb7b9a02.min.js.br:3254:1877
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:3242
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:89576
+Cookie “__cf_bm” has been rejected for invalid domain. 49deec17-e26b-4e31-9117-942b0aba82c6-v2-figmaiframepreview.figma.site
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4352&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] Joining file version 106 (skip_reload reconnect) vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS header ‘Access-Control-Allow-Origin’ missing). Status code: 302.
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS request did not succeed). Status code: (null).
+Sentry event id: 166bfe4b9e384cd1a595c1e214e7ad8a vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cookie “__cf_bm” has been rejected for invalid domain. 2 49deec17-e26b-4e31-9117-942b0aba82c6-v2-figmaiframepreview.figma.site
+Cookie “__cf_bm” has been rejected for invalid domain. dashboard
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4428&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] Joining file version 106 (journaled reconnect) vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS header ‘Access-Control-Allow-Origin’ missing). Status code: 302.
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS request did not succeed). Status code: (null).
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:3242
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:89576
+Cookie “__cf_bm” has been rejected for invalid domain. 4 49deec17-e26b-4e31-9117-942b0aba82c6-v2-figmaiframepreview.figma.site
+Failed to fetch snapshot files: Error: XHR for "/api/rev/rA5wVerfHRa5lKpVnXU5O6/code_snapshot/709b047b9173a36139b9e6b722645e1c6420b26e72caf7563fe0b3c08652a194" failed with status 404
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cookie “__cf_bm” has been rejected for invalid domain. 49deec17-e26b-4e31-9117-942b0aba82c6-v2-figmaiframepreview.figma.site
+This site appears to use a scroll-linked positioning effect. This may not work well with asynchronous panning; see https://firefox-source-docs.mozilla.org/performance/scroll-linked_effects.html for further details and to join the discussion on related tools and features! iSpora
+The connection to wss://www.figma.com/api/livegraph?pv=1&pr=44a010a41d3ac869&pt=1775335449&ph=hov6raiMrhfbw6uKqeGFXfE-IGPiSULpQu7j4OKGGZc&userId=1155220099117335391&anonUserId=dcbc1763-4751-42d1-898b-faa4af7f240d&clientType=web&commitHash=736e42afce44f9fae25012411ff072d3daa792a8&requestedProtocolVersion=1&clientUrl=https%3A%2F%2Fwww.figma.com%2Fmake%2FrA5wVerfHRa5lKpVnXU5O6%2FiSpora%3Fp%3Df%26t%3DQek2au0uqxCJc2kY-0&connectionType=reconnect&reconnect=1 was interrupted while the page was loading. 9978-6f6584150bb330bb.min.js.br:64:95146
+[Livegraph] Connection closed. Code: 1006, reason: vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[DeltaStreamController] Error in consume: TypeError: Error in input stream vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[DeltaStreamController] Error in consume method: TypeError: Error in input stream vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Sentry event id: 3fe7a101f0f04e9ca1261fe7cd13eb7b vendor-core-83c17265f2588e9e.min.js.br:54:12591
+The connection to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4428&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 was interrupted while the page was loading. 9039-8d27442be232c1e2.min.js.br:3:174361
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/livegraph?pv=1&pr=44a010a41d3ac869&pt=1775335449&ph=hov6raiMrhfbw6uKqeGFXfE-IGPiSULpQu7j4OKGGZc&userId=1155220099117335391&anonUserId=dcbc1763-4751-42d1-898b-faa4af7f240d&clientType=web&commitHash=736e42afce44f9fae25012411ff072d3daa792a8&requestedProtocolVersion=1&clientUrl=https%3A%2F%2Fwww.figma.com%2Fmake%2FrA5wVerfHRa5lKpVnXU5O6%2FiSpora%3Fp%3Df%26t%3DQek2au0uqxCJc2kY-0&connectionType=reconnect&reconnect=1. 9978-6f6584150bb330bb.min.js.br:64:95146
+[Livegraph] Connection closed. Code: 1006, reason: vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4442&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4442&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0. 9039-8d27442be232c1e2.min.js.br:3:174361
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://events.statsigapi.net/v1/rgstr. (Reason: CORS request did not succeed). Status code: (null).
+The connection to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4442&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 was interrupted while the page was loading. 9039-8d27442be232c1e2.min.js.br:3:174361
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://events.statsigapi.net/v1/rgstr. (Reason: CORS request did not succeed). Status code: (null). 2
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4442&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/livegraph?pv=1&pr=44a010a41d3ac869&pt=1775335449&ph=hov6raiMrhfbw6uKqeGFXfE-IGPiSULpQu7j4OKGGZc&userId=1155220099117335391&anonUserId=dcbc1763-4751-42d1-898b-faa4af7f240d&clientType=web&commitHash=736e42afce44f9fae25012411ff072d3daa792a8&requestedProtocolVersion=1&clientUrl=https%3A%2F%2Fwww.figma.com%2Fmake%2FrA5wVerfHRa5lKpVnXU5O6%2FiSpora%3Fp%3Df%26t%3DQek2au0uqxCJc2kY-0&connectionType=reconnect&reconnect=2. 9978-6f6584150bb330bb.min.js.br:64:95146
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4442&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0. 9039-8d27442be232c1e2.min.js.br:3:174361
+Error: XHR for "https://www.figma.com/api/web_logger/histogram_batched" failed with status 0
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[Livegraph] Connection closed. Code: 1006, reason: vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Uncaught (in promise) Error: XHR for "https://www.figma.com/api/web_logger/metrics/web.cortex.error" failed with status 0
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+4 6908-70612eeaa357fad0.min.js.br:1403:8881
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/livegraph?pv=1&pr=44a010a41d3ac869&pt=1775335449&ph=hov6raiMrhfbw6uKqeGFXfE-IGPiSULpQu7j4OKGGZc&userId=1155220099117335391&anonUserId=dcbc1763-4751-42d1-898b-faa4af7f240d&clientType=web&commitHash=736e42afce44f9fae25012411ff072d3daa792a8&requestedProtocolVersion=1&clientUrl=https%3A%2F%2Fwww.figma.com%2Fmake%2FrA5wVerfHRa5lKpVnXU5O6%2FiSpora%3Fp%3Df%26t%3DQek2au0uqxCJc2kY-0&connectionType=reconnect&reconnect=3. 9978-6f6584150bb330bb.min.js.br:64:95146
+[Livegraph] Connection closed. Code: 1006, reason: vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Error: XHR for "https://www.figma.com/api/web_logger/metrics_batched" failed with status 0
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://events.statsigapi.net/v1/rgstr. (Reason: CORS request did not succeed). Status code: (null). 2
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/livegraph?pv=1&pr=44a010a41d3ac869&pt=1775335449&ph=hov6raiMrhfbw6uKqeGFXfE-IGPiSULpQu7j4OKGGZc&userId=1155220099117335391&anonUserId=dcbc1763-4751-42d1-898b-faa4af7f240d&clientType=web&commitHash=736e42afce44f9fae25012411ff072d3daa792a8&requestedProtocolVersion=1&clientUrl=https%3A%2F%2Fwww.figma.com%2Fmake%2FrA5wVerfHRa5lKpVnXU5O6%2FiSpora%3Fp%3Df%26t%3DQek2au0uqxCJc2kY-0&connectionType=reconnect&reconnect=4. 9978-6f6584150bb330bb.min.js.br:64:95146
+[Livegraph] Connection closed. Code: 1006, reason: vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4442&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4442&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0. 9039-8d27442be232c1e2.min.js.br:3:174361
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/livegraph?pv=1&pr=44a010a41d3ac869&pt=1775335449&ph=hov6raiMrhfbw6uKqeGFXfE-IGPiSULpQu7j4OKGGZc&userId=1155220099117335391&anonUserId=dcbc1763-4751-42d1-898b-faa4af7f240d&clientType=web&commitHash=736e42afce44f9fae25012411ff072d3daa792a8&requestedProtocolVersion=1&clientUrl=https%3A%2F%2Fwww.figma.com%2Fmake%2FrA5wVerfHRa5lKpVnXU5O6%2FiSpora%3Fp%3Df%26t%3DQek2au0uqxCJc2kY-0&connectionType=reconnect&reconnect=5. 9978-6f6584150bb330bb.min.js.br:64:95146
+[Livegraph] Connection closed. Code: 1006, reason: vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4442&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Uncaught (in promise) Error: XHR for "https://www.figma.com/api/web_logger/metrics/web.cortex.error" failed with status 0
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+6908-70612eeaa357fad0.min.js.br:1403:8881
+Error: XHR for "https://www.figma.com/api/web_logger/histogram_batched" failed with status 0
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4442&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0. 9039-8d27442be232c1e2.min.js.br:3:174361
+Error: XHR for "https://www.figma.com/api/web_logger/metrics_batched" failed with status 0
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4442&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4442&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0. 9039-8d27442be232c1e2.min.js.br:3:174361
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://events.statsigapi.net/v1/rgstr. (Reason: CORS request did not succeed). Status code: (null). 2
+Firefox can’t establish a connection to the server at wss://www.figma.com/api/livegraph?pv=1&pr=44a010a41d3ac869&pt=1775335449&ph=hov6raiMrhfbw6uKqeGFXfE-IGPiSULpQu7j4OKGGZc&userId=1155220099117335391&anonUserId=dcbc1763-4751-42d1-898b-faa4af7f240d&clientType=web&commitHash=736e42afce44f9fae25012411ff072d3daa792a8&requestedProtocolVersion=1&clientUrl=https%3A%2F%2Fwww.figma.com%2Fmake%2FrA5wVerfHRa5lKpVnXU5O6%2FiSpora%3Fp%3Df%26t%3DQek2au0uqxCJc2kY-0&connectionType=reconnect&reconnect=6. 9978-6f6584150bb330bb.min.js.br:64:95146
+[Livegraph] Connection closed. Code: 1006, reason: vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Error: XHR for "https://www.figma.com/api/web_logger/histogram_batched" failed with status 0
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Uncaught (in promise) Error: XHR for "https://www.figma.com/api/web_logger/metrics/web.cortex.error" failed with status 0
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+6908-70612eeaa357fad0.min.js.br:1403:8881
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://errors.figma.com/api/sentry/api/56203/envelope/?sentry_key=d1b12a8fbe424e4b956eb33cadd5b30d&sentry_version=7&sentry_client=sentry.javascript.browser%2F8.40.0. (Reason: CORS request did not succeed). Status code: (null).
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4442&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[Livegraph] Connected 2026-04-05T08:55:54.378Z. vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cookie “__cf_bm” has been rejected for invalid domain. dashboard
+[MultiplayerSession] Joining file version 106 (skip_reload reconnect) vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS header ‘Access-Control-Allow-Origin’ missing). Status code: 302.
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS request did not succeed). Status code: (null).
+Cookie “__cf_bm” has been rejected for invalid domain. 49deec17-e26b-4e31-9117-942b0aba82c6-v2-figmaiframepreview.figma.site
+Cookie “ajs_anonymous_id” has been rejected for invalid domain. 49deec17-e26b-4e31-9117-942b0aba82c6-v2-figmaiframepreview.figma.site
+Partitioned cookie or storage access was provided to “https://49deec17-e26b-4e31-9117-942b0aba82c6-v2-figmaiframepreview.figma.site/” because it is loaded in the third-party context and dynamic state partitioning is enabled. code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:984:13415
+Cookie “__cf_bm” has been rejected for invalid domain. 5 49deec17-e26b-4e31-9117-942b0aba82c6-v2-figmaiframepreview.figma.site
+Failed to fetch snapshot files: Error: XHR for "/api/rev/rA5wVerfHRa5lKpVnXU5O6/code_snapshot/17b41a816d34f13198f6f897ee75de23d68b62995125c1ec1804546e77ed59a8" failed with status 404
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cookie “__cf_bm” has been rejected for invalid domain. 49deec17-e26b-4e31-9117-942b0aba82c6-v2-figmaiframepreview.figma.site
+Failed to fetch snapshot files: Error: XHR for "/api/rev/rA5wVerfHRa5lKpVnXU5O6/code_snapshot/1435cf39d187e0c4225200e6ceb8297565a5131ff16eb2d8dd8cd314176d39cb" failed with status 404
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cookie “__cf_bm” has been rejected for invalid domain. 49deec17-e26b-4e31-9117-942b0aba82c6-v2-figmaiframepreview.figma.site
+Failed to fetch snapshot files: Error: XHR for "/api/rev/rA5wVerfHRa5lKpVnXU5O6/code_snapshot/d4ddb7550cd5d9f0619055f8d348e4301f9f42d7d4f0f3dac1b1bc41140c4096" failed with status 404
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cookie “__cf_bm” has been rejected for invalid domain. 49deec17-e26b-4e31-9117-942b0aba82c6-v2-figmaiframepreview.figma.site
+Cookie “ajs_anonymous_id” has been rejected for invalid domain. 49deec17-e26b-4e31-9117-942b0aba82c6-v2-figmaiframepreview.figma.site
+Partitioned cookie or storage access was provided to “https://49deec17-e26b-4e31-9117-942b0aba82c6-v2-figmaiframepreview.figma.site/” because it is loaded in the third-party context and dynamic state partitioning is enabled. code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:984:13415
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4471&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[MultiplayerSession] Joining file version 106 (skip_reload reconnect) vendor-core-83c17265f2588e9e.min.js.br:54:12591
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS header ‘Access-Control-Allow-Origin’ missing). Status code: 302.
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS request did not succeed). Status code: (null).
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://app-4pchot7igd6gczmbhzwdlnojyhoqymfvvpuypoasal5xozno2nca.makeproxy-c.figma.site/@react-refresh. (Reason: CORS request did not succeed). Status code: (null).
+Module source URI is not allowed in this document: “https://app-4pchot7igd6gczmbhzwdlnojyhoqymfvvpuypoasal5xozno2nca.makeproxy-c.figma.site/@react-refresh”. code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:3242
+Feature Policy: Skipping unsupported feature name “autoplay”. vendor-core-83c17265f2588e9e.min.js.br:11:89576
+Cookie “ajs_anonymous_id” has been rejected for invalid domain. 49deec17-e26b-4e31-9117-942b0aba82c6-v2-figmaiframepreview.figma.site
+Partitioned cookie or storage access was provided to “https://49deec17-e26b-4e31-9117-942b0aba82c6-v2-figmaiframepreview.figma.site/” because it is loaded in the third-party context and dynamic state partitioning is enabled. code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:984:13415
+Cookie “__cf_bm” has been rejected for invalid domain. 49deec17-e26b-4e31-9117-942b0aba82c6-v2-figmaiframepreview.figma.site
+[vite] connecting... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31249
+Cookie “__cf_bm” has been rejected for invalid domain. app-3mmpugxx4tfx4klvxqkcma7dlgnz56hvymwwif433qvrwxymf3na.makeproxy-c.figma.site
+[vite] connected. code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31249
+SupportWidget Debug: 
+Object { hasUser: false, hasToken: false, userEmail: undefined, pathname: "/", isLandingOrAuth: true, showWidget: false }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+❌ Widget NOT showing because: 
+Object { hasUser: false, hasToken: false, isLandingOrAuth: true, pathname: "/" }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+=== Loading Session on Mount === code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Found old token in localStorage, will verify with Supabase code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+✓ Supabase session found, fetching user profile... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+=== Auth State Change === code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Event: INITIAL_SESSION code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Session exists: true code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+SupportWidget Debug: 
+Object { hasUser: false, hasToken: false, userEmail: undefined, pathname: "/dashboard", isLandingOrAuth: false, showWidget: false }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+❌ Widget NOT showing because: 
+Object { hasUser: false, hasToken: false, isLandingOrAuth: false, pathname: "/dashboard" }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+✓ Session restored successfully code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+=== Session Loading Complete === code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+SupportWidget Debug: 
+Object { hasUser: true, hasToken: true, userEmail: "oluseyi88@gmail.com", pathname: "/dashboard", isLandingOrAuth: false, showWidget: true }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+✅ Widget SHOULD BE showing code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/mentorships code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Getting valid token... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/sessions code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Token refresh already in progress, waiting... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/sessions/public code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Token refresh already in progress, waiting... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/mentorships code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Token refresh already in progress, waiting... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/notifications code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Token refresh already in progress, waiting... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+✓ Token refreshed and obtained code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Authorization header being sent: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY... 5 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+=== Auth State Change === code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Event: INITIAL_SESSION code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Session exists: true code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+SupportWidget Debug: 
+Object { hasUser: true, hasToken: true, userEmail: "oluseyi88@gmail.com", pathname: "/dashboard", isLandingOrAuth: false, showWidget: true }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+✅ Widget SHOULD BE showing code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+=== Auth State Change === code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Event: INITIAL_SESSION code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Session exists: true code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Response (/notifications): 
+Object { success: true, notifications: (91) […] }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Response (/sessions/public): 
+Object { error: '<!DOCTYPE html>\n<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->\n<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->\n<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en-US"> <![endif]-->\n<!--[if gt IE 8]><!--> <html class="no-js" lang="en-US"> <!--<![endif]-->\n<head>\n\n<title> | 502: Bad gateway</title>\n<meta charset="UTF-8" />\n<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />\n<meta http-equiv="X-UA-Compatible" content="IE=Edge" />\n<meta name="robots" content="noindex, nofollow" />\n<meta name="viewport" content="width=device-width,initial-scale=1" />\n<link rel="stylesheet" id="cf_styles-css" href="/cdn-cgi/styles/main.css" />\n</head>\n<body>\n<div id="cf-wrapper">\n    <div id="cf-error-details" class="p-0">\n        <header class="mx-auto pt-10 lg:pt-6 lg:px-8 w-240 lg:w-full mb-8">\n            <h1 class="inline-block sm:block sm:mb-2 font-light text-60 lg:text-4xl text-black-dark leading-tight mr-2">\n                <span class="inline-block">Bad gateway</span>\n                <span class="code-label">Error code 502</span>\n            </h1>\n            <div>\n                Visit <a href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_502&utm_campaign=xyqdwrqiduxpxmszwhwb.supabase.co" target="_blank" rel="noopener noreferrer">cloudflare.com</a> for more information.\n            </div>\n            <div class="mt-3">2026-04-05 09:32:58 UTC</div>\n        </header>\n        <div class="my-8 bg-gradient-gray">\n            <div class="w-240 lg:w-full mx-auto">\n                <div class="clearfix md:px-8">\n                    <div id="cf-browser-status" class=" relative w-1/3 md:w-full py-15 md:p-0 md:py-8 md:text-left md:border-solid md:border-0 md:border-b md:border-gray-400 overflow-hidden float-left md:float-none text-center">\n  <div class="relative mb-10 md:m-0">\n    \n    <span class="cf-icon-browser block md:hidden h-20 bg-center bg-no-repeat"></span>\n    <span class="cf-icon-ok w-12 h-12 absolute left-1/2 md:left-auto md:right-0 md:top-0 -ml-6 -bottom-4"></span>\n    \n  </div>\n  <span class="md:block w-full truncate">You</span>\n  <h3 class="md:inline-block mt-3 md:mt-0 text-2xl text-gray-600 font-light leading-1.3">\n  \n    Browser\n  \n  </h3>\n  \n  <span class="leading-1.3 text-2xl text-green-success">Working</span>\n  \n</div>\n                    <div id="cf-cloudflare-status" class=" relative w-1/3 md:w-full py-15 md:p-0 md:py-8 md:text-left md:border-solid md:border-0 md:border-b md:border-gray-400 overflow-hidden float-left md:float-none text-center">\n  <div class="relative mb-10 md:m-0">\n    <a href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_502&#38;utm_campaign=xyqdwrqiduxpxmszwhwb.supabase.co" target="_blank" rel="noopener noreferrer">\n    <span class="cf-icon-cloud block md:hidden h-20 bg-center bg-no-repeat"></span>\n    <span class="cf-icon-ok w-12 h-12 absolute left-1/2 md:left-auto md:right-0 md:top-0 -ml-6 -bottom-4"></span>\n    </a>\n  </div>\n  <span class="md:block w-full truncate">London</span>\n  <h3 class="md:inline-block mt-3 md:mt-0 text-2xl text-gray-600 font-light leading-1.3">\n  <a href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_502&utm_campaign=xyqdwrqiduxpxmszwhwb.supabase.co" target="_blank" rel="noopener noreferrer">\n    Cloudflare\n  </a>\n  </h3>\n  \n  <span class="leading-1.3 text-2xl text-green-success">Working</span>\n  \n</div>\n                    <div id="cf-host-status" class="cf-error-source relative w-1/3 md:w-full py-15 md:p-0 md:py-8 md:text-left md:border-solid md:border-0 md:border-b md:border-gray-400 overflow-hidden float-left md:float-none text-center">\n  <div class="relative mb-10 md:m-0">\n    \n    <span class="cf-icon-server block md:hidden h-20 bg-center bg-no-repeat"></span>\n    <span class="cf-icon-error w-12 h-12 absolute left-1/2 md:left-auto md:right-0 md:top-0 -ml-6 -bottom-4"></span>\n    \n  </div>\n  <span class="md:block w-full truncate">xyqdwrqiduxpxmszwhwb.supabase.co</span>\n  <h3 class="md:inline-block mt-3 md:mt-0 text-2xl text-gray-600 font-light leading-1.3">\n  \n    Host\n  \n  </h3>\n  \n  <span class="leading-1.3 text-2xl text-red-error">Error</span>\n  \n</div>\n                </div>\n            </div>\n        </div>\n\n        <div class="w-240 lg:w-full mx-auto mb-8 lg:px-8">\n            <div class="clearfix">\n                <div class="w-1/2 md:w-full float-left pr-6 md:pb-10 md:pr-0 leading-relaxed">\n                    <h2 class="text-3xl font-normal leading-1.3 mb-4">What happened?</h2>\n                    <p>The web server reported a bad gateway error.</p>\n                </div>\n                <div class="w-1/2 md:w-full float-left leading-relaxed">\n                    <h2 class="text-3xl font-normal leading-1.3 mb-4">What can I do?</h2>\n                    <p class="mb-6">Please try again in a few minutes.</p>\n                </div>\n            </div>\n        </div>\n\n        <div class="cf-error-footer cf-wrapper w-240 lg:w-full py-10 sm:py-4 sm:px-8 mx-auto text-center sm:text-left border-solid border-0 border-t border-gray-300">\n    <p class="text-13">\n      <span class="cf-footer-item sm:block sm:mb-1">Cloudflare Ray ID: <strong class="font-semibold">9e778bc0ce1363ed</strong></span>\n      <span class="cf-footer-separator sm:hidden">&bull;</span>\n      <span id="cf-footer-item-ip" class="cf-footer-item hidden sm:block sm:mb-1">\n        Your IP:\n        <button type="button" id="cf-footer-ip-reveal" class="cf-footer-ip-reveal-btn">Click to reveal</button>\n        <span class="hidden" id="cf-footer-ip">18.175.53.95</span>\n        <span class="cf-footer-separator sm:hidden">&bull;</span>\n      </span>\n      <span class="cf-footer-item sm:block sm:mb-1"><span>Performance &amp; security by</span> <a rel="noopener noreferrer" href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_502&#38;utm_campaign=xyqdwrqiduxpxmszwhwb.supabase.co" id="brand_link" target="_blank">Cloudflare</a></span>\n      \n    </p>\n    <script>(function(){function d(){var b=a.getElementById("cf-footer-item-ip"),c=a.getElementById("cf-footer-ip-reveal");b&&"classList"in b&&(b.classList.remove("hidden"),c.addEventListener("click",function(){c.classList.add("hidden");a.getElementById("cf-footer-ip").classList.remove("hidden")}))}var a=document;document.addEventListener&&a.addEventListener("DOMContentLoaded",d)})();</script>\n  </div><!-- /.error-footer -->\n\n    </div>\n</div>\n</body>\n</html>' }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Error (/sessions/public): <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en-US"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en-US"> <!--<![endif]-->
+<head>
+
+<title> | 502: Bad gateway</title>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" id="cf_styles-css" href="/cdn-cgi/styles/main.css" />
+</head>
+<body>
+<div id="cf-wrapper">
+    <div id="cf-error-details" class="p-0">
+        <header class="mx-auto pt-10 lg:pt-6 lg:px-8 w-240 lg:w-full mb-8">
+            <h1 class="inline-block sm:block sm:mb-2 font-light text-60 lg:text-4xl text-black-dark leading-tight mr-2">
+                <span class="inline-block">Bad gateway</span>
+                <span class="code-label">Error code 502</span>
+            </h1>
+            <div>
+                Visit <a href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_502&utm_campaign=xyqdwrqiduxpxmszwhwb.supabase.co" target="_blank" rel="noopener noreferrer">cloudflare.com</a> for more information.
+            </div>
+            <div class="mt-3">2026-04-05 09:32:58 UTC</div>
+        </header>
+        <div class="my-8 bg-gradient-gray">
+            <div class="w-240 lg:w-full mx-auto">
+                <div class="clearfix md:px-8">
+                    <div id="cf-browser-status" class=" relative w-1/3 md:w-full py-15 md:p-0 md:py-8 md:text-left md:border-solid md:border-0 md:border-b md:border-gray-400 overflow-hidden float-left md:float-none text-center">
+  <div class="relative mb-10 md:m-0">
+    
+    <span class="cf-icon-browser block md:hidden h-20 bg-center bg-no-repeat"></span>
+    <span class="cf-icon-ok w-12 h-12 absolute left-1/2 md:left-auto md:right-0 md:top-0 -ml-6 -bottom-4"></span>
+    
+  </div>
+  <span class="md:block w-full truncate">You</span>
+  <h3 class="md:inline-block mt-3 md:mt-0 text-2xl text-gray-600 font-light leading-1.3">
+  
+    Browser
+  
+  </h3>
+  
+  <span class="leading-1.3 text-2xl text-green-success">Working</span>
+  
+</div>
+                    <div id="cf-cloudflare-status" class=" relative w-1/3 md:w-full py-15 md:p-0 md:py-8 md:text-left md:border-solid md:border-0 md:border-b md:border-gray-400 overflow-hidden float-left md:float-none text-center">
+  <div class="relative mb-10 md:m-0">
+    <a href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_502&#38;utm_campaign=xyqdwrqiduxpxmszwhwb.supabase.co" target="_blank" rel="noopener noreferrer">
+    <span class="cf-icon-cloud block md:hidden h-20 bg-center bg-no-repeat"></span>
+    <span class="cf-icon-ok w-12 h-12 absolute left-1/2 md:left-auto md:right-0 md:top-0 -ml-6 -bottom-4"></span>
+    </a>
+  </div>
+  <span class="md:block w-full truncate">London</span>
+  <h3 class="md:inline-block mt-3 md:mt-0 text-2xl text-gray-600 font-light leading-1.3">
+  <a href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_502&utm_campaign=xyqdwrqiduxpxmszwhwb.supabase.co" target="_blank" rel="noopener noreferrer">
+    Cloudflare
+  </a>
+  </h3>
+  
+  <span class="leading-1.3 text-2xl text-green-success">Working</span>
+  
+</div>
+                    <div id="cf-host-status" class="cf-error-source relative w-1/3 md:w-full py-15 md:p-0 md:py-8 md:text-left md:border-solid md:border-0 md:border-b md:border-gray-400 overflow-hidden float-left md:float-none text-center">
+  <div class="relative mb-10 md:m-0">
+    
+    <span class="cf-icon-server block md:hidden h-20 bg-center bg-no-repeat"></span>
+    <span class="cf-icon-error w-12 h-12 absolute left-1/2 md:left-auto md:right-0 md:top-0 -ml-6 -bottom-4"></span>
+    
+  </div>
+  <span class="md:block w-full truncate">xyqdwrqiduxpxmszwhwb.supabase.co</span>
+  <h3 class="md:inline-block mt-3 md:mt-0 text-2xl text-gray-600 font-light leading-1.3">
+  
+    Host
+  
+  </h3>
+  
+  <span class="leading-1.3 text-2xl text-red-error">Error</span>
+  
+</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-240 lg:w-full mx-auto mb-8 lg:px-8">
+            <div class="clearfix">
+                <div class="w-1/2 md:w-full float-left pr-6 md:pb-10 md:pr-0 leading-relaxed">
+                    <h2 class="text-3xl font-normal leading-1.3 mb-4">What happened?</h2>
+                    <p>The web server reported a bad gateway error.</p>
+                </div>
+                <div class="w-1/2 md:w-full float-left leading-relaxed">
+                    <h2 class="text-3xl font-normal leading-1.3 mb-4">What can I do?</h2>
+                    <p class="mb-6">Please try again in a few minutes.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cf-error-footer cf-wrapper w-240 lg:w-full py-10 sm:py-4 sm:px-8 mx-auto text-center sm:text-left border-solid border-0 border-t border-gray-300">
+    <p class="text-13">
+      <span class="cf-footer-item sm:block sm:mb-1">Cloudflare Ray ID: <strong class="font-semibold">9e778bc0ce1363ed</strong></span>
+      <span class="cf-footer-separator sm:hidden">&bull;</span>
+      <span id="cf-footer-item-ip" class="cf-footer-item hidden sm:block sm:mb-1">
+        Your IP:
+        <button type="button" id="cf-footer-ip-reveal" class="cf-footer-ip-reveal-btn">Click to reveal</button>
+        <span class="hidden" id="cf-footer-ip">18.175.53.95</span>
+        <span class="cf-footer-separator sm:hidden">&bull;</span>
+      </span>
+      <span class="cf-footer-item sm:block sm:mb-1"><span>Performance &amp; security by</span> <a rel="noopener noreferrer" href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_502&#38;utm_campaign=xyqdwrqiduxpxmszwhwb.supabase.co" id="brand_link" target="_blank">Cloudflare</a></span>
+      
+    </p>
+    <script>(function(){function d(){var b=a.getElementById("cf-footer-item-ip"),c=a.getElementById("cf-footer-ip-reveal");b&&"classList"in b&&(b.classList.remove("hidden"),c.addEventListener("click",function(){c.classList.add("hidden");a.getElementById("cf-footer-ip").classList.remove("hidden")}))}var a=document;document.addEventListener&&a.addEventListener("DOMContentLoaded",d)})();</script>
+  </div><!-- /.error-footer -->
+
+    </div>
+</div>
+</body>
+</html> code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:17:102314
+API Error (/sessions/public): Error: <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en-US"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en-US"> <!--<![endif]-->
+<head>
+
+<title> | 502: Bad gateway</title>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" id="cf_styles-css" href="/cdn-cgi/styles/main.css" />
+</head>
+<body>
+<div id="cf-wrapper">
+    <div id="cf-error-details" class="p-0">
+        <header class="mx-auto pt-10 lg:pt-6 lg:px-8 w-240 lg:w-full mb-8">
+            <h1 class="inline-block sm:block sm:mb-2 font-light text-60 lg:text-4xl text-black-dark leading-tight mr-2">
+                <span class="inline-block">Bad gateway</span>
+                <span class="code-label">Error code 502</span>
+            </h1>
+            <div>
+                Visit <a href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_502&utm_campaign=xyqdwrqiduxpxmszwhwb.supabase.co" target="_blank" rel="noopener noreferrer">cloudflare.com</a> for more information.
+            </div>
+            <div class="mt-3">2026-04-05 09:32:58 UTC</div>
+        </header>
+        <div class="my-8 bg-gradient-gray">
+            <div class="w-240 lg:w-full mx-auto">
+                <div class="clearfix md:px-8">
+                    <div id="cf-browser-status" class=" relative w-1/3 md:w-full py-15 md:p-0 md:py-8 md:text-left md:border-solid md:border-0 md:border-b md:border-gray-400 overflow-hidden float-left md:float-none text-center">
+  <div class="relative mb-10 md:m-0">
+    
+    <span class="cf-icon-browser block md:hidden h-20 bg-center bg-no-repeat"></span>
+    <span class="cf-icon-ok w-12 h-12 absolute left-1/2 md:left-auto md:right-0 md:top-0 -ml-6 -bottom-4"></span>
+    
+  </div>
+  <span class="md:block w-full truncate">You</span>
+  <h3 class="md:inline-block mt-3 md:mt-0 text-2xl text-gray-600 font-light leading-1.3">
+  
+    Browser
+  
+  </h3>
+  
+  <span class="leading-1.3 text-2xl text-green-success">Working</span>
+  
+</div>
+                    <div id="cf-cloudflare-status" class=" relative w-1/3 md:w-full py-15 md:p-0 md:py-8 md:text-left md:border-solid md:border-0 md:border-b md:border-gray-400 overflow-hidden float-left md:float-none text-center">
+  <div class="relative mb-10 md:m-0">
+    <a href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_502&#38;utm_campaign=xyqdwrqiduxpxmszwhwb.supabase.co" target="_blank" rel="noopener noreferrer">
+    <span class="cf-icon-cloud block md:hidden h-20 bg-center bg-no-repeat"></span>
+    <span class="cf-icon-ok w-12 h-12 absolute left-1/2 md:left-auto md:right-0 md:top-0 -ml-6 -bottom-4"></span>
+    </a>
+  </div>
+  <span class="md:block w-full truncate">London</span>
+  <h3 class="md:inline-block mt-3 md:mt-0 text-2xl text-gray-600 font-light leading-1.3">
+  <a href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_502&utm_campaign=xyqdwrqiduxpxmszwhwb.supabase.co" target="_blank" rel="noopener noreferrer">
+    Cloudflare
+  </a>
+  </h3>
+  
+  <span class="leading-1.3 text-2xl text-green-success">Working</span>
+  
+</div>
+                    <div id="cf-host-status" class="cf-error-source relative w-1/3 md:w-full py-15 md:p-0 md:py-8 md:text-left md:border-solid md:border-0 md:border-b md:border-gray-400 overflow-hidden float-left md:float-none text-center">
+  <div class="relative mb-10 md:m-0">
+    
+    <span class="cf-icon-server block md:hidden h-20 bg-center bg-no-repeat"></span>
+    <span class="cf-icon-error w-12 h-12 absolute left-1/2 md:left-auto md:right-0 md:top-0 -ml-6 -bottom-4"></span>
+    
+  </div>
+  <span class="md:block w-full truncate">xyqdwrqiduxpxmszwhwb.supabase.co</span>
+  <h3 class="md:inline-block mt-3 md:mt-0 text-2xl text-gray-600 font-light leading-1.3">
+  
+    Host
+  
+  </h3>
+  
+  <span class="leading-1.3 text-2xl text-red-error">Error</span>
+  
+</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-240 lg:w-full mx-auto mb-8 lg:px-8">
+            <div class="clearfix">
+                <div class="w-1/2 md:w-full float-left pr-6 md:pb-10 md:pr-0 leading-relaxed">
+                    <h2 class="text-3xl font-normal leading-1.3 mb-4">What happened?</h2>
+                    <p>The web server reported a bad gateway error.</p>
+                </div>
+                <div class="w-1/2 md:w-full float-left leading-relaxed">
+                    <h2 class="text-3xl font-normal leading-1.3 mb-4">What can I do?</h2>
+                    <p class="mb-6">Please try again in a few minutes.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cf-error-footer cf-wrapper w-240 lg:w-full py-10 sm:py-4 sm:px-8 mx-auto text-center sm:text-left border-solid border-0 border-t border-gray-300">
+    <p class="text-13">
+      <span class="cf-footer-item sm:block sm:mb-1">Cloudflare Ray ID: <strong class="font-semibold">9e778bc0ce1363ed</strong></span>
+      <span class="cf-footer-separator sm:hidden">&bull;</span>
+      <span id="cf-footer-item-ip" class="cf-footer-item hidden sm:block sm:mb-1">
+        Your IP:
+        <button type="button" id="cf-footer-ip-reveal" class="cf-footer-ip-reveal-btn">Click to reveal</button>
+        <span class="hidden" id="cf-footer-ip">18.175.53.95</span>
+        <span class="cf-footer-separator sm:hidden">&bull;</span>
+      </span>
+      <span class="cf-footer-item sm:block sm:mb-1"><span>Performance &amp; security by</span> <a rel="noopener noreferrer" href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_502&#38;utm_campaign=xyqdwrqiduxpxmszwhwb.supabase.co" id="brand_link" target="_blank">Cloudflare</a></span>
+      
+    </p>
+    <script>(function(){function d(){var b=a.getElementById("cf-footer-item-ip"),c=a.getElementById("cf-footer-ip-reveal");b&&"classList"in b&&(b.classList.remove("hidden"),c.addEventListener("click",function(){c.classList.add("hidden");a.getElementById("cf-footer-ip").classList.remove("hidden")}))}var a=document;document.addEventListener&&a.addEventListener("DOMContentLoaded",d)})();</script>
+  </div><!-- /.error-footer -->
+
+    </div>
+</div>
+</body>
+</html>
+    apiCall https://app-3mmpugxx4tfx4klvxqkcma7dlgnz56hvymwwif433qvrwxymf3na.makeproxy-c.figma.site/src/app/lib/api.ts:128
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:17:102314
+Error loading dashboard data: Error: <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en-US"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en-US"> <!--<![endif]-->
+<head>
+
+<title> | 502: Bad gateway</title>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" id="cf_styles-css" href="/cdn-cgi/styles/main.css" />
+</head>
+<body>
+<div id="cf-wrapper">
+    <div id="cf-error-details" class="p-0">
+        <header class="mx-auto pt-10 lg:pt-6 lg:px-8 w-240 lg:w-full mb-8">
+            <h1 class="inline-block sm:block sm:mb-2 font-light text-60 lg:text-4xl text-black-dark leading-tight mr-2">
+                <span class="inline-block">Bad gateway</span>
+                <span class="code-label">Error code 502</span>
+            </h1>
+            <div>
+                Visit <a href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_502&utm_campaign=xyqdwrqiduxpxmszwhwb.supabase.co" target="_blank" rel="noopener noreferrer">cloudflare.com</a> for more information.
+            </div>
+            <div class="mt-3">2026-04-05 09:32:58 UTC</div>
+        </header>
+        <div class="my-8 bg-gradient-gray">
+            <div class="w-240 lg:w-full mx-auto">
+                <div class="clearfix md:px-8">
+                    <div id="cf-browser-status" class=" relative w-1/3 md:w-full py-15 md:p-0 md:py-8 md:text-left md:border-solid md:border-0 md:border-b md:border-gray-400 overflow-hidden float-left md:float-none text-center">
+  <div class="relative mb-10 md:m-0">
+    
+    <span class="cf-icon-browser block md:hidden h-20 bg-center bg-no-repeat"></span>
+    <span class="cf-icon-ok w-12 h-12 absolute left-1/2 md:left-auto md:right-0 md:top-0 -ml-6 -bottom-4"></span>
+    
+  </div>
+  <span class="md:block w-full truncate">You</span>
+  <h3 class="md:inline-block mt-3 md:mt-0 text-2xl text-gray-600 font-light leading-1.3">
+  
+    Browser
+  
+  </h3>
+  
+  <span class="leading-1.3 text-2xl text-green-success">Working</span>
+  
+</div>
+                    <div id="cf-cloudflare-status" class=" relative w-1/3 md:w-full py-15 md:p-0 md:py-8 md:text-left md:border-solid md:border-0 md:border-b md:border-gray-400 overflow-hidden float-left md:float-none text-center">
+  <div class="relative mb-10 md:m-0">
+    <a href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_502&#38;utm_campaign=xyqdwrqiduxpxmszwhwb.supabase.co" target="_blank" rel="noopener noreferrer">
+    <span class="cf-icon-cloud block md:hidden h-20 bg-center bg-no-repeat"></span>
+    <span class="cf-icon-ok w-12 h-12 absolute left-1/2 md:left-auto md:right-0 md:top-0 -ml-6 -bottom-4"></span>
+    </a>
+  </div>
+  <span class="md:block w-full truncate">London</span>
+  <h3 class="md:inline-block mt-3 md:mt-0 text-2xl text-gray-600 font-light leading-1.3">
+  <a href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_502&utm_campaign=xyqdwrqiduxpxmszwhwb.supabase.co" target="_blank" rel="noopener noreferrer">
+    Cloudflare
+  </a>
+  </h3>
+  
+  <span class="leading-1.3 text-2xl text-green-success">Working</span>
+  
+</div>
+                    <div id="cf-host-status" class="cf-error-source relative w-1/3 md:w-full py-15 md:p-0 md:py-8 md:text-left md:border-solid md:border-0 md:border-b md:border-gray-400 overflow-hidden float-left md:float-none text-center">
+  <div class="relative mb-10 md:m-0">
+    
+    <span class="cf-icon-server block md:hidden h-20 bg-center bg-no-repeat"></span>
+    <span class="cf-icon-error w-12 h-12 absolute left-1/2 md:left-auto md:right-0 md:top-0 -ml-6 -bottom-4"></span>
+    
+  </div>
+  <span class="md:block w-full truncate">xyqdwrqiduxpxmszwhwb.supabase.co</span>
+  <h3 class="md:inline-block mt-3 md:mt-0 text-2xl text-gray-600 font-light leading-1.3">
+  
+    Host
+  
+  </h3>
+  
+  <span class="leading-1.3 text-2xl text-red-error">Error</span>
+  
+</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-240 lg:w-full mx-auto mb-8 lg:px-8">
+            <div class="clearfix">
+                <div class="w-1/2 md:w-full float-left pr-6 md:pb-10 md:pr-0 leading-relaxed">
+                    <h2 class="text-3xl font-normal leading-1.3 mb-4">What happened?</h2>
+                    <p>The web server reported a bad gateway error.</p>
+                </div>
+                <div class="w-1/2 md:w-full float-left leading-relaxed">
+                    <h2 class="text-3xl font-normal leading-1.3 mb-4">What can I do?</h2>
+                    <p class="mb-6">Please try again in a few minutes.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cf-error-footer cf-wrapper w-240 lg:w-full py-10 sm:py-4 sm:px-8 mx-auto text-center sm:text-left border-solid border-0 border-t border-gray-300">
+    <p class="text-13">
+      <span class="cf-footer-item sm:block sm:mb-1">Cloudflare Ray ID: <strong class="font-semibold">9e778bc0ce1363ed</strong></span>
+      <span class="cf-footer-separator sm:hidden">&bull;</span>
+      <span id="cf-footer-item-ip" class="cf-footer-item hidden sm:block sm:mb-1">
+        Your IP:
+        <button type="button" id="cf-footer-ip-reveal" class="cf-footer-ip-reveal-btn">Click to reveal</button>
+        <span class="hidden" id="cf-footer-ip">18.175.53.95</span>
+        <span class="cf-footer-separator sm:hidden">&bull;</span>
+      </span>
+      <span class="cf-footer-item sm:block sm:mb-1"><span>Performance &amp; security by</span> <a rel="noopener noreferrer" href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_502&#38;utm_campaign=xyqdwrqiduxpxmszwhwb.supabase.co" id="brand_link" target="_blank">Cloudflare</a></span>
+      
+    </p>
+    <script>(function(){function d(){var b=a.getElementById("cf-footer-item-ip"),c=a.getElementById("cf-footer-ip-reveal");b&&"classList"in b&&(b.classList.remove("hidden"),c.addEventListener("click",function(){c.classList.add("hidden");a.getElementById("cf-footer-ip").classList.remove("hidden")}))}var a=document;document.addEventListener&&a.addEventListener("DOMContentLoaded",d)})();</script>
+  </div><!-- /.error-footer -->
+
+    </div>
+</div>
+</body>
+</html>
+    apiCall https://app-3mmpugxx4tfx4klvxqkcma7dlgnz56hvymwwif433qvrwxymf3na.makeproxy-c.figma.site/src/app/lib/api.ts:128
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:17:102314
+API Response (/mentorships): 
+Object { success: true, mentorships: (2) […] }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Response (/sessions): 
+Object { success: true, sessions: (79) […] }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Response (/mentorships): 
+Object { success: true, mentorships: (2) […] }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Student Dashboard - Notifications Response: 
+Object { success: true, notifications: (91) […] }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+=== Auth State Change === code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Event: SIGNED_IN code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Session exists: true code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+=== Auth State Change === code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Event: SIGNED_IN code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Session exists: true code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+[vite] connecting... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+Failed to fetch snapshot files: Error: XHR for "/api/rev/rA5wVerfHRa5lKpVnXU5O6/code_snapshot/5191738a7b48ddff13fd48cbab62f7e05e50951e277f061736bb974237a69851" failed with status 404
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[vite] hot updated: /src/app/components/FindMentor.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31249
+[vite] hot updated: /src/styles/index.css code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31249
+9:34:13 AM [vite] (client) hmr update /src/app/components/FindMentor.tsx, /src/styles/index.css code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Cookie “__cf_bm” has been rejected for invalid domain. app-3mmpugxx4tfx4klvxqkcma7dlgnz56hvymwwif433qvrwxymf3na.makeproxy-c.figma.site
+[vite] connected. code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+SupportWidget Debug: 
+Object { hasUser: false, hasToken: false, userEmail: undefined, pathname: "/", isLandingOrAuth: true, showWidget: false }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+❌ Widget NOT showing because: 
+Object { hasUser: false, hasToken: false, isLandingOrAuth: true, pathname: "/" }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+=== Auth State Change === code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Event: SIGNED_IN code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Session exists: true code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+=== Loading Session on Mount === code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+Found old token in localStorage, will verify with Supabase code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+SupportWidget Debug: 
+Object { hasUser: false, hasToken: false, userEmail: undefined, pathname: "/", isLandingOrAuth: true, showWidget: false }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+❌ Widget NOT showing because: 
+Object { hasUser: false, hasToken: false, isLandingOrAuth: true, pathname: "/" }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+✓ Supabase session found, fetching user profile... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+SupportWidget Debug: 
+Object { hasUser: false, hasToken: false, userEmail: undefined, pathname: "/", isLandingOrAuth: true, showWidget: false }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+❌ Widget NOT showing because: 
+Object { hasUser: false, hasToken: false, isLandingOrAuth: true, pathname: "/" }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+=== Auth State Change === code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+Event: INITIAL_SESSION code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+Session exists: true code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+SupportWidget Debug: 
+Object { hasUser: false, hasToken: false, userEmail: undefined, pathname: "/", isLandingOrAuth: true, showWidget: false }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+❌ Widget NOT showing because: 
+Object { hasUser: false, hasToken: false, isLandingOrAuth: true, pathname: "/" }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+SupportWidget Debug: 
+Object { hasUser: false, hasToken: false, userEmail: undefined, pathname: "/", isLandingOrAuth: true, showWidget: false }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+❌ Widget NOT showing because: 
+Object { hasUser: false, hasToken: false, isLandingOrAuth: true, pathname: "/" }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+✓ Session restored successfully code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+=== Session Loading Complete === code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+SupportWidget Debug: 
+Object { hasUser: true, hasToken: true, userEmail: "oluseyi88@gmail.com", pathname: "/", isLandingOrAuth: true, showWidget: false }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+❌ Widget NOT showing because: 
+Object { hasUser: true, hasToken: true, isLandingOrAuth: true, pathname: "/" }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+=== Auth State Change === code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+Event: INITIAL_SESSION code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+Session exists: true code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+SupportWidget Debug: 
+Object { hasUser: true, hasToken: true, userEmail: "oluseyi88@gmail.com", pathname: "/", isLandingOrAuth: true, showWidget: false }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+❌ Widget NOT showing because: 
+Object { hasUser: true, hasToken: true, isLandingOrAuth: true, pathname: "/" }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+=== Auth State Change === code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+Event: INITIAL_SESSION code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+Session exists: true code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+[vite] hot updated: /src/styles/index.css code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+[vite] hot updated: /src/app/components/SessionLandingPage.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+[vite] hot updated: /src/app/components/AdminDashboard.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+[vite] hot updated: /src/app/components/StudentDashboard.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+[vite] hot updated: /src/app/components/MentorDashboard.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+[vite] hot updated: /src/app/components/StudentProfile.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+[vite] hot updated: /src/app/components/MyProgress.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+[vite] hot updated: /src/app/components/Opportunities.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+[vite] hot updated: /src/app/components/FindMentor.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+[vite] hot updated: /src/app/components/Messages.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+[vite] hot updated: /src/app/components/DonationModal.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+[vite] hot updated: /src/app/components/Community.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+[vite] hot updated: /src/app/components/ProfileImprovementBanner.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+[vite] hot updated: /src/app/components/RecommendedMentors.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+[vite] hot updated: /src/app/components/BrowseStudents.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+[vite] hot updated: /src/app/components/MessageModal.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+[vite] hot updated: /src/app/components/Profile.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+[vite] hot updated: /src/app/components/ResourceLibraryModal.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+[vite] hot updated: /src/app/components/MembersTab.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+[vite] hot updated: /src/app/components/ShareResourceModal.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+[vite] hot updated: /src/styles/index.css code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31249
+[vite] hot updated: /src/app/components/SessionLandingPage.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31249
+[vite] hot updated: /src/app/components/AdminDashboard.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31249
+[vite] hot updated: /src/app/components/StudentDashboard.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31249
+[vite] hot updated: /src/app/components/MentorDashboard.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31249
+[vite] hot updated: /src/app/components/StudentProfile.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31249
+[vite] hot updated: /src/app/components/MyProgress.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31249
+[vite] hot updated: /src/app/components/Opportunities.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31249
+[vite] hot updated: /src/app/components/FindMentor.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31249
+[vite] hot updated: /src/app/components/Messages.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31249
+[vite] hot updated: /src/app/components/DonationModal.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31249
+[vite] hot updated: /src/app/components/Community.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31249
+[vite] hot updated: /src/app/components/ProfileImprovementBanner.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31249
+[vite] hot updated: /src/app/components/RecommendedMentors.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31249
+[vite] hot updated: /src/app/components/BrowseStudents.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31249
+[vite] hot updated: /src/app/components/MessageModal.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31249
+[vite] hot updated: /src/app/components/Profile.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31249
+[vite] hot updated: /src/app/components/ResourceLibraryModal.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31249
+[vite] hot updated: /src/app/components/MembersTab.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31249
+[vite] hot updated: /src/app/components/ShareResourceModal.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31249
+9:36:27 AM [vite] (client) hmr update /src/styles/index.css, /src/app/components/SessionLandingPage.tsx, /src/app/components/AdminDashboard.tsx, /src/app/components/StudentDashboard.tsx, /src/app/components/MentorDashboard.tsx, /src/app/components/StudentProfile.tsx, /src/app/components/MyProgress.tsx, /src/app/components/Opportunities.tsx, /src/app/components/FindMentor.tsx, /src/app/components/Messages.tsx, /src/app/components/DonationModal.tsx, /src/app/components/Community.tsx, /src/app/components/ProfileImprovementBanner.tsx, /src/app/components/RecommendedMentors.tsx, /src/app/components/BrowseStudents.tsx, /src/app/components/MessageModal.tsx, /src/app/components/Profile.tsx, /src/app/components/ResourceLibraryModal.tsx, /src/app/components/MembersTab.tsx, /src/app/components/ShareResourceModal.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/mentorships code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Getting valid token... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/sessions code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Token refresh already in progress, waiting... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/sessions/public code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Token refresh already in progress, waiting... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/mentorships code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Token refresh already in progress, waiting... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/notifications code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Token refresh already in progress, waiting... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+✓ Token refreshed and obtained code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Authorization header being sent: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY... 5 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Response (/notifications): 
+Object { success: true, notifications: (91) […] }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Response (/mentorships): 
+Object { success: true, mentorships: (2) […] }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Response (/sessions/public): 
+Object { success: true, sessions: (72) […] }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Response (/sessions): 
+Object { success: true, sessions: (79) […] }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+📊 Public sessions loaded: 72 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+📊 Sample public session data: 
+Object { id: "session_1774698627766_k30lhp1m5", notes: '{"sessionType":"public","capacity":50,"registeredStudents":["88cd18ff-e250-4eb9-a562-e6ea9ca134a1","644a4726-9669-4b28-8db9-356aeb1fcdf3"],"platform":"Google Meet","description":"We do genomics mentorship, and take it up high to workshop and hands-on sessions","registeredCount":2}', topic: "Genomics", status: "scheduled", duration: 90, mentorId: "644a4726-9669-4b28-8db9-356aeb1fcdf3", createdAt: "2026-03-28T11:50:27.766Z", createdBy: "644a4726-9669-4b28-8db9-356aeb1fcdf3", studentId: "88cd18ff-e250-4eb9-a562-e6ea9ca134a1", updatedAt: "2026-04-02T14:20:39.883Z", … }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Response (/mentorships): 
+Object { success: true, mentorships: (2) […] }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Student Dashboard - Notifications Response: 
+Object { success: true, notifications: (91) […] }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+=== Auth State Change === code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Event: SIGNED_IN code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Session exists: true code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+=== Auth State Change === code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Event: SIGNED_IN code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Session exists: true code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+[MultiplayerSession] connecting to wss://www.figma.com/api/multiplayer/rA5wVerfHRa5lKpVnXU5O6?role=editor&tracking_session_id=a1SYKVGWMg20fOPd&version=151&recentReload=0&file-load-streaming-compression=&user-id=1155220099117335391&client_release=736e42afce44f9fae25012411ff072d3daa792a8&reconnect-key=23cc9126f4b66e6d940ce1e55db688b62c2d62f2&reconnect-sequence-number=4480&initialFileVersion=106&previousLoadMode=full&incremental-loading-validation=0 vendor-core-83c17265f2588e9e.min.js.br:54:12591
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/users?role=diaspora code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Getting valid token... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/mentorships code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Token refresh already in progress, waiting... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/users/88cd18ff-e250-4eb9-a562-e6ea9ca134a1 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Token refresh already in progress, waiting... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+[MultiplayerSession] Joining file version 106 (skip_reload reconnect) vendor-core-83c17265f2588e9e.min.js.br:54:12591
+✓ Token refreshed and obtained code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Authorization header being sent: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY... 3 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/mentorships code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+✓ Using cached token (within cache window) code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/sessions code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+✓ Using cached token (within cache window) code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/sessions/public code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+✓ Using cached token (within cache window) code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Authorization header being sent: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY... 3 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS header ‘Access-Control-Allow-Origin’ missing). Status code: 302.
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.gravatar.com/avatar/6edfa3ded28e12e635f69e7b61050e49?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_o_v2.png?c=1. (Reason: CORS request did not succeed). Status code: (null).
+API Response (/users/88cd18ff-e250-4eb9-a562-e6ea9ca134a1): 
+Object { success: true, user: {…} }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Response (/users?role=diaspora): 
+Object { success: true, users: (11) […] }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Response (/mentorships): 
+Object { success: true, mentorships: (2) […] }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Response (/sessions/public): 
+Object { success: true, sessions: (72) […] }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Response (/sessions): 
+Object { success: true, sessions: (79) […] }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Response (/mentorships): 
+Object { success: true, mentorships: (2) […] }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+📊 Public sessions loaded: 72 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+📊 Sample public session data: 
+Object { id: "session_1774698627766_k30lhp1m5", notes: '{"sessionType":"public","capacity":50,"registeredStudents":["88cd18ff-e250-4eb9-a562-e6ea9ca134a1","644a4726-9669-4b28-8db9-356aeb1fcdf3"],"platform":"Google Meet","description":"We do genomics mentorship, and take it up high to workshop and hands-on sessions","registeredCount":2}', topic: "Genomics", status: "scheduled", duration: 90, mentorId: "644a4726-9669-4b28-8db9-356aeb1fcdf3", createdAt: "2026-03-28T11:50:27.766Z", createdBy: "644a4726-9669-4b28-8db9-356aeb1fcdf3", studentId: "88cd18ff-e250-4eb9-a562-e6ea9ca134a1", updatedAt: "2026-04-02T14:20:39.883Z", … }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/users/88cd18ff-e250-4eb9-a562-e6ea9ca134a1 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Getting valid token... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/users/88cd18ff-e250-4eb9-a562-e6ea9ca134a1 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Token refresh already in progress, waiting... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+✓ Token refreshed and obtained code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Authorization header being sent: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY... 2 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Response (/users/88cd18ff-e250-4eb9-a562-e6ea9ca134a1): 
+Object { success: true, user: {…} }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Response (/users/88cd18ff-e250-4eb9-a562-e6ea9ca134a1): 
+Object { success: true, user: {…} }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+🎓 Student Profile Data: 
+Object { careerInterests: (1) […], lookingFor: (2) […], industries: (1) […], major: "Biology" }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/users/browse/mentors code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+✓ Using cached token (within cache window) code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Authorization header being sent: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Response (/users/browse/mentors): 
+Object { success: true, mentors: (11) […] }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+👨‍🏫 Total mentors found: 11 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Mentor Oluwaseyi Olawale: Score 10 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Mentor Dee John: Score 10 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Mentor cfd dcdcdce: Score 10 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Mentor dddd sdsdd: Score 10 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Mentor ffff dddd: Score 10 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Mentor cscsc cscs: Score 10 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Mentor dcsdc cfd: Score 10 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Mentor hammed hammed: Score 10 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Mentor Oluwaseyi  Olawale: Score 67 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Mentor olu was: Score 10 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Mentor ge en: Score 10 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+✅ Recommended mentors: 10 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+📊 Top mentor scores: 
+Array(3) [ {…}, {…}, {…} ]
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/users?role=diaspora code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Getting valid token... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/mentorships code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Token refresh already in progress, waiting... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/users/88cd18ff-e250-4eb9-a562-e6ea9ca134a1 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Token refresh already in progress, waiting... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+✓ Token refreshed and obtained code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Authorization header being sent: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY... 3 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Response (/users/88cd18ff-e250-4eb9-a562-e6ea9ca134a1): 
+Object { success: true, user: {…} }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Response (/users?role=diaspora): 
+Object { success: true, users: (11) […] }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Response (/mentorships): 
+Object { success: true, mentorships: (2) […] }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+=== Auth State Change === code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Event: SIGNED_IN code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Session exists: true code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+=== Auth State Change === code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Event: SIGNED_IN code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Session exists: true code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/mentorships code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Getting valid token... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/sessions code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Token refresh already in progress, waiting... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/sessions/public code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Token refresh already in progress, waiting... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+✓ Token refreshed and obtained code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Authorization header being sent: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY... 3 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Response (/mentorships): 
+Object { success: true, mentorships: (2) […] }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Response (/sessions/public): 
+Object { success: true, sessions: (72) […] }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Response (/sessions): 
+Object { success: true, sessions: (79) […] }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+📊 Public sessions loaded: 72 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+📊 Sample public session data: 
+Object { id: "session_1774698627766_k30lhp1m5", notes: '{"sessionType":"public","capacity":50,"registeredStudents":["88cd18ff-e250-4eb9-a562-e6ea9ca134a1","644a4726-9669-4b28-8db9-356aeb1fcdf3"],"platform":"Google Meet","description":"We do genomics mentorship, and take it up high to workshop and hands-on sessions","registeredCount":2}', topic: "Genomics", status: "scheduled", duration: 90, mentorId: "644a4726-9669-4b28-8db9-356aeb1fcdf3", createdAt: "2026-03-28T11:50:27.766Z", createdBy: "644a4726-9669-4b28-8db9-356aeb1fcdf3", studentId: "88cd18ff-e250-4eb9-a562-e6ea9ca134a1", updatedAt: "2026-04-02T14:20:39.883Z", … }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/users/88cd18ff-e250-4eb9-a562-e6ea9ca134a1 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Getting valid token... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/users/88cd18ff-e250-4eb9-a562-e6ea9ca134a1 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Token refresh already in progress, waiting... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+✓ Token refreshed and obtained code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Authorization header being sent: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY... 2 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Response (/users/88cd18ff-e250-4eb9-a562-e6ea9ca134a1): 
+Object { success: true, user: {…} }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Response (/users/88cd18ff-e250-4eb9-a562-e6ea9ca134a1): 
+Object { success: true, user: {…} }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+🎓 Student Profile Data: 
+Object { careerInterests: (1) […], lookingFor: (2) […], industries: (1) […], major: "Biology" }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/users/browse/mentors code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Getting valid token... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+✓ Token refreshed and obtained code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Authorization header being sent: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Response (/users/browse/mentors): 
+Object { success: true, mentors: (11) […] }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+👨‍🏫 Total mentors found: 11 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Mentor Oluwaseyi Olawale: Score 10 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Mentor Dee John: Score 10 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Mentor cfd dcdcdce: Score 10 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Mentor dddd sdsdd: Score 10 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Mentor ffff dddd: Score 10 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Mentor cscsc cscs: Score 10 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Mentor dcsdc cfd: Score 10 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Mentor hammed hammed: Score 10 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Mentor Oluwaseyi  Olawale: Score 67 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Mentor olu was: Score 10 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Mentor ge en: Score 10 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+✅ Recommended mentors: 10 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+📊 Top mentor scores: 
+Array(3) [ {…}, {…}, {…} ]
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+=== Auth State Change === code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Event: SIGNED_IN code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Session exists: true code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+=== Auth State Change === code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Event: SIGNED_IN code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Session exists: true code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Failed to fetch snapshot files: Error: XHR for "/api/rev/rA5wVerfHRa5lKpVnXU5O6/code_snapshot/eefd65d6a9ae3c79a7b09db38236a73f5f2b861e3a7510923c0d927b9bcf30f7" failed with status 404
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[vite] hot updated: /src/app/components/FindMentor.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31249
+[vite] hot updated: /src/styles/index.css code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31249
+[vite] hot updated: /src/app/components/FindMentor.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+[vite] hot updated: /src/styles/index.css code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+[vite] hot updated: /src/app/components/RecommendedMentors.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31249
+[vite] hot updated: /src/styles/index.css code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31249
+9:48:22 AM [vite] (client) hmr update /src/app/components/FindMentor.tsx, /src/styles/index.css code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+9:48:22 AM [vite] (client) hmr update /src/app/components/RecommendedMentors.tsx, /src/styles/index.css code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/users/88cd18ff-e250-4eb9-a562-e6ea9ca134a1 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Getting valid token... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+✓ Token refreshed and obtained code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Authorization header being sent: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+[vite] hot updated: /src/app/components/RecommendedMentors.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+[vite] hot updated: /src/styles/index.css code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+API Response (/users/88cd18ff-e250-4eb9-a562-e6ea9ca134a1): 
+Object { success: true, user: {…} }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+🎓 Student Profile Data: 
+Object { careerInterests: (1) […], lookingFor: (2) […], industries: (1) […], major: "Biology" }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/users/browse/mentors code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Getting valid token... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+✓ Token refreshed and obtained code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Authorization header being sent: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Response (/users/browse/mentors): 
+Object { success: true, mentors: (11) […] }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+👨‍🏫 Total mentors found: 11 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/mentorships code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Getting valid token... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+✓ Token refreshed and obtained code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Authorization header being sent: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Response (/mentorships): 
+Object { success: true, mentorships: (2) […] }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Mentor Oluwaseyi Olawale: Score 10, Available: true, Spots: 5/5 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Mentor Dee John: Score 10, Available: true, Spots: 5/5 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Mentor cfd dcdcdce: Score 10, Available: true, Spots: 5/5 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Mentor dddd sdsdd: Score 10, Available: true, Spots: 5/5 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Mentor ffff dddd: Score 10, Available: true, Spots: 5/5 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Mentor cscsc cscs: Score 10, Available: true, Spots: 5/5 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Mentor dcsdc cfd: Score 10, Available: true, Spots: 5/5 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Mentor hammed hammed: Score 10, Available: true, Spots: 5/5 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Mentor Oluwaseyi  Olawale: Score 67, Available: true, Spots: 3/5 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Mentor olu was: Score 10, Available: true, Spots: 5/5 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Mentor ge en: Score 10, Available: true, Spots: 5/5 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+✅ Recommended mentors (available only): 4 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+📊 Top mentor scores: 
+Array(4) [ {…}, {…}, {…}, {…} ]
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+=== Auth State Change === code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Event: SIGNED_IN code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Session exists: true code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+=== Auth State Change === code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Event: SIGNED_IN code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Session exists: true code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/users?role=diaspora code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Getting valid token... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/mentorships code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Token refresh already in progress, waiting... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/users/88cd18ff-e250-4eb9-a562-e6ea9ca134a1 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Token refresh already in progress, waiting... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+✓ Token refreshed and obtained code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Authorization header being sent: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY... 3 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Response (/users/88cd18ff-e250-4eb9-a562-e6ea9ca134a1): 
+Object { success: true, user: {…} }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Response (/users?role=diaspora): 
+Object { success: true, users: (11) […] }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Response (/mentorships): 
+Object { success: true, mentorships: (2) […] }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Failed to fetch snapshot files: Error: XHR for "/api/rev/rA5wVerfHRa5lKpVnXU5O6/code_snapshot/1a44b4d344bdb07fc4b90e9cc46eb5fb56ddc9da135dabbfaa38a0b48b31d7fb" failed with status 404
+    C https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+    N https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br:1403
+vendor-core-83c17265f2588e9e.min.js.br:54:12591
+[vite] hot updated: /src/app/components/FindMentor.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+[vite] hot updated: /src/styles/index.css code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:9473
+[vite] hot updated: /src/app/components/FindMentor.tsx code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31249
+[vite] hot updated: /src/styles/index.css code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31249
+9:52:34 AM [vite] (client) hmr update /src/app/components/FindMentor.tsx, /src/styles/index.css code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/users?role=diaspora code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Getting valid token... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/mentorships code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Token refresh already in progress, waiting... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/users/88cd18ff-e250-4eb9-a562-e6ea9ca134a1 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Token refresh already in progress, waiting... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+✓ Token refreshed and obtained code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Authorization header being sent: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY... 3 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Response (/users?role=diaspora): 
+Object { success: true, users: (11) […] }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Response (/users/88cd18ff-e250-4eb9-a562-e6ea9ca134a1): 
+Object { success: true, user: {…} }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Response (/mentorships): 
+Object { success: true, mentorships: (2) […] }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+🎯 Recommended Mentors (top 4 available): 
+Array [ {…} ]
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/mentorships code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Getting valid token... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/sessions code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Token refresh already in progress, waiting... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/sessions/public code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Token refresh already in progress, waiting... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+✓ Token refreshed and obtained code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Authorization header being sent: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY... 3 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/users?role=diaspora code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Getting valid token... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/mentorships code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Token refresh already in progress, waiting... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Call: GET https://xyqdwrqiduxpxmszwhwb.supabase.co/functions/v1/make-server-b8526fa6/users/88cd18ff-e250-4eb9-a562-e6ea9ca134a1 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Token refresh already in progress, waiting... code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+✓ Token refreshed and obtained code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Authorization header being sent: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4YTlhZGE4LTY... 3 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Response (/users/88cd18ff-e250-4eb9-a562-e6ea9ca134a1): 
+Object { success: true, user: {…} }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Response (/users?role=diaspora): 
+Object { success: true, users: (11) […] }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Source map error: Error: NetworkError when attempting to fetch resource.
+Resource URL: https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br
+Source Map URL: https://admin.figma.com/admin/webpack-artifacts/736e42afce44f9fae25012411ff072d3daa792a8/code_components_preview_iframe-f7eb2aa617f22c1a.min.js.map
+Source map error: Error: NetworkError when attempting to fetch resource.
+Resource URL: https://www.figma.com/webpack-artifacts/assets/vendor-core-83c17265f2588e9e.min.js.br
+Source Map URL: https://admin.figma.com/admin/webpack-artifacts/c36bb72fc8b8a1aef780db081fbfd6e42883c14e/vendor-core-83c17265f2588e9e.min.js.map
+Source map error: Error: NetworkError when attempting to fetch resource.
+Resource URL: https://www.figma.com/webpack-artifacts/assets/6908-70612eeaa357fad0.min.js.br
+Source Map URL: https://admin.figma.com/admin/webpack-artifacts/7aa76215b929acb6c9a3c56497cbccb757008454/6908-70612eeaa357fad0.min.js.map
+API Response (/mentorships): 
+Object { success: true, mentorships: (2) […] }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+Source map error: Error: NetworkError when attempting to fetch resource.
+Resource URL: https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br
+Source Map URL: https://admin.figma.com/admin/webpack-artifacts/736e42afce44f9fae25012411ff072d3daa792a8/code_components_preview_iframe-f7eb2aa617f22c1a.min.js.map
+API Response (/sessions/public): 
+Object { success: true, sessions: (72) […] }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Response (/sessions): 
+Object { success: true, sessions: (79) […] }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+📊 Public sessions loaded: 72 code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+📊 Sample public session data: 
+Object { id: "session_1774698627766_k30lhp1m5", notes: '{"sessionType":"public","capacity":50,"registeredStudents":["88cd18ff-e250-4eb9-a562-e6ea9ca134a1","644a4726-9669-4b28-8db9-356aeb1fcdf3"],"platform":"Google Meet","description":"We do genomics mentorship, and take it up high to workshop and hands-on sessions","registeredCount":2}', topic: "Genomics", status: "scheduled", duration: 90, mentorId: "644a4726-9669-4b28-8db9-356aeb1fcdf3", createdAt: "2026-03-28T11:50:27.766Z", createdBy: "644a4726-9669-4b28-8db9-356aeb1fcdf3", studentId: "88cd18ff-e250-4eb9-a562-e6ea9ca134a1", updatedAt: "2026-04-02T14:20:39.883Z", … }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+API Response (/mentorships): 
+Object { success: true, mentorships: (2) […] }
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294
+🎯 Recommended Mentors (top 4 available): 
+Array [ {…} ]
+code_components_preview_iframe-f7eb2aa617f22c1a.min.js.br:90:31294

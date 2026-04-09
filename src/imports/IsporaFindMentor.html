@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ispora — Find a Mentor</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --brand:#021ff6;--brand-h:#0118c4;--brand-light:#eef0ff;--brand-mid:#4a5df0;
+  --accent:#00c896;--accent-light:#e0faf4;
+  --warn:#f59e0b;--warn-light:#fef9ee;
+  --danger:#ef4444;--danger-light:#fff1f1;
+  --success:#10b981;--success-light:#ecfdf5;
+  --bg:#f0f2ff;--surface:#fff;--surface2:#f7f8ff;
+  --border:#e2e5f5;--border2:#c8cef0;
+  --text:#07094a;--text2:#3d4275;--text3:#8b90b8;
+  --sidebar-w:224px;--topbar-h:64px;--r:16px;
+  --shadow-sm:0 1px 4px rgba(2,31,246,0.06);
+  --shadow:0 4px 20px rgba(2,31,246,0.09);
+  --shadow-lg:0 12px 48px rgba(2,31,246,0.15);
+}
+html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+button{cursor:pointer;border:none;background:none;font-family:inherit;font-size:inherit}
+input,textarea,select{font-family:inherit;font-size:inherit}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+.app{display:flex;height:100vh;overflow:hidden}
+
+/* SIDEBAR */
+.sidebar{width:var(--sidebar-w);background:var(--surface);border-right:1.5px solid var(--border);display:flex;flex-direction:column;flex-shrink:0}
+.sidebar-logo{padding:16px 18px 14px;display:flex;align-items:center;gap:10px;border-bottom:1.5px solid var(--border)}
+.logo-icon{width:28px;height:28px;background:var(--brand);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo-icon svg{width:14px;height:14px;fill:none;stroke:white;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.logo-name{font-family:'Syne',sans-serif;font-weight:700;font-size:14px;color:var(--brand);letter-spacing:-0.3px;line-height:1}
+.logo-tagline{font-size:9px;color:var(--text3);margin-top:1px}
+.sidebar-profile{margin:12px 14px 6px;padding:11px 13px;background:var(--brand-light);border-radius:12px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:.15s}
+.sidebar-profile:hover{background:#e0e3ff}
+.sp-av{width:36px;height:36px;border-radius:50%;background:var(--brand);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px;flex-shrink:0;position:relative}
+.sp-online{position:absolute;bottom:1px;right:1px;width:8px;height:8px;background:var(--accent);border-radius:50%;border:2px solid white}
+.sp-name{font-weight:600;font-size:12px;color:var(--text);line-height:1.2}
+.sp-role{font-size:11px;color:var(--brand);font-weight:500;margin-top:2px}
+.nav{flex:1;overflow-y:auto;padding:8px 12px}
+.nav-section{margin-bottom:20px}
+.nav-label{font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.09em;padding:0 8px;margin-bottom:5px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:10px;color:var(--text2);font-size:13px;font-weight:500;transition:all .15s;cursor:pointer}
+.nav-item:hover{background:var(--brand-light);color:var(--brand)}
+.nav-item.active{background:var(--brand);color:white}
+.nav-item svg{width:15px;height:15px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.nav-badge{margin-left:auto;background:var(--danger);color:white;font-size:10px;font-weight:700;padding:1px 6px;border-radius:20px;min-width:18px;text-align:center}
+.nav-item.active .nav-badge{background:rgba(255,255,255,0.35)}
+.sidebar-foot{padding:12px;border-top:1.5px solid var(--border)}
+.nav-item.danger{color:var(--danger)}
+.nav-item.danger:hover{background:var(--danger-light)}
+
+/* MAIN */
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0}
+.topbar{height:var(--topbar-h);background:var(--surface);border-bottom:1.5px solid var(--border);padding:0 28px;display:flex;align-items:center;gap:14px;flex-shrink:0}
+.topbar-left{flex:1}
+.topbar-left h2{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--text)}
+.topbar-left p{font-size:12px;color:var(--text3);margin-top:1px}
+.topbar-right{display:flex;align-items:center;gap:8px}
+.role-pill{display:flex;align-items:center;gap:6px;background:var(--brand-light);border:1.5px solid var(--brand);border-radius:20px;padding:5px 12px 5px 8px;font-size:12px;font-weight:600;color:var(--brand);cursor:pointer;transition:all .2s}
+.role-pill:hover{background:#e0e3ff}
+.role-pip{width:8px;height:8px;background:var(--brand);border-radius:50%}
+.role-pill svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2}
+.icon-btn{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--bg);border:1.5px solid var(--border);color:var(--text2);cursor:pointer;transition:all .2s;position:relative}
+.icon-btn:hover{background:var(--brand-light);color:var(--brand);border-color:var(--brand)}
+.icon-btn svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.notif-badge{position:absolute;top:6px;right:6px;width:7px;height:7px;background:var(--danger);border-radius:50%;border:1.5px solid var(--surface)}
+
+/* PAGE */
+.page{flex:1;overflow:hidden;display:flex;flex-direction:column}
+
+/* SEARCH HERO */
+.search-hero{background:var(--brand);padding:26px 32px;flex-shrink:0;position:relative;overflow:hidden}
+.sh-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.04) 1px,transparent 1px);background-size:28px 28px;pointer-events:none}
+.sh-orb{position:absolute;top:-60px;right:-40px;width:220px;height:220px;background:rgba(255,255,255,0.05);border-radius:50%;pointer-events:none}
+.sh-inner{position:relative;z-index:1}
+.sh-inner h1{font-family:'DM Sans',sans-serif;font-size:18px;font-weight:600;color:white;white-space:nowrap;margin-bottom:4px}
+.sh-inner p{font-size:12px;color:rgba(255,255,255,0.7);margin-bottom:16px}
+.sh-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.sh-search{position:relative;flex:1;min-width:240px;max-width:460px}
+.sh-search input{width:100%;background:rgba(255,255,255,0.15);border:1.5px solid rgba(255,255,255,0.25);border-radius:11px;padding:11px 16px 11px 38px;font-size:13px;color:white;outline:none;transition:.2s}
+.sh-search input::placeholder{color:rgba(255,255,255,0.55)}
+.sh-search input:focus{background:rgba(255,255,255,0.22);border-color:rgba(255,255,255,0.5)}
+.sh-search svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:15px;height:15px;stroke:rgba(255,255,255,0.6);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+.sh-stats{display:flex;gap:14px;margin-top:14px;flex-wrap:wrap}
+.sh-stat{font-size:12px;color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:6px}
+.sh-stat strong{color:white;font-weight:600}
+.sh-dot{width:6px;height:6px;border-radius:50%}
+
+/* FILTERS */
+.filters{background:var(--surface);border-bottom:1.5px solid var(--border);padding:10px 32px;display:flex;align-items:center;gap:10px;flex-shrink:0;overflow-x:auto}
+.filters::-webkit-scrollbar{height:0}
+.f-label{font-size:12px;font-weight:600;color:var(--text3);white-space:nowrap;margin-right:2px}
+.f-select{background:var(--bg);border:1.5px solid var(--border);border-radius:8px;padding:6px 28px 6px 10px;font-size:12px;color:var(--text2);outline:none;cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%238b90b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;transition:.15s;white-space:nowrap}
+.f-select:focus{border-color:var(--brand);background-color:var(--brand-light)}
+.f-divider{width:1px;height:20px;background:var(--border);flex-shrink:0}
+.f-right{display:flex;gap:6px;margin-left:auto;flex-shrink:0;align-items:center}
+.f-count{font-size:12px;color:var(--text3);white-space:nowrap}
+.f-count strong{color:var(--text);font-weight:600}
+.view-btns{display:flex;gap:4px}
+.vbtn{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;border:1.5px solid var(--border);background:var(--bg);color:var(--text3);cursor:pointer;transition:.15s}
+.vbtn.active{background:var(--brand);border-color:var(--brand);color:white}
+.vbtn svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* BODY */
+.body{flex:1;overflow-y:auto;padding:22px 32px}
+
+/* MENTOR GRID */
+.mentor-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.mentor-grid.list-view{grid-template-columns:1fr;gap:10px}
+
+/* MENTOR CARD (grid) */
+.mcard{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;transition:all .2s;cursor:pointer;display:flex;flex-direction:column}
+.mcard:hover{border-color:var(--brand);box-shadow:var(--shadow);transform:translateY(-3px)}
+.mcard-top{padding:20px 20px 14px;background:linear-gradient(160deg,var(--brand-light) 0%,var(--surface) 60%);display:flex;flex-direction:column;align-items:center;text-align:center;position:relative}
+.mcard-save{position:absolute;top:12px;right:12px;width:28px;height:28px;border-radius:50%;background:white;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.15s;z-index:2}
+.mcard-save:hover{border-color:var(--brand);background:var(--brand-light)}
+.mcard-save svg{width:13px;height:13px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.mcard-save.saved svg{stroke:var(--brand);fill:var(--brand)}
+.mc-av{width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:21px;margin-bottom:10px;border:3px solid white;box-shadow:0 2px 10px rgba(0,0,0,0.1);position:relative}
+.mc-online{position:absolute;bottom:2px;right:2px;width:12px;height:12px;background:var(--accent);border-radius:50%;border:2px solid white}
+.mc-name{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--text);margin-bottom:2px}
+.mc-role{font-size:11px;color:var(--text3);margin-bottom:4px}
+.mc-loc{font-size:11px;color:var(--text3);display:flex;align-items:center;gap:4px;justify-content:center;margin-bottom:8px}
+.mc-loc svg{width:11px;height:11px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.mc-rating{display:flex;align-items:center;gap:4px;font-size:12px;font-weight:600;color:var(--text);margin-bottom:8px}
+.mc-rating span{color:var(--text3);font-weight:400;font-size:11px}
+.mc-tags{display:flex;flex-wrap:wrap;gap:4px;justify-content:center}
+.tag{display:inline-flex;font-size:10px;padding:3px 8px;border-radius:20px;font-weight:500;white-space:nowrap}
+.tag-blue{background:var(--brand-light);color:var(--brand)}
+.tag-teal{background:var(--accent-light);color:#0f766e}
+.tag-amber{background:var(--warn-light);color:#92400e}
+.tag-gray{background:#f1f5f9;color:#475569}
+.mcard-body{padding:14px 20px;border-top:1px solid var(--border);flex:1}
+.mc-stat-row{display:flex;gap:14px;justify-content:center;margin-bottom:10px}
+.mc-stat{text-align:center}
+.mc-stat-val{font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;color:var(--brand)}
+.mc-stat-label{font-size:10px;color:var(--text3);margin-top:1px}
+.mc-offer{font-size:11px;color:var(--text2);line-height:1.5;text-align:center;margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.mcard-foot{padding:12px 20px;border-top:1px solid var(--border);display:flex;gap:8px}
+
+/* LIST CARD */
+.list-card{background:var(--surface);border:1.5px solid var(--border);border-radius:12px;padding:16px 20px;display:flex;align-items:center;gap:16px;cursor:pointer;transition:all .18s}
+.list-card:hover{border-color:var(--brand);background:var(--brand-light);transform:translateX(3px)}
+.lc-av{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:17px;flex-shrink:0;position:relative}
+.lc-online{position:absolute;bottom:1px;right:1px;width:10px;height:10px;background:var(--accent);border-radius:50%;border:2px solid white}
+.lc-info{flex:1;min-width:0}
+.lc-name{font-weight:700;font-size:13px;color:var(--text)}
+.lc-role{font-size:11px;color:var(--text3);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lc-tags{display:flex;gap:4px;margin-top:5px;flex-wrap:wrap}
+.lc-meta{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0}
+.lc-rating{font-size:12px;font-weight:600;color:var(--text)}
+.lc-sessions{font-size:11px;color:var(--text3)}
+.lc-actions{display:flex;gap:8px;flex-shrink:0}
+
+/* BTNS */
+.btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:10px;font-size:13px;font-weight:600;transition:all .18s;cursor:pointer;border:none;white-space:nowrap}
+.btn svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.btn-brand{background:var(--brand);color:white}
+.btn-brand:hover{background:var(--brand-h);transform:translateY(-1px);box-shadow:0 4px 14px rgba(2,31,246,0.3)}
+.btn-outline{background:white;color:var(--text);border:1.5px solid var(--border)}
+.btn-outline:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-light)}
+.btn-ghost{background:var(--bg);color:var(--text2);border:1.5px solid var(--border)}
+.btn-ghost:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-light)}
+.btn-sm{padding:6px 13px;font-size:12px;border-radius:8px}
+.btn-xs{padding:5px 10px;font-size:11px;border-radius:7px}
+.btn-white{background:white;color:var(--brand)}
+.btn-white:hover{background:#f0f3ff}
+
+/* EMPTY STATE */
+.empty{text-align:center;padding:60px 20px}
+.empty-ico{width:52px;height:52px;background:var(--brand-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+.empty-ico svg{width:22px;height:22px;stroke:var(--brand);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.empty h3{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px}
+.empty p{font-size:13px;color:var(--text3);max-width:280px;margin:0 auto}
+
+/* OVERLAY / MODAL */
+.overlay{position:fixed;inset:0;background:rgba(7,9,74,0.5);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;z-index:1000;opacity:0;pointer-events:none;transition:opacity .2s;padding:16px}
+.overlay.show{opacity:1;pointer-events:all}
+.modal{background:var(--surface);border-radius:18px;width:100%;max-width:500px;box-shadow:var(--shadow-lg);transform:translateY(18px) scale(0.97);transition:transform .25s cubic-bezier(.34,1.56,.64,1);max-height:92vh;overflow-y:auto}
+.overlay.show .modal{transform:translateY(0) scale(1)}
+.modal-head{padding:20px 24px 16px;display:flex;align-items:flex-start;justify-content:space-between;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--surface);z-index:1}
+.modal-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:var(--text)}
+.modal-sub{font-size:12px;color:var(--text3);margin-top:3px}
+.modal-close{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--text3);cursor:pointer;transition:.15s}
+.modal-close:hover{background:var(--bg);color:var(--text)}
+.modal-close svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.modal-body{padding:20px 24px}
+.modal-foot{padding:14px 24px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:10px;position:sticky;bottom:0;background:var(--surface);z-index:1}
+.fg{margin-bottom:14px}
+.fl{display:block;font-size:12px;font-weight:600;color:var(--text2);margin-bottom:5px}
+.fi{width:100%;border:1.5px solid var(--border);border-radius:10px;padding:10px 14px;font-size:13px;color:var(--text);background:var(--surface);outline:none;transition:.2s}
+.fi:focus{border-color:var(--brand);box-shadow:0 0 0 3px rgba(2,31,246,0.07)}
+.fi::placeholder{color:var(--text3)}
+textarea.fi{resize:vertical;min-height:90px;line-height:1.5}
+select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%238b90b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px;cursor:pointer}
+
+/* MENTOR PROFILE MODAL */
+.prof-banner{background:var(--brand);padding:22px 24px;display:flex;align-items:center;gap:14px;position:relative;overflow:hidden}
+.pb-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.05) 1px,transparent 1px);background-size:22px 22px;pointer-events:none}
+.pb-av{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:20px;border:2.5px solid rgba(255,255,255,0.3);flex-shrink:0;position:relative;z-index:1}
+.pb-info{position:relative;z-index:1;flex:1}
+.pb-name{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:white}
+.pb-role{font-size:12px;color:rgba(255,255,255,0.72);margin-top:2px}
+.pb-rating{font-size:13px;color:white;margin-top:6px;font-weight:600}
+.pb-tags{display:flex;gap:5px;margin-top:8px;flex-wrap:wrap}
+.prof-section{padding:14px 24px;border-bottom:1px solid var(--border)}
+.prof-section:last-child{border-bottom:none}
+.prof-section h4{font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:9px}
+.prof-row{display:flex;align-items:center;gap:9px;margin-bottom:7px;font-size:13px;color:var(--text2)}
+.prof-row:last-child{margin-bottom:0}
+.prof-row svg{width:13px;height:13px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.stat-box{background:var(--bg);border-radius:9px;padding:10px;text-align:center}
+.stat-val{font-family:'DM Sans',sans-serif;font-size:18px;font-weight:700;color:var(--brand)}
+.stat-label{font-size:10px;color:var(--text3);margin-top:2px}
+.review-item{padding:10px 0;border-bottom:1px solid var(--border)}
+.review-item:last-child{border-bottom:none}
+.review-av{width:28px;height:28px;border-radius:50%;background:var(--brand-light);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--brand);flex-shrink:0}
+.review-stars{font-size:11px;margin-bottom:3px}
+.review-text{font-size:12px;color:var(--text2);line-height:1.5}
+
+/* REQUEST SENT BANNER */
+.req-sent{background:var(--brand-light);border:1.5px solid var(--brand);border-radius:10px;padding:11px 14px;display:flex;align-items:center;gap:10px;margin-bottom:14px;font-size:12px;color:var(--brand);font-weight:500}
+.req-sent svg{width:16px;height:16px;stroke:var(--brand);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--text);color:white;padding:12px 18px;border-radius:12px;font-size:13px;font-weight:500;box-shadow:var(--shadow-lg);z-index:3000;display:flex;align-items:center;gap:10px;max-width:340px;opacity:0;transform:translateY(10px);transition:all .3s cubic-bezier(.34,1.56,.64,1);pointer-events:none}
+.toast.show{opacity:1;transform:translateY(0)}
+.toast.success{background:#059669}
+.toast.error{background:var(--danger)}
+.toast svg{width:15px;height:15px;fill:none;stroke:white;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+
+/* NOTIF */
+.notif-panel{position:fixed;top:70px;right:14px;width:310px;background:var(--surface);border:1.5px solid var(--border);border-radius:16px;box-shadow:var(--shadow-lg);z-index:500;overflow:hidden;opacity:0;pointer-events:none;transform:translateY(-10px);transition:all .2s}
+.notif-panel.show{opacity:1;pointer-events:all;transform:translateY(0)}
+.np-head{padding:12px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.np-head h3{font-family:'Syne',sans-serif;font-size:13px;font-weight:700}
+.np-clear{font-size:11px;color:var(--brand);font-weight:600;cursor:pointer}
+.np-item{padding:10px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;cursor:pointer;transition:.15s}
+.np-item:hover{background:var(--bg)}
+.np-item.unread{background:var(--brand-light)}
+.np-item:last-child{border-bottom:none}
+.np-dot{width:7px;height:7px;background:var(--brand);border-radius:50%;flex-shrink:0;margin-top:4px}
+.np-dot.read{background:transparent}
+.np-text{font-size:12px;color:var(--text);line-height:1.4}
+.np-text strong{font-weight:600}
+.np-time{font-size:10px;color:var(--text3);margin-top:2px}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.mcard,.list-card{animation:fadeUp .28s ease both}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.pulse{animation:pulse 2s ease-in-out infinite}
+</style>
+</head>
+<body>
+<div class="app">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+    <div><div class="logo-name">Ispora</div><div class="logo-tagline">Impact Platform</div></div>
+  </div>
+  <div class="sidebar-profile" onclick="showToast('Opening profile...')">
+    <div class="sp-av">A<div class="sp-online pulse"></div></div>
+    <div><div class="sp-name">Aisha Kamara</div><div class="sp-role">Student · Software Engineering</div></div>
+  </div>
+  <nav class="nav">
+    <div class="nav-section">
+      <div class="nav-label">Main</div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to Dashboard...')"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>Dashboard</div>
+      <div class="nav-item active" onclick="navTo(this)"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>Find a Mentor</div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to My Mentorships...')"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>My Mentorships<span class="nav-badge">1</span></div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to Sessions...')"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Sessions<span class="nav-badge">1</span></div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to Messages...')"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Messages<span class="nav-badge">2</span></div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-label">My Progress</div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to My Goals...')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>My Goals</div>
+      <div class="nav-item" onclick="navTo(this);showToast('Going to Resources...')"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>Resources</div>
+    </div>
+  </nav>
+  <div class="sidebar-foot">
+    <div class="nav-item" onclick="showToast('Opening profile...')"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>My Profile</div>
+    <div class="nav-item" onclick="showToast('Opening settings...')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41M19.07 19.07l-1.41-1.41M4.93 19.07l1.41-1.41M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>Settings</div>
+    <div class="nav-item danger" onclick="showToast('Signing out...')"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Sign Out</div>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<div class="main">
+  <div class="topbar">
+    <div class="topbar-left"><h2>Find a Mentor</h2><p>Browse diaspora professionals and send a mentorship request</p></div>
+    <div class="topbar-right">
+      <button class="role-pill" onclick="showToast('Role switcher...')"><div class="role-pip"></div>Student<svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="icon-btn" onclick="toggleNotif()" id="notifBtn"><svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg><div class="notif-badge"></div></button>
+      <button class="icon-btn" onclick="showToast('Opening profile...')"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
+    </div>
+  </div>
+
+  <div class="page">
+    <!-- SEARCH HERO -->
+    <div class="search-hero">
+      <div class="sh-grid"></div><div class="sh-orb"></div>
+      <div class="sh-inner">
+        <h1>Find your perfect mentor ✦</h1>
+        <p>94 diaspora professionals ready to guide you — filter by field, country or availability</p>
+        <div class="sh-row">
+          <div class="sh-search">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="searchInput" placeholder="Search by name, field, company..." oninput="applyFilters()"/>
+          </div>
+          <button class="btn btn-white btn-sm" onclick="applyFilters()">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Search
+          </button>
+        </div>
+        <div class="sh-stats">
+          <div class="sh-stat"><div class="sh-dot" style="background:var(--accent)"></div><strong id="totalCount">94</strong> mentors available</div>
+          <div class="sh-stat"><div class="sh-dot" style="background:white;opacity:.5"></div><strong>31</strong> online now</div>
+          <div class="sh-stat"><div class="sh-dot" style="background:var(--warn)"></div><strong>12</strong> fields covered</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FILTERS -->
+    <div class="filters">
+      <span class="f-label">Filter:</span>
+      <select class="f-select" id="filterField" onchange="applyFilters()">
+        <option value="">All Fields</option>
+        <option value="software">Software Engineering</option>
+        <option value="product">Product Management</option>
+        <option value="data">Data Science</option>
+        <option value="design">UI/UX Design</option>
+        <option value="finance">Finance & Fintech</option>
+        <option value="medicine">Medicine & Health</option>
+        <option value="law">Law</option>
+        <option value="business">Business</option>
+      </select>
+      <select class="f-select" id="filterCountry" onchange="applyFilters()">
+        <option value="">All Countries</option>
+        <option value="uk">United Kingdom</option>
+        <option value="us">United States</option>
+        <option value="canada">Canada</option>
+        <option value="germany">Germany</option>
+        <option value="netherlands">Netherlands</option>
+        <option value="australia">Australia</option>
+      </select>
+      <select class="f-select" id="filterExp" onchange="applyFilters()">
+        <option value="">All Experience</option>
+        <option value="5">5+ years</option>
+        <option value="10">10+ years</option>
+        <option value="15">15+ years</option>
+      </select>
+      <select class="f-select" id="filterAvail" onchange="applyFilters()">
+        <option value="">All Mentors</option>
+        <option value="available">Available now</option>
+        <option value="online">Online now</option>
+      </select>
+      <div class="f-divider"></div>
+      <div class="f-count"><strong id="resultCount">12</strong> results</div>
+      <div class="f-right">
+        <div class="view-btns">
+          <button class="vbtn active" id="vbtn-grid" onclick="setView('grid')" title="Grid view"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg></button>
+          <button class="vbtn" id="vbtn-list" onclick="setView('list')" title="List view"><svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="body">
+      <div id="mentorGrid" class="mentor-grid"></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- NOTIF PANEL -->
+<div class="notif-panel" id="notifPanel">
+  <div class="np-head"><h3>Notifications</h3><span class="np-clear" onclick="clearNotifs()">Mark all read</span></div>
+  <div class="np-item unread"><div class="np-dot"></div><div><div class="np-text">Your session with <strong>Dr. Amina</strong> is today at 3 PM</div><div class="np-time">Today</div></div></div>
+  <div class="np-item"><div class="np-dot read"></div><div><div class="np-text">Request to <strong>Dr. Chidi</strong> is still pending</div><div class="np-time">2 days ago</div></div></div>
+</div>
+
+<!-- MENTOR PROFILE MODAL -->
+<div class="overlay" id="mentorModal" onclick="overlayClose(event,'mentorModal')">
+  <div class="modal">
+    <div class="prof-banner" id="profBanner">
+      <div class="pb-grid"></div>
+      <div class="pb-av" id="profAv">AO</div>
+      <div class="pb-info">
+        <div class="pb-name" id="profName">Dr. Amina Osei</div>
+        <div class="pb-role" id="profRole">Senior Software Engineer · Barclays UK</div>
+        <div class="pb-rating" id="profRating">⭐ 4.9 · 47 sessions</div>
+        <div class="pb-tags" id="profTags"></div>
+      </div>
+    </div>
+    <div class="prof-section">
+      <h4>About</h4>
+      <p id="profAbout" style="font-size:13px;color:var(--text2);line-height:1.6"></p>
+    </div>
+    <div class="prof-section">
+      <h4>Impact stats</h4>
+      <div class="stat-grid" id="profStats"></div>
+    </div>
+    <div class="prof-section">
+      <h4>Details</h4>
+      <div id="profDetails"></div>
+    </div>
+    <div class="prof-section">
+      <h4>What they offer</h4>
+      <div id="profOffer" style="display:flex;flex-wrap:wrap;gap:6px"></div>
+    </div>
+    <div class="prof-section">
+      <h4>Mentee reviews</h4>
+      <div id="profReviews"></div>
+    </div>
+    <div class="modal-foot" id="profFoot"></div>
+  </div>
+</div>
+
+<!-- REQUEST MODAL -->
+<div class="overlay" id="requestModal" onclick="overlayClose(event,'requestModal')">
+  <div class="modal">
+    <div class="modal-head">
+      <div><div class="modal-title">Send Mentorship Request</div><div class="modal-sub" id="reqSub">To Dr. Amina Osei</div></div>
+      <button class="modal-close" onclick="closeModal('requestModal')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div style="display:flex;align-items:center;gap:12px;background:var(--bg);border-radius:12px;padding:14px;margin-bottom:16px">
+        <div id="reqAv" style="width:42px;height:42px;border-radius:50%;background:var(--brand);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:15px;flex-shrink:0">AO</div>
+        <div><div id="reqName" style="font-weight:700;font-size:13px;color:var(--text)">Dr. Amina Osei</div><div id="reqField" style="font-size:11px;color:var(--text3)">Software Engineering · London, UK</div></div>
+      </div>
+      <div class="fg"><label class="fl">What area do you want mentorship in?</label>
+        <select class="fi">
+          <option>Career guidance & planning</option>
+          <option>Technical skills development</option>
+          <option>Interview & job preparation</option>
+          <option>Industry insights & networking</option>
+          <option>Postgraduate applications</option>
+          <option>Entrepreneurship & startups</option>
+        </select>
+      </div>
+      <div class="fg"><label class="fl">Your message to the mentor</label>
+        <textarea class="fi" id="reqMessage" placeholder="Introduce yourself and explain why you want this mentor specifically. Be honest and specific — mentors respond better to genuine, personal requests..." style="min-height:120px"></textarea>
+      </div>
+      <div class="fg"><label class="fl">Preferred session frequency</label>
+        <select class="fi"><option>Once a week</option><option>Bi-weekly</option><option selected>Once a month</option><option>As needed</option></select>
+      </div>
+      <div style="background:var(--brand-light);border-radius:10px;padding:11px;font-size:12px;color:var(--text2);line-height:1.5;border:1px solid var(--border)">
+        💡 <strong>Tip:</strong> Mention something specific you noticed in their profile. Personalised requests have a 3x higher acceptance rate.
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal('requestModal')">Cancel</button>
+      <button class="btn btn-brand" onclick="sendRequest()">
+        <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        Send Request
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toastEl"><svg id="toastIco" viewBox="0 0 24 24"></svg><span id="toastMsg"></span></div>
+
+<script>
+var mentors = [
+  {id:1,name:'Dr. Amina Osei',initials:'AK',color:'#021ff6',role:'Senior Software Engineer',company:'Barclays UK',country:'uk',countryLabel:'London, UK',field:'software',fieldLabel:'Software Engineering',exp:10,rating:4.9,sessions:47,mentees:12,online:true,available:true,requested:true,tags:['Software Engineering','AI/ML','Career Coaching'],offer:['CV & portfolio review','Interview prep','UK tech market entry','Career roadmapping'],about:'10+ years in tech at a leading UK fintech. Originally from Ghana, passionate about lifting the next generation of African engineers. My sessions are practical and focused on real-world outcomes.',reviews:[{av:'EO',name:'Emeka Okonkwo',stars:5,text:'Dr. Amina completely transformed how I think about my career. Her advice is practical, honest and incredibly actionable.'},{av:'JB',name:'Jordan Bello',stars:5,text:'Got a job in London because of her guidance. Cannot recommend highly enough.'}]},
+  {id:2,name:'Kofi Owusu',initials:'KO',color:'#7c3aed',role:'Senior Data Scientist',company:'Shopify',country:'canada',countryLabel:'Toronto, Canada',field:'data',fieldLabel:'Data Science',exp:8,rating:4.8,sessions:31,mentees:8,online:true,available:true,requested:false,tags:['Data Science','Machine Learning','Python'],offer:['ML career path','Python & SQL mentorship','Data portfolio review','Research guidance'],about:'8 years in data science across e-commerce and fintech. I help students transition from academic ML to industry-ready data science roles. Originally from Ghana.',reviews:[{av:'FN',name:'Fatima Nwosu',stars:5,text:'Kofi helped me build my first real ML project and land an internship. Patient and very knowledgeable.'},{av:'YI',name:'Yusuf Ibrahim',stars:4,text:'Great mentor for technical data science topics. Very responsive.'}]},
+  {id:3,name:'Ifeoma Adeyemi',initials:'IA',color:'#0891b2',role:'Senior Product Manager',company:'Spotify',country:'germany',countryLabel:'Berlin, Germany',field:'product',fieldLabel:'Product Management',exp:7,rating:4.7,sessions:22,mentees:6,online:false,available:true,requested:false,tags:['Product Management','UX Strategy','Agile'],offer:['PM career transition','Case study coaching','Product portfolio','Interview frameworks'],about:'7 years in product management across music tech and healthcare. I help students break into PM roles at global companies, especially those transitioning from non-tech backgrounds.',reviews:[{av:'SO',name:'Sola Adeyemi',stars:5,text:'Ifeoma helped me pivot from finance to PM. She is incredibly patient and structured in her coaching.'},{av:'AO',name:'Amaka Obi',stars:4,text:'Really helpful sessions on product thinking and case studies.'}]},
+  {id:4,name:'Taiwo Bello',initials:'TB',color:'#0d9488',role:'Lead UX Designer',company:'Google',country:'us',countryLabel:'New York, USA',field:'design',fieldLabel:'UI/UX Design',exp:9,rating:4.9,sessions:38,mentees:10,online:true,available:true,requested:false,tags:['UX Design','Figma','Research'],offer:['Portfolio review','Design interview prep','Case study coaching','UX research methods'],about:'9 years at Google and Amazon working on products used by millions. I help design students build compelling portfolios and crack design interviews at top tech companies.',reviews:[{av:'NE',name:'Ngozi Eze',stars:5,text:'Taiwo reviewed my portfolio and within a month I had 3 interview calls. Life-changing feedback.'},{av:'AD',name:'Adaeze Onu',stars:5,text:'Best design mentor I could have asked for. Very direct and constructive.'}]},
+  {id:5,name:'Dr. Chidi Nwosu',initials:'CN',color:'#6d28d9',role:'Data Science Lead',company:'Booking.com',country:'netherlands',countryLabel:'Amsterdam, Netherlands',field:'data',fieldLabel:'Data Science',exp:12,rating:4.6,sessions:19,mentees:5,online:false,available:true,requested:true,tags:['Data Science','Statistics','Research'],offer:['Academic to industry transition','Statistical modelling','Research mentorship','ML engineering'],about:'12 years in data science and research, PhD in Statistics. I specialise in helping academic students translate their research skills into industry data science careers.',reviews:[{av:'YI',name:'Yusuf Ibrahim',stars:5,text:'Dr. Chidi helped me bridge the gap between academic research and industry data science perfectly.'},{av:'FN',name:'Fatima Nwosu',stars:4,text:'Very knowledgeable, especially for statistics-heavy topics.'}]},
+  {id:6,name:'Blessing Mensah',initials:'BM',color:'#b45309',role:'Investment Banking Analyst',company:'Goldman Sachs',country:'uk',countryLabel:'London, UK',field:'finance',fieldLabel:'Finance & Fintech',exp:6,rating:4.8,sessions:15,mentees:4,online:true,available:true,requested:false,tags:['Finance','Investment Banking','Excel'],offer:['Finance career entry','CV & cover letter','Interview prep','Networking in finance'],about:'6 years at top investment banks in London. Originally from Ghana, I help Nigerian and Ghanaian students break into the highly competitive world of investment banking.',reviews:[{av:'BA',name:'Blessing Adesanya',stars:5,text:'Blessing helped me get a summer internship at a bulge bracket bank. Her guidance is gold.'},{av:'CO',name:'Chidi Okafor',stars:5,text:'Incredibly detailed and helpful. Knows exactly what banks look for.'}]},
+  {id:7,name:'Emeka Eze',initials:'EE',color:'#be185d',role:'Software Engineering Manager',company:'Meta',country:'us',countryLabel:'San Francisco, USA',field:'software',fieldLabel:'Software Engineering',exp:14,rating:4.9,sessions:56,mentees:15,online:false,available:true,requested:false,tags:['Engineering Management','System Design','Career Growth'],offer:['Senior engineer career path','System design prep','Leadership coaching','FAANG interview prep'],about:'14 years in software engineering, currently Engineering Manager at Meta. I focus on helping engineers grow into senior roles and crack FAANG-level interviews.',reviews:[{av:'JB',name:'Jordan Bello',stars:5,text:'Emeka helped me land a job at a London-based tech scale-up with his system design coaching.'},{av:'TO',name:'Tunde Ojo',stars:5,text:'The best mentor for anyone aiming at top tech companies. No fluff, just real advice.'}]},
+  {id:8,name:'Adaora Okonkwo',initials:'AO',color:'#0f766e',role:'Health Tech Founder',company:'Medtech Africa (Berlin)',country:'germany',countryLabel:'Berlin, Germany',field:'medicine',fieldLabel:'Medicine & Health',exp:11,rating:4.7,sessions:12,mentees:3,online:true,available:true,requested:false,tags:['Health Tech','Entrepreneurship','Medicine'],offer:['Health-tech entrepreneurship','Medical career guidance','Startup building','Grant writing'],about:'Medical doctor turned health-tech entrepreneur. I founded a digital health startup in Berlin serving African markets. I mentor students who want to sit at the intersection of medicine and technology.',reviews:[{av:'CO',name:'Chidi Okafor',stars:5,text:'Adaora completely opened my eyes to what is possible combining medicine and technology.'},{av:'AK',name:'Aisha Kamara',stars:4,text:'Very inspiring mentor, especially for anyone interested in health-tech startups.'}]},
+  {id:9,name:'Kunle Adesanya',initials:'KA',color:'#1d4ed8',role:'Barrister & Tech Law Specialist',company:'Allen & Overy',country:'uk',countryLabel:'London, UK',field:'law',fieldLabel:'Law',exp:13,rating:4.8,sessions:9,mentees:3,online:false,available:true,requested:false,tags:['Tech Law','IP','Contracts'],offer:['Legal career in the UK','Tech law specialisation','Pupillage applications','CV & interview coaching'],about:'13 years as a barrister specialising in technology law and intellectual property. I help Nigerian law students navigate the path to legal practice in the UK and understand the growing field of tech law.',reviews:[{av:'CN',name:'Chisom Nwachukwu',stars:5,text:'Kunle gave me the most honest and useful career advice I have received. Clear, direct and very helpful.'}]},
+  {id:10,name:'Ngozi Williams',initials:'NW',color:'#9333ea',role:'Business Development Director',company:'Unilever',country:'uk',countryLabel:'London, UK',field:'business',fieldLabel:'Business',exp:16,rating:4.6,sessions:24,mentees:7,online:true,available:true,requested:false,tags:['Business Development','Strategy','FMCG'],offer:['Business career planning','Corporate strategy','MBA preparation','Leadership development'],about:'16 years in business development and strategy at global FMCG companies. I help ambitious Nigerian students navigate careers in global corporations and prepare for top MBA programmes.',reviews:[{av:'AO',name:'Amaka Obi',stars:5,text:'Ngozi is exactly the mentor I needed. Her corporate experience is invaluable and she communicates it brilliantly.'},{av:'SO',name:'Sola Adeyemi',stars:4,text:'Very helpful for understanding the corporate world and how to position yourself strategically.'}]},
+  {id:11,name:'Femi Olawale',initials:'FO',color:'#0369a1',role:'Machine Learning Engineer',company:'DeepMind',country:'uk',countryLabel:'London, UK',field:'data',fieldLabel:'Data Science',exp:9,rating:4.9,sessions:28,mentees:9,online:true,available:true,requested:false,tags:['Machine Learning','Deep Learning','Research'],offer:['ML research guidance','PhD application coaching','Deep learning projects','AI career paths'],about:'9 years in ML research and engineering at leading AI labs. I help students who want to pursue serious AI/ML careers, including PhD routes and research positions at top labs.',reviews:[{av:'YI',name:'Yusuf Ibrahim',stars:5,text:'Femi helped me understand the difference between academic and industry ML and how to position myself for both. Outstanding mentor.'},{av:'FN',name:'Fatima Nwosu',stars:5,text:'Incredibly knowledgeable about deep learning. Patient and very encouraging.'}]},
+  {id:12,name:'Sade Coker',initials:'SC',color:'#c2410c',role:'Senior Product Designer',company:'Airbnb',country:'us',countryLabel:'Austin, USA',field:'design',fieldLabel:'UI/UX Design',exp:8,rating:4.7,sessions:17,mentees:5,online:false,available:true,requested:false,tags:['Product Design','Design Systems','Prototyping'],offer:['Design portfolio review','Design systems coaching','Career pivots into design','Figma advanced techniques'],about:'8 years designing at top US tech companies including Airbnb and Uber. I help students build portfolios that stand out and crack design interviews at product companies.',reviews:[{av:'NE',name:'Ngozi Eze',stars:4,text:'Sade gave me very detailed portfolio feedback. Really helped me understand what senior designers look for.'},{av:'AD',name:'Adaeze Onu',stars:5,text:'Brilliant mentor. Her experience at Airbnb gives such unique insights into product design culture.'}]},
+];
+
+var currentView = 'grid';
+var savedIds = new Set();
+var requestedIds = new Set([1, 5]); // pre-requested mentors
+var currentMentor = null;
+
+function applyFilters() {
+  var q = document.getElementById('searchInput').value.toLowerCase().trim();
+  var field = document.getElementById('filterField').value;
+  var country = document.getElementById('filterCountry').value;
+  var exp = document.getElementById('filterExp').value;
+  var avail = document.getElementById('filterAvail').value;
+
+  var list = mentors.filter(function(m) {
+    if (q && !m.name.toLowerCase().includes(q) && !m.fieldLabel.toLowerCase().includes(q) && !m.company.toLowerCase().includes(q) && !m.countryLabel.toLowerCase().includes(q) && !m.tags.join(' ').toLowerCase().includes(q)) return false;
+    if (field && !m.field.includes(field.replace('software','software').replace('product','product').replace('data','data').replace('design','design').replace('finance','finance').replace('medicine','medicine').replace('law','law').replace('business','business'))) return false;
+    if (country && m.country !== country) return false;
+    if (exp && m.exp < parseInt(exp)) return false;
+    if (avail === 'online' && !m.online) return false;
+    if (avail === 'available' && !m.available) return false;
+    return true;
+  });
+
+  document.getElementById('resultCount').textContent = list.length;
+  renderMentors(list);
+}
+
+function renderMentors(list) {
+  var grid = document.getElementById('mentorGrid');
+  if (list.length === 0) {
+    grid.innerHTML = '<div class="empty" style="grid-column:1/-1"><div class="empty-ico"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div><h3>No mentors found</h3><p>Try adjusting your filters or search term</p></div>';
+    return;
+  }
+
+  if (currentView === 'grid') {
+    grid.className = 'mentor-grid';
+    grid.innerHTML = list.map(function(m, i) {
+      var isReq = requestedIds.has(m.id);
+      var isSaved = savedIds.has(m.id);
+      var delay = (i * 0.04) + 's';
+      return '<div class="mcard" style="animation-delay:' + delay + '" onclick="openProfile(' + m.id + ')">'
+        + '<div class="mcard-top">'
+        + '<div class="mcard-save ' + (isSaved ? 'saved' : '') + '" onclick="event.stopPropagation();toggleSave(' + m.id + ',this)" title="Save mentor"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg></div>'
+        + '<div class="mc-av" style="background:' + m.color + '">' + m.initials + (m.online ? '<div class="mc-online"></div>' : '') + '</div>'
+        + '<div class="mc-name">' + m.name + '</div>'
+        + '<div class="mc-role">' + m.role + ' \u00b7 ' + m.company + '</div>'
+        + '<div class="mc-loc"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>' + m.countryLabel + '</div>'
+        + '<div class="mc-rating">\u2b50 ' + m.rating + ' <span>(' + m.sessions + ' sessions)</span></div>'
+        + '<div class="mc-tags">' + m.tags.slice(0,3).map(function(t){return '<span class="tag tag-blue">'+t+'</span>';}).join('') + '</div>'
+        + '</div>'
+        + '<div class="mcard-body">'
+        + '<div class="mc-stat-row"><div class="mc-stat"><div class="mc-stat-val">' + m.sessions + '</div><div class="mc-stat-label">Sessions</div></div><div class="mc-stat"><div class="mc-stat-val">' + m.mentees + '</div><div class="mc-stat-label">Mentees</div></div><div class="mc-stat"><div class="mc-stat-val">' + m.exp + 'y</div><div class="mc-stat-label">Experience</div></div></div>'
+        + '<div class="mc-offer">' + m.offer.slice(0,2).join(' \u00b7 ') + '</div>'
+        + '</div>'
+        + '<div class="mcard-foot">'
+        + '<button class="btn btn-outline btn-sm" style="flex:1" onclick="event.stopPropagation();openProfile(' + m.id + ')">View Profile</button>'
+        + (isReq
+            ? '<button class="btn btn-ghost btn-sm" style="flex:1;color:var(--warn);border-color:var(--warn)" onclick="event.stopPropagation();withdrawReq(' + m.id + ')">Requested \u2713</button>'
+            : '<button class="btn btn-brand btn-sm" style="flex:1" onclick="event.stopPropagation();openRequest(' + m.id + ')"><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>Request</button>')
+        + '</div>'
+        + '</div>';
+    }).join('');
+  } else {
+    grid.className = 'mentor-grid list-view';
+    grid.innerHTML = list.map(function(m, i) {
+      var isReq = requestedIds.has(m.id);
+      return '<div class="list-card" style="animation-delay:' + (i*0.03) + 's" onclick="openProfile(' + m.id + ')">'
+        + '<div class="lc-av" style="background:' + m.color + '">' + m.initials + (m.online ? '<div class="lc-online"></div>' : '') + '</div>'
+        + '<div class="lc-info">'
+        + '<div class="lc-name">' + m.name + '</div>'
+        + '<div class="lc-role">' + m.role + ' \u00b7 ' + m.company + ' \u00b7 ' + m.countryLabel + '</div>'
+        + '<div class="lc-tags">' + m.tags.slice(0,3).map(function(t){return '<span class="tag tag-blue">'+t+'</span>';}).join('') + '</div>'
+        + '</div>'
+        + '<div class="lc-meta"><div class="lc-rating">\u2b50 ' + m.rating + '</div><div class="lc-sessions">' + m.sessions + ' sessions</div></div>'
+        + '<div class="lc-actions">'
+        + '<button class="btn btn-outline btn-sm" onclick="event.stopPropagation();openProfile(' + m.id + ')">Profile</button>'
+        + (isReq
+            ? '<button class="btn btn-ghost btn-sm" style="color:var(--warn);border-color:var(--warn)" onclick="event.stopPropagation();withdrawReq(' + m.id + ')">Requested \u2713</button>'
+            : '<button class="btn btn-brand btn-sm" onclick="event.stopPropagation();openRequest(' + m.id + ')">Request</button>')
+        + '</div>'
+        + '</div>';
+    }).join('');
+  }
+}
+
+function setView(v) {
+  currentView = v;
+  document.getElementById('vbtn-grid').classList.toggle('active', v === 'grid');
+  document.getElementById('vbtn-list').classList.toggle('active', v === 'list');
+  applyFilters();
+}
+
+function toggleSave(id, el) {
+  if (savedIds.has(id)) { savedIds.delete(id); el.classList.remove('saved'); showToast('Removed from saved'); }
+  else { savedIds.add(id); el.classList.add('saved'); showToast('Mentor saved!', 'success'); }
+}
+
+function openProfile(id) {
+  var m = mentors.find(function(x) { return x.id === id; });
+  if (!m) return;
+  currentMentor = m;
+  var isReq = requestedIds.has(m.id);
+  document.getElementById('profAv').textContent = m.initials;
+  document.getElementById('profAv').style.background = m.color;
+  document.getElementById('profName').textContent = m.name;
+  document.getElementById('profRole').textContent = m.role + ' \u00b7 ' + m.company;
+  document.getElementById('profRating').textContent = '\u2b50 ' + m.rating + ' \u00b7 ' + m.sessions + ' sessions';
+  document.getElementById('profTags').innerHTML = m.tags.map(function(t) { return '<span class="tag" style="background:rgba(255,255,255,0.2);color:white">'+t+'</span>'; }).join('');
+  document.getElementById('profAbout').textContent = m.about;
+  document.getElementById('profStats').innerHTML = '<div class="stat-box"><div class="stat-val">'+m.sessions+'</div><div class="stat-label">Sessions</div></div><div class="stat-box"><div class="stat-val">'+m.mentees+'</div><div class="stat-label">Mentees</div></div><div class="stat-box"><div class="stat-val">'+m.exp+'y</div><div class="stat-label">Experience</div></div>';
+  document.getElementById('profDetails').innerHTML = '<div class="prof-row"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>'+m.countryLabel+'</div><div class="prof-row"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>'+m.fieldLabel+' \u00b7 '+m.exp+' years experience</div><div class="prof-row"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>'+(m.available ? 'Available to mentor \u00b7 Responds within 24hrs' : 'Currently limited availability')+'</div>';
+  document.getElementById('profOffer').innerHTML = m.offer.map(function(o) { return '<span class="tag tag-blue">'+o+'</span>'; }).join('');
+  document.getElementById('profReviews').innerHTML = m.reviews.map(function(r) { return '<div class="review-item"><div style="display:flex;align-items:center;gap:8px;margin-bottom:6px"><div class="review-av">'+r.av+'</div><div><div style="font-weight:600;font-size:12px;color:var(--text)">'+r.name+'</div><div class="review-stars">'+'\u2b50'.repeat(r.stars)+'</div></div></div><div class="review-text">'+r.text+'</div></div>'; }).join('');
+
+  if (isReq) {
+    document.getElementById('profFoot').innerHTML = '<div class="req-sent" style="flex:1"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Request sent \u2014 awaiting response</div><button class="btn btn-outline" onclick="closeModal(\'mentorModal\')">Close</button><button class="btn btn-outline" style="color:var(--warn);border-color:var(--warn)" onclick="closeModal(\'mentorModal\');withdrawReq('+m.id+')">Withdraw</button>';
+  } else {
+    document.getElementById('profFoot').innerHTML = '<button class="btn btn-outline" onclick="closeModal(\'mentorModal\')">Close</button><button class="btn btn-ghost" onclick="closeModal(\'mentorModal\');toggleSave('+m.id+',{classList:{has:function(){return savedIds.has('+m.id+')},add:function(){},remove:function(){},toggle:function(){}}})"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>Save</button><button class="btn btn-brand" onclick="closeModal(\'mentorModal\');openRequest('+m.id+')"><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>Send Request</button>';
+  }
+  openModal('mentorModal');
+}
+
+function openRequest(id) {
+  var m = mentors.find(function(x) { return x.id === id; });
+  if (!m) return;
+  currentMentor = m;
+  document.getElementById('reqSub').textContent = 'To ' + m.name;
+  document.getElementById('reqAv').textContent = m.initials;
+  document.getElementById('reqAv').style.background = m.color;
+  document.getElementById('reqName').textContent = m.name;
+  document.getElementById('reqField').textContent = m.fieldLabel + ' \u00b7 ' + m.countryLabel;
+  document.getElementById('reqMessage').value = '';
+  openModal('requestModal');
+}
+
+function sendRequest() {
+  var msg = document.getElementById('reqMessage').value.trim();
+  if (!msg) { showToast('Please write a message to the mentor', 'error'); return; }
+  if (currentMentor) {
+    requestedIds.add(currentMentor.id);
+    closeModal('requestModal');
+    showToast('Request sent to ' + currentMentor.name + '! They will respond within 48 hours.', 'success');
+    applyFilters();
+  }
+}
+
+function withdrawReq(id) {
+  requestedIds.delete(id);
+  var m = mentors.find(function(x) { return x.id === id; });
+  showToast(m ? m.name + ' request withdrawn.' : 'Request withdrawn.');
+  applyFilters();
+}
+
+function openModal(id) { document.getElementById(id).classList.add('show'); document.body.style.overflow = 'hidden'; }
+function closeModal(id) { document.getElementById(id).classList.remove('show'); document.body.style.overflow = ''; }
+function overlayClose(e, id) { if (e.target === e.currentTarget) closeModal(id); }
+
+var tTimer;
+function showToast(msg, type) {
+  type = type || '';
+  var el=document.getElementById('toastEl'), ico=document.getElementById('toastIco'), m=document.getElementById('toastMsg');
+  el.className = 'toast';
+  if (type==='success') { el.classList.add('success'); ico.innerHTML='<polyline points="20 6 9 17 4 12"/>'; }
+  else if (type==='error') { el.classList.add('error'); ico.innerHTML='<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>'; }
+  else { ico.innerHTML='<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>'; }
+  m.textContent = msg;
+  clearTimeout(tTimer);
+  setTimeout(function() { el.classList.add('show'); }, 10);
+  tTimer = setTimeout(function() { el.classList.remove('show'); }, 3200);
+}
+
+function navTo(el) { document.querySelectorAll('.nav-item').forEach(function(i) { i.classList.remove('active'); }); el.classList.add('active'); }
+function toggleNotif() { document.getElementById('notifPanel').classList.toggle('show'); }
+function clearNotifs() {
+  document.querySelectorAll('.np-item.unread').forEach(function(i) { i.classList.remove('unread'); i.querySelector('.np-dot').classList.add('read'); });
+  showToast('All read', 'success');
+}
+document.addEventListener('click', function(e) {
+  var p=document.getElementById('notifPanel'), b=document.getElementById('notifBtn');
+  if (!p.contains(e.target) && !b.contains(e.target)) p.classList.remove('show');
+});
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', function() { applyFilters(); });
+} else {
+  applyFilters();
+}
+</script>
+</body>
+</html>
