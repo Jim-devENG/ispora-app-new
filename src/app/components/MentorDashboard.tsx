@@ -38,7 +38,8 @@ import {
   Lightbulb,
   ExternalLink,
   CalendarPlus,
-  Award
+  Award,
+  Trash2
 } from 'lucide-react';
 import BrowseStudents from './BrowseStudents';
 import Opportunities from './Opportunities';
@@ -2007,6 +2008,31 @@ export default function MentorDashboard() {
                               >
                                 <Clock className="w-3.5 h-3.5" strokeWidth={2} />
                                 {session.badge === 'today' ? 'Reschedule' : 'Copy Link'}
+                              </button>
+                              <button
+                                onClick={async (e) => {
+                                  e.stopPropagation();
+                                  setOpenSessionMenuId(null);
+                                  if (window.confirm('Are you sure you want to delete this session? This action cannot be undone.')) {
+                                    try {
+                                      await api.session.delete(session.id);
+                                      toast.success('Session deleted successfully');
+                                      // Refresh sessions
+                                      if (user?.id) {
+                                        const sessionsData = await api.session.getAll();
+                                        // Trigger a refresh by reloading the page or updating state
+                                        window.location.reload();
+                                      }
+                                    } catch (error: any) {
+                                      console.error('Failed to delete session:', error);
+                                      toast.error(error.message || 'Failed to delete session');
+                                    }
+                                  }
+                                }}
+                                className="w-full px-3 py-2 text-left text-xs font-medium text-[var(--ispora-danger)] hover:bg-red-50 transition-all flex items-center gap-2"
+                              >
+                                <Trash2 className="w-3.5 h-3.5" strokeWidth={2} />
+                                Delete Session
                               </button>
                             </div>
                           )}

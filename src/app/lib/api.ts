@@ -429,6 +429,9 @@ export const sessionApi = {
   cancel: (sessionId: string) =>
     apiCall(`/sessions/${sessionId}/cancel`, { method: 'POST' }),
 
+  delete: (sessionId: string) =>
+    apiCall(`/sessions/${sessionId}`, { method: 'DELETE' }),
+
   register: (sessionId: string) =>
     apiCall(`/sessions/${sessionId}/register`, { method: 'POST' }),
 

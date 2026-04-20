@@ -374,14 +374,38 @@ export function setupAdminRoutes(app: any, authenticateAdmin: any, generateId: a
         }
       }
       
-      // Delete user from KV
+      // Delete from Supabase Auth FIRST - this is critical
+      const { error: authDeleteError } = await supabaseAdmin.auth.admin.deleteUser(userId);
+      if (authDeleteError) {
+        console.log('Error deleting from Supabase Auth:', authDeleteError);
+        return c.json({ error: 'Failed to delete user from authentication system: ' + authDeleteError.message }, 500);
+      }
+
+      // Only delete from KV after Supabase Auth deletion succeeds
       await kv.del(`user:${userId}`);
       await kv.del(`profile:${userId}`);
-
-      // Delete from Supabase Auth
-      const { error } = await supabaseAdmin.auth.admin.deleteUser(userId);
-      if (error) {
-        console.log('Error deleting from Supabase Auth:', error);
+      await kv.del(`settings:${userId}`);
+      await kv.del(`sessions:${userId}`);
+      
+      // Delete user's mentorships
+      const allMentorships = await kv.getByPrefix('mentorship:');
+      const userMentorships = allMentorships.filter((m: any) => m.mentorId === userId || m.studentId === userId);
+      for (const mentorship of userMentorships) {
+        await kv.del(`mentorship:${mentorship.id}`);
+      }
+      
+      // Delete user's sessions
+      const allSessions = await kv.getByPrefix('session:');
+      const userSessions = allSessions.filter((s: any) => s.mentorId === userId || s.studentId === userId);
+      for (const session of userSessions) {
+        await kv.del(`session:${session.id}`);
+      }
+      
+      // Delete user's notifications
+      const allNotifications = await kv.getByPrefix('notification:');
+      const userNotifications = allNotifications.filter((n: any) => n.userId === userId);
+      for (const notification of userNotifications) {
+        await kv.del(`notification:${notification.id}`);
       }
 
       return c.json({ success: true, message: 'User deleted successfully' });

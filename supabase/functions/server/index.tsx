@@ -2119,6 +2119,69 @@ app.post("/make-server-b8526fa6/sessions/:sessionId/cancel", async (c) => {
   }
 });
 
+// Delete session (permanent deletion)
+app.delete("/make-server-b8526fa6/sessions/:sessionId", async (c) => {
+  try {
+    const auth = await authenticateUser(c);
+    if ('error' in auth) {
+      return c.json({ error: auth.error }, auth.status);
+    }
+
+    const { user } = auth;
+    const sessionId = c.req.param('sessionId');
+    const session = await kv.get(`session:${sessionId}`);
+
+    if (!session) {
+      return c.json({ error: 'Session not found' }, 404);
+    }
+
+    // Only the mentor who created the session can delete it
+    if (session.mentorId !== user.id) {
+      return c.json({ error: 'Only the session creator can delete this session' }, 403);
+    }
+
+    // Delete the session from KV store
+    await kv.del(`session:${sessionId}`);
+
+    // Notify registered students if any
+    if (session.registeredUsers && session.registeredUsers.length > 0) {
+      for (const studentId of session.registeredUsers) {
+        const notificationId = generateId('notif');
+        await kv.set(`notification:${notificationId}`, {
+          id: notificationId,
+          userId: studentId,
+          type: 'session_deleted',
+          title: 'Session deleted',
+          message: `The session "${session.topic || 'Mentorship Session'}" has been deleted by the mentor`,
+          read: false,
+          data: { sessionId, sessionTopic: session.topic },
+          createdAt: new Date().toISOString(),
+        });
+      }
+    }
+
+    // Also notify the student if it's a private session
+    if (session.studentId && !session.registeredUsers?.includes(session.studentId)) {
+      const notificationId = generateId('notif');
+      await kv.set(`notification:${notificationId}`, {
+        id: notificationId,
+        userId: session.studentId,
+        type: 'session_deleted',
+        title: 'Session deleted',
+        message: `The session "${session.topic || 'Mentorship Session'}" has been deleted by the mentor`,
+        read: false,
+        data: { sessionId, sessionTopic: session.topic },
+        createdAt: new Date().toISOString(),
+      });
+    }
+
+    return c.json({ success: true, message: 'Session deleted successfully' });
+  } catch (error: any) {
+    console.log('Delete session error:', error);
+    return c.json({ error: error.message || 'Failed to delete session' }, 500);
+  }
+});
+
 // Register for public session
 app.post("/make-server-b8526fa6/sessions/:sessionId/register", async (c) => {
   try {
@@ -3309,7 +3372,7 @@ app.delete("/make-server-b8526fa6/account/delete", async (c) => {
 
     const { user } = auth;
 
-    // Delete user using Supabase Admin
+    // Delete user using Supabase Admin FIRST - this is critical
     const supabase = createClient(
       Deno.env.get('SUPABASE_URL')!,
       Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
@@ -3319,7 +3382,7 @@ app.delete("/make-server-b8526fa6/account/delete", async (c) => {
 
     if (deleteError) {
       console.log('Delete user error:', deleteError);
-      return c.json({ error: 'Failed to delete account' }, 500);
+      return c.json({ error: 'Failed to delete account from authentication system: ' + deleteError.message }, 500);
     }
 
     // Delete user data from KV store
@@ -3327,8 +3390,48 @@ app.delete("/make-server-b8526fa6/account/delete", async (c) => {
     await kv.del(`profile:${user.id}`);
     await kv.del(`settings:${user.id}`);
     await kv.del(`sessions:${user.id}`);
-
-    // TODO: Notify mentees and clean up related data
+    
+    // Delete user's mentorships
+    const allMentorships = await kv.getByPrefix('mentorship:');
+    const userMentorships = allMentorships.filter((m: any) => m.mentorId === user.id || m.studentId === user.id);
+    for (const mentorship of userMentorships) {
+      await kv.del(`mentorship:${mentorship.id}`);
+    }
+    
+    // Delete user's sessions
+    const allSessions = await kv.getByPrefix('session:');
+    const userSessions = allSessions.filter((s: any) => s.mentorId === user.id || s.studentId === user.id);
+    for (const session of userSessions) {
+      await kv.del(`session:${session.id}`);
+    }
+    
+    // Delete user's notifications
+    const allNotifications = await kv.getByPrefix('notification:');
+    const userNotifications = allNotifications.filter((n: any) => n.userId === user.id);
+    for (const notification of userNotifications) {
+      await kv.del(`notification:${notification.id}`);
+    }
+    
+    // Delete user's messages
+    const allMessages = await kv.getByPrefix('message:');
+    const userMessages = allMessages.filter((m: any) => m.senderId === user.id || m.receiverId === user.id);
+    for (const message of userMessages) {
+      await kv.del(`message:${message.id}`);
+    }
+    
+    // Delete user's resources
+    const allResources = await kv.getByPrefix('resource:');
+    const userResources = allResources.filter((r: any) => r.userId === user.id);
+    for (const resource of userResources) {
+      await kv.del(`resource:${resource.id}`);
+    }
+    
+    // Delete user's requests
+    const allRequests = await kv.getByPrefix('request:');
+    const userRequests = allRequests.filter((r: any) => r.mentorId === user.id || r.studentId === user.id);
+    for (const request of userRequests) {
+      await kv.del(`request:${request.id}`);
+    }
     
     return c.json({ success: true, message: 'Account deleted successfully' });
   } catch (error: any) {
