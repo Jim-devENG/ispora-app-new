@@ -47,7 +47,7 @@ export default function PublicProfile() {
         setLoading(true);
         // Use super-worker function for public profiles
         const response = await fetch(
-          `https://fketlqcuiaatgsdkcymo.supabase.co/functions/v1/super-worker/${userId}`
+          `https://${projectId}.supabase.co/functions/v1/super-worker/${userId}`
         );
         
         if (!response.ok) {
