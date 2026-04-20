@@ -261,7 +261,8 @@ const Profile: React.FC = () => {
   };
 
   const copyProfileLink = () => {
-    navigator.clipboard.writeText(`https://ispora.io/mentor/${user?.id}`);
+    const profileUrl = `${window.location.origin}/mentor/${user?.id}`;
+    navigator.clipboard.writeText(profileUrl);
     // You could show a toast notification here
     alert('Profile link copied to clipboard!');
   };
