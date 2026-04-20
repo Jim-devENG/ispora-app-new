@@ -45,9 +45,9 @@ export default function PublicProfile() {
       
       try {
         setLoading(true);
-        // Use super-worker function for public profiles
+        // Use make-server function with public query param for public profiles
         const response = await fetch(
-          `https://${projectId}.supabase.co/functions/v1/super-worker/${userId}`
+          `https://${projectId}.supabase.co/functions/v1/make-server-b8526fa6/users/${userId}?public=true`
         );
         
         if (!response.ok) {
@@ -60,7 +60,7 @@ export default function PublicProfile() {
         }
         
         const data = await response.json();
-        setProfile(data.profile);
+        setProfile(data.user);
       } catch (err) {
         console.error('Error fetching profile:', err);
         setError('Failed to load profile');
