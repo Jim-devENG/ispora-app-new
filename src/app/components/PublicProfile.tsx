@@ -45,12 +45,9 @@ export default function PublicProfile() {
       
       try {
         setLoading(true);
-        const endpoint = profileType === 'student' 
-          ? `public/student/${userId}`
-          : `public/mentor/${userId}`;
-        
+        // Use existing users endpoint with public=true query param
         const response = await fetch(
-          `https://${projectId}.supabase.co/functions/v1/make-server-b8526fa6/${endpoint}`
+          `https://${projectId}.supabase.co/functions/v1/make-server-b8526fa6/users/${userId}?public=true`
         );
         
         if (!response.ok) {
@@ -63,7 +60,7 @@ export default function PublicProfile() {
         }
         
         const data = await response.json();
-        setProfile(data.profile);
+        setProfile(data.user);
       } catch (err) {
         console.error('Error fetching profile:', err);
         setError('Failed to load profile');
@@ -73,7 +70,7 @@ export default function PublicProfile() {
     };
     
     fetchProfile();
-  }, [userId, profileType]);
+  }, [userId]);
 
   const copyProfileLink = () => {
     const url = `${window.location.origin}/${profileType}/${userId}`;

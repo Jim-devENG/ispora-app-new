@@ -745,27 +745,32 @@ app.get("/make-server-b8526fa6/users", async (c) => {
   }
 });
 
-// Get user profile by ID
+// Get user profile by ID (supports both authenticated and public access)
 app.get("/make-server-b8526fa6/users/:userId", async (c) => {
   try {
-    const auth = await authenticateUser(c);
-    if ('error' in auth) {
-      return c.json({ error: auth.error }, auth.status);
-    }
-
-    const { user: authUser } = auth;
     const userId = c.req.param('userId');
+    const isPublicRequest = c.req.query('public') === 'true';
+    
+    // Try to authenticate, but don't require it for public requests
+    let authUser = null;
+    if (!isPublicRequest) {
+      const auth = await authenticateUser(c);
+      if (!('error' in auth)) {
+        authUser = auth.user;
+      }
+    }
     
     console.log('=== Get User Profile ===');
     console.log('Requested user ID:', userId);
-    console.log('Auth user ID:', authUser.id);
+    console.log('Auth user ID:', authUser?.id || 'Public request');
+    console.log('Is public request:', isPublicRequest);
     
     let userProfile = await kv.get(`user:${userId}`);
     console.log('User profile from KV:', userProfile ? 'Found' : 'Not found');
 
     // If profile doesn't exist in KV, create it from auth user metadata
     // This happens when accessing own profile (userId === authUser.id)
-    if (!userProfile && userId === authUser.id) {
+    if (!userProfile && authUser && userId === authUser.id) {
       console.log('Creating user profile from auth metadata...');
       console.log('Auth user metadata:', authUser.user_metadata);
       
@@ -781,12 +786,40 @@ app.get("/make-server-b8526fa6/users/:userId", async (c) => {
       
       // Save the profile to KV store
       await kv.set(`user:${authUser.id}`, userProfile);
-      console.log('✓ User profile created and saved to KV');
+      console.log('User profile created and saved to KV');
     }
     
     if (!userProfile) {
-      console.log('❌ User profile not found for userId:', userId);
+      console.log('User profile not found for userId:', userId);
       return c.json({ error: 'User not found' }, 404);
+    }
+
+    // For public requests, only return public fields
+    if (isPublicRequest || !authUser) {
+      const publicProfile = {
+        id: userProfile.id,
+        firstName: userProfile.firstName,
+        lastName: userProfile.lastName,
+        role: userProfile.role,
+        mentorType: userProfile.mentorType,
+        profilePicture: userProfile.profilePicture,
+        title: userProfile.title,
+        bio: userProfile.bio,
+        skills: userProfile.skills || [],
+        currentRole: userProfile.currentRole,
+        company: userProfile.company,
+        location: userProfile.location,
+        yearsOfExperience: userProfile.yearsOfExperience,
+        availableToMentor: userProfile.availableToMentor,
+        linkedin: userProfile.linkedin,
+        twitter: userProfile.twitter,
+        website: userProfile.website,
+        offers: userProfile.offers || [],
+        education: userProfile.education,
+        goals: userProfile.goals,
+        createdAt: userProfile.createdAt,
+      };
+      return c.json({ success: true, user: publicProfile, isPublic: true });
     }
 
     return c.json({ success: true, user: userProfile });
