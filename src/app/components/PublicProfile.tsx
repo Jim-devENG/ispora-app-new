@@ -45,9 +45,9 @@ export default function PublicProfile() {
       
       try {
         setLoading(true);
-        // Use new public-profile endpoint
+        // Use super-worker function for public profiles
         const response = await fetch(
-          `https://${projectId}.supabase.co/functions/v1/public-profile/${userId}`
+          `https://fketlqcuiaatgsdkcymo.supabase.co/functions/v1/super-worker/${userId}`
         );
         
         if (!response.ok) {
