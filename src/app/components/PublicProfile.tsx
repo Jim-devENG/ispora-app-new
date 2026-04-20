@@ -45,9 +45,9 @@ export default function PublicProfile() {
       
       try {
         setLoading(true);
-        // Use existing users endpoint with public=true query param
+        // Use new public-profile endpoint
         const response = await fetch(
-          `https://${projectId}.supabase.co/functions/v1/make-server-b8526fa6/users/${userId}?public=true`
+          `https://${projectId}.supabase.co/functions/v1/public-profile/${userId}`
         );
         
         if (!response.ok) {
@@ -60,7 +60,7 @@ export default function PublicProfile() {
         }
         
         const data = await response.json();
-        setProfile(data.user);
+        setProfile(data.profile);
       } catch (err) {
         console.error('Error fetching profile:', err);
         setError('Failed to load profile');
