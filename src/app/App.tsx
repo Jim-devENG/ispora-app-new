@@ -11,6 +11,7 @@ import AdminDashboard from './components/AdminDashboard';
 import AdminSetup from './components/AdminSetup';
 import SessionLandingPage from './components/SessionLandingPage';
 import Dashboard from './components/Dashboard';
+import PublicProfile from './components/PublicProfile';
 
 // v0.0.4 - Current mentor filtering: Students can't request mentorship from existing mentors
 // Loading fallback component
@@ -187,11 +188,13 @@ function AppContent() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/auth" element={<AuthFlow />} />
           <Route path="/session/:sessionId" element={<SessionLandingPage />} />
-          <Route path="/:shortCode" element={<SessionLandingPage />} />
+          <Route path="/mentor/:userId" element={<PublicProfile />} />
+          <Route path="/student/:userId" element={<PublicProfile />} />
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin-setup" element={<AdminSetup />} />
           <Route path="/admin/setup" element={<AdminSetup />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/:shortCode" element={<SessionLandingPage />} />
         </Routes>
       </Suspense>
       <SupportWidgetWrapper />
