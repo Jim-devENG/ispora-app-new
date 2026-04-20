@@ -571,8 +571,8 @@ app.post("/make-server-b8526fa6/auth/upload-profile-picture", async (c) => {
     });
   } catch (error: any) {
     console.log('Upload profile picture error:', error);
-return c.json({ error: error.message || 'Failed to upload profile picture' }, 500);
-}
+    return c.json({ error: error.message || 'Failed to upload profile picture' }, 500);
+  }
 });
 
 // ¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬
@@ -581,81 +581,81 @@ return c.json({ error: error.message || 'Failed to upload profile picture' }, 50
 
 // Get public mentor profile
 app.get("/make-server-b8526fa6/public/mentor/:userId", async (c) => {
-try {
-const userId = c.req.param('userId');
-  
-const user = await kv.get(`user:${userId}`);
-  
-if (!user) {
-return c.json({ error: 'Profile not found' }, 404);
-}
-  
-// Only return public information
-const publicProfile = {
-id: user.id,
-firstName: user.firstName,
-lastName: user.lastName,
-role: user.role,
-mentorType: user.mentorType,
-profilePicture: user.profilePicture,
-title: user.title,
-bio: user.bio,
-skills: user.skills || [],
-currentRole: user.currentRole,
-company: user.company,
-location: user.location,
-yearsOfExperience: user.yearsOfExperience,
-availableToMentor: user.availableToMentor,
-linkedin: user.linkedin,
-twitter: user.twitter,
-website: user.website,
-offers: user.offers || [],
-createdAt: user.createdAt,
-};
-  
-return c.json({ success: true, profile: publicProfile });
-} catch (error: any) {
-console.log('Get public mentor profile error:', error);
-return c.json({ error: error.message || 'Failed to fetch profile' }, 500);
-}
+  try {
+    const userId = c.req.param('userId');
+    
+    const user = await kv.get(`user:${userId}`);
+    
+    if (!user) {
+      return c.json({ error: 'Profile not found' }, 404);
+    }
+    
+    // Only return public information
+    const publicProfile = {
+      id: user.id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      role: user.role,
+      mentorType: user.mentorType,
+      profilePicture: user.profilePicture,
+      title: user.title,
+      bio: user.bio,
+      skills: user.skills || [],
+      currentRole: user.currentRole,
+      company: user.company,
+      location: user.location,
+      yearsOfExperience: user.yearsOfExperience,
+      availableToMentor: user.availableToMentor,
+      linkedin: user.linkedin,
+      twitter: user.twitter,
+      website: user.website,
+      offers: user.offers || [],
+      createdAt: user.createdAt,
+    };
+    
+    return c.json({ success: true, profile: publicProfile });
+  } catch (error: any) {
+    console.log('Get public mentor profile error:', error);
+    return c.json({ error: error.message || 'Failed to fetch profile' }, 500);
+  }
 });
 
 // Get public student profile
 app.get("/make-server-b8526fa6/public/student/:userId", async (c) => {
-try {
-const userId = c.req.param('userId');
-  
-const user = await kv.get(`user:${userId}`);
-  
-if (!user) {
-return c.json({ error: 'Profile not found' }, 404);
-}
-  
-// Only return public information
-const publicProfile = {
-id: user.id,
-firstName: user.firstName,
-lastName: user.lastName,
-role: user.role,
-profilePicture: user.profilePicture,
-title: user.title,
-bio: user.bio,
-skills: user.skills || [],
-currentRole: user.currentRole,
-company: user.company,
-location: user.location,
-education: user.education,
-goals: user.goals,
-linkedin: user.linkedin,
-twitter: user.twitter,
-createdAt: user.createdAt,
-};
-  
-return c.json({ success: true, profile: publicProfile });
-} catch (error: any) {
-console.log('Get public student profile error:', error);
-return c.json({ error: error.message || 'Failed to fetch profile' }, 500);
-}
+  try {
+    const userId = c.req.param('userId');
+    
+    const user = await kv.get(`user:${userId}`);
+    
+    if (!user) {
+      return c.json({ error: 'Profile not found' }, 404);
+    }
+    
+    // Only return public information
+    const publicProfile = {
+      id: user.id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      role: user.role,
+      profilePicture: user.profilePicture,
+      title: user.title,
+      bio: user.bio,
+      skills: user.skills || [],
+      currentRole: user.currentRole,
+      company: user.company,
+      location: user.location,
+      education: user.education,
+      goals: user.goals,
+      linkedin: user.linkedin,
+      twitter: user.twitter,
+      createdAt: user.createdAt,
+    };
+    
+    return c.json({ success: true, profile: publicProfile });
+  } catch (error: any) {
+    console.log('Get public student profile error:', error);
+    return c.json({ error: error.message || 'Failed to fetch profile' }, 500);
+  }
 });
 
 // ¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬
@@ -664,11 +664,8 @@ return c.json({ error: error.message || 'Failed to fetch profile' }, 500);
 
 // Browse students (for mentors) - MUST come before /users
 app.get("/make-server-b8526fa6/users/browse/students", async (c) => {
-try {
-const auth = await authenticateUser(c);
-if ('error' in auth) {
-return c.json({ error: auth.error }, auth.status);
-}
+  try {
+    const auth = await authenticateUser(c);
     if ('error' in auth) {
       return c.json({ error: auth.error }, auth.status);
     }
