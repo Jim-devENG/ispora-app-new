@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode, useMemo, useCallback } from 'react';
 import { supabase } from '../utils/supabase';
 import { projectId, publicAnonKey } from '/utils/supabase/info';
+import { clearApiCache } from '../lib/api';
 
 // Import types from utils/api for backward compatibility
 import type { User, SignUpData, SignInData } from '../utils/api';
@@ -353,6 +354,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       setAccessToken(null);
       localStorage.removeItem('ispora_access_token');
       localStorage.removeItem('ispora_refresh_token');
+      // Clear API cache to prevent data mixing between users
+      clearApiCache();
       // Redirect to auth page
       window.location.href = '/auth';
     }

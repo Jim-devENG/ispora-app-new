@@ -67,6 +67,7 @@ export default function StudentDashboard() {
   // Load mentorships and notifications
   useEffect(() => {
     const loadData = async () => {
+      if (!user?.id) return;
       try {
         const [mentorshipsRes, notificationsRes] = await Promise.all([
           api.mentorship.getAll(),
@@ -88,7 +89,7 @@ export default function StudentDashboard() {
     };
     
     loadData();
-  }, []);
+  }, [user?.id]);
 
   const handleSignOut = async () => {
     await signOut();

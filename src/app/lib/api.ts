@@ -7,7 +7,17 @@ const API_BASE_URL = `https://${projectId}.supabase.co/functions/v1/make-server-
 let tokenRefreshPromise: Promise<string | null> | null = null;
 let lastTokenFetch: number = 0;
 let cachedToken: string | null = null;
+let cachedUserId: string | null = null; // Track which user the token belongs to
 const TOKEN_CACHE_MS = 2000; // Cache token for 2 seconds to prevent multiple simultaneous refreshes
+
+// Clear cache when user changes - call this on sign out or user change
+export function clearApiCache() {
+  cachedToken = null;
+  cachedUserId = null;
+  lastTokenFetch = 0;
+  tokenRefreshPromise = null;
+  console.log('API cache cleared');
+}
 
 // Helper function to ensure we have a valid token
 async function getValidToken(): Promise<string | null> {

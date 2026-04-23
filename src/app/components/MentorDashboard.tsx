@@ -399,9 +399,11 @@ export default function MentorDashboard() {
   };
 
   useEffect(() => {
-    loadDashboardData();
-    // Auto-refresh removed - user can manually refresh if needed
-  }, []);
+    if (user?.id) {
+      loadDashboardData();
+    }
+    // Reload data when user changes
+  }, [user?.id]);
 
   // Close session menu when clicking outside
   useEffect(() => {
