@@ -409,20 +409,27 @@ const Profile: React.FC = () => {
                 )}
               </div>
 
-              {/* Tags */}
+              {/* Tags - Dynamic from user profile */}
               <div className="flex flex-wrap gap-1.5 mb-3 md:mb-0">
-                <span className="text-[11px] font-medium px-2.5 py-1 rounded-full bg-[var(--ispora-brand-light)] text-[var(--ispora-brand)]">
-                  Software Engineering
-                </span>
-                <span className="text-[11px] font-medium px-2.5 py-1 rounded-full bg-[var(--ispora-brand-light)] text-[var(--ispora-brand)]">
-                  AI / ML
-                </span>
-                <span className="text-[11px] font-medium px-2.5 py-1 rounded-full bg-[var(--ispora-brand-light)] text-[var(--ispora-brand)]">
-                  Career Coaching
-                </span>
-                <span className="text-[11px] font-medium px-2.5 py-1 rounded-full bg-[var(--ispora-brand-light)] text-[var(--ispora-brand)]">
-                  Fintech
-                </span>
+                {/* Expertise Areas */}
+                {profileData.expertiseAreas?.map((area, index) => (
+                  <span key={`expertise-${index}`} className="text-[11px] font-medium px-2.5 py-1 rounded-full bg-[var(--ispora-brand-light)] text-[var(--ispora-brand)]">
+                    {area}
+                  </span>
+                ))}
+                {/* What I Can Help With */}
+                {profileData.whatICanHelpWith?.map((help, index) => (
+                  <span key={`help-${index}`} className="text-[11px] font-medium px-2.5 py-1 rounded-full bg-[var(--ispora-brand-light)] text-[var(--ispora-brand)]">
+                    {help}
+                  </span>
+                ))}
+                {/* Industries Worked In */}
+                {profileData.industriesWorkedIn?.map((industry, index) => (
+                  <span key={`industry-${index}`} className="text-[11px] font-medium px-2.5 py-1 rounded-full bg-[var(--ispora-brand-light)] text-[var(--ispora-brand)]">
+                    {industry}
+                  </span>
+                ))}
+                {/* Mentor Type Badge */}
                 <span className={`text-[11px] font-medium px-2.5 py-1 rounded-full ${
                   (user as any)?.mentorType === 'home' 
                     ? 'bg-[var(--ispora-success-light)] text-[var(--ispora-success)]' 
