@@ -156,6 +156,8 @@ function FeedTab() {
   const [commentText, setCommentText] = useState('');
   const [loadedComments, setLoadedComments] = useState<Record<string, any[]>>({});
   const [loadingComments, setLoadingComments] = useState<string | null>(null);
+  const [replyingToComment, setReplyingToComment] = useState<string | null>(null);
+  const [replyText, setReplyText] = useState('');
 
   useEffect(() => {
     loadPosts();
@@ -298,13 +300,19 @@ function FeedTab() {
     }
   };
 
-  const handleAddComment = async (postId: string) => {
-    if (!commentText.trim()) return;
+  const handleAddComment = async (postId: string, parentId?: string) => {
+    const text = parentId ? replyText : commentText;
+    if (!text.trim()) return;
 
     try {
-      await api.community.addComment(postId, commentText);
-      toast.success('Comment added!');
-      setCommentText('');
+      await api.community.addComment(postId, text, parentId);
+      toast.success(parentId ? 'Reply added!' : 'Comment added!');
+      if (parentId) {
+        setReplyText('');
+        setReplyingToComment(null);
+      } else {
+        setCommentText('');
+      }
       // Reload comments for this post
       loadComments(postId);
       loadPosts();
@@ -578,26 +586,91 @@ function FeedTab() {
                     ) : loadedComments[post.id] && loadedComments[post.id].length > 0 ? (
                       <div className="mt-3 space-y-2.5">
                         {loadedComments[post.id].map((comment: any) => (
-                          <div key={comment.id} className="flex gap-2">
-                            {comment.author?.profilePicture ? (
-                              <div className="w-7 h-7 rounded-full overflow-hidden flex-shrink-0">
-                                <img
-                                  src={comment.author.profilePicture}
-                                  alt={`${comment.author.firstName} ${comment.author.lastName}`}
-                                  className="w-full h-full object-cover"
-                                />
+                          <div key={comment.id}>
+                            <div className="flex gap-2">
+                              {comment.author?.profilePicture ? (
+                                <div className="w-7 h-7 rounded-full overflow-hidden flex-shrink-0">
+                                  <img
+                                    src={comment.author.profilePicture}
+                                    alt={`${comment.author.firstName} ${comment.author.lastName}`}
+                                    className="w-full h-full object-cover"
+                                  />
+                                </div>
+                              ) : (
+                                <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[var(--ispora-brand)] to-[#1a35f8] flex items-center justify-center text-white font-bold text-[10px] flex-shrink-0">
+                                  {comment.author?.firstName?.[0]}{comment.author?.lastName?.[0]}
+                                </div>
+                              )}
+                              <div className="flex-1 bg-[var(--ispora-bg)] rounded-lg p-2.5">
+                                <div className="flex items-center justify-between mb-0.5">
+                                  <span className="font-bold text-[10px] text-[var(--ispora-text)]">
+                                    {comment.author?.firstName} {comment.author?.lastName}
+                                  </span>
+                                  <span className="text-[9px] text-[var(--ispora-text3)]">
+                                    {comment.createdAt ? new Date(comment.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : ''}
+                                  </span>
+                                </div>
+                                <div className="text-xs text-[var(--ispora-text)]">{comment.content}</div>
+                                <button
+                                  onClick={() => setReplyingToComment(replyingToComment === comment.id ? null : comment.id)}
+                                  className="text-[10px] text-[var(--ispora-brand)] font-semibold mt-1 hover:underline"
+                                >
+                                  Reply
+                                </button>
                               </div>
-                            ) : (
-                              <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[var(--ispora-brand)] to-[#1a35f8] flex items-center justify-center text-white font-bold text-[10px] flex-shrink-0">
-                                {comment.author?.firstName?.[0]}{comment.author?.lastName?.[0]}
+                            </div>
+                            {/* Reply Input */}
+                            {replyingToComment === comment.id && (
+                              <div className="ml-9 mt-2 flex gap-2">
+                                <input
+                                  type="text"
+                                  value={replyText}
+                                  onChange={(e) => setReplyText(e.target.value)}
+                                  placeholder="Write a reply..."
+                                  className="flex-1 px-2.5 py-1.5 border-[1.5px] border-[var(--ispora-border)] rounded-lg text-xs"
+                                  onKeyPress={(e) => e.key === 'Enter' && handleAddComment(post.id, comment.id)}
+                                />
+                                <button
+                                  onClick={() => handleAddComment(post.id, comment.id)}
+                                  className="px-3 py-1.5 bg-[var(--ispora-brand)] text-white rounded-lg hover:bg-[#1a35f8] transition-colors"
+                                >
+                                  <Send className="w-3 h-3" />
+                                </button>
                               </div>
                             )}
-                            <div className="flex-1 bg-[var(--ispora-bg)] rounded-lg p-2.5">
-                              <div className="font-bold text-[10px] text-[var(--ispora-text)] mb-0.5">
-                                {comment.author?.firstName} {comment.author?.lastName}
+                            {/* Replies */}
+                            {comment.replies && comment.replies.length > 0 && (
+                              <div className="ml-9 mt-2 space-y-2">
+                                {comment.replies.map((reply: any) => (
+                                  <div key={reply.id} className="flex gap-2">
+                                    {reply.author?.profilePicture ? (
+                                      <div className="w-6 h-6 rounded-full overflow-hidden flex-shrink-0">
+                                        <img
+                                          src={reply.author.profilePicture}
+                                          alt={`${reply.author.firstName} ${reply.author.lastName}`}
+                                          className="w-full h-full object-cover"
+                                        />
+                                      </div>
+                                    ) : (
+                                      <div className="w-6 h-6 rounded-full bg-gradient-to-br from-[var(--ispora-brand)] to-[#1a35f8] flex items-center justify-center text-white font-bold text-[9px] flex-shrink-0">
+                                        {reply.author?.firstName?.[0]}{reply.author?.lastName?.[0]}
+                                      </div>
+                                    )}
+                                    <div className="flex-1 bg-white border border-[var(--ispora-border)] rounded-lg p-2">
+                                      <div className="flex items-center justify-between mb-0.5">
+                                        <span className="font-bold text-[9px] text-[var(--ispora-text)]">
+                                          {reply.author?.firstName} {reply.author?.lastName}
+                                        </span>
+                                        <span className="text-[8px] text-[var(--ispora-text3)]">
+                                          {reply.createdAt ? new Date(reply.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : ''}
+                                        </span>
+                                      </div>
+                                      <div className="text-[11px] text-[var(--ispora-text)]">{reply.content}</div>
+                                    </div>
+                                  </div>
+                                ))}
                               </div>
-                              <div className="text-xs text-[var(--ispora-text)]">{comment.content}</div>
-                            </div>
+                            )}
                           </div>
                         ))}
                       </div>

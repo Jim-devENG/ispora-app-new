@@ -809,11 +809,11 @@ export const communityApi = {
   unlikePost: (postId: string) =>
     apiCall(`/community/posts/${postId}/unlike`, { method: 'POST' }),
 
-  // Add comment to a post
-  addComment: (postId: string, content: string) =>
+  // Add comment to a post (supports replies via parentId)
+  addComment: (postId: string, content: string, parentId?: string) =>
     apiCall(`/community/posts/${postId}/comments`, {
       method: 'POST',
-      body: JSON.stringify({ content }),
+      body: JSON.stringify({ content, parentId }),
     }),
 
   // Get comments for a post

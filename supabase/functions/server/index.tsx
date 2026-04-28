@@ -4748,14 +4748,14 @@ app.delete("/make-server-b8526fa6/community/posts/:postId/like", async (c) => {
   }
 });
 
-// Add a comment to a post
+// Add a comment to a post (supports replies via parentId)
 app.post("/make-server-b8526fa6/community/posts/:postId/comments", async (c) => {
   try {
     const auth = await authenticateUser(c);
     if ('error' in auth) return c.json({ error: auth.error }, auth.status);
 
     const postId = c.req.param('postId');
-    const { content } = await c.req.json();
+    const { content, parentId } = await c.req.json();
 
     if (!content || !content.trim()) {
       return c.json({ error: 'Comment content is required' }, 400);
@@ -4766,12 +4766,21 @@ app.post("/make-server-b8526fa6/community/posts/:postId/comments", async (c) => 
       return c.json({ error: 'Post not found' }, 404);
     }
 
+    // If replying, verify parent comment exists
+    if (parentId) {
+      const parentComment = await kv.get(`post_comment:${parentId}`);
+      if (!parentComment) {
+        return c.json({ error: 'Parent comment not found' }, 404);
+      }
+    }
+
     const commentId = crypto.randomUUID();
     const comment = {
       id: commentId,
       postId,
       userId: auth.user.id,
       content: content.trim(),
+      parentId: parentId || null,
       createdAt: new Date().toISOString()
     };
 
@@ -4783,6 +4792,7 @@ app.post("/make-server-b8526fa6/community/posts/:postId/comments", async (c) => 
       comment: {
         id: comment.id,
         content: comment.content,
+        parentId: comment.parentId,
         author: author ? {
           id: author.id,
           firstName: author.firstName,
@@ -4799,7 +4809,7 @@ app.post("/make-server-b8526fa6/community/posts/:postId/comments", async (c) => 
   }
 });
 
-// Get comments for a post
+// Get comments for a post (with replies)
 app.get("/make-server-b8526fa6/community/posts/:postId/comments", async (c) => {
   try {
     const auth = await authenticateUser(c);
@@ -4817,7 +4827,7 @@ app.get("/make-server-b8526fa6/community/posts/:postId/comments", async (c) => {
     // Get all comments for this post
     const allComments = await kv.getByPrefix('post_comment:') || [];
     const postComments = (Array.isArray(allComments) ? allComments : [])
-      .filter((c: any) => c && c.postId === postId);
+      .filter((comment: any) => comment && comment.postId === postId);
 
     // Enrich comments with author info
     const enrichedComments = await Promise.all(
@@ -4826,6 +4836,7 @@ app.get("/make-server-b8526fa6/community/posts/:postId/comments", async (c) => {
         return {
           id: comment.id,
           content: comment.content,
+          parentId: comment.parentId || null,
           author: author ? {
             id: author.id,
             firstName: author.firstName,
@@ -4838,10 +4849,21 @@ app.get("/make-server-b8526fa6/community/posts/:postId/comments", async (c) => {
       })
     );
 
-    // Sort by most recent first
-    enrichedComments.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+    // Organize comments with replies (top-level comments first, then their replies)
+    const topLevelComments = enrichedComments.filter((c: any) => !c.parentId);
+    const replies = enrichedComments.filter((c: any) => c.parentId);
 
-    return c.json({ comments: enrichedComments });
+    // Attach replies to their parent comments
+    const commentsWithReplies = topLevelComments.map((comment: any) => ({
+      ...comment,
+      replies: replies.filter((r: any) => r.parentId === comment.id)
+        .sort((a: any, b: any) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime())
+    }));
+
+    // Sort top-level comments by most recent first
+    commentsWithReplies.sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+
+    return c.json({ comments: commentsWithReplies });
   } catch (error: any) {
     console.log('Get comments error:', error);
     return c.json({ error: error.message || 'Failed to fetch comments' }, 500);

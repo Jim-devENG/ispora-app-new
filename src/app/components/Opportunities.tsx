@@ -705,13 +705,15 @@ const Opportunities: React.FC = () => {
               Verified opportunities from diaspora professionals and Ispora — no scraped boards.
             </p>
           </div>
-          <button
-            onClick={() => setShowPostModal(true)}
-            className="flex items-center gap-2 px-4 py-2 bg-white text-[var(--ispora-brand)] rounded-[10px] text-[13px] font-semibold hover:bg-[#f0f3ff] transition-colors flex-shrink-0"
-          >
-            <Plus className="w-3.5 h-3.5" strokeWidth={2.5} />
-            Post Opportunity
-          </button>
+          {user?.role === 'diaspora' && (
+            <button
+              onClick={() => setShowPostModal(true)}
+              className="flex items-center gap-2 px-4 py-2 bg-white text-[var(--ispora-brand)] rounded-[10px] text-[13px] font-semibold hover:bg-[#f0f3ff] transition-colors flex-shrink-0"
+            >
+              <Plus className="w-3.5 h-3.5" strokeWidth={2.5} />
+              Post Opportunity
+            </button>
+          )}
         </div>
       </div>
 
@@ -779,18 +781,31 @@ const Opportunities: React.FC = () => {
                 <div className="w-14 h-14 bg-[var(--ispora-brand-light)] rounded-full flex items-center justify-center mx-auto mb-3.5">
                   <Edit className="w-6 h-6 text-[var(--ispora-brand)]" strokeWidth={1.8} />
                 </div>
-                <h3 className="font-syne text-[15px] font-bold text-[var(--ispora-text)] mb-1.5">
-                  No posts yet
-                </h3>
-                <p className="text-[13px] text-[var(--ispora-text3)] mb-4">
-                  Share opportunities with the community to help other members grow
-                </p>
-                <button
-                  onClick={() => setShowPostModal(true)}
-                  className="px-4 py-2 bg-[var(--ispora-brand)] text-white text-sm font-semibold rounded-lg hover:bg-[var(--ispora-brand-hover)] transition-colors"
-                >
-                  Post Your First Opportunity
-                </button>
+                {user?.role === 'diaspora' ? (
+                  <>
+                    <h3 className="font-syne text-[15px] font-bold text-[var(--ispora-text)] mb-1.5">
+                      No posts yet
+                    </h3>
+                    <p className="text-[13px] text-[var(--ispora-text3)] mb-4">
+                      Share opportunities with the community to help other members grow
+                    </p>
+                    <button
+                      onClick={() => setShowPostModal(true)}
+                      className="px-4 py-2 bg-[var(--ispora-brand)] text-white text-sm font-semibold rounded-lg hover:bg-[var(--ispora-brand-hover)] transition-colors"
+                    >
+                      Post Your First Opportunity
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <h3 className="font-syne text-[15px] font-bold text-[var(--ispora-text)] mb-1.5">
+                      No posts yet
+                    </h3>
+                    <p className="text-[13px] text-[var(--ispora-text3)]">
+                      Only mentors can post opportunities. Browse available opportunities to find ones that match your interests!
+                    </p>
+                  </>
+                )}
               </div>
             ) : (
               myPosts.map((post) => (
