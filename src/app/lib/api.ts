@@ -796,6 +796,10 @@ export const communityApi = {
       body: JSON.stringify({ content }),
     }),
 
+  // Get comments for a post
+  getComments: (postId: string) =>
+    apiCall(`/community/posts/${postId}/comments`),
+
   // Delete a post
   deletePost: (postId: string) =>
     apiCall(`/community/posts/${postId}`, { method: 'DELETE' }),

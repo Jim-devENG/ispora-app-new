@@ -1171,20 +1171,6 @@ const Profile: React.FC = () => {
                 />
               </div>
 
-              {/* Skills */}
-              <div>
-                <label className="block text-[11px] font-semibold text-[var(--ispora-text3)] uppercase tracking-wider mb-1.5">
-                  Skills & Expertise (comma separated)
-                </label>
-                <input
-                  type="text"
-                  value={profileData.skills.join(', ')}
-                  onChange={(e) => setProfileData({ ...profileData, skills: e.target.value.split(',').map(s => s.trim()).filter(Boolean) })}
-                  placeholder="e.g., Python, React, Leadership, Data Analysis"
-                  className="w-full border-[1.5px] border-[var(--ispora-border)] rounded-[10px] px-3.5 py-2.5 text-[13px] text-[var(--ispora-text)] bg-white outline-none transition-all focus:border-[var(--ispora-brand)] focus:shadow-[0_0_0_3px_rgba(2,31,246,0.07)] placeholder:text-[var(--ispora-text3)]"
-                />
-              </div>
-
               {/* LinkedIn */}
               <div>
                 <label className="block text-[11px] font-semibold text-[var(--ispora-text3)] uppercase tracking-wider mb-1.5">

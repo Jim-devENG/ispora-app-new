@@ -137,7 +137,7 @@ export function SupportWidget({ accessToken }: SupportWidgetProps) {
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed md:bottom-6 bottom-20 right-6 bg-sky-500 text-white p-4 rounded-full shadow-lg hover:bg-sky-600 transition-colors z-50 flex items-center gap-2"
+        className="fixed md:bottom-6 bottom-24 right-6 bg-sky-500 text-white p-4 rounded-full shadow-lg hover:bg-sky-600 transition-colors z-40 flex items-center gap-2"
         aria-label="Open support"
       >
         <HelpCircle className="w-6 h-6" />

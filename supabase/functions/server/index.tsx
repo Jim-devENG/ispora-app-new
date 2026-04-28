@@ -4342,7 +4342,10 @@ app.get("/make-server-b8526fa6/community/members", async (c) => {
     const allUsersKeys = await kv.getByPrefix('user:') || [];
     let users = (Array.isArray(allUsersKeys) ? allUsersKeys : []).filter((u: any) => u && u.id);
 
-    if (role && role !== 'all') users = users.filter((u: any) => u.role === role);
+    // Map frontend role filter to actual DB roles
+    // Frontend sends 'mentor' but DB stores 'diaspora'
+    const dbRole = role === 'mentor' ? 'diaspora' : role;
+    if (dbRole && dbRole !== 'all') users = users.filter((u: any) => u.role === dbRole);
     if (search) {
       const s = search.toLowerCase();
       users = users.filter((u: any) => {

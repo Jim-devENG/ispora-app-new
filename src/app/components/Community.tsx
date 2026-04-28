@@ -154,6 +154,8 @@ function FeedTab() {
   const [posting, setPosting] = useState(false);
   const [commentingOnPost, setCommentingOnPost] = useState<string | null>(null);
   const [commentText, setCommentText] = useState('');
+  const [loadedComments, setLoadedComments] = useState<Record<string, any[]>>({});
+  const [loadingComments, setLoadingComments] = useState<string | null>(null);
 
   useEffect(() => {
     loadPosts();
@@ -282,6 +284,20 @@ function FeedTab() {
     }
   };
 
+  const loadComments = async (postId: string) => {
+    try {
+      setLoadingComments(postId);
+      const response = await api.community.getComments(postId);
+      setLoadedComments(prev => ({ ...prev, [postId]: response.comments || [] }));
+    } catch (error: any) {
+      console.error('Error loading comments:', error);
+      // If API fails, show empty comments
+      setLoadedComments(prev => ({ ...prev, [postId]: [] }));
+    } finally {
+      setLoadingComments(null);
+    }
+  };
+
   const handleAddComment = async (postId: string) => {
     if (!commentText.trim()) return;
 
@@ -289,10 +305,23 @@ function FeedTab() {
       await api.community.addComment(postId, commentText);
       toast.success('Comment added!');
       setCommentText('');
-      setCommentingOnPost(null);
+      // Reload comments for this post
+      loadComments(postId);
       loadPosts();
     } catch (error: any) {
       toast.error(error.message || 'Failed to add comment');
+    }
+  };
+
+  const handleToggleComments = (postId: string) => {
+    if (commentingOnPost === postId) {
+      setCommentingOnPost(null);
+    } else {
+      setCommentingOnPost(postId);
+      // Load comments when opening
+      if (!loadedComments[postId]) {
+        loadComments(postId);
+      }
     }
   };
 
@@ -515,7 +544,7 @@ function FeedTab() {
                     </span>
                   </button>
                   <button
-                    onClick={() => setCommentingOnPost(commentingOnPost === post.id ? null : post.id)}
+                    onClick={() => handleToggleComments(post.id)}
                     className="flex items-center gap-1 text-xs font-bold text-[var(--ispora-text3)] hover:text-[var(--ispora-brand)] transition-colors"
                   >
                     <MessageCircle className="w-3.5 h-3.5" />
@@ -544,14 +573,18 @@ function FeedTab() {
                     </div>
 
                     {/* Comments List */}
-                    {post.comments && post.comments.length > 0 && (
+                    {loadingComments === post.id ? (
+                      <div className="mt-3 pt-3 border-t border-[var(--ispora-border)]">
+                        <div className="text-xs text-[var(--ispora-text3)] text-center py-2">Loading comments...</div>
+                      </div>
+                    ) : (loadedComments[post.id] || post.comments) && (loadedComments[post.id] || post.comments).length > 0 && (
                       <div className="mt-3 space-y-2.5">
-                        {post.comments.map((comment: any) => (
+                        {(loadedComments[post.id] || post.comments).map((comment: any) => (
                           <div key={comment.id} className="flex gap-2">
                             {comment.author?.profilePicture ? (
                               <div className="w-7 h-7 rounded-full overflow-hidden flex-shrink-0">
-                                <img 
-                                  src={comment.author.profilePicture} 
+                                <img
+                                  src={comment.author.profilePicture}
                                   alt={`${comment.author.firstName} ${comment.author.lastName}`}
                                   className="w-full h-full object-cover"
                                 />

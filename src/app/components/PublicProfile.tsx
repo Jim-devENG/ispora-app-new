@@ -345,13 +345,13 @@ export default function PublicProfile() {
             {isMentor ? 'Want to connect with this mentor?' : 'Want to mentor this student?'}
           </h2>
           <p className="text-sm text-white/80 mb-4">
-            Join Ispora to connect with {isMentor ? 'mentors' : 'students'} from the African diaspora.
+            Join iSpora to connect with {isMentor ? 'mentors' : 'students'} from Africa and the African diaspora.
           </p>
           <button
             onClick={() => navigate('/auth')}
             className="px-6 py-3 bg-white text-[var(--ispora-brand)] rounded-lg font-bold hover:bg-white/90 transition-colors"
           >
-            Join Ispora
+            Join iSpora
           </button>
         </div>
       </main>
