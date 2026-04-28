@@ -46,14 +46,18 @@ export default function AuthFlow() {
     password: '',
   });
 
-  // Check URL parameters on mount for direct signup flow
+  // Check URL parameters on mount for direct signup/signin flow
   useEffect(() => {
     const mode = searchParams.get('mode');
     const role = searchParams.get('role');
-    
-    if (mode === 'signup' && role === 'student' && !isAuthenticated) {
-      setSelectedRole('student');
-      setCurrentScreen('signup');
+
+    if (!isAuthenticated) {
+      if (mode === 'signin') {
+        setCurrentScreen('signin');
+      } else if (mode === 'signup' && role === 'student') {
+        setSelectedRole('student');
+        setCurrentScreen('signup');
+      }
     }
   }, [searchParams, isAuthenticated]);
 

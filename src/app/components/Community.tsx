@@ -318,10 +318,8 @@ function FeedTab() {
       setCommentingOnPost(null);
     } else {
       setCommentingOnPost(postId);
-      // Load comments when opening
-      if (!loadedComments[postId]) {
-        loadComments(postId);
-      }
+      // Always load comments when opening to ensure fresh data
+      loadComments(postId);
     }
   };
 
@@ -577,9 +575,9 @@ function FeedTab() {
                       <div className="mt-3 pt-3 border-t border-[var(--ispora-border)]">
                         <div className="text-xs text-[var(--ispora-text3)] text-center py-2">Loading comments...</div>
                       </div>
-                    ) : (loadedComments[post.id] || post.comments) && (loadedComments[post.id] || post.comments).length > 0 && (
+                    ) : loadedComments[post.id] && loadedComments[post.id].length > 0 ? (
                       <div className="mt-3 space-y-2.5">
-                        {(loadedComments[post.id] || post.comments).map((comment: any) => (
+                        {loadedComments[post.id].map((comment: any) => (
                           <div key={comment.id} className="flex gap-2">
                             {comment.author?.profilePicture ? (
                               <div className="w-7 h-7 rounded-full overflow-hidden flex-shrink-0">
@@ -603,7 +601,7 @@ function FeedTab() {
                           </div>
                         ))}
                       </div>
-                    )}
+                    ) : null}
                   </div>
                 )}
               </div>

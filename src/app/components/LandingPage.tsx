@@ -91,7 +91,7 @@ const LandingPage = () => {
 
         <div className="flex items-center gap-2">
           <Link
-            to="/auth"
+            to="/auth?mode=signin"
             className="hidden sm:inline-flex bg-[var(--ispora-bg)] border-[1.5px] border-[var(--ispora-border)] text-[var(--ispora-text2)] px-[18px] py-2 rounded-full text-[13px] font-semibold hover:border-[var(--ispora-brand)] hover:text-[var(--ispora-brand)] hover:bg-[var(--ispora-brand-light)] transition-all"
           >
             Sign in
@@ -142,7 +142,7 @@ const LandingPage = () => {
                 <ArrowRight className="w-[15px] h-[15px] group-hover:translate-x-1 transition-transform" strokeWidth={2.5} />
               </Link>
               <Link
-                to="/auth"
+                to="/auth?mode=signin"
                 className="inline-flex items-center gap-2 bg-white text-[var(--ispora-text2)] px-7 py-3.5 rounded-xl text-[15px] font-semibold border-[1.5px] border-[var(--ispora-border)] hover:border-[var(--ispora-brand)] hover:text-[var(--ispora-brand)] hover:bg-[var(--ispora-brand-light)] hover:-translate-y-0.5 transition-all"
               >
                 <User className="w-3.5 h-3.5" strokeWidth={2} />
