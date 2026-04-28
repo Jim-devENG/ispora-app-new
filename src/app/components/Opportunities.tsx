@@ -19,7 +19,8 @@ import {
   Trash2,
   Eye,
   Loader2,
-  MoreVertical
+  MoreVertical,
+  Share2
 } from 'lucide-react';
 
 type OpportunityType = 'internship' | 'job' | 'scholarship' | 'fellowship' | 'accelerator' | 'hackathon' | 'conference' | 'grant' | 'competition' | 'others';
@@ -1259,6 +1260,17 @@ const Opportunities: React.FC = () => {
               >
                 <Bookmark className="w-3.5 h-3.5" strokeWidth={2.5} fill={selectedOpportunity.saved ? 'currentColor' : 'none'} />
                 {selectedOpportunity.saved ? 'Saved' : 'Save'}
+              </button>
+              <button
+                onClick={() => {
+                  const url = `${window.location.origin}/opportunity/${selectedOpportunity.id}`;
+                  navigator.clipboard.writeText(url);
+                  toast.success('Link copied to clipboard!');
+                }}
+                className="flex items-center gap-1.5 px-4 py-2.5 border-[1.5px] border-[var(--ispora-border)] rounded-[10px] text-[13px] font-semibold text-[var(--ispora-text)] hover:border-[var(--ispora-brand)] hover:text-[var(--ispora-brand)] transition-all"
+              >
+                <Share2 className="w-3.5 h-3.5" strokeWidth={2.5} />
+                Share
               </button>
               {(() => {
                 // Use helper function to validate URL

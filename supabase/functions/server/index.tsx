@@ -1701,6 +1701,66 @@ app.get("/make-server-b8526fa6/opportunities/:opportunityId", async (c) => {
   }
 });
 
+// Get public opportunity details (for shareable links - no auth required)
+app.get("/make-server-b8526fa6/public/opportunity/:opportunityId", async (c) => {
+  try {
+    const opportunityId = c.req.param('opportunityId');
+    const opportunity = await kv.get(`opportunity:${opportunityId}`);
+
+    if (!opportunity) {
+      return c.json({ error: 'Opportunity not found' }, 404);
+    }
+
+    // Increment view count
+    const updatedOpportunity = {
+      ...opportunity,
+      views: (opportunity.views || 0) + 1,
+    };
+    await kv.set(`opportunity:${opportunityId}`, updatedOpportunity);
+
+    // Enrich with poster data
+    const poster = await kv.get(`user:${opportunity.postedBy}`);
+
+    return c.json({
+      success: true,
+      opportunity: {
+        id: updatedOpportunity.id,
+        type: updatedOpportunity.type,
+        title: updatedOpportunity.title,
+        org: updatedOpportunity.org,
+        logo: updatedOpportunity.logo,
+        location: updatedOpportunity.location,
+        country: updatedOpportunity.country,
+        field: updatedOpportunity.field,
+        deadline: updatedOpportunity.deadline,
+        deadlineUrgent: updatedOpportunity.deadlineUrgent,
+        tags: updatedOpportunity.tags || [],
+        salary: updatedOpportunity.salary,
+        applicants: updatedOpportunity.applicants || 0,
+        views: updatedOpportunity.views || 0,
+        featured: updatedOpportunity.featured,
+        desc: updatedOpportunity.desc,
+        tip: updatedOpportunity.tip,
+        eligibility: updatedOpportunity.eligibility,
+        link: updatedOpportunity.link,
+        createdAt: updatedOpportunity.createdAt,
+        poster: poster ? {
+          id: poster.id,
+          firstName: poster.firstName,
+          lastName: poster.lastName,
+          profilePicture: poster.profilePicture,
+          role: poster.role,
+        } : null,
+        postedByName: poster ? `${poster.firstName} ${poster.lastName}` : (updatedOpportunity.postedByAdmin ? 'Ispora Team' : null),
+        postedByRole: poster ? (poster.role === 'diaspora' ? 'Mentor' : poster.role === 'student' ? 'Student' : 'Member') : (updatedOpportunity.postedByAdmin ? 'Platform Admin' : null),
+      },
+    });
+  } catch (error: any) {
+    console.log('Get public opportunity error:', error);
+    return c.json({ error: error.message || 'Failed to get opportunity' }, 500);
+  }
+});
+
 // Bookmark opportunity
 app.post("/make-server-b8526fa6/opportunities/:opportunityId/bookmark", async (c) => {
   try {
@@ -2327,6 +2387,11 @@ app.post("/make-server-b8526fa6/sessions/:sessionId/register", async (c) => {
     // Check if session is public
     if (sessionDetails.sessionType !== 'public') {
       return c.json({ error: 'Only public sessions allow registration' }, 400);
+    }
+
+    // Check if user is the session creator (mentor)
+    if (session.mentorId === user.id) {
+      return c.json({ error: 'Session hosts cannot register as participants in their own session' }, 400);
     }
 
     // Check if user is already registered

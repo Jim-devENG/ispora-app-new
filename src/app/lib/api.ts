@@ -487,6 +487,26 @@ export const sessionApi = {
 };
 
 // ══════════════════════════════════════════════════════════════════════════════
+// ── PUBLIC OPPORTUNITY API (no auth) ──
+// ═════════════════════════════════════════════════════════════════════════════
+
+export const publicOpportunityApi = {
+  // Public opportunity (no auth required)
+  getPublicOpportunity: async (opportunityId: string) => {
+    const response = await fetch(`https://${projectId}.supabase.co/functions/v1/make-server-b8526fa6/public/opportunity/${opportunityId}`, {
+      headers: {
+        'Authorization': `Bearer ${publicAnonKey}`,
+      },
+    });
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.error || 'Failed to fetch opportunity');
+    }
+    return response.json();
+  },
+};
+
+// ══════════════════════════════════════════════════════════════════════════════
 // ── MESSAGES API ──
 // ═════════════════════════════════════════════════════════════════════════════
 

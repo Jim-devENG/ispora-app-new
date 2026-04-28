@@ -10,6 +10,7 @@ import AuthFlow from './components/AuthFlow';
 import AdminDashboard from './components/AdminDashboard';
 import AdminSetup from './components/AdminSetup';
 import SessionLandingPage from './components/SessionLandingPage';
+import OpportunityLandingPage from './components/OpportunityLandingPage';
 import Dashboard from './components/Dashboard';
 import PublicProfile from './components/PublicProfile';
 
@@ -188,6 +189,7 @@ function AppContent() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/auth" element={<AuthFlow />} />
           <Route path="/session/:sessionId" element={<SessionLandingPage />} />
+          <Route path="/opportunity/:opportunityId" element={<OpportunityLandingPage />} />
           <Route path="/mentor/:userId" element={<PublicProfile />} />
           <Route path="/student/:userId" element={<PublicProfile />} />
           <Route path="/admin" element={<AdminDashboard />} />
