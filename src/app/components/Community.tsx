@@ -352,6 +352,83 @@ function FeedTab() {
     { value: 'general', label: 'General' },
   ];
 
+  // Map career interests to post categories
+  const careerInterestToCategory: Record<string, PostCategory[]> = {
+    'Software Engineering': ['tech', 'career'],
+    'Product Management': ['tech', 'career'],
+    'Data Science & Analytics': ['tech', 'career'],
+    'UX/UI Design': ['tech', 'career'],
+    'Marketing & Growth': ['career'],
+    'Finance & Investment Banking': ['career'],
+    'Consulting (Strategy & Management)': ['career'],
+    'Entrepreneurship & Startups': ['career', 'tech'],
+    'DevOps & Cloud Engineering': ['tech', 'career'],
+    'Cybersecurity': ['tech', 'career'],
+    'Artificial Intelligence & Machine Learning': ['tech', 'career'],
+    'Mobile Development (iOS/Android)': ['tech', 'career'],
+    'Web Development (Frontend/Backend)': ['tech', 'career'],
+    'Sales & Business Development': ['career'],
+    'Human Resources & Talent': ['career'],
+    'Healthcare & Medicine': ['career'],
+    'Law & Legal': ['career'],
+    'Engineering (Mechanical, Civil, Electrical)': ['career'],
+    'Academia & Research': ['study-tips', 'career'],
+    'Accounting': ['career'],
+    'Supply Chain & Operations': ['career'],
+    'Architecture': ['career'],
+    'Media & Communications': ['career'],
+    'Education & Teaching': ['study-tips', 'career'],
+    'Non-Profit & Social Impact': ['career'],
+  };
+
+  // Get allowed categories for students based on their career interests
+  const getAllowedCategories = (): PostCategory[] => {
+    if (user?.role === 'diaspora') {
+      // Mentors can post in all categories
+      return ['career', 'tech', 'study-tips', 'success', 'general'];
+    }
+    
+    const studentInterests = (user as any)?.careerInterests || (user as any)?.interests || [];
+    if (studentInterests.length === 0) {
+      // If no interests set, allow all categories
+      return ['career', 'tech', 'study-tips', 'success', 'general'];
+    }
+    
+    const allowedCategories = new Set<PostCategory>();
+    studentInterests.forEach((interest: string) => {
+      const categories = careerInterestToCategory[interest];
+      if (categories) {
+        categories.forEach(cat => allowedCategories.add(cat));
+      }
+    });
+    
+    // Always allow general and success for all users
+    allowedCategories.add('general');
+    allowedCategories.add('success');
+    
+    return Array.from(allowedCategories);
+  };
+
+  const allowedCategories = getAllowedCategories();
+
+  // Filter posts based on user role and interests
+  const getFilteredPosts = () => {
+    if (user?.role === 'diaspora') {
+      // Mentors see all posts
+      return posts;
+    }
+    
+    // Students see posts matching their interests + posts from mentors + general posts
+    return posts.filter(post => {
+      // Always show general and success posts
+      if (post.category === 'general' || post.category === 'success') return true;
+      // Show posts matching allowed categories
+      return allowedCategories.includes(post.category);
+    });
+  };
+
+  const filteredPosts = getFilteredPosts();
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
       {/* Main Feed */}
@@ -399,7 +476,7 @@ function FeedTab() {
               onChange={(e) => setNewPostCategory(e.target.value as PostCategory)}
               className="w-full px-3 py-2 border-[1.5px] border-[var(--ispora-border)] rounded-lg text-sm mb-3"
             >
-              {categories.filter(c => c.value !== 'all').map(cat => (
+              {categories.filter(c => c.value !== 'all' && allowedCategories.includes(c.value)).map(cat => (
                 <option key={cat.value} value={cat.value}>{cat.label}</option>
               ))}
             </select>
@@ -439,7 +516,7 @@ function FeedTab() {
               onChange={(e) => setCategory(e.target.value as PostCategory)}
               className="px-3 py-1.5 border-[1.5px] border-[var(--ispora-border)] rounded-lg text-sm bg-white min-w-0 flex-1"
             >
-              {categories.map(cat => (
+              {categories.filter(cat => cat.value === 'all' || allowedCategories.includes(cat.value)).map(cat => (
                 <option key={cat.value} value={cat.value}>{cat.label}</option>
               ))}
             </select>
@@ -473,7 +550,7 @@ function FeedTab() {
           <div className="text-center py-12">
             <div className="inline-block w-8 h-8 border-3 border-[var(--ispora-brand)] border-t-transparent rounded-full animate-spin"></div>
           </div>
-        ) : posts.length === 0 ? (
+        ) : filteredPosts.length === 0 ? (
           <div className="bg-white border-[1.5px] border-[var(--ispora-border)] rounded-2xl p-10 text-center">
             <Sparkles className="w-12 h-12 text-[var(--ispora-brand)] mx-auto mb-3 opacity-50" />
             <h3 className="font-syne font-bold text-[var(--ispora-text)] mb-2">No posts yet</h3>
@@ -487,7 +564,7 @@ function FeedTab() {
           </div>
         ) : (
           <div className="space-y-4">
-            {posts.map((post) => (
+            {filteredPosts.map((post) => (
               <div key={post.id} className="bg-white border-[1.5px] border-[var(--ispora-border)] rounded-xl p-3.5 hover:border-[var(--ispora-brand)] transition-colors">
                 {/* Author Info */}
                 <div className="flex items-start justify-between mb-2.5">
