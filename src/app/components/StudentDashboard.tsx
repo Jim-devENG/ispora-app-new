@@ -769,6 +769,7 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
       description: sessionDetails.description || '',
       sessions: sessions,
       notes: firstSession.notes,
+      meetingLink: sessionDetails.meetingLink || firstSession.meetingLink || '',
       capacity: sessionDetails.capacity || 10,
       registeredCount: sessionDetails.registeredCount || 0
     };
@@ -878,6 +879,7 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
       duration: firstSession.duration,
       platform: sessionDetails.platform || 'Not specified',
       description: sessionDetails.description || '',
+      meetingLink: sessionDetails.meetingLink || firstSession.meetingLink || '',
       capacity: sessionDetails.capacity || 10,
       registeredCount: sessionDetails.registeredCount || 0,
       registeredStudents: sessionDetails.registeredStudents || [],
@@ -1490,7 +1492,8 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
-                        const meetingLink = series.sessions[0]?.meetingLink || '';
+                        // Get meetingLink from series (extracted from notes JSON)
+                        const meetingLink = series.meetingLink || '';
                         if (meetingLink) {
                           const normalizedLink = normalizeUrl(meetingLink);
                           window.open(normalizedLink, '_blank');
@@ -1624,7 +1627,8 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
-                        const meetingLink = session.meetingLink || '';
+                        // Get meetingLink from notes JSON or direct property
+                        const meetingLink = sessionDetails.meetingLink || session.meetingLink || '';
                         if (meetingLink) {
                           const normalizedLink = normalizeUrl(meetingLink);
                           window.open(normalizedLink, '_blank');
@@ -2404,6 +2408,17 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
                   const timingStatus = getSessionTimingStatus(sessionDate);
                   const canJoin = timingStatus.status === 'starting' || timingStatus.status === 'soon';
                   
+                  // Extract meetingLink from notes JSON
+                  let meetingLink = selectedSession.meetingLink || '';
+                  try {
+                    if (selectedSession.notes) {
+                      const parsed = JSON.parse(selectedSession.notes);
+                      if (parsed.meetingLink) {
+                        meetingLink = parsed.meetingLink;
+                      }
+                    }
+                  } catch (e) {}
+                  
                   return (
                     <>
                       <button 
@@ -2417,7 +2432,6 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
                         disabled={!canJoin}
                         onClick={() => {
                           if (canJoin) {
-                            const meetingLink = selectedSession.meetingLink || '';
                             if (meetingLink) {
                               const normalizedLink = normalizeUrl(meetingLink);
                               window.open(normalizedLink, '_blank');

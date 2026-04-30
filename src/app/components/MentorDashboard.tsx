@@ -508,6 +508,21 @@ export default function MentorDashboard() {
         ? `${studentData.firstName[0]}${studentData.lastName[0]}`
         : 'U';
       
+      // Extract meetingLink and platform from notes JSON
+      let meetingLink = session.meetingLink || '';
+      let platform = 'Google Meet';
+      try {
+        if (session.notes) {
+          const sessionDetails = JSON.parse(session.notes);
+          if (sessionDetails.meetingLink) {
+            meetingLink = sessionDetails.meetingLink;
+          }
+          if (sessionDetails.platform) {
+            platform = sessionDetails.platform;
+          }
+        }
+      } catch (e) {}
+      
       return {
         id: session.id,
         studentName,
@@ -515,11 +530,13 @@ export default function MentorDashboard() {
         avatar: studentData?.profilePicture,
         topic: session.topic || 'Mentorship Session',
         time: sessionDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }) + ' WAT',
-        platform: session.meetingLink?.includes('zoom') ? 'Zoom' : 'Google Meet',
+        platform,
         badge,
         color: undefined,
         notes: session.notes,
-        meetingLink: session.meetingLink || ''
+        meetingLink,
+        date: sessionDate,
+        duration: session.duration || 60
       };
     });
 
@@ -588,6 +605,10 @@ export default function MentorDashboard() {
       recurrencePatternText = sessionDetails.recurrencePattern;
     }
 
+    // Extract meetingLink and platform from notes JSON
+    const meetingLink = sessionDetails.meetingLink || firstSession.meetingLink || '';
+    const platform = sessionDetails.platform || (meetingLink?.includes('zoom') ? 'Zoom' : 'Google Meet');
+
     return {
       seriesId,
       topic: firstSession.topic || 'Recurring Program',
@@ -603,13 +624,15 @@ export default function MentorDashboard() {
       nextSessionTime: sessionDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }) + ' WAT',
       endDate: new Date(lastSession.scheduledAt),
       duration: firstSession.duration,
-      platform: firstSession.meetingLink?.includes('zoom') ? 'Zoom' : 'Google Meet',
+      platform,
       badge,
       color: undefined,
       sessions: sessions,
       notes: firstSession.notes,
+      meetingLink,
       capacity: sessionDetails.capacity || 10,
-      registeredCount: sessionDetails.registeredCount || 0
+      registeredCount: sessionDetails.registeredCount || 0,
+      mentor: firstSession.mentor
     };
   });
 
