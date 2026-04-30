@@ -1877,15 +1877,20 @@ export default function MentorDashboard() {
                               </div>
 
                               {/* Action Button */}
-                              {series.badge === 'today' && (
-                                <button
-                                  onClick={() => setShowJoinSession(series.sessions[0])}
-                                  className="w-full flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg bg-[var(--ispora-brand)] text-white text-xs font-semibold hover:bg-[var(--ispora-brand-hover)] hover:-translate-y-0.5 hover:shadow-[0_6px_18px_rgba(2,31,246,0.35)] transition-all"
-                                >
-                                  <Video className="w-3.5 h-3.5" strokeWidth={2.5} />
-                                  Join Session
-                                </button>
-                              )}
+                              <button
+                                onClick={() => {
+                                  const meetingLink = series.sessions[0]?.meetingLink || '';
+                                  if (meetingLink) {
+                                    window.open(meetingLink, '_blank');
+                                  } else {
+                                    toast.error('No meeting link available for this session.');
+                                  }
+                                }}
+                                className="w-full flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg bg-[var(--ispora-brand)] text-white text-xs font-semibold hover:bg-[var(--ispora-brand-hover)] hover:-translate-y-0.5 hover:shadow-[0_6px_18px_rgba(2,31,246,0.35)] transition-all"
+                              >
+                                <Video className="w-3.5 h-3.5" strokeWidth={2.5} />
+                                Join Session
+                              </button>
                             </div>
                           );
                         })}
@@ -2119,18 +2124,21 @@ export default function MentorDashboard() {
                           {session.platform}
                         </div>
                         <div className="flex gap-2">
-                          {session.badge === 'today' && (
-                            <button
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                setShowJoinSession(session);
-                              }}
-                              className="flex-1 flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg bg-[var(--ispora-brand)] text-white text-xs font-semibold hover:bg-[var(--ispora-brand-hover)] hover:-translate-y-0.5 hover:shadow-[0_6px_18px_rgba(2,31,246,0.35)] transition-all"
-                            >
-                              <Video className="w-3.5 h-3.5" strokeWidth={2.5} />
-                              Join Session
-                            </button>
-                          )}
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              const meetingLink = session.meetingLink || '';
+                              if (meetingLink) {
+                                window.open(meetingLink, '_blank');
+                              } else {
+                                toast.error('No meeting link available for this session.');
+                              }
+                            }}
+                            className="flex-1 flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg bg-[var(--ispora-brand)] text-white text-xs font-semibold hover:bg-[var(--ispora-brand-hover)] hover:-translate-y-0.5 hover:shadow-[0_6px_18px_rgba(2,31,246,0.35)] transition-all"
+                          >
+                            <Video className="w-3.5 h-3.5" strokeWidth={2.5} />
+                            Join Session
+                          </button>
                           <button
                             onClick={(e) => {
                               e.stopPropagation();

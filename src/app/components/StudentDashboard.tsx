@@ -1485,6 +1485,24 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
                       </div>
 
                     </div>
+
+                    {/* Join Session Button - Always visible */}
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        const meetingLink = series.sessions[0]?.meetingLink || '';
+                        if (meetingLink) {
+                          const normalizedLink = normalizeUrl(meetingLink);
+                          window.open(normalizedLink, '_blank');
+                        } else {
+                          toast.error('No meeting link available. Please contact your mentor.');
+                        }
+                      }}
+                      className="mt-3 w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-[var(--ispora-brand)] text-white text-xs font-semibold hover:bg-[var(--ispora-brand-hover)] hover:-translate-y-0.5 hover:shadow-[0_6px_18px_rgba(2,31,246,0.35)] transition-all"
+                    >
+                      <Video className="w-4 h-4" strokeWidth={2.5} />
+                      Join Session
+                    </button>
                   </div>
                 );
               })}
@@ -1576,36 +1594,49 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
                           <span>{session.duration} min</span>
                         </div>
                       </div>
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          const duration = session.duration || 60;
-                          const endTime = new Date(sessionDate.getTime() + duration * 60000);
-                          
-                          setCalendarEvent({
-                            title: `Mentorship: ${session.topic || 'Session'}`,
-                            description: `Mentorship Session\n\nMentor: ${session.mentor?.firstName} ${session.mentor?.lastName}`,
-                            location: session.meetingLink || 'Online',
-                            startTime: sessionDate,
-                            endTime: endTime,
-                            organizerName: `${session.mentor?.firstName} ${session.mentor?.lastName}`,
-                            sessionUrl: `${window.location.origin}/dashboard`
-                          });
-                          setShowCalendarModal(true);
-                        }}
-                        className="p-1.5 rounded-lg border-[1.5px] border-[var(--ispora-border)] text-[var(--ispora-text2)] hover:border-[var(--ispora-brand)] hover:text-[var(--ispora-brand)] hover:bg-[var(--ispora-brand-light)] transition-all"
-                        title="Add to Calendar"
-                      >
-                        <CalendarPlus className="w-3.5 h-3.5" strokeWidth={2} />
-                      </button>
+                      <div className="flex items-center gap-2">
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            const duration = session.duration || 60;
+                            const endTime = new Date(sessionDate.getTime() + duration * 60000);
+                            
+                            setCalendarEvent({
+                              title: `Mentorship: ${session.topic || 'Session'}`,
+                              description: `Mentorship Session\n\nMentor: ${session.mentor?.firstName} ${session.mentor?.lastName}`,
+                              location: session.meetingLink || 'Online',
+                              startTime: sessionDate,
+                              endTime: endTime,
+                              organizerName: `${session.mentor?.firstName} ${session.mentor?.lastName}`,
+                              sessionUrl: `${window.location.origin}/dashboard`
+                            });
+                            setShowCalendarModal(true);
+                          }}
+                          className="p-1.5 rounded-lg border-[1.5px] border-[var(--ispora-border)] text-[var(--ispora-text2)] hover:border-[var(--ispora-brand)] hover:text-[var(--ispora-brand)] hover:bg-[var(--ispora-brand-light)] transition-all"
+                          title="Add to Calendar"
+                        >
+                          <CalendarPlus className="w-3.5 h-3.5" strokeWidth={2} />
+                        </button>
+                      </div>
                     </div>
 
-                    {/* Hover action hint */}
-                    <div className="mt-2.5 text-center opacity-0 group-hover:opacity-100 transition-opacity">
-                      <span className="text-[10px] font-semibold text-[var(--ispora-brand)]">
-                        Click to view details & join →
-                      </span>
-                    </div>
+                    {/* Join Session Button - Always visible */}
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        const meetingLink = session.meetingLink || '';
+                        if (meetingLink) {
+                          const normalizedLink = normalizeUrl(meetingLink);
+                          window.open(normalizedLink, '_blank');
+                        } else {
+                          toast.error('No meeting link available. Please contact your mentor.');
+                        }
+                      }}
+                      className="mt-3 w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-[var(--ispora-brand)] text-white text-xs font-semibold hover:bg-[var(--ispora-brand-hover)] hover:-translate-y-0.5 hover:shadow-[0_6px_18px_rgba(2,31,246,0.35)] transition-all"
+                    >
+                      <Video className="w-4 h-4" strokeWidth={2.5} />
+                      Join Session
+                    </button>
                   </div>
                 );
               })}
