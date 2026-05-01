@@ -407,6 +407,26 @@ export const notificationApi = {
 
   markAllAsRead: () =>
     apiCall('/notifications/read-all', { method: 'PUT' }),
+
+  // Push notification methods
+  getVapidKey: () => apiCall('/push/vapid-key'),
+
+  subscribeToPush: (subscription: {
+    endpoint: string;
+    keys: { p256dh: string; auth: string };
+  }) =>
+    apiCall('/push/subscribe', {
+      method: 'POST',
+      body: JSON.stringify(subscription),
+    }),
+
+  unsubscribeFromPush: (endpoint: string) =>
+    apiCall('/push/unsubscribe', {
+      method: 'DELETE',
+      body: JSON.stringify({ endpoint }),
+    }),
+
+  getPushSubscriptions: () => apiCall('/push/subscriptions'),
 };
 
 // ═════════════════════════════════════════════════════════════════════════════

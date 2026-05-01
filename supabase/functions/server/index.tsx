@@ -6,6 +6,7 @@ import * as kv from "./kv_store.tsx";
 import { ensureResourcesBucket, setupResourceRoutes } from "./resources.tsx";
 import { setupAdminRoutes } from "./admin.tsx";
 import * as notifications from "./notifications.tsx";
+import * as webPush from "./webPush.tsx";
 import { 
   calculateMentorImpactStats, 
   calculateYouthProgressStats,
@@ -2038,8 +2039,121 @@ app.put("/make-server-b8526fa6/notifications/read-all", async (c) => {
 });
 
 // ══════════════════════════════════════════════════════════════════════════════
+// ── PUSH NOTIFICATION ROUTES ──
+// ══════════════════════════════════════════════════════════════════════════════
+
+// Get VAPID public key
+app.get("/make-server-b8526fa6/push/vapid-key", async (c) => {
+  try {
+    const publicKey = webPush.getVapidPublicKey();
+    return c.json({ success: true, publicKey });
+  } catch (error: any) {
+    return c.json({ error: error.message || 'Failed to get VAPID key' }, 500);
+  }
+});
+
+// Subscribe to push notifications
+app.post("/make-server-b8526fa6/push/subscribe", async (c) => {
+  try {
+    const auth = await authenticateUser(c);
+    if ('error' in auth) {
+      return c.json({ error: auth.error }, auth.status);
+    }
+
+    const { user } = auth;
+    const subscription = await c.req.json();
+
+    if (!webPush.isValidPushSubscription(subscription)) {
+      return c.json({ error: 'Invalid push subscription format' }, 400);
+    }
+
+    // Store the push subscription for this user
+    const subscriptionId = generateId('push');
+    await kv.set(`push_subscription:${subscriptionId}`, {
+      id: subscriptionId,
+      userId: user.id,
+      endpoint: subscription.endpoint,
+      keys: subscription.keys,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    });
+
+    // Also store by endpoint for quick lookup
+    await kv.set(`push_endpoint:${subscription.endpoint}`, {
+      userId: user.id,
+      subscriptionId,
+    });
+
+    console.log('✓ Push subscription saved for user:', user.id);
+
+    return c.json({ 
+      success: true, 
+      message: 'Push subscription saved',
+      subscriptionId 
+    });
+  } catch (error: any) {
+    console.log('Push subscribe error:', error);
+    return c.json({ error: error.message || 'Failed to save push subscription' }, 500);
+  }
+});
+
+// Unsubscribe from push notifications
+app.delete("/make-server-b8526fa6/push/unsubscribe", async (c) => {
+  try {
+    const auth = await authenticateUser(c);
+    if ('error' in auth) {
+      return c.json({ error: auth.error }, auth.status);
+    }
+
+    const { user } = auth;
+    const { endpoint } = await c.req.json();
+
+    if (!endpoint) {
+      return c.json({ error: 'Endpoint is required' }, 400);
+    }
+
+    // Find and delete the subscription
+    const endpointData = await kv.get(`push_endpoint:${endpoint}`);
+    if (endpointData && endpointData.userId === user.id) {
+      await kv.del(`push_subscription:${endpointData.subscriptionId}`);
+      await kv.del(`push_endpoint:${endpoint}`);
+    }
+
+    return c.json({ success: true, message: 'Push subscription removed' });
+  } catch (error: any) {
+    console.log('Push unsubscribe error:', error);
+    return c.json({ error: error.message || 'Failed to remove push subscription' }, 500);
+  }
+});
+
+// Get user's push subscriptions
+app.get("/make-server-b8526fa6/push/subscriptions", async (c) => {
+  try {
+    const auth = await authenticateUser(c);
+    if ('error' in auth) {
+      return c.json({ error: auth.error }, auth.status);
+    }
+
+    const { user } = auth;
+    const allSubscriptions = await kv.getByPrefix('push_subscription:') || [];
+    const userSubscriptions = allSubscriptions
+      .filter((s: any) => s.userId === user.id)
+      .map((s: any) => ({
+        id: s.id,
+        endpoint: s.endpoint,
+        createdAt: s.createdAt,
+      }));
+
+    return c.json({ success: true, subscriptions: userSubscriptions });
+  } catch (error: any) {
+    console.log('Get push subscriptions error:', error);
+    return c.json({ error: error.message || 'Failed to get push subscriptions' }, 500);
+  }
+});
+
+// ══════════════════════════════════════════════════════════════════════════════
 // ── SESSIONS/BOOKINGS ROUTES ──
-// ════════════════════════════���═════════════════════════════════════════════════
+// ════════════════════════════════════════════════════════════════════════════════
 
 // Create session booking
 app.post("/make-server-b8526fa6/sessions", async (c) => {

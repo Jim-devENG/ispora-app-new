@@ -7,6 +7,16 @@ interface NotificationPayload {
   link?: string;
 }
 
+interface PushNotificationPayload {
+  title: string;
+  body: string;
+  icon?: string;
+  tag?: string;
+  data?: any;
+  actions?: Array<{ action: string; title: string }>;
+  requireInteraction?: boolean;
+}
+
 interface NotificationPreferences {
   whatsappEnabled: boolean;
   sessionReminders: boolean;
@@ -86,6 +96,34 @@ export async function shouldSendNotification(
   }
   
   return prefs[notificationType] === true;
+}
+
+// Send push notification to user's devices
+export async function sendPushNotificationToUser(
+  userId: string,
+  payload: PushNotificationPayload,
+  kvGetByPrefix: any
+): Promise<void> {
+  try {
+    // Get all push subscriptions for this user
+    const allSubscriptions = await kvGetByPrefix('push_subscription:') || [];
+    const userSubscriptions = allSubscriptions.filter((s: any) => s.userId === userId);
+    
+    if (userSubscriptions.length === 0) {
+      console.log('No push subscriptions found for user:', userId);
+      return;
+    }
+    
+    // For now, just log - actual push sending would require web-push library
+    console.log(`Would send push notification to ${userSubscriptions.length} devices for user ${userId}:`, payload.title);
+    
+    // TODO: Implement actual push sending with web-push library
+    // for (const sub of userSubscriptions) {
+    //   await webPush.sendNotification(sub, JSON.stringify(payload));
+    // }
+  } catch (error: any) {
+    console.error('Failed to send push notification:', error.message);
+  }
 }
 
 // Send session reminder notification
