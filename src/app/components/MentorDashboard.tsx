@@ -1782,6 +1782,30 @@ export default function MentorDashboard() {
                                         Share Series
                                       </button>
                                     )}
+                                    <button
+                                      onClick={async (e) => {
+                                        e.stopPropagation();
+                                        setOpenSessionMenuId(null);
+                                        const sessionCount = series.sessions.length;
+                                        if (window.confirm(`Are you sure you want to delete this entire series? This will delete ${sessionCount} session${sessionCount > 1 ? 's' : ''}. This action cannot be undone.`)) {
+                                          try {
+                                            // Delete all sessions in the series
+                                            for (const session of series.sessions) {
+                                              await api.session.delete(session.id);
+                                            }
+                                            toast.success('Series deleted successfully');
+                                            window.location.reload();
+                                          } catch (error: any) {
+                                            console.error('Failed to delete series:', error);
+                                            toast.error(error.message || 'Failed to delete series');
+                                          }
+                                        }
+                                      }}
+                                      className="w-full px-4 py-2 text-left text-xs text-[var(--ispora-danger)] hover:bg-red-50 flex items-center gap-2"
+                                    >
+                                      <Trash2 className="w-3.5 h-3.5" strokeWidth={2} />
+                                      Delete Series
+                                    </button>
                                   </div>
                                 )}
                               </div>

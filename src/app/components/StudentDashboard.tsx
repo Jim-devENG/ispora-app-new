@@ -473,10 +473,21 @@ export default function StudentDashboard() {
                 <div className="space-y-4">
                   {mentorships.filter(m => m.status === 'active').map((mentorship: any) => (
                     <div key={mentorship.id} className="flex items-center gap-4 p-4 bg-[var(--ispora-bg)] rounded-xl hover:bg-[var(--ispora-brand-light)] transition-colors cursor-pointer border-[1.5px] border-transparent hover:border-[var(--ispora-brand)]">
-                      <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[var(--ispora-brand)] to-[#1a35f8] flex items-center justify-center text-white font-bold text-lg flex-shrink-0 relative shadow-md">
-                        {mentorship.mentor?.firstName?.[0]}{mentorship.mentor?.lastName?.[0]}
-                        <div className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-[var(--ispora-accent)] border-2 border-white rounded-full" />
-                      </div>
+                      {mentorship.mentor?.profilePicture ? (
+                        <div className="w-14 h-14 rounded-full overflow-hidden flex-shrink-0 relative shadow-md">
+                          <img 
+                            src={mentorship.mentor.profilePicture} 
+                            alt={`${mentorship.mentor?.firstName} ${mentorship.mentor?.lastName}`}
+                            className="w-full h-full object-cover"
+                          />
+                          <div className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-[var(--ispora-accent)] border-2 border-white rounded-full" />
+                        </div>
+                      ) : (
+                        <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[var(--ispora-brand)] to-[#1a35f8] flex items-center justify-center text-white font-bold text-lg flex-shrink-0 relative shadow-md">
+                          {mentorship.mentor?.firstName?.[0]}{mentorship.mentor?.lastName?.[0]}
+                          <div className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-[var(--ispora-accent)] border-2 border-white rounded-full" />
+                        </div>
+                      )}
                       <div className="flex-1 min-w-0">
                         <div className="font-syne font-bold text-base text-[var(--ispora-text)] mb-1">
                           {mentorship.mentor?.firstName} {mentorship.mentor?.lastName}
@@ -1376,9 +1387,19 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
 
                     {/* Header with mentor */}
                     <div className="flex items-start gap-3 mb-3">
-                      <div className="w-11 h-11 rounded-full bg-gradient-to-br from-[var(--ispora-brand)] to-[#1a35f8] flex items-center justify-center text-white font-bold text-sm flex-shrink-0 shadow-md">
-                        {series.mentor?.firstName?.[0]}{series.mentor?.lastName?.[0]}
-                      </div>
+                      {series.mentor?.profilePicture ? (
+                        <div className="w-11 h-11 rounded-full overflow-hidden flex-shrink-0 shadow-md">
+                          <img 
+                            src={series.mentor.profilePicture} 
+                            alt={`${series.mentor?.firstName} ${series.mentor?.lastName}`}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      ) : (
+                        <div className="w-11 h-11 rounded-full bg-gradient-to-br from-[var(--ispora-brand)] to-[#1a35f8] flex items-center justify-center text-white font-bold text-sm flex-shrink-0 shadow-md">
+                          {series.mentor?.firstName?.[0]}{series.mentor?.lastName?.[0]}
+                        </div>
+                      )}
                       <div className="flex-1 min-w-0">
                         <div className="font-syne font-bold text-[13px] text-[var(--ispora-text)] mb-0.5">
                           {series.mentor?.firstName} {series.mentor?.lastName}
@@ -1537,9 +1558,19 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
                   >
                     {/* Header with mentor and timing */}
                     <div className="flex items-start gap-3 mb-3">
-                      <div className="w-11 h-11 rounded-full bg-gradient-to-br from-[var(--ispora-brand)] to-[#1a35f8] flex items-center justify-center text-white font-bold text-sm flex-shrink-0 shadow-md">
-                        {session.mentor?.firstName?.[0]}{session.mentor?.lastName?.[0]}
-                      </div>
+                      {session.mentor?.profilePicture ? (
+                        <div className="w-11 h-11 rounded-full overflow-hidden flex-shrink-0 shadow-md">
+                          <img 
+                            src={session.mentor.profilePicture} 
+                            alt={`${session.mentor?.firstName} ${session.mentor?.lastName}`}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      ) : (
+                        <div className="w-11 h-11 rounded-full bg-gradient-to-br from-[var(--ispora-brand)] to-[#1a35f8] flex items-center justify-center text-white font-bold text-sm flex-shrink-0 shadow-md">
+                          {session.mentor?.firstName?.[0]}{session.mentor?.lastName?.[0]}
+                        </div>
+                      )}
                       <div className="flex-1 min-w-0">
                         <div className="font-syne font-bold text-[13px] text-[var(--ispora-text)] mb-0.5">
                           {session.mentor?.firstName} {session.mentor?.lastName}
@@ -1744,9 +1775,19 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
 
                   {/* Mentor Info */}
                   <div className="flex items-start gap-3 mb-3">
-                    <div className="w-12 h-12 rounded-full bg-[var(--ispora-brand)] flex items-center justify-center text-white font-bold text-sm flex-shrink-0 shadow-md">
-                      {series.mentor?.firstName?.[0]}{series.mentor?.lastName?.[0]}
-                    </div>
+                    {series.mentor?.profilePicture ? (
+                      <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 shadow-md">
+                        <img 
+                          src={series.mentor.profilePicture} 
+                          alt={`${series.mentor?.firstName} ${series.mentor?.lastName}`}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    ) : (
+                      <div className="w-12 h-12 rounded-full bg-[var(--ispora-brand)] flex items-center justify-center text-white font-bold text-sm flex-shrink-0 shadow-md">
+                        {series.mentor?.firstName?.[0]}{series.mentor?.lastName?.[0]}
+                      </div>
+                    )}
                     <div className="flex-1 min-w-0">
                       <div className="font-syne font-bold text-sm text-[var(--ispora-text)] mb-0.5 truncate">
                         {series.mentor?.firstName} {series.mentor?.lastName}
@@ -1902,9 +1943,19 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
                   >
                     {/* Mentor Info */}
                     <div className="flex items-start gap-3 mb-3">
-                      <div className="w-12 h-12 rounded-full bg-[var(--ispora-brand)] flex items-center justify-center text-white font-bold text-sm flex-shrink-0 shadow-md">
-                        {session.mentor?.firstName?.[0]}{session.mentor?.lastName?.[0]}
-                      </div>
+                      {session.mentor?.profilePicture ? (
+                        <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 shadow-md">
+                          <img 
+                            src={session.mentor.profilePicture} 
+                            alt={`${session.mentor?.firstName} ${session.mentor?.lastName}`}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      ) : (
+                        <div className="w-12 h-12 rounded-full bg-[var(--ispora-brand)] flex items-center justify-center text-white font-bold text-sm flex-shrink-0 shadow-md">
+                          {session.mentor?.firstName?.[0]}{session.mentor?.lastName?.[0]}
+                        </div>
+                      )}
                       <div className="flex-1 min-w-0">
                         <div className="font-syne font-bold text-sm text-[var(--ispora-text)] mb-0.5 truncate">
                           {session.mentor?.firstName} {session.mentor?.lastName}
@@ -2076,9 +2127,19 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
                     >
                       {/* Header with mentor */}
                       <div className="flex items-start gap-3 mb-3">
-                        <div className="w-11 h-11 rounded-full bg-gradient-to-br from-[var(--ispora-brand)] to-[#1a35f8] flex items-center justify-center text-white font-bold text-sm flex-shrink-0 shadow-md">
-                          {session.mentor?.firstName?.[0]}{session.mentor?.lastName?.[0]}
-                        </div>
+                        {session.mentor?.profilePicture ? (
+                          <div className="w-11 h-11 rounded-full overflow-hidden flex-shrink-0 shadow-md">
+                            <img 
+                              src={session.mentor.profilePicture} 
+                              alt={`${session.mentor?.firstName} ${session.mentor?.lastName}`}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                        ) : (
+                          <div className="w-11 h-11 rounded-full bg-gradient-to-br from-[var(--ispora-brand)] to-[#1a35f8] flex items-center justify-center text-white font-bold text-sm flex-shrink-0 shadow-md">
+                            {session.mentor?.firstName?.[0]}{session.mentor?.lastName?.[0]}
+                          </div>
+                        )}
                         <div className="flex-1 min-w-0">
                           <div className="font-syne font-bold text-[13px] text-[var(--ispora-text)] mb-0.5">
                             {session.mentor?.firstName} {session.mentor?.lastName}
@@ -2166,9 +2227,19 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
             <div className="p-6 space-y-5">
               {/* Mentor Info */}
               <div className="flex items-center gap-4 p-4 bg-[var(--ispora-bg)] rounded-xl">
-                <div className="w-14 h-14 rounded-full bg-[var(--ispora-brand)] flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
-                  {selectedSession.mentor?.firstName?.[0]}{selectedSession.mentor?.lastName?.[0]}
-                </div>
+                {selectedSession.mentor?.profilePicture ? (
+                  <div className="w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
+                    <img 
+                      src={selectedSession.mentor.profilePicture} 
+                      alt={`${selectedSession.mentor?.firstName} ${selectedSession.mentor?.lastName}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                ) : (
+                  <div className="w-14 h-14 rounded-full bg-[var(--ispora-brand)] flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
+                    {selectedSession.mentor?.firstName?.[0]}{selectedSession.mentor?.lastName?.[0]}
+                  </div>
+                )}
                 <div className="flex-1 min-w-0">
                   <div className="font-syne font-bold text-base text-[var(--ispora-text)] mb-0.5">
                     {selectedSession.mentor?.firstName} {selectedSession.mentor?.lastName}
