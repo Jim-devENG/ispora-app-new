@@ -71,6 +71,8 @@ interface Session {
   notes?: string;
   short_code?: string;
   meetingLink?: string;
+  mentorId?: string;
+  scheduledAt?: string;
 }
 
 interface Mentee {
@@ -536,7 +538,9 @@ export default function MentorDashboard() {
         notes: session.notes,
         meetingLink,
         date: sessionDate,
-        duration: session.duration || 60
+        duration: session.duration || 60,
+        mentorId: session.mentorId,
+        scheduledAt: session.scheduledAt
       };
     });
 
@@ -632,7 +636,8 @@ export default function MentorDashboard() {
       meetingLink,
       capacity: sessionDetails.capacity || 10,
       registeredCount: sessionDetails.registeredCount || 0,
-      mentor: firstSession.mentor
+      mentor: firstSession.mentor,
+      mentorId: firstSession.mentorId
     };
   });
 
@@ -1782,30 +1787,32 @@ export default function MentorDashboard() {
                                         Share Series
                                       </button>
                                     )}
-                                    <button
-                                      onClick={async (e) => {
-                                        e.stopPropagation();
-                                        setOpenSessionMenuId(null);
-                                        const sessionCount = series.sessions.length;
-                                        if (window.confirm(`Are you sure you want to delete this entire series? This will delete ${sessionCount} session${sessionCount > 1 ? 's' : ''}. This action cannot be undone.`)) {
-                                          try {
-                                            // Delete all sessions in the series
-                                            for (const session of series.sessions) {
-                                              await api.session.delete(session.id);
+                                    {series.mentorId === user?.id && (
+                                      <button
+                                        onClick={async (e) => {
+                                          e.stopPropagation();
+                                          setOpenSessionMenuId(null);
+                                          const sessionCount = series.sessions.length;
+                                          if (window.confirm(`Are you sure you want to delete this entire series? This will delete ${sessionCount} session${sessionCount > 1 ? 's' : ''}. This action cannot be undone.`)) {
+                                            try {
+                                              // Delete all sessions in the series
+                                              for (const session of series.sessions) {
+                                                await api.session.delete(session.id);
+                                              }
+                                              toast.success('Series deleted successfully');
+                                              window.location.reload();
+                                            } catch (error: any) {
+                                              console.error('Failed to delete series:', error);
+                                              toast.error(error.message || 'Failed to delete series');
                                             }
-                                            toast.success('Series deleted successfully');
-                                            window.location.reload();
-                                          } catch (error: any) {
-                                            console.error('Failed to delete series:', error);
-                                            toast.error(error.message || 'Failed to delete series');
                                           }
-                                        }
-                                      }}
-                                      className="w-full px-4 py-2 text-left text-xs text-[var(--ispora-danger)] hover:bg-red-50 flex items-center gap-2"
-                                    >
-                                      <Trash2 className="w-3.5 h-3.5" strokeWidth={2} />
-                                      Delete Series
-                                    </button>
+                                        }}
+                                        className="w-full px-4 py-2 text-left text-xs text-[var(--ispora-danger)] hover:bg-red-50 flex items-center gap-2"
+                                      >
+                                        <Trash2 className="w-3.5 h-3.5" strokeWidth={2} />
+                                        Delete Series
+                                      </button>
+                                    )}
                                   </div>
                                 )}
                               </div>
@@ -1993,7 +2000,7 @@ export default function MentorDashboard() {
                                 onClick={(e) => {
                                   e.stopPropagation();
                                   setOpenSessionMenuId(null);
-                                  const sessionDate = new Date(session.scheduledAt);
+                                  const sessionDate = new Date(session.scheduledAt || Date.now());
                                   const duration = session.duration || 60;
                                   const endTime = new Date(sessionDate.getTime() + duration * 60000);
                                   
@@ -2063,31 +2070,33 @@ export default function MentorDashboard() {
                                 <Clock className="w-3.5 h-3.5" strokeWidth={2} />
                                 {session.badge === 'today' ? 'Reschedule' : 'Copy Link'}
                               </button>
-                              <button
-                                onClick={async (e) => {
-                                  e.stopPropagation();
-                                  setOpenSessionMenuId(null);
-                                  if (window.confirm('Are you sure you want to delete this session? This action cannot be undone.')) {
-                                    try {
-                                      await api.session.delete(session.id);
-                                      toast.success('Session deleted successfully');
-                                      // Refresh sessions
-                                      if (user?.id) {
-                                        const sessionsData = await api.session.getAll();
-                                        // Trigger a refresh by reloading the page or updating state
-                                        window.location.reload();
+                              {session.mentorId === user?.id && (
+                                <button
+                                  onClick={async (e) => {
+                                    e.stopPropagation();
+                                    setOpenSessionMenuId(null);
+                                    if (window.confirm('Are you sure you want to delete this session? This action cannot be undone.')) {
+                                      try {
+                                        await api.session.delete(session.id);
+                                        toast.success('Session deleted successfully');
+                                        // Refresh sessions
+                                        if (user?.id) {
+                                          const sessionsData = await api.session.getAll();
+                                          // Trigger a refresh by reloading the page or updating state
+                                          window.location.reload();
+                                        }
+                                      } catch (error: any) {
+                                        console.error('Failed to delete session:', error);
+                                        toast.error(error.message || 'Failed to delete session');
                                       }
-                                    } catch (error: any) {
-                                      console.error('Failed to delete session:', error);
-                                      toast.error(error.message || 'Failed to delete session');
                                     }
-                                  }
-                                }}
-                                className="w-full px-3 py-2 text-left text-xs font-medium text-[var(--ispora-danger)] hover:bg-red-50 transition-all flex items-center gap-2"
-                              >
-                                <Trash2 className="w-3.5 h-3.5" strokeWidth={2} />
-                                Delete Session
-                              </button>
+                                  }}
+                                  className="w-full px-3 py-2 text-left text-xs font-medium text-[var(--ispora-danger)] hover:bg-red-50 transition-all flex items-center gap-2"
+                                >
+                                  <Trash2 className="w-3.5 h-3.5" strokeWidth={2} />
+                                  Delete Session
+                                </button>
+                              )}
                             </div>
                           )}
                         </div>
