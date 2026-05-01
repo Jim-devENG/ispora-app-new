@@ -2,14 +2,7 @@
 // Handles service worker registration, push subscription, and notification permissions
 
 import { useState, useEffect, useCallback } from 'react';
-
-interface PushSubscription {
-  endpoint: string;
-  keys: {
-    p256dh: string;
-    auth: string;
-  };
-}
+import { api } from '../lib/api';
 
 interface UsePushNotificationsReturn {
   isSupported: boolean;
@@ -22,8 +15,6 @@ interface UsePushNotificationsReturn {
   error: string | null;
 }
 
-const VAPID_PUBLIC_KEY = 'BEl62iUYgUivV5p8jJyqJHqEJ9ZWZ7hH8bJhKJhKJhKJhKJhKJhKJhKJhKJhKJhKJhKJhKJhKJhKJhKJhKJhKJhKJhK';
-
 export function usePushNotifications(): UsePushNotificationsReturn {
   const [isSupported, setIsSupported] = useState(false);
   const [isSubscribed, setIsSubscribed] = useState(false);
@@ -31,6 +22,7 @@ export function usePushNotifications(): UsePushNotificationsReturn {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [registration, setRegistration] = useState<ServiceWorkerRegistration | null>(null);
+  const [vapidKey, setVapidKey] = useState<string | null>(null);
 
   // Check if push notifications are supported
   useEffect(() => {
@@ -41,10 +33,24 @@ export function usePushNotifications(): UsePushNotificationsReturn {
       // Check current permission status
       setPermissionStatus(Notification.permission);
       
-      // Register service worker
+      // Register service worker and fetch VAPID key
       registerServiceWorker();
+      fetchVapidKey();
     }
   }, []);
+
+  // Fetch VAPID public key from server
+  const fetchVapidKey = async () => {
+    try {
+      const response: any = await api.notification.getVapidKey();
+      if (response.success && response.publicKey) {
+        setVapidKey(response.publicKey);
+        console.log('VAPID public key fetched from server');
+      }
+    } catch (err: any) {
+      console.error('Failed to fetch VAPID key:', err);
+    }
+  };
 
   // Register service worker
   const registerServiceWorker = async () => {
@@ -65,7 +71,7 @@ export function usePushNotifications(): UsePushNotificationsReturn {
   // Request notification permission
   const requestPermission = useCallback(async (): Promise<NotificationPermission> => {
     if (!isSupported) {
-      return 'unsupported';
+      return 'denied';
     }
 
     try {
@@ -102,6 +108,11 @@ export function usePushNotifications(): UsePushNotificationsReturn {
       return false;
     }
 
+    if (!vapidKey) {
+      setError('VAPID key not loaded. Please refresh and try again.');
+      return false;
+    }
+
     setIsLoading(true);
     setError(null);
 
@@ -117,21 +128,15 @@ export function usePushNotifications(): UsePushNotificationsReturn {
       // Create push subscription
       const subscription = await registration.pushManager.subscribe({
         userVisibleOnly: true,
-        applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY)
+        applicationServerKey: urlBase64ToUint8Array(vapidKey).buffer as ArrayBuffer
       });
 
       console.log('Push subscription created:', subscription);
 
       // Send subscription to server
-      const response = await fetch('/make-server-b8526fa6/push/subscribe', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(subscription.toJSON())
-      });
+      const response: any = await api.notification.subscribeToPush(subscription.toJSON() as any);
 
-      if (!response.ok) {
+      if (!response.success) {
         throw new Error('Failed to save subscription on server');
       }
 
@@ -144,7 +149,7 @@ export function usePushNotifications(): UsePushNotificationsReturn {
       setIsLoading(false);
       return false;
     }
-  }, [isSupported, registration, requestPermission]);
+  }, [isSupported, registration, requestPermission, vapidKey]);
 
   // Unsubscribe from push notifications
   const unsubscribe = useCallback(async (): Promise<boolean> => {
@@ -160,13 +165,7 @@ export function usePushNotifications(): UsePushNotificationsReturn {
       
       if (subscription) {
         // Remove from server first
-        const response = await fetch('/make-server-b8526fa6/push/unsubscribe', {
-          method: 'DELETE',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ endpoint: subscription.endpoint })
-        });
+        await api.notification.unsubscribeFromPush(subscription.endpoint);
 
         // Unsubscribe from push manager
         await subscription.unsubscribe();

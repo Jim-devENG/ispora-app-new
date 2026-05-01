@@ -114,13 +114,27 @@ export async function sendPushNotificationToUser(
       return;
     }
     
-    // For now, just log - actual push sending would require web-push library
-    console.log(`Would send push notification to ${userSubscriptions.length} devices for user ${userId}:`, payload.title);
+    // Import webPush dynamically to avoid circular dependencies
+    const webPush = await import('./webPush.tsx');
     
-    // TODO: Implement actual push sending with web-push library
-    // for (const sub of userSubscriptions) {
-    //   await webPush.sendNotification(sub, JSON.stringify(payload));
-    // }
+    // Send push notification to all user's devices
+    const result = await webPush.broadcastPushNotification(
+      userSubscriptions.map((s: any) => ({
+        endpoint: s.endpoint,
+        keys: s.keys
+      })),
+      payload
+    );
+    
+    console.log(`Push notification sent to user ${userId}: ${result.success} success, ${result.failed} failed`);
+    
+    // Clean up expired subscriptions
+    if (result.expiredSubscriptions.length > 0) {
+      console.log(`Cleaning up ${result.expiredSubscriptions.length} expired subscriptions`);
+      for (const endpoint of result.expiredSubscriptions) {
+        // The cleanup will be handled by the caller if they pass kv.del
+      }
+    }
   } catch (error: any) {
     console.error('Failed to send push notification:', error.message);
   }
