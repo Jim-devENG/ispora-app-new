@@ -4581,14 +4581,28 @@ app.get("/make-server-b8526fa6/community/members", async (c) => {
 
     const { user } = auth;
     const { role, search, limit = '50' } = c.req.query();
+    
+    console.log('Get members request - role filter:', role, 'search:', search);
 
     const allUsersKeys = await kv.getByPrefix('user:') || [];
     let users = (Array.isArray(allUsersKeys) ? allUsersKeys : []).filter((u: any) => u && u.id);
+    
+    console.log('Total users found:', users.length);
+    console.log('User roles in DB:', [...new Set(users.map((u: any) => u.role))]);
 
-    // Map frontend role filter to actual DB roles
-    // Frontend sends 'mentor' but DB stores 'diaspora'
-    const dbRole = role === 'mentor' ? 'diaspora' : role;
-    if (dbRole && dbRole !== 'all') users = users.filter((u: any) => u.role === dbRole);
+    // Filter by role
+    if (role && role !== 'all') {
+      if (role === 'mentor') {
+        // Include both diaspora and home-based mentors
+        // They have role='diaspora' but may have mentorType='diaspora' or 'home'
+        users = users.filter((u: any) => u.role === 'diaspora');
+        console.log('Filtered for mentors (diaspora role):', users.length);
+      } else if (role === 'student') {
+        users = users.filter((u: any) => u.role === 'student');
+        console.log('Filtered for students:', users.length);
+      }
+    }
+    
     if (search) {
       const s = search.toLowerCase();
       users = users.filter((u: any) => {
