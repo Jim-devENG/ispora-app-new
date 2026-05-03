@@ -2254,6 +2254,8 @@ app.get("/make-server-b8526fa6/sessions", async (c) => {
     const allSessions = await kv.getByPrefix('session:') || [];
     console.log('Total sessions in database:', Array.isArray(allSessions) ? allSessions.length : 0);
     
+    const now = new Date();
+    
     const userSessions = (Array.isArray(allSessions) ? allSessions : [])
       .filter((s: any) => {
         // Check if this is a public session first
@@ -2288,7 +2290,31 @@ app.get("/make-server-b8526fa6/sessions", async (c) => {
         
         return false;
       })
-      .sort((a: any, b: any) => new Date(a.scheduledAt).getTime() - new Date(b.scheduledAt).getTime());
+      .map((s: any) => {
+        // Add computed fields for past/upcoming
+        const scheduledDate = new Date(s.scheduledAt);
+        const isPast = scheduledDate < now;
+        const isToday = scheduledDate.toDateString() === now.toDateString();
+        return {
+          ...s,
+          isPast,
+          isToday,
+          isUpcoming: !isPast
+        };
+      })
+      .sort((a: any, b: any) => {
+        // Sort: upcoming first (by date ascending), then past (by date descending)
+        if (a.isPast !== b.isPast) {
+          return a.isPast ? 1 : -1; // Upcoming first
+        }
+        if (a.isPast) {
+          // Past sessions: most recent first (descending)
+          return new Date(b.scheduledAt).getTime() - new Date(a.scheduledAt).getTime();
+        } else {
+          // Upcoming sessions: soonest first (ascending)
+          return new Date(a.scheduledAt).getTime() - new Date(b.scheduledAt).getTime();
+        }
+      });
 
     console.log('User sessions count:', userSessions.length);
 
@@ -2317,7 +2343,17 @@ app.get("/make-server-b8526fa6/sessions", async (c) => {
     );
 
     console.log('✓ Sessions enriched successfully');
-    return c.json({ success: true, sessions: enrichedSessions });
+    
+    // Add cache-busting headers
+    return c.json({ 
+      success: true, 
+      sessions: enrichedSessions,
+      timestamp: new Date().toISOString()
+    }, 200, {
+      'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+      'Pragma': 'no-cache',
+      'Expires': '0'
+    });
   } catch (error: any) {
     console.error('Get sessions error:', error.message, error.stack);
     return c.json({ error: error.message || 'Failed to get sessions' }, 500);
@@ -2419,9 +2455,36 @@ app.delete("/make-server-b8526fa6/sessions/:sessionId", async (c) => {
 
     const { user } = auth;
     const sessionId = c.req.param('sessionId');
+    
+    console.log('Delete session request for sessionId:', sessionId, 'by user:', user.id);
+    
     const session = await kv.get(`session:${sessionId}`);
 
     if (!session) {
+      console.log('Session not found with key:', `session:${sessionId}`);
+      // Try to find the session by searching all sessions
+      const allSessions = await kv.getByPrefix('session:') || [];
+      const matchingSession = allSessions.find((s: any) => 
+        s.id === sessionId || 
+        s.id === `session_${sessionId}` ||
+        s.id?.endsWith(sessionId)
+      );
+      
+      if (matchingSession) {
+        console.log('Found session with different key format:', matchingSession.id);
+        // Use the found session
+        const foundSession = matchingSession;
+        
+        // Check authorization - mentor can delete their own sessions
+        if (foundSession.mentorId !== user.id) {
+          return c.json({ error: 'Only the session creator can delete this session' }, 403);
+        }
+        
+        await kv.del(`session:${foundSession.id}`);
+        console.log('Session deleted successfully:', foundSession.id);
+        return c.json({ success: true, message: 'Session deleted successfully' });
+      }
+      
       return c.json({ error: 'Session not found' }, 404);
     }
 
@@ -2432,6 +2495,7 @@ app.delete("/make-server-b8526fa6/sessions/:sessionId", async (c) => {
 
     // Delete the session from KV store
     await kv.del(`session:${sessionId}`);
+    console.log('Session deleted successfully:', sessionId);
 
     // Notify registered students if any
     if (session.registeredUsers && session.registeredUsers.length > 0) {

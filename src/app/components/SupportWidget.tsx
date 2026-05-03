@@ -137,7 +137,7 @@ export function SupportWidget({ accessToken }: SupportWidgetProps) {
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed md:bottom-6 bottom-24 right-6 bg-sky-500 text-white p-4 rounded-full shadow-lg hover:bg-sky-600 transition-colors z-40 flex items-center gap-2"
+        className="fixed md:bottom-6 bottom-24 left-6 bg-sky-500 text-white p-4 rounded-full shadow-lg hover:bg-sky-600 transition-colors z-40 flex items-center gap-2"
         aria-label="Open support"
       >
         <HelpCircle className="w-6 h-6" />
@@ -147,7 +147,7 @@ export function SupportWidget({ accessToken }: SupportWidgetProps) {
   }
 
   return (
-    <div className="fixed md:bottom-6 bottom-20 md:right-6 right-0 left-0 md:left-auto bg-white rounded-lg md:shadow-2xl shadow-lg md:w-96 w-full mx-4 md:mx-0 max-h-[500px] md:max-h-[600px] flex flex-col z-50 border border-gray-200">
+    <div className="fixed md:bottom-6 bottom-20 md:left-6 left-0 right-0 md:right-auto bg-white rounded-lg md:shadow-2xl shadow-lg md:w-96 w-full mx-4 md:mx-0 max-h-[500px] md:max-h-[600px] flex flex-col z-50 border border-gray-200">
       {/* Header */}
       <div className="bg-sky-500 text-white p-4 rounded-t-lg flex items-center justify-between">
         <div className="flex items-center gap-2">

@@ -951,10 +951,20 @@ const Opportunities: React.FC = () => {
             </div>
 
             <div className="px-4 md:px-6 py-4 md:py-5">
-              <div className="bg-[var(--ispora-success-light)] border border-[rgba(16,185,129,0.3)] rounded-[10px] px-3.5 py-2.5 text-xs text-[#065f46] mb-3.5 flex items-center gap-2">
-                <CheckCircle className="w-3.5 h-3.5 text-[var(--ispora-success)] flex-shrink-0" strokeWidth={2} />
-                As a <strong>verified mentor</strong>, your post will go live immediately and be marked as diaspora-verified.
-              </div>
+              {/* Only show diaspora-verified message for diaspora mentors */}
+              {user?.mentorType === 'diaspora' && (
+                <div className="bg-[var(--ispora-success-light)] border border-[rgba(16,185,129,0.3)] rounded-[10px] px-3.5 py-2.5 text-xs text-[#065f46] mb-3.5 flex items-center gap-2">
+                  <CheckCircle className="w-3.5 h-3.5 text-[var(--ispora-success)] flex-shrink-0" strokeWidth={2} />
+                  As a <strong>diaspora mentor</strong>, your post will go live immediately and be marked as diaspora-verified.
+                </div>
+              )}
+              {/* Show different message for home-based mentors */}
+              {user?.mentorType === 'home' && (
+                <div className="bg-[var(--ispora-brand-light)] border border-[var(--ispora-brand)]/20 rounded-[10px] px-3.5 py-2.5 text-xs text-[var(--ispora-text2)] mb-3.5 flex items-center gap-2">
+                  <CheckCircle className="w-3.5 h-3.5 text-[var(--ispora-brand)] flex-shrink-0" strokeWidth={2} />
+                  As a <strong>home-based mentor</strong>, your post will be reviewed before going live.
+                </div>
+              )}
 
               {/* Form fields */}
               <div className="space-y-3.5">
