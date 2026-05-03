@@ -4589,14 +4589,21 @@ app.get("/make-server-b8526fa6/community/members", async (c) => {
     
     console.log('Total users found:', users.length);
     console.log('User roles in DB:', [...new Set(users.map((u: any) => u.role))]);
+    console.log('User mentorTypes in DB:', [...new Set(users.map((u: any) => u.mentorType).filter(Boolean))]);
 
     // Filter by role
     if (role && role !== 'all') {
       if (role === 'mentor') {
-        // Include both diaspora and home-based mentors
-        // They have role='diaspora' but may have mentorType='diaspora' or 'home'
-        users = users.filter((u: any) => u.role === 'diaspora');
-        console.log('Filtered for mentors (diaspora role):', users.length);
+        // Include users who are mentors:
+        // - role='diaspora' (diaspora mentor)
+        // - OR has mentorType field set (either 'diaspora' or 'home')
+        users = users.filter((u: any) => 
+          u.role === 'diaspora' || 
+          u.mentorType === 'diaspora' || 
+          u.mentorType === 'home' ||
+          u.mentorType === 'mentor'
+        );
+        console.log('Filtered for mentors:', users.length);
       } else if (role === 'student') {
         users = users.filter((u: any) => u.role === 'student');
         console.log('Filtered for students:', users.length);
