@@ -664,12 +664,40 @@ export default function FindMentor() {
           className="bg-[var(--ispora-bg)] border-[1.5px] border-[var(--ispora-border)] rounded-lg px-2.5 py-1.5 pr-8 text-xs text-[var(--ispora-text2)] outline-none cursor-pointer appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2210%22%20height%3D%2210%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%238b90b8%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3c%2fpolyline%3E%3c%2fsvg%3E')] bg-no-repeat bg-[right_8px_center] whitespace-nowrap focus:border-[var(--ispora-brand)] focus:bg-[var(--ispora-brand-light)] transition-colors"
         >
           <option value="">All Countries</option>
+          <option value="nigeria">Nigeria</option>
+          <option value="ghana">Ghana</option>
+          <option value="kenya">Kenya</option>
+          <option value="south africa">South Africa</option>
+          <option value="egypt">Egypt</option>
+          <option value="morocco">Morocco</option>
+          <option value="ethiopia">Ethiopia</option>
+          <option value="rwanda">Rwanda</option>
+          <option value="uganda">Uganda</option>
+          <option value="tanzania">Tanzania</option>
           <option value="uk">United Kingdom</option>
           <option value="us">United States</option>
           <option value="canada">Canada</option>
           <option value="germany">Germany</option>
+          <option value="france">France</option>
           <option value="netherlands">Netherlands</option>
+          <option value="belgium">Belgium</option>
+          <option value="ireland">Ireland</option>
+          <option value="italy">Italy</option>
+          <option value="spain">Spain</option>
+          <option value="switzerland">Switzerland</option>
+          <option value="sweden">Sweden</option>
+          <option value="norway">Norway</option>
+          <option value="denmark">Denmark</option>
           <option value="australia">Australia</option>
+          <option value="uae">United Arab Emirates</option>
+          <option value="saudi arabia">Saudi Arabia</option>
+          <option value="qatar">Qatar</option>
+          <option value="india">India</option>
+          <option value="china">China</option>
+          <option value="japan">Japan</option>
+          <option value="singapore">Singapore</option>
+          <option value="brazil">Brazil</option>
+          <option value="other">Other</option>
         </select>
 
         <select
