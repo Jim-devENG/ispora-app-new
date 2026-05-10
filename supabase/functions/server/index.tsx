@@ -2505,10 +2505,10 @@ app.delete("/make-server-b8526fa6/sessions/:sessionId", async (c) => {
           id: notificationId,
           userId: studentId,
           type: 'session_deleted',
-          title: 'Session deleted',
-          message: `The session "${session.topic || 'Mentorship Session'}" has been deleted by the mentor`,
+          title: 'Session Cancelled',
+          message: `The session "${session.topic || 'Mentorship Session'}" has been cancelled. Please remove it from your calendar if you added it.`,
           read: false,
-          data: { sessionId, sessionTopic: session.topic },
+          data: { sessionId, sessionTopic: session.topic, action: 'calendar_remove' },
           createdAt: new Date().toISOString(),
         });
       }
@@ -2521,10 +2521,10 @@ app.delete("/make-server-b8526fa6/sessions/:sessionId", async (c) => {
         id: notificationId,
         userId: session.studentId,
         type: 'session_deleted',
-        title: 'Session deleted',
-        message: `The session "${session.topic || 'Mentorship Session'}" has been deleted by the mentor`,
+        title: 'Session Cancelled',
+        message: `The session "${session.topic || 'Mentorship Session'}" has been cancelled. Please remove it from your calendar if you added it.`,
         read: false,
-        data: { sessionId, sessionTopic: session.topic },
+        data: { sessionId, sessionTopic: session.topic, action: 'calendar_remove' },
         createdAt: new Date().toISOString(),
       });
     }

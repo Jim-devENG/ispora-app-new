@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router';
+import { useAuth } from '../contexts/AuthContext';
+import { toast } from 'sonner';
 import { 
   Calendar, 
   Clock, 
@@ -24,14 +26,52 @@ import { projectId, publicAnonKey } from '/utils/supabase/info';
 export default function SessionLandingPage() {
   const { sessionId, shortCode } = useParams();
   const navigate = useNavigate();
+  const { user, isAuthenticated } = useAuth();
   const [session, setSession] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [resolvedSessionId, setResolvedSessionId] = useState<string | null>(null);
+  const [registering, setRegistering] = useState(false);
+  const [registered, setRegistered] = useState(false);
 
   useEffect(() => {
     loadSession();
   }, [sessionId, shortCode]);
+
+  // Auto-register for session when user returns after signup
+  useEffect(() => {
+    const autoRegister = async () => {
+      if (!isAuthenticated || !user || registering || registered) return;
+      
+      const pendingSessionId = localStorage.getItem('pendingSessionRegistration');
+      if (!pendingSessionId) return;
+      
+      // Check if this pending session matches the current session
+      const currentId = resolvedSessionId || sessionId || undefined;
+      if (pendingSessionId !== currentId) return;
+      
+      // Clear the pending registration
+      localStorage.removeItem('pendingSessionRegistration');
+      
+      setRegistering(true);
+      try {
+        const { sessionApi } = await import('../lib/api');
+        await sessionApi.register(pendingSessionId);
+        setRegistered(true);
+        toast.success('🎉 You\'re registered! Check your email for confirmation.', { duration: 5000 });
+      } catch (err: any) {
+        console.error('Auto-registration failed:', err);
+        toast.error('Could not complete registration. The session may be full.', { duration: 5000 });
+      } finally {
+        setRegistering(false);
+      }
+    };
+    
+    // Wait for session to load before attempting registration
+    if (session && !loading) {
+      autoRegister();
+    }
+  }, [isAuthenticated, user, session, loading, resolvedSessionId, sessionId, registering, registered]);
 
   const loadSession = async () => {
     try {
@@ -94,8 +134,13 @@ export default function SessionLandingPage() {
     const idToStore = resolvedSessionId || sessionId;
     // Store the session ID so we can auto-register after signup/login
     localStorage.setItem('pendingSessionRegistration', idToStore!);
-    // Redirect to auth page with signup mode for student role
-    navigate('/auth?mode=signup&role=student');
+    
+    // Build redirect URL to return to this session after signup
+    const sessionPath = shortCode ? `/${shortCode}` : `/session/${idToStore}`;
+    const redirectUrl = encodeURIComponent(sessionPath);
+    
+    // Redirect to auth page with signup mode for student role, and redirect back to session
+    navigate(`/auth?mode=signup&role=student&redirect=${redirectUrl}`);
   };
 
   if (loading) {
