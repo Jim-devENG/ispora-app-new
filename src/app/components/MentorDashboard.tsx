@@ -3296,82 +3296,7 @@ export default function MentorDashboard() {
         </div>
       )}
 
-      {/* Message Modal */}
-      {showMessageModal && selectedMentee && (
-        <div
-          className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
-          onClick={() => {
-            setShowMessageModal(false);
-            setSelectedMentee(null);
-          }}
-        >
-          <div
-            className="bg-white rounded-2xl w-full max-w-lg shadow-[var(--ispora-shadow-lg)] overflow-hidden animate-[slideUp_0.2s_ease]"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="px-6 py-5 border-b border-[var(--ispora-border)] flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                {selectedMentee.avatar ? (
-                  <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
-                    <img 
-                      src={selectedMentee.avatar} 
-                      alt={selectedMentee.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                ) : (
-                  <div
-                    className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm"
-                    style={{
-                      backgroundColor: selectedMentee.color || 'var(--ispora-brand)'
-                    }}
-                  >
-                    {selectedMentee.initials}
-                  </div>
-                )}
-                <div>
-                  <h3 className="font-syne text-sm font-bold text-[var(--ispora-text)]">
-                    {selectedMentee.name}
-                  </h3>
-                  <p className="text-xs text-[var(--ispora-text3)]">{selectedMentee.field}</p>
-                </div>
-              </div>
-              <button
-                onClick={() => {
-                  setShowMessageModal(false);
-                  setSelectedMentee(null);
-                }}
-                className="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-[var(--ispora-bg)] transition-colors"
-              >
-                <X className="w-5 h-5 text-[var(--ispora-text2)]" />
-              </button>
-            </div>
-            <div className="p-6">
-              <textarea
-                placeholder="Type your message..."
-                rows={6}
-                className="w-full px-4 py-3 bg-[var(--ispora-bg)] border-[1.5px] border-[var(--ispora-border)] rounded-xl text-sm text-[var(--ispora-text)] placeholder:text-[var(--ispora-text3)] outline-none focus:border-[var(--ispora-brand)] focus:bg-white transition-all resize-none"
-              ></textarea>
-              <div className="flex gap-3 mt-4">
-                <button
-                  onClick={() => {
-                    setShowMessageModal(false);
-                    setSelectedMentee(null);
-                  }}
-                  className="flex-1 px-4 py-2.5 rounded-xl bg-[var(--ispora-bg)] border-[1.5px] border-[var(--ispora-border)] text-[var(--ispora-text)] text-sm font-semibold hover:bg-[var(--ispora-brand-light)] hover:border-[var(--ispora-brand)] transition-all"
-                >
-                  Cancel
-                </button>
-                <button className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[var(--ispora-brand)] text-white text-sm font-semibold hover:bg-[var(--ispora-brand-hover)] hover:shadow-[0_6px_18px_rgba(2,31,246,0.35)] transition-all">
-                  <Send className="w-4 h-4" />
-                  Send Message
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
+      
       {/* Request Detail Modal */}
       {showRequestDetail && (
         <div
@@ -3434,6 +3359,7 @@ export default function MentorDashboard() {
                 {showRequestDetail.studentId && (
                   <button
                     onClick={() => {
+                      setShowRequestDetail(null);
                       setShowStudentProfile(showRequestDetail);
                     }}
                     className="flex-1 px-4 py-2.5 rounded-xl bg-white border-[1.5px] border-[var(--ispora-border)] text-[var(--ispora-brand)] text-sm font-semibold hover:border-[var(--ispora-brand)] hover:bg-[var(--ispora-brand-light)] transition-all flex items-center justify-center gap-2"
@@ -3451,10 +3377,14 @@ export default function MentorDashboard() {
                       color: showRequestDetail.color,
                       school: showRequestDetail.school,
                       progress: 0,
-                      nextSession: 'Not scheduled'
+                      nextSession: 'Not scheduled',
+                      field: showRequestDetail.school,
+                      avatar: showRequestDetail.avatar,
+                      online: false,
+                      status: 'active'
                     });
-                    setShowMessageModal(true);
                     setShowRequestDetail(null);
+                    setShowMessageModal(true);
                   }}
                   className="flex-1 px-4 py-2.5 rounded-xl bg-white border-[1.5px] border-[var(--ispora-border)] text-[var(--ispora-text)] text-sm font-semibold hover:border-[var(--ispora-brand)] hover:text-[var(--ispora-brand)] hover:bg-[var(--ispora-brand-light)] transition-all"
                 >
@@ -4486,7 +4416,9 @@ export default function MentorDashboard() {
                   <div className="flex flex-row gap-2 mb-2">
                     {request.studentId && (
                       <button
-                        onClick={() => setShowStudentProfile(request)}
+                        onClick={() => {
+                          setShowStudentProfile(request);
+                        }}
                         className="flex-1 px-4 py-2.5 rounded-xl bg-white border-[1.5px] border-[var(--ispora-border)] text-[var(--ispora-brand)] text-sm font-semibold hover:border-[var(--ispora-brand)] hover:bg-[var(--ispora-brand-light)] transition-all flex items-center justify-center gap-2"
                       >
                         <User className="w-4 h-4" strokeWidth={2.5} />
@@ -4496,13 +4428,17 @@ export default function MentorDashboard() {
                     <button
                       onClick={() => {
                         setSelectedMentee({
-                          id: index.toString(),
+                          id: request.studentId,
                           name: request.studentName,
                           initials: request.initials,
                           color: request.color,
                           school: request.school,
                           progress: 0,
-                          nextSession: 'Not scheduled'
+                          nextSession: 'Not scheduled',
+                          field: request.school,
+                          avatar: request.avatar,
+                          online: false,
+                          status: 'active'
                         });
                         setShowMessageModal(true);
                       }}
