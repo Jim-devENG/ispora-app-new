@@ -10,6 +10,7 @@ import SuccessScreen from './auth/SuccessScreen';
 import SignInScreen from './auth/SignInScreen';
 import ForgotPasswordScreen from './auth/ForgotPasswordScreen';
 import Dashboard from './Dashboard';
+import WhatsAppRedirectModal from './WhatsAppRedirectModal';
 import { toast } from 'sonner';
 
 export type Screen = 
@@ -45,6 +46,18 @@ export default function AuthFlow() {
     email: '',
     password: '',
   });
+  const [showWhatsAppModal, setShowWhatsAppModal] = useState(false);
+
+  // Check if user has already seen WhatsApp modal
+  useEffect(() => {
+    const hasSeenWhatsAppModal = localStorage.getItem('hasSeenWhatsAppModal');
+    const isNewUser = localStorage.getItem('isNewUser');
+    
+    if (isAuthenticated && user?.onboardingComplete && !hasSeenWhatsAppModal && isNewUser) {
+      setShowWhatsAppModal(true);
+      localStorage.removeItem('isNewUser');
+    }
+  }, [isAuthenticated, user]);
 
   // Check URL parameters on mount for direct signup/signin flow
   useEffect(() => {
@@ -227,6 +240,20 @@ export default function AuthFlow() {
           />
         )}
       </div>
+
+      {/* WhatsApp Redirect Modal */}
+      <WhatsAppRedirectModal
+        isOpen={showWhatsAppModal}
+        onClose={() => {
+          setShowWhatsAppModal(false);
+          localStorage.setItem('hasSeenWhatsAppModal', 'true');
+        }}
+        onRedirect={() => {
+          localStorage.setItem('hasSeenWhatsAppModal', 'true');
+          window.open('https://chat.whatsapp.com/YOUR_WHATSAPP_GROUP_LINK', '_blank');
+          setShowWhatsAppModal(false);
+        }}
+      />
     </div>
   );
 }

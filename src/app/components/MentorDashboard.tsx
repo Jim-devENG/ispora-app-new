@@ -502,13 +502,35 @@ export default function MentorDashboard() {
         badge = 'tomorrow';
       }
       
-      const studentData = session.student || session.mentorship?.student;
-      const studentName = studentData 
-        ? `${studentData.firstName} ${studentData.lastName}`
-        : 'Unknown Youth';
-      const initials = studentData
-        ? `${studentData.firstName[0]}${studentData.lastName[0]}`
-        : 'U';
+      // Check if this is a public session
+      let sessionDetails = {};
+      try {
+        if (session.notes) {
+          sessionDetails = JSON.parse(session.notes);
+        }
+      } catch (e) {}
+      
+      const isPublic = sessionDetails.sessionType === 'public';
+      
+      // For public sessions, show mentor info; for private, show student info
+      let studentData, studentName, initials, avatar;
+      if (isPublic) {
+        // Public session - show mentor info
+        const mentorData = session.mentor || { firstName: 'Mentor', lastName: '' };
+        studentName = mentorData ? `${mentorData.firstName} ${mentorData.lastName}` : 'Mentor';
+        initials = mentorData ? `${mentorData.firstName[0]}${mentorData.lastName[0]}` : 'M';
+        avatar = mentorData?.profilePicture;
+      } else {
+        // Private session - show student info
+        studentData = session.student || session.mentorship?.student;
+        studentName = studentData 
+          ? `${studentData.firstName} ${studentData.lastName}`
+          : 'Unknown Youth';
+        initials = studentData
+          ? `${studentData.firstName[0]}${studentData.lastName[0]}`
+          : 'U';
+        avatar = studentData?.profilePicture;
+      }
       
       // Extract meetingLink and platform from notes JSON
       let meetingLink = session.meetingLink || '';
@@ -529,7 +551,7 @@ export default function MentorDashboard() {
         id: session.id,
         studentName,
         initials,
-        avatar: studentData?.profilePicture,
+        avatar,
         topic: session.topic || 'Mentorship Session',
         time: sessionDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }) + ' WAT',
         platform,
@@ -2166,7 +2188,7 @@ export default function MentorDashboard() {
                               ? 'Today'
                               : session.badge === 'tomorrow'
                                 ? 'Tomorrow'
-                                : 'Mar 29'}
+                                : session.date?.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) || 'Upcoming'}
                           </span>
                           <span className="flex items-center gap-1.5 text-xs text-[var(--ispora-text2)]">
                             <Clock className="w-3.5 h-3.5 text-[var(--ispora-text3)]" strokeWidth={2} />
@@ -4065,7 +4087,11 @@ export default function MentorDashboard() {
                     <div className="text-xs font-semibold text-[var(--ispora-text3)] uppercase tracking-wide">Date & Time</div>
                     <div className="flex items-center gap-2 text-sm text-[var(--ispora-text)]">
                       <Calendar className="w-4 h-4 text-[var(--ispora-brand)]" />
-                      <span className="font-semibold">{showSessionDetails.date}</span>
+                      <span className="font-semibold">
+                        {showSessionDetails.date instanceof Date 
+                          ? showSessionDetails.date.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' })
+                          : showSessionDetails.date}
+                      </span>
                       <span className="text-[var(--ispora-text3)]">•</span>
                       <Clock className="w-4 h-4 text-[var(--ispora-brand)]" />
                       <span className="font-semibold">{showSessionDetails.time}</span>

@@ -134,6 +134,7 @@ export default function OnboardingScreen({
       const result = await updateProfile(profileData);
       
       if (result.success) {
+        localStorage.setItem('isNewUser', 'true');
         showToast('Profile updated successfully!', 'success');
         onNavigate('success');
       } else {
