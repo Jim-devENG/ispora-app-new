@@ -947,18 +947,9 @@ export default function MentorDashboard() {
         await Promise.all(allSessionPromises);
       } else if (scheduleForm.sessionType === 'public') {
         // Public session - create public sessions for all dates
-        const firstMentorship = activeMentees[0]?.id;
-        
-        if (!firstMentorship) {
-          toast.error('No Active Mentees', {
-            description: 'You need at least one active mentee to create a public session.',
-          });
-          return;
-        }
-
         const sessionPromises = sessionDates.map((sessionDate, index) =>
           api.session.create({
-            mentorshipId: firstMentorship, // Placeholder - backend should handle public sessions differently
+            mentorshipId: undefined, // Public sessions don't need mentorshipId
             scheduledAt: sessionDate.toISOString(),
             duration: parseInt(scheduleForm.duration),
             topic: scheduleForm.topic || undefined,

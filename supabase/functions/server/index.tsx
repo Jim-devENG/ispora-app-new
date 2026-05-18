@@ -2167,38 +2167,56 @@ app.post("/make-server-b8526fa6/sessions", async (c) => {
     const body = await c.req.json();
     const { mentorshipId, scheduledAt, duration, topic, notes } = body;
 
-    if (!mentorshipId || !scheduledAt || !duration) {
-      return c.json({ error: 'Missing required fields' }, 400);
-    }
+    // Parse notes to check if this is a public session
+    let sessionDetails = {};
+    try {
+      if (notes) {
+        sessionDetails = JSON.parse(notes);
+      }
+    } catch (e) {}
 
-    // Verify mentorship exists
-    const mentorship = await kv.get(`mentorship:${mentorshipId}`);
-    if (!mentorship) {
-      return c.json({ error: 'Mentorship not found' }, 404);
-    }
+    const isPublicSession = sessionDetails.sessionType === 'public';
 
-    // Check authorization
-    if (mentorship.mentorId !== user.id && mentorship.studentId !== user.id) {
-      return c.json({ error: 'Unauthorized' }, 403);
+    // For public sessions, mentorshipId is optional
+    if (!isPublicSession) {
+      if (!mentorshipId || !scheduledAt || !duration) {
+        return c.json({ error: 'Missing required fields' }, 400);
+      }
+
+      // Verify mentorship exists
+      const mentorship = await kv.get(`mentorship:${mentorshipId}`);
+      if (!mentorship) {
+        return c.json({ error: 'Mentorship not found' }, 404);
+      }
+
+      // Check authorization
+      if (mentorship.mentorId !== user.id && mentorship.studentId !== user.id) {
+        return c.json({ error: 'Unauthorized' }, 403);
+      }
+    } else {
+      // Public sessions require at least scheduledAt and duration
+      if (!scheduledAt || !duration) {
+        return c.json({ error: 'Missing required fields' }, 400);
+      }
     }
 
     const sessionId = generateId('session');
     
-    // Generate short code for the session
+    // Generate short code for the session (always generate for public sessions)
     let shortCode: string | undefined;
     try {
-      shortCode = await generateShortCode(mentorship.mentorId);
-      console.log('✓ Generated short code:', shortCode);
+      const mentorIdForCode = isPublicSession ? user.id : (await kv.get(`mentorship:${mentorshipId}`))?.mentorId;
+      if (mentorIdForCode) {
+        shortCode = await generateShortCode(mentorIdForCode);
+        console.log('✓ Generated short code:', shortCode);
+      }
     } catch (error: any) {
       console.log('Warning: Failed to generate short code:', error.message);
       // Continue without short code if generation fails
     }
     
-    const session = {
+    const session: any = {
       id: sessionId,
-      mentorshipId,
-      mentorId: mentorship.mentorId,
-      studentId: mentorship.studentId,
       scheduledAt,
       duration,
       topic,
@@ -2206,30 +2224,44 @@ app.post("/make-server-b8526fa6/sessions", async (c) => {
       status: 'scheduled',
       createdBy: user.id,
       createdAt: new Date().toISOString(),
-      short_code: shortCode, // Add short code to session
+      short_code: shortCode,
     };
+
+    // Add mentorship-specific fields for private sessions
+    if (!isPublicSession && mentorshipId) {
+      const mentorship = await kv.get(`mentorship:${mentorshipId}`);
+      session.mentorshipId = mentorshipId;
+      session.mentorId = mentorship.mentorId;
+      session.studentId = mentorship.studentId;
+    } else {
+      // For public sessions, set mentorId to the creator
+      session.mentorId = user.id;
+    }
 
     await kv.set(`session:${sessionId}`, session);
 
-    // Create notification for other party
-    const otherUserId = user.id === mentorship.mentorId ? mentorship.studentId : mentorship.mentorId;
-    const notificationId = generateId('notif');
-    await kv.set(`notification:${notificationId}`, {
-      id: notificationId,
-      userId: otherUserId,
-      type: 'session_scheduled',
-      title: 'New session scheduled',
-      message: `A session has been scheduled for ${new Date(scheduledAt).toLocaleDateString()}`,
-      read: false,
-      data: { sessionId },
-      createdAt: new Date().toISOString(),
-    });
+    // For private sessions, create notification for other party
+    if (!isPublicSession && mentorshipId) {
+      const mentorship = await kv.get(`mentorship:${mentorshipId}`);
+      const otherUserId = user.id === mentorship.mentorId ? mentorship.studentId : mentorship.mentorId;
+      const notificationId = generateId('notif');
+      await kv.set(`notification:${notificationId}`, {
+        id: notificationId,
+        userId: otherUserId,
+        type: 'session_scheduled',
+        title: 'New session scheduled',
+        message: `A session has been scheduled for ${new Date(scheduledAt).toLocaleDateString()}`,
+        read: false,
+        data: { sessionId },
+        createdAt: new Date().toISOString(),
+      });
 
-    // Send WhatsApp notification to other party
-    const creatorProfile = await kv.get(`user:${user.id}`);
-    const participantProfile = await kv.get(`user:${otherUserId}`);
-    if (creatorProfile && participantProfile) {
-      await notifications.sendSessionScheduledNotification(session, creatorProfile, participantProfile, kv.get);
+      // Send WhatsApp notification to other party
+      const creatorProfile = await kv.get(`user:${user.id}`);
+      const participantProfile = await kv.get(`user:${otherUserId}`);
+      if (creatorProfile && participantProfile) {
+        await notifications.sendSessionScheduledNotification(session, creatorProfile, participantProfile, kv.get);
+      }
     }
 
     return c.json({ success: true, session });
