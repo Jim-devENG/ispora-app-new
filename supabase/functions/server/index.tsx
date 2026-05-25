@@ -27,10 +27,22 @@ console.log('=== Ispora Server Starting ===');
 app.use('*', cors({
   origin: '*',
   allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowHeaders: ['Content-Type', 'Authorization', 'apikey'],
-  exposeHeaders: ['Content-Length'],
-  credentials: true,
+  allowHeaders: ['Content-Type', 'Authorization', 'apikey', 'X-Requested-With'],
+  exposeHeaders: ['Content-Length', 'X-Total-Count'],
+  credentials: false,
+  maxAge: 86400,
 }));
+
+// Explicit OPTIONS handler for preflight requests
+app.options('*', (c) => {
+  console.log('📋 OPTIONS preflight request:', c.req.header('origin'));
+  return c.text('', 204, {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization, apikey, X-Requested-With',
+    'Access-Control-Max-Age': '86400',
+  });
+});
 
 // Add logger middleware
 app.use('*', logger(console.log));
