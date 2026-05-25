@@ -41,7 +41,8 @@ export function buildFunctionHeaders(
 
   return {
     'Content-Type': contentType,
-    apikey: publicAnonKey || '',
+    // Note: Authorization header is sufficient for our edge function authentication
+    // Removed 'apikey' header to avoid CORS preflight issues on platforms with strict CORS rules
     Authorization: `Bearer ${authToken}`,
   };
 }
