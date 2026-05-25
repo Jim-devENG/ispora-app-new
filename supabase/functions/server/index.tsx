@@ -27,7 +27,7 @@ console.log('=== Ispora Server Starting ===');
 app.use('*', cors({
   origin: '*',
   allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowHeaders: ['Content-Type', 'Authorization'],
+  allowHeaders: ['Content-Type', 'Authorization', 'apikey'],
   exposeHeaders: ['Content-Length'],
   credentials: true,
 }));
