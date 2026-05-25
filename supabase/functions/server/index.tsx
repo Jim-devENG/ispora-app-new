@@ -209,6 +209,54 @@ function generateId(prefix: string): string {
   return `${prefix}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 }
 
+function normalizeSessionCapacity(value: unknown): number | null {
+  if (typeof value === 'string') {
+    const normalized = value.trim().toLowerCase();
+    if (!normalized || normalized === 'unlimited' || normalized === 'infinite' || normalized === 'none') {
+      return null;
+    }
+    const parsed = Number(normalized);
+    if (Number.isFinite(parsed) && parsed > 0) {
+      return Math.floor(parsed);
+    }
+    return null;
+  }
+
+  if (typeof value === 'number' && Number.isFinite(value) && value > 0) {
+    return Math.floor(value);
+  }
+
+  return null;
+}
+
+function getSessionCapacityState(capacityValue: unknown, registeredCountValue: unknown) {
+  const capacity = normalizeSessionCapacity(capacityValue);
+  const registeredCount =
+    typeof registeredCountValue === 'number' && Number.isFinite(registeredCountValue) && registeredCountValue > 0
+      ? Math.floor(registeredCountValue)
+      : 0;
+
+  if (capacity === null) {
+    return {
+      capacity: 'unlimited' as const,
+      isUnlimited: true,
+      isFull: false,
+      spotsLeft: null as number | null,
+      registeredCount,
+    };
+  }
+
+  const spotsLeft = Math.max(0, capacity - registeredCount);
+
+  return {
+    capacity,
+    isUnlimited: false,
+    isFull: spotsLeft === 0,
+    spotsLeft,
+    registeredCount,
+  };
+}
+
 // Generate unique short code for sessions (e.g., "jd123")
 async function generateShortCode(mentorId: string): Promise<string> {
   try {
@@ -2690,8 +2738,13 @@ app.post("/make-server-b8526fa6/sessions/:sessionId/register", async (c) => {
       return c.json({ error: 'Already registered for this session' }, 400);
     }
 
-    // Check capacity
-    if (sessionDetails.registeredStudents.length >= sessionDetails.capacity) {
+    const capacityState = getSessionCapacityState(
+      sessionDetails.capacity,
+      sessionDetails.registeredStudents.length,
+    );
+
+    // Check capacity only for finite-capacity sessions
+    if (!capacityState.isUnlimited && capacityState.isFull) {
       return c.json({ error: 'Session is full' }, 400);
     }
 
@@ -2711,33 +2764,57 @@ app.post("/make-server-b8526fa6/sessions/:sessionId/register", async (c) => {
         } catch (e) {}
         return false;
       });
-      
-      // Add user to all sessions in the series
-      for (const seriesSession of seriesSessions) {
+
+      // Parse and pre-validate all series sessions to avoid partial registration.
+      const parsedSeriesSessions = seriesSessions.map((seriesSession: any) => {
         let seriesDetails: any = {};
         try {
           if (seriesSession.notes) {
             seriesDetails = JSON.parse(seriesSession.notes);
           }
         } catch (e) {}
-        
-        // Skip if already registered or full
+
         if (!seriesDetails.registeredStudents) {
           seriesDetails.registeredStudents = [];
         }
-        
-        if (!seriesDetails.registeredStudents.includes(user.id)) {
-          seriesDetails.registeredStudents.push(user.id);
-          seriesDetails.registeredCount = seriesDetails.registeredStudents.length;
-          
-          await kv.set(`session:${seriesSession.id}`, {
-            ...seriesSession,
-            notes: JSON.stringify(seriesDetails),
-            updatedAt: new Date().toISOString(),
-          });
-          
-          sessionsToUpdate.push(seriesSession.id);
+
+        return { seriesSession, seriesDetails };
+      });
+
+      for (const { seriesSession, seriesDetails } of parsedSeriesSessions) {
+        if (seriesDetails.registeredStudents.includes(user.id)) {
+          continue;
         }
+
+        const seriesCapacityState = getSessionCapacityState(
+          seriesDetails.capacity,
+          seriesDetails.registeredStudents.length,
+        );
+
+        if (!seriesCapacityState.isUnlimited && seriesCapacityState.isFull) {
+          return c.json({
+            error: 'One or more sessions in this recurring series are full. Registration could not be completed.',
+            sessionId: seriesSession.id,
+          }, 400);
+        }
+      }
+
+      // All sessions passed capacity checks; apply registration updates.
+      for (const { seriesSession, seriesDetails } of parsedSeriesSessions) {
+        if (seriesDetails.registeredStudents.includes(user.id)) {
+          continue;
+        }
+
+        seriesDetails.registeredStudents.push(user.id);
+        seriesDetails.registeredCount = seriesDetails.registeredStudents.length;
+
+        await kv.set(`session:${seriesSession.id}`, {
+          ...seriesSession,
+          notes: JSON.stringify(seriesDetails),
+          updatedAt: new Date().toISOString(),
+        });
+
+        sessionsToUpdate.push(seriesSession.id);
       }
     } else {
       // Single session - just register for this one
@@ -3292,7 +3369,7 @@ app.get("/make-server-b8526fa6/public/session/:sessionId", async (c) => {
     let sessionDetails = { 
       platform: 'Google Meet', 
       description: '', 
-      capacity: 10, 
+      capacity: 'unlimited' as const, 
       registeredCount: 0,
       isRecurring: false,
       recurrence: null,
@@ -3384,9 +3461,7 @@ app.get("/make-server-b8526fa6/public/session/:sessionId", async (c) => {
       return c.html(html);
     }
 
-    // Check if session is full
-    const isFull = sessionDetails.registeredCount >= sessionDetails.capacity;
-    const spotsLeft = sessionDetails.capacity - sessionDetails.registeredCount;
+    const capacityState = getSessionCapacityState(sessionDetails.capacity, sessionDetails.registeredCount);
 
     return c.json({
       success: true,
@@ -3400,8 +3475,11 @@ app.get("/make-server-b8526fa6/public/session/:sessionId", async (c) => {
         likesCount: session.likesCount || 0,
         viewsCount: session.viewsCount || 0,
         ...sessionDetails,
-        isFull,
-        spotsLeft,
+        capacity: capacityState.capacity,
+        registeredCount: capacityState.registeredCount,
+        isFull: capacityState.isFull,
+        spotsLeft: capacityState.spotsLeft,
+        isUnlimitedCapacity: capacityState.isUnlimited,
         mentor: mentor ? {
           id: mentor.id,
           firstName: mentor.firstName,

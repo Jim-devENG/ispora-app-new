@@ -1,4 +1,4 @@
-import { buildFunctionHeaders, edgeFunctionBaseUrl, publicAnonKey } from '/utils/supabase/info';
+import { buildFunctionHeaders, edgeFunctionBaseUrl, projectId, publicAnonKey } from '/utils/supabase/info';
 import { supabase } from '../utils/supabase';
 
 const API_BASE_URL = edgeFunctionBaseUrl;

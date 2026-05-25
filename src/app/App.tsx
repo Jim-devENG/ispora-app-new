@@ -13,6 +13,7 @@ import SessionLandingPage from './components/SessionLandingPage';
 import OpportunityLandingPage from './components/OpportunityLandingPage';
 import Dashboard from './components/Dashboard';
 import PublicProfile from './components/PublicProfile';
+import { getMissingSupabaseConfigKeys, isSupabaseConfigured } from '/utils/supabase/info';
 
 // v0.0.4 - Current mentor filtering: Students can't request mentorship from existing mentors
 // Loading fallback component
@@ -218,7 +219,36 @@ function AppContent() {
   );
 }
 
+function SupabaseConfigErrorScreen() {
+  const missingKeys = getMissingSupabaseConfigKeys();
+
+  return (
+    <div className="min-h-screen bg-[var(--ispora-bg)] flex items-center justify-center px-6">
+      <div className="max-w-2xl w-full bg-white border-[1.5px] border-[var(--ispora-border)] rounded-2xl p-8">
+        <h1 className="font-syne text-2xl font-extrabold text-[var(--ispora-text)] mb-3">
+          App Configuration Required
+        </h1>
+        <p className="text-sm text-[var(--ispora-text2)] mb-4">
+          The app cannot connect to Supabase yet. Add the missing environment variables and reload.
+        </p>
+        <div className="text-sm text-[var(--ispora-text)] leading-relaxed">
+          Missing:
+          <ul className="mt-2 list-disc list-inside text-[var(--ispora-danger)]">
+            {missingKeys.map((key) => (
+              <li key={key}>{key}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function App() {
+  if (!isSupabaseConfigured) {
+    return <SupabaseConfigErrorScreen />;
+  }
+
   return (
     <ErrorBoundary>
       <BrowserRouter>

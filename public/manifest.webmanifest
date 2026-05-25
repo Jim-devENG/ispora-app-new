@@ -1,0 +1,25 @@
+{
+  "name": "iSpora",
+  "short_name": "iSpora",
+  "description": "Connect with diaspora mentors and unlock growth opportunities.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f6f7fc",
+  "theme_color": "#021ff6",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/pwa-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/pwa-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

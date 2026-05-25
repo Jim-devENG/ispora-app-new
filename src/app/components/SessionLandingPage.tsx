@@ -135,6 +135,7 @@ export default function SessionLandingPage() {
   const now = new Date();
   const isPast = sessionDate < now;
   const isToday = sessionDate.toDateString() === now.toDateString();
+  const isUnlimitedCapacity = !!session.isUnlimitedCapacity || session.capacity === 'unlimited';
 
   return (
     <div className="min-h-screen bg-[var(--ispora-bg)]">
@@ -395,13 +396,17 @@ export default function SessionLandingPage() {
                     </div>
                     <div>
                       <p className="text-sm font-semibold text-[var(--ispora-text)]">
-                        {session.isFull 
+                        {isUnlimitedCapacity
+                          ? 'Unlimited spots available'
+                          : session.isFull 
                           ? 'Session Full' 
                           : `${session.spotsLeft} ${session.spotsLeft === 1 ? 'spot' : 'spots'} left`
                         }
                       </p>
                       <p className="text-xs text-[var(--ispora-text3)]">
-                        {session.registeredCount} of {session.capacity} registered
+                        {isUnlimitedCapacity
+                          ? `${session.registeredCount} registered`
+                          : `${session.registeredCount} of ${session.capacity} registered`}
                       </p>
                     </div>
                   </div>
