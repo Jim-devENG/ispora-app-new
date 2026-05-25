@@ -3,7 +3,7 @@ import { useAuth } from '../contexts/AuthContext';
 import api from '../lib/api';
 import type { MentorStats, MentorshipRequest, Mentorship } from '../types';
 import logo from '/src/assets/4db1642d96b725f296f07dcb9e96154154c374f8.png';
-import { projectId } from '/utils/supabase/info';
+import { edgeFunctionBaseUrl } from '/utils/supabase/info';
 import { normalizeUrl } from '../utils/urlHelpers';
 import CalendarModal from './CalendarModal';
 import {
@@ -227,7 +227,7 @@ export default function MentorDashboard() {
   const handleSaveDefaultMeetingLink = async (link: string) => {
     try {
       const response = await fetch(
-        `https://${projectId}.supabase.co/functions/v1/make-server-b8526fa6/users/default-meeting-link`,
+        `${edgeFunctionBaseUrl}/users/default-meeting-link`,
         {
           method: 'PUT',
           headers: {

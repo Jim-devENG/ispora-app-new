@@ -1,7 +1,7 @@
-import { projectId, publicAnonKey } from '/utils/supabase/info';
+import { buildFunctionHeaders, edgeFunctionBaseUrl, publicAnonKey } from '/utils/supabase/info';
 import { supabase } from '../utils/supabase';
 
-const API_BASE_URL = `https://${projectId}.supabase.co/functions/v1/make-server-b8526fa6`;
+const API_BASE_URL = edgeFunctionBaseUrl;
 
 // Cache for token refresh to prevent simultaneous calls
 let tokenRefreshPromise: Promise<string | null> | null = null;
@@ -86,10 +86,7 @@ async function getAuthHeader(token?: string): Promise<HeadersInit> {
     accessToken = await getValidToken() || undefined;
   }
   
-  return {
-    'Content-Type': 'application/json',
-    'Authorization': accessToken ? `Bearer ${accessToken}` : `Bearer ${publicAnonKey}`,
-  };
+  return buildFunctionHeaders(accessToken);
 }
 
 // Helper function for API calls with retry logic
@@ -497,7 +494,9 @@ export const sessionApi = {
 
   // Public session (no auth required)
   getPublicSession: async (sessionId: string) => {
-    const response = await fetch(`https://${projectId}.supabase.co/functions/v1/make-server-b8526fa6/public/session/${sessionId}`);
+    const response = await fetch(`${API_BASE_URL}/public/session/${sessionId}`, {
+      headers: buildFunctionHeaders(),
+    });
     if (!response.ok) {
       const error = await response.json();
       throw new Error(error.error || 'Failed to fetch session');
@@ -606,6 +605,7 @@ export const resourceApi = {
     const response = await fetch(`${API_BASE_URL}/resources/upload`, {
       method: 'POST',
       headers: {
+        apikey: publicAnonKey,
         'Authorization': token ? `Bearer ${token}` : `Bearer ${publicAnonKey}`,
       },
       body: formData,

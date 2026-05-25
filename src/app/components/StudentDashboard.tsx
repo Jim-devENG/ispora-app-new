@@ -6,6 +6,7 @@ import { toast } from 'sonner';
 import { normalizeUrl } from '../utils/urlHelpers';
 import CalendarModal from './CalendarModal';
 import { generateRRuleFromPattern } from '../utils/calendar';
+import { getSessionCapacityState } from '../utils/sessionCapacity';
 import {
   LayoutGrid,
   Users,
@@ -67,7 +68,6 @@ export default function StudentDashboard() {
   // Load mentorships and notifications
   useEffect(() => {
     const loadData = async () => {
-      if (!user?.id) return;
       try {
         const [mentorshipsRes, notificationsRes] = await Promise.all([
           api.mentorship.getAll(),
@@ -89,7 +89,7 @@ export default function StudentDashboard() {
     };
     
     loadData();
-  }, [user?.id]);
+  }, []);
 
   const handleSignOut = async () => {
     await signOut();
@@ -473,21 +473,10 @@ export default function StudentDashboard() {
                 <div className="space-y-4">
                   {mentorships.filter(m => m.status === 'active').map((mentorship: any) => (
                     <div key={mentorship.id} className="flex items-center gap-4 p-4 bg-[var(--ispora-bg)] rounded-xl hover:bg-[var(--ispora-brand-light)] transition-colors cursor-pointer border-[1.5px] border-transparent hover:border-[var(--ispora-brand)]">
-                      {mentorship.mentor?.profilePicture ? (
-                        <div className="w-14 h-14 rounded-full overflow-hidden flex-shrink-0 relative shadow-md">
-                          <img 
-                            src={mentorship.mentor.profilePicture} 
-                            alt={`${mentorship.mentor?.firstName} ${mentorship.mentor?.lastName}`}
-                            className="w-full h-full object-cover"
-                          />
-                          <div className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-[var(--ispora-accent)] border-2 border-white rounded-full" />
-                        </div>
-                      ) : (
-                        <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[var(--ispora-brand)] to-[#1a35f8] flex items-center justify-center text-white font-bold text-lg flex-shrink-0 relative shadow-md">
-                          {mentorship.mentor?.firstName?.[0]}{mentorship.mentor?.lastName?.[0]}
-                          <div className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-[var(--ispora-accent)] border-2 border-white rounded-full" />
-                        </div>
-                      )}
+                      <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[var(--ispora-brand)] to-[#1a35f8] flex items-center justify-center text-white font-bold text-lg flex-shrink-0 relative shadow-md">
+                        {mentorship.mentor?.firstName?.[0]}{mentorship.mentor?.lastName?.[0]}
+                        <div className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-[var(--ispora-accent)] border-2 border-white rounded-full" />
+                      </div>
                       <div className="flex-1 min-w-0">
                         <div className="font-syne font-bold text-base text-[var(--ispora-text)] mb-1">
                           {mentorship.mentor?.firstName} {mentorship.mentor?.lastName}
@@ -780,8 +769,7 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
       description: sessionDetails.description || '',
       sessions: sessions,
       notes: firstSession.notes,
-      meetingLink: sessionDetails.meetingLink || firstSession.meetingLink || '',
-      capacity: sessionDetails.capacity || 10,
+      capacity: sessionDetails.capacity,
       registeredCount: sessionDetails.registeredCount || 0
     };
   });
@@ -890,8 +878,7 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
       duration: firstSession.duration,
       platform: sessionDetails.platform || 'Not specified',
       description: sessionDetails.description || '',
-      meetingLink: sessionDetails.meetingLink || firstSession.meetingLink || '',
-      capacity: sessionDetails.capacity || 10,
+      capacity: sessionDetails.capacity,
       registeredCount: sessionDetails.registeredCount || 0,
       registeredStudents: sessionDetails.registeredStudents || [],
       sessions: sessions,
@@ -1359,6 +1346,7 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
                 const timingStatus = getSessionTimingStatus(series.nextSessionDate);
                 const isPublic = series.sessionType === 'public';
                 const isGroup = series.sessionType === 'group';
+                const capacityState = getSessionCapacityState(series.capacity, series.registeredCount);
 
                 return (
                   <div 
@@ -1387,19 +1375,9 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
 
                     {/* Header with mentor */}
                     <div className="flex items-start gap-3 mb-3">
-                      {series.mentor?.profilePicture ? (
-                        <div className="w-11 h-11 rounded-full overflow-hidden flex-shrink-0 shadow-md">
-                          <img 
-                            src={series.mentor.profilePicture} 
-                            alt={`${series.mentor?.firstName} ${series.mentor?.lastName}`}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                      ) : (
-                        <div className="w-11 h-11 rounded-full bg-gradient-to-br from-[var(--ispora-brand)] to-[#1a35f8] flex items-center justify-center text-white font-bold text-sm flex-shrink-0 shadow-md">
-                          {series.mentor?.firstName?.[0]}{series.mentor?.lastName?.[0]}
-                        </div>
-                      )}
+                      <div className="w-11 h-11 rounded-full bg-gradient-to-br from-[var(--ispora-brand)] to-[#1a35f8] flex items-center justify-center text-white font-bold text-sm flex-shrink-0 shadow-md">
+                        {series.mentor?.firstName?.[0]}{series.mentor?.lastName?.[0]}
+                      </div>
                       <div className="flex-1 min-w-0">
                         <div className="font-syne font-bold text-[13px] text-[var(--ispora-text)] mb-0.5">
                           {series.mentor?.firstName} {series.mentor?.lastName}
@@ -1485,8 +1463,12 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
                         <Users className="w-3.5 h-3.5 text-[var(--ispora-text3)]" strokeWidth={2} />
                         <span className="font-semibold text-[var(--ispora-brand)]">{series.registeredCount} attending</span>
                         <span className="text-[var(--ispora-text3)]">·</span>
-                        <span className={series.registeredCount >= series.capacity ? 'text-[var(--ispora-danger)] font-semibold' : 'text-[var(--ispora-success)]'}>
-                          {series.capacity - series.registeredCount} spots left
+                        <span className={capacityState.isFull ? 'text-[var(--ispora-danger)] font-semibold' : 'text-[var(--ispora-success)]'}>
+                          {capacityState.isUnlimited
+                            ? 'Unlimited spots'
+                            : capacityState.isFull
+                            ? 'Full'
+                            : `${capacityState.spotsLeft} spots left`}
                         </span>
                       </div>
                     )}
@@ -1508,25 +1490,6 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
                       </div>
 
                     </div>
-
-                    {/* Join Session Button - Always visible */}
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        // Get meetingLink from series (extracted from notes JSON)
-                        const meetingLink = series.meetingLink || '';
-                        if (meetingLink) {
-                          const normalizedLink = normalizeUrl(meetingLink);
-                          window.open(normalizedLink, '_blank');
-                        } else {
-                          toast.error('No meeting link available. Please contact your mentor.');
-                        }
-                      }}
-                      className="mt-3 w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-[var(--ispora-brand)] text-white text-xs font-semibold hover:bg-[var(--ispora-brand-hover)] hover:-translate-y-0.5 hover:shadow-[0_6px_18px_rgba(2,31,246,0.35)] transition-all"
-                    >
-                      <Video className="w-4 h-4" strokeWidth={2.5} />
-                      Join Session
-                    </button>
                   </div>
                 );
               })}
@@ -1558,19 +1521,9 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
                   >
                     {/* Header with mentor and timing */}
                     <div className="flex items-start gap-3 mb-3">
-                      {session.mentor?.profilePicture ? (
-                        <div className="w-11 h-11 rounded-full overflow-hidden flex-shrink-0 shadow-md">
-                          <img 
-                            src={session.mentor.profilePicture} 
-                            alt={`${session.mentor?.firstName} ${session.mentor?.lastName}`}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                      ) : (
-                        <div className="w-11 h-11 rounded-full bg-gradient-to-br from-[var(--ispora-brand)] to-[#1a35f8] flex items-center justify-center text-white font-bold text-sm flex-shrink-0 shadow-md">
-                          {session.mentor?.firstName?.[0]}{session.mentor?.lastName?.[0]}
-                        </div>
-                      )}
+                      <div className="w-11 h-11 rounded-full bg-gradient-to-br from-[var(--ispora-brand)] to-[#1a35f8] flex items-center justify-center text-white font-bold text-sm flex-shrink-0 shadow-md">
+                        {session.mentor?.firstName?.[0]}{session.mentor?.lastName?.[0]}
+                      </div>
                       <div className="flex-1 min-w-0">
                         <div className="font-syne font-bold text-[13px] text-[var(--ispora-text)] mb-0.5">
                           {session.mentor?.firstName} {session.mentor?.lastName}
@@ -1628,50 +1581,36 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
                           <span>{session.duration} min</span>
                         </div>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            const duration = session.duration || 60;
-                            const endTime = new Date(sessionDate.getTime() + duration * 60000);
-                            
-                            setCalendarEvent({
-                              title: `Mentorship: ${session.topic || 'Session'}`,
-                              description: `Mentorship Session\n\nMentor: ${session.mentor?.firstName} ${session.mentor?.lastName}`,
-                              location: session.meetingLink || 'Online',
-                              startTime: sessionDate,
-                              endTime: endTime,
-                              organizerName: `${session.mentor?.firstName} ${session.mentor?.lastName}`,
-                              sessionUrl: `${window.location.origin}/dashboard`
-                            });
-                            setShowCalendarModal(true);
-                          }}
-                          className="p-1.5 rounded-lg border-[1.5px] border-[var(--ispora-border)] text-[var(--ispora-text2)] hover:border-[var(--ispora-brand)] hover:text-[var(--ispora-brand)] hover:bg-[var(--ispora-brand-light)] transition-all"
-                          title="Add to Calendar"
-                        >
-                          <CalendarPlus className="w-3.5 h-3.5" strokeWidth={2} />
-                        </button>
-                      </div>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          const duration = session.duration || 60;
+                          const endTime = new Date(sessionDate.getTime() + duration * 60000);
+                          
+                          setCalendarEvent({
+                            title: `Mentorship: ${session.topic || 'Session'}`,
+                            description: `Mentorship Session\n\nMentor: ${session.mentor?.firstName} ${session.mentor?.lastName}`,
+                            location: session.meetingLink || 'Online',
+                            startTime: sessionDate,
+                            endTime: endTime,
+                            organizerName: `${session.mentor?.firstName} ${session.mentor?.lastName}`,
+                            sessionUrl: `${window.location.origin}/dashboard`
+                          });
+                          setShowCalendarModal(true);
+                        }}
+                        className="p-1.5 rounded-lg border-[1.5px] border-[var(--ispora-border)] text-[var(--ispora-text2)] hover:border-[var(--ispora-brand)] hover:text-[var(--ispora-brand)] hover:bg-[var(--ispora-brand-light)] transition-all"
+                        title="Add to Calendar"
+                      >
+                        <CalendarPlus className="w-3.5 h-3.5" strokeWidth={2} />
+                      </button>
                     </div>
 
-                    {/* Join Session Button - Always visible */}
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        // Get meetingLink from notes JSON or direct property
-                        const meetingLink = sessionDetails.meetingLink || session.meetingLink || '';
-                        if (meetingLink) {
-                          const normalizedLink = normalizeUrl(meetingLink);
-                          window.open(normalizedLink, '_blank');
-                        } else {
-                          toast.error('No meeting link available. Please contact your mentor.');
-                        }
-                      }}
-                      className="mt-3 w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-[var(--ispora-brand)] text-white text-xs font-semibold hover:bg-[var(--ispora-brand-hover)] hover:-translate-y-0.5 hover:shadow-[0_6px_18px_rgba(2,31,246,0.35)] transition-all"
-                    >
-                      <Video className="w-4 h-4" strokeWidth={2.5} />
-                      Join Session
-                    </button>
+                    {/* Hover action hint */}
+                    <div className="mt-2.5 text-center opacity-0 group-hover:opacity-100 transition-opacity">
+                      <span className="text-[10px] font-semibold text-[var(--ispora-brand)]">
+                        Click to view details & join →
+                      </span>
+                    </div>
                   </div>
                 );
               })}
@@ -1752,8 +1691,8 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Render Public Series Cards First */}
             {publicSessionSeries.map((series) => {
-              const spotsLeft = series.capacity - series.registeredCount;
-              const isFull = spotsLeft <= 0;
+              const capacityState = getSessionCapacityState(series.capacity, series.registeredCount);
+              const isFull = capacityState.isFull;
               const isRegistered = user && series.registeredStudents.includes(user.id);
 
               return (
@@ -1775,19 +1714,9 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
 
                   {/* Mentor Info */}
                   <div className="flex items-start gap-3 mb-3">
-                    {series.mentor?.profilePicture ? (
-                      <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 shadow-md">
-                        <img 
-                          src={series.mentor.profilePicture} 
-                          alt={`${series.mentor?.firstName} ${series.mentor?.lastName}`}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    ) : (
-                      <div className="w-12 h-12 rounded-full bg-[var(--ispora-brand)] flex items-center justify-center text-white font-bold text-sm flex-shrink-0 shadow-md">
-                        {series.mentor?.firstName?.[0]}{series.mentor?.lastName?.[0]}
-                      </div>
-                    )}
+                    <div className="w-12 h-12 rounded-full bg-[var(--ispora-brand)] flex items-center justify-center text-white font-bold text-sm flex-shrink-0 shadow-md">
+                      {series.mentor?.firstName?.[0]}{series.mentor?.lastName?.[0]}
+                    </div>
                     <div className="flex-1 min-w-0">
                       <div className="font-syne font-bold text-sm text-[var(--ispora-text)] mb-0.5 truncate">
                         {series.mentor?.firstName} {series.mentor?.lastName}
@@ -1887,7 +1816,11 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
                       <span className="font-semibold text-[var(--ispora-brand)]">{series.registeredCount} attending</span>
                       <span className="text-[var(--ispora-text3)]">·</span>
                       <span className={isFull ? 'text-[var(--ispora-danger)] font-semibold' : 'text-[var(--ispora-success)]'}>
-                        {isFull ? 'Full' : `${spotsLeft} spots left`}
+                        {capacityState.isUnlimited
+                          ? 'Unlimited spots'
+                          : isFull
+                          ? 'Full'
+                          : `${capacityState.spotsLeft} spots left`}
                       </span>
                     </div>
                     <div>
@@ -1922,7 +1855,7 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
             {/* Render Standalone Public Sessions */}
             {standalonePublicSessions.map((session: any) => {
                 const sessionDate = new Date(session.scheduledAt);
-                let sessionDetails = { platform: 'Not specified', description: '', capacity: 10, registeredCount: 0, registeredStudents: [] };
+                let sessionDetails = { platform: 'Not specified', description: '', capacity: 'unlimited', registeredCount: 0, registeredStudents: [] };
                 
                 try {
                   if (session.notes) {
@@ -1931,8 +1864,8 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
                   }
                 } catch (e) {}
 
-                const spotsLeft = sessionDetails.capacity - sessionDetails.registeredCount;
-                const isFull = spotsLeft <= 0;
+                const capacityState = getSessionCapacityState(sessionDetails.capacity, sessionDetails.registeredCount);
+                const isFull = capacityState.isFull;
                 const isRegistered = user && sessionDetails.registeredStudents.includes(user.id);
 
                 return (
@@ -1943,19 +1876,9 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
                   >
                     {/* Mentor Info */}
                     <div className="flex items-start gap-3 mb-3">
-                      {session.mentor?.profilePicture ? (
-                        <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 shadow-md">
-                          <img 
-                            src={session.mentor.profilePicture} 
-                            alt={`${session.mentor?.firstName} ${session.mentor?.lastName}`}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                      ) : (
-                        <div className="w-12 h-12 rounded-full bg-[var(--ispora-brand)] flex items-center justify-center text-white font-bold text-sm flex-shrink-0 shadow-md">
-                          {session.mentor?.firstName?.[0]}{session.mentor?.lastName?.[0]}
-                        </div>
-                      )}
+                      <div className="w-12 h-12 rounded-full bg-[var(--ispora-brand)] flex items-center justify-center text-white font-bold text-sm flex-shrink-0 shadow-md">
+                        {session.mentor?.firstName?.[0]}{session.mentor?.lastName?.[0]}
+                      </div>
                       <div className="flex-1 min-w-0">
                         <div className="font-syne font-bold text-sm text-[var(--ispora-text)] mb-0.5 truncate">
                           {session.mentor?.firstName} {session.mentor?.lastName}
@@ -2055,7 +1978,11 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
                     {/* Capacity & CTA */}
                     <div className="flex items-center justify-between">
                       <div className={`text-[10px] font-bold ${isFull ? 'text-[var(--ispora-danger)]' : 'text-[var(--ispora-success)]'}`}>
-                        {isFull ? 'Full' : `${spotsLeft} spots left`}
+                        {capacityState.isUnlimited
+                          ? 'Unlimited spots'
+                          : isFull
+                          ? 'Full'
+                          : `${capacityState.spotsLeft} spots left`}
                       </div>
                       <div>
                         {isRegistered ? (
@@ -2127,19 +2054,9 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
                     >
                       {/* Header with mentor */}
                       <div className="flex items-start gap-3 mb-3">
-                        {session.mentor?.profilePicture ? (
-                          <div className="w-11 h-11 rounded-full overflow-hidden flex-shrink-0 shadow-md">
-                            <img 
-                              src={session.mentor.profilePicture} 
-                              alt={`${session.mentor?.firstName} ${session.mentor?.lastName}`}
-                              className="w-full h-full object-cover"
-                            />
-                          </div>
-                        ) : (
-                          <div className="w-11 h-11 rounded-full bg-gradient-to-br from-[var(--ispora-brand)] to-[#1a35f8] flex items-center justify-center text-white font-bold text-sm flex-shrink-0 shadow-md">
-                            {session.mentor?.firstName?.[0]}{session.mentor?.lastName?.[0]}
-                          </div>
-                        )}
+                        <div className="w-11 h-11 rounded-full bg-gradient-to-br from-[var(--ispora-brand)] to-[#1a35f8] flex items-center justify-center text-white font-bold text-sm flex-shrink-0 shadow-md">
+                          {session.mentor?.firstName?.[0]}{session.mentor?.lastName?.[0]}
+                        </div>
                         <div className="flex-1 min-w-0">
                           <div className="font-syne font-bold text-[13px] text-[var(--ispora-text)] mb-0.5">
                             {session.mentor?.firstName} {session.mentor?.lastName}
@@ -2227,19 +2144,9 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
             <div className="p-6 space-y-5">
               {/* Mentor Info */}
               <div className="flex items-center gap-4 p-4 bg-[var(--ispora-bg)] rounded-xl">
-                {selectedSession.mentor?.profilePicture ? (
-                  <div className="w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
-                    <img 
-                      src={selectedSession.mentor.profilePicture} 
-                      alt={`${selectedSession.mentor?.firstName} ${selectedSession.mentor?.lastName}`}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                ) : (
-                  <div className="w-14 h-14 rounded-full bg-[var(--ispora-brand)] flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
-                    {selectedSession.mentor?.firstName?.[0]}{selectedSession.mentor?.lastName?.[0]}
-                  </div>
-                )}
+                <div className="w-14 h-14 rounded-full bg-[var(--ispora-brand)] flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
+                  {selectedSession.mentor?.firstName?.[0]}{selectedSession.mentor?.lastName?.[0]}
+                </div>
                 <div className="flex-1 min-w-0">
                   <div className="font-syne font-bold text-base text-[var(--ispora-text)] mb-0.5">
                     {selectedSession.mentor?.firstName} {selectedSession.mentor?.lastName}
@@ -2253,19 +2160,19 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
               {/* Session Type Badge */}
               {(() => {
                 let sessionType = 'private';
-                let capacity = 0;
+                let capacity: unknown = 'unlimited';
                 let registeredCount = 0;
                 try {
                   if (selectedSession.notes) {
                     const parsed = JSON.parse(selectedSession.notes);
                     sessionType = parsed.sessionType || 'private';
-                    capacity = parsed.capacity || 0;
+                    capacity = parsed.capacity;
                     registeredCount = parsed.registeredCount || 0;
                   }
                 } catch (e) {}
 
                 if (sessionType === 'public') {
-                  const spotsLeft = capacity - registeredCount;
+                  const capacityState = getSessionCapacityState(capacity, registeredCount);
                   return (
                     <div className="flex items-center gap-2 p-3 bg-gradient-to-r from-[var(--ispora-brand-light)] to-[var(--ispora-accent-light)] rounded-xl border-[1.5px] border-[var(--ispora-brand)]">
                       <div className="flex-1">
@@ -2276,7 +2183,11 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
                           <Users className="w-4 h-4 text-[var(--ispora-brand)]" strokeWidth={2} />
                         </div>
                         <div className="text-xs text-[var(--ispora-text2)]">
-                          Open to all students • <span className="font-semibold">{spotsLeft} spots remaining</span> of {capacity}
+                          Open to all students • <span className="font-semibold">
+                            {capacityState.isUnlimited
+                              ? 'Unlimited spots'
+                              : `${capacityState.spotsLeft} spots remaining of ${capacityState.capacity}`}
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -2479,17 +2390,6 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
                   const timingStatus = getSessionTimingStatus(sessionDate);
                   const canJoin = timingStatus.status === 'starting' || timingStatus.status === 'soon';
                   
-                  // Extract meetingLink from notes JSON
-                  let meetingLink = selectedSession.meetingLink || '';
-                  try {
-                    if (selectedSession.notes) {
-                      const parsed = JSON.parse(selectedSession.notes);
-                      if (parsed.meetingLink) {
-                        meetingLink = parsed.meetingLink;
-                      }
-                    }
-                  } catch (e) {}
-                  
                   return (
                     <>
                       <button 
@@ -2503,6 +2403,7 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
                         disabled={!canJoin}
                         onClick={() => {
                           if (canJoin) {
+                            const meetingLink = selectedSession.meetingLink || '';
                             if (meetingLink) {
                               const normalizedLink = normalizeUrl(meetingLink);
                               window.open(normalizedLink, '_blank');

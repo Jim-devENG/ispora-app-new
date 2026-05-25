@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
-import { projectId } from '/utils/supabase/info';
+import { buildFunctionHeaders, edgeFunctionBaseUrl } from '/utils/supabase/info';
 
-const API_BASE_URL = `https://${projectId}.supabase.co/functions/v1/make-server-b8526fa6`;
+const API_BASE_URL = edgeFunctionBaseUrl;
 
 export default function DiagnosticPanel() {
   const { accessToken, user } = useAuth();
@@ -15,7 +15,9 @@ export default function DiagnosticPanel() {
   const testHealth = async () => {
     setLoading('health');
     try {
-      const response = await fetch(`${API_BASE_URL}/health`);
+      const response = await fetch(`${API_BASE_URL}/health`, {
+        headers: buildFunctionHeaders(),
+      });
       const data = await response.json();
       setHealthResult({ success: true, status: response.status, data });
     } catch (error: any) {
@@ -28,9 +30,7 @@ export default function DiagnosticPanel() {
     setLoading('auth');
     try {
       const response = await fetch(`${API_BASE_URL}/auth/test`, {
-        headers: {
-          'Authorization': `Bearer ${accessToken}`
-        }
+        headers: buildFunctionHeaders(accessToken || undefined),
       });
       const data = await response.json();
       setAuthTestResult({ success: response.ok, status: response.status, data });
@@ -44,10 +44,7 @@ export default function DiagnosticPanel() {
     setLoading('mentorships');
     try {
       const response = await fetch(`${API_BASE_URL}/mentorships`, {
-        headers: {
-          'Authorization': `Bearer ${accessToken}`,
-          'Content-Type': 'application/json'
-        }
+        headers: buildFunctionHeaders(accessToken || undefined),
       });
       const data = await response.json();
       setMentorshipsResult({ success: response.ok, status: response.status, data });
@@ -61,10 +58,7 @@ export default function DiagnosticPanel() {
     setLoading('sessions');
     try {
       const response = await fetch(`${API_BASE_URL}/sessions`, {
-        headers: {
-          'Authorization': `Bearer ${accessToken}`,
-          'Content-Type': 'application/json'
-        }
+        headers: buildFunctionHeaders(accessToken || undefined),
       });
       const data = await response.json();
       setSessionsResult({ success: response.ok, status: response.status, data });

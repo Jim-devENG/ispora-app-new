@@ -5,6 +5,7 @@ import { toast } from 'sonner';
 import CalendarModal from './CalendarModal';
 import MembersTab from './MembersTab';
 import { generateRRuleFromPattern } from '../utils/calendar';
+import { getSessionCapacityState } from '../utils/sessionCapacity';
 import {
   MessageSquare,
   Heart,
@@ -1040,7 +1041,7 @@ function EventsTab({ setShowCalendarModal, setCalendarEvent }: { setShowCalendar
       duration: firstSession.duration,
       platform: sessionDetails.platform || 'Not specified',
       description: sessionDetails.description || '',
-      capacity: sessionDetails.capacity || 10,
+      capacity: sessionDetails.capacity,
       registeredCount: sessionDetails.registeredCount || 0,
       registeredStudents: sessionDetails.registeredStudents || [],
       sessions: sessions,
@@ -1075,8 +1076,8 @@ function EventsTab({ setShowCalendarModal, setCalendarEvent }: { setShowCalendar
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Render Public Series Cards First */}
           {publicSessionSeries.map((series) => {
-            const spotsLeft = series.capacity - series.registeredCount;
-            const isFull = spotsLeft <= 0;
+            const capacityState = getSessionCapacityState(series.capacity, series.registeredCount);
+            const isFull = capacityState.isFull;
             const isRegistered = user && series.registeredStudents.includes(user.id);
 
             return (
@@ -1198,7 +1199,11 @@ function EventsTab({ setShowCalendarModal, setCalendarEvent }: { setShowCalendar
                     <span className="font-semibold text-[var(--ispora-brand)]">{series.registeredCount} attending</span>
                     <span className="text-[var(--ispora-text3)]">·</span>
                     <span className={isFull ? 'text-[var(--ispora-danger)] font-semibold' : 'text-[var(--ispora-success)]'}>
-                      {isFull ? 'Full' : `${spotsLeft} spots left`}
+                      {capacityState.isUnlimited
+                        ? 'Unlimited spots'
+                        : isFull
+                        ? 'Full'
+                        : `${capacityState.spotsLeft} spots left`}
                     </span>
                   </div>
                   <div>
@@ -1233,7 +1238,7 @@ function EventsTab({ setShowCalendarModal, setCalendarEvent }: { setShowCalendar
           {/* Render Standalone Public Sessions */}
           {standalonePublicSessions.map((session: any) => {
             const sessionDate = new Date(session.scheduledAt);
-            let sessionDetails = { platform: 'Not specified', description: '', capacity: 10, registeredCount: 0, registeredStudents: [] };
+            let sessionDetails = { platform: 'Not specified', description: '', capacity: 'unlimited', registeredCount: 0, registeredStudents: [] };
             
             try {
               if (session.notes) {
@@ -1242,8 +1247,8 @@ function EventsTab({ setShowCalendarModal, setCalendarEvent }: { setShowCalendar
               }
             } catch (e) {}
 
-            const spotsLeft = sessionDetails.capacity - sessionDetails.registeredCount;
-            const isFull = spotsLeft <= 0;
+            const capacityState = getSessionCapacityState(sessionDetails.capacity, sessionDetails.registeredCount);
+            const isFull = capacityState.isFull;
             const isRegistered = user && sessionDetails.registeredStudents.includes(user.id);
 
             return (
@@ -1354,7 +1359,11 @@ function EventsTab({ setShowCalendarModal, setCalendarEvent }: { setShowCalendar
                 {/* Capacity & CTA */}
                 <div className="flex items-center justify-between">
                   <div className={`text-[10px] font-bold ${isFull ? 'text-[var(--ispora-danger)]' : 'text-[var(--ispora-success)]'}`}>
-                    {isFull ? 'Full' : `${spotsLeft} spots left`}
+                    {capacityState.isUnlimited
+                      ? 'Unlimited spots'
+                      : isFull
+                      ? 'Full'
+                      : `${capacityState.spotsLeft} spots left`}
                   </div>
                   <div>
                     {isRegistered ? (

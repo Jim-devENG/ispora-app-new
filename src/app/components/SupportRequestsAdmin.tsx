@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Search, Filter, MessageSquare, Send, CheckCircle, Clock } from 'lucide-react';
-import { projectId, publicAnonKey } from '/utils/supabase/info';
+import { edgeFunctionBaseUrl, publicAnonKey } from '/utils/supabase/info';
 
 interface SupportRequest {
   id: string;
@@ -50,7 +50,7 @@ export function SupportRequestsAdmin({ accessToken }: SupportRequestsAdminProps)
     try {
       setLoading(true);
       const response = await fetch(
-        `https://${projectId}.supabase.co/functions/v1/make-server-b8526fa6/support-requests`,
+        `${edgeFunctionBaseUrl}/support-requests`,
         {
           headers: {
             'Authorization': `Bearer ${accessToken}`,
@@ -112,7 +112,7 @@ export function SupportRequestsAdmin({ accessToken }: SupportRequestsAdminProps)
       setError('');
 
       const response = await fetch(
-        `https://${projectId}.supabase.co/functions/v1/make-server-b8526fa6/support-requests/${selectedRequest.id}/respond`,
+        `${edgeFunctionBaseUrl}/support-requests/${selectedRequest.id}/respond`,
         {
           method: 'POST',
           headers: {
@@ -143,7 +143,7 @@ export function SupportRequestsAdmin({ accessToken }: SupportRequestsAdminProps)
   const handleUpdateStatus = async (requestId: string, newStatus: 'pending' | 'resolved') => {
     try {
       const response = await fetch(
-        `https://${projectId}.supabase.co/functions/v1/make-server-b8526fa6/support-requests/${requestId}/status`,
+        `${edgeFunctionBaseUrl}/support-requests/${requestId}/status`,
         {
           method: 'PATCH',
           headers: {

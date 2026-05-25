@@ -1,6 +1,6 @@
-import { projectId, publicAnonKey } from '/utils/supabase/info';
+import { buildFunctionHeaders, edgeFunctionBaseUrl, publicAnonKey } from '/utils/supabase/info';
 
-const API_BASE_URL = `https://${projectId}.supabase.co/functions/v1/make-server-b8526fa6`;
+const API_BASE_URL = edgeFunctionBaseUrl;
 
 export interface SignUpData {
   email: string;
@@ -39,17 +39,11 @@ export interface AuthResponse {
 
 class AuthAPI {
   private getHeaders(includeAuth = false, token?: string) {
-    const headers: Record<string, string> = {
-      'Content-Type': 'application/json',
-    };
-
     if (includeAuth && token) {
-      headers['Authorization'] = `Bearer ${token}`;
-    } else if (!includeAuth) {
-      headers['Authorization'] = `Bearer ${publicAnonKey}`;
+      return buildFunctionHeaders(token);
     }
 
-    return headers;
+    return buildFunctionHeaders(publicAnonKey);
   }
 
   async signUp(data: SignUpData): Promise<AuthResponse> {

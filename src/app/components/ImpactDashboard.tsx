@@ -10,7 +10,7 @@ import {
   X
 } from 'lucide-react';
 import { toast } from 'sonner';
-import { projectId } from '/utils/supabase/info';
+import { edgeFunctionBaseUrl } from '/utils/supabase/info';
 
 interface ImpactDashboardProps {
   userRole: 'diaspora' | 'student';
@@ -42,7 +42,7 @@ export function ImpactDashboard({ userRole }: ImpactDashboardProps) {
         'Authorization': `Bearer ${accessToken}`
       };
 
-      const apiBase = `https://${projectId}.supabase.co/functions/v1/make-server-b8526fa6`;
+      const apiBase = edgeFunctionBaseUrl;
       
       // Load impact stats
       const statsResponse = await fetch(`${apiBase}/users/impact-stats`, { headers });
@@ -89,7 +89,7 @@ export function ImpactDashboard({ userRole }: ImpactDashboardProps) {
         'Authorization': `Bearer ${accessToken}`
       };
 
-      const apiBase = `https://${projectId}.supabase.co/functions/v1/make-server-b8526fa6`;
+      const apiBase = edgeFunctionBaseUrl;
       
       console.log('Checking for badges at:', `${apiBase}/users/badges/check`);
       

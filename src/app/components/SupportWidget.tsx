@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { HelpCircle, X, Send, ChevronDown, ChevronUp, MessageSquare } from 'lucide-react';
-import { projectId, publicAnonKey } from '/utils/supabase/info';
+import { edgeFunctionBaseUrl, publicAnonKey } from '/utils/supabase/info';
 
 interface SupportRequest {
   id: string;
@@ -52,7 +52,7 @@ export function SupportWidget({ accessToken }: SupportWidgetProps) {
     try {
       setLoading(true);
       const response = await fetch(
-        `https://${projectId}.supabase.co/functions/v1/make-server-b8526fa6/support-requests/user`,
+        `${edgeFunctionBaseUrl}/support-requests/user`,
         {
           headers: {
             'Authorization': `Bearer ${accessToken}`,
@@ -87,7 +87,7 @@ export function SupportWidget({ accessToken }: SupportWidgetProps) {
       setError('');
 
       const response = await fetch(
-        `https://${projectId}.supabase.co/functions/v1/make-server-b8526fa6/support-requests`,
+        `${edgeFunctionBaseUrl}/support-requests`,
         {
           method: 'POST',
           headers: {

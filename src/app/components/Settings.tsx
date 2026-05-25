@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
-import { projectId, publicAnonKey } from '/utils/supabase/info';
+import { edgeFunctionBaseUrl, publicAnonKey } from '/utils/supabase/info';
 import {
   Lock,
   Bell,
@@ -92,7 +92,7 @@ const Settings: React.FC = () => {
       const accessToken = localStorage.getItem('ispora_access_token');
       
       const response = await fetch(
-        `https://${projectId}.supabase.co/functions/v1/make-server-b8526fa6/settings`,
+        `${edgeFunctionBaseUrl}/settings`,
         {
           headers: {
             'Authorization': `Bearer ${accessToken}`,
@@ -136,7 +136,7 @@ const Settings: React.FC = () => {
 
         // Load user profile data for defaultMeetingLink
         const userResponse = await fetch(
-          `https://${projectId}.supabase.co/functions/v1/make-server-b8526fa6/users/${user?.id}`,
+          `${edgeFunctionBaseUrl}/users/${user?.id}`,
           {
             headers: {
               'Authorization': `Bearer ${accessToken}`,
@@ -172,7 +172,7 @@ const Settings: React.FC = () => {
       if (activeSection === 'account') {
         // Save mentorship settings
         const settingsResponse = await fetch(
-          `https://${projectId}.supabase.co/functions/v1/make-server-b8526fa6/settings`,
+          `${edgeFunctionBaseUrl}/settings`,
           {
             method: 'PUT',
             headers: {
@@ -196,7 +196,7 @@ const Settings: React.FC = () => {
 
         // Save default meeting link to user profile
         const profileResponse = await fetch(
-          `https://${projectId}.supabase.co/functions/v1/make-server-b8526fa6/users/${user?.id}`,
+          `${edgeFunctionBaseUrl}/users/${user?.id}`,
           {
             method: 'PUT',
             headers: {
@@ -231,7 +231,7 @@ const Settings: React.FC = () => {
         }
 
         const settingsResponse = await fetch(
-          `https://${projectId}.supabase.co/functions/v1/make-server-b8526fa6/settings`,
+        `${edgeFunctionBaseUrl}/settings`,
           {
             method: 'PUT',
             headers: {
@@ -272,7 +272,7 @@ const Settings: React.FC = () => {
       
       // Fetch user data from backend
       const response = await fetch(
-        `https://${projectId}.supabase.co/functions/v1/make-server-b8526fa6/users/${user?.id}/data-export`,
+        `${edgeFunctionBaseUrl}/users/${user?.id}/data-export`,
         {
           headers: {
             'Authorization': `Bearer ${accessToken}`,
@@ -311,7 +311,7 @@ const Settings: React.FC = () => {
     try {
       const accessToken = localStorage.getItem('ispora_access_token');
       const response = await fetch(
-        `https://${projectId}.supabase.co/functions/v1/make-server-b8526fa6/sessions/active`,
+        `${edgeFunctionBaseUrl}/sessions/active`,
         {
           headers: {
             'Authorization': `Bearer ${accessToken}`,
@@ -337,7 +337,7 @@ const Settings: React.FC = () => {
       const accessToken = localStorage.getItem('ispora_access_token');
       
       const response = await fetch(
-        `https://${projectId}.supabase.co/functions/v1/make-server-b8526fa6/account/change-email`,
+        `${edgeFunctionBaseUrl}/account/change-email`,
         {
           method: 'PUT',
           headers: {
@@ -376,7 +376,7 @@ const Settings: React.FC = () => {
       const accessToken = localStorage.getItem('ispora_access_token');
       
       const response = await fetch(
-        `https://${projectId}.supabase.co/functions/v1/make-server-b8526fa6/account/change-password`,
+        `${edgeFunctionBaseUrl}/account/change-password`,
         {
           method: 'PUT',
           headers: {
@@ -412,7 +412,7 @@ const Settings: React.FC = () => {
     try {
       const accessToken = localStorage.getItem('ispora_access_token');
       const response = await fetch(
-        `https://${projectId}.supabase.co/functions/v1/make-server-b8526fa6/sessions/revoke/${sessionId}`,
+        `${edgeFunctionBaseUrl}/sessions/revoke/${sessionId}`,
         {
           method: 'DELETE',
           headers: {
@@ -440,7 +440,7 @@ const Settings: React.FC = () => {
     try {
       const accessToken = localStorage.getItem('ispora_access_token');
       const response = await fetch(
-        `https://${projectId}.supabase.co/functions/v1/make-server-b8526fa6/sessions/revoke-all`,
+        `${edgeFunctionBaseUrl}/sessions/revoke-all`,
         {
           method: 'DELETE',
           headers: {
@@ -473,7 +473,7 @@ const Settings: React.FC = () => {
       const accessToken = localStorage.getItem('ispora_access_token');
       
       const response = await fetch(
-        `https://${projectId}.supabase.co/functions/v1/make-server-b8526fa6/account/delete`,
+        `${edgeFunctionBaseUrl}/account/delete`,
         {
           method: 'DELETE',
           headers: {

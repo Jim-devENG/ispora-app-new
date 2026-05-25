@@ -1,6 +1,6 @@
-import { projectId, publicAnonKey } from '/utils/supabase/info';
+import { buildFunctionHeaders, edgeFunctionBaseUrl } from '/utils/supabase/info';
 
-const API_BASE_URL = `https://${projectId}.supabase.co/functions/v1/make-server-b8526fa6`;
+const API_BASE_URL = edgeFunctionBaseUrl;
 
 // ═══════════════════════════════════════════════════════════
 // AUTHENTICATION API CLIENT
@@ -40,6 +40,10 @@ export interface AuthResponse {
   profile?: any;
 }
 
+function getHeaders(token?: string): HeadersInit {
+  return buildFunctionHeaders(token);
+}
+
 /**
  * Sign up a new user
  */
@@ -47,10 +51,7 @@ export async function signup(data: SignupData): Promise<AuthResponse> {
   try {
     const response = await fetch(`${API_BASE_URL}/auth/signup`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${publicAnonKey}`,
-      },
+      headers: getHeaders(),
       body: JSON.stringify(data),
     });
 
@@ -75,10 +76,7 @@ export async function verifyOTP(data: VerifyOTPData): Promise<AuthResponse> {
   try {
     const response = await fetch(`${API_BASE_URL}/auth/verify-otp`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${publicAnonKey}`,
-      },
+      headers: getHeaders(),
       body: JSON.stringify(data),
     });
 
@@ -103,10 +101,7 @@ export async function signin(data: SigninData): Promise<AuthResponse> {
   try {
     const response = await fetch(`${API_BASE_URL}/auth/signin`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${publicAnonKey}`,
-      },
+      headers: getHeaders(),
       body: JSON.stringify(data),
     });
 
@@ -137,10 +132,7 @@ export async function resendOTP(email: string): Promise<AuthResponse> {
   try {
     const response = await fetch(`${API_BASE_URL}/auth/resend-otp`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${publicAnonKey}`,
-      },
+      headers: getHeaders(),
       body: JSON.stringify({ email }),
     });
 
@@ -165,10 +157,7 @@ export async function forgotPassword(email: string): Promise<AuthResponse> {
   try {
     const response = await fetch(`${API_BASE_URL}/auth/forgot-password`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${publicAnonKey}`,
-      },
+      headers: getHeaders(),
       body: JSON.stringify({ email }),
     });
 
@@ -199,10 +188,7 @@ export async function completeOnboarding(data: OnboardingData): Promise<AuthResp
 
     const response = await fetch(`${API_BASE_URL}/auth/onboarding`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${accessToken}`,
-      },
+      headers: getHeaders(accessToken),
       body: JSON.stringify(data),
     });
 
@@ -233,9 +219,7 @@ export async function getUserProfile(): Promise<AuthResponse> {
 
     const response = await fetch(`${API_BASE_URL}/auth/profile`, {
       method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${accessToken}`,
-      },
+      headers: getHeaders(accessToken),
     });
 
     const result = await response.json();

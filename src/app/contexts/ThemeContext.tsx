@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { projectId } from '/utils/supabase/info';
+import { edgeFunctionBaseUrl } from '/utils/supabase/info';
 
 type Theme = 'light' | 'dark' | 'system';
 
@@ -33,7 +33,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         }
 
         const response = await fetch(
-          `https://${projectId}.supabase.co/functions/v1/make-server-b8526fa6/settings`,
+          `${edgeFunctionBaseUrl}/settings`,
           {
             headers: {
               'Authorization': `Bearer ${accessToken}`,

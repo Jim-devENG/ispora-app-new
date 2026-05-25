@@ -1,12 +1,15 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode, useMemo, useCallback } from 'react';
 import { supabase } from '../utils/supabase';
-import { projectId, publicAnonKey } from '/utils/supabase/info';
-import { clearApiCache } from '../lib/api';
+import { buildFunctionHeaders, edgeFunctionBaseUrl, publicAnonKey } from '/utils/supabase/info';
 
 // Import types from utils/api for backward compatibility
 import type { User, SignUpData, SignInData } from '../utils/api';
 
-const API_BASE_URL = `https://${projectId}.supabase.co/functions/v1/make-server-b8526fa6`;
+const API_BASE_URL = edgeFunctionBaseUrl;
+
+function getFunctionHeaders(token?: string): HeadersInit {
+  return buildFunctionHeaders(token);
+}
 
 interface AuthContextType {
   user: User | null;
@@ -116,10 +119,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             try {
               const response = await fetch(`${API_BASE_URL}/auth/session`, {
                 method: 'GET',
-                headers: {
-                  'Content-Type': 'application/json',
-                  'Authorization': `Bearer ${newToken}`,
-                },
+                headers: getFunctionHeaders(newToken),
               });
 
               if (!isMounted) return;
@@ -154,10 +154,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
           try {
             const response = await fetch(`${API_BASE_URL}/auth/session`, {
               method: 'GET',
-              headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`,
-              },
+              headers: getFunctionHeaders(token),
             });
 
             if (!isMounted) return;
@@ -241,10 +238,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         try {
           const response = await fetch(`${API_BASE_URL}/auth/session`, {
             method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${token}`,
-            },
+            headers: getFunctionHeaders(token),
           });
 
           const result = await response.json();
@@ -269,10 +263,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     try {
       const response = await fetch(`${API_BASE_URL}/auth/signup`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${publicAnonKey}`,
-        },
+        headers: getFunctionHeaders(publicAnonKey),
         body: JSON.stringify(data),
       });
 
@@ -311,10 +302,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       // Fetch user profile from our backend
       const response = await fetch(`${API_BASE_URL}/auth/session`, {
         method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
-        },
+        headers: getFunctionHeaders(token),
       });
 
       const result = await response.json();
@@ -354,8 +342,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       setAccessToken(null);
       localStorage.removeItem('ispora_access_token');
       localStorage.removeItem('ispora_refresh_token');
-      // Clear API cache to prevent data mixing between users
-      clearApiCache();
       // Redirect to auth page
       window.location.href = '/auth';
     }
@@ -377,10 +363,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       
       const response = await fetch(`${API_BASE_URL}/auth/update-profile`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${session.access_token}`,
-        },
+        headers: getFunctionHeaders(session.access_token),
         body: JSON.stringify({ profileData }),
       });
 
@@ -411,10 +394,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       
       const response = await fetch(`${API_BASE_URL}/auth/session`, {
         method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${session.access_token}`,
-        },
+        headers: getFunctionHeaders(session.access_token),
       });
 
       const result = await response.json();

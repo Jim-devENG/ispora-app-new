@@ -68,6 +68,64 @@ const getSupabaseClient = () => createClient(
   }
 );
 
+const REVOKED_TOKEN_KEY_PREFIX = 'revoked_token:';
+const DEFAULT_REVOCATION_TTL_MS = 24 * 60 * 60 * 1000;
+
+async function hashToken(token: string): Promise<string> {
+  const digest = await crypto.subtle.digest(
+    'SHA-256',
+    new TextEncoder().encode(token),
+  );
+  return Array.from(new Uint8Array(digest))
+    .map((byte) => byte.toString(16).padStart(2, '0'))
+    .join('');
+}
+
+function parseJwtExpiryMs(token: string): number | null {
+  try {
+    const encodedPayload = token.split('.')[1];
+    if (!encodedPayload) return null;
+
+    const normalized = encodedPayload.replace(/-/g, '+').replace(/_/g, '/');
+    const padded = normalized + '='.repeat((4 - (normalized.length % 4)) % 4);
+    const payload = JSON.parse(atob(padded));
+
+    if (typeof payload.exp !== 'number') return null;
+    return payload.exp * 1000;
+  } catch {
+    return null;
+  }
+}
+
+async function revokeAccessToken(token: string, userId?: string): Promise<void> {
+  const tokenHash = await hashToken(token);
+  const key = `${REVOKED_TOKEN_KEY_PREFIX}${tokenHash}`;
+  const now = Date.now();
+  const expiresAtMs = parseJwtExpiryMs(token) ?? (now + DEFAULT_REVOCATION_TTL_MS);
+
+  await kv.set(key, {
+    revokedAt: new Date(now).toISOString(),
+    expiresAt: new Date(expiresAtMs).toISOString(),
+    userId: userId ?? null,
+  });
+}
+
+async function isAccessTokenRevoked(token: string): Promise<boolean> {
+  const tokenHash = await hashToken(token);
+  const key = `${REVOKED_TOKEN_KEY_PREFIX}${tokenHash}`;
+  const revokedRecord = await kv.get(key);
+
+  if (!revokedRecord) return false;
+
+  const expiresAtMs = Date.parse(revokedRecord.expiresAt ?? '');
+  if (Number.isFinite(expiresAtMs) && expiresAtMs < Date.now()) {
+    await kv.del(key);
+    return false;
+  }
+
+  return true;
+}
+
 // Helper function to authenticate user from request
 async function authenticateUser(c: any) {
   const authHeader = c.req.header('Authorization');
@@ -89,6 +147,11 @@ async function authenticateUser(c: any) {
   if (token === anonKey) {
     console.log('❌ Anon key provided instead of user JWT token');
     return { error: 'User authentication required. Please sign in.', status: 401 };
+  }
+
+  if (await isAccessTokenRevoked(token)) {
+    console.log('❌ Revoked access token used');
+    return { error: 'Session has been signed out. Please sign in again.', status: 401 };
   }
 
   const supabase = createClient(
@@ -366,13 +429,31 @@ app.post("/make-server-b8526fa6/auth/signout", async (c) => {
       return c.json({ error: 'No access token provided' }, 401);
     }
 
-    const supabase = getSupabaseClient();
-    const { error } = await supabase.auth.signOut();
+    const supabase = createClient(
+      Deno.env.get('SUPABASE_URL') ?? '',
+      Deno.env.get('SUPABASE_ANON_KEY') ?? '',
+      {
+        global: {
+          headers: { Authorization: `Bearer ${accessToken}` }
+        },
+        auth: {
+          autoRefreshToken: false,
+          persistSession: false
+        }
+      }
+    );
 
-    if (error) {
-      console.log('Sign out error:', error);
-      return c.json({ error: error.message }, 400);
+    const { data: { user }, error: userError } = await supabase.auth.getUser();
+    if (userError) {
+      console.log('Sign out getUser warning:', userError.message);
     }
+
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      console.log('Sign out warning:', error.message);
+    }
+
+    await revokeAccessToken(accessToken, user?.id);
 
     return c.json({ success: true, message: 'Signed out successfully' });
   } catch (error: any) {
