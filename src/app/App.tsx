@@ -13,6 +13,7 @@ import SessionLandingPage from './components/SessionLandingPage';
 import OpportunityLandingPage from './components/OpportunityLandingPage';
 import Dashboard from './components/Dashboard';
 import PublicProfile from './components/PublicProfile';
+import MaintenancePage from './components/MaintenancePage';
 import { getMissingSupabaseConfigKeys, isSupabaseConfigured } from '/utils/supabase/info';
 
 // v0.0.4 - Current mentor filtering: Students can't request mentorship from existing mentors
@@ -247,6 +248,17 @@ function SupabaseConfigErrorScreen() {
 export default function App() {
   if (!isSupabaseConfigured) {
     return <SupabaseConfigErrorScreen />;
+  }
+
+  // Check for maintenance mode
+  const maintenanceMode = import.meta.env.VITE_MAINTENANCE_MODE === 'true';
+  
+  if (maintenanceMode) {
+    return (
+      <ThemeProvider>
+        <MaintenancePage />
+      </ThemeProvider>
+    );
   }
 
   return (
