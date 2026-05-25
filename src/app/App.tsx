@@ -246,8 +246,9 @@ function SupabaseConfigErrorScreen() {
 }
 
 export default function App() {
-  // Maintenance is OFF by default. Set VITE_MAINTENANCE_MODE=true to enable.
-  const isMaintenanceMode = import.meta.env.VITE_MAINTENANCE_MODE === 'true';
+  // Temporary live safeguard: maintenance is ON by default.
+  // Set VITE_MAINTENANCE_MODE=false to disable it.
+  const isMaintenanceMode = import.meta.env.VITE_MAINTENANCE_MODE !== 'false';
 
   if (isMaintenanceMode) {
     return <MaintenancePage />;
