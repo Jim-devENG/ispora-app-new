@@ -134,6 +134,10 @@ export default function ResetPasswordScreen({
 
       showToast('Password updated successfully. Please sign in.', 'success');
       await supabase.auth.signOut();
+      if (typeof window !== 'undefined') {
+        window.location.replace('/auth?mode=signin');
+        return;
+      }
       onNavigate('signin');
     } catch (error: any) {
       showToast(error.message || 'Failed to update password', 'error');
