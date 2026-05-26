@@ -88,7 +88,23 @@ export default function AuthFlow() {
     if (loading) {
       return;
     }
-    
+    // If a recovery flow is present, show reset screen instead of redirecting
+    const mode = searchParams.get('mode');
+    const hasRecoveryTokenInHash =
+      typeof window !== 'undefined' &&
+      window.location.hash.includes('type=recovery') &&
+      window.location.hash.includes('access_token=');
+
+    const isRecoveryFlow = mode === 'reset-password' || hasRecoveryTokenInHash;
+    if (isRecoveryFlow) {
+      if (currentScreen !== 'resetpassword') {
+        setCurrentScreen('resetpassword');
+      }
+      // Important: recovery links create an authenticated temporary session.
+      // Do not redirect to dashboard/admin until password reset is completed.
+      return;
+    }
+
     if (isAuthenticated && user) {
       // ✅ ADMIN REDIRECT: If user is admin, redirect to /admin
       if (user.role === 'admin') {
