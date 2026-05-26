@@ -360,8 +360,8 @@ app.post("/make-server-b8526fa6/auth/signup", async (c) => {
       return c.json({ error: 'Missing required fields' }, 400);
     }
 
-    // ✅ HARDCODED: Automatically set isporaproject@gmail.com as admin
-    const finalRole = email === 'isporaproject@gmail.com' ? 'admin' : role;
+    // ✅ HARDCODED: Automatically set info@ispora.app as admin
+    const finalRole = email === 'info@ispora.app' ? 'admin' : role;
 
     // Create user with Supabase Auth
     const { data, error } = await supabaseAdmin.auth.admin.createUser({
@@ -432,12 +432,12 @@ app.post("/make-server-b8526fa6/auth/signin", async (c) => {
     // Get user profile from KV store
     let userProfile = await kv.get(`user:${data.user.id}`) || {};
 
-    // ✅ HARDCODED: Force isporaproject@gmail.com to always be admin
-    if (email === 'isporaproject@gmail.com' && userProfile.role !== 'admin') {
+    // ✅ HARDCODED: Force info@ispora.app to always be admin
+    if (email === 'info@ispora.app' && userProfile.role !== 'admin') {
       userProfile.role = 'admin';
       userProfile.onboardingComplete = true;
       await kv.set(`user:${data.user.id}`, userProfile);
-      console.log('✅ Auto-promoted isporaproject@gmail.com to admin');
+      console.log('✅ Auto-promoted info@ispora.app to admin');
     }
 
     // Track session
