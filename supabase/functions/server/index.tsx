@@ -613,6 +613,28 @@ app.post("/make-server-b8526fa6/auth/update-profile", async (c) => {
   }
 });
 
+// Forgot password (alias for reset-password)
+app.post("/make-server-b8526fa6/auth/forgot-password", async (c) => {
+  try {
+    const body = await c.req.json();
+    const { email } = body;
+
+    if (!email) {
+      return c.json({ error: 'Email is required' }, 400);
+    }
+
+    // TODO: Integrate with Supabase password reset if email config is set
+    // For now, just return success for demo
+    return c.json({
+      success: true,
+      message: 'If this email exists, a password reset link will be sent.'
+    });
+  } catch (error: any) {
+    console.log('Forgot password error:', error);
+    return c.json({ error: error.message || 'Failed to process forgot password' }, 500);
+  }
+});
+
 // Password reset request
 app.post("/make-server-b8526fa6/auth/reset-password", async (c) => {
   try {
@@ -627,7 +649,7 @@ app.post("/make-server-b8526fa6/auth/reset-password", async (c) => {
     // For now, we'll just return success
     // Note: Supabase handles password reset emails, but requires email configuration
     
-    return c.json({ 
+    return c.json({
       success: true,
       message: 'Password reset instructions sent to email' 
     });
