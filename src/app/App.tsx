@@ -2,7 +2,7 @@ import '/src/styles/index.css';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { Toaster } from 'sonner';
-import { Component, ErrorInfo, ReactNode, Suspense } from 'react';
+import { Component, ErrorInfo, ReactNode, Suspense, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router';
 import { SupportWidget } from './components/SupportWidget';
 import LandingPage from './components/LandingPage';
@@ -184,6 +184,26 @@ function SupportWidgetWrapper() {
 }
 
 function AppContent() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    const hash = window.location.hash || '';
+    const hasRecoveryToken =
+      hash.includes('type=recovery') && hash.includes('access_token=');
+
+    if (!hasRecoveryToken) {
+      return;
+    }
+
+    if (location.pathname !== '/auth') {
+      window.location.replace(`/auth?mode=reset-password${hash}`);
+    }
+  }, [location.pathname]);
+
   return (
     <>
       <Suspense fallback={<LoadingFallback />}>
