@@ -679,27 +679,37 @@ app.post("/make-server-b8526fa6/auth/reset-password", async (c) => {
   }
 });
 
-function resolvePasswordResetRedirect(c: any, requestedRedirectTo?: string): string | undefined {
-  const preferredUrl = parseValidHttpUrl(requestedRedirectTo);
-  if (preferredUrl) {
-    return preferredUrl;
-  }
-
-  const origin = parseValidHttpUrl(c.req.header('origin'));
-  if (origin) {
-    return `${origin.replace(/\/$/, '')}/auth?mode=reset-password`;
-  }
-
-  const envFallback =
+function resolvePasswordResetRedirect(_c: any, requestedRedirectTo?: string): string {
+  const configuredBaseUrl =
     parseValidHttpUrl(Deno.env.get('PASSWORD_RESET_REDIRECT_BASE_URL')) ||
     parseValidHttpUrl(Deno.env.get('APP_URL')) ||
-    parseValidHttpUrl(Deno.env.get('SITE_URL'));
+    parseValidHttpUrl(Deno.env.get('SITE_URL')) ||
+    'https://ispora.app';
 
-  if (envFallback) {
-    return `${envFallback.replace(/\/$/, '')}/auth?mode=reset-password`;
+  const requestedUrl = parseValidHttpUrl(requestedRedirectTo);
+  if (requestedUrl && isAllowedPasswordResetHost(requestedUrl)) {
+    return buildPasswordResetRedirect(requestedUrl);
   }
 
-  return undefined;
+  if (isAllowedPasswordResetHost(configuredBaseUrl)) {
+    return buildPasswordResetRedirect(configuredBaseUrl);
+  }
+
+  return 'https://ispora.app/auth?mode=reset-password';
+}
+
+function buildPasswordResetRedirect(baseUrl: string): string {
+  const parsed = new URL(baseUrl);
+  return `${parsed.origin}/auth?mode=reset-password`;
+}
+
+function isAllowedPasswordResetHost(url: string): boolean {
+  try {
+    const host = new URL(url).hostname.toLowerCase();
+    return host === 'ispora.app' || host === 'www.ispora.app';
+  } catch {
+    return false;
+  }
 }
 
 function parseValidHttpUrl(value?: string | null): string | undefined {

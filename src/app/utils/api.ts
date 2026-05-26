@@ -156,10 +156,7 @@ class AuthAPI {
 
   async resetPassword(email: string): Promise<AuthResponse> {
     try {
-      const redirectTo =
-        typeof window !== 'undefined'
-          ? `${window.location.origin}/auth?mode=reset-password`
-          : undefined;
+      const redirectTo = 'https://ispora.app/auth?mode=reset-password';
 
       const response = await fetch(`${API_BASE_URL}/auth/reset-password`, {
         method: 'POST',

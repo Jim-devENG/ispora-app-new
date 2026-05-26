@@ -155,10 +155,7 @@ export async function resendOTP(email: string): Promise<AuthResponse> {
  */
 export async function forgotPassword(email: string): Promise<AuthResponse> {
   try {
-    const redirectTo =
-      typeof window !== 'undefined'
-        ? `${window.location.origin}/auth?mode=reset-password`
-        : undefined;
+    const redirectTo = 'https://ispora.app/auth?mode=reset-password';
 
     const response = await fetch(`${API_BASE_URL}/auth/forgot-password`, {
       method: 'POST',
