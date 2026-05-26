@@ -9,6 +9,7 @@ import OnboardingScreen from './auth/OnboardingScreen';
 import SuccessScreen from './auth/SuccessScreen';
 import SignInScreen from './auth/SignInScreen';
 import ForgotPasswordScreen from './auth/ForgotPasswordScreen';
+import ResetPasswordScreen from './auth/ResetPasswordScreen';
 import Dashboard from './Dashboard';
 import WhatsAppRedirectModal from './WhatsAppRedirectModal';
 import { toast } from 'sonner';
@@ -21,6 +22,7 @@ export type Screen =
   | 'success' 
   | 'signin' 
   | 'forgot' 
+  | 'resetpassword'
   | 'dashboard';
 
 export type UserRole = 'diaspora' | 'student' | null;
@@ -63,9 +65,15 @@ export default function AuthFlow() {
   useEffect(() => {
     const mode = searchParams.get('mode');
     const role = searchParams.get('role');
+    const hasRecoveryTokenInHash =
+      typeof window !== 'undefined' &&
+      window.location.hash.includes('type=recovery') &&
+      window.location.hash.includes('access_token=');
 
     if (!isAuthenticated) {
-      if (mode === 'signin') {
+      if (mode === 'reset-password' || hasRecoveryTokenInHash) {
+        setCurrentScreen('resetpassword');
+      } else if (mode === 'signin') {
         setCurrentScreen('signin');
       } else if (mode === 'signup' && role === 'student') {
         setSelectedRole('student');
@@ -235,6 +243,13 @@ export default function AuthFlow() {
         
         {currentScreen === 'forgot' && (
           <ForgotPasswordScreen
+            onNavigate={navigateTo}
+            showToast={showToast}
+          />
+        )}
+
+        {currentScreen === 'resetpassword' && (
+          <ResetPasswordScreen
             onNavigate={navigateTo}
             showToast={showToast}
           />
