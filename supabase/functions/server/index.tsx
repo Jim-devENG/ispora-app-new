@@ -617,17 +617,28 @@ app.post("/make-server-b8526fa6/auth/update-profile", async (c) => {
 app.post("/make-server-b8526fa6/auth/forgot-password", async (c) => {
   try {
     const body = await c.req.json();
-    const { email } = body;
+    const email = typeof body.email === 'string' ? body.email.trim().toLowerCase() : '';
+    const requestedRedirectTo = typeof body.redirectTo === 'string' ? body.redirectTo : undefined;
 
     if (!email) {
       return c.json({ error: 'Email is required' }, 400);
     }
 
-    // TODO: Integrate with Supabase password reset if email config is set
-    // For now, just return success for demo
+    const redirectTo = resolvePasswordResetRedirect(c, requestedRedirectTo);
+    const supabase = getSupabaseClient();
+    const { error } = await supabase.auth.resetPasswordForEmail(
+      email,
+      redirectTo ? { redirectTo } : undefined,
+    );
+
+    if (error) {
+      console.log('Forgot password reset email error:', error);
+      return c.json({ error: error.message || 'Failed to send reset email' }, 500);
+    }
+
     return c.json({
       success: true,
-      message: 'If this email exists, a password reset link will be sent.'
+      message: 'If this email exists, password reset instructions have been sent.'
     });
   } catch (error: any) {
     console.log('Forgot password error:', error);
@@ -639,25 +650,78 @@ app.post("/make-server-b8526fa6/auth/forgot-password", async (c) => {
 app.post("/make-server-b8526fa6/auth/reset-password", async (c) => {
   try {
     const body = await c.req.json();
-    const { email } = body;
+    const email = typeof body.email === 'string' ? body.email.trim().toLowerCase() : '';
+    const requestedRedirectTo = typeof body.redirectTo === 'string' ? body.redirectTo : undefined;
 
     if (!email) {
       return c.json({ error: 'Email is required' }, 400);
     }
 
-    // In a real app, you would send a password reset email here
-    // For now, we'll just return success
-    // Note: Supabase handles password reset emails, but requires email configuration
-    
+    const redirectTo = resolvePasswordResetRedirect(c, requestedRedirectTo);
+    const supabase = getSupabaseClient();
+    const { error } = await supabase.auth.resetPasswordForEmail(
+      email,
+      redirectTo ? { redirectTo } : undefined,
+    );
+
+    if (error) {
+      console.log('Password reset email error:', error);
+      return c.json({ error: error.message || 'Failed to send reset email' }, 500);
+    }
+
     return c.json({
       success: true,
-      message: 'Password reset instructions sent to email' 
+      message: 'If this email exists, password reset instructions have been sent.'
     });
   } catch (error: any) {
     console.log('Password reset error:', error);
     return c.json({ error: error.message || 'Failed to send reset email' }, 500);
   }
 });
+
+function resolvePasswordResetRedirect(c: any, requestedRedirectTo?: string): string | undefined {
+  const preferredUrl = parseValidHttpUrl(requestedRedirectTo);
+  if (preferredUrl) {
+    return preferredUrl;
+  }
+
+  const origin = parseValidHttpUrl(c.req.header('origin'));
+  if (origin) {
+    return `${origin.replace(/\/$/, '')}/auth?mode=reset-password`;
+  }
+
+  const envFallback =
+    parseValidHttpUrl(Deno.env.get('PASSWORD_RESET_REDIRECT_BASE_URL')) ||
+    parseValidHttpUrl(Deno.env.get('APP_URL')) ||
+    parseValidHttpUrl(Deno.env.get('SITE_URL'));
+
+  if (envFallback) {
+    return `${envFallback.replace(/\/$/, '')}/auth?mode=reset-password`;
+  }
+
+  return undefined;
+}
+
+function parseValidHttpUrl(value?: string | null): string | undefined {
+  if (!value || typeof value !== 'string') {
+    return undefined;
+  }
+
+  const normalized = value.trim();
+  if (!normalized) {
+    return undefined;
+  }
+
+  try {
+    const parsed = new URL(normalized);
+    if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') {
+      return undefined;
+    }
+    return parsed.toString();
+  } catch {
+    return undefined;
+  }
+}
 
 // Upload profile picture
 app.post("/make-server-b8526fa6/auth/upload-profile-picture", async (c) => {

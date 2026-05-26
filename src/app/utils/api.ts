@@ -156,10 +156,15 @@ class AuthAPI {
 
   async resetPassword(email: string): Promise<AuthResponse> {
     try {
+      const redirectTo =
+        typeof window !== 'undefined'
+          ? `${window.location.origin}/auth?mode=reset-password`
+          : undefined;
+
       const response = await fetch(`${API_BASE_URL}/auth/reset-password`, {
         method: 'POST',
         headers: this.getHeaders(),
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, redirectTo }),
       });
 
       const result = await response.json();
