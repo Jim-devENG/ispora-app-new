@@ -9,6 +9,7 @@ import {
   Link as LinkIcon,
   CheckCircle2
 } from 'lucide-react';
+import { getInitials, getAvatarColor } from '../utils/avatar';
 
 interface PastSession {
   id: string;
@@ -92,23 +93,7 @@ export default function PastSessionsContent() {
     }
   };
 
-  const getAvatarColor = (id: string) => {
-    const hash = id.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
-    const colors = [
-      '#021ff6', // brand
-      '#00c896', // accent
-      '#f59e0b', // warn
-      '#10b981', // success
-      '#ef4444', // danger
-      '#7c3aed'  // purple
-    ];
-    return colors[hash % colors.length];
-  };
 
-  const getInitials = (name: string) => {
-    const parts = name.split(' ');
-    return parts.map(p => p[0]).join('').toUpperCase().slice(0, 2);
-  };
 
   return (
     <>

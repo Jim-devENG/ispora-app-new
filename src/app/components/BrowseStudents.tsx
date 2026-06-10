@@ -15,6 +15,7 @@ import {
   List,
   Bookmark
 } from 'lucide-react';
+import { getInitials, getAvatarColor } from '../utils/avatar';
 
 interface Student {
   id: string;
@@ -164,21 +165,8 @@ export default function BrowseStudents() {
     setSavedStudents(newSet);
   };
 
-  const getAvatarColor = (id: string) => {
-    const hash = id.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
-    const colors = [
-      '#021ff6', // brand
-      '#00c896', // accent
-      '#f59e0b', // warn
-      '#10b981', // success
-      '#ef4444', // danger
-      '#7c3aed'  // purple
-    ];
-    return colors[hash % colors.length];
-  };
-
   const getStudentAvatar = (student: Student) => {
-    return `${student.firstName?.[0] || ''}${student.lastName?.[0] || ''}`.toUpperCase();
+    return getInitials(`${student.firstName || ''} ${student.lastName || ''}`);
   };
 
   const getStudentField = (student: Student) => {

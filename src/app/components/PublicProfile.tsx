@@ -6,6 +6,7 @@ import {
   Loader2, MapPin, Calendar
 } from 'lucide-react';
 import { projectId } from '/utils/supabase/info';
+import { getInitials } from '../utils/avatar';
 import logo from '/src/assets/4db1642d96b725f296f07dcb9e96154154c374f8.png';
 
 interface PublicProfile {
@@ -79,7 +80,7 @@ export default function PublicProfile() {
   };
 
   const initials = profile 
-    ? `${profile.firstName || ''} ${profile.lastName || ''}`.trim().split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2) || 'U'
+    ? getInitials(`${profile.firstName || ''} ${profile.lastName || ''}`)
     : 'U';
 
   const fullName = profile ? `${profile.firstName || ''} ${profile.lastName || ''}`.trim() || 'User' : 'User';

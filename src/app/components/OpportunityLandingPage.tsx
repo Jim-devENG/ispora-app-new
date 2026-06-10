@@ -22,6 +22,7 @@ import {
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { projectId, publicAnonKey } from '/utils/supabase/info';
+import { formatDateLong } from '../utils/formatting';
 
 type OpportunityType = 'internship' | 'job' | 'scholarship' | 'fellowship' | 'accelerator' | 'hackathon' | 'conference' | 'grant' | 'competition' | 'others';
 
@@ -115,14 +116,7 @@ export default function OpportunityLandingPage() {
     toast.success('Link copied to clipboard!');
   };
 
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
-      month: 'long',
-      day: 'numeric',
-      year: 'numeric'
-    });
-  };
+
 
   const getDaysUntilDeadline = (deadline: string) => {
     const deadlineDate = new Date(deadline);
@@ -243,7 +237,7 @@ export default function OpportunityLandingPage() {
               <div className="flex items-center gap-2">
                 <Calendar className={`w-4 h-4 ${isDeadlineUrgent ? 'text-[var(--ispora-danger)]' : 'text-[var(--ispora-text3)]'}`} />
                 <span className={`text-sm ${isDeadlineUrgent ? 'text-[var(--ispora-danger)] font-semibold' : 'text-[var(--ispora-text)]'}`}>
-                  {isPastDeadline ? 'Closed' : daysUntilDeadline === 1 ? '1 day left' : daysUntilDeadline && daysUntilDeadline > 0 ? `${daysUntilDeadline} days left` : formatDate(opportunity.deadline)}
+                  {isPastDeadline ? 'Closed' : daysUntilDeadline === 1 ? '1 day left' : daysUntilDeadline && daysUntilDeadline > 0 ? `${daysUntilDeadline} days left` : formatDateLong(opportunity.deadline)}
                 </span>
               </div>
             )}
@@ -347,7 +341,7 @@ export default function OpportunityLandingPage() {
             {opportunity.createdAt && (
               <div className="flex items-center gap-1.5">
                 <ClockIcon className="w-4 h-4" />
-                <span>Posted {formatDate(opportunity.createdAt)}</span>
+                <span>Posted {formatDateLong(opportunity.createdAt)}</span>
               </div>
             )}
           </div>

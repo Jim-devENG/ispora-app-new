@@ -14,6 +14,7 @@ import {
   TrendingUp,
   Heart
 } from 'lucide-react';
+import { getInitials } from '../utils/avatar';
 
 interface Member {
   id: string;
@@ -243,7 +244,7 @@ function MemberCard({ member, onFollow, onUnfollow, isProcessing, isCurrentUser 
                 isMentor ? 'bg-[var(--ispora-brand)]' : 'bg-[var(--ispora-success)]'
               }`}
             >
-              {member.firstName.charAt(0)}{member.lastName.charAt(0)}
+              {getInitials(`${member.firstName} ${member.lastName}`)}
             </div>
           )}
 

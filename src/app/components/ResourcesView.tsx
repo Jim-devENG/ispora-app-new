@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { FileText, Link as LinkIcon, File, Download, Trash2, Calendar, ExternalLink } from 'lucide-react';
 import { api } from '../lib/api';
+import { formatRelativeDate, formatFileSize } from '../utils/formatting';
 import type { Resource } from '../types';
 
 interface ResourcesViewProps {
@@ -68,24 +69,7 @@ export default function ResourcesView({ mentorshipId, isMentor }: ResourcesViewP
     }
   };
 
-  const formatFileSize = (bytes?: number) => {
-    if (!bytes) return '';
-    if (bytes < 1024) return bytes + ' B';
-    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
-    return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
-  };
 
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    const now = new Date();
-    const diffInDays = Math.floor((now.getTime() - date.getTime()) / (1000 * 60 * 60 * 24));
-
-    if (diffInDays === 0) return 'Today';
-    if (diffInDays === 1) return 'Yesterday';
-    if (diffInDays < 7) return `${diffInDays} days ago`;
-    
-    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-  };
 
   if (loading) {
     return (
@@ -172,7 +156,7 @@ export default function ResourcesView({ mentorshipId, isMentor }: ResourcesViewP
               <div className="flex items-center gap-4 text-xs text-[var(--ispora-text3)]">
                 <span className="flex items-center gap-1">
                   <Calendar className="w-3 h-3" />
-                  {formatDate(resource.createdAt)}
+                  {formatRelativeDate(resource.createdAt)}
                 </span>
                 {resource.mentor && (
                   <span>

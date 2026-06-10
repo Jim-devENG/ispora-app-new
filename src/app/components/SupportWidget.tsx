@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { HelpCircle, X, Send, ChevronDown, ChevronUp, MessageSquare } from 'lucide-react';
 import { edgeFunctionBaseUrl, publicAnonKey } from '/utils/supabase/info';
+import { formatDateTime } from '../utils/formatting';
 
 interface SupportRequest {
   id: string;
@@ -122,16 +123,7 @@ export function SupportWidget({ accessToken }: SupportWidgetProps) {
     setExpandedRequestId(expandedRequestId === requestId ? null : requestId);
   };
 
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
-      month: 'short',
-      day: 'numeric',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
-    });
-  };
+
 
   if (!isOpen) {
     return (
@@ -278,7 +270,7 @@ export function SupportWidget({ accessToken }: SupportWidgetProps) {
                         {request.message}
                       </p>
                       <p className="text-xs text-gray-500 mt-1">
-                        {formatDate(request.createdAt)}
+                        {formatDateTime(request.createdAt)}
                       </p>
                     </div>
                     <button
@@ -313,7 +305,7 @@ export function SupportWidget({ accessToken }: SupportWidgetProps) {
                           </p>
                           <p className="text-xs text-gray-600">
                             By {request.adminRespondedBy} on{' '}
-                            {request.adminRespondedAt && formatDate(request.adminRespondedAt)}
+                            {request.adminRespondedAt && formatDateTime(request.adminRespondedAt)}
                           </p>
                         </div>
                       )}

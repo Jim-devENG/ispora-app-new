@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { X, Link as LinkIcon, FileText, Send, Loader2, Users, Calendar, ChevronRight } from 'lucide-react';
 import { api } from '../lib/api';
+import { formatDateTimeCompact, formatFileSize } from '../utils/formatting';
 
 interface ShareResourceModalProps {
   isOpen: boolean;
@@ -263,21 +264,7 @@ export default function ShareResourceModal({
     }
   };
 
-  const formatFileSize = (bytes: number) => {
-    if (bytes < 1024) return bytes + ' B';
-    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
-    return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
-  };
 
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { 
-      month: 'short', 
-      day: 'numeric',
-      hour: 'numeric',
-      minute: '2-digit'
-    });
-  };
 
   const getRecipientSummary = () => {
     if (shareMode === 'session' && selectedSessionId) {
@@ -437,7 +424,7 @@ export default function ShareResourceModal({
                                   {session.topic}
                                 </h4>
                                 <p className="text-xs text-[var(--ispora-text3)]">
-                                  {formatDate(session.scheduledAt)} • {session.registeredCount} registered
+                                  {formatDateTimeCompact(session.scheduledAt)} • {session.registeredCount} registered
                                 </p>
                               </div>
                               {selectedSessionId === session.id && (

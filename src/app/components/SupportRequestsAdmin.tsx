@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Search, Filter, MessageSquare, Send, CheckCircle, Clock } from 'lucide-react';
 import { edgeFunctionBaseUrl, publicAnonKey } from '/utils/supabase/info';
+import { formatDateTime } from '../utils/formatting';
 
 interface SupportRequest {
   id: string;
@@ -165,16 +166,7 @@ export function SupportRequestsAdmin({ accessToken }: SupportRequestsAdminProps)
     }
   };
 
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
-      month: 'short',
-      day: 'numeric',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
-    });
-  };
+
 
   const pendingCount = requests.filter((r) => r.status === 'pending').length;
   const resolvedCount = requests.filter((r) => r.status === 'resolved').length;
@@ -333,7 +325,7 @@ export function SupportRequestsAdmin({ accessToken }: SupportRequestsAdminProps)
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      {formatDate(request.createdAt)}
+                      {formatDateTime(request.createdAt)}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm">
                       <button
@@ -393,7 +385,7 @@ export function SupportRequestsAdmin({ accessToken }: SupportRequestsAdminProps)
                   <p className="text-sm text-gray-900">{selectedRequest.message}</p>
                 </div>
                 <p className="text-xs text-gray-500 mt-1">
-                  Submitted on {formatDate(selectedRequest.createdAt)}
+                  Submitted on {formatDateTime(selectedRequest.createdAt)}
                 </p>
               </div>
 
@@ -413,7 +405,7 @@ export function SupportRequestsAdmin({ accessToken }: SupportRequestsAdminProps)
                 {selectedRequest.adminRespondedBy && (
                   <p className="text-xs text-gray-500 mt-1">
                     Previously responded by {selectedRequest.adminRespondedBy} on{' '}
-                    {selectedRequest.adminRespondedAt && formatDate(selectedRequest.adminRespondedAt)}
+                    {selectedRequest.adminRespondedAt && formatDateTime(selectedRequest.adminRespondedAt)}
                   </p>
                 )}
 

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { X, FileText, Link as LinkIcon, Loader2, Users, Calendar, ChevronRight, Plus, Search, Upload } from 'lucide-react';
 import { api } from '../lib/api';
+import { formatDateShort, formatFileSize } from '../utils/formatting';
 import ShareResourceModal from './ShareResourceModal';
 
 interface ResourceLibraryModalProps {
@@ -359,21 +360,7 @@ export default function ResourceLibraryModal({
     }
   };
 
-  const formatFileSize = (bytes?: number) => {
-    if (!bytes) return 'Unknown size';
-    if (bytes < 1024) return bytes + ' B';
-    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
-    return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
-  };
 
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { 
-      month: 'short', 
-      day: 'numeric',
-      year: 'numeric'
-    });
-  };
 
   const getResourceIcon = (type: string) => {
     switch (type) {
@@ -534,7 +521,7 @@ export default function ResourceLibraryModal({
                             <div className="flex items-center gap-2 text-xs text-[var(--ispora-text3)]">
                               <span className="capitalize">{resource.type}</span>
                               <span>•</span>
-                              <span>{formatDate(resource.createdAt)}</span>
+                              <span>{formatDateShort(resource.createdAt)}</span>
                               {resource.type === 'file' && resource.fileSize && (
                                 <>
                                   <span>•</span>
@@ -684,7 +671,7 @@ export default function ResourceLibraryModal({
                                   {session.topic}
                                 </h4>
                                 <p className="text-xs text-[var(--ispora-text3)]">
-                                  {formatDate(session.scheduledAt)} • {session.registeredCount} registered
+                                  {formatDateShort(session.scheduledAt)} • {session.registeredCount} registered
                                   {session.registeredCount === 0 && ' (No attendees yet)'}
                                 </p>
                               </div>

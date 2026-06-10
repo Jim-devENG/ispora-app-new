@@ -21,6 +21,7 @@ import {
   Eye
 } from 'lucide-react';
 import { toast } from 'sonner';
+import { getInitials } from '../utils/avatar';
 import MultiSelectWithOther from './MultiSelectWithOther';
 import { CAREER_INTERESTS, LEARNING_GOALS, INDUSTRIES, YEAR_OF_STUDY_OPTIONS } from '../constants/profileOptions';
 
@@ -228,12 +229,7 @@ export default function StudentProfile() {
     { done: !!profileData.portfolio, text: profileData.portfolio ? 'Portfolio added' : 'Portfolio (missing)' }
   ];
 
-  const initials = profileData.fullName
-    .split(' ')
-    .map(n => n[0])
-    .join('')
-    .toUpperCase()
-    .slice(0, 2);
+  const initials = getInitials(profileData.fullName);
 
   if (isLoading) {
     return (
