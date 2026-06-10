@@ -25,6 +25,7 @@ import {
   Lightbulb,
   Share2
 } from 'lucide-react';
+import { getInitials } from '../utils/avatar';
 import {
   EXPERTISE_AREAS,
   WHAT_I_CAN_HELP_WITH,
@@ -299,13 +300,7 @@ const Profile: React.FC = () => {
     { done: !!profileData.website, text: profileData.website ? 'Website added' : 'Website (missing)' }
   ];
 
-  const initials = (profileData.fullName || 'User')
-    .split(' ')
-    .filter(n => n.length > 0)
-    .map(n => n[0])
-    .join('')
-    .toUpperCase()
-    .slice(0, 2) || 'U';
+  const initials = getInitials(profileData.fullName);
 
   // Show loading state while fetching
   if (isLoading) {
