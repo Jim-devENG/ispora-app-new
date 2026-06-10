@@ -176,6 +176,7 @@ function FeedTab() {
         });
         setPosts(response.posts || []);
       } catch (apiError) {
+        console.warn('Community API not available, using demo posts:', apiError);
         // If API fails (backend not ready), show demo posts
         const demoPosts = [
           {
@@ -282,8 +283,13 @@ function FeedTab() {
         await api.community.likePost(postId);
       }
     } catch (error: any) {
-      // Silently fail and keep optimistic update
-      console.log('Like sync failed (backend not deployed):', error);
+      // Revert optimistic update on failure
+      console.warn('Like sync failed:', error);
+      setPosts(prev => prev.map(p =>
+        p.id === postId
+          ? { ...p, isLikedByUser: isLiked, likesCount: isLiked ? p.likesCount + 1 : p.likesCount - 1 }
+          : p
+      ));
     }
   };
 
@@ -294,8 +300,8 @@ function FeedTab() {
       setLoadedComments(prev => ({ ...prev, [postId]: response.comments || [] }));
     } catch (error: any) {
       console.error('Error loading comments:', error);
-      // If API fails, show empty comments
       setLoadedComments(prev => ({ ...prev, [postId]: [] }));
+      toast.error('Failed to load comments');
     } finally {
       setLoadingComments(null);
     }
@@ -862,7 +868,7 @@ function EventsTab({ setShowCalendarModal, setCalendarEvent }: { setShowCalendar
           if (sessionToRegister.notes) {
             sessionDetails = JSON.parse(sessionToRegister.notes);
           }
-        } catch (e) {}
+        } catch (e) { console.warn('Failed to parse session notes:', e); }
         
         // Check if this is part of a recurring series
         const seriesId = sessionDetails.seriesId;
@@ -942,7 +948,18 @@ function EventsTab({ setShowCalendarModal, setCalendarEvent }: { setShowCalendar
         await api.session.like(sessionId);
       }
     } catch (error: any) {
-      console.log('Like sync failed:', error);
+      console.warn('Like sync failed:', error);
+      // Revert optimistic update on failure
+      setPublicSessions(prev => prev.map(s => {
+        if (s.id === sessionId) {
+          return {
+            ...s,
+            isLikedByCurrentUser: isLiked,
+            likesCount: isLiked ? (s.likesCount || 0) + 1 : (s.likesCount || 0) - 1
+          };
+        }
+        return s;
+      }));
     } finally {
       setLikingSessionIds(prev => {
         const newSet = new Set(prev);
@@ -970,7 +987,7 @@ function EventsTab({ setShowCalendarModal, setCalendarEvent }: { setShowCalendar
       if (session.notes) {
         sessionDetails = JSON.parse(session.notes);
       }
-    } catch (e) {}
+    } catch (e) { console.warn('Failed to parse session notes:', e); }
 
     const seriesId = sessionDetails.seriesId;
     if (seriesId) {
@@ -994,7 +1011,7 @@ function EventsTab({ setShowCalendarModal, setCalendarEvent }: { setShowCalendar
       if (firstSession.notes) {
         sessionDetails = JSON.parse(firstSession.notes);
       }
-    } catch (e) {}
+    } catch (e) { console.warn('Failed to parse session notes:', e); }
 
     const completedCount = publicSessions.filter((s: any) => {
       try {
@@ -1245,7 +1262,7 @@ function EventsTab({ setShowCalendarModal, setCalendarEvent }: { setShowCalendar
                 const parsed = JSON.parse(session.notes);
                 sessionDetails = { ...sessionDetails, ...parsed };
               }
-            } catch (e) {}
+            } catch (e) { console.warn('Failed to parse session notes:', e); }
 
             const capacityState = getSessionCapacityState(sessionDetails.capacity, sessionDetails.registeredCount);
             const isFull = capacityState.isFull;

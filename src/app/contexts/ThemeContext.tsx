@@ -47,6 +47,8 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
           if (data.success && data.settings?.appearance?.theme) {
             setThemeState(data.settings.appearance.theme as Theme);
           }
+        } else {
+          console.warn('Failed to load theme settings, status:', response.status);
         }
       } catch (error) {
         console.error('Failed to load theme:', error);

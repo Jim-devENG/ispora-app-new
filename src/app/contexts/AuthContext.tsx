@@ -404,9 +404,12 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         setUser(result.user);
         setAccessToken(session.access_token);
         localStorage.setItem('ispora_access_token', session.access_token);
+      } else {
+        console.warn('refreshUser: unexpected response', { status: response.status, result });
       }
     } catch (error: any) {
       console.error('refreshUser error:', error);
+      throw error;
     }
   }, []);
 
