@@ -299,6 +299,7 @@ export default function StudentDashboard() {
                     setNotifications(updatedNotifications);
                   } catch (error) {
                     console.error('Failed to mark all as read:', error);
+                    toast.error('Failed to mark notifications as read');
                   }
                 }}
                 className="text-[11px] text-[var(--ispora-brand)] font-semibold cursor-pointer hover:underline"
@@ -694,7 +695,7 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
       if (session.notes) {
         sessionDetails = JSON.parse(session.notes);
       }
-    } catch (e) {}
+    } catch (e) { console.warn('Failed to parse session notes:', e); }
 
     const seriesId = sessionDetails.seriesId;
     if (seriesId) {
@@ -720,7 +721,7 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
       if (firstSession.notes) {
         sessionDetails = JSON.parse(firstSession.notes);
       }
-    } catch (e) {}
+    } catch (e) { console.warn('Failed to parse session notes:', e); }
 
     const completedCount = allSessions.filter((s: any) => {
       try {
@@ -807,7 +808,7 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
       if (session.notes) {
         sessionDetails = JSON.parse(session.notes);
       }
-    } catch (e) {}
+    } catch (e) { console.warn('Failed to parse session notes:', e); }
 
     const seriesId = sessionDetails.seriesId;
     if (seriesId) {
@@ -831,7 +832,7 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
       if (firstSession.notes) {
         sessionDetails = JSON.parse(firstSession.notes);
       }
-    } catch (e) {}
+    } catch (e) { console.warn('Failed to parse session notes:', e); }
 
     const completedCount = publicSessions.filter((s: any) => {
       try {
@@ -897,7 +898,7 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
         if (session.notes) {
           sessionDetails = JSON.parse(session.notes);
         }
-      } catch (e) {}
+      } catch (e) { console.warn('Failed to parse session notes:', e); }
       
       if (sessionDetails.sessionType === 'public') {
         // Optimistic update
@@ -1021,7 +1022,7 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
             const parsed = JSON.parse(session.notes);
             sessionType = parsed.sessionType || 'private';
           }
-        } catch (e) {}
+        } catch (e) { console.warn('Failed to parse session notes:', e); }
         
         if (sessionType !== 'public') {
           personal.push(session);
@@ -1045,7 +1046,7 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
           if (sessionToRegister.notes) {
             sessionDetails = JSON.parse(sessionToRegister.notes);
           }
-        } catch (e) {}
+        } catch (e) { console.warn('Failed to parse session notes:', e); }
         
         // Check if this is a recurring session (part of a series)
         let isRecurringSeries = false;
@@ -1862,7 +1863,7 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
                     const parsed = JSON.parse(session.notes);
                     sessionDetails = { ...sessionDetails, ...parsed };
                   }
-                } catch (e) {}
+                } catch (e) { console.warn('Failed to parse session notes:', e); }
 
                 const capacityState = getSessionCapacityState(sessionDetails.capacity, sessionDetails.registeredCount);
                 const isFull = capacityState.isFull;
@@ -2169,7 +2170,7 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
                     capacity = parsed.capacity;
                     registeredCount = parsed.registeredCount || 0;
                   }
-                } catch (e) {}
+                } catch (e) { console.warn('Failed to parse session notes:', e); }
 
                 if (sessionType === 'public') {
                   const capacityState = getSessionCapacityState(capacity, registeredCount);
@@ -2441,7 +2442,7 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
                         const parsed = JSON.parse(selectedSession.notes);
                         sessionType = parsed.sessionType || 'private';
                       }
-                    } catch (e) {}
+                    } catch (e) { console.warn('Failed to parse session notes:', e); }
                     return sessionType === 'public' ? 'Leave Session' : 'Cancel Session';
                   })()}
                 </button>

@@ -344,7 +344,10 @@ export default function MentorDashboard() {
       if (mentorshipsList.length > 0) {
         try {
           const resourcePromises = mentorshipsList.map((m: any) => 
-            api.resource.getAll(m.id).catch(() => ({ resources: [] }))
+            api.resource.getAll(m.id).catch((err) => {
+              console.warn(`Failed to load resources for mentorship ${m.id}:`, err);
+              return { resources: [] };
+            })
           );
           const resourceResults = await Promise.all(resourcePromises);
           const allResources = resourceResults.flatMap((res: any) => res.resources || []);
@@ -437,7 +440,7 @@ export default function MentorDashboard() {
           if (parsed.registeredStudents && parsed.registeredStudents.length > 0) {
             studentIds = parsed.registeredStudents;
           }
-        } catch (e) {}
+        } catch (e) { console.warn('Failed to parse session notes:', e); }
       }
       
       if (showSessionNotes?.notes) {
@@ -446,7 +449,7 @@ export default function MentorDashboard() {
           if (parsed.registeredStudents && parsed.registeredStudents.length > 0) {
             studentIds = [...studentIds, ...parsed.registeredStudents];
           }
-        } catch (e) {}
+        } catch (e) { console.warn('Failed to parse session notes:', e); }
       }
       
       if (studentIds.length > 0) {
@@ -473,7 +476,7 @@ export default function MentorDashboard() {
         sessionDetails = JSON.parse(session.notes);
       }
     } catch (e) {
-      // Invalid JSON
+      console.warn('Failed to parse session notes:', e);
     }
 
     const seriesId = sessionDetails.seriesId;
@@ -508,7 +511,7 @@ export default function MentorDashboard() {
         if (session.notes) {
           sessionDetails = JSON.parse(session.notes);
         }
-      } catch (e) {}
+      } catch (e) { console.warn('Failed to parse session notes:', e); }
       
       const isPublic = sessionDetails.sessionType === 'public';
       
@@ -545,7 +548,7 @@ export default function MentorDashboard() {
             platform = sessionDetails.platform;
           }
         }
-      } catch (e) {}
+      } catch (e) { console.warn('Failed to parse session notes:', e); }
       
       return {
         id: session.id,
@@ -589,7 +592,7 @@ export default function MentorDashboard() {
       if (firstSession.notes) {
         sessionDetails = JSON.parse(firstSession.notes);
       }
-    } catch (e) {}
+    } catch (e) { console.warn('Failed to parse session notes:', e); }
 
     const completedCount = backendSessions.filter((s: any) => {
       try {
@@ -1972,7 +1975,7 @@ export default function MentorDashboard() {
                           sessionDetails = { ...sessionDetails, ...parsed };
                         }
                       } catch (e) {
-                        // Silently skip invalid session notes
+                        console.warn('Failed to parse session notes:', e);
                       }
                       
                       const isPublic = sessionDetails.sessionType === 'public';
@@ -2558,6 +2561,7 @@ export default function MentorDashboard() {
                     setNotifications(updatedNotifications);
                   } catch (error) {
                     console.error('Failed to mark all as read:', error);
+                    toast.error('Failed to mark notifications as read');
                   }
                 }}
                 className="text-[11px] text-[var(--ispora-brand)] font-semibold cursor-pointer hover:underline"
@@ -2711,7 +2715,7 @@ export default function MentorDashboard() {
                         const parsed = JSON.parse(session.notes);
                         sessionDetails = { ...sessionDetails, ...parsed };
                       }
-                    } catch (e) {}
+                    } catch (e) { console.warn('Failed to parse session notes:', e); }
                     
                     const isPublic = sessionDetails.sessionType === 'public';
                     const now = new Date();
@@ -3837,7 +3841,7 @@ export default function MentorDashboard() {
                     const parsed = JSON.parse(showSessionNotes.notes);
                     sessionDetails = { ...sessionDetails, ...parsed };
                   }
-                } catch (e) {}
+                } catch (e) { console.warn('Failed to parse session notes:', e); }
 
                 if (sessionDetails.sessionType === 'public') {
                   return (
@@ -4007,7 +4011,7 @@ export default function MentorDashboard() {
             const parsed = JSON.parse(showSessionDetails.notes);
             sessionDetails = { ...sessionDetails, ...parsed };
           }
-        } catch (e) {}
+        } catch (e) { console.warn('Failed to parse session notes:', e); }
         
         const isPublic = sessionDetails.sessionType === 'public';
         const isGroup = sessionDetails.sessionType === 'group';

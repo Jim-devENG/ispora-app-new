@@ -49,6 +49,7 @@ export function usePushNotifications(): UsePushNotificationsReturn {
       }
     } catch (err: any) {
       console.error('Failed to fetch VAPID key:', err);
+      setError('Failed to load push notification configuration');
     }
   };
 

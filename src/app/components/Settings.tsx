@@ -325,6 +325,8 @@ const Settings: React.FC = () => {
         if (data.success && data.sessions) {
           setActiveSessions(data.sessions);
         }
+      } else {
+        console.warn('Failed to load active sessions, status:', response.status);
       }
     } catch (error) {
       console.error('Failed to load active sessions:', error);
