@@ -16,8 +16,7 @@ try {
   Deno.serve(() => new Response(
     JSON.stringify({
       error: 'Server failed to initialize',
-      message: error instanceof Error ? error.message : 'Unknown error',
-      details: error instanceof Error ? error.stack : String(error)
+      message: 'An internal error occurred'
     }),
     {
       status: 500,
@@ -46,8 +45,7 @@ Deno.serve(async (req: Request) => {
     return new Response(
       JSON.stringify({ 
         error: 'Internal server error', 
-        message: error instanceof Error ? error.message : 'Unknown error',
-        details: error instanceof Error ? error.stack : String(error)
+        message: 'An internal error occurred'
       }), 
       {
         status: 500,

@@ -100,11 +100,8 @@ async function apiCall<T>(
   
   try {
     const url = `${API_BASE_URL}${endpoint}`;
-    console.log(`API Call: ${options.method || 'GET'} ${url}`);
     
     const headers = await getAuthHeader();
-    
-    console.log('Authorization header being sent:', headers['Authorization']?.substring(0, 50) + '...');
     
     const response = await fetch(url, {
       ...options,

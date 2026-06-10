@@ -418,11 +418,14 @@ export function setupAdminRoutes(app: any, authenticateAdmin: any, generateId: a
   // Create admin user (super admin only - for initial setup)
   app.post("/make-server-b8526fa6/admin/create-admin", async (c: any) => {
     try {
-      // This endpoint should be protected with an API key in production
       const apiKey = c.req.header('X-Admin-Key');
-      const expectedKey = Deno.env.get('ADMIN_API_KEY') || 'ispora-initial-setup-2026';
+      const expectedKey = Deno.env.get('ADMIN_API_KEY');
       
-      if (apiKey !== expectedKey) {
+      if (!expectedKey) {
+        return c.json({ error: 'Admin API key not configured on server' }, 503);
+      }
+
+      if (!apiKey || apiKey !== expectedKey) {
         return c.json({ error: 'Invalid API key' }, 403);
       }
 
