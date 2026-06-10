@@ -17,7 +17,7 @@ export default function AdminSetup() {
           Redirecting...
         </div>
         <div className="text-sm text-[var(--ispora-text3)]">
-          Admin setup is no longer needed. Just sign up or sign in with isporaproject@gmail.com!
+          Admin setup is no longer needed. Please sign in with your admin account.
         </div>
       </div>
     </div>

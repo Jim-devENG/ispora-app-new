@@ -1,2 +1,0 @@
-https://fketlqcuiaatgsdkcymo.supabase.co
-

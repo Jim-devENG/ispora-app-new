@@ -23,26 +23,35 @@ const app = new Hono();
 
 console.log('=== Ispora Server Starting ===');
 
-// Add CORS middleware to allow requests from any origin
+// Allowed origins for CORS
+const ALLOWED_ORIGINS = [
+  'https://ispora.app',
+  'https://www.ispora.app',
+  'https://ispora-app-new.vercel.app',
+];
+
+// In development, also allow localhost
+if (Deno.env.get('ENVIRONMENT') !== 'production') {
+  ALLOWED_ORIGINS.push('http://localhost:5173', 'http://localhost:3000');
+}
+
+function isAllowedOrigin(origin: string | undefined): string | false {
+  if (!origin) return false;
+  if (ALLOWED_ORIGINS.includes(origin)) return origin;
+  // Allow Vercel preview deployments
+  if (/^https:\/\/ispora-app-new[\w-]*\.vercel\.app$/.test(origin)) return origin;
+  return false;
+}
+
+// Add CORS middleware with origin allowlist
 app.use('*', cors({
-  origin: '*',
+  origin: (origin) => isAllowedOrigin(origin) || ALLOWED_ORIGINS[0],
   allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowHeaders: ['Content-Type', 'Authorization', 'apikey', 'X-Requested-With'],
+  allowHeaders: ['Content-Type', 'Authorization', 'apikey', 'X-Requested-With', 'X-Admin-Key'],
   exposeHeaders: ['Content-Length', 'X-Total-Count'],
   credentials: false,
   maxAge: 86400,
 }));
-
-// Explicit OPTIONS handler for preflight requests
-app.options('*', (c) => {
-  console.log('📋 OPTIONS preflight request:', c.req.header('origin'));
-  return c.text('', 204, {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type, Authorization, apikey, X-Requested-With',
-    'Access-Control-Max-Age': '86400',
-  });
-});
 
 // Add logger middleware
 app.use('*', logger(console.log));
@@ -142,22 +151,16 @@ async function isAccessTokenRevoked(token: string): Promise<boolean> {
 async function authenticateUser(c: any) {
   const authHeader = c.req.header('Authorization');
   
-  console.log('=== Authentication Debug ===');
-  console.log('Authorization header:', authHeader);
-  
   if (!authHeader) {
-    console.log('❌ No authorization header');
     return { error: 'No authorization header', status: 401 };
   }
 
   // Extract the token from "Bearer <token>"
   const token = authHeader.replace('Bearer ', '');
-  console.log('Token (first 30 chars):', token.substring(0, 30) + '...');
   
   // Check if this is the anon key (not a JWT token)
   const anonKey = Deno.env.get('SUPABASE_ANON_KEY') ?? '';
   if (token === anonKey) {
-    console.log('❌ Anon key provided instead of user JWT token');
     return { error: 'User authentication required. Please sign in.', status: 401 };
   }
 
@@ -180,20 +183,16 @@ async function authenticateUser(c: any) {
     }
   );
 
-  console.log('Calling supabase.auth.getUser()...');
   const { data: { user }, error } = await supabase.auth.getUser();
 
   if (error) {
-    console.log('❌ Supabase auth error:', error.message);
     return { error: `Invalid session: ${error.message}`, status: 401 };
   }
   
   if (!user) {
-    console.log('❌ No user returned from Supabase');
     return { error: 'Invalid session', status: 401 };
   }
 
-  console.log('✓ User authenticated:', user.id);
   return { user, supabase };
 }
 
@@ -208,11 +207,9 @@ async function authenticateAdmin(c: any) {
   const userProfile = await kv.get(`user:${user.id}`);
   
   if (!userProfile || userProfile.role !== 'admin') {
-    console.log('❌ User is not an admin:', user.id);
     return { error: 'Admin access required', status: 403 };
   }
 
-  console.log('✓ Admin authenticated:', user.id);
   return { user, userProfile, supabase: auth.supabase };
 }
 
@@ -320,29 +317,19 @@ async function generateShortCode(mentorId: string): Promise<string> {
 // Enable logger
 app.use('*', logger(console.log));
 
-// Enable CORS for all routes and methods
-app.use(
-  "/*",
-  cors({
-    origin: "*",
-    allowHeaders: ["Content-Type", "Authorization", "X-Admin-Key"],
-    allowMethods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    exposeHeaders: ["Content-Length"],
-    maxAge: 600,
-  }),
-);
+// (CORS is already set up above — no duplicate middleware needed)
 
-// Diagnostic endpoint (public, no auth required)
-app.get("/make-server-b8526fa6/diagnostic", (c) => {
+// Diagnostic endpoint (admin only)
+app.get("/make-server-b8526fa6/diagnostic", async (c) => {
+  const auth = await authenticateAdmin(c);
+  if ('error' in auth) {
+    return c.json({ error: auth.error }, auth.status);
+  }
+
   return c.json({
     status: "ok",
     timestamp: new Date().toISOString(),
-    environment: {
-      hasSupabaseUrl: !!Deno.env.get('SUPABASE_URL'),
-      hasServiceRole: !!Deno.env.get('SUPABASE_SERVICE_ROLE_KEY'),
-      hasAnonKey: !!Deno.env.get('SUPABASE_ANON_KEY'),
-    },
-    message: "Edge Function is running with custom JWT validation"
+    message: "Edge Function is running"
   });
 });
 
@@ -532,10 +519,6 @@ app.get("/make-server-b8526fa6/auth/session", async (c) => {
 
     const { user } = auth;
     
-    console.log('=== Get Session ===');
-    console.log('Auth user ID:', user.id);
-    console.log('Auth user metadata:', user.user_metadata);
-    
     // Get user profile from KV store
     let userProfile = await kv.get(`user:${user.id}`);
     console.log('User profile from KV:', userProfile ? 'Found' : 'Not found');
@@ -588,13 +571,29 @@ app.post("/make-server-b8526fa6/auth/update-profile", async (c) => {
     const body = await c.req.json();
     const { profileData } = body;
 
+    // Whitelist allowed profile fields to prevent mass assignment (e.g. role escalation)
+    const ALLOWED_PROFILE_FIELDS = [
+      'firstName', 'lastName', 'bio', 'title', 'skills', 'currentRole',
+      'company', 'location', 'yearsOfExperience', 'availableToMentor',
+      'linkedin', 'twitter', 'website', 'offers', 'education', 'goals',
+      'profilePicture', 'country', 'university', 'fieldOfStudy',
+      'graduationYear', 'interests', 'mentorType', 'phone',
+      'preferredLanguages', 'timezone', 'notificationPreferences',
+    ];
+    const sanitizedData: Record<string, unknown> = {};
+    for (const key of ALLOWED_PROFILE_FIELDS) {
+      if (key in profileData) {
+        sanitizedData[key] = profileData[key];
+      }
+    }
+
     // Get existing user profile
     const existingProfile = await kv.get(`user:${user.id}`) || {};
 
     // Update user profile in KV store
     await kv.set(`user:${user.id}`, {
       ...existingProfile,
-      ...profileData,
+      ...sanitizedData,
       onboardingComplete: true,
       updatedAt: new Date().toISOString(),
     });

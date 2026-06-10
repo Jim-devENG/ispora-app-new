@@ -4,8 +4,20 @@ import { createClient } from 'jsr:@supabase/supabase-js@2.49.8';
 
 const app = new Hono();
 
-// Enable CORS
-app.use('*', cors({ origin: '*', allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'] }));
+// Enable CORS with origin allowlist
+const ALLOWED_ORIGINS = [
+  'https://ispora.app',
+  'https://www.ispora.app',
+  'https://ispora-app-new.vercel.app',
+];
+app.use('*', cors({
+  origin: (origin: string) => {
+    if (ALLOWED_ORIGINS.includes(origin)) return origin;
+    if (/^https:\/\/ispora-app-new[\w-]*\.vercel\.app$/.test(origin)) return origin;
+    return ALLOWED_ORIGINS[0];
+  },
+  allowMethods: ['GET', 'OPTIONS'],
+}));
 
 // Supabase client with service role for KV access
 const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
