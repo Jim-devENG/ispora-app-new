@@ -126,6 +126,15 @@ interface MenteeDetails extends Mentee {
   }[];
 }
 
+const TIME_OPTIONS: { value: string; label: string }[] = Array.from({ length: 48 }, (_, i) => {
+  const hour24 = Math.floor(i / 2);
+  const minute = i % 2 === 0 ? '00' : '30';
+  const value = `${String(hour24).padStart(2, '0')}:${minute}`;
+  const hour12 = hour24 % 12 === 0 ? 12 : hour24 % 12;
+  const meridiem = hour24 < 12 ? 'AM' : 'PM';
+  return { value, label: `${hour12}:${minute} ${meridiem}` };
+});
+
 export default function MentorDashboard() {
   const { user, signOut, isAuthenticated, accessToken, refreshUser } = useAuth();
   
@@ -863,6 +872,13 @@ export default function MentorDashboard() {
     // Construct scheduledFor from date and time
     const scheduledFor = `${scheduleForm.date}T${scheduleForm.time}`;
     const startDate = new Date(scheduledFor);
+
+    if (startDate <= new Date()) {
+      toast.error('Time Already Passed', {
+        description: 'The date and time you picked is in the past. Please choose a future time.',
+      });
+      return;
+    }
 
     // Generate session dates (single or recurring)
     let sessionDates: Date[] = [startDate];
@@ -3158,54 +3174,18 @@ export default function MentorDashboard() {
                   className="w-full px-4 py-2.5 bg-[var(--ispora-bg)] border-[1.5px] border-[var(--ispora-border)] rounded-xl text-sm text-[var(--ispora-text)] outline-none focus:border-[var(--ispora-brand)] focus:bg-white transition-all"
                 >
                   <option value="">Select time</option>
-                  <option value="00:00">12:00 AM</option>
-                  <option value="00:30">12:30 AM</option>
-                  <option value="01:00">1:00 AM</option>
-                  <option value="01:30">1:30 AM</option>
-                  <option value="02:00">2:00 AM</option>
-                  <option value="02:30">2:30 AM</option>
-                  <option value="03:00">3:00 AM</option>
-                  <option value="03:30">3:30 AM</option>
-                  <option value="04:00">4:00 AM</option>
-                  <option value="04:30">4:30 AM</option>
-                  <option value="05:00">5:00 AM</option>
-                  <option value="05:30">5:30 AM</option>
-                  <option value="06:00">6:00 AM</option>
-                  <option value="06:30">6:30 AM</option>
-                  <option value="07:00">7:00 AM</option>
-                  <option value="07:30">7:30 AM</option>
-                  <option value="08:00">8:00 AM</option>
-                  <option value="08:30">8:30 AM</option>
-                  <option value="09:00">9:00 AM</option>
-                  <option value="09:30">9:30 AM</option>
-                  <option value="10:00">10:00 AM</option>
-                  <option value="10:30">10:30 AM</option>
-                  <option value="11:00">11:00 AM</option>
-                  <option value="11:30">11:30 AM</option>
-                  <option value="12:00">12:00 PM</option>
-                  <option value="12:30">12:30 PM</option>
-                  <option value="13:00">1:00 PM</option>
-                  <option value="13:30">1:30 PM</option>
-                  <option value="14:00">2:00 PM</option>
-                  <option value="14:30">2:30 PM</option>
-                  <option value="15:00">3:00 PM</option>
-                  <option value="15:30">3:30 PM</option>
-                  <option value="16:00">4:00 PM</option>
-                  <option value="16:30">4:30 PM</option>
-                  <option value="17:00">5:00 PM</option>
-                  <option value="17:30">5:30 PM</option>
-                  <option value="18:00">6:00 PM</option>
-                  <option value="18:30">6:30 PM</option>
-                  <option value="19:00">7:00 PM</option>
-                  <option value="19:30">7:30 PM</option>
-                  <option value="20:00">8:00 PM</option>
-                  <option value="20:30">8:30 PM</option>
-                  <option value="21:00">9:00 PM</option>
-                  <option value="21:30">9:30 PM</option>
-                  <option value="22:00">10:00 PM</option>
-                  <option value="22:30">10:30 PM</option>
-                  <option value="23:00">11:00 PM</option>
-                  <option value="23:30">11:30 PM</option>
+                  {(() => {
+                    const isToday = scheduleForm.date === new Date().toISOString().split('T')[0];
+                    const now = new Date();
+                    return TIME_OPTIONS.map(({ value, label }) => {
+                      const isPast = isToday && new Date(`${scheduleForm.date}T${value}`) <= now;
+                      return (
+                        <option key={value} value={value} disabled={isPast}>
+                          {label}{isPast ? ' (past)' : ''}
+                        </option>
+                      );
+                    });
+                  })()}
                 </select>
               </div>
               <div>
