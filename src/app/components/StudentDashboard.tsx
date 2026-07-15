@@ -2389,34 +2389,81 @@ function DashboardHome({ onShowMentors, onNavigateToProfile, onNavigateToFindMen
                   const sessionDate = new Date(selectedSession.scheduledAt);
                   const timingStatus = getSessionTimingStatus(sessionDate);
                   const canJoin = timingStatus.status === 'starting' || timingStatus.status === 'soon';
-                  
+
+                  let platform = 'Not specified';
+                  try {
+                    if (selectedSession.notes) {
+                      const parsed = JSON.parse(selectedSession.notes);
+                      platform = parsed.platform || platform;
+                    }
+                  } catch (e) {}
+                  const isInAppVideo = platform === 'Ispora Live';
+
+                  const primaryButtonClass = `
+                    w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold transition-all
+                    ${canJoin
+                      ? 'bg-[var(--ispora-brand)] text-white hover:bg-[#0729d8] hover:shadow-lg hover:-translate-y-0.5'
+                      : 'bg-[var(--ispora-bg)] text-[var(--ispora-text3)] cursor-not-allowed'
+                    }
+                  `;
+
                   return (
                     <>
-                      <button 
-                        className={`
-                          w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold transition-all
-                          ${canJoin 
-                            ? 'bg-[var(--ispora-brand)] text-white hover:bg-[#0729d8] hover:shadow-lg hover:-translate-y-0.5' 
-                            : 'bg-[var(--ispora-bg)] text-[var(--ispora-text3)] cursor-not-allowed'
-                          }
-                        `}
-                        disabled={!canJoin}
-                        onClick={() => {
-                          if (canJoin) {
-                            const meetingLink = selectedSession.meetingLink || '';
-                            if (meetingLink) {
-                              const normalizedLink = normalizeUrl(meetingLink);
-                              window.open(normalizedLink, '_blank');
-                            } else {
-                              alert('No meeting link available for this session. Please contact your mentor.');
+                      {isInAppVideo ? (
+                        <button
+                          className={primaryButtonClass}
+                          disabled={!canJoin}
+                          onClick={() => {
+                            if (canJoin) {
+                              window.open(`/session/${selectedSession.id}/live-room`, '_blank');
                             }
-                          }
-                        }}
-                      >
-                        <Video className="w-5 h-5" strokeWidth={2} />
-                        {canJoin ? 'Join Session Now' : 'Join Session (Not Yet Available)'}
-                      </button>
-                      
+                          }}
+                        >
+                          <Video className="w-5 h-5" strokeWidth={2} />
+                          {canJoin ? 'Start In-App Video' : 'Join Session (Not Yet Available)'}
+                        </button>
+                      ) : (
+                        <>
+                          <button
+                            className={primaryButtonClass}
+                            disabled={!canJoin}
+                            onClick={() => {
+                              if (canJoin) {
+                                const meetingLink = selectedSession.meetingLink || '';
+                                if (meetingLink) {
+                                  const normalizedLink = normalizeUrl(meetingLink);
+                                  window.open(normalizedLink, '_blank');
+                                } else {
+                                  alert('No meeting link available for this session. Please contact your mentor.');
+                                }
+                              }
+                            }}
+                          >
+                            <Video className="w-5 h-5" strokeWidth={2} />
+                            {canJoin ? 'Join Session Now' : 'Join Session (Not Yet Available)'}
+                          </button>
+
+                          <button
+                            className={`
+                              w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold transition-all
+                              ${canJoin
+                                ? 'bg-white border-[1.5px] border-[var(--ispora-brand)] text-[var(--ispora-brand)] hover:bg-[var(--ispora-brand-light)]'
+                                : 'bg-[var(--ispora-bg)] text-[var(--ispora-text3)] cursor-not-allowed border-[1.5px] border-transparent'
+                              }
+                            `}
+                            disabled={!canJoin}
+                            onClick={() => {
+                              if (canJoin) {
+                                window.open(`/session/${selectedSession.id}/live-room`, '_blank');
+                              }
+                            }}
+                          >
+                            <Video className="w-5 h-5" strokeWidth={2} />
+                            Start In-App Video
+                          </button>
+                        </>
+                      )}
+
                       <button className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold bg-white border-[1.5px] border-[var(--ispora-border)] text-[var(--ispora-text)] hover:bg-[var(--ispora-bg)] hover:border-[var(--ispora-brand)] transition-all" onClick={handleViewMeetingDetails}>
                         <ExternalLink className="w-4 h-4" strokeWidth={2} />
                         View Meeting Details

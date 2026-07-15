@@ -13,6 +13,7 @@ import SessionLandingPage from './components/SessionLandingPage';
 import OpportunityLandingPage from './components/OpportunityLandingPage';
 import Dashboard from './components/Dashboard';
 import PublicProfile from './components/PublicProfile';
+import LiveSessionRoom from './components/LiveSessionRoom';
 import MaintenancePage from './components/MaintenancePage';
 import { getMissingSupabaseConfigKeys, isSupabaseConfigured } from '/utils/supabase/info';
 
@@ -211,6 +212,7 @@ function AppContent() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/auth" element={<AuthFlow />} />
           <Route path="/session/:sessionId" element={<SessionLandingPage />} />
+          <Route path="/session/:sessionId/live-room" element={<LiveSessionRoom />} />
           <Route path="/opportunity/:opportunityId" element={<OpportunityLandingPage />} />
           <Route path="/mentor/:userId" element={<PublicProfile />} />
           <Route path="/student/:userId" element={<PublicProfile />} />

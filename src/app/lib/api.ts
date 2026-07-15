@@ -492,6 +492,13 @@ export const sessionApi = {
       body: JSON.stringify(data),
     }),
 
+  // In-app live video (LiveKit)
+  getLiveToken: (sessionId: string) =>
+    apiCall<{ success: boolean; token: string; url: string; roomName: string; isHost: boolean }>(
+      `/sessions/${sessionId}/live-token`,
+      { method: 'POST' },
+    ),
+
   // Public session (no auth required)
   getPublicSession: async (sessionId: string) => {
     const response = await fetch(`${API_BASE_URL}/public/session/${sessionId}`, {

@@ -3252,42 +3252,52 @@ export default function MentorDashboard() {
                 <label className="block text-sm font-semibold text-[var(--ispora-text)] mb-2">
                   Platform
                 </label>
-                <select 
+                <select
                   value={scheduleForm.platform}
-                  onChange={(e) => setScheduleForm({...scheduleForm, platform: e.target.value})}
+                  onChange={(e) => setScheduleForm({...scheduleForm, platform: e.target.value, meetingLink: e.target.value === 'Ispora Live' ? '' : scheduleForm.meetingLink})}
                   className="w-full px-4 py-2.5 bg-[var(--ispora-bg)] border-[1.5px] border-[var(--ispora-border)] rounded-xl text-sm text-[var(--ispora-text)] outline-none focus:border-[var(--ispora-brand)] focus:bg-white transition-all"
                 >
-                  <option>Google Meet</option>
-                  <option>Zoom</option>
-                  <option>Microsoft Teams</option>
-                  <option>Other</option>
+                  <option value="Ispora Live">Ispora Live (In-App Video)</option>
+                  <option value="Google Meet">Google Meet</option>
+                  <option value="Zoom">Zoom</option>
+                  <option value="Microsoft Teams">Microsoft Teams</option>
+                  <option value="Other">Other</option>
                 </select>
               </div>
-              <div>
-                <label className="block text-sm font-semibold text-[var(--ispora-text)] mb-2">
-                  Meeting Link
-                </label>
-                <input
-                  type="url"
-                  value={scheduleForm.meetingLink}
-                  onChange={(e) => setScheduleForm({...scheduleForm, meetingLink: e.target.value})}
-                  placeholder="https://meet.google.com/... or https://zoom.us/..."
-                  className="w-full px-4 py-2.5 bg-[var(--ispora-bg)] border-[1.5px] border-[var(--ispora-border)] rounded-xl text-sm text-[var(--ispora-text)] placeholder:text-[var(--ispora-text3)] outline-none focus:border-[var(--ispora-brand)] focus:bg-white transition-all"
-                />
-                <p className="text-xs text-[var(--ispora-text3)] mt-1.5">
-                  {user?.defaultMeetingLink ? (
-                    <button 
-                      type="button"
-                      onClick={() => setScheduleForm({...scheduleForm, meetingLink: user.defaultMeetingLink})}
-                      className="text-[var(--ispora-brand)] hover:underline"
-                    >
-                      Use your default meeting link
-                    </button>
-                  ) : (
-                    'Add a default meeting link in Settings to auto-populate this field'
-                  )}
-                </p>
-              </div>
+              {scheduleForm.platform === 'Ispora Live' ? (
+                <div className="px-4 py-3 bg-[var(--ispora-brand-light)] border-[1.5px] border-[var(--ispora-brand)] rounded-xl flex items-start gap-2.5">
+                  <Video className="w-4 h-4 text-[var(--ispora-brand)] flex-shrink-0 mt-0.5" strokeWidth={2} />
+                  <p className="text-xs text-[var(--ispora-text2)]">
+                    A live video room is created automatically for this session — no meeting link needed. Both you and your mentee can join with the "Start In-App Video" button.
+                  </p>
+                </div>
+              ) : (
+                <div>
+                  <label className="block text-sm font-semibold text-[var(--ispora-text)] mb-2">
+                    Meeting Link
+                  </label>
+                  <input
+                    type="url"
+                    value={scheduleForm.meetingLink}
+                    onChange={(e) => setScheduleForm({...scheduleForm, meetingLink: e.target.value})}
+                    placeholder="https://meet.google.com/... or https://zoom.us/..."
+                    className="w-full px-4 py-2.5 bg-[var(--ispora-bg)] border-[1.5px] border-[var(--ispora-border)] rounded-xl text-sm text-[var(--ispora-text)] placeholder:text-[var(--ispora-text3)] outline-none focus:border-[var(--ispora-brand)] focus:bg-white transition-all"
+                  />
+                  <p className="text-xs text-[var(--ispora-text3)] mt-1.5">
+                    {user?.defaultMeetingLink ? (
+                      <button
+                        type="button"
+                        onClick={() => setScheduleForm({...scheduleForm, meetingLink: user.defaultMeetingLink})}
+                        className="text-[var(--ispora-brand)] hover:underline"
+                      >
+                        Use your default meeting link
+                      </button>
+                    ) : (
+                      'Add a default meeting link in Settings to auto-populate this field'
+                    )}
+                  </p>
+                </div>
+              )}
             </div>
             <div className="px-4 md:px-6 py-3 md:py-4 border-t border-[var(--ispora-border)] flex gap-3 flex-shrink-0 bg-white sticky bottom-0">
               <button
@@ -3502,9 +3512,20 @@ export default function MentorDashboard() {
 
               {/* Meeting Link */}
               {(() => {
-                // Get meeting link directly from session object
+                const isInAppVideo = showJoinSession.platform === 'Ispora Live';
                 const meetingLink = showJoinSession.meetingLink || '';
-                
+
+                if (isInAppVideo) {
+                  return (
+                    <div className="mb-5 px-4 py-3 bg-[var(--ispora-brand-light)] border-[1.5px] border-[var(--ispora-brand)] rounded-xl flex items-start gap-2.5">
+                      <Video className="w-4 h-4 text-[var(--ispora-brand)] flex-shrink-0 mt-0.5" strokeWidth={2} />
+                      <p className="text-sm text-[var(--ispora-text2)]">
+                        This session uses Ispora Live — click "Start In-App Video" below to join, no external link needed.
+                      </p>
+                    </div>
+                  );
+                }
+
                 return (
                   <div className="mb-5">
                     <label className="block text-sm font-semibold text-[var(--ispora-text)] mb-2">
@@ -3557,22 +3578,33 @@ export default function MentorDashboard() {
                 >
                   Cancel
                 </button>
+                {showJoinSession.platform !== 'Ispora Live' && (
+                  <button
+                    onClick={() => {
+                      const meetingLink = showJoinSession.meetingLink || '';
+                      if (meetingLink) {
+                        const normalizedLink = normalizeUrl(meetingLink);
+                        window.open(normalizedLink, '_blank');
+                      } else {
+                        toast.error('No Meeting Link', {
+                          description: 'No meeting link is available for this session.',
+                        });
+                      }
+                    }}
+                    className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-white border-[1.5px] border-[var(--ispora-border)] text-[var(--ispora-text)] text-sm font-semibold hover:bg-[var(--ispora-brand-light)] hover:border-[var(--ispora-brand)] transition-all"
+                  >
+                    <ExternalLink className="w-4 h-4" strokeWidth={2.5} />
+                    Join via Link
+                  </button>
+                )}
                 <button
                   onClick={() => {
-                    const meetingLink = showJoinSession.meetingLink || '';
-                    if (meetingLink) {
-                      const normalizedLink = normalizeUrl(meetingLink);
-                      window.open(normalizedLink, '_blank');
-                    } else {
-                      toast.error('No Meeting Link', {
-                        description: 'No meeting link is available for this session.',
-                      });
-                    }
+                    window.open(`/session/${showJoinSession.id}/live-room`, '_blank');
                   }}
                   className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-[var(--ispora-brand)] text-white text-sm font-semibold hover:bg-[var(--ispora-brand-hover)] hover:shadow-[0_6px_18px_rgba(2,31,246,0.35)] transition-all"
                 >
                   <Video className="w-4 h-4" strokeWidth={2.5} />
-                  Join Meeting
+                  Start In-App Video
                 </button>
               </div>
             </div>

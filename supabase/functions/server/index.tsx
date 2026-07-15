@@ -13,11 +13,12 @@ import {
   generateImpactCardData,
   generateMonthlyImpact 
 } from "./impact-stats.tsx";
-import { 
-  checkEarnedBadges, 
+import {
+  checkEarnedBadges,
   getNewBadges,
-  getBadgeDisplayInfo 
+  getBadgeDisplayInfo
 } from "./badges.tsx";
+import { AccessToken } from "npm:livekit-server-sdk@^2";
 
 const app = new Hono();
 
@@ -360,8 +361,8 @@ app.post("/make-server-b8526fa6/auth/signup", async (c) => {
       return c.json({ error: 'Missing required fields' }, 400);
     }
 
-    // ✅ HARDCODED: Automatically set info@ispora.app as admin
-    const finalRole = email === 'info@ispora.app' ? 'admin' : role;
+    // ✅ HARDCODED: Automatically set enietanjamie@gmail.com as admin
+    const finalRole = email === 'enietanjamie@gmail.com' ? 'admin' : role;
 
     // Create user with Supabase Auth
     const { data, error } = await supabaseAdmin.auth.admin.createUser({
@@ -432,12 +433,12 @@ app.post("/make-server-b8526fa6/auth/signin", async (c) => {
     // Get user profile from KV store
     let userProfile = await kv.get(`user:${data.user.id}`) || {};
 
-    // ✅ HARDCODED: Force info@ispora.app to always be admin
-    if (email === 'info@ispora.app' && userProfile.role !== 'admin') {
+    // ✅ HARDCODED: Force enietanjamie@gmail.com to always be admin
+    if (email === 'enietanjamie@gmail.com' && userProfile.role !== 'admin') {
       userProfile.role = 'admin';
       userProfile.onboardingComplete = true;
       await kv.set(`user:${data.user.id}`, userProfile);
-      console.log('✅ Auto-promoted info@ispora.app to admin');
+      console.log('✅ Auto-promoted enietanjamie@gmail.com to admin');
     }
 
     // Track session
@@ -3610,6 +3611,88 @@ app.get("/make-server-b8526fa6/public/session/:sessionId", async (c) => {
 });
 
 // ══════════════════════════════════════════════════════════════════════════════
+// ── LIVE VIDEO (LIVEKIT) ROUTES ──
+// ══════════════════════════════════════════════════════════════════════════════
+
+// Issue a LiveKit access token for an in-app live video session
+app.post("/make-server-b8526fa6/sessions/:sessionId/live-token", async (c) => {
+  try {
+    const auth = await authenticateUser(c);
+    if ('error' in auth) {
+      return c.json({ error: auth.error }, auth.status);
+    }
+
+    const { user } = auth;
+    const sessionId = c.req.param('sessionId');
+
+    const session = await kv.get(`session:${sessionId}`);
+    if (!session) {
+      return c.json({ error: 'Session not found' }, 404);
+    }
+
+    // Parse notes to check registration for public sessions
+    let sessionDetails: any = { sessionType: 'private', registeredStudents: [] };
+    try {
+      if (session.notes) {
+        sessionDetails = { ...sessionDetails, ...JSON.parse(session.notes) };
+      }
+    } catch (e) {}
+
+    const isHost = session.mentorId === user.id;
+    const isPrivateParticipant = session.studentId === user.id;
+    const isRegisteredParticipant = Array.isArray(sessionDetails.registeredStudents) &&
+      sessionDetails.registeredStudents.includes(user.id);
+
+    if (!isHost && !isPrivateParticipant && !isRegisteredParticipant) {
+      return c.json({ error: 'You are not a participant in this session' }, 403);
+    }
+
+    const livekitUrl = Deno.env.get('LIVEKIT_URL');
+    const apiKey = Deno.env.get('LIVEKIT_API_KEY');
+    const apiSecret = Deno.env.get('LIVEKIT_API_SECRET');
+
+    if (!livekitUrl || !apiKey || !apiSecret) {
+      console.log('LiveKit env vars missing:', { livekitUrl: !!livekitUrl, apiKey: !!apiKey, apiSecret: !!apiSecret });
+      return c.json({ error: 'Live video is not configured on the server' }, 500);
+    }
+
+    const userProfile = await kv.get(`user:${user.id}`);
+    const participantName = userProfile
+      ? `${userProfile.firstName || ''} ${userProfile.lastName || ''}`.trim() || 'Guest'
+      : 'Guest';
+
+    const roomName = `session-${sessionId}`;
+
+    const at = new AccessToken(apiKey, apiSecret, {
+      identity: user.id,
+      name: participantName,
+      ttl: '4h',
+    });
+    at.addGrant({
+      room: roomName,
+      roomJoin: true,
+      canPublish: true,
+      canSubscribe: true,
+      canPublishData: true,
+      roomAdmin: isHost,
+    });
+
+    const token = await at.toJwt();
+
+    return c.json({
+      success: true,
+      token,
+      url: livekitUrl,
+      roomName,
+      isHost,
+    });
+  } catch (error: any) {
+    console.log('Generate LiveKit token error:', error);
+    return c.json({ error: error.message || 'Failed to generate live video token' }, 500);
+  }
+});
+
+// ══════════════════════════════════════════════════════════════════════════════
 // ── MESSAGES ROUTES ──
 // ══════════════════════════════════════════════════════════════════════════════
 
@@ -4507,7 +4590,7 @@ ensureResourcesBucket(supabaseAdmin).catch(err =>
   console.error('Failed to ensure resources bucket:', err)
 );
 
- ============================================
+// ============================================
 // SUPPORT REQUEST ROUTES
 // ============================================
 
