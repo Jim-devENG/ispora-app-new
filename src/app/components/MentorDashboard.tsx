@@ -3268,7 +3268,7 @@ export default function MentorDashboard() {
                 <div className="px-4 py-3 bg-[var(--ispora-brand-light)] border-[1.5px] border-[var(--ispora-brand)] rounded-xl flex items-start gap-2.5">
                   <Video className="w-4 h-4 text-[var(--ispora-brand)] flex-shrink-0 mt-0.5" strokeWidth={2} />
                   <p className="text-xs text-[var(--ispora-text2)]">
-                    A live video room is created automatically for this session — no meeting link needed. Both you and your mentee can join with the "Start In-App Video" button.
+                    This session runs on Ispora's built-in video — both you and your mentee join by signing in and clicking "Start In-App Video" from your dashboard. There's nothing to copy or share beforehand.
                   </p>
                 </div>
               ) : (
@@ -3520,7 +3520,7 @@ export default function MentorDashboard() {
                     <div className="mb-5 px-4 py-3 bg-[var(--ispora-brand-light)] border-[1.5px] border-[var(--ispora-brand)] rounded-xl flex items-start gap-2.5">
                       <Video className="w-4 h-4 text-[var(--ispora-brand)] flex-shrink-0 mt-0.5" strokeWidth={2} />
                       <p className="text-sm text-[var(--ispora-text2)]">
-                        This session uses Ispora Live — click "Start In-App Video" below to join, no external link needed.
+                        This session uses Ispora Live. Click "Start In-App Video" below to join — access is tied to your account, so there's no separate link to send.
                       </p>
                     </div>
                   );
