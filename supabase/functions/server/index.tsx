@@ -18,7 +18,8 @@ import {
   getNewBadges,
   getBadgeDisplayInfo
 } from "./badges.tsx";
-import { AccessToken } from "npm:livekit-server-sdk@^2";
+import { AccessToken, EgressClient } from "npm:livekit-server-sdk@^2";
+import { EncodedFileOutput, EncodedFileType, S3Upload } from "npm:@livekit/protocol@^1.48.0";
 
 const app = new Hono();
 
@@ -3661,7 +3662,9 @@ app.post("/make-server-b8526fa6/sessions/:sessionId/live-token", async (c) => {
       ? `${userProfile.firstName || ''} ${userProfile.lastName || ''}`.trim() || 'Guest'
       : 'Guest';
 
-    const roomName = `session-${sessionId}`;
+    // Group sessions share one room across all mentees scheduled together (via groupId),
+    // rather than each mentee's individual session record getting its own isolated room.
+    const roomName = sessionDetails.groupId ? `group-${sessionDetails.groupId}` : `session-${sessionId}`;
 
     const at = new AccessToken(apiKey, apiSecret, {
       identity: user.id,
@@ -3685,10 +3688,191 @@ app.post("/make-server-b8526fa6/sessions/:sessionId/live-token", async (c) => {
       url: livekitUrl,
       roomName,
       isHost,
+      canRecord: isHost && userProfile?.canRecord === true,
     });
   } catch (error: any) {
     console.log('Generate LiveKit token error:', error);
     return c.json({ error: error.message || 'Failed to generate live video token' }, 500);
+  }
+});
+
+// Helper: build the S3-compatible output config Egress uses to write recordings
+// into Supabase Storage. Returns null if the required secrets haven't been set yet.
+function getRecordingS3Config() {
+  const accessKey = Deno.env.get('RECORDING_S3_ACCESS_KEY_ID');
+  const secret = Deno.env.get('RECORDING_S3_SECRET_ACCESS_KEY');
+  const endpoint = Deno.env.get('RECORDING_S3_ENDPOINT');
+  const region = Deno.env.get('RECORDING_S3_REGION') || 'us-east-1';
+  const bucket = Deno.env.get('RECORDING_S3_BUCKET') || 'session-recordings';
+
+  if (!accessKey || !secret || !endpoint) {
+    return null;
+  }
+
+  return { accessKey, secret, endpoint, region, bucket };
+}
+
+// Start recording an Ispora Live session (host-only, gated behind canRecord)
+app.post("/make-server-b8526fa6/sessions/:sessionId/live/recording/start", async (c) => {
+  try {
+    const auth = await authenticateUser(c);
+    if ('error' in auth) {
+      return c.json({ error: auth.error }, auth.status);
+    }
+
+    const { user } = auth;
+    const sessionId = c.req.param('sessionId');
+    const session = await kv.get(`session:${sessionId}`);
+    if (!session) {
+      return c.json({ error: 'Session not found' }, 404);
+    }
+
+    if (session.mentorId !== user.id) {
+      return c.json({ error: 'Only the session host can start recording' }, 403);
+    }
+
+    const userProfile = await kv.get(`user:${user.id}`);
+    if (userProfile?.canRecord !== true) {
+      return c.json({ error: 'Recording is not enabled for your account yet' }, 403);
+    }
+
+    const s3Config = getRecordingS3Config();
+    if (!s3Config) {
+      return c.json({ error: 'Recording storage is not configured on the server' }, 500);
+    }
+
+    const livekitUrl = Deno.env.get('LIVEKIT_URL');
+    const apiKey = Deno.env.get('LIVEKIT_API_KEY');
+    const apiSecret = Deno.env.get('LIVEKIT_API_SECRET');
+    if (!livekitUrl || !apiKey || !apiSecret) {
+      return c.json({ error: 'Live video is not configured on the server' }, 500);
+    }
+
+    let sessionDetails: any = {};
+    try {
+      if (session.notes) sessionDetails = JSON.parse(session.notes);
+    } catch (e) {}
+    const roomName = sessionDetails.groupId ? `group-${sessionDetails.groupId}` : `session-${sessionId}`;
+
+    // If a recording is already running for this room, just return it instead of starting another.
+    const existing = await kv.get(`recording:${roomName}`);
+    if (existing) {
+      return c.json({ success: true, egressId: existing.egressId, roomName, alreadyRecording: true });
+    }
+
+    const filepath = `recordings/${roomName}/${Date.now()}.mp4`;
+    const egressClient = new EgressClient(livekitUrl, apiKey, apiSecret);
+    const fileOutput = new EncodedFileOutput({
+      fileType: EncodedFileType.MP4,
+      filepath,
+      output: {
+        case: 's3',
+        value: new S3Upload({
+          accessKey: s3Config.accessKey,
+          secret: s3Config.secret,
+          bucket: s3Config.bucket,
+          region: s3Config.region,
+          endpoint: s3Config.endpoint,
+          forcePathStyle: true,
+        }),
+      },
+    });
+
+    const info = await egressClient.startRoomCompositeEgress(roomName, { file: fileOutput }, { layout: 'speaker' });
+
+    await kv.set(`recording:${roomName}`, {
+      egressId: info.egressId,
+      roomName,
+      sessionId,
+      filepath,
+      startedAt: new Date().toISOString(),
+      startedBy: user.id,
+    });
+
+    return c.json({ success: true, egressId: info.egressId, roomName });
+  } catch (error: any) {
+    console.log('Start recording error:', error);
+    return c.json({ error: error.message || 'Failed to start recording' }, 500);
+  }
+});
+
+// Stop recording an Ispora Live session (host-only)
+app.post("/make-server-b8526fa6/sessions/:sessionId/live/recording/stop", async (c) => {
+  try {
+    const auth = await authenticateUser(c);
+    if ('error' in auth) {
+      return c.json({ error: auth.error }, auth.status);
+    }
+
+    const { user } = auth;
+    const sessionId = c.req.param('sessionId');
+    const session = await kv.get(`session:${sessionId}`);
+    if (!session) {
+      return c.json({ error: 'Session not found' }, 404);
+    }
+
+    if (session.mentorId !== user.id) {
+      return c.json({ error: 'Only the session host can stop recording' }, 403);
+    }
+
+    let sessionDetails: any = {};
+    try {
+      if (session.notes) sessionDetails = JSON.parse(session.notes);
+    } catch (e) {}
+    const roomName = sessionDetails.groupId ? `group-${sessionDetails.groupId}` : `session-${sessionId}`;
+
+    const active = await kv.get(`recording:${roomName}`);
+    if (!active) {
+      return c.json({ error: 'No active recording for this session' }, 404);
+    }
+
+    const livekitUrl = Deno.env.get('LIVEKIT_URL');
+    const apiKey = Deno.env.get('LIVEKIT_API_KEY');
+    const apiSecret = Deno.env.get('LIVEKIT_API_SECRET');
+    const egressClient = new EgressClient(livekitUrl!, apiKey!, apiSecret!);
+    await egressClient.stopEgress(active.egressId);
+    await kv.del(`recording:${roomName}`);
+
+    // Generate a long-lived signed URL for the recorded file and attach it to every
+    // session record tied to this room (all mentees share the room for group sessions).
+    let recordingUrl: string | null = null;
+    try {
+      const { data, error } = await supabaseAdmin.storage
+        .from('session-recordings')
+        .createSignedUrl(active.filepath, 31536000); // 1 year
+      if (!error) {
+        recordingUrl = data?.signedUrl || null;
+      }
+    } catch (e) {
+      console.log('Failed to create signed URL for recording:', e);
+    }
+
+    if (recordingUrl) {
+      const allSessions = await kv.getByPrefix('session:') || [];
+      const roomSessions = (Array.isArray(allSessions) ? allSessions : []).filter((s: any) => {
+        try {
+          const details = s.notes ? JSON.parse(s.notes) : {};
+          const sRoom = details.groupId ? `group-${details.groupId}` : `session-${s.id}`;
+          return sRoom === roomName;
+        } catch (e) {
+          return false;
+        }
+      });
+
+      await Promise.all(roomSessions.map((s: any) => kv.set(`session:${s.id}`, {
+        ...s,
+        recordingUrl,
+        recordingType: 'video',
+        recordingAddedAt: new Date().toISOString(),
+        recordingAddedBy: user.id,
+        updatedAt: new Date().toISOString(),
+      })));
+    }
+
+    return c.json({ success: true, recordingUrl });
+  } catch (error: any) {
+    console.log('Stop recording error:', error);
+    return c.json({ error: error.message || 'Failed to stop recording' }, 500);
   }
 });
 

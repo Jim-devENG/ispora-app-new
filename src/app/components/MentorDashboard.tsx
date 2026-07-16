@@ -928,7 +928,11 @@ export default function MentorDashboard() {
         );
         await Promise.all(sessionPromises);
       } else if (scheduleForm.sessionType === 'group') {
-        // Group session - create sessions for all selected mentees and all dates
+        // Group session - create sessions for all selected mentees and all dates.
+        // Each mentee gets their own session record (for individual tracking), but all
+        // mentees scheduled for the same date/time share a groupId so an Ispora Live
+        // session puts them in one room together instead of separate 1:1 rooms.
+        const groupRoomIds = sessionDates.map((_, index) => `group_${Date.now()}_${index}_${Math.random().toString(36).substr(2, 9)}`);
         const allSessionPromises = [];
         for (const mentorshipId of scheduleForm.selectedMentees) {
           for (let index = 0; index < sessionDates.length; index++) {
@@ -944,6 +948,7 @@ export default function MentorDashboard() {
                   description: scheduleForm.description,
                   meetingLink: scheduleForm.meetingLink,
                   totalParticipants: scheduleForm.selectedMentees.length,
+                  groupId: groupRoomIds[index],
                   ...(seriesId && {
                     isRecurring: true,
                     seriesId: seriesId,
@@ -3504,11 +3509,34 @@ export default function MentorDashboard() {
                 const meetingLink = showJoinSession.meetingLink || '';
 
                 if (isInAppVideo) {
+                  const inviteLink = `${window.location.origin}/session/${showJoinSession.id}/live-room`;
                   return (
-                    <div className="mb-5 px-4 py-3 bg-[var(--ispora-brand-light)] border-[1.5px] border-[var(--ispora-brand)] rounded-xl flex items-start gap-2.5">
-                      <Video className="w-4 h-4 text-[var(--ispora-brand)] flex-shrink-0 mt-0.5" strokeWidth={2} />
-                      <p className="text-sm text-[var(--ispora-text2)]">
-                        This session uses Ispora Live. Click "Start In-App Video" below to join — access is tied to your account, so there's no separate link to send.
+                    <div className="mb-5">
+                      <label className="block text-sm font-semibold text-[var(--ispora-text)] mb-2">
+                        Ispora Live invite link
+                      </label>
+                      <div className="flex gap-3 mb-2">
+                        <input
+                          type="text"
+                          value={inviteLink}
+                          readOnly
+                          className="flex-1 px-4 py-3 bg-[var(--ispora-bg)] border-[1.5px] border-[var(--ispora-border)] rounded-xl text-sm text-[var(--ispora-text)] outline-none"
+                        />
+                        <button
+                          onClick={() => {
+                            navigator.clipboard.writeText(inviteLink);
+                            toast.success('Link Copied!', {
+                              description: 'Send it to your mentee — they just need to be signed in to join.',
+                              duration: 3000,
+                            });
+                          }}
+                          className="px-6 py-3 rounded-xl bg-white border-[1.5px] border-[var(--ispora-border)] text-[var(--ispora-text)] text-sm font-semibold hover:border-[var(--ispora-brand)] hover:text-[var(--ispora-brand)] hover:bg-[var(--ispora-brand-light)] transition-all"
+                        >
+                          Copy
+                        </button>
+                      </div>
+                      <p className="text-xs text-[var(--ispora-text3)]">
+                        Only works for signed-in participants of this session — anyone else who opens it is redirected to sign in first, and denied if they're not on the invite list.
                       </p>
                     </div>
                   );

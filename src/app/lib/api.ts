@@ -494,8 +494,20 @@ export const sessionApi = {
 
   // In-app live video (LiveKit)
   getLiveToken: (sessionId: string) =>
-    apiCall<{ success: boolean; token: string; url: string; roomName: string; isHost: boolean }>(
+    apiCall<{ success: boolean; token: string; url: string; roomName: string; isHost: boolean; canRecord: boolean }>(
       `/sessions/${sessionId}/live-token`,
+      { method: 'POST' },
+    ),
+
+  startRecording: (sessionId: string) =>
+    apiCall<{ success: boolean; egressId: string; roomName: string; alreadyRecording?: boolean }>(
+      `/sessions/${sessionId}/live/recording/start`,
+      { method: 'POST' },
+    ),
+
+  stopRecording: (sessionId: string) =>
+    apiCall<{ success: boolean; recordingUrl: string | null }>(
+      `/sessions/${sessionId}/live/recording/stop`,
       { method: 'POST' },
     ),
 
