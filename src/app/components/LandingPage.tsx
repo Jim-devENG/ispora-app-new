@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router';
-import { ArrowRight, User, CheckCircle2, Sparkles } from 'lucide-react';
+import { ArrowRight, User, CheckCircle2, Sparkles, Video, Star, Zap } from 'lucide-react';
 import logo from '/src/assets/4db1642d96b725f296f07dcb9e96154154c374f8.png';
 import heroImage from '/src/assets/d13d17f274b3d920097f088c7c6be3b0332f81db.png';
 
@@ -44,37 +44,37 @@ const LandingPage = () => {
         .rd1 { transition-delay: 0.08s; }
         .rd2 { transition-delay: 0.17s; }
         .rd3 { transition-delay: 0.26s; }
-        
-        @keyframes blink {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.3; }
-        }
-        
+
         @keyframes underIn {
           from { transform: scaleX(0); transform-origin: left; }
           to { transform: scaleX(1); transform-origin: left; }
         }
-        
+
+        @keyframes blobDrift1 {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          50% { transform: translate(30px, -20px) scale(1.06); }
+        }
+
+        @keyframes blobDrift2 {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          50% { transform: translate(-24px, 26px) scale(1.08); }
+        }
+
         @keyframes cardFloat1 {
-          0%, 100% { transform: translateY(0) rotate(-0.5deg); }
-          50% { transform: translateY(-6px) rotate(0.5deg); }
+          0%, 100% { transform: translateY(0) rotate(-1deg); }
+          50% { transform: translateY(-10px) rotate(1deg); }
         }
-        
+
         @keyframes cardFloat2 {
-          0%, 100% { transform: translateY(0) rotate(0.3deg); }
-          50% { transform: translateY(-5px) rotate(-0.3deg); }
+          0%, 100% { transform: translateY(0) rotate(1deg); }
+          50% { transform: translateY(-8px) rotate(-1deg); }
         }
-        
-        @keyframes cardFloat3 {
-          0%, 100% { transform: translateY(0) rotate(-0.2deg); }
-          50% { transform: translateY(-4px) rotate(0.2deg); }
-        }
-        
+
         @keyframes tickerScroll {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
         }
-        
+
         @keyframes oppScroll {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
@@ -82,23 +82,30 @@ const LandingPage = () => {
       `}</style>
 
       {/* Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-[200] h-[66px] flex items-center px-[7vw] justify-between transition-all duration-300 ${
-        scrolled ? 'bg-white/98 shadow-[var(--ispora-shadow-sm)]' : 'bg-white/82 backdrop-blur-[20px]'
-      } border-b-[1.5px] border-[var(--ispora-border)]`}>
-        <Link to="/" className="flex items-center">
-          <img src={logo} alt="Ispora" className="h-10 w-10 rounded-full shadow-sm" />
+      <nav className={`fixed top-0 left-0 right-0 z-[200] h-[72px] flex items-center px-[7vw] justify-between transition-all duration-300 ${
+        scrolled ? 'bg-white/90 backdrop-blur-xl shadow-[0_1px_0_rgba(7,9,74,0.06)]' : 'bg-white/70 backdrop-blur-xl'
+      }`}>
+        <Link to="/" className="flex items-center gap-2.5">
+          <img src={logo} alt="Ispora" className="h-9 w-9 rounded-full shadow-sm" />
+          <span className="font-syne font-extrabold text-lg tracking-tight text-[var(--ispora-text)]">Ispora</span>
         </Link>
+
+        <div className="hidden md:flex items-center gap-8">
+          <a href="#how" className="text-[13px] font-semibold text-[var(--ispora-text2)] hover:text-[var(--ispora-text)] transition-colors">How it works</a>
+          <a href="#who" className="text-[13px] font-semibold text-[var(--ispora-text2)] hover:text-[var(--ispora-text)] transition-colors">Who it's for</a>
+          <a href="#stories" className="text-[13px] font-semibold text-[var(--ispora-text2)] hover:text-[var(--ispora-text)] transition-colors">Success stories</a>
+        </div>
 
         <div className="flex items-center gap-2">
           <Link
             to="/auth?mode=signin"
-            className="hidden sm:inline-flex bg-[var(--ispora-bg)] border-[1.5px] border-[var(--ispora-border)] text-[var(--ispora-text2)] px-[18px] py-2 rounded-full text-[13px] font-semibold hover:border-[var(--ispora-brand)] hover:text-[var(--ispora-brand)] hover:bg-[var(--ispora-brand-light)] transition-all"
+            className="hidden sm:inline-flex text-[var(--ispora-text2)] px-4 py-2 rounded-full text-[13px] font-semibold hover:text-[var(--ispora-brand)] transition-all"
           >
             Sign in
           </Link>
           <Link
             to="/auth"
-            className="inline-flex items-center gap-1.5 bg-[var(--ispora-brand)] text-white px-5 py-2.5 rounded-full text-[13px] font-bold hover:bg-[var(--ispora-brand-hover)] hover:shadow-[0_6px_20px_rgba(2,31,246,0.25)] hover:-translate-y-0.5 transition-all"
+            className="inline-flex items-center gap-1.5 bg-[var(--ispora-brand)] text-white px-5 py-2.5 rounded-full text-[13px] font-bold hover:bg-[var(--ispora-brand-hover)] hover:shadow-[0_8px_24px_rgba(2,31,246,0.3)] hover:-translate-y-0.5 transition-all"
           >
             Get started
             <ArrowRight className="w-3.5 h-3.5" strokeWidth={2.5} />
@@ -107,58 +114,108 @@ const LandingPage = () => {
       </nav>
 
       {/* Hero */}
-      <section className="min-h-screen flex items-center px-[7vw] pt-[140px] sm:pt-[120px] pb-20 relative overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 opacity-50"
+      <section className="min-h-screen flex items-center px-[7vw] pt-[150px] sm:pt-[130px] pb-24 relative overflow-hidden">
+        {/* Background: solid-color blobs + fine grid, no gradients */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <div className="absolute inset-0 opacity-[0.35]"
             style={{
               backgroundImage: 'linear-gradient(var(--ispora-border) 1px, transparent 1px), linear-gradient(90deg, var(--ispora-border) 1px, transparent 1px)',
-              backgroundSize: '52px 52px'
+              backgroundSize: '52px 52px',
+              maskImage: 'radial-gradient(ellipse 70% 60% at 50% 30%, black 40%, transparent 90%)'
             }}
           />
-          <div className="absolute top-[-200px] right-[-100px] w-[700px] h-[700px] bg-[radial-gradient(ellipse,rgba(2,31,246,0.1)_0%,transparent_65%)] pointer-events-none" />
-          <div className="absolute bottom-[-200px] left-[-100px] w-[500px] h-[500px] bg-[radial-gradient(ellipse,rgba(184,240,74,0.08)_0%,transparent_65%)] pointer-events-none" />
+          <div className="absolute top-[-180px] right-[-160px] w-[620px] h-[620px] rounded-full bg-[var(--ispora-brand)] opacity-[0.07] blur-[110px] animate-[blobDrift1_14s_ease-in-out_infinite]" />
+          <div className="absolute bottom-[-220px] left-[-140px] w-[520px] h-[520px] rounded-full bg-[var(--ispora-accent)] opacity-[0.10] blur-[100px] animate-[blobDrift2_16s_ease-in-out_infinite]" />
         </div>
 
-        <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-10 md:gap-[60px] w-full max-w-[1200px] mx-auto">
+        <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-14 md:gap-[60px] w-full max-w-[1200px] mx-auto">
           {/* Hero Left */}
-          <div className="flex-1 max-w-[600px] text-center md:text-left">
-            {/* H1 */}
-            <h1 className="font-syne text-[clamp(36px,4.5vw,58px)] font-black leading-[1.06] tracking-[-2px] text-[var(--ispora-text)] mb-5 text-[48px]">
-              Africa's best <em className="italic text-[var(--ispora-brand)] font-bold relative inline-block whitespace-nowrap">lift<span className="absolute bottom-[-3px] left-0 right-0 h-[3px] bg-[var(--ispora-accent)] rounded-sm animate-[underIn_0.6s_ease_0.5s_both]" /></em>{' '}the next generation.
+          <div className="flex-1 max-w-[640px] text-center md:text-left">
+            <div className="inline-flex items-center gap-2 bg-white border-[1.5px] border-[var(--ispora-border)] rounded-full pl-1.5 pr-3.5 py-1.5 mb-6 shadow-[var(--ispora-shadow-sm)]">
+              <span className="bg-[var(--ispora-accent)] text-white text-[10px] font-bold px-2 py-0.5 rounded-full">NEW</span>
+              <span className="text-[12px] font-semibold text-[var(--ispora-text2)]">Live in-app video sessions with Ispora Live</span>
+            </div>
+
+            <h1 className="font-syne text-[clamp(38px,4.6vw,58px)] font-black leading-[1.05] tracking-[-2px] text-[var(--ispora-text)] mb-5">
+              Africa's best <em className="not-italic text-[var(--ispora-brand)] relative inline-block whitespace-nowrap">lift<span className="absolute bottom-[2px] left-0 right-0 h-[6px] bg-[var(--ispora-accent)] rounded-sm -z-10 animate-[underIn_0.6s_ease_0.5s_both]" /></em>{' '}the next generation.
             </h1>
 
-            <p className="text-[17px] text-[var(--ispora-text2)] leading-[1.65] mb-8 max-w-[500px] mx-auto md:mx-0">
+            <p className="text-[18px] text-[var(--ispora-text2)] leading-[1.65] mb-8 max-w-[520px] mx-auto md:mx-0">
               Connect with verified diaspora professionals and Africa's top home-based experts for real mentorship, insider opportunities, and the guidance that changes careers.
             </p>
 
             {/* Hero Actions */}
-            <div className="flex items-center justify-center md:justify-start gap-2.5 flex-wrap mb-10">
+            <div className="flex items-center justify-center md:justify-start gap-3 flex-wrap mb-8">
               <Link
                 to="/auth"
-                className="inline-flex items-center gap-2 bg-[var(--ispora-brand)] text-white px-[30px] py-[15px] rounded-xl text-[15px] font-bold hover:bg-[var(--ispora-brand-hover)] hover:shadow-[0_10px_32px_rgba(2,31,246,0.28)] hover:-translate-y-0.5 transition-all group"
+                className="inline-flex items-center gap-2 bg-[var(--ispora-brand)] text-white px-[30px] py-[16px] rounded-xl text-[15px] font-bold hover:bg-[var(--ispora-brand-hover)] hover:shadow-[0_12px_32px_rgba(2,31,246,0.32)] hover:-translate-y-0.5 transition-all group"
               >
                 Get started — it's free
                 <ArrowRight className="w-[15px] h-[15px] group-hover:translate-x-1 transition-transform" strokeWidth={2.5} />
               </Link>
               <Link
                 to="/auth?mode=signin"
-                className="inline-flex items-center gap-2 bg-white text-[var(--ispora-text2)] px-7 py-3.5 rounded-xl text-[15px] font-semibold border-[1.5px] border-[var(--ispora-border)] hover:border-[var(--ispora-brand)] hover:text-[var(--ispora-brand)] hover:bg-[var(--ispora-brand-light)] hover:-translate-y-0.5 transition-all"
+                className="inline-flex items-center gap-2 bg-white text-[var(--ispora-text2)] px-7 py-4 rounded-xl text-[15px] font-semibold border-[1.5px] border-[var(--ispora-border)] hover:border-[var(--ispora-brand)] hover:text-[var(--ispora-brand)] hover:-translate-y-0.5 transition-all"
               >
                 <User className="w-3.5 h-3.5" strokeWidth={2} />
                 Sign in
               </Link>
             </div>
+
+            {/* Trust row */}
+            <div className="flex items-center justify-center md:justify-start gap-3">
+              <div className="flex -space-x-2.5">
+                {['AO', 'CU', 'FA', 'TA'].map((initials, idx) => (
+                  <div
+                    key={idx}
+                    className="w-8 h-8 rounded-full border-2 border-white grid place-items-center text-[10px] font-bold text-white"
+                    style={{ background: [`var(--ispora-brand)`, `var(--ispora-accent)`, `#7c3aed`, `var(--ispora-success)`][idx] }}
+                  >
+                    {initials}
+                  </div>
+                ))}
+              </div>
+              <div className="text-left">
+                <div className="flex items-center gap-0.5">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-3 h-3 fill-[var(--ispora-accent)] text-[var(--ispora-accent)]" />
+                  ))}
+                </div>
+                <p className="text-[12px] text-[var(--ispora-text3)] font-medium">Trusted by mentors &amp; students across Africa</p>
+              </div>
+            </div>
           </div>
 
-          {/* Hero Right - Image */}
-          <div className="flex-shrink-0 w-full max-w-[380px]">
-            <div className="relative rounded-3xl overflow-hidden shadow-[0_24px_64px_rgba(2,31,246,0.14)] h-[360px]">
-              <img 
-                src={heroImage} 
-                alt="African professionals in mentorship" 
+          {/* Hero Right - Image with floating UI chips */}
+          <div className="flex-shrink-0 w-full max-w-[400px] relative">
+            <div className="relative rounded-[28px] overflow-hidden shadow-[0_28px_70px_rgba(7,9,74,0.18)] h-[380px] border-[6px] border-white">
+              <img
+                src={heroImage}
+                alt="African professionals in mentorship"
                 className="w-full h-full object-cover"
               />
+            </div>
+
+            {/* Floating chip: live session */}
+            <div className="hidden sm:flex absolute -left-10 top-8 items-center gap-2.5 bg-white rounded-2xl shadow-[var(--ispora-shadow-lg)] border-[1.5px] border-[var(--ispora-border)] px-4 py-3 animate-[cardFloat1_6s_ease-in-out_infinite]">
+              <div className="w-9 h-9 rounded-xl bg-[var(--ispora-brand)] grid place-items-center flex-shrink-0">
+                <Video className="w-4 h-4 text-white" strokeWidth={2.5} />
+              </div>
+              <div>
+                <div className="text-[12px] font-bold text-[var(--ispora-text)] leading-tight">Live session</div>
+                <div className="text-[10px] text-[var(--ispora-text3)]">In progress now</div>
+              </div>
+            </div>
+
+            {/* Floating chip: opportunity matched */}
+            <div className="hidden sm:flex absolute -right-8 bottom-10 items-center gap-2.5 bg-white rounded-2xl shadow-[var(--ispora-shadow-lg)] border-[1.5px] border-[var(--ispora-border)] px-4 py-3 animate-[cardFloat2_7s_ease-in-out_infinite]">
+              <div className="w-9 h-9 rounded-xl bg-[var(--ispora-accent)] grid place-items-center flex-shrink-0">
+                <Zap className="w-4 h-4 text-white" strokeWidth={2.5} />
+              </div>
+              <div>
+                <div className="text-[12px] font-bold text-[var(--ispora-text)] leading-tight">Opportunity matched</div>
+                <div className="text-[10px] text-[var(--ispora-text3)]">Google STEP Internship</div>
+              </div>
             </div>
           </div>
         </div>
@@ -195,21 +252,21 @@ const LandingPage = () => {
       </div>
 
       {/* How It Works */}
-      <section id="how" className="py-20 px-[7vw] max-w-[1200px] mx-auto">
+      <section id="how" className="py-24 px-[7vw] max-w-[1200px] mx-auto">
         <div className="reveal">
-          <div className="flex items-center gap-2 text-[11px] font-bold text-[var(--ispora-brand)] uppercase tracking-widest mb-3">
-            <div className="w-4 h-0.5 bg-[var(--ispora-brand)] rounded-full" />
-            HOW IT WORKS
+          <div className="inline-flex items-center gap-2 bg-[var(--ispora-brand-light)] text-[11px] font-bold text-[var(--ispora-brand)] uppercase tracking-widest mb-4 px-3 py-1.5 rounded-full">
+            <div className="w-1.5 h-1.5 rounded-full bg-[var(--ispora-brand)]" />
+            How it works
           </div>
           <h2 className="font-syne text-[clamp(30px,4vw,50px)] font-extrabold leading-[1.08] tracking-[-1.5px] text-[var(--ispora-text)] mb-2.5">
-            Three simple steps to <em className="italic text-[var(--ispora-brand)] font-semibold">success</em>
+            Three simple steps to <span className="text-[var(--ispora-brand)]">success</span>
           </h2>
           <p className="text-base text-[var(--ispora-text3)] leading-relaxed max-w-[500px]">
             Whether you're a student seeking guidance or a professional ready to give back, getting started is easy.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-12">
           {[
             { num: '01', title: 'Create your profile', text: 'Sign up and tell us about your background, interests, and career goals or areas of expertise.' },
             { num: '02', title: 'Get matched', text: 'Our platform connects you with the perfect mentor or mentee based on shared interests and goals.' },
@@ -217,46 +274,45 @@ const LandingPage = () => {
           ].map((step, idx) => (
             <div
               key={idx}
-              className={`reveal rd${idx + 1} bg-white border-[1.5px] border-[var(--ispora-border)] rounded-2xl p-7 hover:border-[var(--ispora-brand)] hover:shadow-[var(--ispora-shadow)] hover:-translate-y-1 transition-all relative overflow-hidden group`}
+              className={`reveal rd${idx + 1} bg-white border-[1.5px] border-[var(--ispora-border)] rounded-2xl p-7 hover:border-[var(--ispora-brand)] hover:shadow-[var(--ispora-shadow)] hover:-translate-y-1 transition-all`}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-[var(--ispora-brand-light)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="w-10 h-10 bg-[var(--ispora-brand)] rounded-[10px] grid place-items-center font-syne font-extrabold text-[15px] text-white mb-4 relative z-10">{step.num}</div>
-              <h3 className="font-syne text-[17px] font-bold text-[var(--ispora-text)] mb-2 leading-tight relative z-10">{step.title}</h3>
-              <p className="text-[13px] text-[var(--ispora-text3)] leading-relaxed relative z-10">{step.text}</p>
+              <div className="w-11 h-11 bg-[var(--ispora-brand)] rounded-[12px] grid place-items-center font-syne font-extrabold text-[15px] text-white mb-5">{step.num}</div>
+              <h3 className="font-syne text-[18px] font-bold text-[var(--ispora-text)] mb-2 leading-tight">{step.title}</h3>
+              <p className="text-[13px] text-[var(--ispora-text3)] leading-relaxed">{step.text}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* For Who */}
-      <section id="who" className="py-20 px-[7vw] max-w-[1200px] mx-auto">
+      <section id="who" className="py-24 px-[7vw] max-w-[1200px] mx-auto">
         <div className="reveal text-center md:text-left">
-          <div className="flex items-center justify-center md:justify-start gap-2 text-[11px] font-bold text-[var(--ispora-brand)] uppercase tracking-widest mb-3">
-            <div className="w-4 h-0.5 bg-[var(--ispora-brand)] rounded-full" />
-            WHO WE SERVE
+          <div className="inline-flex items-center gap-2 bg-[var(--ispora-brand-light)] text-[11px] font-bold text-[var(--ispora-brand)] uppercase tracking-widest mb-4 px-3 py-1.5 rounded-full">
+            <div className="w-1.5 h-1.5 rounded-full bg-[var(--ispora-brand)]" />
+            Who we serve
           </div>
           <h2 className="font-syne text-[clamp(30px,4vw,50px)] font-extrabold leading-[1.08] tracking-[-1.5px] text-[var(--ispora-text)] mb-2.5">
-            Built for <em className="italic text-[var(--ispora-brand)] font-semibold">everyone</em>
+            Built for <span className="text-[var(--ispora-brand)]">everyone</span>
           </h2>
           <p className="text-base text-[var(--ispora-text3)] leading-relaxed max-w-[500px] mx-auto md:mx-0">
             Whether you're seeking mentorship or ready to give back, Ispora is your platform.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-12">
           {/* Youth Card */}
           <div className="reveal rd1 bg-white border-[1.5px] border-[var(--ispora-border)] rounded-[20px] p-8 md:p-9 relative overflow-hidden">
             <div className="text-[10px] font-bold text-[var(--ispora-brand)] uppercase tracking-widest mb-3.5 flex items-center gap-1.5">
               <div className="w-1.5 h-1.5 rounded-full bg-[var(--ispora-accent)]" />
               FOR YOUTH
             </div>
-            <h3 className="font-syne text-2xl font-extrabold leading-tight text-[var(--ispora-text)] mb-2.5 tracking-tight relative z-10">
+            <h3 className="font-syne text-2xl font-extrabold leading-tight text-[var(--ispora-text)] mb-2.5 tracking-tight">
               Get guidance from those who've been there
             </h3>
-            <p className="text-[13px] text-[var(--ispora-text3)] leading-relaxed mb-5 relative z-10">
+            <p className="text-[13px] text-[var(--ispora-text3)] leading-relaxed mb-5">
               Connect with professionals who understand your journey and want to help you succeed.
             </p>
-            <div className="flex flex-col gap-2 mb-6 relative z-10">
+            <div className="flex flex-col gap-2 mb-6">
               {[
                 '1-on-1 mentorship sessions',
                 'Insider job & scholarship opportunities',
@@ -273,7 +329,7 @@ const LandingPage = () => {
             </div>
             <Link
               to="/auth"
-              className="inline-flex items-center gap-2 bg-[var(--ispora-brand)] text-white px-5 py-3 rounded-[10px] text-[13px] font-bold hover:bg-[var(--ispora-brand-hover)] hover:shadow-[0_6px_20px_rgba(2,31,246,0.25)] hover:-translate-y-0.5 transition-all relative z-10"
+              className="inline-flex items-center gap-2 bg-[var(--ispora-brand)] text-white px-5 py-3 rounded-[10px] text-[13px] font-bold hover:bg-[var(--ispora-brand-hover)] hover:shadow-[0_6px_20px_rgba(2,31,246,0.25)] hover:-translate-y-0.5 transition-all"
             >
               Find a mentor
               <ArrowRight className="w-3.5 h-3.5" strokeWidth={2.5} />
@@ -281,8 +337,9 @@ const LandingPage = () => {
           </div>
 
           {/* Mentors Card */}
-          <div className="reveal rd2 bg-[var(--ispora-brand)] border-[1.5px] border-[var(--ispora-brand)] rounded-[20px] p-8 md:p-9 relative overflow-hidden">
-            <div className="text-[10px] font-bold text-white/70 uppercase tracking-widest mb-3.5 flex items-center gap-1.5">
+          <div className="reveal rd2 bg-[var(--ispora-brand)] rounded-[20px] p-8 md:p-9 relative overflow-hidden">
+            <div className="absolute top-[-100px] right-[-80px] w-[280px] h-[280px] rounded-full bg-white opacity-[0.06] pointer-events-none" />
+            <div className="text-[10px] font-bold text-white/70 uppercase tracking-widest mb-3.5 flex items-center gap-1.5 relative z-10">
               <div className="w-1.5 h-1.5 rounded-full bg-[var(--ispora-accent)]" />
               FOR MENTORS
             </div>
@@ -309,7 +366,7 @@ const LandingPage = () => {
             </div>
             <Link
               to="/auth"
-              className="inline-flex items-center gap-2 bg-[var(--ispora-accent)] text-[var(--ispora-text)] px-5 py-3 rounded-[10px] text-[13px] font-bold hover:bg-white hover:shadow-[0_6px_20px_rgba(184,240,74,0.3)] hover:-translate-y-0.5 transition-all relative z-10"
+              className="inline-flex items-center gap-2 bg-[var(--ispora-accent)] text-white px-5 py-3 rounded-[10px] text-[13px] font-bold hover:bg-white hover:text-[var(--ispora-brand)] hover:shadow-[0_6px_20px_rgba(0,200,150,0.3)] hover:-translate-y-0.5 transition-all relative z-10"
             >
               Become a mentor
               <ArrowRight className="w-3.5 h-3.5" strokeWidth={2.5} />
@@ -319,15 +376,15 @@ const LandingPage = () => {
       </section>
 
       {/* Opportunities Showcase */}
-      <div className="bg-white border-t-[1.5px] border-b-[1.5px] border-[var(--ispora-border)] py-20">
+      <div className="bg-white border-t-[1.5px] border-b-[1.5px] border-[var(--ispora-border)] py-24">
         <div className="px-[7vw] max-w-[1200px] mx-auto">
           <div className="reveal text-center">
-            <div className="flex items-center justify-center gap-2 text-[11px] font-bold text-[var(--ispora-brand)] uppercase tracking-widest mb-3">
-              <div className="w-4 h-0.5 bg-[var(--ispora-brand)] rounded-full" />
-              OPPORTUNITIES
+            <div className="inline-flex items-center gap-2 bg-[var(--ispora-brand-light)] text-[11px] font-bold text-[var(--ispora-brand)] uppercase tracking-widest mb-4 px-3 py-1.5 rounded-full">
+              <div className="w-1.5 h-1.5 rounded-full bg-[var(--ispora-brand)]" />
+              Opportunities
             </div>
             <h2 className="font-syne text-[clamp(30px,4vw,50px)] font-extrabold leading-[1.08] tracking-[-1.5px] text-[var(--ispora-text)] mb-2.5">
-              Curated <em className="italic text-[var(--ispora-brand)] font-semibold">opportunities</em> for you
+              Curated <span className="text-[var(--ispora-brand)]">opportunities</span> for you
             </h2>
             <p className="text-base text-[var(--ispora-text3)] leading-relaxed max-w-[500px] mx-auto mb-10">
               From internships to scholarships, we bring the best opportunities directly to you.
@@ -373,7 +430,7 @@ const LandingPage = () => {
             </div>
           </div>
 
-          <div className="reveal text-center mt-5">
+          <div className="reveal text-center mt-6">
             <Link to="/auth" className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-[var(--ispora-brand)] hover:text-[var(--ispora-brand-hover)] transition-colors group">
               See all opportunities
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" strokeWidth={2.5} />
@@ -383,22 +440,22 @@ const LandingPage = () => {
       </div>
 
       {/* Testimonials */}
-      <section id="stories" className="bg-[var(--ispora-bg)] border-t-[1.5px] border-b-[1.5px] border-[var(--ispora-border)] py-20 px-[7vw]">
+      <section id="stories" className="bg-[var(--ispora-bg)] border-t-[1.5px] border-b-[1.5px] border-[var(--ispora-border)] py-24 px-[7vw]">
         <div className="max-w-[1200px] mx-auto">
           <div className="reveal text-center">
-            <div className="flex items-center justify-center gap-2 text-[11px] font-bold text-[var(--ispora-brand)] uppercase tracking-widest mb-3">
-              <div className="w-4 h-0.5 bg-[var(--ispora-brand)] rounded-full" />
-              SUCCESS STORIES
+            <div className="inline-flex items-center gap-2 bg-white border-[1.5px] border-[var(--ispora-border)] text-[11px] font-bold text-[var(--ispora-brand)] uppercase tracking-widest mb-4 px-3 py-1.5 rounded-full">
+              <div className="w-1.5 h-1.5 rounded-full bg-[var(--ispora-brand)]" />
+              Success stories
             </div>
             <h2 className="font-syne text-[clamp(30px,4vw,50px)] font-extrabold leading-[1.08] tracking-[-1.5px] text-[var(--ispora-text)] mb-2.5">
-              Real stories, <em className="italic text-[var(--ispora-brand)] font-semibold">real impact</em>
+              Real stories, <span className="text-[var(--ispora-brand)]">real impact</span>
             </h2>
             <p className="text-base text-[var(--ispora-text3)] leading-relaxed max-w-[500px] mx-auto mb-10">
               See how Ispora is transforming careers and creating opportunities across Africa.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
               {
                 quote: '"',
@@ -454,39 +511,40 @@ const LandingPage = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-20 px-[7vw]">
+      <section className="py-24 px-[7vw]">
         <div className="max-w-[1200px] mx-auto">
-          <div className="reveal bg-[var(--ispora-brand)] rounded-3xl p-12 md:p-14 text-center relative overflow-hidden">
-            {/* Background */}
-            <div className="absolute inset-0 rounded-3xl" style={{
-              backgroundImage: 'linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)',
+          <div className="reveal bg-[var(--ispora-brand)] rounded-3xl p-12 md:p-16 text-center relative overflow-hidden">
+            {/* Background: solid-color shapes, no gradients */}
+            <div className="absolute inset-0 rounded-3xl opacity-[0.35]" style={{
+              backgroundImage: 'linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)',
               backgroundSize: '40px 40px'
             }} />
-            <div className="absolute w-[400px] h-[400px] rounded-full bg-[rgba(4,5,46,0.3)] blur-[80px] top-[-120px] right-[-80px] pointer-events-none" />
+            <div className="absolute w-[420px] h-[420px] rounded-full bg-white opacity-[0.05] top-[-140px] right-[-100px] pointer-events-none" />
+            <div className="absolute w-[300px] h-[300px] rounded-full bg-[var(--ispora-accent)] opacity-[0.14] bottom-[-100px] left-[-60px] pointer-events-none" />
 
             <div className="relative z-10">
               <h2 className="font-syne text-[clamp(32px,4vw,52px)] font-extrabold leading-[1.08] tracking-[-1.5px] text-white mb-3">
-                Ready to <em className="italic text-[var(--ispora-accent)] font-semibold">transform</em> your future?
+                Ready to <span className="text-[var(--ispora-accent)]">transform</span> your future?
               </h2>
-              <p className="text-base text-white/65 mb-7 max-w-[440px] mx-auto leading-relaxed">
+              <p className="text-base text-white/65 mb-8 max-w-[440px] mx-auto leading-relaxed">
                 Join thousands of youth and professionals building the future of Africa together.
               </p>
-              <div className="flex items-center justify-center gap-2.5 flex-wrap mb-3.5">
+              <div className="flex items-center justify-center gap-3 flex-wrap mb-4">
                 <Link
                   to="/auth"
-                  className="inline-flex items-center gap-2 bg-[var(--ispora-accent)] text-[var(--ispora-text)] px-[30px] py-3.5 rounded-xl text-[15px] font-bold hover:bg-white hover:shadow-[0_10px_28px_rgba(184,240,74,0.3)] hover:-translate-y-0.5 transition-all"
+                  className="inline-flex items-center gap-2 bg-[var(--ispora-accent)] text-white px-[30px] py-4 rounded-xl text-[15px] font-bold hover:bg-white hover:text-[var(--ispora-brand)] hover:shadow-[0_12px_32px_rgba(0,200,150,0.3)] hover:-translate-y-0.5 transition-all"
                 >
                   Get started for free
                   <ArrowRight className="w-3.5 h-3.5" strokeWidth={2.5} />
                 </Link>
                 <Link
                   to="/auth"
-                  className="inline-flex items-center bg-white/12 text-white px-[26px] py-3 rounded-xl text-[15px] font-semibold border-[1.5px] border-white/20 hover:bg-white/20 transition-all"
+                  className="inline-flex items-center bg-white/10 text-white px-[26px] py-3.5 rounded-xl text-[15px] font-semibold border-[1.5px] border-white/20 hover:bg-white/20 transition-all"
                 >
                   Learn more
                 </Link>
               </div>
-              <p className="text-xs text-white/35">No credit card required • Free forever for youth & mentors</p>
+              <p className="text-xs text-white/40">No credit card required • Free forever for youth & mentors</p>
             </div>
           </div>
         </div>
