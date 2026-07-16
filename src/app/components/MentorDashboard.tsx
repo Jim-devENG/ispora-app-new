@@ -1962,6 +1962,10 @@ export default function MentorDashboard() {
                               {/* Action Button */}
                               <button
                                 onClick={() => {
+                                  if (series.platform === 'Ispora Live') {
+                                    window.open(`/session/${series.sessions[0]?.id}/live-room`, '_blank');
+                                    return;
+                                  }
                                   const meetingLink = series.sessions[0]?.meetingLink || '';
                                   if (meetingLink) {
                                     window.open(meetingLink, '_blank');
@@ -2212,6 +2216,10 @@ export default function MentorDashboard() {
                           <button
                             onClick={(e) => {
                               e.stopPropagation();
+                              if (session.platform === 'Ispora Live') {
+                                window.open(`/session/${session.id}/live-room`, '_blank');
+                                return;
+                              }
                               const meetingLink = session.meetingLink || '';
                               if (meetingLink) {
                                 window.open(meetingLink, '_blank');
